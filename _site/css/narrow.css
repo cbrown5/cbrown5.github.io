@@ -15,7 +15,7 @@ Banner
    position:absolute;
    top: 10px;
    left:10px;
-   width:700px;
+   width:100%;
    height:auto;
    background-position:center;
    z-index:-1;
@@ -135,7 +135,7 @@ ul.postlist_main{
 code {
  font-family:"Courier new", Courier, "Andale Mono", monospace;
  background-color:#EAEEEF;
- font-size:80%;
+ font-size:60%;
  width:20%;
  position:relative;
 }
