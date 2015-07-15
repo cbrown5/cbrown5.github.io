@@ -99,7 +99,7 @@ ol.order_list{
 
 #page_content {
    background-color:#F9FDFF;
-   padding:20px;
+   padding:5px;
    border-radius: 45px;
    position: relative;
    top:50px;
@@ -135,14 +135,14 @@ ul.postlist_main{
 code {
  font-family:"Courier new", Courier, "Andale Mono", monospace;
  background-color:#EAEEEF;
- font-size:60%;
- width:20%;
+ font-size:70%;
  position:relative;
+ line-height:15px;
 }
 
 code.inline {
  background-color:#EAEEEF;
- font-size:80%;
+ font-size:100%;
  border-color:#cad4d6;
  border:solid;
  width:100%;
@@ -156,7 +156,7 @@ pre.r {
  border-color:#cad4d6;
  border:solid;
  padding:5px;
- width:90%;
+ width:97%;
  border-width:0.2px;
     white-space: pre-wrap;       /* CSS 3 */
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
@@ -177,7 +177,7 @@ pre.image_under{
 padding:0;
  border-color:#cad4d6;
  border:solid;
- width:90%;
+ width:95%;
  border-width:0.2px;
 }
 
@@ -357,7 +357,7 @@ Layout normal
    line-height:30px;
    height:100%;
    width:98%;
-   padding-left:20px;
+   padding-left:5px;
    padding-right:0;
    margin-right:0;
    margin-top:20px;
