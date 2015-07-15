@@ -1,0 +1,50 @@
+---
+title: Spatial
+---
+<!DOCTYPE html>
+{% include head_element.html %}
+
+
+<body>
+
+{% include top_banner.html %}
+
+<div id="page_content">
+
+{% include nav_bar.html %}
+
+
+<div id="page_text">
+<h2> Spatial analysis in R </h2>
+
+<p>
+The R programming can work as a fully functioning GIS. It has several powerful advantages
+over many other GIS programs: you can program scripts for complete automation, it is relatively fast, 
+and it is free. 
+</p>
+
+<p>
+The downside is that it is not easy to get started, particularly if you are not simultaneously
+a geo-statistical expert and a gun programmer. I am trying to make the jump
+ easier for ecologists by providing courses and helpful blog posts here. </p>
+
+</div>
+ 
+<div class="posts">
+<h2 class="posts_header"> Coding blog </h2>
+<ul class="postlist">
+  {% for post in site.posts limit:5 %}
+      {% if post.categories contains 'rspatial' %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+      {{ post.excerpt }}
+    </li>
+        {% endif %}
+  {% endfor %}
+</ul>
+</div>
+</div>
+{% include footer.html %}
+
+</body>
+</html>

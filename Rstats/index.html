@@ -1,0 +1,54 @@
+---
+title: Code
+---
+<!DOCTYPE html>
+{% include head_element.html %}
+
+
+<body>
+
+{% include top_banner.html %}
+
+<div id="page_content">
+
+{% include nav_bar.html %}
+
+
+<div id="page_text">
+<h2> R-stats Code </h2>
+
+<p>
+This is my blog for programming in R-stats (and occasionally other languages). 
+I am interested in mapping, GIS, simulation modelling, statistics, optimization and visualisation, mainly for
+the biological sciences, but many of the applications are general. I hope you find them
+useful. 
+</p>
+<p>
+If you are interested in my courses feel free to download and share them. You are welcome
+to use them for your own teaching, and I would love to hear about it. 
+If you would like me to come and teach one of these courses at your institution, then get
+in touch!
+</p>
+<p> Currently I have posted courses on <a href="{% post_url 2015-06-23-R_data_wrangling_course %}"> Data Wrangling in R</a> and
+<a href=""> Maps and GIS in R.</a>
+
+</div>
+ 
+<div class="posts">
+<h2 class="posts_header"> Coding blog </h2>
+<ul class="postlist">
+  {% for post in site.posts limit:5 %}
+    {% if post.categories contains 'rstats' %}
+      <li>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+        {{ post.excerpt }}
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+</div>
+</div>
+{% include footer.html %}
+
+</body>
+</html>

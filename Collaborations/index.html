@@ -1,0 +1,84 @@
+---
+title: Collaborations
+---
+<!DOCTYPE html>
+{% include head_element.html %}
+
+
+<body>
+
+{% include top_banner.html %}
+
+<div id="page_content">
+
+{% include nav_bar.html %}
+
+
+<div id="page_text">
+<h2> Collaborations </h2>
+<p> Here are some of the people and groups I am working with.</p>
+
+<h3> Fisheries and conservation </h3>
+<p>
+<a href = "http://www.snap.is/groups/ridges-to-reef-fisheries/" target = "_blank"> Ridges to reef fisheries working group</a>, funded through NCEAS's Science for Nature and People Program
+</p>
+<p>
+<a href ="http://www.rodconnolly.com/" target="_blank">Professor Rod Connolly</a>  at Griffith University
+</p>
+<p>
+<a href ="http://www.griffith.edu.au/environment-planning-architecture/australian-rivers-institute/members/dr-simon-linke" target="_blank">Dr. Simon Linke</a>  at Griffith University
+</p>
+
+<p>
+Dr. Carissa Klein at The University of Queensland
+</p>
+<p>
+<a href="http://www.marinespatialecologylab.org/" target="_blank"> Professor Peter Mumby and the Marine Spatial Ecology Lab </a> at The University of Queensland
+</p>
+<p> 
+<a href="http://ceed.edu.au/" target="_blank">The Centre for Excellence for Environmental Decisions </a> and many people therein. 
+</p>
+
+<h3> Climate change ecology </h3>
+<p>
+<a href = "http://www.marinespatialecologylab.org/people/megan-saunders/
+" target = "_blank"> Dr. Megan Saunders </a> at The University of Queensland
+</p>
+<p>
+<a href = "https://www.smp.uq.edu.au/node/106/365" target = "_blank"> Assoc/Prof Anthony Richardson </a> at The University of Queensland
+</p>
+<p>
+<a href = "http://oconnorlab.weebly.com/people.html" target = "_blank"> The O'Connor lab </a> at the University of British Columbia. 
+</p>
+<p>
+<a href = "http://www.usc.edu.au/explore/structure/faculty-of-science-health-education-and
+-engineering/staff/dr-david-schoeman" target = "_blank"> Assoc/Prof David Schoeman </a> at the University of the Sunshine Coast.
+</p>
+<p>
+<a href = "http://www.sams.ac.uk/michael-burrows" target = "_blank"> Assoc/Professor Michael Burrows </a> at the Scottish Association for Marine Sciences on climate change ecology. Check out his cool <a href="http://www.sams.ac.uk/michael-burrows" target="_blank">
+Google Earth maps </a>from our <a href="http://www.nature.com/nature/journal/v507/n7493/full/nature12976.html" target="_blank"> Nature paper.</a> 
+</p>
+
+<h3> Design </h3>
+<p>
+<a href="http://alexbrown.com.au/" target="_blank">Alex Brown</a>, industrial design.
+</p>
+</div>
+ 
+<div class="posts">
+<h2 class="posts_header"> Latest posts </h2>
+<ul class="postlist">
+  {% for post in site.posts limit:5 %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+      {{ post.excerpt }}
+    </li>
+  {% endfor %}
+</ul>
+</div>
+
+</div>
+{% include footer.html %}
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+---
+title: main
+---
+<!DOCTYPE html>
+{% include head_element.html %}
+
+<body>
+
+{% include top_banner.html %}
+
+<div id="page_content">
+
+{% include nav_bar.html %}
+
+<p class="large_font sub_line"> Welcome to Chris Brown's Seascape Models page  </p>
+<div id="Research">
+<h2> Research </h2>
+<p> I work on the conservation of marine ecosystems and sustainable management of fisheries. 
+My work brings ecological complexity to the planning tools used to inform 
+<a href="/Research/">decision making</a>. </p>
+<p>I am also interested in the impacts of <a href="/Research/">climate change</a> to 
+marine ecosystems.  
+With a team of others, we have been 
+synthesising the global impacts of climate change to marine ecosystems and predicting the 
+implications of future change.</p>
+<p> If you are interested in doing a PhD on conservation, fisheries or seascape modelling, get in touch. </p>
+</div>
+
+<div id="Modelling">
+<h2> Models, data, programming </h2>
+<p> My research applies both mathematical models and statistical analysis. </p>
+<p> I specialise in integrating ecologically complex models with tools for informing decision makers.
+ I also work with large databases of the marine environment. </p>
+<p>I use the 
+<a href="http://cran.r-project.org/" target="_blank">R programming language</a> 
+and teach R to others. 
+My teaching resources are on this site and are <a href="/Rstats/">open-access</a>. </p>
+</div>
+ 
+
+<div class="posts_main">
+<h2 class="posts_header"> Research news </h2>
+<ul class="postlist_main">
+  {% for post in site.posts limit:5 %}
+    {% if post.categories contains 'res_posts' %}
+
+     <li>
+       <a href="{{ post.url }}">{{ post.title }}</a>
+       {{ post.excerpt }}
+     </li>
+       {% endif %}
+  {% endfor %}
+</ul>
+</div>
+
+<div class="posts_main">
+<h2 class="posts_header"> Coding blog </h2>
+<ul class="postlist_main">
+  {% for post in site.posts limit:5 %}
+  {% if post.categories contains 'rstats' %}
+     <li>
+       <a href="{{ post.url }}">{{ post.title }}</a>
+       {{ post.excerpt }}
+     </li>
+     {% endif %}
+  {% endfor %}
+</ul>
+</div>
+
+<div id="Affiliation">
+<h2> Contact </h2>
+<p class="large_font">Dr. Christopher J. Brown</p>
+<p>Research Fellow</p>
+<p> <a href = "http://www.griffith.edu.au/environment-planning-architecture/australian-rivers-institute/members/dr-christopher-brown"> 
+Australian Rivers Institute</a></p>
+<p>Griffith University, Queensland, Australia</p>
+<p><a href="mailto:chris.brown@griffith.edu.au"> Email Chris</a>  </p>
+<p>Tweets: <a href = "https://twitter.com/bluecology"> @bluecology</a></p>
+</div>
+</div>
+
+{% include footer.html %}
+
+</body>
+</html>

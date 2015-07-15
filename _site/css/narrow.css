@@ -1,0 +1,358 @@
+html, body {
+   height: 100%;
+   font-family: avenir, Arial, Helvetica, sans-serif;
+}
+
+
+/* 
+--------------
+Banner 
+--------------
+*/
+
+
+#banner_wrap{
+   position:absolute;
+   top: 10px;
+   left:10px;
+   width:700px;
+   height:auto;
+   background-position:center;
+   z-index:-1;
+}
+
+#banner{
+   position: absolute;
+   top: -10px;
+   left: -20px;
+}
+
+img#banner{
+   max-width:980px;
+   width:100%;
+   height:100px;
+}
+
+#inner_banner{
+   position:absolute;
+   top:10px;
+   left:20px;
+}
+
+h1 {
+   font-size: 150%;
+   text-align: left;
+   color: white;
+   position:relative;
+   top:-45px;
+   width:90%;
+   }
+
+p.banner_text {
+   font-size:30%;
+   position:relative;
+   text-align:left;
+   color: white;
+}
+/* 
+--------------
+Body 
+--------------
+*/
+
+body {
+   background-color: #D9F4FC;
+   font-size: 24px;
+   margin:50px;
+   max-width:960px;
+   margin-left:auto;
+   margin-right:auto;
+}
+
+p {
+   font-size: 80%;
+   color: #1d3b77;
+   margin:5spx;
+}
+
+p.large_font{
+   font-size:100%;
+   line-height:28px;
+   }
+
+p.sub_line{
+margin-bottom:0px;
+}
+
+h2, h3 {
+   color:#142953;
+   line-height:30px;
+   margin-top:5px;
+   margin-bottom:1px;
+}
+
+ol.order_list{
+   font-size: 100%;
+   color: #142953;
+}
+
+
+#page_content {
+   background-color:#F9FDFF;
+   padding:20px;
+   border-radius: 45px;
+   position: relative;
+   top:50px;
+}
+
+/* Change background colour of pages with code to white because
+figures are transparent*/
+
+#page_content.codepage{
+   background-color: white;
+}
+
+ul.postlist{
+  font-size:100%;
+  list-style-type: number;
+}
+
+ul.postlist_main{
+  font-size:100%;
+  list-style-type: number;
+}
+
+
+.reference{
+   color:#0482EE;
+}
+
+.reference em{
+   font-style:italic;
+  
+}
+
+code {
+ font-family:"Courier new", Courier, "Andale Mono", monospace;
+ background-color:#EAEEEF;
+ font-size:80%;
+ width:20%;
+ position:relative;
+}
+
+code.inline {
+ background-color:#EAEEEF;
+ font-size:80%;
+ border-color:#cad4d6;
+ border:solid;
+ width:100%;
+ border-width:0.2px;
+}
+
+
+pre.r {
+ position:relative;
+ background-color:#EAEEEF;
+ border-color:#cad4d6;
+ border:solid;
+ padding:5px;
+ width:90%;
+ border-width:0.2px;
+    white-space: pre-wrap;       /* CSS 3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+pre.image_under{
+  width:50%  /* for when pre overlaps an image */
+}
+
+.code_box{
+   position:relative;
+   width:80%;
+   background-color:#EAEEEF;
+   margin:0;
+padding:0;
+ border-color:#cad4d6;
+ border:solid;
+ width:90%;
+ border-width:0.2px;
+}
+
+#toc {
+
+}
+
+/* 
+--------------
+Generic links 
+--------------
+*/
+
+a {
+   text-decoration: none;
+   color: #0482EE;
+}
+
+a:hover {
+   color: #f6561b;
+   
+}
+
+/* 
+--------------
+images
+--------------
+*/
+
+img{
+   max-width:300px;
+   width:auto;
+   }
+
+img.image_float{
+   max-width:300px;
+   width:auto;
+}
+
+/* 
+--------------
+Navigation bar 
+--------------
+*/
+
+ul.menu{
+  list-style-type: none;
+   margin: 0;
+   padding: 5px;
+   border-bottom-style: solid;
+   border-color: #6176A0;
+}
+
+li.menu_item{
+   border-style:solid;
+   border-radius:10px;
+   text-decoration: none;
+   padding: 0px;
+   margin: 2px; 
+   font-size:90%;
+   line-height:30px;
+   text-align:center;  
+   border-width:2px;
+   width:200px;
+
+}
+
+/* 
+--------------
+Footer
+--------------
+*/
+
+#footer {
+   background-color:#F9FDFF;
+   padding-top:0px;
+   padding-left:1px;
+   padding-right:1px;
+   padding-bottom:2px;
+   border-radius: 20px;
+   margin:20px;
+   margin-bottom:50px;
+   font-size:80%;
+   position:relative;
+   top:170px;
+   text-align: center;  
+}
+
+#footer_text{
+  position:relative;
+  top:15px;
+}
+
+/* 
+--------------
+Logo
+--------------
+*/
+
+img.rasterfish {
+   float: right;
+   position:relative;
+   top:-50px;
+}
+
+
+/* 
+--------------
+Layout for home page
+--------------
+*/
+
+#Research {
+   line-height:25px;
+   height:100%;
+   padding:5px;
+   margin-top:20px;
+   padding-right:20px;
+}
+
+#Modelling {
+   line-height:25px;
+   height:100%;
+   padding-right:0;
+   margin-right:0;
+   border-right:0;
+   margin-top:20px;
+   margin-bottom:20px;
+}
+
+#Affiliation {
+   clear:both;
+   line-height:20px;
+   height:100%;
+   width:95%;
+   padding-left:20px;
+   padding-right:0;
+   margin-right:0;
+   border-right:0;
+   border-top:solid;
+   margin-top:100px;
+   border-color: #6176A0;
+}
+
+.posts, .posts_main{
+   clear:both;
+   text-align:left;
+   margin-top:50px;
+   padding:20px;
+   border-style:solid;
+   border-color:#f6561b;
+   border-radius:20px;
+}
+
+.posts_main{
+    width:80%;
+}
+
+
+.posts_header{
+  margin:0;  
+}
+
+
+/* 
+--------------
+Layout normal
+--------------
+*/
+#page_text {
+   line-height:30px;
+   height:100%;
+   width:98%;
+   padding-left:20px;
+   padding-right:0;
+   margin-right:0;
+   margin-top:20px;
+}
