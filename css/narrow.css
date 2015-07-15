@@ -230,22 +230,28 @@ ul.menu{
   list-style-type: none;
    margin: 0;
    padding: 5px;
-   border-bottom-style: solid;
-   border-color: #6176A0;
+   left:20%;
+   position:relative;
+   width:70%;
 }
 
 li.menu_item{
    border-style:solid;
-   border-radius:10px;
+   border-radius:15px;
    text-decoration: none;
    padding: 0px;
    margin: 2px; 
    font-size:90%;
-   line-height:30px;
+   line-height:40px;
    text-align:center;  
    border-width:2px;
    width:200px;
-
+   background: #ECFAFE;
+  background-image: -webkit-linear-gradient(top, #FFFFFF, #D9F4FC);
+  background-image: -moz-linear-gradient(top, #FFFFFF, #D9F4FC);
+  background-image: -ms-linear-gradient(top, #FFFFFF, #D9F4FC);
+  background-image: -o-linear-gradient(top, #FFFFFF, #D9F4FC);
+  background-image: linear-gradient(to bottom, #FFFFFF, #D9F4FC);
 }
 
 /* 
