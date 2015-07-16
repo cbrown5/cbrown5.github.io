@@ -31,13 +31,14 @@ in touch!
 </p>
 <p> Currently I have posted courses on <a href="{% post_url 2015-06-23-R_data_wrangling_course %}"> Data Wrangling in R</a> and
 <a href=""> Maps and GIS in R.</a>
+<p>More code (including this webpage) is on my <a href="https://github.com/cbrown5" target="_blank"> Github</a> page. 
 
 </div>
  
 <div class="posts">
 <h2 class="posts_header"> Coding blog </h2>
 <ul class="postlist">
-  {% for post in site.posts limit:5 %}
+  {% for post in site.posts %}
     {% if post.categories contains 'rstats' %}
       <li>
         <a href="{{ post.url }}">{{ post.title }}</a>

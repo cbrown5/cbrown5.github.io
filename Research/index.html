@@ -74,7 +74,7 @@ Read more about publications on conservation, fisheries and climate change
 <div class="posts">
 <h2 class="posts_header"> Latest research </h2>
 <ul class="postlist">
-  {% for post in site.posts limit:5 %}
+  {% for post in site.posts %}
     {% if post.categories contains 'res_posts' %}
       <li>
         <a href="{{ post.url }}">{{ post.title }}</a>
