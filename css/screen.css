@@ -7,9 +7,9 @@ html, body {
 }
 
 
-/* 
+/*
 --------------
-Banner 
+Banner
 --------------
 */
 
@@ -30,7 +30,7 @@ Banner
    left: -20px;
    width:100%;
    height:200px;
-   
+
 }
 
 #inner_banner{
@@ -63,9 +63,9 @@ p.banner_text {
    color: white;
    top:15px;
 }
-/* 
+/*
 --------------
-Body 
+Body
 --------------
 */
 
@@ -134,7 +134,7 @@ ul.postlist_main{
 
 .reference em{
    font-style:italic;
-  
+
 }
 
 code {
@@ -190,9 +190,9 @@ padding:0;
 
 }
 
-/* 
+/*
 --------------
-Generic links 
+Generic links
 --------------
 */
 
@@ -203,10 +203,10 @@ a {
 
 a:hover {
    color: #f6561b;
-   
+
 }
 
-/* 
+/*
 --------------
 images
 --------------
@@ -214,15 +214,22 @@ images
 
 
 img.image_float{
-  float:right; 
+  float:right;
   width:400px;
    height:auto;
    padding:10px;
 }
 
-/* 
+img.wide_image{
+  width:700px;
+   height:auto;
+   padding:10px;
+}
+
+
+/*
 --------------
-Navigation bar 
+Navigation bar
 --------------
 */
 
@@ -238,7 +245,7 @@ li.menu_item{
    display: inline;
    text-decoration: none;
    padding: 15px;
-   margin: 1px; 
+   margin: 1px;
    font-size:80%;
 }
 
@@ -250,7 +257,7 @@ li.menu_item a:hover{
    margin: 1px;
    border-radius: 10px;
 }
-/* 
+/*
 --------------
 Footer
 --------------
@@ -268,7 +275,7 @@ Footer
    font-size:80%;
    position:relative;
    top:170px;
-   text-align: center;  
+   text-align: center;
 }
 
 #footer_text{
@@ -276,7 +283,7 @@ Footer
   top:15px;
 }
 
-/* 
+/*
 --------------
 Logo
 --------------
@@ -289,7 +296,7 @@ img.rasterfish {
 }
 
 
-/* 
+/*
 --------------
 Layout for home page
 --------------
@@ -351,11 +358,11 @@ Layout for home page
 
 
 .posts_header{
-  margin:0;  
+  margin:0;
 }
 
 
-/* 
+/*
 --------------
 Layout normal
 --------------
