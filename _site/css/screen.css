@@ -218,7 +218,7 @@ img.image_float{
 }
 
 img.small_image{
-   width: 100px;  
+   width: 100px;
 
 }
 
@@ -274,7 +274,7 @@ Footer
    border-radius: 20px;
    margin:20px;
    margin-bottom:50px;
-   font-size:80%;
+   font-size:90%;
    position:relative;
    top:170px;
    text-align: center;
@@ -283,6 +283,7 @@ Footer
 #footer_text{
   position:relative;
   top:15px;
+  margin-bottom: 30px;
 }
 
 /*
