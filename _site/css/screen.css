@@ -217,6 +217,11 @@ img.image_float{
    padding:10px;
 }
 
+img.small_image{
+   width: 100px;  
+
+}
+
 img.wide_image{
   width:700px;
    height:auto;
