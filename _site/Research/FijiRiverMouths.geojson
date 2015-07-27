@@ -1,0 +1,1839 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "1",
+        "forest_cover": "0.990396426577331",
+        "basin_area_ha": "1611.9",
+        "cellnum": "5072202",
+        "annual_rain": "45886331.2900712"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.670503109779,-16.2230688882512]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "2",
+        "forest_cover": "0.995590600197126",
+        "basin_area_ha": "1734.93",
+        "cellnum": "5293192",
+        "annual_rain": "50773364.2108031"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.78109436348,-16.2300467197461]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "3",
+        "forest_cover": "0.978475414919578",
+        "basin_area_ha": "13350.78",
+        "cellnum": "5499485",
+        "annual_rain": "392507769.495323"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.761296358804,-16.2381627207166]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "4",
+        "forest_cover": "0.990467625899281",
+        "basin_area_ha": "500.4",
+        "cellnum": "5606380",
+        "annual_rain": "14016168.8783508"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.80481559034,-16.2416551769311]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "5",
+        "forest_cover": "0.998968363136176",
+        "basin_area_ha": "523.44",
+        "cellnum": "5620040",
+        "annual_rain": "15717480.6584711"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.644423724154,-16.2442596327673]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "6",
+        "forest_cover": "0.989970980847359",
+        "basin_area_ha": "3876.75",
+        "cellnum": "5627703",
+        "annual_rain": "116422317.868058"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.797817126348,-16.242560500026]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "7",
+        "forest_cover": "0.899252262888627",
+        "basin_area_ha": "4345.11",
+        "cellnum": "6231830",
+        "annual_rain": "126060820.010687"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.592566640985,-16.2682039727954]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "8",
+        "forest_cover": "0.665461697942693",
+        "basin_area_ha": "1692.99",
+        "cellnum": "6331399",
+        "annual_rain": "46644572.6548471"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.57718941285,-16.2721854384211]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "9",
+        "forest_cover": "0.721844418643224",
+        "basin_area_ha": "542.61",
+        "cellnum": "6807834",
+        "annual_rain": "18465221.1737581"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.482887819771,-16.2914695003818]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "10",
+        "forest_cover": "0.832152329322856",
+        "basin_area_ha": "20054.97",
+        "cellnum": "6907665",
+        "annual_rain": "626237807.267555"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.541007408714,-16.2945724135261]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "11",
+        "forest_cover": "0.838209596675168",
+        "basin_area_ha": "15245.28",
+        "cellnum": "8316269",
+        "annual_rain": "504585476.222844"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.439554098158,-16.3494252720154]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "12",
+        "forest_cover": "0.744757087153546",
+        "basin_area_ha": "854.01",
+        "cellnum": "8437118",
+        "annual_rain": "28461624.2419806"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.405092146795,-16.3544285195511]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "13",
+        "forest_cover": "1",
+        "basin_area_ha": "1248.57",
+        "cellnum": "8552382",
+        "annual_rain": "38668118.2123603"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.800240263764,-16.3538807751023]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "14",
+        "forest_cover": "1",
+        "basin_area_ha": "1500.3",
+        "cellnum": "9057549",
+        "annual_rain": "46573102.0723766"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.781154199499,-16.3733699151177]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "15",
+        "forest_cover": "0.563283047813858",
+        "basin_area_ha": "1055.97",
+        "cellnum": "9127303",
+        "annual_rain": "35105703.1778741"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.386608359304,-16.3809261376745]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "16",
+        "forest_cover": "1",
+        "basin_area_ha": "1258.65",
+        "cellnum": "9427547",
+        "annual_rain": "39951800.569356"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.77181329506,-16.3875817697453]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "17",
+        "forest_cover": "0.999396095992865",
+        "basin_area_ha": "9686.97",
+        "cellnum": "9996745",
+        "annual_rain": "312320511.892808"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.749107099263,-16.409554996376]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "18",
+        "forest_cover": "0.618631039842363",
+        "basin_area_ha": "10596.51",
+        "cellnum": "10109091",
+        "annual_rain": "360065750.811593"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.32529935333,-16.4190127075401]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "19",
+        "forest_cover": "0.820812996195579",
+        "basin_area_ha": "14714.46",
+        "cellnum": "10166190",
+        "annual_rain": "516041979.986089"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.373334099088,-16.4206431174506]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "20",
+        "forest_cover": "0.896028506640752",
+        "basin_area_ha": "20837.25",
+        "cellnum": "10180420",
+        "annual_rain": "859105502.250817"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.372779178444,-16.4211914018102]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "21",
+        "forest_cover": "0.250998373021742",
+        "basin_area_ha": "608.49",
+        "cellnum": "10329539",
+        "annual_rain": "17865318.5027175"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.283844906878,-16.4278694527169]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "22",
+        "forest_cover": "0.62675077812361",
+        "basin_area_ha": "3238.56",
+        "cellnum": "10358083",
+        "annual_rain": "99958012.626482"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.306319685987,-16.4287076602032]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "24",
+        "forest_cover": "0.744675491517312",
+        "basin_area_ha": "7145.73",
+        "cellnum": "10528684",
+        "annual_rain": "245363226.288866"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.255012113115,-16.4357699998234]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "25",
+        "forest_cover": "0.805364224587769",
+        "basin_area_ha": "862.38",
+        "cellnum": "10627946",
+        "annual_rain": "31751977.451477"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.153402647424,-16.4406325083973]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "26",
+        "forest_cover": "1",
+        "basin_area_ha": "855.99",
+        "cellnum": "10758123",
+        "annual_rain": "24617863.7775136"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.739971310226,-16.4386649256552]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "27",
+        "forest_cover": "0.837665583604099",
+        "basin_area_ha": "720.18",
+        "cellnum": "10976419",
+        "annual_rain": "27365926.9772149"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.094290770535,-16.4545126191851]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "28",
+        "forest_cover": "0.979605993340733",
+        "basin_area_ha": "648.72",
+        "cellnum": "11156613",
+        "annual_rain": "18209539.1408636"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.738500013559,-16.4538567449883]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "29",
+        "forest_cover": "0.995946107070466",
+        "basin_area_ha": "754.83",
+        "cellnum": "12024568",
+        "annual_rain": "25332130.8031559"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.683652697425,-16.4876224285871]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "30",
+        "forest_cover": "0",
+        "basin_area_ha": "799.56",
+        "cellnum": "12089911",
+        "annual_rain": "24223189.3751407"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-179.951640640704,-16.4850613187632]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "31",
+        "forest_cover": "0.995747808283899",
+        "basin_area_ha": "1714.41",
+        "cellnum": "12422915",
+        "annual_rain": "52040022.2680952"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.642022070858,-16.5033261713897]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "32",
+        "forest_cover": "0.89187609585038",
+        "basin_area_ha": "461.97",
+        "cellnum": "12434553",
+        "annual_rain": "13977254.2919094"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.913395627457,-16.5118125237933]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "33",
+        "forest_cover": "0.996782253179891",
+        "basin_area_ha": "2377.44",
+        "cellnum": "12479828",
+        "annual_rain": "74352388.027703"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.637839317754,-16.5055466812443]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "34",
+        "forest_cover": "1",
+        "basin_area_ha": "551.79",
+        "cellnum": "12672951",
+        "annual_rain": "16133060.9078519"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.91620075875,-16.5091605660499]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "35",
+        "forest_cover": "0.840917364397525",
+        "basin_area_ha": "494.46",
+        "cellnum": "12719171",
+        "annual_rain": "15979594.0529579"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.907320789116,-16.5227109726543]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "36",
+        "forest_cover": "1",
+        "basin_area_ha": "1294.74",
+        "cellnum": "13184181",
+        "annual_rain": "40878327.2415243"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.601411252595,-16.5328288728732]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "37",
+        "forest_cover": "1",
+        "basin_area_ha": "595.26",
+        "cellnum": "13391601",
+        "annual_rain": "17009874.869475"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.898079184516,-16.5367743915857]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "38",
+        "forest_cover": "1",
+        "basin_area_ha": "594.09",
+        "cellnum": "13569481",
+        "annual_rain": "17000778.0894947"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.892564207202,-16.5436236484875]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "39",
+        "forest_cover": "1",
+        "basin_area_ha": "1210.95",
+        "cellnum": "13839883",
+        "annual_rain": "37890445.3559243"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.891032848022,-16.5539393694477]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "40",
+        "forest_cover": "0.929442349357625",
+        "basin_area_ha": "81667.26",
+        "cellnum": "13893217",
+        "annual_rain": "3002649114.52074"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.881341963031,-16.5676740921215]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "41",
+        "forest_cover": "0.824783512752349",
+        "basin_area_ha": "3419.37",
+        "cellnum": "13907363",
+        "annual_rain": "99011444.497888"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.857176579524,-16.5684331353256]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "42",
+        "forest_cover": "0.99327868852459",
+        "basin_area_ha": "549",
+        "cellnum": "14202351",
+        "annual_rain": "19459534.98766"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.765413557919,-16.5694623509859]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "43",
+        "forest_cover": "0.992813990461049",
+        "basin_area_ha": "2830.5",
+        "cellnum": "14244333",
+        "annual_rain": "108987270.571057"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.56487103725,-16.5736557777017]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "44",
+        "forest_cover": "0.998532574320051",
+        "basin_area_ha": "3557.25",
+        "cellnum": "14537211",
+        "annual_rain": "123772602.032676"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.880194655731,-16.5806385858853]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "45",
+        "forest_cover": "0.996484832704075",
+        "basin_area_ha": "691.29",
+        "cellnum": "14743074",
+        "annual_rain": "19828719.979172"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.73958318967,-16.5903950610011]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "46",
+        "forest_cover": "0.996409671059458",
+        "basin_area_ha": "4336.65",
+        "cellnum": "15055506",
+        "annual_rain": "150323115.796012"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.55095095134,-16.6047175229524]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "47",
+        "forest_cover": "1",
+        "basin_area_ha": "485.82",
+        "cellnum": "15312791",
+        "annual_rain": "15007087.4604608"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.862656379776,-16.6104100814617]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "48",
+        "forest_cover": "0.931198696660192",
+        "basin_area_ha": "4308.93",
+        "cellnum": "15387128",
+        "annual_rain": "117992031.305073"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.755661934211,-16.6257003246226]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "49",
+        "forest_cover": "0.925991115581259",
+        "basin_area_ha": "3221.37",
+        "cellnum": "15543868",
+        "annual_rain": "93159103.6192584"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.808574175558,-16.6312100047438]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "50",
+        "forest_cover": "0.97046223838615",
+        "basin_area_ha": "13214.61",
+        "cellnum": "15550980",
+        "annual_rain": "465896349.443183"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.807452094236,-16.6314908609548]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "51",
+        "forest_cover": "0.993919169447534",
+        "basin_area_ha": "1213.65",
+        "cellnum": "16044508",
+        "annual_rain": "39418955.5539327"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.517162463559,-16.6427952444979]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "52",
+        "forest_cover": "0.997480921686301",
+        "basin_area_ha": "1214.73",
+        "cellnum": "16266272",
+        "annual_rain": "38067047.1564134"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.84549416362,-16.6469484959884]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "53",
+        "forest_cover": "0.901841286307054",
+        "basin_area_ha": "694.08",
+        "cellnum": "16304926",
+        "annual_rain": "17780035.2866986"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.70929955469,-16.6610583272784]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "54",
+        "forest_cover": "0.817988668555241",
+        "basin_area_ha": "1270.8",
+        "cellnum": "16347259",
+        "annual_rain": "42214348.4159469"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.607229681121,-16.6635016471199]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "55",
+        "forest_cover": "0.957220345921605",
+        "basin_area_ha": "12311.46",
+        "cellnum": "16383174",
+        "annual_rain": "451018334.727862"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.701451902373,-16.6641049444878]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "56",
+        "forest_cover": "0.993141789846931",
+        "basin_area_ha": "6167.79",
+        "cellnum": "16422818",
+        "annual_rain": "206082955.327293"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.843896324403,-16.6529305456529]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "57",
+        "forest_cover": "0.937720952156493",
+        "basin_area_ha": "1527.48",
+        "cellnum": "16461009",
+        "annual_rain": "48415877.2254377"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.577454413127,-16.6680681775674]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "58",
+        "forest_cover": "1",
+        "basin_area_ha": "558.09",
+        "cellnum": "16920856",
+        "annual_rain": "16381010.6993537"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.821133699978,-16.6722059983815]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "59",
+        "forest_cover": "0.99096061941985",
+        "basin_area_ha": "4858.74",
+        "cellnum": "16991536",
+        "annual_rain": "139470727.818537"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.686276962993,-16.6767092624606]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "60",
+        "forest_cover": "0.980563151282241",
+        "basin_area_ha": "6088.95",
+        "cellnum": "17005092",
+        "annual_rain": "228004488.147634"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.496277491188,-16.67962984746]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "61",
+        "forest_cover": "0.973757131214344",
+        "basin_area_ha": "552.15",
+        "cellnum": "17265081",
+        "annual_rain": "16913612.9171143"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.567579336568,-16.6987785001148]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "62",
+        "forest_cover": "0.988852949135942",
+        "basin_area_ha": "6983.91",
+        "cellnum": "17438359",
+        "annual_rain": "326316305.656387"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.269043475589,-16.6987777048237]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "63",
+        "forest_cover": "1",
+        "basin_area_ha": "1191.96",
+        "cellnum": "17452360",
+        "annual_rain": "53035286.0820472"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.204097200081,-16.7000221939612]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "64",
+        "forest_cover": "0.985323318656652",
+        "basin_area_ha": "12509.64",
+        "cellnum": "17466838",
+        "annual_rain": "555159882.356093"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.273273890551,-16.699815302714]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "65",
+        "forest_cover": "0.991764705882353",
+        "basin_area_ha": "1224",
+        "cellnum": "17568600",
+        "annual_rain": "37076350.5620811"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.874331407833,-16.6961268520013]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "66",
+        "forest_cover": "0.96728809346259",
+        "basin_area_ha": "1810.35",
+        "cellnum": "17601736",
+        "annual_rain": "79291068.865841"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.187290688383,-16.7058922446369]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "67",
+        "forest_cover": "0.987654320987654",
+        "basin_area_ha": "488.43",
+        "cellnum": "17766410",
+        "annual_rain": "14788268.7266535"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.470226731821,-16.7089375470438]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "68",
+        "forest_cover": "0.999111999111999",
+        "basin_area_ha": "810.81",
+        "cellnum": "17808525",
+        "annual_rain": "30639145.6631488"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.306889402618,-16.7124514680517]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "69",
+        "forest_cover": "0.962266649013637",
+        "basin_area_ha": "1359.54",
+        "cellnum": "17914792",
+        "annual_rain": "41738990.8724048"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.173928136037,-16.7179585238583]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "70",
+        "forest_cover": "1",
+        "basin_area_ha": "640.62",
+        "cellnum": "18094606",
+        "annual_rain": "18570590.8838502"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.712164224683,-16.7183672464906]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "71",
+        "forest_cover": "1",
+        "basin_area_ha": "497.79",
+        "cellnum": "18116016",
+        "annual_rain": "13801147.9168794"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.729604250167,-16.7189502925753]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "72",
+        "forest_cover": "0.97555669817664",
+        "basin_area_ha": "4550.94",
+        "cellnum": "18192279",
+        "annual_rain": "174803434.904726"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.163642224138,-16.728636728722]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "73",
+        "forest_cover": "0.993736812137857",
+        "basin_area_ha": "5374.26",
+        "cellnum": "18228982",
+        "annual_rain": "189558314.04022"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.479451017316,-16.7264408227318]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "74",
+        "forest_cover": "0.996067906628386",
+        "basin_area_ha": "1441.98",
+        "cellnum": "18244337",
+        "annual_rain": "46761848.4030357"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.795170398314,-16.7229499064021]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "75",
+        "forest_cover": "1",
+        "basin_area_ha": "933.48",
+        "cellnum": "18251382",
+        "annual_rain": "29080349.9584909"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.775216503264,-16.7234900033867]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "76",
+        "forest_cover": "0.996456892188291",
+        "basin_area_ha": "533.43",
+        "cellnum": "18264062",
+        "annual_rain": "21065929.953405"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.338874429724,-16.7294361735048]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "78",
+        "forest_cover": "1",
+        "basin_area_ha": "647.19",
+        "cellnum": "18293808",
+        "annual_rain": "21186223.4464302"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.699340034767,-16.7261216058961]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "79",
+        "forest_cover": "1",
+        "basin_area_ha": "549.54",
+        "cellnum": "18479196",
+        "annual_rain": "16951161.1087586"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.804015022511,-16.7317703708194]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "80",
+        "forest_cover": "0.989771359807461",
+        "basin_area_ha": "747.9",
+        "cellnum": "18563011",
+        "annual_rain": "24613109.1113065"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.360667139869,-16.7405701407696]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "81",
+        "forest_cover": "0.976316210593695",
+        "basin_area_ha": "3374.46",
+        "cellnum": "18981990",
+        "annual_rain": "113930279.142758"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.117569959569,-16.7591995682484]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "82",
+        "forest_cover": "0",
+        "basin_area_ha": "464.22",
+        "cellnum": "19077797",
+        "annual_rain": "22476521.426985"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-179.954744717173,-16.7511048942075]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "83",
+        "forest_cover": "0.994707777266452",
+        "basin_area_ha": "782.28",
+        "cellnum": "19225192",
+        "annual_rain": "23647582.5563527"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.471505419978,-16.7644734836145]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "84",
+        "forest_cover": "0.99860970677452",
+        "basin_area_ha": "712.08",
+        "cellnum": "19246539",
+        "annual_rain": "21413072.3483869"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.471234695019,-16.7652896737134]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "85",
+        "forest_cover": "0.993462180863756",
+        "basin_area_ha": "1885.95",
+        "cellnum": "19281708",
+        "annual_rain": "60268491.8082837"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.355660849654,-16.767998418893]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "86",
+        "forest_cover": "0.99732932732432",
+        "basin_area_ha": "539.19",
+        "cellnum": "19382288",
+        "annual_rain": "15690100.4976367"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.624565343147,-16.7685417770371]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "87",
+        "forest_cover": "0.986954162636533",
+        "basin_area_ha": "3815.01",
+        "cellnum": "19430281",
+        "annual_rain": "136469456.819121"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.112976647941,-16.7763220862722]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "88",
+        "forest_cover": "0",
+        "basin_area_ha": "1023.84",
+        "cellnum": "19590085",
+        "annual_rain": "57801662.0691512"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-179.972424791574,-16.7708683378588]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "89",
+        "forest_cover": "0.978974131320876",
+        "basin_area_ha": "2230.11",
+        "cellnum": "19848165",
+        "annual_rain": "61013900.3854486"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.56163055943,-16.7972359039835]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "90",
+        "forest_cover": "0.967217414109625",
+        "basin_area_ha": "1029.51",
+        "cellnum": "19876658",
+        "annual_rain": "27612659.2442595"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.569801049954,-16.7982581626357]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "91",
+        "forest_cover": "0.968353443264473",
+        "basin_area_ha": "6347.61",
+        "cellnum": "20004838",
+        "annual_rain": "182115653.108102"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.595733648895,-16.8029385520347]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "92",
+        "forest_cover": "0.976972904652816",
+        "basin_area_ha": "2278.62",
+        "cellnum": "20020805",
+        "annual_rain": "70502694.7795338"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.083964883818,-16.7991141334079]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "93",
+        "forest_cover": "1",
+        "basin_area_ha": "487.26",
+        "cellnum": "20063440",
+        "annual_rain": "14742352.6931321"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.066819743681,-16.8009133661387]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "94",
+        "forest_cover": "0.99653434152489",
+        "basin_area_ha": "571.32",
+        "cellnum": "20078895",
+        "annual_rain": "17202946.3386572"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.410887730072,-16.7977105491116]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "95",
+        "forest_cover": "0.958804146909909",
+        "basin_area_ha": "5599.35",
+        "cellnum": "20111607",
+        "annual_rain": "179181271.05429"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.603929508263,-16.8069413513414]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "96",
+        "forest_cover": "0.99545159194282",
+        "basin_area_ha": "969.57",
+        "cellnum": "20285453",
+        "annual_rain": "28983310.1969439"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.465558207347,-16.8049209860091]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "97",
+        "forest_cover": "1",
+        "basin_area_ha": "556.11",
+        "cellnum": "20296382",
+        "annual_rain": "15332946.0433559"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.53615735659,-16.8145075637114]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "98",
+        "forest_cover": "0.937627811860941",
+        "basin_area_ha": "1496.34",
+        "cellnum": "20417637",
+        "annual_rain": "39401235.9162675"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.615848811141,-16.8185053969325]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "99",
+        "forest_cover": "0.975169450720397",
+        "basin_area_ha": "12149.55",
+        "cellnum": "20547241",
+        "annual_rain": "456733320.309521"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.042538509504,-16.8195871038534]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "100",
+        "forest_cover": "1",
+        "basin_area_ha": "1105.29",
+        "cellnum": "20895907",
+        "annual_rain": "32917673.3493062"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.03761544103,-16.8329172979638]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "101",
+        "forest_cover": "0",
+        "basin_area_ha": "532.17",
+        "cellnum": "21034443",
+        "annual_rain": "30409731.9773632"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.975020946424,-16.8266240410123]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "102",
+        "forest_cover": "1",
+        "basin_area_ha": "511.83",
+        "cellnum": "21514394",
+        "annual_rain": "14327039.1363433"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.867582440475,-16.8581171136781]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "103",
+        "forest_cover": "0",
+        "basin_area_ha": "835.92",
+        "cellnum": "21532539",
+        "annual_rain": "51421128.8705298"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.968567756803,-16.8456794571079]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "104",
+        "forest_cover": "0.991390225373512",
+        "basin_area_ha": "1421.64",
+        "cellnum": "21692284",
+        "annual_rain": "48525227.9239738"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.86483410742,-16.8649188674376]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "105",
+        "forest_cover": "0.984646730741526",
+        "basin_area_ha": "4373.01",
+        "cellnum": "21692351",
+        "annual_rain": "163204205.147873"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.883693784854,-16.8647464621762]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "106",
+        "forest_cover": "0.984510649214995",
+        "basin_area_ha": "19645.11",
+        "cellnum": "21920140",
+        "annual_rain": "720415810.974765"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.905455022895,-16.8732194379102]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "107",
+        "forest_cover": "1",
+        "basin_area_ha": "849.87",
+        "cellnum": "21941305",
+        "annual_rain": "26838400.2539789"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.853948530173,-16.8745050758152]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "108",
+        "forest_cover": "0.953364493055293",
+        "basin_area_ha": "9512.28",
+        "cellnum": "22033037",
+        "annual_rain": "347773872.393364"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.63551663359,-16.8798890713041]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "109",
+        "forest_cover": "0.993807326050126",
+        "basin_area_ha": "1540.53",
+        "cellnum": "22261502",
+        "annual_rain": "52683711.8788811"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.847592554736,-16.8867607024423]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "110",
+        "forest_cover": "0",
+        "basin_area_ha": "933.66",
+        "cellnum": "22287298",
+        "annual_rain": "58577419.0965129"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-179.900762799364,-16.8724577349171]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "111",
+        "forest_cover": "0",
+        "basin_area_ha": "646.02",
+        "cellnum": "22301517",
+        "annual_rain": "32904768.4566222"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-179.904410048559,-16.8730546086308]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "112",
+        "forest_cover": "0",
+        "basin_area_ha": "943.83",
+        "cellnum": "22401121",
+        "annual_rain": "57119224.8769977"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-179.909973125613,-16.8769306517107]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "113",
+        "forest_cover": "1",
+        "basin_area_ha": "954.54",
+        "cellnum": "22517610",
+        "annual_rain": "31838552.9653304"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.828542793081,-16.896690332477]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "114",
+        "forest_cover": "0.966427396440856",
+        "basin_area_ha": "1203.66",
+        "cellnum": "22524102",
+        "annual_rain": "34780500.4796033"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.652853726006,-16.898455497048]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "115",
+        "forest_cover": "0",
+        "basin_area_ha": "696.96",
+        "cellnum": "22543433",
+        "annual_rain": "41606616.3344731"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-179.91213498191,-16.8823804656671]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "116",
+        "forest_cover": "0.973067331670823",
+        "basin_area_ha": "721.8",
+        "cellnum": "22774432",
+        "annual_rain": "19963423.6450081"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.010512118585,-16.9047416835615]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "117",
+        "forest_cover": "0.991801218822642",
+        "basin_area_ha": "2865.06",
+        "cellnum": "22852585",
+        "annual_rain": "88132141.4561221"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.975915333485,-16.9080603352531]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "118",
+        "forest_cover": "1",
+        "basin_area_ha": "847.17",
+        "cellnum": "22894734",
+        "annual_rain": "27506265.063168"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.821923779881,-16.9111162938106]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "119",
+        "forest_cover": "0",
+        "basin_area_ha": "476.37",
+        "cellnum": "22934766",
+        "annual_rain": "29780933.0469927"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-179.925112575665,-16.8974732550346]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "120",
+        "forest_cover": "0.979724964739069",
+        "basin_area_ha": "2552.4",
+        "cellnum": "23164568",
+        "annual_rain": "86311271.3962635"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.660388237779,-16.9227929410866]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "121",
+        "forest_cover": "0",
+        "basin_area_ha": "494.55",
+        "cellnum": "23226475",
+        "annual_rain": "29533827.4726706"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-179.938153450232,-16.9087743456727]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "122",
+        "forest_cover": "1",
+        "basin_area_ha": "578.97",
+        "cellnum": "23236194",
+        "annual_rain": "17814751.5515349"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.791637540123,-16.9243955594368]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "123",
+        "forest_cover": "0",
+        "basin_area_ha": "753.12",
+        "cellnum": "23240703",
+        "annual_rain": "50116813.7297679"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-179.939269901131,-16.909332794477]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "124",
+        "forest_cover": "0",
+        "basin_area_ha": "466.2",
+        "cellnum": "23361642",
+        "annual_rain": "27968323.7298812"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-179.948478720901,-16.9140752049264]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "125",
+        "forest_cover": "0",
+        "basin_area_ha": "464.94",
+        "cellnum": "23709817",
+        "annual_rain": "22538842.1739219"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.908527835197,-16.9294341052959]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "126",
+        "forest_cover": "0",
+        "basin_area_ha": "819.99",
+        "cellnum": "23873455",
+        "annual_rain": "40224995.9187205"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.900182184651,-16.9357834378701]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "127",
+        "forest_cover": "0.998101080923167",
+        "basin_area_ha": "616.14",
+        "cellnum": "24139496",
+        "annual_rain": "21324324.6542348"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.67085396422,-16.9598472257036]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "128",
+        "forest_cover": "0.992050084467853",
+        "basin_area_ha": "2717.01",
+        "cellnum": "24232346",
+        "annual_rain": "84988031.5028924"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.767211992987,-16.962559422408]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "129",
+        "forest_cover": "0",
+        "basin_area_ha": "579.87",
+        "cellnum": "24798878",
+        "annual_rain": "34118022.4238422"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.997249961891,-16.9695956574991]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "130",
+        "forest_cover": "0",
+        "basin_area_ha": "839.52",
+        "cellnum": "24855804",
+        "annual_rain": "47496335.4712706"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.996721547272,-16.9717704485025]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "131",
+        "forest_cover": "1",
+        "basin_area_ha": "1604.97",
+        "cellnum": "25007984",
+        "annual_rain": "54539435.1864096"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.765798449329,-16.9921193316569]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "132",
+        "forest_cover": "0",
+        "basin_area_ha": "982.62",
+        "cellnum": "25055025",
+        "annual_rain": "52267713.1678474"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.989243566203,-16.979464893821]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "basin": "133",
+        "forest_cover": "0",
+        "basin_area_ha": "516.15",
+        "cellnum": "25496062",
+        "annual_rain": "25841042.5690564"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [179.94588425673,-16.9968916114242]
+      }
+    }
+  ]
+}
