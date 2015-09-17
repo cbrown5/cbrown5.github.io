@@ -32,12 +32,12 @@ We can use `abline()` to add some grids to make picking points easier in the fol
     abline(h = seq(0, 1, by = 0.1))
     abline(v = seq(0, 1, by = 0.1))
 
-Now use `locator()` to locate the corners on your imported graph:
+Now use `locator()` to locate the corners on your imported graph. You need to run the `locator()` function then click on the bottom left hand corner and top right hand corner of the graph:
 
     xycorners <- locator(2)
     xycorners <- cbind(xycorners$x, xycorners$y)
 
-Now enter the values of the corners. For instance, here I used locator to find the bottom left corner (110E by 45 S) and the top right (160E by 15S).
+Now enter the values of the corners. For instance, here I used locator to click the bottom left corner (110E by 45 S) and the top right (160E by 15S).
 
     xycvals <- matrix(c(110, 160, -45, -15),
         nrow = 2, byrow = F)
