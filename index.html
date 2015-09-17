@@ -45,7 +45,6 @@ My teaching resources are on this site and are <a href="/Rstats/">open-access</a
     {% if post.categories contains 'res_posts' %}
      <li>
        <a href="{{ post.url }}">{{ post.title }}</a>
-       {{ post.excerpt }}
      </li>
        {% endif %}
   {% endfor %}
@@ -59,7 +58,6 @@ My teaching resources are on this site and are <a href="/Rstats/">open-access</a
   {% if post.categories contains 'rstats' %}
      <li>
        <a href="{{ post.url }}">{{ post.title }}</a>
-       {{ post.excerpt }}
      </li>
      {% endif %}
   {% endfor %}

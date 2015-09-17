@@ -1,0 +1,132 @@
+
+<head>
+<meta name="viewport" content="width=device-width">
+<meta charset="utf-8">
+<link rel="stylesheet"
+  media="screen and (max-width: 700px)"
+  type="text/css" href="/css/narrow.css"/>
+
+<link rel="stylesheet"
+  media="screen and (min-width: 701px)"
+  type="text/css" href="/css/screen.css"/>
+</head>
+
+
+<body>
+
+<div id="banner_wrap">
+<img id="banner" src ="/Images/banner3.jpg" alt="Banner Image"/>
+   <div id="inner_banner">
+   <h1> Seascape models </h1>
+   <p class="banner_text"> Spatially dynamic models of marine ecosystems </p>
+   </div>
+</div>
+
+<div id="page_content">
+
+
+<ul class = "menu">
+      <li class = "menu_item"><a href ="/index.html">Home</a></li>
+      <li class = "menu_item"><a href ="/Research/index.html#page_content">Research</a></li>
+      <li class = "menu_item"><a href ="https://scholar.google.com.au/citations?user=1qG6yFMAAAAJ&hl=en" target="_blank">Publications</a></li>
+      <li class = "menu_item"><a href ="/People/index.html#page_content">People</a></li>
+      <li class = "menu_item"><a href ="/Spatial/index.html#page_content">Spatial code</a></li>
+      <li class = "menu_item"><a href ="/Rstats/index.html#page_content">Code</a></li>
+</ul>
+
+
+<div id="page_text">
+
+<h3 id="how-to-digitise-graphs-using-r">How to digitise graphs using R</h3>
+
+<p>I recent had reason to digitise some graphs from published papers. You could buy a program to help you do this, but it is actually also possible with R. Here is how to do it.</p>
+
+<p>First, take your graph, for instance, here I have taken a screen shot of a map from a  <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2486.2009.02046.x/full">paper on ecosystem modelling in Australia</a>. I want to know the coordinates of each of the models plotted on the map (just the cenre will do).</p>
+
+<p><img src="/Images/ecopath-models.png" alt="ecopath-models" class="image_float" /></p>
+
+<p>Then get and load in the PNG and raster packages, which will allow us to load the image file and plot it in R:</p>
+
+<pre><code>library(png)
+library(raster)
+pic &lt;- as.raster(readPNG('sole.png'))
+</code></pre>
+
+<p>Now plot the image on a graph that scales (0,1), so we know where everything has been plotted.</p>
+
+<pre><code>plot(c(0,1), c(0,1))
+rasterImage(pic, xleft = 0, xright = 1,
+    ybottom = 0, ytop = 1, interpolate = F)
+</code></pre>
+
+<p>We can use <code>abline()</code> to add some grids to make picking points easier in the following step:</p>
+
+<pre><code>abline(h = seq(0, 1, by = 0.1))
+abline(v = seq(0, 1, by = 0.1))
+</code></pre>
+
+<p>Now use <code>locator()</code> to locate the corners on your imported graph:</p>
+
+<pre><code>xycorners &lt;- locator(2)
+xycorners &lt;- cbind(xycorners$x, xycorners$y)
+</code></pre>
+
+<p>Now enter the values of the corners. For instance, here I used locator to find the bottom left corner (110E by 45 S) and the top right (160E by 15S).</p>
+
+<pre><code>xycvals &lt;- matrix(c(110, 160, -45, -15),
+    nrow = 2, byrow = F)
+</code></pre>
+
+<p>Now we use locator to make twelve clicks (there are twelve models) on each of the locations of the models:</p>
+
+<pre><code>xypts &lt;- locator(12)
+xypts3 &lt;- cbind(xypts$x, xypts$y)
+</code></pre>
+
+<p>Our <code>xypts3</code> locations are in the (0,1) scale, so then convert these coordinates to the actual coordinates using the locations of the known corners. Here is the conversion for the x-coordinates:</p>
+
+<pre><code>xrise &lt;- xycvals[2,1] - xycvals[1,1]
+xrun &lt;- xycorners[2,1] - xycorners[1,1]
+xa &lt;- xrise/xrun
+xb &lt;- xycvals[1,1] - (xa * xycorners[1,1])
+xvals &lt;- xypts3[,1] * xa + xb
+</code></pre>
+
+<p>Here is the conversion for the y-coordinates:</p>
+
+<pre><code>yrise &lt;- xycvals[2,2] - xycvals[1,2]
+yrun &lt;- xycorners[2,2] - xycorners[1,2]
+ya &lt;- yrise/yrun
+yb &lt;- xycvals[2,2]-(ya * xycorners[2,2])
+yvals &lt;- (xypts3[,2] * ya) + yb
+</code></pre>
+
+<p>Now we have our true coordinates stored in <code>xvals</code> and <code>yvals</code>. We can replot to check them or save them as a csv for later use. Here we will use the maps library, so we can quickly plot our points back to a map of Australia:</p>
+
+<pre><code>library(maps)
+map(database = 'world', xlim = c(110, 160),
+   ylim = c(-45, -10))
+points(xvals, yvals, pch = 16, col ='red')
+write.csv(cbind(xvals, yvals),
+   'ecopath-models.csv', row.names = F)
+</code></pre>
+
+<p>Here is our new map:</p>
+
+<p><img src="/Images/ecopath-models-new.png" alt="ecopath-models" class="wide_image" /></p>
+
+
+</div>
+</div>
+
+<div id = "footer">
+<p id="footer_text">
+Christopher J. Brown 2015    <a href = "/index.html"> Home</a>
+<a href = "https://twitter.com/bluecology" target="_blank"> @bluecology</a>
+</p>
+
+<!--<img class = "rasterfish" src = "/Images/raster_fish.jpg" alt="fish" style="width:100px;height:60px;"/> -->
+
+</div>
+
+</body>
