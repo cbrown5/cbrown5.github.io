@@ -220,6 +220,17 @@ img.image_float{
    width:auto;
 }
 
+div.image_caption{
+    max-width:300px;
+    width:auto;
+     padding:10px;
+     font-size:90%;
+     font-style:italic;
+     padding: 10px;
+     padding-bottom: 5px;
+     margin: 10px;
+}
+
 /*
 --------------
 Navigation bar

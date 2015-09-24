@@ -247,6 +247,13 @@ img.image_float{
    padding:10px;
 }
 
+img.image_float_wide{
+  float:right;
+  width:500px;
+   height:auto;
+   padding:10px;
+}
+
 img.small_image{
    width: 100px;
 
@@ -258,6 +265,29 @@ img.wide_image{
    padding:10px;
 }
 
+div.image_caption{
+    float:right;
+    width:400px;
+     height:auto;
+     padding:10px;
+     font-size:90%;
+     font-style:italic;
+     padding: 10px;
+     padding-bottom: 5px;
+     margin: 10px;
+}
+
+div.image_caption_wide{
+    float:right;
+    width:500px;
+     height:auto;
+     padding:10px;
+     font-size:90%;
+     font-style:italic;
+     padding: 10px;
+     padding-bottom: 5px;
+     margin: 10px;
+}
 
 /*
 --------------
