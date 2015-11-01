@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title></title>
+
+<script src="R_data_analysis_course_30Oct15__files/jquery-1.11.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="R_data_analysis_course_30Oct15__files/bootstrap-2.3.2/css/cosmo.min.css" rel="stylesheet" />
+<link href="R_data_analysis_course_30Oct15__files/bootstrap-2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet" />
+<script src="R_data_analysis_course_30Oct15__files/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+<script src="R_data_analysis_course_30Oct15__files/htmlwidgets-0.5/htmlwidgets.js"></script>
+<link href="R_data_analysis_course_30Oct15__files/leaflet-0.7.3/leaflet.css" rel="stylesheet" />
+<script src="R_data_analysis_course_30Oct15__files/leaflet-0.7.3/leaflet.js"></script>
+<link href="R_data_analysis_course_30Oct15__files/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="R_data_analysis_course_30Oct15__files/leaflet-binding-1.0.0.9999/leaflet.js"></script>
+<script src="R_data_analysis_course_30Oct15__files/leaflet-providers-1.0.27/leaflet-providers.js"></script>
+<script src="R_data_analysis_course_30Oct15__files/leaflet-providers-plugin-1.0.0.9999/leaflet-providers-plugin.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; }
+code > span.dt { color: #204a87; }
+code > span.dv { color: #0000cf; }
+code > span.bn { color: #0000cf; }
+code > span.fl { color: #0000cf; }
+code > span.ch { color: #4e9a06; }
+code > span.st { color: #4e9a06; }
+code > span.co { color: #8f5902; font-style: italic; }
+code > span.ot { color: #8f5902; }
+code > span.al { color: #ef2929; }
+code > span.fu { color: #000000; }
+code > span.er { font-weight: bold; }
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<div class="container-fluid main-container">
+
+
+
+
+<div id="data-wrangling-and-analysis-in-r-for-marine-scientists" class="section level2">
+<h2>Data Wrangling and Analysis in R for Marine Scientists</h2>
+<p><br> <br> <br></p>
+<div id="christopher-j.-brown" class="section level3">
+<h3>Christopher J. Brown</h3>
+</div>
+<div id="november-2015" class="section level3">
+<h3><em>2 November 2015</em></h3>
+</div>
+<div id="workshop-for-the-australian-marine-sciences-association" class="section level3">
+<h3>Workshop for the Australian Marine Sciences Association</h3>
+</div>
+<div id="visit-seascapemodels.org-for-more-courses-and-info" class="section level3">
+<h3>Visit <a href="http://www.seascapemodels.org">seascapemodels.org</a> for more courses and info</h3>
+</div>
+<div id="get-the-data-for-this-course-here" class="section level3">
+<h3>Get the data for this course <a href="/data/R_marine_science_course_data.zip">here</a></h3>
+<p><br><br /><br></p>
+<p><br></p>
+</div>
+</div>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>The modern marine scientist has to know a lot more about data wrangling and analysis than in the past. Marine scientists are increasingly integrating a large variety of data-sets into their work. These analyses require matching data-sets that may have been entered in different ways, or cover different temporal and spatial scales. Today you will learn how with <strong>R</strong> you can be nimble at ‘wrangling data’, speed up data processing, check for errors, visualise data and conduct analysis.</p>
+<p>What is data wrangling?</p>
+<p><a href="https://en.wikipedia.org/wiki/Data_wrangling">Wikipedia</a> defines it as “Data wrangling is loosely the process of manually converting or mapping data from one ‘raw’ form into another format that allows for more convenient consumption of the data with the help of semi-automated tools”. Have you ever been faced with a dataset that was in the wrong format for the statistical package you wanted to use? Well data-wrangling is about solving that problem.<br />If you have ever had to deal with large data-sets you may realise that data wrangling can take a considerable amount of time and skill with spreasheets programs like excel. Data wrangling is also dangerous for your analysis- if you stuff something up, like accidentally deleting some rows of data, it can affect all your results and the problem can be hard to detect.</p>
+<div id="there-are-better-ways-of-wrangling-data-than-with-spreadsheets-and-one-way-is-with-r." class="section level3">
+<h3>There are better ways of wrangling data than with spreadsheets, and one way is with <strong>R</strong>.</h3>
+<p>It makes sense to do your data wrangling in <strong>R</strong>, because today <strong>R</strong> is the leading platform for environmental data analysis. You can also create all of your visualisations there too. <strong>R</strong> is also totally <a href="http://cran.r-project.org/"><strong>free</strong></a>. <strong>R</strong> is a powerful language for data wrangling and analysis because<br />1. It is relatively fast to process commands<br />2. You can create repeatable scripts<br />3. You can trace errors back to their source<br />3. You can share your wrangling scripts with other people<br />4. You can conveniently search large databases for errors<br />5. Having your data in <strong>R</strong> opens up a huge array of cutting edge analysis tools.</p>
+<p>A core principle of science is repeatability. Creating and sharing your data scripts helps you to fulfil the important principle of repeatability. It makes you a better scientist and can also make you a more popular scientist: a well thought out script for a common wrangling or analysis problem may be widely used by others. In fact, these days it is best practice to include your scripts with publications.</p>
+<p>Most statistical methods in <strong>R</strong> require your data is input in a certain ‘tidy’ format. This course will cover how to use <strong>R</strong> to easily convert your data into a ‘tidy’ format, which makes error checking and analysis easy. Steps include restructuring existing datasets and combining different data-sets. We will also create some data summaries and plots. We will use these data visualisations to check for errors and perform some basic analysis. Just for fun, we will finish by creating a web based map of our data. The course will be useful for people who want to explore, analyse and visualise their own field and experimental data in <strong>R</strong>. The skills covered are also a useful precusor for management of very large datasets in <strong>R</strong>.</p>
+<p><div id="htmlwidget-8719" style="width:672px;height:480px;" class="leaflet"></div>
+<script type="application/json" data-for="htmlwidget-8719">{"x":{"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false}]},{"method":"addCircleMarkers","args":[[-27.39537,-27.51127,-27.64124,-27.30328],[153.1924,153.3633,153.401,153.4046],[14.966,9.944,14.806,10.276],null,null,{"lineCap":null,"lineJoin":null,"clickable":true,"pointerEvents":null,"className":"","stroke":true,"color":"white","weight":5,"opacity":1,"fill":true,"fillColor":"white","fillOpacity":0.2,"dashArray":null},null,null,["A","B","C","D"]]}],"limits":{"lat":[-27.64124,-27.30328],"lng":[153.1924,153.4046]}},"evals":[]}</script> <em>The web map that we will make at the end of today’s lesson</em><br /><br><br /><br><br /><br></p>
+</div>
+<div id="the-main-principles-i-hope-you-will-learn-are" class="section level3">
+<h3>The main principles I hope you will learn are</h3>
+<ul>
+<li>Data wrangling in <strong>R</strong> is safe, fast, reliable and repeatable<br /></li>
+<li>Coding aesthetics for readable and repeatable code<br /></li>
+<li>How to perform simple analyses that integrate across different data-sets</li>
+</ul>
+<p>Let’s begin!</p>
+<hr />
+</div>
+</div>
+<div id="getting-started-with-visualisations" class="section level2">
+<h2>Getting started with visualisations</h2>
+<p>To start, we are going to do make some visualisations from the dataset of fish surveys, <code>dat.csv</code>. This is a practice data set and is very small (only 20 rows). You might think wrangling this data would be easier in a spreadsheet, like excel. We will develop our wrangling skills on this small dataset then test them on a much larger dataset, which would be tricky to handle in a spreadsheet.</p>
+<p>Some background on the data. <code>dat.csv</code> is what we call ‘tidy data’. Each row is an observation. Here we have multiple sites, each with five transects. We have five variables <code>site</code>, the names of sites, <code>transect</code> the transect number, <code>fish_abund</code> the abundance of fish at that transect and <code>dN15_SG</code> the ratio of nitrogen stable isotopes of a seagrass sample from that transect (high nitrogen isotope values indicate the influence of pollution).</p>
+<p>I am going to assume you are using RStudio. However, you can also use the <strong>R</strong> app and a text editor if you prefer. To start, open up RStudio. <strong>R</strong> is a programming language, which means there are very few commands available in the menus, rather you have to type in commands into the ‘Console’ (notice there is a window called ‘Console’). The hard part about learning to use <strong>R</strong> is knowing what the commands are that you want and how to structure the commands in a way <strong>R</strong> understands. RStudio does however, ease the transition to programming by providing you with some drop down menus.</p>
+<p>To start playing with the data, the first step is to tell <strong>R</strong> where on your computer the <a href="/data/R_marine_science_course_data.zip">data for this course</a> is stored. In R studio go to the session menu, select ‘Set working directory’ then ‘Choose directory’ and navigate to the directory where the data for this course is stored on your computer.<br />Now we will write our first piece of code. Don’t worry too much about what this code means, the point is to see how <strong>R</strong> can help with visualisations. Type this into the ‘console’ window:</p>
+<pre class="sourceCode r"><code class="sourceCode r">fishdat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;dat.csv&#39;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+fishdat </code></pre>
+<p>If you typed the first line in correctly, nothing will happen. This is true generally of <strong>R</strong>, unless you ask specifically for feedback (like plotting a figure), all the processing is internal and you see nothing. If you made a mistake, you will see some red text that explains the error (but often in very technical language).<br />The second line, typing <code>fishdat</code> returned the data we just loaded into <strong>R</strong> (open the original csv file in excel if you like, to see it is the same). <code>fishdat</code> is now stored in <strong>R</strong>‘s memory.<br />In RStudio you can also go to the Environment window and double click on ’fishdat’ under ‘Data’. You will see a table of data like this (I have appended a truncated version here)</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Tip: In this course <code>fixed width font</code> with a grey background indicates code. You could cut and paste it directly into the console, but I suggest you type it out. Why? You will learn more. Typing it out helps you remember. It will also mean you will make mistakes and mistakes are a learning opportunity. Don’t be afraid to ask for help if something doesn’t work.</td>
+</tr>
+</tbody>
+</table>
+<p>In this course we will be using the <code>ggplot2</code> package to visualise data. <code>ggplot2</code> is an add-on toolbox for <strong>R</strong> that has to be loaded separately. To do this, navigate to the ‘Packages’ window in RStudio and click ‘Install’ type ‘ggplot2’ and then click ‘Install’ (you need to be connected to the internet). You only need to do this once. Each time we open <strong>R</strong> we also need to load <code>ggplot2</code> into our local session, so scroll down to <code>ggplot2</code> and click the check box to load it in. We will be using a lot of <code>ggplot</code> today, so you might like to download RStudio’s <a href="https://www.rstudio.com/wp-content/uploads/2015/08/ggplot2-cheatsheet.pdf">ggplot cheatsheet</a> for reference.<br />Now we are ready to make a graph. Type this into the console:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(fishdat, <span class="kw">aes</span>(<span class="dt">x =</span> dN15_SG, <span class="dt">y =</span> fish_abund, <span class="dt">colour =</span> site)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>)</code></pre>
+<p>You should see this graph of Nitrogen isotope values (<code>dN15_SG</code>) vs. fish abundance (<code>fish_abund</code>), with colours for different sites pop up in RStudio’s ‘Plots’ window</p>
+<p><img src="/Images/RDataWranglingImages/plot1.png"/></p>
+<p>Let’s try a boxplot to see how fish abundances vary by sites. Type this in:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(fishdat, <span class="kw">aes</span>(<span class="dt">x =</span> site, <span class="dt">y =</span> fish_abund)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre>
+<p><img src="/Images/RDataWranglingImages/plot2.png"/></p>
+<p>So it looks like abundances vary consistently by sites, but there seems to be something funny going on with a site <code>b</code> and also a site <code>B</code>. We will come back to this.</p>
+<p>I hope you are convinced now that <strong>R</strong> is useful for making handy visuals. We will take a step back to basics now, so you can start learning what all these commands mean, and eventually, make your own graphs at will.</p>
+</div>
+<div id="background-on-basic-calculations" class="section level2">
+<h2>Background on basic calculations</h2>
+<p>In the console type</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span> -<span class="st"> </span><span class="dv">1</span></code></pre>
+<p>And the console returns an answer (<code>9</code>). You have just asked the <strong>R</strong> program to compute this (easy) subtraction. Look carefully at the console and note that each line starts with a <code>&gt;</code> this means the console is ready to take input. If you just type <code>10 -</code> and hit enter, you will see the next line begins with a <code>+</code>, meaning the console is waiting for you to finish this equation. Type any number and hit return and you will get the answer followed by a <code>&gt;</code>.<br />You can also ask the console for help, for instance try:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(<span class="st">&#39;+&#39;</span>)</code></pre>
+<p>Notice a new ‘Help’ window opens up, with details of how to use arithmetic operators in <strong>R</strong>. These help files are very useful, but also tend to contain a lot of technical jargon. In learning to use <strong>R</strong>, you will begin to understand this jargon, making it much easier for you to learn more in the future. But to start off, if things don’t make sense at first reading, try web searches, referring to a beginners book or just experiment with code in different ways to see what happens.<br /><strong>R</strong> contains most functions and constants for maths you can think of, for instance try:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="dv">9</span>)
+<span class="dv">3</span>^<span class="dv">2</span>
+<span class="kw">exp</span>(<span class="dv">1</span>)
+pi</code></pre>
+</div>
+<div id="background-on-r-objects" class="section level2">
+<h2>Background on <strong>R</strong> objects</h2>
+<p>It is well and good to be able to do calculations in <strong>R</strong>, but what if we want to save our number and reuse it later?<br />That is what ‘objects’ are for. Try typing this into your console:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">3</span>^<span class="dv">2</span></code></pre>
+<p>Note that the console returns absolutely nothing, but it is ready for more input (<code>&gt;</code>). Try typing <code>x</code> and the console reminds us that three squared in fact equals <code>9</code>. To run through it point by point, the command we are giving says: compute <code>3^2</code> and assign (the assign command is this <code>&lt;-</code>) the answer to <code>x</code>. The spaces around the assign don’t matter, you can leave them out. However, I prefer to have the spaces because it makes the code more readable. You may also see some people use <code>=</code> instead of <code>&lt;-</code>. Both are ok, but for technical reasons that will be explained later, it is better to use <code>&lt;-</code> for assigning values to variables.<br />If we want <strong>R</strong> to return the answer when the calculation is computed then enclose the sum in brackets like this <code>(x &lt;- 3^2)</code>.<br />Now, what if we try to recall an object that does not exist? For instance type <code>y</code>. <strong>R</strong> reminds us, in red font, that we never created an object called <code>y</code>.<br />Now we have created <code>x</code> we can use it in algebraic equations. For instance try <code>z &lt;- x*3</code> and you will see we get object <code>z</code> that equals <code>27</code>.<br />We can also assign words to objects:</p>
+<pre class="sourceCode r"><code class="sourceCode r">v &lt;-<span class="st"> &#39;today&#39;</span></code></pre>
+<p>Note that we enclosed our word in inverted commas. If we didn’t do this, <strong>R</strong> would try to assign the value of the object <code>today</code> to <code>v</code>.<br />A few tips on naming objects. You can name objects whatever you want (e.g. you could use <code>nine</code> instead of <code>x</code>), but there are a few rules: (1) you can’t use special characters in objects names (other than <code>.</code> and <code>_</code>) and (2) you must start an objects name with a letter. It is also a good idea to avoid naming objects as constants or functions that already exist in R, like <code>pi</code>, <code>e</code>, <code>help</code>.</p>
+</div>
+<div id="background-on-objects-with-multiple-numbers" class="section level2">
+<h2>Background on objects with multiple numbers</h2>
+<p>So far our objects only have one number. Note that when we recall a value, e.g. <code>x</code> the console prints <code>[1] 9</code>. The <code>[1]</code> means that the first number stored in <code>x</code> is 9. We can store more than one number or word in an object using the <code>c()</code> function:</p>
+<pre class="sourceCode r"><code class="sourceCode r"> x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">24</span>)
+x
+v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;yesterday&#39;</span>, <span class="st">&#39;today&#39;</span>, <span class="st">&#39;tomorrow&#39;</span>)</code></pre>
+<p>Which creates objects each with three values. Note again I use spaces purely for clarity, they are not essential.<br />We can index objects to access certain numbers using <code>[]</code></p>
+<pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">1</span>]
+v[<span class="dv">2</span>]</code></pre>
+<p>returns the first value of <code>x</code> and the second value of <code>v</code>. We can also use indices to recall multiple values at once. For instance try</p>
+<pre class="sourceCode r"><code class="sourceCode r">x[<span class="dv">1</span>:<span class="dv">3</span>]
+x[]
+x[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</code></pre>
+<p>Does the output make sense?</p>
+</div>
+<div id="background-on-logical-indexing" class="section level2">
+<h2>Background on logical indexing</h2>
+<p>We can also use logicals (<code>TRUE</code>/<code>FALSE</code>) for indexing. To see how this works, let’s pose <strong>R</strong> some logical questions</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">42</span> ==<span class="st"> </span><span class="dv">54</span>
+<span class="dv">42</span> ==<span class="st"> </span><span class="dv">7</span>*<span class="dv">6</span>
+x[<span class="dv">1</span>] &gt;<span class="st"> </span><span class="dv">10</span>
+x[<span class="dv">1</span>] !=<span class="st"> </span><span class="dv">22</span></code></pre>
+<p>The relational operators used here ask questions such as <code>42 == 52</code> means ‘does 42 equal 54?’. To see more of them type <code>help('==')</code>. You will see they return <code>TRUE</code> or <code>FALSE</code> depending on whether the relation is true or false.<br />Logicals are very useful because we can use them for indexing. For instance</p>
+<pre class="sourceCode r"><code class="sourceCode r">x&gt;<span class="dv">23</span></code></pre>
+<p>returns a sequence of T/F, telling us that the first two values of <code>x</code> are not greater than 23 but the last value is. We can store this logical object and use it to return values of x that are greater than 23:</p>
+<pre class="sourceCode r"><code class="sourceCode r">ix &lt;-<span class="st"> </span>x&gt;<span class="dv">23</span>
+x[ix]</code></pre>
+<p>We can also apply this idea to words</p>
+<pre class="sourceCode r"><code class="sourceCode r">iv &lt;-<span class="st"> </span>v ==<span class="st"> &#39;today&#39;</span>
+v[iv]</code></pre>
+<p>There are other specialised functions if you want to do partial searches for words (like <code>grep()</code>), but we won’t cover those in this basic course.<br />One final thing, if you don’t like the logicals, you can also use the <code>which()</code> function, which turns logicals into indices</p>
+<pre class="sourceCode r"><code class="sourceCode r">ix &lt;-<span class="st"> </span><span class="kw">which</span>(x&gt;<span class="dv">23</span>)
+ix <span class="co"># the third value of x is greater than 23</span>
+x[ix] <span class="co">#the third value of x is 24. </span></code></pre>
+</div>
+<div id="scripts" class="section level2">
+<h2>Scripts</h2>
+<p>So far we have just been typing everything into the console. However, we might want to save our commands for later. To do this go to the menu and select file -&gt; New file -&gt; <strong>R</strong> Script. It will open a text editor. From now on, type all your code into this editor. To send the code to the console for evaluation (ie to make <strong>R</strong> perform the calculations), click on a line, or select a section and hit ctrl-R on windows or cmnd-enter on mac.<br />We can put comments in the script, to remind us what it does. <strong>R</strong> will not evaluate comments, which are preceeded by an <code>#</code>. For instance, start your script by typing:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># R marine science course</span>
+<span class="co"># Your name</span>
+<span class="co"># 2 November 2015</span></code></pre>
+<p>I recommend using comments frequently throughout your code. It will make life a lot easier when you come back to a piece of code after a few days, because the comments will remind you what the code does. It will also make it easier to share your code with collaborators and make your code more repeatable, which as I said, is a core principle of science. Keeping your code organised also means you can translate it directly into the Methods section of your paper. This will save you a lot of time (because you won’t have to remember everything you did to get from data to analysis!).<br />Another way to make your code more readable is to break up sections of code within your script, for instance here is how I often delineate sections in my code</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#-----------------------#</span>
+<span class="co">#   MAJOR HEADING     #</span>
+<span class="co">#-----------------------#</span>
+
+<span class="co">#</span>
+<span class="co"># Minor heading</span>
+<span class="co">#</span></code></pre>
+<p>Now we have a script with something worth saving, you should go to the menu and select ‘file’ -&gt; ‘save as’ to save the script for later. Next time you come back to your analysis, you can just open this file, select everything and hit run. Then you will be back to where you left off last time. Further, you can share your script with other people or publish it with your paper.<br />Don’t forget what I said about <strong>repeatability</strong> and <strong>readability!</strong> It can take time to organise your script carefully, but it is worth it. I encourage you to include ample comments and section headers as we progress with the rest of the course.</p>
+</div>
+<div id="reading-in-data" class="section level2">
+<h2>Reading in data</h2>
+<p>Let’s start our script. By the way, remember what I said about typing the code in (don’t simply cut and paste from these notes). If you type it in, you will probably make mistakes. We can help you with those mistakes and thereby you learn more from this class!<br />Type this to start our script:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#</span>
+<span class="co">#DATA IMPORT</span>
+<span class="co">#</span>
+<span class="kw">setwd</span>(<span class="st">&#39;/Users/Documents/R_marine_science_course_data&#39;</span>)</code></pre>
+<p><code>setwd()</code> stands for ‘set working directory’. You will need to replace the folder path in the <code>''</code> with the path on your computer. On windows you can right click on the file and select ‘properties’, on mac use ‘get info’, then cut and paste the path. Note that if you cut and paste on a windows computer you will have to replace the <code>\</code> with <code>/</code>. I also have put a code header in here as an example. I won’t do this below, but I suggest you put in code headers for each new section we cover, it will make it easier for you to come back to this script later.<br />We can see the files in this folder by typing <code>list.files()</code>. The first data we will use is called <code>dat.csv</code> and can be read in as a <code>dataframe</code> like this</p>
+<pre class="sourceCode r"><code class="sourceCode r">fishdat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;dat.csv&#39;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</code></pre>
+<p>Notice we used the assign operator again, but this time assigned the input data to the name <code>fishdat</code>.<br /><code>read.csv</code> is function that reads a csv file and stores it in R’s local memory. Functions are simply algorithms that <strong>R</strong> has stored, which perform a task for you, in this case reading a csv file. Functions always begin with a name followed by <code>()</code>, which contain some arguments. In the case of the <code>read.csv()</code> function, the arguments are the name of the data file (‘dat.csv’), <code>header = TRUE</code>. The <code>header</code> argument simply says the first row is a row of variable names (so we don’t treat them as measurements). Also notice we use <code>=</code> to specify the function’s arguments. As I said above, it is best to use <code>&lt;-</code> for assigning variable names and save <code>=</code> for function arguments.<br />If you need more help on any function in <strong>R</strong> type its name prefixed with a question mark, for instance <code>?read.csv</code>.</p>
+<hr />
+<div id="a-note-about-excel-files" class="section level3">
+<h3>A note about Excel files</h3>
+<p>In short, <em>don’t use .xlsx or .xls files</em> for saving data. The problem with .xls and .xlsx files are that they store extra info with the data that makes files larger than neccessary and <strong>Excel formats can also unwittingly alter your data!</strong><br />This kind of thing can really mess you up. A stable way to save your data is as a <code>.csv</code> which stands for comma seperated values. These are simply values seperated by commas and rows defined by returns. If you select ‘save as’ in excel, you can choose .csv as one of the options. Try opening the .csv file I have given you using a text editor and you will see it is just words, numbers and commas. Obviously using the csv format means you need to avoid commas in your variable names and values, because all commas will be interpreted as spaces between cells in the table.<br />As an example of the problems with excel files, type some numbers into an excel spreadsheet then click ‘format’ -&gt; ‘cells’ and change the category to ‘time’. Now save it as a .csv and open it with a text editor. Your numbers have changed from what you typed in. Because excel automatically detects number types, if you enter something that looks like dates it might decide to change them all to dates and in doing so alter your data.</p>
+<hr />
+</div>
+</div>
+<div id="accessing-variables-in-the-dataframe" class="section level2">
+<h2>Accessing variables in the dataframe</h2>
+<p>The rules we learned above for accessing values of an object also apply to dataframes. A dataframe is a special ‘class’ of an object, where there are multiple variables, stored in names columns and multiple rows for our samples. Every variable has the same number of samples. A key difference from the objects we created earlier is that now we have both rows and columns. Rows and columns are indexed by using a comma as a separator. Try</p>
+<pre class="sourceCode r"><code class="sourceCode r">fishdat[<span class="dv">1</span>,<span class="dv">3</span>]
+fishdat[,<span class="dv">2</span>]
+fishdat[<span class="dv">1</span>,]
+fishdat[ ,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</code></pre>
+<p>We can also access objects in a data frame by their names:</p>
+<pre class="sourceCode r"><code class="sourceCode r">fishdat$site
+fishdat$fish_abund[<span class="dv">1</span>:<span class="dv">5</span>]
+fishdat[,<span class="st">&#39;transect&#39;</span>]</code></pre>
+</div>
+<div id="basic-data-summaries" class="section level2">
+<h2>Basic data summaries</h2>
+<p>We can get a summary of the data frame by typing:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(fishdat) <span class="co">#first 6 rows by default</span>
+<span class="kw">head</span>(fishdat, <span class="dv">10</span>) <span class="co">#first ten rows</span></code></pre>
+<p>Useful if the dataframe is very large!<br />Can you guess how you would print the last ten rows of a dataframe? Hint, flip a coin a few times and call out the side…<br />Note the <code>()</code> around the dataframe, as opposed to the <code>[]</code> we used for indexing. The <code>()</code> signify a function.<br />We can also do some statistical summaries. This is handy to check the data is ready in correctly and even to start some analysis. For instance:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(fishdat)
+<span class="kw">mean</span>(fishdat$fish_abund)
+<span class="kw">sd</span>(fishdat$fish_abund) <span class="co">#standard deviation of abundances</span>
+<span class="kw">table</span>(fishdat$site) <span class="co">#number of transects per site</span>
+<span class="kw">table</span>(fishdat$transect) <span class="co">#number of sites per transect</span></code></pre>
+<p>Did you notice a mistake in fishdat?</p>
+</div>
+<div id="data-visuals-with-ggplot2" class="section level2">
+<h2>Data visuals with ggplot2</h2>
+<p>Now we know our way around a few summarises, let’s turn the data into visualisations using <code>ggplot2</code>. Let’s look at the boxplot from before in more detail:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">ggplot</span>(fishdat, <span class="kw">aes</span>(<span class="dt">x =</span> site, <span class="dt">y =</span> fish_abund)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre>
+<p><img src="/Images/RDataWranglingImages/plot2.png"/></p>
+<p>The <code>library()</code> command tells <strong>R</strong> to load in the package <code>ggplot2</code>. This is handy to have at the top of your scripts, to load in appropriate packages before analysis begins.<br />The function <code>ggplot()</code> creates a graph, rather than returning data like the other functions we have seen. You can read the above line as: Take <code>fishdat</code>, create an <code>aes</code> (aesthetic) where the x-axis is sites and the y-axis is abundances, finally add (<code>+</code>) a boxplot.<br />The ‘gg’ in <code>ggplot</code> stands for grammar of graphics. The intent is to turn a sequence of functions into a readable sentence, which is why we separate too different functions (<code>ggplot()</code> and <code>geom_boxplot()</code>) with a <code>+</code>. You can combine different functions into different sequences to create different types of graphics.</p>
+<p>So, what is the error in our data?</p>
+<p>Yes, <strong>R</strong> distinguishes between upper and low case, so it is treating sites <code>b</code> and <code>B</code> as different sites. They are meant to be the same. We will find out how to correct this typo in a moment. But first, we need to locate its position.</p>
+</div>
+<div id="locating-particular-values" class="section level2">
+<h2>Locating particular values</h2>
+<p>We can locate the indices for certain values using logical relations, for instance</p>
+<pre class="sourceCode r"><code class="sourceCode r">fishdat$site ==<span class="st"> &#39;A&#39;</span></code></pre>
+<p>Returns a sequence of <code>TRUE</code> and <code>FALSE</code>, with the same number of rows as the dataframe. <code>TRUE</code> occures where the site is <code>A</code> and <code>FALSE</code> where the site isn’t <code>A</code>. The double equals above is used to ask a question (ie is site A?). If you prefer row indices to T/F, you can enclose the logicals in the <code>which()</code> function:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">which</span>(fishdat$site ==<span class="st"> &#39;A&#39;</span>)</code></pre>
+<p>So the first five rows are site <code>A</code>. There are other sorts of logical quesions for instance:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">which</span>(fishdat$site !=<span class="st">&#39;A&#39;</span>)
+<span class="kw">which</span>(fishdat$dN15_SG &gt;<span class="st"> </span><span class="fl">11.99</span>)
+<span class="kw">which</span>(fishdat$dN15_SG &gt;=<span class="st"> </span><span class="fl">11.99</span>)</code></pre>
+</div>
+<div id="correcting-mistakes-in-data-frames" class="section level2">
+<h2>Correcting mistakes in data frames</h2>
+<p>Earlier we noticed a typo where one transect at site ‘B’ was mistakenly typed as site ‘b’. We should identify which ‘b’ is wrong and correct it.</p>
+<pre class="sourceCode r"><code class="sourceCode r">ierror &lt;-<span class="st"> </span><span class="kw">which</span>(fishdat$site ==<span class="st"> &#39;b&#39;</span>) <span class="co">#Find out which row number is wrong</span>
+fishdat$site[ierror]
+fishdat$site[ierror] &lt;-<span class="st"> &#39;B&#39;</span> <span class="co">#Change it to the correct upper case. </span></code></pre>
+<p>We could also have used the <code>toupper()</code> function to change the case of ‘b’ (or infact the case of every value in <code>site</code>. You might be thinking, ‘I could have easily changed that error in a spreasheet’. Well you could have for a dataframe with 20 observations, but what if the data had 1 million observations?</p>
+<p>Let’s check the boxplot to see that the two B sites have now be merged:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(fishdat, <span class="kw">aes</span>(<span class="dt">x =</span> site, <span class="dt">y =</span> fish_abund)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre>
+<p><img src="/Images/RDataWranglingImages/plot3a.png"/></p>
+</div>
+<div id="saving-our-corrected-data-frame" class="section level2">
+<h2>Saving our corrected data frame</h2>
+<p>Now we have corrected our dataframe, we may want to save it for later. We can do this with <code>write.csv()</code> which is basically the opposite of `read.csv()</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(fishdat, <span class="st">&#39;dat_corrected.csv&#39;</span>, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</code></pre>
+<p>Which saves a new csv file to our current working directory (have a look in your folder and you should see it there). If you want to know what your current working directory is, type <code>getwd()</code>.</p>
+</div>
+<div id="more-on-graphs" class="section level2">
+<h2>More on graphs</h2>
+<p>Lets do a few more graphical summaries. Try these</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(fishdat, <span class="kw">aes</span>(<span class="dt">x =</span> fish_abund)) +<span class="st"> </span><span class="kw">geom_histogram</span>()</code></pre>
+<p><img src="/Images/RDataWranglingImages/plot3.png"/></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(fishdat, <span class="kw">aes</span>(<span class="dt">x =</span> dN15_SG, <span class="dt">y =</span> fish_abund)) +<span class="st"> </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="/Images/RDataWranglingImages/plot4.png"/></p>
+<p>Which plots a histogram and an xy plot of fish abundances against the nitrogen isotope ratios for seagrass at each transect. Note each command starts similarly (using <code>ggplot(fishdat...</code>) but ends with a different geom command. Looks like there is a relationship. We can improve our plot slightly by using some extra arguments to <code>plot()</code></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(fishdat, <span class="kw">aes</span>(<span class="dt">x =</span> dN15_SG, <span class="dt">y =</span> fish_abund)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Fish abundance&#39;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;delta N&#39;</span>)</code></pre>
+<p><img src="/Images/RDataWranglingImages/plot5.png"/></p>
+<p>Here we inserted a new command into <code>geom_point()</code> to change the point size, then we also added axes labels.</p>
+<p>In fact, a whole host of graphical parameters you can manipulate. See the R Graphics Cookbook or the ggplot2 webpage for more help. As a final step, we could colour the points by site, by adding a <code>colour</code> command to the <code>aes()</code> function and then change the legend title using <code>labs()</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(fishdat, <span class="kw">aes</span>(<span class="dt">x =</span> dN15_SG, <span class="dt">y =</span> fish_abund, <span class="dt">colour =</span> site)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Fish abundance&#39;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;delta N&#39;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">colour =</span> <span class="st">&#39;Sampling sites&#39;</span>)</code></pre>
+</div>
+<div id="loading-data-wrangling-packages" class="section level2">
+<h2>Loading data wrangling packages</h2>
+<p>Many users of <strong>R</strong> also develop add on packages, which they then share with the world. Today we are going to use some packages that make data wrangling easy. First you need to install them to your computer, as we did above for <code>ggplot2</code> (you will need a web connection to do this). Today we need the <code>tidyr</code> (for tidying dataframes) and <code>dplyr</code> (‘data pliers’) packages. Once you have installed these, you need to load them for each new <strong>R</strong> session like this:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)
+<span class="kw">library</span>(dplyr)</code></pre>
+<p>The red warning just means some functions in R’s base packages have been replaced with those in <code>dplyr</code>, nothing for us to worry about here.<br />RStudio also has a handy cheatsheet for <a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">data wrangling</a> that you might like to download before we continue.<br />All the operations we will perform in tidyr and dplyr can be done using <strong>R</strong>’s base packages. However, we are using these special packages because they make data wrangling easy, intuitive and aesthetic. Remember I said that a good script can make you a popular scientist? Well dplyr and tidyr are good examples of that. They do some tasks we could do already in <strong>R</strong> but makes them easier and faster.<br />If you have trouble loading tidyr or dplyr, it may be because your version of <strong>R</strong> is not up to date. If you have troubles, please update both <strong>R</strong> and Rstudio if you are using that too.</p>
+</div>
+<div id="filtering-a-dataframe-using-dplyr" class="section level2">
+<h2>Filtering a dataframe using dplyr</h2>
+<p>We can filter a dataframe with dplyr to say, just get the rows for one site</p>
+<pre class="sourceCode r"><code class="sourceCode r">fish_A &lt;-<span class="st"> </span><span class="kw">filter</span>(fishdat, site ==<span class="st"> &#39;A&#39;</span>)
+fish_A</code></pre>
+<p>Which says, take the <code>fishdat</code> dataframe and filter it for rows that have <code>site=='A'</code>. One way this could be useful would be to help us make a plot of just the transects at site <code>A</code>, for instance</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(fish_A, <span class="kw">aes</span>(<span class="dt">x =</span> dN15_SG, <span class="dt">y =</span> fish_abund)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Fish abundance&#39;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;delta N&#39;</span>)</code></pre>
+<p><img src="/Images/RDataWranglingImages/plot6.png"/></p>
+</div>
+<div id="summaries-using-dplyr" class="section level2">
+<h2>Summaries using dplyr</h2>
+<p>Summarising data is straightforward with <code>dplyr</code>. What follows is somewhat similar to making a pivot table in excel, but without all the clicking. First we need to specify what we are summarising over, using the <code>group_by()</code> function</p>
+<pre class="sourceCode r"><code class="sourceCode r">grps &lt;-<span class="st"> </span><span class="kw">group_by</span>(fishdat, site)
+grps</code></pre>
+<p><code>grps</code> is similar to the orginal data frame, but an extra property has been added ‘Groups:site’. Now we have specified a grouping variable, we can <code>summarise()</code> by sites, for instance the mean values of the nitrogen isotopes and fish abundances</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summarise</span>(grps, <span class="dt">mean_dN =</span> <span class="kw">mean</span>(dN15_SG)) <span class="co">#just nitrogen</span>
+<span class="kw">summarise</span>(grps, <span class="dt">mean_dN =</span> <span class="kw">mean</span>(dN15_SG), <span class="dt">mean_abund =</span> <span class="kw">mean</span>(fish_abund)) <span class="co">#means for nitrogen and fish</span></code></pre>
+<p>Here is what our data summary looks like</p>
+<pre><code>## Source: local data frame [4 x 3]
+##
+##   site mean_dN mean_abund
+## 1    A  14.966       20.0
+## 2    B   9.944        3.8
+## 3    C  14.806       20.8
+## 4    D  10.276        5.0</code></pre>
+<p>You could summarise using all sorts of other functions, like <code>sd()</code> or <code>min()</code>. Try it for yourself.<br />Let’s store our new data summary, then use its variables in some plots</p>
+<pre class="sourceCode r"><code class="sourceCode r">datsum &lt;-<span class="st"> </span><span class="kw">summarise</span>(grps, <span class="dt">mean_dN =</span> <span class="kw">mean</span>(dN15_SG), <span class="dt">mean_abund =</span> <span class="kw">mean</span>(fish_abund))</code></pre>
+<p>First we make the base plot of all data. We do something different here however, we are going to save the plot as an object itself:</p>
+<pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(fishdat, <span class="kw">aes</span>(<span class="dt">x =</span> dN15_SG, <span class="dt">y =</span> fish_abund, <span class="dt">shape =</span> site)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Fish abundance&#39;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;delta N&#39;</span>) </code></pre>
+<p>Notice nothing happens. We have stored the plot in the object <code>p</code>. If we type <code>p</code> the plot will be printed to the screen. Notice that also we used <code>shape</code> to change the shape of the points to match the sites. What we want to do now is add some points for the site means:</p>
+<pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> mean_dN, <span class="dt">y =</span> mean_abund, <span class="dt">colour =</span> site, <span class="dt">shape =</span> site), <span class="dt">data =</span> datsum,
+             <span class="dt">size =</span> <span class="dv">5</span>)</code></pre>
+<p><img src="/Images/RDataWranglingImages/plot7.png"/></p>
+<p>Notice that we have added a new <code>geom_point()</code> to our object <code>p</code>. We have coloured and shaped sites. We also have to be careful to specify that we are using a different dataframe this time, the summary data in <code>data = datsum</code>.</p>
+</div>
+<div id="aesthetics-in-multi-line-coding" class="section level2">
+<h2>Aesthetics in multi-line coding</h2>
+<p>Notice that we just did a series of data-wrangling steps. First we identified groups then we created some summaries. We could write this code all on one line like this</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summarise</span>(<span class="kw">group_by</span>(fishdat, site), <span class="dt">mean_dN =</span> <span class="kw">mean</span>(dN15_SG))</code></pre>
+<p>Which will return the same summary as above. But, notice we have nested a function inside a function! Not very aesthetic and difficult for others to follow. One solution would be to do the code over multiple lines, like we did above</p>
+<pre class="sourceCode r"><code class="sourceCode r">grps &lt;-<span class="st"> </span><span class="kw">group_by</span>(fishdat, site)
+<span class="kw">summarise</span>(grps, <span class="dt">mean_dN =</span> <span class="kw">mean</span>(dN15_SG))</code></pre>
+<p>One clever thing that the creaters of <code>dplyr</code> did was to add data ‘pipes’ to improve the aesthetics of multi-function commands. Pipes look like this <code>%&gt;%</code> and work like this</p>
+<pre class="sourceCode r"><code class="sourceCode r">fishdat %&gt;%<span class="st"> </span><span class="kw">group_by</span>(site) %&gt;%<span class="st"> </span><span class="kw">summarise</span>(<span class="dt">mean_dN =</span> <span class="kw">mean</span>(dN15_SG))</code></pre>
+<p>Pipes take the output of the first function and apply it as the first argument of the second function and so on. Notice that we skip specifying the dataframe in <code>group_by()</code> and <code>summarise()</code> because the data was specified at the start of the pipe. The pipe is like saying, take <code>fishdat</code> pipe it into <code>group_by()</code>, then pipe the result into <code>summarise()</code>. Now our code reads like a sentence ‘take fishdat, do this, then this, then this’. Rather than before which was more like ‘apply this function to the output of another function that was applied to fishdat’.</p>
+</div>
+<div id="joining-dataframes" class="section level2">
+<h2>Joining dataframes</h2>
+<p>Our fish abundances and seagrass isotopes aren’t the end point of our data analysis. We also want to know how they relate to some variables we measured at each site. To see these load</p>
+<pre class="sourceCode r"><code class="sourceCode r">sitedat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;Sitesdat.csv&#39;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+sitedat</code></pre>
+<p><code>dplyr</code> has a range of functions for joining dataframes. All are prefixed with join. Here we use the <code>inner_join()</code> to find out about the others look at the help file (<code>?inner_join</code>)</p>
+<pre class="sourceCode r"><code class="sourceCode r">datnew &lt;-<span class="st"> </span><span class="kw">inner_join</span>(fishdat, sitedat, <span class="dt">by =</span><span class="st">&#39;site&#39;</span>)
+datnew</code></pre>
+<p>We have joined fishdat and sitedat by their common variable site. Notice the join automatically replicates <code>distance</code> and <code>depth</code> across all the transects, keeping the dataframe ‘tidy’. One analysis we could do is plot the seagrass isotope ratios by <code>distance</code> (which represents distance from a sewage plant).</p>
+<pre class="sourceCode r"><code class="sourceCode r">p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(datnew, <span class="kw">aes</span>(<span class="dt">x =</span>distance, <span class="dt">y =</span> dN15_SG, <span class="dt">colour =</span> site)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">4</span>)
+p2</code></pre>
+<p><img src="/Images/RDataWranglingImages/plot8.png"/></p>
+<p>Looks like the pollution source is enriching the nitrogen in the seagrass. Note we saved the plot as an object again. That is because we will come back to modify it later.<br />As a challenge, can you think of a way of plotting the mean values of <code>dN15_SG</code> at each distance?</p>
+</div>
+<div id="formal-analysis" class="section level2">
+<h2>Formal analysis</h2>
+<p>Visuals are great, but we might also like to know what the line of best fit looks like and if it is signficant. We can fit a linear model of nitrogen isotope ratios versus distance using the <code>lm()</code> function:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lm</span>(dN15_SG ~<span class="st"> </span>distance, <span class="dt">data =</span> datnew)</code></pre>
+<pre><code>##
+## Call:
+## lm(formula = dN15_SG ~ distance, data = datnew)
+##
+## Coefficients:
+## (Intercept)     distance
+##     16.0687      -0.2179</code></pre>
+<p>Which tells us the slope and intercept. One way to check if the slope is significantly different from zero is to use summary. First we save the <code>lm()</code> as an object, <code>mod1</code> then we apply the <code>summary()</code> function:</p>
+<pre class="sourceCode r"><code class="sourceCode r">mod1 &lt;-<span class="st"> </span><span class="kw">lm</span>(dN15_SG ~<span class="st"> </span>distance, <span class="dt">data =</span> datnew)
+<span class="kw">summary</span>(mod1)</code></pre>
+<pre><code>##
+## Call:
+## lm(formula = dN15_SG ~ distance, data = datnew)
+##
+## Residuals:
+##      Min       1Q   Median       3Q      Max
+## -2.83555 -0.75920 -0.03915  1.22916  1.63859
+##
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept) 16.06874    0.58984  27.243 4.39e-16 ***
+## distance    -0.21786    0.03076  -7.082 1.33e-06 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##
+## Residual standard error: 1.369 on 18 degrees of freedom
+## Multiple R-squared:  0.7359, Adjusted R-squared:  0.7212
+## F-statistic: 50.15 on 1 and 18 DF,  p-value: 1.33e-06</code></pre>
+<p><code>summary()</code> returns a table of statistics about the linear model fit. Some key points. The ‘Estimate’ column shows the best fit estimates of the intercept and slope (on distance). Standard errors for the estimates are also shown, along with t-values and p-values. The p-value for the intercept is not very useful, because it is tesing for a difference from zero. The p-value on the slope (distance) is more interesting. It is less than 0.05, so there is a signficant statistical relationship between distance and nitrogen isotopes.<br />Another useful piece of information in the summary is the R-squared value, which is printed at the bottom. An R^2 of 68% is quite high for ecological relationships. Also note the degrees of freedom. We have 20 samples and we fitted we a two parameter model (slope and intercept), leaving us with 18 degrees of freedom. This high degrees of freedom might raise our suspicions about psuedo-replication, because we only had four sites. In a complete analysis, we might consider including a random effect for the sites. I will leave that task to another course though.</p>
+<hr />
+<div id="a-note-about-statistical-versus-biological-significance" class="section level3">
+<h3>A note about statistical versus biological significance</h3>
+<p>I was careful above to state that the relationship is signficant statistically. This does not mean it is necessarily biological signficant. There are two more considerations before we call it a biologically significant relationship.<br />First, could the relationship be spurious? We should ask is there a plausible reason why distance from rivers would cause a change in the nitrogen isotope ratio of seagrass; and what other evidence is there that nitrogen isotope ratios would relate to distance? In this case, we have such a reason. Human-derived nutrients from sewage and agriculture tend to be enriched in heavy nitrogen. We expect greater exposure to human-derived nutrients closer to rivers and therefore, if seagrass is absorbing from the water column it should have a higher ratio. Second, is the magnitude of the change in nitrogen isotope ratios biological signficant. In this case, probably yes, a drop from about 15 %<em>o to 10 %</em>o is pretty large. If the drop was only from 15.2 %<em>o, to 14.9 %</em>o, we might conclude that while it is statistically signficant, the effect is not very biologically important. To read more about statistics and causation, see my blog post on <a href="www.seascapemodels.org">statistics and causation</a>.</p>
+<hr />
+<p>Now we have our summary, lets add the line of best fit to the plot. But first, try typing</p>
+<pre class="sourceCode r"><code class="sourceCode r">mod1$coefficients</code></pre>
+<pre><code>## (Intercept)    distance
+##  16.0687427  -0.2178611</code></pre>
+<p>see that this command returns the coefficients. Notice the use of the <code>$</code> which we also used to access variables in the data frame. Model objects are similar to dataframes in that we can access their output by using <code>$</code> and then the variable name. A key difference however is that not all variables in the model have the same length. For instance type <code>mod1$residuals</code>. You can see all the variables in <code>mod1</code> by typing <code>names(mod1)</code>. It is handy to be able to access the model coefficients directly, because we can re-use them in a our plotting command to draw a line. Then, if we have to update the dataset later, the plot will be automatically updated too. Here is how we add the line of best fit:</p>
+<pre class="sourceCode r"><code class="sourceCode r">p2 +<span class="st"> </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> mod1$coefficients[<span class="dv">1</span>], <span class="dt">slope =</span> mod1$coefficients[<span class="dv">2</span>])</code></pre>
+<p><img src="/Images/RDataWranglingImages/plot9.png"/></p>
+<p>We can see that the isotope ratio declines with distance from rivers. Let’s walk through that code a bit more. We took the plot object we had already created <code>p2</code> and added an abline with <code>geom_abline()</code>. For the abline, we specified a slope and intercept, taking these values from the model object we created.</p>
+<hr />
+</div>
+<div id="a-tip-for-quickly-viewing-lines-of-best-fit" class="section level3">
+<h3>A tip for quickly viewing lines of best fit</h3>
+<p>If you want to just quickly view the line of best fit and don’t need the table of summary statistics, <code>ggplot()</code> can plot the line directly for you. You can even add shading for the standard error bars. Here is how:</p>
+<pre class="sourceCode r"><code class="sourceCode r">p2 +<span class="st"> </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="dt">se =</span> T, <span class="kw">aes</span>(<span class="dt">group =</span><span class="dv">1</span>))</code></pre>
+<p><img src="/Images/RDataWranglingImages/plot10.png"/></p>
+<p>The <code>stat_smooth()</code> function takes the x and y variables from <code>p2</code> and fits a model to them using the <code>lm</code> function. To see other options type <code>?stat_smooth()</code>. We have also asked for standard errors (<code>se=T</code>). The <code>aes()</code> command avoids an error that occurs when we have multiple y measurements for the same x-value.</p>
+<hr />
+</div>
+</div>
+<div id="tidying-messy-data" class="section level2">
+<h2>Tidying messy data</h2>
+<p>We have yet more data. Our collaborator has helped us out and taken three fish of different sizes from each site (small, medium and large) and run isotope analyses on those. This is great, because it means we can see if fish isotopes follow the same pattern as the seagrass.<br />Let’s look at the data</p>
+<pre class="sourceCode r"><code class="sourceCode r">fishiso &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;FishIsodat.csv&#39;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
+fishiso</code></pre>
+<pre><code>##     size     A     B     C     D
+## 1  small 15.11 11.27 15.00 10.64
+## 2 medium 15.35    NA 15.49 11.41
+## 3  large 17.79 12.54 16.03 11.16</code></pre>
+<p>It seems our collaborator was not familiar with the ‘tidy data’ format. This will hinder analysis and graphing, so we need to wrangle it into a tidy format. Notice that values for the isotope ratios at each site are stored as separate columns. We will need to tidy this data if we are to proceed. Luckily we have the <code>tidyr()</code> package handy and one function <code>gather()</code> will be particularly handy here. Check out the <a href="http://cran.r-project.org/web/packages/tidyr/index.html">vignettes other useful functions to tidy data</a>)</p>
+<pre class="sourceCode r"><code class="sourceCode r">(isotidy &lt;-<span class="st"> </span><span class="kw">gather</span>(fishiso, site, dN_fish, A:D))</code></pre>
+<pre><code>##      size site dN_fish
+## 1   small    A   15.11
+## 2  medium    A   15.35
+## 3   large    A   17.79
+## 4   small    B   11.27
+## 5  medium    B      NA
+## 6   large    B   12.54
+## 7   small    C   15.00
+## 8  medium    C   15.49
+## 9   large    C   16.03
+## 10  small    D   10.64
+## 11 medium    D   11.41
+## 12  large    D   11.16</code></pre>
+<p>The tidy data looks much better. What <code>gather()</code> has done is take the <code>fishiso</code> dataframe, creating new variables <code>site</code> and <code>dN_fish</code> and made them from the values in columns A to D.<br />Notice the <code>NA</code> for the medium fish at site <code>B</code>. Unfortunately, we couldn’t catch a fish of that size at site B. We have encoded the missing value as <code>NA</code> when we entered the data. <code>NA</code> is the correct way to indicate a missing value to <strong>R</strong>.<br />Now we have tidy data, let’s do boxplots by fish size and site. Not that below we add a <code>fill = ...</code> command. This just makes the boxes pretty colours.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(isotidy, <span class="kw">aes</span>(<span class="dt">x =</span> site, <span class="dt">y =</span> dN_fish, <span class="dt">fill =</span> site)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()
+<span class="kw">ggplot</span>(isotidy, <span class="kw">aes</span>(<span class="dt">x =</span> size, <span class="dt">y =</span> dN_fish, <span class="dt">fill =</span> size)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre>
+<p><img src="/Images/RDataWranglingImages/plot11.png"/><br /><img src="/Images/RDataWranglingImages/plot12.png"/></p>
+<p>If you can’t see both plots, click the back arrow at the top of the window to scroll through them. Type <code>?geom_boxplot()</code> if you are not sure what the boxes and whiskers correspond to. In short however, the boxes (‘hinges’) are 25% and 75% quantiles and the whiskers represent a wider range and the points potential outliers. We can see from these plots that nitrogen isotopes don’t really vary by fish size, but they do vary by sites.</p>
+</div>
+<div id="summaries-with-missing-values" class="section level2">
+<h2>Summaries with missing values</h2>
+<p>Let’s create a summary of our new fish isotope ratio data, using our new piping skills.</p>
+<pre class="sourceCode r"><code class="sourceCode r">fishiso_mn &lt;-<span class="st"> </span>isotidy %&gt;%<span class="st"> </span><span class="kw">group_by</span>(size) %&gt;%<span class="st"> </span>
+<span class="st">   </span><span class="kw">summarise</span>(<span class="dt">mean_dN =</span> <span class="kw">mean</span>(dN_fish))
+fishiso_mn</code></pre>
+<pre><code>## Source: local data frame [3 x 2]
+##
+##     size mean_dN
+## 1  large  14.380
+## 2 medium      NA
+## 3  small  13.005</code></pre>
+<p>Which says, take isotidy, group it by size then make a summary of mean values for dN_fish. Well we get the means, but not for the size category with the missing value. Why? <strong>R</strong>’s default setting for taking a mean across an object with a missing value is the return <code>NA</code>. <strong>R</strong> does this to make sure we are aware there are missing samples (and therefore, our design is unbalanced). We can change this default behaviour however, and ask <strong>R</strong> to ignore the NA by adding the argument <code>na.rm = TRUE</code></p>
+<pre class="sourceCode r"><code class="sourceCode r">fishiso_mn &lt;-<span class="st"> </span>isotidy %&gt;%<span class="st"> </span><span class="kw">group_by</span>(size) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_dN =</span> <span class="kw">mean</span>(dN_fish, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))
+fishiso_mn</code></pre>
+<pre><code>## Source: local data frame [3 x 2]
+##
+##     size  mean_dN
+## 1  large 14.38000
+## 2 medium 14.08333
+## 3  small 13.00500</code></pre>
+<p>We have our mean for the medium fish, but be aware, it was taken from only three sites. Let’s also do some means by sites (across sizes)</p>
+<pre class="sourceCode r"><code class="sourceCode r">sites_iso_mn &lt;-<span class="st"> </span>isotidy %&gt;%<span class="st"> </span><span class="kw">group_by</span>(site) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_dNfish =</span> <span class="kw">mean</span>(dN_fish, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))
+sites_iso_mn</code></pre>
+</div>
+<div id="bringing-it-all-together" class="section level2">
+<h2>Bringing it all together</h2>
+<p>Now we have combined all our data frames, let’s see if we can plot nitrogen isotope ratios for both fish and seagrass on the same plot, as a function of distance from rivers. First, join the mean values for fish isotope ratios to the site data, then join our new sites dataframe with the summary of fishdat. Finally we use <code>gather()</code> to make sure each isotope measurement has its own row:</p>
+<pre class="sourceCode r"><code class="sourceCode r">sites_means &lt;-<span class="st"> </span><span class="kw">inner_join</span>(sitedat, sites_iso_mn, <span class="dt">by =</span> <span class="st">&#39;site&#39;</span>) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">inner_join</span>(datsum, <span class="dt">by =</span> <span class="st">&#39;site&#39;</span>) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(organism, dN, mean_dNfish, mean_dN)</code></pre>
+<p>If you don’t understand this code, try running it a bit at a time to see what the output is.</p>
+<p>Let’s just rename the <code>organism</code> column to seagrass and fish too:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(sites_means$organism) &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">fish =</span> <span class="st">&#39;mean_dNfish&#39;</span>, <span class="dt">seagrass =</span> <span class="st">&#39;mean_dN&#39;</span>)</code></pre>
+<p>The <code>levels()</code> function accesses the levels of the organism variable and we use a list to rename them.</p>
+<p>Now lets put it all together in a plot</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(sites_means, <span class="kw">aes</span>(<span class="dt">x =</span> distance, <span class="dt">y =</span> dN, <span class="dt">colour =</span> organism)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;Distance from river (km)&#39;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Nitrogen isotope ratio&#39;</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>)</code></pre>
+<p><img src="/Images/RDataWranglingImages/plot13.png"/></p>
+</div>
+<div id="advanced-data-wrangling-tasks" class="section level2">
+<h2>Advanced data wrangling tasks</h2>
+<p>If you have cruised through the first part of the course, have a go with this advanced challenge question. I have given you some extra dataframes to practice your data wrangling skills with. These are much larger, so you will need to use <strong>R</strong> to find errors in them. The dataframes are: <code>Fish_wghts.csv</code> which records individual weights and sexes for fish caught in 100 different trawls; and <code>Trawl_sites.csv</code> which records for each trawl: its distance from shore and its depth. We want to know how the mean weight of individual fish varies with distance from shore, how the total population biomass varies with distance from shore and if the the different sexes have different weights - so make some plots with model fits for these relationships. <em>Beware:</em> there are two errors in the fish_wghts file that you will need to correct!</p>
+</div>
+<div id="just-for-fun-an-interactive-web-map" class="section level2">
+<h2>Just for fun: an interactive web map</h2>
+<p>For our last task I want to show you how you can make some really cutting edge visuals with <strong>R</strong>, which will help you share your work with collaborators. We are going to make a simple web-based map using the <code>leaflet</code> package. The <code>leaflet</code> package utilises the open-access leaflet JavaScript library (a web programming language), to create web-based maps . We will cover a basic map with some points on it today. See Rstudio’s <a href="http://rstudio.github.io/leaflet/">leaflet</a> page for help and more mapping features, like polygons.<br />To get started with leaflet, first, make sure you have the <code>leaflet</code> package installed, and then load it into this session:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(leaflet)</code></pre>
+<p>Now, make sure you are connected to the internet.<br />We will aim to make an interactive map of our four study sites and the nitrogen isotope ratios at those study sites. So let’s <code>filter</code> the last dataframe for just the seagrass measurements:</p>
+<pre class="sourceCode r"><code class="sourceCode r">sitessg &lt;-<span class="st"> </span><span class="kw">filter</span>(sites_means, organism ==<span class="st"> &#39;seagrass&#39;</span>)</code></pre>
+<p>Now to the map. <code>leaflet</code> works a lot like <code>ggplot</code>. We start by specifying a base layer, then we can add features to it. We will string together our layers using the pipes (<code>%&gt;%</code>), much like the <code>+</code> operator we used with <code>ggplot</code>. The below code first creates a map widget using the seagrass data frame. Then we add ‘tiles’, which is the background to the map. See <a href="http://leaflet-extras.github.io/leaflet-providers/preview/">this page</a> for the numerous tile options. Finally, we add some markers, located using the <code>long</code> and <code>lat</code> variables in the <code>sitessg</code> dataframe:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">leaflet</span>(sitessg) %&gt;%
+<span class="st">  </span><span class="kw">addTiles</span>() %&gt;%
+<span class="st">  </span><span class="kw">addMarkers</span>(~long, ~lat) </code></pre>
+<p><div id="htmlwidget-7276" style="width:672px;height:480px;" class="leaflet"></div>
+<script type="application/json" data-for="htmlwidget-7276">{"x":{"calls":[{"method":"addTiles","args":["http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>"}]},{"method":"addMarkers","args":[[-27.39537,-27.51127,-27.64124,-27.30328],[153.1924,153.3633,153.401,153.4046],null,null,null,{"clickable":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null]}],"limits":{"lat":[-27.64124,-27.30328],"lng":[153.1924,153.4046]}},"evals":[]}</script> And you should see a map (assuming you are connected to the internet!) like the one above. Now let’s add a few features. First we will assign (<code>&lt;-</code>) our map to an object <code>sites_map</code>, so we can save it for later. We will use a different set of tiles this time, which will show us satellite images. We will also add circle markers, scale their radius by the isotope ratio at a site and add a popup for the site names.</p>
+<pre class="sourceCode r"><code class="sourceCode r">sites_map &lt;-<span class="st"> </span><span class="kw">leaflet</span>(sitessg) %&gt;%
+<span class="st">  </span><span class="kw">addProviderTiles</span>(<span class="st">&quot;Esri.WorldImagery&quot;</span>) %&gt;%
+<span class="st">  </span><span class="kw">addCircleMarkers</span>(~long, ~lat, <span class="dt">popup =</span> sitessg$site,
+                   <span class="dt">color =</span> <span class="st">&#39;white&#39;</span>, <span class="dt">opacity =</span> <span class="dv">1</span>,
+                   <span class="dt">radius =</span> sitessg$dN) </code></pre>
+<p>Type the new leaflet object’s name to view the map in Rstudio:</p>
+<pre class="sourceCode r"><code class="sourceCode r">sites_map</code></pre>
+<p><div id="htmlwidget-5553" style="width:672px;height:480px;" class="leaflet"></div>
+<script type="application/json" data-for="htmlwidget-5553">{"x":{"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false}]},{"method":"addCircleMarkers","args":[[-27.39537,-27.51127,-27.64124,-27.30328],[153.1924,153.3633,153.401,153.4046],[14.966,9.944,14.806,10.276],null,null,{"lineCap":null,"lineJoin":null,"clickable":true,"pointerEvents":null,"className":"","stroke":true,"color":"white","weight":5,"opacity":1,"fill":true,"fillColor":"white","fillOpacity":0.2,"dashArray":null},null,null,["A","B","C","D"]]}],"limits":{"lat":[-27.64124,-27.30328],"lng":[153.1924,153.4046]}},"evals":[]}</script> If you want to keep the html and javascript files for later, then load in the <code>htmlwidgets</code> package, and you can save all the code required to re-create your map on your webpage:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(htmlwidgets)
+<span class="kw">saveWidget</span>(sites_map, <span class="dt">file =</span> <span class="st">&#39;SeagrassSites.html&#39;</span> , <span class="dt">selfcontained =</span> F)</code></pre>
+<p>These files are ready to be uploaded to your web server, and then you can share this map with the world.<br />If you would like to learn more about GIS and mapping in R, then checkout my free course: <a href="http://www.seascapemodels.org/rstats/rspatial/2015/06/22/R_Spatial_course.html">mapping in R</a>.</p>
+<p><br> <br></p>
+<hr />
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>I hope I have convinced you of how useful <strong>R</strong> can be for data wrangling, analysis and visualisation. <strong>R</strong> might be hard at first, but the more you use <strong>R</strong> the easier it will become. If you can use <strong>R</strong> you will find data management much more straightforward and repeatable. Aim to write aesthetic scripts and you can avoid many head-aches when you realise there are errors in your database- with a neat script you can trace back to the problem and correct it.<br /><strong>R</strong> programming is a skill that take times to learn. But I believe it is worthwhile. Being good at <strong>R</strong>, helps you create repeatable work, will make you a sought after collaborator and a better scientist.</p>
+<hr />
+<div id="footer">
+<p id="footer_text">
+Christopher J. Brown 2015 <a href = "/index.html"> Home</a> <a href = "https://twitter.com/bluecology" target="_blank"> <span class="citation">@bluecology</span></a>
+</p>
+<p>
+Produced using rmarkdown and knitr
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+
+</body>
+</html>
