@@ -5,6 +5,3 @@ defaults:
       type: "pages"
     values:
       layout: "default"
-
-gems:
-  - jekyll-sitemap
