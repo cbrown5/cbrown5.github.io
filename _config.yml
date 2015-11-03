@@ -1,7 +1,10 @@
 defaults:
   -
     scope:
-      path: "" 
-      type: "pages" 
+      path: ""
+      type: "pages"
     values:
       layout: "default"
+
+gems:
+  - jekyll-sitemap
