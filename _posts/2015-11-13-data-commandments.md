@@ -44,7 +44,7 @@ There is a big difference between data you didn't collect and data you tried to 
 Data-wrangling is the process of checking data for errors and formatting data so it can be used in analysis. If you do all the wrangling in R and keep the scripts, the process is totally repeatable. Then if someone wants to see how you changed the original data to check errors for instance, all the changes are recorded in a script.  
 If you want to know more about data wrangling in R, check out my latest [courses](http://www.seascapemodels.org/Rstats)
 
-### 9. ** *Thou will name multiple data-sheets in a consistent format*  
+### 9. *Thou will name multiple data-sheets in a consistent format*  
 For instance, if you have collected data over different dates and want to keep them in separate spreadsheets give them names with the dates recorded in a consistent format: `data_2-Oct-2015.csv`,  `data_3-Oct-2015.csv` and so on. That way you can rapidly read the files into R and parse the file names into actual dates.  
 
 ### 10. *Thou will make your code and data freely available once you have published*  
