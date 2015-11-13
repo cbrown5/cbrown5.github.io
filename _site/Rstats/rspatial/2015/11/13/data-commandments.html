@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+
+<head>
+<meta name="viewport" content="width=device-width">
+<meta charset="utf-8">
+<link rel="stylesheet"
+  media="screen and (max-width: 700px)"
+  type="text/css" href="/css/narrow.css"/>
+
+<link rel="stylesheet"
+  media="screen and (min-width: 701px)"
+  type="text/css" href="/css/screen.css"/>
+</head>
+
+
+<body>
+
+<div id="banner_wrap">
+<img id="banner" src ="/Images/banner3.jpg" alt="Banner Image"/>
+   <div id="inner_banner"> 
+   <h1> Seascape models </h1>
+   <p class="banner_text"> Spatially dynamic models of marine ecosystems </p>
+   </div>
+</div>
+
+<div id="page_content">
+
+
+<ul class = "menu">
+      <li class = "menu_item"><a href ="/index.html">Home</a></li>
+      <li class = "menu_item"><a href ="/Research/index.html#page_content">Research</a></li>
+      <li class = "menu_item"><a href ="https://scholar.google.com.au/citations?user=1qG6yFMAAAAJ&hl=en" target="_blank">Publications</a></li>
+      <li class = "menu_item"><a href ="/People/index.html#page_content">People</a></li>
+      <li class = "menu_item"><a href ="/Spatial/index.html#page_content">Spatial code</a></li>
+      <li class = "menu_item"><a href ="/Rstats/index.html#page_content">Code</a></li>
+</ul>
+
+
+<div id="page_text">
+
+<h2 id="ten-commandments-for-entering-data-to-use-in-r">Ten Commandments for entering data to use in R</h2>
+
+<h3 id="with-explanations">(with explanations!)</h3>
+
+<hr />
+
+<h3 id="thou-will-write-a-meta-data-file-for-every-data-set">1. <em>Thou will write a meta-data file for every data-set</em></h3>
+<p>Meta-data should include location and time information, the short-hand names of the variables matched to a description that includes their units, and a description of the levels of variables (if they are factors).</p>
+
+<p>Instead save your data as .csv (comma separated values).
+It is inconvenient to read excel formats into R.
+Excel can also change the ‘type’ of numbers in strange ways that alter your data. For instance, data that looks like dates (10/2) may get transformed into a different date format (10 - February). .xlsx formats also use more memory than .csv.</p>
+
+<h3 id="thou-will-enter-data-in-a-tidy-or-long-format">3. <em>Thou will enter data in a tidy or long format</em></h3>
+<p>‘Tidy’ data begins with a single row of variable names and follows with one row for each observation. For instance, if you measured multiple individuals across different times, then each row will be a measurement from one individual at one time. You will also have time and ID variables to indicate the time and individual.<br />
+See the <a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html"><code>dplyr</code></a> and <a href="http://blog.rstudio.org/2014/07/22/introducing-tidyr/"><code>tidyr</code></a> packages if you need to tidy data.
+There is one exception to this commandment: extremely large data-sets (e.g. multiple giga-bytes) will use less memory if stored in table or wide format.</p>
+
+<h3 id="thou-will-avoid-special-characters-and-spaces-in-variable-names-and-levels">4. <em>Thou will avoid special characters and spaces in variable names and levels</em></h3>
+<p>You can use letters, numbers <code>_</code> and <code>.</code> in variable names. Avoid any other symbols. For instance, instead of calling a species <code>Plectropomus leopardus</code>, name it <code>Plectropomus_leopardus</code>.<br />
+Also don’t start variable names with numbers.</p>
+
+<h3 id="thou-will-use-a-consistent-style-for-naming-variables-and-their-levels">5. <em>Thou will use a consistent style for naming variables and their levels</em></h3>
+<p>For instance if using CamelCase, stick to it. Or instead separate words with <code>_</code>. Be consistent with capitalisation, for instance, R will see <code>Plectropomus</code> as different to <code>plectropomus</code>.<br />
+A further tip is to avoid using multiple names for the same identity, like <code>plectropmus sp.</code> and <code>plectropmus</code>.</p>
+
+<h3 id="thou-will-enter-numeric-variables-as-numbers-and-factor-variables-as-words">6. <em>Thou will enter numeric variables as numbers and factor variables as words</em></h3>
+<p>R will automatically detect the type of data. If all levels of a variable are numbers, it will treat them as continuous (decimal or integer) numbers. If you mix numbers and words, R will treat all as different levels of a factor.</p>
+
+<h3 id="thou-will-use-consistent-naming-styles-across-data-sets">7. <em>Thou will use consistent naming styles across data-sets</em></h3>
+<p>Someday you may want to join data together, for instance, data collected at the same sites across different studies. Keep the site names consistent.</p>
+
+<h3 id="thou-will-enter-missing-data-as-empty-cells">8. <em>Thou will enter missing data as empty cells</em></h3>
+<p>There is a big difference between data you didn’t collect and data you tried to collect but went missing. So enter empty rows/cells for missing data, so this is recorded.</p>
+
+<h3 id="thou-will-use-r-for-data-wrangling-and-keep-neat-data-wrangling-scripts">9. <em>Thou will use R for data-wrangling and keep neat data wrangling scripts</em></h3>
+<p>Data-wrangling is the process of checking data for errors and formatting data so it can be used in analysis. If you do all the wrangling in R and keep the scripts, the process is totally repeatable. Then if someone wants to see how you changed the original data to check errors for instance, all the changes are recorded in a script.<br />
+If you want to know more about data wrangling in R, check out my latest <a href="http://www.seascapemodels.org/Rstats">courses</a></p>
+
+<h3 id="thou-will-make-your-code-and-data-freely-available-once-you-have-published">10. <em>Thou will make your code and data freely available once you have published</em></h3>
+<p>R is an open-access resource, many people have invested much time in developing. To keep good karma, make your data and code open-access too (once you have written your publication of course and if ethics allow). Much scientific data is collected on public money, so it is quite reasonable that the public can access it!.</p>
+
+<hr />
+
+
+</div>
+</div>
+
+<div id = "footer">
+    <head>
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57340034-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    </head>
+<p id="footer_text">
+Christopher J. Brown 2015    <a href = "/index.html"> Home</a>
+<a href = "https://twitter.com/bluecology" target="_blank"> @bluecology</a>
+</p>
+
+</div>
+
+
+</body>
+
+</html>
