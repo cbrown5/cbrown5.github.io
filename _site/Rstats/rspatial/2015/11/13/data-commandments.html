@@ -57,26 +57,29 @@ Excel can also change the ‘type’ of numbers in strange ways that alter your 
 See the <a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html"><code>dplyr</code></a> and <a href="http://blog.rstudio.org/2014/07/22/introducing-tidyr/"><code>tidyr</code></a> packages if you need to tidy data.
 There is one exception to this commandment: extremely large data-sets (e.g. multiple giga-bytes) will use less memory if stored in table or wide format.</p>
 
-<h3 id="thou-will-avoid-special-characters-and-spaces-in-variable-names-and-levels">4. <em>Thou will avoid special characters and spaces in variable names and levels</em></h3>
+<h3 id="thou-will-avoid-special-characters-and-spaces-in-variable-names-and-levels">3. <em>Thou will avoid special characters and spaces in variable names and levels</em></h3>
 <p>You can use letters, numbers <code>_</code> and <code>.</code> in variable names. Avoid any other symbols. For instance, instead of calling a species <code>Plectropomus leopardus</code>, name it <code>Plectropomus_leopardus</code>.<br />
 Also don’t start variable names with numbers.</p>
 
-<h3 id="thou-will-use-a-consistent-style-for-naming-variables-and-their-levels">5. <em>Thou will use a consistent style for naming variables and their levels</em></h3>
+<h3 id="thou-will-use-a-consistent-style-for-naming-variables-and-their-levels">4. <em>Thou will use a consistent style for naming variables and their levels</em></h3>
 <p>For instance if using CamelCase, stick to it. Or instead separate words with <code>_</code>. Be consistent with capitalisation, for instance, R will see <code>Plectropomus</code> as different to <code>plectropomus</code>.<br />
 A further tip is to avoid using multiple names for the same identity, like <code>plectropmus sp.</code> and <code>plectropmus</code>.</p>
 
-<h3 id="thou-will-enter-numeric-variables-as-numbers-and-factor-variables-as-words">6. <em>Thou will enter numeric variables as numbers and factor variables as words</em></h3>
+<h3 id="thou-will-enter-numeric-variables-as-numbers-and-factor-variables-as-words">5. <em>Thou will enter numeric variables as numbers and factor variables as words</em></h3>
 <p>R will automatically detect the type of data. If all levels of a variable are numbers, it will treat them as continuous (decimal or integer) numbers. If you mix numbers and words, R will treat all as different levels of a factor.</p>
 
-<h3 id="thou-will-use-consistent-naming-styles-across-data-sets">7. <em>Thou will use consistent naming styles across data-sets</em></h3>
+<h3 id="thou-will-use-consistent-naming-styles-across-data-sets">6. <em>Thou will use consistent naming styles across data-sets</em></h3>
 <p>Someday you may want to join data together, for instance, data collected at the same sites across different studies. Keep the site names consistent.</p>
 
-<h3 id="thou-will-enter-missing-data-as-empty-cells">8. <em>Thou will enter missing data as empty cells</em></h3>
+<h3 id="thou-will-enter-missing-data-as-empty-cells">7. <em>Thou will enter missing data as empty cells</em></h3>
 <p>There is a big difference between data you didn’t collect and data you tried to collect but went missing. So enter empty rows/cells for missing data, so this is recorded.</p>
 
-<h3 id="thou-will-use-r-for-data-wrangling-and-keep-neat-data-wrangling-scripts">9. <em>Thou will use R for data-wrangling and keep neat data wrangling scripts</em></h3>
+<h3 id="thou-will-use-r-for-data-wrangling-and-keep-neat-data-wrangling-scripts">8. <em>Thou will use R for data-wrangling and keep neat data wrangling scripts</em></h3>
 <p>Data-wrangling is the process of checking data for errors and formatting data so it can be used in analysis. If you do all the wrangling in R and keep the scripts, the process is totally repeatable. Then if someone wants to see how you changed the original data to check errors for instance, all the changes are recorded in a script.<br />
 If you want to know more about data wrangling in R, check out my latest <a href="http://www.seascapemodels.org/Rstats">courses</a></p>
+
+<h3 id="thou-will-name-multiple-data-sheets-in-a-consistent-format">9. <em>Thou will name multiple data-sheets in a consistent format</em></h3>
+<p>For instance, if you have collected data over different dates and want to keep them in separate spreadsheets give them names with the dates recorded in a consistent format: <code>data_2-Oct-2015.csv</code>,  <code>data_3-Oct-2015.csv</code> and so on. That way you can rapidly read the files into R and parse the file names into actual dates.</p>
 
 <h3 id="thou-will-make-your-code-and-data-freely-available-once-you-have-published">10. <em>Thou will make your code and data freely available once you have published</em></h3>
 <p>R is an open-access resource, many people have invested much time in developing. To keep good karma, make your data and code open-access too (once you have written your publication of course and if ethics allow). Much scientific data is collected on public money, so it is quite reasonable that the public can access it!.</p>
