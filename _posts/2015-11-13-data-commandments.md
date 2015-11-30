@@ -38,7 +38,7 @@ There is a big difference between data you didn't collect and data you tried to 
 
 ### 8. *Thou will use R for data-wrangling and keep neat data wrangling scripts*  
 Data-wrangling is the process of checking data for errors and formatting data so it can be used in analysis. If you do all the wrangling in R and keep the scripts, the process is totally repeatable. Then if someone wants to see how you changed the original data to check errors for instance, all the changes are recorded in a script.  
-If you want to know more about data wrangling in R, check out my latest [courses](http://www.seascapemodels.org/Rstats)
+If you want to know more about data wrangling in R, check out my latest [courses](http://www.seascapemodels.org/Rstats).  
 Also, avoid .xls and .xlsx formats for saving data. Instead save your data as .csv (comma separated values).
 It is inconvenient to read excel formats into R.
 Excel can also change the 'type' of numbers in strange ways that alter your data. For instance, data that looks like dates (10/2) may get transformed into a different date format (10 - February). .xlsx formats also use more memory than .csv. So it is better to keep your data as .csv and wrangle it in R.   

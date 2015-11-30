@@ -52,7 +52,7 @@
 It is inconvenient to read excel formats into R.
 Excel can also change the ‘type’ of numbers in strange ways that alter your data. For instance, data that looks like dates (10/2) may get transformed into a different date format (10 - February). .xlsx formats also use more memory than .csv.</p>
 
-<h3 id="thou-will-enter-data-in-a-tidy-or-long-format">3. <em>Thou will enter data in a tidy or long format</em></h3>
+<h3 id="thou-will-enter-data-in-a-tidy-or-long-format">2. <em>Thou will enter data in a tidy or long format</em></h3>
 <p>‘Tidy’ data begins with a single row of variable names and follows with one row for each observation. For instance, if you measured multiple individuals across different times, then each row will be a measurement from one individual at one time. You will also have time and ID variables to indicate the time and individual.<br />
 See the <a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html"><code>dplyr</code></a> and <a href="http://blog.rstudio.org/2014/07/22/introducing-tidyr/"><code>tidyr</code></a> packages if you need to tidy data.
 There is one exception to this commandment: extremely large data-sets (e.g. multiple giga-bytes) will use less memory if stored in table or wide format.</p>
