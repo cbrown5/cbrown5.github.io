@@ -41,7 +41,7 @@ Data-wrangling is the process of checking data for errors and formatting data so
 If you want to know more about data wrangling in R, check out my latest [courses](http://www.seascapemodels.org/Rstats)
 Also, avoid .xls and .xlsx formats for saving data. Instead save your data as .csv (comma separated values).
 It is inconvenient to read excel formats into R.
-Excel can also change the 'type' of numbers in strange ways that alter your data. For instance, data that looks like dates (10/2) may get transformed into a different date format (10 - February). .xlsx formats also use more memory than .csv. So it is better to keep your data as .csv and wrangle it in R.  
+Excel can also change the 'type' of numbers in strange ways that alter your data. For instance, data that looks like dates (10/2) may get transformed into a different date format (10 - February). .xlsx formats also use more memory than .csv. So it is better to keep your data as .csv and wrangle it in R.   
 
 ### 9. *Thou will name multiple data-sheets in a consistent format*  
 For instance, if you have collected data over different dates and want to keep them in separate spreadsheets give them names with the dates recorded in a consistent format: `data_2-Oct-2015.csv`,  `data_3-Oct-2015.csv` and so on. That way you can rapidly read the files into R and parse the file names into actual dates.  
