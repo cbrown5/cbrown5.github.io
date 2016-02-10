@@ -45,7 +45,7 @@ I was pleased to see a balanced list of both men and women plenary speakers. Thi
 
 It was also great to see some exceptional early career researchers like Jenn Sunday from UBC, included on the plenary list. In her short career, Sunday has become the leading name in the [theory of range edges and range shifts](https://scholar.google.com.au/citations?user=loUBMb4AAAAJ&hl=en&oi=ao). It was great to hear where the research frontiers are from the upcoming generation of climate change ecologists.
 
-On the topic of Sunday's talk we learnt that **Species traits can help predict range variation in range shifts**.
+On the topic of Sunday's talk we learnt that **Species traits can help predict variation in range shifts**.
 
 Climate change ecology has made a natural progression from documenting range shifts to asking why different species vary in the rate of their range shift. Sunday spoke about large range size and omnivory as determinants of more rapid range shifts. She then backed up these findings with solid ecological theories that [provide new hypotheses for our field to test](http://onlinelibrary.wiley.com/doi/10.1111/ele.12474/full).
 
