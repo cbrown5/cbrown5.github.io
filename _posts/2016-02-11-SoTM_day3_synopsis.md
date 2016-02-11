@@ -12,7 +12,7 @@ published: true
 
 I am trying a new experiment today - posting the synopsis as I create it. Let me know if it works or not for you!
 
-
+So this is a work in progress...
 
 [Nathalie Pettorelli](https://twitter.com/Pettorelli) answered Possingham's challenge from [day 2](http://www.seascapemodels.org/res_posts/2016/02/11/SoTM_day2_synopsis.html) that we need to study and model Change, not just Climate Change.
 
@@ -27,3 +27,15 @@ Thanks to the Species on the Move Sponsors for supporting an exceptional confere
 
 
 ## Telling the story of climate change
+
+
+
+
+
+
+
+
+
+
+
+...
