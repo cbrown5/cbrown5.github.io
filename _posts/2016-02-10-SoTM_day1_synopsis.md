@@ -8,6 +8,8 @@ published: true
 
 ### Species on the Move - Day 1 synopsis
 
+*10 February 2016, Hobart Tasmania*
+
 This is my take on some of the highlights and main themes from day one of the Species on the Move conference, in Hobart.
 
 <div class = "image_caption">
@@ -23,7 +25,7 @@ It is striking that the ecological effects of climate change are now a personal 
 
 Emma Lee, a Tasmanian Aborigine, gave a passionate talk about how her cultural history in the form of 'living sites' or middens was literally being washed away by sea level rise. For a culture that has already lost so much, the further loss of some of their last remaining cultural sites, dating back thousands of years, is devastating. She spoke about the power of science as an outlet to help Aboriginal people tell their story about change over 10 000 years of life in Tasmania. Science can also help  uncover some of the lost history of Aboriginals, before it is washed away.
 
-Tero Mustonen spoke about the contribution of indigenous people in Finland to science, through their monitoring of species range shifts and permaforst melting.
+Tero Mustonen spoke about the contribution of indigenous people in Finland to science, through their monitoring of species range shifts and permaforst melting. Locally, in Tasmania Ingrid Van Putten showed that fishers are already attributing the changes they see in fisheries to climate change, well [some of them](https://icesjms.oxfordjournals.org/content/early/2015/11/09/icesjms.fsv192.full). Which ones they choose to attribute to climate change can be predicted by cognitive biases. 
 
 From these talks I learnt that **science has an important role to play in helping people communicate their stories and comprehend change.**
 
@@ -62,6 +64,6 @@ Other talks also pointed to the role of species traits in determing rates of ran
 
 Morgan Tingley gave us five issues we should consider when comparing [historical and resurvey data](http://www.cell.com/trends/ecology-evolution/abstract/S0169-5347%2809%2900200-6?_returnURL=http%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0169534709002006%3Fshowall%3Dtrue). He advised caution in interpreting historical data and pointed to the need to thoroughly know your data and check its source. His suggestions included 'repeat repeat repeat' - that you should repeat occupancy surveys so you can calculate detection rates of your species and in doing so separate false absences of a species from true extirpations.
 
-We also heard about the **mechanisms of leading edge shifts**. Mike Kearney in his plenary spoke about a new R package [NicheMapR](https://github.com/mrke/NicheMapR) which promises to change the way we do species distribution models from statistical to mechanistic. Dave Schoeman spoke about temperature controls on the leading edge of ghost crabs the 'ideal' study species for climate range shifts. Finally, Cascade Sorte talked resolving the effect of ocean currents on range shifts. 
+We also heard about the **mechanisms of leading edge shifts**. Mike Kearney in his plenary spoke about a new R package [NicheMapR](https://github.com/mrke/NicheMapR) which promises to change the way we do species distribution models from statistical to mechanistic. Dave Schoeman spoke about temperature controls on the leading edge of ghost crabs the 'ideal' study species for climate range shifts. Finally, Cascade Sorte talked resolving the effect of ocean currents on range shifts.
 
 That is all I have time to write. I wish I could say more. Before you finish, don't forget to vote on the [video competition](http://www.thinkable.org/vote_competitions/Species-on-the-Move-Video-Awards)!
