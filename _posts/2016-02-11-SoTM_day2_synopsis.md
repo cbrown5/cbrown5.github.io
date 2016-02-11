@@ -6,7 +6,7 @@ published: true
 ---
 
 
-### Species on the Move - Day 2 synopsis
+### Species on the Move Conference: A synopsis of day 2 
 
 *11 February 2016, Hobart Tasmania*
 
