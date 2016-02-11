@@ -10,7 +10,7 @@ published: true
 
 *10 February 2016, Hobart Tasmania*
 
-This is my take on some of the highlights and main themes from day one of the Species on the Move conference, in Hobart.
+This is my take on some of the highlights and main themes from day one of the Species on the Move conference, in Hobart. See also the [day 2 synopsis](http://www.seascapemodels.org/res_posts/2016/02/11/SoTM_day2_synopsis.html)
 
 <div class = "image_caption">
 <img src ="/Images/pecl-laments.png" alt="tweet" class="image_float"/>
@@ -25,7 +25,7 @@ It is striking that the ecological effects of climate change are now a personal 
 
 Emma Lee, a Tasmanian Aborigine, gave a passionate talk about how her cultural history in the form of 'living sites' or middens was literally being washed away by sea level rise. For a culture that has already lost so much, the further loss of some of their last remaining cultural sites, dating back thousands of years, is devastating. She spoke about the power of science as an outlet to help Aboriginal people tell their story about change over 10 000 years of life in Tasmania. Science can also help  uncover some of the lost history of Aboriginals, before it is washed away.
 
-Tero Mustonen spoke about the contribution of indigenous people in Finland to science, through their monitoring of species range shifts and permaforst melting. Locally, in Tasmania Ingrid Van Putten showed that fishers are already attributing the changes they see in fisheries to climate change, well [some of them](https://icesjms.oxfordjournals.org/content/early/2015/11/09/icesjms.fsv192.full). Which ones they choose to attribute to climate change can be predicted by cognitive biases. 
+Tero Mustonen spoke about the contribution of indigenous people in Finland to science, through their monitoring of species range shifts and permaforst melting. Locally, in Tasmania Ingrid Van Putten showed that fishers are already attributing the changes they see in fisheries to climate change, well [some of them](https://icesjms.oxfordjournals.org/content/early/2015/11/09/icesjms.fsv192.full). Which ones they choose to attribute to climate change can be predicted by cognitive biases.
 
 From these talks I learnt that **science has an important role to play in helping people communicate their stories and comprehend change.**
 
