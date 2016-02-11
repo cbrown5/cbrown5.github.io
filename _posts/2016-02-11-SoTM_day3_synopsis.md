@@ -18,7 +18,7 @@ You can read the complete [day 1](http://www.seascapemodels.org/res_posts/2016/0
 
 
 <div class = "image_caption">
-<img src ="https://pbs.twimg.com/media/Ca9zi8SUMAAsHf1.jpg:large" alt="media interest" class="image_float"/>
+<img src ="/Images/sotm-sponsors.png" alt="media interest" class="image_float"/>
 <p>
 Thanks to the Species on the Move Sponsors for supporting an exceptional conference. Via [Gretta Pecl](https://twitter.com/GrettaPecl)
 </p>
