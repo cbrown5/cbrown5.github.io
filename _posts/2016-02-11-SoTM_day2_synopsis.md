@@ -6,7 +6,7 @@ published: true
 ---
 
 
-### Species on the Move Conference: A synopsis of day 2 
+### Species on the Move Conference: A synopsis of day 2
 
 *11 February 2016, Hobart Tasmania*
 
@@ -45,7 +45,7 @@ Tracy Rout's work was a great introduction to decision science for assisted colo
 
 Joshua Lawler showed how we can include climate change in [cost-effective priorities for reserve placement](http://onlinelibrary.wiley.com/doi/10.1111/j.1461-0248.2012.01847.x/full). I won't say more because I think this work is yet to be published.
 
-On a positive note Timothy Bonebrake predicts that the recovery of an endangered spoonbill will be slowed, but not reversed, by climate change. His talked also weaved in his work on  [plant conservation](http://onlinelibrary.wiley.com/doi/10.1111/cobi.12253/abstract?userIsAuthenticated=false&deniedAccessCustomisedMessage=) under climate change.
+On a positive note [Timothy Bonebrake](https://twitter.com/bonebraking) predicts that the recovery of an endangered spoonbill will be slowed, but not reversed, by climate change. His talked also weaved in his work on  [plant conservation](http://onlinelibrary.wiley.com/doi/10.1111/cobi.12253/abstract?userIsAuthenticated=false&deniedAccessCustomisedMessage=) under climate change.
 
 Fishing industries will also be affected by range shifts. Eva Plaganyi argued that models can help us 're-write history' so we can learn more from past management mistakes. She showed an application to range in lobster in South Africa, which is impacting on [valuable abalone fisheries](http://www.sciencedirect.com/science/article/pii/S0304380013005401). Her protege Viv Tulloch, is working on similar models to predict the future recovery (or not) of southern ocean whales.  
 
