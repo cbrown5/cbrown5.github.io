@@ -32,8 +32,7 @@ A series of recent fires in southern Australia is driving a state change away fr
 
 Train managers to respond to short-term climate variability, to improve their skill in decision making for long-term change argued Alistair Hobday. His work on [identifying seasonal tuna habitat](http://www.nrcresearchpress.com/doi/abs/10.1139/f2011-031) to help avoid bycatch species, has been used in an increasingly sophisticated way over time as managers become more familiar with the model predictions.  
 
-The prolific tweeter [David Watson](https://twitter.com/D0CT0R_Dave) spoke on linking efforts to improve landscape connectivity for conservation and ecological monitoring two large areas of ecological research that are rarely linked. 
-
+The prolific tweeter [David Watson](https://twitter.com/D0CT0R_Dave) spoke on linking efforts to improve landscape connectivity for conservation and ecological monitoring two large areas of ecological research that are rarely linked. 'Connectivity conservation' is becoming increasingly popular with stakeholders and scientists need to be providing rigorous methods for monitoring their effectiveness.  
 
 **Multiple stressors and climate change**
 
