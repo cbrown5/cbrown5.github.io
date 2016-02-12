@@ -26,18 +26,21 @@ Thanks to the Species on the Move Sponsors for supporting an exceptional confere
 
 **Climate change impacts are happening now and managers are already responding to them**  
 
-Talks today and throughout the conference have highlighted that climate-driven change in ecosystems is already under way. Today we saw a couple of talks showing that while many scientists debate the suitability of management actions like assisted migration, managers are already making decisions.
+Talks today and throughout the conference have highlighted that climate-driven change in ecosystems is already under way. Today we saw a few talks showing that while many scientists debate the suitability of management actions like assisted migration, managers are already making decisions.
 
 A series of recent fires in southern Australia is driving a state change away from ash forests explained David Bowman. This ["Interval squeeze"](http://onlinelibrary.wiley.com/doi/10.1890/140231/full) of more frequent fires combined with slower plant growth will squeeze out some tree species and they can't just migrate up mountains. Bowman gave an example of two rapid fires were two successional fires caused a state change, because after the second fire there are no seeds for forest recovery and the *Eucalyptus* species has poor seed dispersal. The third fire locked in a state change. Managers had to make a rapid decision in just a few weeks over what to do. They spread seed during the key season and have probably [reversed the state shift](http://www.sciencedirect.com/science/article/pii/S0378112715000109).
 
-Train managers to respond to short-term climate variability, to improve their skill in decision making for long-term change argued Alistair Hobday. His work on [identifying seasonal tuna habitat,](http://www.nrcresearchpress.com/doi/abs/10.1139/f2011-031) to help avoid bycatch species, has been used in an increasingly sophisticated way over time as managers become more familiar with the model predictions.
+Train managers to respond to short-term climate variability, to improve their skill in decision making for long-term change argued Alistair Hobday. His work on [identifying seasonal tuna habitat](http://www.nrcresearchpress.com/doi/abs/10.1139/f2011-031) to help avoid bycatch species, has been used in an increasingly sophisticated way over time as managers become more familiar with the model predictions.  
+
+The prolific tweeter [David Watson](https://twitter.com/D0CT0R_Dave) spoke on linking efforts to improve landscape connectivity for conservation and ecological monitoring two large areas of ecological research that are rarely linked. 
+
 
 **Multiple stressors and climate change**
 
 [Nathalie Pettorelli](https://twitter.com/Pettorelli) answered Possingham's challenge from [day 2](http://www.seascapemodels.org/res_posts/2016/02/11/SoTM_day2_synopsis.html) that we need to study and model Change, not just Climate Change. She is using satellites to detect human impacts that may interact with climate change to drive biodiversity loss, for instance [in desert ecosystems](http://onlinelibrary.wiley.com/doi/10.1002/rse2.5/full).  
 
 Tim Clark is doing exciting experimental work to look at the interactive effect of warming and fishing on coral trout mortality. I won't say more because I think it is in prep, but a hint, he has his [finger on the pulse of fish](http://ajpregu.physiology.org/content/295/5/R1631.short) to learn how they respond to warming and fishing stress.    
-The right models and data are of course key when predicting the effects of multipe-stressors. Lucy Robinson is modelling the distribution of toothfish, to better understand fishing impacts. She found correcting for sampling bias in distribution modelling of toothfish it makes a big difference to the predicted effect of temperature on the species.   
+The right models and data are of course key when predicting the effects of multipe-stressors. Lucy Robinson is modelling the distribution of toothfish, to better understand fishing impacts. She found correcting for sampling bias in distribution modelling of toothfish makes a big difference to the predicted effect of temperature on the species.   
 
 A range shift in a lobster on the south-west coast of Africa is driving an [ecosystem regime shift](http://www.sciencedirect.com/science/article/pii/S092479631400311X) on rocky reefs and impacting abalone fisheries, Laura Blamey explained. But an interaction with historical overfishing is also contributing. She used models to ['rewrite history' (Plaganyi day 2)](http://www.seascapemodels.org/res_posts/2016/02/11/SoTM_day2_synopsis.html) and found if predatory fish hadn't been overfished, [this regmie shift may not have happened](http://www.sciencedirect.com/science/article/pii/S0304380013005401).  
 
