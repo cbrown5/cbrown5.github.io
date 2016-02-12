@@ -10,10 +10,6 @@ published: true
 
 *12 February 2016, Hobart Tasmania*
 
-I am trying a new experiment today - posting the synopsis as I create it. Let me know if it works or not for you!
-
-So this is a work in progress...
-
 You can read the complete [day 1](http://www.seascapemodels.org/res_posts/2016/02/10/SoTM_day1_synopsis.html) and [day 2](http://www.seascapemodels.org/res_posts/2016/02/11/SoTM_day2_synopsis.html) synopses.  
 
 
@@ -54,6 +50,8 @@ At a global scale, Jorge Molinos used the velocity of climate change to predict 
 Ivana Matejickova from Czech Republic is finding a native freshwater fish changes to herbivory at high temperatures. Big implications here - the ecological function of species, which we often assume is constant, changes with warming.  
 
 Climate-driven invasions can lead to the creation of novel ecosystems, the topic of Richard Hobbs' talk. The invaders can bring new ecological interactions to an ecosystem, changing the way it functions. Research on climate invasions can learn much from invasion ecology. We don't have a manual yet for [managing novel ecosystems](http://www.sciencedirect.com/science/article/pii/S0169534709002018) and species translocation, but Hobb's talk highlights that the status-quo isn't an option.  
+
+That's it for today. Check out [some lessons we learned](http://www.seascapemodels.org/res_posts/2016/02/11/SoTM_five_lessons.html) by way of a conference summary from me.
 
 
 

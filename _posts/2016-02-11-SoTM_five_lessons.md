@@ -28,11 +28,13 @@ Young researchers are doing some of the most exciting research in climate change
 
 ### 5. Climate change impacts and management responses are all about the time-scale
 
-Invasive species are just native species on a shorter timescale. Management also needs to consider time-scales, for instance training managers in the short-term change can help prepare them for longer-term change. 
+Invasive species are just native species on a shorter timescale. Management also needs to consider time-scales, for instance training managers in the short-term change can help prepare them for longer-term change.
 Thanks to [Nathalie Butt](https://www.researchgate.net/profile/Nathalie_Butt) for this one.   
 
 
+### 6. Mangers are already responding to climate change, even while scientists still argue what the appropriate responses are  
 
+Bowman's talk was a great example of a [rapid management response](http://www.sciencedirect.com/science/article/pii/S0378112715000109) to an extreme fire regime. As scientists, we need to make sure we are engaging with managers and helping them learn about how to respond to change.  
 
 
 
