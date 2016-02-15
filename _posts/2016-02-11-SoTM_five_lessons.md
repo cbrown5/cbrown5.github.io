@@ -10,12 +10,13 @@ published: true
 
 *10-12 February 2016, Hobart Tasmania*
 
-Check out the [conference webpage](http://www.speciesonthemove.com/provisional-program) and my synopses for more details:
-[day 1](http://www.seascapemodels.org/res_posts/2016/02/10/SoTM_day1_synopsis.html)  
+Check out the [conference webpage](http://www.speciesonthemove.com/provisional-program) and my synopses for more details:  
 
-[day2](http://www.seascapemodels.org/res_posts/2016/02/11/SoTM_day2_synopsis.html)  
+- [Day 1](/res_posts/2016/02/10/SoTM_day1_synopsis.html)  
 
-[day3](http://www.seascapemodels.org/res_posts/2016/02/11/SoTM_day3_synopsis.html)   
+- [Day 2](/res_posts/2016/02/11/SoTM_day2_synopsis.html)  
+
+- [Day 3](/res_posts/2016/02/11/SoTM_day3_synopsis.html)   
 
 
 ### 1. Science tells a story and telling stories in itself is a suitable objective for science  

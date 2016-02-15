@@ -10,7 +10,7 @@ published: true
 
 *10 February 2016, Hobart Tasmania*
 
-This is my take on some of the highlights and main themes from day one of the Species on the Move conference, in Hobart. See also the [day 2 synopsis](http://www.seascapemodels.org/res_posts/2016/02/11/SoTM_day2_synopsis.html) and [day 3 synopsis](http://www.seascapemodels.org/res_posts/2016/02/11/SoTM_day3_synopsis.html). 
+This is my take on some of the highlights and main themes from day one of the Species on the Move conference, in Hobart. See also the [day 2 synopsis](/res_posts/2016/02/11/SoTM_day2_synopsis.html) and [day 3 synopsis](/res_posts/2016/02/11/SoTM_day3_synopsis.html) and [some lessons learned](/res_posts/2016/02/11/SoTM_five_lessons.html).
 
 <div class = "image_caption">
 <img src ="/Images/pecl-laments.png" alt="tweet" class="image_float"/>

@@ -10,7 +10,10 @@ published: true
 
 *11 February 2016, Hobart Tasmania*
 
-Here's my day two synopsis, covering a few big themes and some of the talks I saw. If you want to know more, check out the [book of abstracts](http://www.speciesonthemove.com/provisional-program). See also my [Day 1 synopsis](http://www.seascapemodels.org/res_posts/2016/02/10/SoTM_day1_synopsis.html) and [Michelle Neil's](https://twitter.com/michelle_neil) -  [storify](https://storify.com/michelle_neil/citscioz-conference-2015-day-1) of the tweets.
+Here's my day two synopsis, covering a few big themes and some of the talks I saw. If you want to know more, check out the [book of abstracts](http://www.speciesonthemove.com/provisional-program). See also my [Day 1 synopsis](/res_posts/2016/02/10/SoTM_day1_synopsis.html) and [Michelle Neil's](https://twitter.com/michelle_neil) -  [storify](https://storify.com/michelle_neil/citscioz-conference-2015-day-1) of the tweets.
+Here is a summary of [some key things I learnt](/res_posts/2016/02/11/SoTM_five_lessons.html).
+
+
 
 Two big themes emerging today were  
 **Conservation decisions in a changing climate** - We want to know when to translocate species, if we even should translocate them, where we should be putting protected areas to capture climate migrants, how to assist climate-driven migrations, and what to do about other human impacts like harvesting; and  

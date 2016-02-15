@@ -10,9 +10,9 @@ published: true
 
 *12 February 2016, Hobart Tasmania*
 
-You can read the complete [day 1](http://www.seascapemodels.org/res_posts/2016/02/10/SoTM_day1_synopsis.html) and [day 2](http://www.seascapemodels.org/res_posts/2016/02/11/SoTM_day2_synopsis.html) synopses.  
+You can read the complete [day 1](/res_posts/2016/02/10/SoTM_day1_synopsis.html) and [day 2](/res_posts/2016/02/11/SoTM_day2_synopsis.html) synopses.  
 
-Also a summary of [some key things I learnt](http://www.seascapemodels.org/res_posts/2016/02/11/SoTM_five_lessons.html). 
+Also a summary of [some key things I learnt](/res_posts/2016/02/11/SoTM_five_lessons.html).
 
 <div class = "image_caption">
 <a href="http://www.speciesonthemove.com/sponsors"><img src ="/Images/sotm-sponsors.png" alt="media interest" class="image_float"/></a>
