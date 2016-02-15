@@ -1,7 +1,7 @@
 ---
 layout: md_layout
 category: res_posts
-title: "Species on the Move - Day 3 synopsis in prep"
+title: "Species on the Move - Day 3 synopsis"
 published: true  
 ---
 
@@ -12,6 +12,7 @@ published: true
 
 You can read the complete [day 1](http://www.seascapemodels.org/res_posts/2016/02/10/SoTM_day1_synopsis.html) and [day 2](http://www.seascapemodels.org/res_posts/2016/02/11/SoTM_day2_synopsis.html) synopses.  
 
+Also a summary of [some key things I learnt](http://www.seascapemodels.org/res_posts/2016/02/11/SoTM_five_lessons.html). 
 
 <div class = "image_caption">
 <a href="http://www.speciesonthemove.com/sponsors"><img src ="/Images/sotm-sponsors.png" alt="media interest" class="image_float"/></a>
