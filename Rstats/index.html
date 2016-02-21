@@ -16,6 +16,7 @@ title: Code
 
 <div id="page_text">
 <h2> R-stats Code </h2>
+<h3> Skip to the <a href="/Rstats/index.html#blog">Coding Blog</a> </h3>
 <p>
 This is my blog for programming in R-stats (and occasionally other languages).
 I am interested in mapping, GIS, simulation modelling, statistics, optimization and visualisation, mainly for
@@ -99,12 +100,13 @@ a geo-statistical expert and a gun programmer. I am trying to make the jump
 <p>More code (including this webpage) is on my <a href="https://github.com/cbrown5" target="_blank"> Github</a> page.
 </div>
 
-<div class="posts">
+<div class="posts" id="blog">
 <h2 class="posts_header"> Coding blog </h2>
 <ul class="postlist">
   {% for post in site.posts %}
     {% if post.categories contains 'rstats' %}
       <li>
+          {{ post.date | date: "%d-%b-%Y" }}
         <a href="{{ post.url }}">{{ post.title }}</a>
       </li>
     {% endif %}

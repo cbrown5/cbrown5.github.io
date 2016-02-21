@@ -115,14 +115,16 @@ figures are transparent*/
    background-color: white;
 }
 
+#blog{}
+
 ul.postlist{
   font-size:100%;
-  list-style-type: number;
+  list-style-type: circle;
 }
 
 ul.postlist_main{
   font-size:100%;
-  list-style-type: number;
+  list-style-type: circle;
 }
 
 .reference{
@@ -365,7 +367,6 @@ li.menu_item{
 
 li.menu_item a:hover{
    display: inline;
-   background-color: #e8caa8;
    color:#f6561b;
    padding: 5px;
    margin: 1px;

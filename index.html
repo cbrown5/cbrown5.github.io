@@ -110,9 +110,10 @@ My teaching resources are on this site and are <a href="/Rstats/">open-access</a
 <ul class="postlist_main">
   {% for post in site.posts limit:10 %}
     {% if post.categories contains 'res_posts' %}
-     <li>
-       <a href="{{ post.url }}">{{ post.title }}</a>
-     </li>
+         <li>
+       {{ post.date | date: "%d-%b-%Y" }}<a href="{{ post.url }}">
+           {{ post.title }}</a>
+       </li>
        {% endif %}
   {% endfor %}
 </ul>
@@ -124,6 +125,7 @@ My teaching resources are on this site and are <a href="/Rstats/">open-access</a
   {% for post in site.posts limit:10 %}
   {% if post.categories contains 'rstats' %}
      <li>
+       {{ post.date | date: "%d-%b-%Y" }}
        <a href="{{ post.url }}">{{ post.title }}</a>
      </li>
      {% endif %}

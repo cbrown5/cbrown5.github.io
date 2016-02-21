@@ -114,12 +114,14 @@ figures are transparent*/
 
 ul.postlist{
   font-size:100%;
-  list-style-type: number;
+  list-style-type: circle;
 }
+
+#blog{}
 
 ul.postlist_main{
   font-size:100%;
-  list-style-type: number;
+  list-style-type: circle;
 }
 
 
