@@ -46,7 +46,7 @@ Abundance vs. occurrence measurements were important because they measure differ
 <div class = "image_caption">
 <img src ="/Images/abundance-measure.png" alt="abundances" class="image_float"/>
 <p>
-Abundance and occurrence surveys measure different rates of range shift because they measure different ecological proceses </a>
+Abundance and occurrence surveys measure different rates of range shift because they measure different ecological processes </a>
 </p>
 </div>
 
