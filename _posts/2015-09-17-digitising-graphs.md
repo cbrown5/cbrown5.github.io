@@ -1,6 +1,6 @@
 ---
 layout: md_layout
-categories: rstats rspatial
+category: Rstats Rspatial
 title: "Digitising graphs with R"
 published: true  
 ---

@@ -1,5 +1,5 @@
 ---
-categories: rstats rspatial
+category: Rstats Rspatial
 title: "Making continuous colour palettes with RColorBrewer"
 ---
 
@@ -16,15 +16,15 @@ title: "Making continuous colour palettes with RColorBrewer"
 
 <div id="page_text">
   <h2>Making continuous colour palettes with RColorBrewer</h2>
-<p>The <code>RColorBrewer</code> package makes choosing colours for your graphs easy. 
+<p>The <code>RColorBrewer</code> package makes choosing colours for your graphs easy.
 If you follow the link on the help page for the handy <code>brewer.pal</code> function,
- you can get to a web app that lets you choose the type of palette (linear, diverging, qualitative), 
- the number of colours and other options, like palettes that will be visable to people who are red-green colour 
- blind (about 4% of the population).<br />This all extremely useful, but <code>RColorBrewer</code> 
+ you can get to a web app that lets you choose the type of palette (linear, diverging, qualitative),
+ the number of colours and other options, like palettes that will be visable to people who are red-green colour
+ blind (about 4% of the population).<br />This all extremely useful, but <code>RColorBrewer</code>
  palettes are generally limited to a maximum of 10 different colours. What if you want to have a continuous scale?
   Here I run through how to make a colour ramp from a Brewer palette.<br />Note though, that
-   the designers of <code>RColorBrewer</code> limited the number of colours as a deliberate choice. 
-   The colour palettes are mainly designed for maps, and in general, people can't keep more than about 7 
+   the designers of <code>RColorBrewer</code> limited the number of colours as a deliberate choice.
+   The colour palettes are mainly designed for maps, and in general, people can't keep more than about 7
    categories in their head at any one time. Hence, before you create your figure, think about how you want to represent on your figure. For instance, say you are plotting elevation. Choosing a few colours will emphasis zones in elevation, for instance, maybe you want to represent different vegetation zones that change with altitude. Whereas, a continuous palette will obviously represent the data as more of a gradient.</p>
 <div id="colour-brewer-categorical-colours" class="section level3">
 <h3>Colour Brewer categorical colours</h3>

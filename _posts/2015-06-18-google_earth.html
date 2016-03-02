@@ -1,5 +1,5 @@
 ---
-categories: rstats rspatial
+category: Rstats Rspatial
 title: "Making maps on Google Earth with R"
 ---
 
@@ -18,16 +18,16 @@ title: "Making maps on Google Earth with R"
   <h2>Making google maps</h2>
 <p><img class = "image_float" src ="/Images/google_seagrass.png" alt="Banner Image"/></p>
   <p>One of the fun things you can do with maps in R is make rasters and shapes that
-   plot on Google Earth. All you really need to do is convert your spatial data to lon-lat 
-   coordinates then use one of the KML packages to save the layer as a KML, which can then 
-   be viewed in Google Earth. Here is a screen shot of an example from data in my 
+   plot on Google Earth. All you really need to do is convert your spatial data to lon-lat
+   coordinates then use one of the KML packages to save the layer as a KML, which can then
+   be viewed in Google Earth. Here is a screen shot of an example from data in my
    <a href="https://sites.google.com/site/seascapemodelling/home/r-code/r-spatial">
    R spatial course</a>.</p>
 
 <p>Here is how to do it for a raster.
 Here we export the seagrass raster data (<a href="">available here</a>)
  from my R Spatial Course as KML. You will need the <code class="inline">plotKML</code>
-  <a href="http://cran.r-project.org/web/packages/plotKML/index.html">package</a> 
+  <a href="http://cran.r-project.org/web/packages/plotKML/index.html">package</a>
   and its dependencies.</p>
 <h3>First up load the data</h3>
 <pre class="r image_under">

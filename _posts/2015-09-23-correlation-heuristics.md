@@ -1,6 +1,6 @@
 ---
 layout: md_layout
-category: res_posts
+category: Research
 title: "How statistics help us get causation right"
 published: true  
 ---
@@ -43,4 +43,4 @@ The mental regression technique works like this:
 
 First estimate the average number of birds you might count on any day, say 20. Then determine your best guess based on intuition, the number you would expect based on it being very hot. Now guess the correlation between temperature and birds, say 40%. Finally, move 40% of the way from the average abundance toward your first best guess.
 
-We can avoid the pitfalls of our mental heuristics if we use techniques like mental regression. When we can collect data, statistics provides us with the tools to find hidden patterns and avoid the pitfalls of intuitive thinking. Science, and the advancement of knowledge depends on robust statistics. To paraphrase the old adage: Correlation isn't always causation, but chance events aren't even correlation. 
+We can avoid the pitfalls of our mental heuristics if we use techniques like mental regression. When we can collect data, statistics provides us with the tools to find hidden patterns and avoid the pitfalls of intuitive thinking. Science, and the advancement of knowledge depends on robust statistics. To paraphrase the old adage: Correlation isn't always causation, but chance events aren't even correlation.

@@ -16,7 +16,7 @@ title: Research
 <h2> Research </h2>
 
 <div id="Research">
-<h3> Read the <a href="/Research/index.html#blog">Seascape Models Blog</a> </h3>
+<h3> Read the <a href="/bluecology_blog/index.html">Bluecology Blog</a> </h3>
 <h3> Fisheries and conservation </h3>
 <p>
 The global biodiversity crisis requires new science and approaches for sustainable
@@ -61,10 +61,10 @@ Read more about publications on conservation, fisheries and climate change
 </div>
 
 <div class="posts" id="blog">
-<h2 class="posts_header"> Seacape Models Blog </h2>
+<h2 class="posts_header"> Bluecology Blog </h2>
 <ul class="postlist">
   {% for post in site.posts %}
-    {% if post.categories contains 'res_posts' %}
+    {% if post.category contains 'Research' or  post.category contains 'res_posts' %}
       <li>
           {{ post.date | date: "%d-%b-%Y" }}
         <a href="{{ post.url }}">{{ post.title }}</a>

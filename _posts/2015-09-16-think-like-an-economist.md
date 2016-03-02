@@ -1,6 +1,6 @@
 ---
 layout: md_layout
-category: res_posts
+category: Research
 title: "How to think like an economist"
 published: true  
 ---
@@ -13,7 +13,7 @@ Writing about money is difficult, particularly if like me, you were trained in t
 <div class = "image_caption">
 <img src ="/Images/forest.png" alt="Banner Image" class="image_float"/>
 <p>
-Healthy ecosystems can bring benefits to people and economies, as well as biodiversity 
+Healthy ecosystems can bring benefits to people and economies, as well as biodiversity
 </p>
 </div>
 

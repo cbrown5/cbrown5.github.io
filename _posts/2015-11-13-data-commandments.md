@@ -1,6 +1,6 @@
 ---
 layout: md_layout
-categories: rstats rspatial
+category: Rstats Rspatial
 title: "Commandments for entering data to use in R"
 published: true  
 ---

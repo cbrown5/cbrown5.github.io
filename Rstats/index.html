@@ -87,7 +87,7 @@ a geo-statistical expert and a gun programmer. I am trying to make the jump
 <div class = "image_projpage">
 <h3 class = "clickablediv"> Ten commandments for R data entry </h3>
 <img src="https://developer.r-project.org/Logo/Rlogo-3.png" class="med_image">
-<a href="/rstats/rspatial/2015/11/13/data-commandments.html">
+<a href="/rstats rspatial/2015/11/13/data-commandments.html">
    <span class="emptyspan"></span>
 </a>
 </div>
@@ -104,7 +104,7 @@ a geo-statistical expert and a gun programmer. I am trying to make the jump
 <h2 class="posts_header"> Coding blog </h2>
 <ul class="postlist">
   {% for post in site.posts %}
-    {% if post.categories contains 'rstats' %}
+    {% if post.category contains 'Rstats' or post.category contains 'rstats'%}
       <li>
           {{ post.date | date: "%d-%b-%Y" }}
         <a href="{{ post.url }}">{{ post.title }}</a>

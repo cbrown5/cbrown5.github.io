@@ -457,7 +457,7 @@ Layout for home page
    border-color: #6176A0;
 }
 
-.posts, .posts_main{
+.posts, .posts_main, .posts_blog{
    clear:both;
    text-align:left;
    margin-top:50px;
@@ -467,6 +467,11 @@ Layout for home page
    border-radius:20px;
 
 }
+
+.posts_blog{
+    border-style:none;
+}
+
 
 .posts_main{
     width:80%;

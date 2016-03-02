@@ -109,7 +109,7 @@ My teaching resources are on this site and are <a href="/Rstats/">open-access</a
 <h2 class="posts_header"> Research blog </h2>
 <ul class="postlist_main">
   {% for post in site.posts limit:10 %}
-    {% if post.categories contains 'res_posts' %}
+    {% if post.categories contains 'Research' %}
          <li>
        {{ post.date | date: "%d-%b-%Y" }}<a href="{{ post.url }}">
            {{ post.title }}</a>
@@ -123,7 +123,7 @@ My teaching resources are on this site and are <a href="/Rstats/">open-access</a
 <h2 class="posts_header"> Coding blog </h2>
 <ul class="postlist_main">
   {% for post in site.posts limit:10 %}
-  {% if post.categories contains 'rstats' %}
+  {% if post.categories contains 'Rstats' %}
      <li>
        {{ post.date | date: "%d-%b-%Y" }}
        <a href="{{ post.url }}">{{ post.title }}</a>

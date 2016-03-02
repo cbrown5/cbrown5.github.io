@@ -1,6 +1,6 @@
 ---
 layout: md_layout
-category: res_posts
+category: Research
 title: "Are more marine protected areas needed to protect ocean biodiversity?"
 published: true  
 ---
