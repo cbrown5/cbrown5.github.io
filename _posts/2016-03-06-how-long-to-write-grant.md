@@ -11,7 +11,7 @@ During "grant season" (~Dec - March in Aus) you might find your colleagues bemoa
 
 But, I wondered how much time does it take to write for a national grant scheme. Since October I have been logging the hours I spend on different projects, like a consultant, in an effort to gain data on project time and improve my time-management. I added up the time I spent writing for an ARC grant, where I was lead author, and the answer surprised me:
 
-#### *69 hours and 30 minutes or nearly 12 full working days (at least)*  
+#### *69 hours and 30 minutes or nearly 12 full working days (at least^1^)*  
 
 <div class = "image_caption">
 <img src ="/Images/ARC_DP2017.png" alt="timebarchart" class="image_float"/>
@@ -42,3 +42,6 @@ The screen you see on completion of 12 days solid work </a>
 I will be interested to hear how much time other people ([tweet me](http://www.twitter.com/bluecology)) spend on grants and whether my numbers sound reasonable.  
 
 As a footnote, the message you get when you finally hit submit is rather disappointing (see image). Consider that it takes [~33 hours of climbing to ascend Everest from base camp](http://www.mounteverest.net/expguide/route.htm) and you will be rewarded with a view from the top of the world.  Or for a computing analogy, if you complete a computer game you are usually rewarded with a video and the solution to the game's story. It takes only about [13 hours](http://howlongtobeat.com/game.php?id=10025) to complete some of the best selling computer games. Obviously the final rewarded is receiving the grant and successfully investigating your ideas, but that is a highly uncertain outcome (~15% success rate for ARCs) that is years down the track. It would be nice if online grant submissions unlocked some kind congratulations page.  
+
+
+1. Note added 8/03/2016. I have discussed this post with several colleagues all of whom suggests it takes much longer than 70 hours to write a major grant. As I have not included time for reading and thinking in my estimate, it is likely that time would add considerably to the time taken to complete the grant.  
