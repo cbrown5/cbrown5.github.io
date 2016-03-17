@@ -1,6 +1,6 @@
 ---
 layout: md_layout
-category: Rstats Rspatial
+category: rstats rspatial
 title: "Commandments for entering data to use in R"
 published: true  
 ---
@@ -33,8 +33,8 @@ R will automatically detect the type of data. If all levels of a variable are nu
 ### 6. *Thou will use consistent naming styles across data-sets*  
 Someday you may want to join data together, for instance, data collected at the same sites across different studies. Keep the site names consistent.  
 
-### 7. *Thou will enter missing data as empty cells*  
-There is a big difference between data you didn't collect and data you tried to collect but went missing. So enter empty rows/cells for missing data, so this is recorded.
+### 7. *Thou will enter missing data*  
+There is a big difference between data you didn't collect and data you tried to collect but went missing. So be explicit about missing data by entering the missing rows where you tried to collect the data and using `NA` in the missing cells. It is better to use `NA` than just leave the cell blank, because R interprets `NA` as missing data. 
 
 ### 8. *Thou will use R for data-wrangling and keep neat data wrangling scripts*  
 Data-wrangling is the process of checking data for errors and formatting data so it can be used in analysis. If you do all the wrangling in R and keep the scripts, the process is totally repeatable. Then if someone wants to see how you changed the original data to check errors for instance, all the changes are recorded in a script.  
