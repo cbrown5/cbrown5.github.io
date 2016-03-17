@@ -49,6 +49,6 @@ For instance, if you have collected data over different dates and want to keep t
 ### 10. *Thou will make your code and data freely available once you have published*  
 R is an open-access resource, many people have invested much time in developing. To keep good karma, make your data and code open-access too (once you have written your publication of course and if ethics allow). Much scientific data is collected on public money, so it is quite reasonable that the public can access it!.
 
-*Footnote: I changed point 7 on 18-Mar 2016 to be explict that you should use `NA` for missing data. Thanks to Andrew Beckerman for suggesting this. I appreciate feedback on my blogs.* 
+*Footnote: I changed point 7 on 18-Mar 2016 to be explicit that you should use `NA` for missing data. Thanks to Andrew Beckerman for suggesting this. I appreciate feedback on my blogs, so feel free to get in touch if you have comments of your own. * 
 
 -------------  
