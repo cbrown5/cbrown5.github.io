@@ -30,7 +30,7 @@ There are a few ways to create good support networks, try some or all of these:
 
 - An email group is also helpful. R users can ask for help on their problems and share useful articles and advice they come across as they learn R. Of course the normal etiquette of group email lists applies.  
 
-- Organise regular meet-ups where R users come with their problems and a solution is crowd sourced. Ideally, some experienced R users will attend too. I have attended/organised several of these over the years and find they are great for my own knowledge. By participating and helping people new to R I get a greater exposure to the types of statistical problems ecologists need to solve. One of the most enjoyable R groups I have attended was the [Stats-Beerz group at Simon Fraser University](). They combine a casual R programming help session with craft beers (which I think proves that R is the language of choice for hipsters).  
+- Organise regular meet-ups where R users come with their problems and a solution is crowd sourced. Ideally, some experienced R users will attend too. I have attended/organised several of these over the years and find they are great for my own knowledge. By participating and helping people new to R I get a greater exposure to the types of statistical problems ecologists need to solve. One of the most enjoyable R groups I have attended was the Stats-Beerz group at Simon Fraser University. They combine a casual R programming help session with craft beers (which I think proves that R is the language of choice for hipsters).  
 
 #### 3. Focus training at the junior levels  
 
