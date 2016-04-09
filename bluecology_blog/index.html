@@ -8,32 +8,29 @@ title: blog
 
 {% include top_banner.html %}
 
-<div id="page_content">
-
 {% include nav_bar.html %}
 
 <div id="page_text">
-<h2> Bluecology blog </h2>
+<h2> Blog </h2>
 
-<p> Welcome to my blog on ecological science, being an academic and R programming. The categories indicate the type of post or visit the <a href ="/Research/index.html#blog"> Research </a> or <a href="/Rstats/index.html#blog"> Code </a> pages if you are interested in a specific topic. </p>
+<p> Welcome to my blog on ecological science, statistics, modelling and R programming. </p>
 
-<div class="posts_blog" id="blog">
-<ul class="postlist">
+<ul class="postlist_main">
   {% for post in site.posts %}
-      <li>
-          {{ post.date | date: "%d-%b-%Y" }}
-        <a href="{{ post.url }}">{{ post.title }}</a>
-        <p>Category: <em>{{post.category}}</em></p>
-      </li>
-
+    <div class = "posts_boxes">
+    <h3 class = "posts_dates"> {{ post.date | date: "%d %b %Y" }} </h3>
+    <h3 class = "posts_titles"> {{ post.title }} </h3>
+<p>Category: <em>{{post.category}}</em></p>
+    <a href="{{ post.url }}">
+       <span class="emptyspan"></span>
+    </a>
+    </div>
   {% endfor %}
 </ul>
-</div>
-</div>
 
-
-</div>
 {% include footer.html %}
+
+</div>
 
 </body>
 </html>

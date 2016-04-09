@@ -9,19 +9,20 @@ title: Code
 
 {% include top_banner.html %}
 
-<div id="page_content">
-
 {% include nav_bar.html %}
 
 
 <div id="page_text">
+
 <h2> R-stats Code </h2>
-<h3> Skip to the <a href="/Rstats/index.html#blog">Coding Blog</a> </h3>
+<p> Skip to: the
+    <a href="/Rstats/index.html#rstatsblog">Rstats Blog</a> or the
+    <a href="/Rstats/index.html#r_resources">R resources</a> </p>
+
 <p>
 This is my blog for programming in R-stats (and occasionally other languages).
 I am interested in mapping, GIS, simulation modelling, statistics, optimization and visualisation, mainly for
-the biological sciences, but many of the applications are general. I hope you find them
-useful.
+the biological sciences, but many of the applications are general.
 <div class = "image_caption">
 <img src ="/Images/vocc_world_map.jpg" alt="world map" class="image_float"/>
 <p>
@@ -34,26 +35,23 @@ An image of the <a href ="https://www.sciencemag.org/content/334/6056/652.abstra
 If you are interested in my courses feel free to download and share them. You are welcome
 to use them for your own teaching, and I would love to hear about it.
 If you would like me to come and teach one of these courses at your institution, then get
-in touch!
+in touch.
 </p>
 
 <p>
 Many people don't realise that the R programming can work as a fully functioning GIS. It has several powerful advantages
 over many other GIS programs: you can program scripts for complete automation, it is relatively fast,
-and it is free.
+and it is free.</p>
 <p>
 The downside is that it is not easy to get started, particularly if you are not simultaneously
 a geo-statistical expert and a gun programmer. I am trying to make the jump
  easier for ecologists by providing courses and helpful blog posts here. </p>
 
-<div class ="floatclear"></div>
-
-<div>
-<h3>  Free R resources </h3>
+<h2 id="r_resources">  R resources </h2>
 
 <div class = "image_projpage">
 <h3 class = "clickablediv"> Data Wrangling and Analysis in R for Marine Scientists (Nov 2015) </h3>
-<img src="/Images/shark.png" class="med_image">
+<img src="/Images/shark.png" class="box_image">
 <a href="/Rstats/R_data_analysis_course_30Oct15_.html">
    <span class="emptyspan"></span>
 </a>
@@ -62,7 +60,7 @@ a geo-statistical expert and a gun programmer. I am trying to make the jump
 
 <div class = "image_projpage">
 <h3 class = "clickablediv"> Data Wrangling in R (June 2015) </h3>
-<img src="/Images/google_seagrass.png" class="med_image">
+<img src="/Images/google_seagrass.png" class="box_image">
 <a href="{% post_url 2015-06-23-R_data_wrangling_course %}">
    <span class="emptyspan"></span>
 </a>
@@ -70,7 +68,7 @@ a geo-statistical expert and a gun programmer. I am trying to make the jump
 
 <div class = "image_projpage">
 <h3 class = "clickablediv"> Maps and GIS in R (June 2015) </h3>
-<img src="/Images/rcoursemap.png" class="med_image">
+<img src="/Images/rcoursemap.png" class="box_image">
 <a href="{% post_url 2015-06-22-R_Spatial_course %}">
    <span class="emptyspan"></span>
 </a>
@@ -78,7 +76,7 @@ a geo-statistical expert and a gun programmer. I am trying to make the jump
 
 <div class = "image_projpage">
 <h3 class = "clickablediv"> ARC GIS to R cheatsheet </h3>
-<img src="/Images/gischeatsheet.png" class="med_image">
+<img src="/Images/gischeatsheet.png" class="box_image">
 <a href="/data/ArcGIS_to_R_Spatial_CheatSheet.pdf">
    <span class="emptyspan"></span>
 </a>
@@ -86,35 +84,38 @@ a geo-statistical expert and a gun programmer. I am trying to make the jump
 
 <div class = "image_projpage">
 <h3 class = "clickablediv"> Ten commandments for R data entry </h3>
-<img src="https://developer.r-project.org/Logo/Rlogo-3.png" class="med_image">
+<img src="https://developer.r-project.org/Logo/Rlogo-3.png" class="box_image">
 <a href="/rstats rspatial/2015/11/13/data-commandments.html">
    <span class="emptyspan"></span>
 </a>
 </div>
 
-</div>
-
-
 <div class ="floatclear"></div>
 
 <p>More code (including this webpage) is on my <a href="https://github.com/cbrown5" target="_blank"> Github</a> page.
+</p>
+<br>
+
+<h2  id="rstatsblog"> Rstats Blog </h2>
+
+<div>
+    <ul class="postlist_main">
+      {% for post in site.posts %}
+      {% if post.category contains 'Rstats' or post.category contains 'rstats'%}
+        <div class = "posts_boxes">
+        <h3 class = "posts_dates"> {{ post.date | date: "%d %b %Y" }} </h3>
+        <h3 class = "posts_titles"> {{ post.title }} </h3>
+
+        <a href="{{ post.url }}">
+           <span class="emptyspan"></span>
+        </a>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </ul>
 </div>
 
-<div class="posts" id="blog">
-<h2 class="posts_header"> Coding blog </h2>
-<ul class="postlist">
-  {% for post in site.posts %}
-    {% if post.category contains 'Rstats' or post.category contains 'rstats'%}
-      <li>
-          {{ post.date | date: "%d-%b-%Y" }}
-        <a href="{{ post.url }}">{{ post.title }}</a>
-      </li>
-    {% endif %}
-  {% endfor %}
-</ul>
-</div>
-</div>
 {% include footer.html %}
-
+</div>
 </body>
 </html>

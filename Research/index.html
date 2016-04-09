@@ -8,16 +8,35 @@ title: Research
 
 {% include top_banner.html %}
 
-<div id="page_content">
-
 {% include nav_bar.html %}
 
 <div id="page_text">
-<h2> Research </h2>
+<h3> Research </h3>
 
-<div id="Research">
-<h3> Read my <a href="/Research/index.html#blog">Research Blog</a> </h3>
-<h3> Fisheries and conservation </h3>
+<p> I work on the conservation of marine ecosystems and sustainable management of <a href="/Research/index.html#fisheries_conservation">fisheries</a>.
+My work brings ecological complexity to the planning tools used to inform
+decision making. </p>
+<img src ="/Images/sweetlips.jpg" alt="fish" class="image_float"/>
+
+
+<p>I am also interested in the impacts of <a href="/Research/index.html#climate_change_ecology">climate change</a> to
+marine ecosystems.
+With a team of others, we have been
+synthesising the global impacts of climate change to marine ecosystems and predicting the
+implications of future change.</p>
+
+<p> If you are interested in doing a PhD on conservation, fisheries or seascape modelling, get in touch. </p>
+
+<h3> Tools </h3>
+<p> My research applies both mathematical models and statistical analysis. </p>
+<p> I specialise in integrating ecologically complex models with tools for informing decision makers.
+ I also work with large databases of the marine environment. </p>
+<p>I use the
+<a href="http://cran.r-project.org/" target="_blank">R programming language</a>
+and teach R to others.
+My teaching resources are on this site and are <a href="/Rstats/">open-access</a>. </p>
+
+<h3 id="fisheries_conservation"> Fisheries and conservation </h3>
 <p>
 The global biodiversity crisis requires new science and approaches for sustainable
 management of marine ecosystems. I have studied how fishing alters food-webs, <a href="http://onlinelibrary.wiley.com/doi/10.1111/cobi.12267/abstract?deniedAccessCustomisedMessage=&userIsAuthenticated=false">
@@ -30,13 +49,9 @@ and <a href="http://www.esajournals.org/doi/abs/10.1890/130296#articleToolsNext"
 functioning ecosystems. </a> My recent work has focussed on the use of marine reserves
 in the conservation of ecosystems and the trade-offs reserves create with fisheries.
 </p>
-<p>
-<img src ="/Images/sweetlips.jpg" alt="Banner Image" class="image_float"/>
-</p>
-</div>
 
-<div id="Modelling">
-<h3> Climate change ecology </h3>
+
+<h3 id="climate_change_ecology"> Climate change ecology </h3>
 
 <p>
 I am interested in how climate change has affected ocean ecosystems globally. We published
@@ -51,30 +66,15 @@ climate change. These include <a href="http://www.nature.com/nature/journal/v507
 species range-shifts </a> and the <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2486.2009.02046.x/abstract;jsessionid=8EE8C3C39395D4D3AF3DD245C86B2DF2.f02t04?deniedAccessCustomisedMessage=&userIsAuthenticated=false">
 responses of food-webs to productivity change. </a>
  </p>
-</div>
 
 <div id="Affiliation">
 <p class="large_font"> <a href="https://scholar.google.com.au/citations?user=1qG6yFMAAAAJ&hl=en">
-Read more about publications on conservation, fisheries and climate change
+Publications on conservation, fisheries and climate change
  </a></p>
 </div>
-</div>
-
-<div class="posts" id="blog">
-<h2 class="posts_header"> Bluecology Blog </h2>
-<ul class="postlist">
-  {% for post in site.posts %}
-    {% if post.category contains 'Research' or  post.category contains 'res_posts' %}
-      <li>
-          {{ post.date | date: "%d-%b-%Y" }}
-        <a href="{{ post.url }}">{{ post.title }}</a>
-      </li>
-    {% endif %}
-  {% endfor %}
-</ul>
-</div>
-</div>
 {% include footer.html %}
+
+</div>
 
 </body>
 </html>

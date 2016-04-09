@@ -15,54 +15,53 @@ Banner
 
 
 #banner_wrap{
-   position:absolute;
+   position:relative;
    top: 10px;
    left:10px;
    width:100%;
    height:auto;
    background-position: center;
    z-index:-1;
+   margin-bottom:20px;
 }
 
 #banner{
-   position: absolute;
+   position: relative;
    top: -10px;
    left: -20px;
-   width:100%;
-   height:200px;
-
 }
 
 #inner_banner{
-   position:absolute;
+   position:relative;
    top:10px;
-   left:20px;
-}
-
-img#banner{
-   width:110%;
-   height:auto;
-   max-height:200px;
 }
 
 
 h1 {
    font-size: 200%;
    text-align: left;
-   color: white;
+   color: black;
    position:relative;
-   top:-30px;
    left:20px;
    width:100%;
+   margin-bottom:5px;
 }
 
-p.banner_text {
+p.banner{
+    margin-top: 0px;
    font-size:100%;
-   position:relative;
    text-align:left;
-   color: white;
-   top:15px;
+   color:  #3399ff;
 }
+
+img.banner_image{
+    max-width: 20%;
+    float: right;
+    position:relative;
+    margin-right:30px;
+    top:-30px;
+}
+
 /*
 --------------
 Body
@@ -70,7 +69,7 @@ Body
 */
 
 body {
-   background-color: #D9F4FC;
+   background-color: white;
    font-size: 24px;
    margin:50px;
    max-width:960px;
@@ -102,24 +101,6 @@ ol.order_list{
    color: #142953;
 }
 
-
-#page_content {
-   background-color:#F9FDFF;
-   padding:20px;
-   border-radius: 45px;
-   position: relative;
-   top:170px;
-}
-
-/* Change background colour of pages with code to white because
-figures are transparent*/
-
-#page_content.codepage{
-   background-color: white;
-}
-
-#blog{}
-
 ul.postlist{
   font-size:100%;
   list-style-type: circle;
@@ -138,31 +119,6 @@ ul.postlist_main{
    font-style:italic;
 
 }
-
-/* Containers */
-.container {
-  width: 80%; }
-.column,
-.columns {
-  margin-left: 4%; }
-.column:first-child,
-.columns:first-child {
-  margin-left: 0; }
-
-.one.column,
-.one.columns                    { width: 4.66666666667%; }
-.two.columns                    { width: 13.3333333333%; }
-.three.columns                  { width: 22%;            }
-.four.columns                   { width: 30.6666666667%; }
-.five.columns                   { width: 39.3333333333%; }
-.six.columns                    { width: 48%;            }
-.seven.columns                  { width: 56.6666666667%; }
-.eight.columns                  { width: 65.3333333333%; }
-.nine.columns                   { width: 74.0%;          }
-.ten.columns                    { width: 82.6666666667%; }
-.eleven.columns                 { width: 91.3333333333%; }
-.twelve.columns                 { width: 100%; margin-left: 0; }
-
 
 /* Code */
 
@@ -302,10 +258,18 @@ Clickable div
 --------------
 */
 
-h3.clickablediv{
-    color:#142953;
+h3.posts_dates{
+    color:#FFFFFF;
+    background-color: #C0C0C0;
+    width: 30%;
     line-height:25px;
     font-size: 90%;
+}
+
+h3.posts_titles{
+    color:#142953;
+    line-height:25px;
+    font-size: 110%;
 }
 
 .emptyspan{
@@ -318,6 +282,24 @@ h3.clickablediv{
   z-index: 1;
 }
 
+div.posts_boxes{
+    max-width:95%;
+    width:auto;
+     padding:10px;
+     font-size:90%;
+     border-style: solid;
+     position:relative;
+     margin:2px;
+     border-width: 1px;
+     border-color: #D3D3D3;
+     background: #ECFAFE;
+     line-height: 5px;
+    background-image: -webkit-linear-gradient(top, #FFFFFF, #e6f2ff);
+    background-image: -moz-linear-gradient(top, #FFFFFF, #e6f2ff);
+    background-image: -ms-linear-gradient(top, #FFFFFF, #e6f2ff);
+    background-image: -o-linear-gradient(top, #FFFFFF, #e6f2ff);
+    background-image: linear-gradient(to bottom, #FFFFFF, #e6f2ff);
+}
 
 div.image_projpage{
     width:250px;
@@ -336,6 +318,14 @@ div.image_projpage{
      background-image: -ms-linear-gradient(top, #FFFFFF, #e7f8fd);
      background-image: -o-linear-gradient(top, #FFFFFF, #e7f8fd);
      background-image: linear-gradient(to bottom, #FFFFFF, #e7f8fd);
+}
+
+div:hover.posts_boxes{
+    border-color:  #f6561b;
+}
+
+img.box_image{
+    max-width: 150px;
 }
 
 div.floatclear{
@@ -392,26 +382,13 @@ Footer
    margin-bottom:50px;
    font-size:90%;
    position:relative;
-   top:170px;
+   top:50px;
    text-align: center;
 }
 
 #footer_text{
   position:relative;
   top:15px;
-  margin-bottom: 30px;
-}
-
-/*
---------------
-Logo
---------------
-*/
-
-img.rasterfish {
-   float: right;
-   position:relative;
-   top:-50px;
 }
 
 
@@ -449,14 +426,14 @@ Layout for home page
 #Affiliation {
    clear:both;
    line-height:15px;
-   height:100%;
    width:95%;
    padding-left:20px;
    padding-right:0;
    margin-right:0;
    border-right:0;
    border-top:solid;
-   margin-top:100px;
+   margin-top:5px;
+   margin-bottom:5px;
    border-color: #6176A0;
 }
 

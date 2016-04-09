@@ -12,7 +12,7 @@ Banner
 
 
 #banner_wrap{
-   position:absolute;
+   position:relative;
    top: 10px;
    left:10px;
    width:100%;
@@ -22,38 +22,40 @@ Banner
 }
 
 #banner{
-   position: absolute;
+   position: relative;
    top: -10px;
    left: -20px;
 }
 
-img#banner{
-   max-width:980px;
-   width:100%;
-   height:100px;
-}
 
 #inner_banner{
-   position:absolute;
-   top:10px;
-   left:20px;
+   position:relative;
+   left:10px;
 }
 
 h1 {
    font-size: 150%;
    text-align: left;
-   color: white;
+   color: black;
    position:relative;
-   top:-45px;
    width:90%;
+   margin-bottom: 8px;
+   margin-top:0px;
    }
 
-p.banner_text {
-   font-size:30%;
-   position:relative;
-   text-align:left;
-   color: white;
+  p.banner{
+      margin-top: 0px;
+      font-size:70%;
+      color: #3399ff;
+  }
+
+img.banner_image{
+    max-width: 20%;
+    float: right;
+    position:relative;
+    margin-right:30px;
 }
+
 /*
 --------------
 Body
@@ -61,9 +63,9 @@ Body
 */
 
 body {
-   background-color: #D9F4FC;
+   background-color: white;
    font-size: 24px;
-   margin:50px;
+   margin:30px;
    max-width:960px;
    margin-left:auto;
    margin-right:auto;
@@ -80,10 +82,6 @@ p.large_font{
    line-height:28px;
    }
 
-p.sub_line{
-margin-bottom:0px;
-}
-
 h2, h3 {
    color:#142953;
    line-height:30px;
@@ -96,34 +94,8 @@ ol.order_list{
    color: #142953;
 }
 
-
-#page_content {
-   background-color:#F9FDFF;
-   padding:5px;
-   border-radius: 45px;
-   position: relative;
-   top:50px;
-}
-
 /* Change background colour of pages with code to white because
 figures are transparent*/
-
-#page_content.codepage{
-   background-color: white;
-}
-
-ul.postlist{
-  font-size:100%;
-  list-style-type: circle;
-}
-
-#blog{}
-
-ul.postlist_main{
-  font-size:100%;
-  list-style-type: circle;
-}
-
 
 .reference{
    color:#0482EE;
@@ -179,7 +151,6 @@ pre.image_under{
 padding:0;
  border-color:#cad4d6;
  border:solid;
- width:95%;
  border-width:0.2px;
 }
 
@@ -236,7 +207,15 @@ Clickable div
 --------------
 */
 
-h3.clickablediv{
+h3.posts_dates{
+    color:#FFFFFF;
+    background-color: #C0C0C0;
+    width: 30%;
+    line-height:25px;
+    font-size: 70%;
+}
+
+h3.posts_titles{
     color:#142953;
     line-height:25px;
     font-size: 90%;
@@ -250,6 +229,45 @@ h3.clickablediv{
   left: 0;
 
   z-index: 1;
+}
+
+
+div.posts_boxes{
+    max-width:95%;
+    width:auto;
+     padding:10px;
+     font-size:90%;
+     border-style: solid;
+     position:relative;
+     margin:2px;
+     border-width: 1px;
+     border-color: #D3D3D3;
+     background: #ECFAFE;
+     line-height: 5px;
+    background-image: -webkit-linear-gradient(top, #FFFFFF, #e7f8fd);
+    background-image: -moz-linear-gradient(top, #FFFFFF, #e7f8fd);
+    background-image: -ms-linear-gradient(top, #FFFFFF, #e7f8fd);
+    background-image: -o-linear-gradient(top, #FFFFFF, #e7f8fd);
+    background-image: linear-gradient(to bottom, #FFFFFF, #e7f8fd);
+}
+
+div.floatclear{
+    clear:both;
+}
+
+div:hover.posts_boxes{
+    border-color:  #f6561b;
+}
+
+ul.postlist{
+  font-size:100%;
+  list-style-type: circle;
+}
+
+ul.postlist_main{
+  font-size:100%;
+  list-style-type: circle;
+  padding-left:3px;
 }
 
 
@@ -272,16 +290,13 @@ div.image_projpage{
     background-image: linear-gradient(to bottom, #FFFFFF, #e7f8fd);
 }
 
-div.floatclear{
-    clear:both;
+img.box_image{
+    max-width: 150px;
 }
 
 div:hover.image_projpage{
     border-color:  #f6561b;
 }
-
-
-
 
 /*
 --------------
@@ -293,28 +308,29 @@ ul.menu{
   list-style-type: none;
    margin: 0;
    padding: 5px;
-   left:20%;
+   left:0%;
    position:relative;
-   width:70%;
+   width:95%;
+   background-color: #e7f8fd;
 }
 
 li.menu_item{
    border-style:solid;
-   border-radius:15px;
-   text-decoration: none;
-   padding: 0px;
-   margin: 2px;
-   font-size:90%;
-   line-height:40px;
+   border-color: #D3D3D3;
+   display:inline;
+   padding: 5px;
+   margin: 1px;
+   font-size:60%;
+   line-height:20px;
    text-align:center;
    border-width:2px;
-   width:200px;
-   background: #ECFAFE;
-  background-image: -webkit-linear-gradient(top, #FFFFFF, #D9F4FC);
-  background-image: -moz-linear-gradient(top, #FFFFFF, #D9F4FC);
-  background-image: -ms-linear-gradient(top, #FFFFFF, #D9F4FC);
-  background-image: -o-linear-gradient(top, #FFFFFF, #D9F4FC);
-  background-image: linear-gradient(to bottom, #FFFFFF, #D9F4FC);
+   width:100px;
+   background-color: white;
+   color:black;
+}
+
+li:hover.menu_item{
+    border-color:#f6561b;
 }
 
 /*
@@ -343,17 +359,6 @@ Footer
   top:15px;
 }
 
-/*
---------------
-Logo
---------------
-*/
-
-img.rasterfish {
-   float: right;
-   position:relative;
-   top:-50px;
-}
 
 
 /*
@@ -382,15 +387,16 @@ Layout for home page
 
 #Affiliation {
    clear:both;
-   line-height:20px;
-   height:100%;
+   line-height:15px;
    width:95%;
    padding-left:20px;
    padding-right:0;
+   padding-top:20px;
    margin-right:0;
    border-right:0;
    border-top:solid;
-   margin-top:100px;
+   margin-top:5px;
+   margin-bottom:5px;
    border-color: #6176A0;
 }
 
