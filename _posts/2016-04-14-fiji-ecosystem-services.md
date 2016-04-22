@@ -31,7 +31,7 @@ Coral reef fisheries support the livelihoods of many people in tropical nations.
 </p>
 </div>  
 
-Reef ecosystems can be impacted by cyclones. The impacts can be direct, for instance the cyclone can tear up the reef, but also indirect. Heavy rainfall on land carries sediment and pollutants into rivers which then flow out to sea. The turbid waters can smother corals, killing them. Fish in turn depend on the coral habitat, so the whole ecosystem may be affected.  
+Reef ecosystems can be impacted by cyclones. The impacts can be direct, for instance the cyclone can tear up the reef. Impacts of cyclones can also be indirect. Heavy rainfall on land carries sediment and pollutants into rivers which then flow out to sea. The turbid waters can smother corals, killing them. Fish in turn depend on the coral habitat, so the whole ecosystem may be affected.  
 
 The Wildlife Conservation Society is working in Fiji and has a strong partnership with government. They have been working to ensure that the assessment of the cyclones's damage includes lost ecosystem services.  
 
@@ -39,7 +39,7 @@ It can be challenging to mobilise  a science team to document costs after a natu
 
 Run-off of turbid water can be worsened by land-clearing. Loss of forest destablises the soil, so more soil runs into rivers with rain. Trees also break the energy of the rainfall and absorb some of the rain, so more trees mean less of the rainfall runs into rivers.
 
-Our team has provided the Fiji government with some basic information about catchments and forest cover on the island of Vanua Levu, one of the most affected regions (see image below).
+Our team has provided the Fiji government with some basic information about catchments and forest cover on the island of Vanua Levu, one of the most affected regions (see image).  
 
 <div class = "image_caption">
 <img src ="/Images/vanua_levu_forest_cover
@@ -47,4 +47,12 @@ Our team has provided the Fiji government with some basic information about catc
 <p>
 Forest cover in Vanua Levu's major catchments, estimated as part of our SNaP working group.
 </p>
-</div>
+</div>   
+
+The information about catchments and landcover will be used by government to help them document the cost of the cyclone to ecosystem services.  
+
+The cyclone has also seen a shift in the science priorities for our working group. The Wildlife Conservation Society had been working towards a planning meeting with government and Fijian communities in May. The meeting was to discuss the future of land-use change in parts of Fiji.
+
+The SNaPP team had been working towards supporting the planning meeting, by providing estimates for how much pollution may cost fisheries and associated livelihoods.  However, this natural disaster has seen a shift in local priorities, as people have suddenly become much more aware of the impact of extreme run-off events.  
+
+Our SNaPP team is now working to incorporate extreme events into the scientific advice we provide. We hope that information about extreme events will resonate with local stakeholders and help to highlight the importance of protecting local ecosystem services.   
