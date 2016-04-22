@@ -1,14 +1,42 @@
 ---
 layout: md_layout
 category: Research
-title: "Impact of recreational fishing areas"
-published: false  
+title: "Costing the impact of cyclone Winston on Fiji's ecosystem services"
+published: true  
 ---
 
-### Will commercial fishing closures enhance recreational fisheries?  
+### Costing the impact of cyclone Winston on Fiji's ecosystem services
 
-Recently the Queensland Government has declared several net fishing free zones in bays and estuaries of central and North Queensland. The aim of these zones is to enhance recreational fisheries. However, these zones have been contentious as they will cost commercial fishers, with some likely to lose their jobs.
+Tropical cyclone Winston hit Fiji in February 2016 leaving 43 people dead, [120,000 without shelter](http://www.abc.net.au/news/2016-03-03/fijians-in-shelters-as-cyclone-winston-relief-efforts-accelerate/7217028) and [devastating infrastructure](http://www.abc.net.au/news/2016-03-07/fiji-before-after-photos-cyclone-winston/7220784)
+. As Fiji recovers, Fiji's government is working to document the cost of this event to their economy.  
 
-Also of concern is the lack of scientific assessment to support the closures. I am preparing a paper that attempts to fill this gap where possible and suggests where further work is needed for a proper assessment. I am happy to take feedback on this draft which is available in pdf form [here](/data/Brown_net_closures_29Mar2016.pdf).  
+Our Science for Nature and People Partnership group on ['Ridge to reef fisheries'](http://snappartnership.net/groups/ridges-to-reef-fisheries/) is working with Fiji's government to help document the cost of the cyclone to the services that Fiji's ecosystems provide to people.
 
-See the [Tangled net](http://www.abc.net.au/landline/content/2015/s4294087.htm) report from ABC news for more info.  
+Assessment's of economic damage from natural disaster's typically only include direct economic costs, like the cost of repairing damaged schools. Such costings underestimate the true cost of natural disaster's to society, because they do not account for damage to ecosystems. Ecosystems provide many goods and services that are important for people's jobs and economic security.
+
+Our Science for Nature
+
+
+<div class = "image_caption">
+<img src ="http://www.abc.net.au/news/image/7191668-3x2-940x627.jpg" alt="Image" class="image_float"/>
+<p>
+Tropical cyclone Winston damages schools. Image: [ABC news](http://www.abc.net.au/news/2016-02-23/cyclone-winston-fiji-damage-school/7191692).
+</p>
+</div>
+
+<div class = "image_caption">
+<img src ="/Images/spearfishing.jpeg" alt="Image" class="image_float"/>
+<p>
+Coral reef fisheries support the livelihoods of many people in tropical nations.
+</p>
+</div>
+
+
+
+<div class = "image_caption">
+<img src ="/Images/vanua_levu_forest_cover
+.png" alt="Image" class="image_float"/>
+<p>
+Forest cover in Vanua Levu's major catchments, estimated as part of our SNaP working group.
+</p>
+</div>
