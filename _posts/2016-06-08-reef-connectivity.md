@@ -14,7 +14,7 @@ In a new [paper published in the journal Ecology](http://onlinelibrary.wiley.com
 <div class = "image_caption_wide">
 <img src ="/Images/wind-connectivity.png" alt="Image" class="image_float_wide"/>
 <p>
-We hypothesized that larval retention would be lower on more exposed coasts, because of wind-driven advection. Exposed coasts also will have lower reef to mangrove connectivity, because mangroves prefer sheltered conditions. Under sheltered conditions, connectivity to mangroves and of larvae was hypothesized to be greater, leading to a synergistic increase in adult fish biomass on reefs. Image from our [paper](http://onlinelibrary.wiley.com/doi/10.1002/ecy.1463/full)
+We hypothesized that larval retention would be lower on more exposed coasts, because of wind-driven advection. Exposed coasts also will have lower reef to mangrove connectivity, because mangroves prefer sheltered conditions. Under sheltered conditions, connectivity to mangroves and of larvae was hypothesized to be greater, leading to a synergistic increase in adult fish biomass on reefs. Image from our <a href ="http://onlinelibrary.wiley.com/doi/10.1002/ecy.1463/full">paper</a>
 </p>
 </div>
 
