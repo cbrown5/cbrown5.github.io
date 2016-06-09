@@ -205,6 +205,17 @@ div.image_caption{
      margin: 10px;
 }
 
+div.image_caption_wide{
+    width:auto;
+     height:auto;
+     padding:10px;
+     font-size:90%;
+     font-style:italic;
+     padding: 10px;
+     padding-bottom: 5px;
+     margin: 10px;
+}
+
 /*
 --------------
 Clickable div

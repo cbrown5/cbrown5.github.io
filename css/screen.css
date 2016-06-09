@@ -207,7 +207,7 @@ img.image_float{
 
 img.image_float_wide{
   float:right;
-  width:500px;
+  width:700px;
    height:auto;
    padding:10px;
 }
@@ -242,7 +242,7 @@ div.image_caption{
 
 div.image_caption_wide{
     float:right;
-    width:500px;
+    width:700px;
      height:auto;
      padding:10px;
      font-size:90%;
