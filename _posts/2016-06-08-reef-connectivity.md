@@ -9,12 +9,12 @@ published: true
 
 Connectivity of organisms among habitats is fundamental to population dynamics, the evolution of species and their conservation. Two paradigms of connectivity dominate marine science. The first is the movement of larvae from their natal sites to their settlement sites. The second is the movement of fish from juvenile habitats, like mangroves, to adult habitats, like coral reefs.  
 
-In a new [paper published in the journal Ecology](), we show that sheltered conditions have both high larval and habitat connectivity and we subsequently **predict a synergistic increase in fish biomass** in sheltered environments.   
+In a new [paper published in the journal Ecology](http://onlinelibrary.wiley.com/doi/10.1002/ecy.1463/full), we show that sheltered conditions have both high larval and habitat connectivity and we subsequently **predict a synergistic increase in fish biomass** in sheltered environments.   
 
 <div class = "image_caption_wide">
 <img src ="/Images/wind-connectivity.png" alt="Image" class="image_float_wide"/>
 <p>
-We hypothesized that larval retention would be lower on more exposed coasts, because of wind-driven advection. Exposed coasts also will have lower reef to mangrove connectivity, because mangroves prefer sheltered conditions. Under sheltered conditions, connectivity to mangroves and of larvae was hypothesized to be greater, leading to a synergistic increase in adult fish biomass on reefs.
+We hypothesized that larval retention would be lower on more exposed coasts, because of wind-driven advection. Exposed coasts also will have lower reef to mangrove connectivity, because mangroves prefer sheltered conditions. Under sheltered conditions, connectivity to mangroves and of larvae was hypothesized to be greater, leading to a synergistic increase in adult fish biomass on reefs. Image from our [paper](http://onlinelibrary.wiley.com/doi/10.1002/ecy.1463/full)
 </p>
 </div>
 
@@ -30,6 +30,8 @@ The effect of exposure on both larval and habitat connectivity is a real boon fo
 
 Of course there is much work left to do. The predicted synergistic increase in fish biomass is yet to be tested in the field. However, our approach generates quantitative relationships between exposure and fish biomass that could be tested in against field surveys.  
 
-Another caveat to consider is that connectivity may also benefit a [fish's predators]().  
+Another caveat to consider is that connectivity may also benefit a [fish's predators](http://onlinelibrary.wiley.com/doi/10.1111/oik.02602/abstract;jsessionid=8B81D60F7D3E5957CC61329505EF5289.f02t03?userIsAuthenticated=false&deniedAccessCustomisedMessage=).  
 
 Validating our predictions would be of great benefit to the conservation of reef fish. For instance, using one variable along - exposure - we can predict the reef sites most suited to fish and identify productivity hotspots that are likely important for natural ecosystems and fisheries.  
+
+Read more: [Brown, C. J., Harborne, A. R., Paris, C. B. and Mumby, P. J. (2016), Uniting paradigms of connectivity in marine ecology. Ecology. Accepted Author Manuscript. doi:10.1002/ecy.1463](http://onlinelibrary.wiley.com/doi/10.1002/ecy.1463/full)
