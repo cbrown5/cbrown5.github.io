@@ -1,7 +1,7 @@
 ---
 layout: md_layout
 category: Research
-title: "International Coral Reef Symposium Insights"
+title: "International Coral Reef Symposium - Insights"
 published: true  
 ---
 
