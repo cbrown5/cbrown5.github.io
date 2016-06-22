@@ -336,6 +336,12 @@ div:hover.image_projpage{
     border-color:  #f6561b;
 }
 
+p.clickablediv{
+font-weight: bolder;
+font-size: 105%; 
+
+}
+
 /*
 --------------
 Navigation bar
