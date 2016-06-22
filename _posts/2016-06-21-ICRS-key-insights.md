@@ -6,9 +6,9 @@ published: true
 ---
 
 
-### International Coral Reef Symposium Day 2 - My highlights  
+### International Coral Reef Symposium - Key Insights    
 
-*21 June 2016, Honolulu Hawaii*
+These are the key take-home messages I got from ICRS. [Email me](https://app.griffith.edu.au/phonebook/phone-details.php?id=1675412) or get in touch via [Twitter]() if you want to contribute something (full acknowledgement will be given).  
 
 Note that I write this as speakers talk, so [let me know](https://app.griffith.edu.au/phonebook/phone-details.php?id=1675412) if you think I have missed something, see mistakes or want me to remove something.  
 
