@@ -8,7 +8,7 @@ published: true
 
 ### International Coral Reef Symposium - Key Insights    
 
-These are the key take-home messages I got from ICRS. [Email me](https://app.griffith.edu.au/phonebook/phone-details.php?id=1675412) or get in touch via [Twitter](https://twitter.com/bluecology) if you want to contribute something (full acknowledgement will be given).  
+These are the key take-home messages I got from ICRS. They will be updated daily [Email me](https://app.griffith.edu.au/phonebook/phone-details.php?id=1675412) or get in touch via [Twitter](https://twitter.com/bluecology) if you want to contribute something (full acknowledgement will be given).  
 
 ## Management of coral reefs  
 
