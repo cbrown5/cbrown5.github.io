@@ -9,7 +9,7 @@ published: true
 
 *22 Jun 2016*
 
-I'm sitting here at the International Coral Reef Symposium in Hawaii. Looking at all the exciting graphs, data and analysis going up got me thinking: what are the key Rstats tools coral reef scientists should learn?  
+I'm sitting here at the **International Coral Reef Symposium in Hawaii**. Looking at all the exciting graphs, data and analysis going up got me thinking: what are the key Rstats tools coral reef scientists should learn?  
 
 Starting out with Rstats can be overwhelming because there are so many tools and packages available (but check out some of the free courses on [my page](http://www.seascapemodels.org/Rstats/index.html#page_content)). So here is a quick list of the key tools (packages and R functions) you should learn.
 
@@ -39,9 +39,9 @@ Got a large data-set? Need to merge data-sets by a common ID (e.g. site names)? 
 
 ### 6. tidyr  
 Ok, so you have entered your data (or got it from someone else), but wait a minute, the way you entered it doesn't let you use `ggplot2`, `dplyr`, `lm()`.. (if you followed my [guide](http://www.seascapemodels.org/rstats%20rspatial/2015/11/13/data-commandments.html) you shouldn't have this problem).  Do you need to reenter it?  
-Nope, `tidyr` to the rescue. The package `tidyr` lets you reformat data in ways (e.g. from wide format to long format) in the way that most stats packages prefer it.  
+Nope, `tidyr` (for [tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)) to the rescue. The package `tidyr` lets you reformat data in ways (e.g. from wide format to long format) in the way that most stats packages prefer it. Check out this [blog](https://blog.rstudio.org/2014/07/22/introducing-tidyr/).    
 
 ### 7. vegan  
-The package `vegan` provides good old multi-variate analysis, without the cost of Primer. Admittedly this package is slightly harder to use than Primer, but hey if you are already using R, the jump to primer is easy. Check out the [vignette](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=4&cad=rja&uact=8&ved=0ahUKEwja7OuK_bzNAhVG9GMKHUdYDnQQFgg3MAM&url=https%3A%2F%2Fcran.r-project.org%2Fweb%2Fpackages%2Fvegan%2Fvegan.pdf&usg=AFQjCNHjnMBiuiNp84VjObqMghCwxcyLxA&sig2=t_EaCR3fJpc-O0rCih9P1w&bvm=bv.125221236,d.cGc) to get started.  
+The package `vegan` provides good old multi-variate analysis, without the cost of Primer. Admittedly this package is slightly harder to use than Primer, but hey if you are already using R, the jump to primer is easy. Check out the [vignettes](https://cran.r-project.org/web/packages/vegan/vignettes/) to get started.  
 
 That's my top 7. Good luck getting started.  
