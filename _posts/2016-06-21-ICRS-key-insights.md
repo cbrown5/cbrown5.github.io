@@ -17,3 +17,5 @@ These are the key take-home messages I got from ICRS. They will be updated daily
 2. We need to find more nuanced ways to communicate science to the public and decision makers. Often our key messages are lost because they are too dumbed down. Communicating uncertainty is a particularly important, but difficult, challenge.  
 
 3. Coral reefs are of national political and economic significance, as evidenced by attendance at the conference by presidents from three countries.  
+
+4. We are good at putting ourselves out there to communicate now but we need to tell a story (as Nancy Knowlton emphasised). Telling a story may help us better communicate the challenging parts, like uncertainties, because people listen to stories.  

@@ -335,7 +335,7 @@ div:hover.image_projpage{
 
 p.clickablediv{
 font-weight: bolder;
-font-size: 105%; 
+font-size: 105%;
 
 }
 
@@ -368,6 +368,7 @@ li.menu_item a:hover{
    margin: 1px;
    border-radius: 10px;
 }
+
 /*
 --------------
 Footer
