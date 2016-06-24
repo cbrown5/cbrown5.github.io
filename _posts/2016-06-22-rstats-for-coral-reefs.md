@@ -19,7 +19,7 @@ A data visualisation tool tops the list. Data visualisation is the first step of
 ### 2. lm()  
 Linear models are becoming the dominant statistical tool for univariate data analysis in ecology and have largely replaced ANOVA methods. For instance, if you want to know how coral growth relates to temperature, how fish biomass relates to fishing pressure and so on you would probably use a linear model. Linear models are implemented in R with the function `lm()`.
 
-A handy guide for analysis and interpretation of linear models has just been [published](http://onlinelibrary.wiley.com/doi/10.1111/2041-210X.12577/full) and check out the [books](http://www.springer.com/us/book/9780387874579) by the same author for guidance on who to code them up.  
+A handy guide for analysis and interpretation of linear models has just been [published](http://onlinelibrary.wiley.com/doi/10.1111/2041-210X.12577/full) and check out the [books](http://www.springer.com/us/book/9780387874579) by the same author for guidance on how to code them up.  
 
 A few quick examples on why `lm()` is so great.  
 Just using a single continuous predictor - that is linear regression. Multiple continous predictor variables: multiple regression. If you combine categorical and continuous predictor variables you have your classic ANCOVA analysis.  
