@@ -11,7 +11,6 @@ published: true
 
 The International Coral Reef Symposium in Honolulu comes on the back of the worst global coral bleaching event yet observed. Global disasters often leave people wondering what hope there is for the future - particularly given insufficient attempts to curb greenhouse gas emissions.  
 
-
 <div class = "image_caption">
 <img src ="/Images/icrs-pic-tweet-1.png" alt="" class="image_float"/>
 <p>
@@ -68,7 +67,7 @@ Bozec has shown a strong trade-off between harvest of parrotfish and the [resili
 
 Trade-offs analysis is useful for pollution problems too. [Kirstin Oleson and her lab](http://olesonlab.org/) are applying trade-offs analysis to ridge to reef management. They are finding that focussing restoration efforts in just a few areas in catchments can be a very cheap way to reduce sedimentation on reefs.  
 
-### Challenges for coral reef sciences - gender and racial biases  
+### Challenges for coral reef sciences - gender and racial representation  
 
 **Developments in social science, the study of management and communication give me hope for the future of reefs.** However, some ongoing trends in the **culture of reef science give me cause for concern**.  
 
@@ -110,7 +109,7 @@ What I am arguing for is a change in our culture. We could start by creating mor
 
 I suspect their are similar biases in cultural and racial inclusion in our field. I have not been keeping track of those, but ping me if you have useful link.  
 
-Informal changes are necessary to change our culture of gender bias. For some tips, check out [Jenny Martin's blog](https://cubistcrystal.wordpress.com/2015/05/10/but-what-can-i-do/). To of her list is **recognise your own biases**.  
+Informal changes are necessary to change our culture of gender bias. For some tips, check out [Jenny Martin's blog](https://cubistcrystal.wordpress.com/2015/05/10/but-what-can-i-do/). Top of her list is **recognise your own biases**.  
 
 Coral reefs need diverse participation. It is many of the women of our field who are pushing us forward to find solutions to the problems facing reefs. Follow twitter: there are more women than men communicating reef science there. Many of people who have pioneered social sciences in reef science are also female.
 
@@ -118,13 +117,13 @@ I encourage all of you to value diverse career paths and contributions to our fi
 
 ### A future for coral reefs?  
 
-This conference has me both concerned about the enormity of the challenge we face to conserve reefs, but also given me hope that science is contributing to a better future. I wanted to finish with some of the key lessons I have learned here.  
+This conference has me both concerned about the enormity of the challenge coral reefs face, but also given me hope that science is contributing to a better future. I wanted to finish with some of the key lessons I have learned here.  
 
 1. We can't always wait for better science. Our field leaders implore us to get involved with communicating to the public and informing management. The science he have now is sufficient to inform a better future.   
 
 2. We need to find more nuanced ways to communicate science to the public and decision makers. Often our key messages are lost because they are too dumbed down. Communicating uncertainty is a particularly important, but difficult, challenge.  
 
-3. Telling stories about people may be a powerful way to communicate a more nuaned message, that has greater uptake.  
+3. Telling stories about people may be a powerful way to communicate a more nuanced message, that has greater uptake.  
 
 4. Coral reefs are of national political and economic significance, as evidenced by attendance at the conference by presidents from three countries.  
 
