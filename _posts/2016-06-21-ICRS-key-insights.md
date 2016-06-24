@@ -7,7 +7,7 @@ published: true
 
 ## What is the future of coral reefs?  
 
-*Coral reef ecology is documenting the decline of reefs, but stories of people give me hope for the future*  
+*Coral reef ecosystems face unprecedented threats, but stories of people give me hope for the future*  
 
 The International Coral Reef Symposium in Honolulu comes on the back of the worst global coral bleaching event yet observed. Global disasters often leave people wondering what hope there is for the future - particularly given insufficient attempts to curb greenhouse gas emissions.  
 
