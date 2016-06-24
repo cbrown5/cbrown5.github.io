@@ -71,7 +71,7 @@ Trade-offs analysis is useful for pollution problems too. [Kirstin Oleson and he
 There are so many women doing amazing work for coral reefs at this conference. So why don't they receive more recognition from our community? Source: http://twitter.com </p>
 </div>  
 
-There is still a strong gender bias in coral reef science. Perhaps this is a hangover from the past, however I think it isn't changing fast enough. I would estimate that talks and attendance at this conference is approximately 50:50, however if you look you notice **women are not provided with the same opportunities in our field as the men**.  
+There is still a strong gender bias in coral reef science. Perhaps this is a hangover from the past, however I think it isn't changing fast enough. I would estimate that talks and attendance at this conference is approximately 50:50, however it is easy to see that **women are not provided with the same opportunities in our field as the men**.  
 
 One story I heard was of a workshop where a senior (male) scientist said he would have liked to have invited more women, but "there just aren't that many good female scientists to invite".
 
@@ -87,9 +87,11 @@ I don't think there is any lack of 'good' female reef scientists. In fact, some 
 
 To give some examples, this year we saw the award of the [7th Darwin medal](http://coralreefs.org/society-awards-and-grants/awards-fellowships/), the International Society for Reef Studies top award. There has **never been a female laureate of the Darwin Medal**.  
 
-I want to be clear that I am not criticising any individual or organization. I do not intend to discredit individuals who have received accolades - they certainly deserved them. Neither am I criticising the International Society for Reef Studies. In fact, the society's council has a reasonable gender balance and plenary talks at ICRS are balanced across genders.  
+**The chance of having no females in 7 Darwin medals is less than 1%**  
 
-Further, we saw a discussion panel on Thursday night that was meant to represent some of our field's leaders talking about major issues facing reefs. The panel included 8 men, but only 2 women.  
+Maybe the award just reflects a historical hangover of what used to be a male dominated field? I don't think that's the whole story. We saw a panel discussion on Wednesday night, that was meant to represent some leaders in our field discussing top issues. There were 2 women on a ten person panel.The chance of having two women out of ten people is 5% (reasonably assuming a 50:50 gender ratio at the conference). In science we often treat a 5% chance 'statistically significant', so therefore, 2/10 indicates a significant gender bias.  
+
+I want to be clear that I am not criticising any individual or organization. I do not intend to discredit individuals who have received accolades - they certainly deserved them. Neither am I criticising the International Society for Reef Studies. In fact, the society's council has a reasonable gender balance and plenary talks at ICRS are balanced across genders.  
 
 <div class = "image_caption">
 <img src ="/Images/icrs-pic-tweet-14.png" alt="" class="image_float"/>
@@ -97,17 +99,13 @@ Further, we saw a discussion panel on Thursday night that was meant to represent
 Demographics of communicators on the Twitter #ICRS2016 group. Source: http://keyhole.co/preview_new </p>
 </div>  
 
-You might be thinking this comes down to chance. I am a stats nerd, so indulge me for a minute. If we assume there is a pool of 50% female and 50% male panel members, then the chance of having two women out of ten people is 5%. In science we often treat a 5% chance 'statistically significant', so therefore, 2/10 indicates a significant gender bias.  
-
-**The chance of having no females in 7 Darwin medals is less than 1%**  
-
 What I am arguing for is a change in our culture. We could start by creating more formal opportunities to recognise the contributions of women to our field. For instance the International Society for Reef Studies could have an award for **female leaders** in coral reef sciences.  
 
 I suspect their are similar biases in cultural and racial inclusion in our field. I have not been keeping track of those, but ping me if you have useful link.  
 
 Informal changes are necessary to change our culture of gender bias. For some tips, check out [Jenny Martin's blog](https://cubistcrystal.wordpress.com/2015/05/10/but-what-can-i-do/). To of her list is **recognise your own biases**.  
 
-Coral reefs need diverse participation. It is many of the women of our field who are pushing us forward to find solutions to the problems facing reefs. Follow twitter: there are more women than communicating reef science there. Many of people who have pioneered social sciences in reef science are also female.
+Coral reefs need diverse participation. It is many of the women of our field who are pushing us forward to find solutions to the problems facing reefs. Follow twitter: there are more women than men communicating reef science there. Many of people who have pioneered social sciences in reef science are also female.
 
 I encourage all of you to value diverse career paths and contributions to our field. As [Tallis and Lubchenco have argued](http://www.nature.com/news/working-together-a-call-for-inclusive-conservation-1.16260) the failure to include diverse views is stalling conservation efforts.  
 
