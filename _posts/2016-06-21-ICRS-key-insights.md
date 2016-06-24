@@ -11,6 +11,13 @@ published: true
 
 The International Coral Reef Symposium in Honolulu comes on the back of the worst global coral bleaching event yet observed. Global disasters often leave people wondering what hope there is for the future - particularly given insufficient attempts to curb greenhouse gas emissions.  
 
+
+<div class = "image_caption">
+<img src ="/Images/icrs-pic-tweet-1.png" alt="" class="image_float"/>
+<p>
+Source: http://twitter.com </p>
+</div>  
+
 Coral reefs will never be the same as they were. I once saw a talk from Charlie Veron about his efforts to create a global coral atlas (at the conference he announced this is now [online](http://www.coralsoftheworld.org/page/home/)). He has dived perhaps more of the world's reefs than anyone. In an incredibly depressing ending to his talk he stated no-one will ever get to experience coral reefs as he has.  
 
 ### Communicating the loss and solutions    
