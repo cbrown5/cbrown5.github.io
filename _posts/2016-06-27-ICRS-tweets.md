@@ -20,7 +20,7 @@ The top tweeters are pictured below, including the number of tweets and RTs they
 
 <img src ="/Images/icrs-top_tweeters.png" alt="" class="image_normal"/>  
 
-It was not possible to determine how many of the handles were actually at the conference, because most were not geo-tagged. Most handles only participated by retweeting something once.  
+It was not possible to determine how many of the handles were actually at the conference, because most were not geo-tagged. Most handles only participated by retweeting something once. In fact the tweet-frequency curve looked something like the species-abundance distribution from Nancy Knowlton's talk about rare invertebrate species on reefs:  
 
 <img src ="/Images/icrs-tweetfreq.png" alt="" class="wide_image"/>  
 
