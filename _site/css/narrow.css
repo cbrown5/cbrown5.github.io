@@ -186,6 +186,11 @@ img{
    width:auto;
    }
 
+img.image_normal{
+    max-width:300px;
+    width:auto;
+}
+
 img.image_float{
    max-width:300px;
    width:auto;

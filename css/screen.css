@@ -222,6 +222,11 @@ img.med_image{
 
 }
 
+img.image_normal{
+   width: 50%;
+}
+
+
 img.wide_image{
   width:700px;
    height:auto;
