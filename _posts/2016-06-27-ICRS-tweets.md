@@ -14,12 +14,15 @@ There were a very large number of tweets, so I limited the date range from 18th 
 I then ran some analyses. Here are the results.  
 
 Over the period 18-25 June there were **14 246** tweets and re-tweets of which **5860** were original tweets.  
-There were **1938** unique handles (ie people) tweeting to #ICRS2016. However, it was not possible to determine how many of these were actually at the conference, because most were not geo-tagged. Most handles only participated by retweetings something once.  
+There were **1938** unique handles (ie people) tweeting to #ICRS2016.  
 
 The top tweeters are pictured below, including the number of tweets and RTs they made:  
 
-<img src ="/Images/icrs-top_tweeters.png" alt="" class="image_normal"/>
+<img src ="/Images/icrs-top_tweeters.png" alt="" class="image_normal"/>  
 
+It was not possible to determine how many of the handles were actually at the conference, because most were not geo-tagged. Most handles only participated by retweeting something once.  
+
+<img src ="/Images/icrs-tweetfreq.png" alt="" class="wide_image"/>  
 
 Prof. Terry Hughes had the honour of the most retweeted tweet, with 111 retweets:  
 
