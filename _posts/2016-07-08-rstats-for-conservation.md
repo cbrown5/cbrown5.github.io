@@ -23,9 +23,8 @@ Here I will focus on the more specialised tools that may be used by conservation
 
 Network analysis is increasingly popular in conservation science and the main package for network analysis in R is [igraph](https://cran.r-project.org/web/packages/igraph/index.html).  `igraph` is a massive package that has numerous algorithms, but to give a few examples, you could use it to:  
 
-* Identify the shortest path between two habitat patches - this may represent connectivity corridor.    
+* Identify the shortest path between two habitat patches - this may represent connectivity corridor.  
 * Calculate network 'degree'. This may be useful for instance in social network analysis to find out how many degrees of separation there are between different people.   
-
 * Identify habitat patches that are key stepping stones for species migrations. [Here is a great example](http://onlinelibrary.wiley.com/doi/10.1111/conl.12097/abstract) of using this approach for identifying reserve sites for fish based on larval connectivity.  
 
 I haven't worked much with network data myself, but I image once you collect the data there is a lot of data processing required to 'make the connections'. I recommend `dplyr` and `tidyr` for this processing, though I would be keen to hear what other tools people have used for processing network data.
