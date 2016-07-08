@@ -51,7 +51,11 @@ There are three packages you need to know to get started with spatially continuo
 * `rgeos` is used for geographic operations like intersecting polygons, calculating areas and so on.   
 These packages take a fair bit of practice to learn, and unfortunately there is not that much help available at the introductory level. I recommend getting a good working knowledge of **R** programming before you start with them. Also try my [introductory course on spatial analysis](http://www.seascapemodels.org/rstats/rspatial/2015/06/22/R_Spatial_course.html) once you are familiar with **R**.  
 
-### 4. Optimisation  
+### 4. Online maps with leaflet  
+
+The most fun you can have in **R**, I think, is with [`leaflet` package](https://rstudio.github.io/leaflet/). You can make your interactive web maps of your own data, like these in my [Rstats course for conservation science](http://www.seascapemodels.org/Rstats/Conservation_R.html). Check out the [leaflet page](https://rstudio.github.io/leaflet/) for more info.  
+
+### 5. Optimisation  
 
 Many sub-fields of conservation science use optimisation to identify conservation priorities, such as what actions can be best spend our limited budget on to protect marine ecosystems.  
 
@@ -61,7 +65,7 @@ I actually don't think **R** is the best programming language for optimisation (
 
 A good place to start is [Iadine Chades](http://www.iadine-chades.org/blog/) and colleague's [Markov decision toolbox](https://cran.r-project.org/web/packages/MDPtoolbox/index.html).  The toolbox let's you optimise what actions you would take over time to acheive some goal, say maximise the abundance of a threatened species.  
 
-### 5. Population modelling  
+### 6. Population modelling  
 
 Oddly enough, I haven't seen that much population modelling at this conference.  Maybe I was in the wrong sessions, or maybe there just isn't that much anymore. Spatial analysis seems to dominate these days. Population modelling is useful for projecting extinction risk and quantifying the effectiveness of alternate management strategies, among many other applications.
 
@@ -71,4 +75,4 @@ There are many **R** packages for population modelling, but check out [`IPMpack`
 
 The **R** program is an incredibly useful tool for conservation science. It has a huge range of applications and importantly, most **R** packages are open source - meaning anyone can download and us them or build on them to create new packages.
 
-They were my top 5, but if you have seen other interesting tools that are of use for conservation science, [let me know](http://twitter.com/bluecology/).   
+They were my top 6, but if you have seen other interesting tools that are of use for conservation science, [let me know](http://twitter.com/bluecology/).   
