@@ -9,7 +9,7 @@ published: true
 
 *8 July 2016*
 
-This week I'm at the **Society for Conservation Biology, Oceanea Conference** in Brisbane. I taught a workshop on [Conservation Programming](/Rstats/conservation_R.html) for the workshop, and that has got me thinking about the quantitative tools are most commonly used by conservation scientists. So here is my guide to the packages in **R** that will let you access the most common tools.  
+This week I'm at the [**Society for Conservation Biology, Oceanea Conference**](http://brisbane2016.scboceania.org/) in Brisbane. I taught a workshop on [Conservation Programming](/Rstats/conservation_R.html) for the workshop, and that has got me thinking about the quantitative tools are most commonly used by conservation scientists. So here is my guide to the packages in **R** that will let you access the most common tools.  
 
 A good starting place is [my post from the International Coral Reef Symposium](http://www.seascapemodels.org/research%20rstats/2016/06/22/rstats-for-coral-reefs.html) a few weeks ago. The tools described therein are really useful for most types of data-analysis.  
 
