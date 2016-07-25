@@ -9,6 +9,13 @@ published: true
 
 Whenever I complain about about having to edit some writing, my wife likes to remind me that my skill at writing has improved a lot in the past few years. Not that I am great at writing now, what she is saying (in a nice way) is that my writing really sucked a few years ago. My PhD advisors were largely unavailable in the months leading up to submission of my thesis and I was lucky to have her help with a lot of the editing.  
 
+
+<div class = "image_caption">
+<img src ="/Images/runner.JPG" alt="" class="image_float"/>
+<p>
+Variety is key to improving your running, and writing </p>
+</div>   
+
 Why has my writing improved from terrible to passable? Well you could put it down to the practice I have had smacking the keyboard since graduating, having written more papers and grants than during my PhD. I also write more regularly now (every day). You need to write regularly to get better, just like you need to run regularly to get fit. Many professionals recommend writing every day, usually in your best working hours, to maximise efficiency.
 
 While regular writing has certainly improved my productivity, I don't think it's the whole reason I have improved my writing skill. In fact, if all I did was write papers, my writing would probably be much the same as it was a few years ago.  
