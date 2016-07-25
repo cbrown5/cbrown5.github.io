@@ -29,7 +29,7 @@ Most of the writing practice we get in our PhDs is doing the long slow writing o
 
 Sprint writing is one reason I blog. Blogging is fast paced writing. You have an idea, you write it down, edit it once and post it. That's it. No slogging over finding references, or carefully rewording sentences to get perfect flow (maybe it shows here?).  
 
-Another way to think about diversity in training your writing is to think about what 'better writing means'. You can think about better writing in broadly two ways: First, better could mean writing of a higher quality, such as more accurately describing your findings, or creating a more cohesive story. Or you could also be better at writing by writing at the same quality, but doing so faster.   
+Another way to think about diversity in training your writing is to think about what 'better writing means'. You can think about better writing in broadly two ways: First, better could mean writing of a higher quality, such as more accurately describing your findings, or creating a more cohesive story. Or you could also be better at writing by writing at the same quality, but doing so faster.     
 To learn to write faster, you need to practice writing faster! Now, I wouldn't generally advise trying to write papers faster, at least initially. If you make mistakes in papers, that could hurt your reputation. So you need to find another outlet. Blogging is one way to have an outlet for your writing.  
 
 The second thing I did to improve my writing since graduating was seek professional help. Good runners employ trainers, so why shouldn't we too. After all, as [Joshua Schimel has said](https://schimelwritingscience.wordpress.com/), **scientists are professional writers**. Well I didn't employ anyone exactly, but I did read Schimel's book and practice his exercises. I would say there was almost an overnight improvement in my writing (I think my wife agrees).   
@@ -38,6 +38,6 @@ Another problem with trying to improve your writing by writing papers alone is t
 
 In our group we have recently initiated weekly get togethers to critique each others writing. The idea is to get more frequent feedback on new writing without having to wait to make it through co-author's inboxes. The sessions have been very popular and I have found, very helpful.
 
-Incidentally, runners who have a diverse training schedule are also less prone to injury. I speculate that there is an analogue on academic writing. If you do more varied styles of writing you are less likely to burn-out on writing and give up altogether.  
+Incidentally, runners who have a diverse training schedule are also less prone to injury. I speculate that there is an analogue in academic writing. If you do more varied styles of writing you are less likely to burn-out on writing and give up altogether.  
 
 I actually thought of this blog while I was out on a long slow run this afternoon. The idea inspired and I threw a few sprints into my run. Hopefully I can bring this idea full circle and improve my running times too.  
