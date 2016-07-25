@@ -5,7 +5,7 @@ title: "Write like a runner trains"
 published: true  
 ---
 
-### Improve your writing by practicing like a runner trains  
+### Improve your writing by practising like a runner trains  
 
 Whenever I complain about about having to edit some writing, my wife likes to remind me that my skill at writing has improved a lot in the past few years. Not that I am great at writing now, what she is saying (in a nice way) is that my writing really sucked a few years ago. My PhD advisors were largely unavailable in the months leading up to submission of my thesis and I was lucky to have her help with a lot of the editing.  
 
