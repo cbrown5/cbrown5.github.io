@@ -15,7 +15,9 @@ A group called the [Club of Rome](http://www.clubofrome.org/) developed a very s
 
 While I am certainly concerned about environmental sustainability of human endeavours (they aren't at a global scale!), I do not agree that the historical data presented in the new study is convincing evidence that this Club of Rome model's predictions will unfold.
 
-Why? Well the co-trending of data since 1970 and the model's predictions could well be spurious.
+Why? Well the co-trending of data since 1970 and the model's predictions could well be spurious.  
+
+As an aside I saw [this excellent post](https://scientistseessquirrel.wordpress.com/2016/08/02/1874/) on my same twitter feed. I recommend reading it, it's an example of how human bias can lead to spurious findings.  
 
 Scroll down through [The Guardian article](https://www.theguardian.com/commentisfree/2014/sep/02/limits-to-growth-was-right-new-research-shows-were-nearing-collapse) or the author's [original report](http://sustainable.unimelb.edu.au/sites/default/files/docs/MSSI-ResearchPaper-4_Turner_2014.pdf) and you will see plots of several variables over time, as collated from global datasources and predicted by the 1970 model.  
 
