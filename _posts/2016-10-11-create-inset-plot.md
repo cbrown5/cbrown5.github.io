@@ -37,4 +37,4 @@ boxplot(x~y)
 
 Voila that is it, we have our figure with an inset.  
 
-<img src ="/Images/inset_plot.png" alt="" class="image_wide"/>
+<img src ="/Images/inset_plot.png" alt="" class="image_normal"/>
