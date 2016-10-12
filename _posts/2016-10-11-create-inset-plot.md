@@ -35,9 +35,9 @@ hist(x)
 ```  
 
 Now the second key part, specify where in the coordinate space you want your inset figure to go:  
-```
-par(fig = c(0.07,0.5, 0.5, 1), new = T)  
-boxplot(x~y)
 ```  
+par(fig = c(0.07,0.5, 0.5, 1), new = T)   
+boxplot(x~y)
+```   
 
 Voila that is it, we have our figure with an inset.  
