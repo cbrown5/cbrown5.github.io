@@ -24,6 +24,11 @@ Now the key step, use `par` to set the `fig` param to your desired coordinate sp
 par(fig = c(0,1,0,1))
 ```  
 
+<div class = "image_caption">
+<img src ="/Images/inset_plot.png" alt="" class="image_float"/>
+<p> A histogram with a boxplot inset </p>
+</div>   
+
 Now plot your first figure
 ```
 hist(x)
@@ -36,5 +41,3 @@ boxplot(x~y)
 ```  
 
 Voila that is it, we have our figure with an inset.  
-
-<img src ="/Images/inset_plot.png" alt="" class="image_normal"/>
