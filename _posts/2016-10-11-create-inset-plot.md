@@ -18,27 +18,22 @@ I just learned a hassle free way to create insets (thanks to Ben Stewart-Koster)
 
 First, let's simulate some fake data  
 
-```  
-x <- rnorm(100)  
-y <- rbinom(100, 1, 0.5)
-```     
+    x <- rnorm(100)  
+    y <- rbinom(100, 1, 0.5)
+
 
 Now the key step, use `par` to set the `fig` param to your desired coordinate space. e.g. in the below we can specify figures positions in 0-1 on both the x and y coordinates:  
 
-```
-par(fig = c(0,1,0,1))
-```  
+
+    par(fig = c(0,1,0,1))
+
 Now plot your first figure  
 
-```
-hist(x)  
-```  
+    hist(x)  
 
 Now the second key part, specify where in the coordinate space you want your inset figure to go:  
-```  
-par(fig = c(0.07,0.5, 0.5, 1), new = T)  
 
-boxplot(x ~ y)  
-```   
+    par(fig = c(0.07,0.5, 0.5, 1), new = T)  
+    boxplot(x ~ y)  
 
 Voila that is it, we have our figure with an inset.  
