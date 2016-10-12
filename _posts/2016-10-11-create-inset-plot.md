@@ -7,14 +7,14 @@ published: true
 
 ## How to inset a plot on another plot in R  
 
-The difficulty of plotting one plot over the top of another in R has always frustrated me. I often end up opening some photo editing software (like Gimp, which is free) and doing it manually. However, manual editing can be frustrating if you need to change the plot.  
+The difficulty of plotting one plot over the top of another in R has always frustrated me. I often end up opening some photo editing software (like [Gimp](https://www.gimp.org/), which is free) and doing it manually. However, manual editing can be frustrating if you need to change the plot.  
 
 <div class = "image_caption">
 <img src ="/Images/inset_plot.png" alt="" class="image_float"/>
 <p> A histogram with a boxplot inset </p>
 </div>   
 
-I just learned a hassle free way to create insets (thanks to Ben Stewart-Koster) and wanted to share it, so here it is:
+I just learned a hassle free way to create insets (thanks to [Ben Stewart-Koster](https://twitter.com/bstewartkoster)) and wanted to share it, so here it is:
 
 First, let's simulate some fake data  
 
