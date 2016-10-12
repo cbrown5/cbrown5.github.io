@@ -9,6 +9,11 @@ published: true
 
 The difficulty of plotting one plot over the top of another in R has always frustrated me. I often end up opening some photo editing software (like Gimp, which is free) and doing it manually. However, manual editing can be frustrating if you need to change the plot.  
 
+<div class = "image_caption">
+<img src ="/Images/inset_plot.png" alt="" class="image_float"/>
+<p> A histogram with a boxplot inset </p>
+</div>   
+
 I just learned a hassle free way to create insets (thanks to Ben Stewart-Koster) and wanted to share it, so here it is:
 
 First, let's simulate some fake data  
@@ -23,12 +28,6 @@ Now the key step, use `par` to set the `fig` param to your desired coordinate sp
 ```
 par(fig = c(0,1,0,1))
 ```  
-
-<div class = "image_caption">
-<img src ="/Images/inset_plot.png" alt="" class="image_float"/>
-<p> A histogram with a boxplot inset </p>
-</div>   
-
 Now plot your first figure
 ```
 hist(x)
