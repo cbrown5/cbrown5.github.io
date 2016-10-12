@@ -73,8 +73,13 @@ tutorials
 #### 13. Compile manuals
 
 #### 14. Compile Vignettes
-
+devtools::use_vignette("remixsiar")
+devtools::build_vignettes()
+clicking 'check' will also create vignettes
 #### 15. Testing  
+
+license
+http://kbroman.org/pkg_primer/pages/licenses.html
 
 #### 16. Upload to github  
 And download, to test it.
