@@ -13,24 +13,29 @@ There is even a [tidyverse](https://cran.r-project.org/web/packages/tidyverse/in
 
 If you are into programming (ie doing more than just running a couple of linear models) then I recommend you check out the [purrr](https://cran.r-project.org/web/packages/purrr/index.html) package. It provides many functions that basically make looping easier and faster to code.  
 
+<div class = "image_caption">
+<img src ="/Images/popsim.png" alt="" class="image_float"/>
+<p> A stochastic simulation of population size generated using a loop (black line) and the accumulate function from purrr package (red points) </p>
+</div>   
+
+
 Here I explore how to use `purrr` to create a simple simulation model where a state variable at a time depends on its past state.  
 
 Skipping to my main point, it turns out that `purrr` may be more convenient in that it saves typing over writing loops. However, in this case the `purrr` function required more computational time.
 
 The model we will use to test `purrr` will create stochastic simulations of population size that look something like is pictured.
 
-<div class = "image_caption">
-<img src ="/Images/popsim.png" alt="" class="image_float"/>
-<p> A stochastic simulation of population size generated using a loop (black line) and the accumulate function from purrr package (red points) </p>
-</div>   
-
 First load the tidyverse package (or just purrr) and specify some parameters.  
 
     library(tidyverse)
-    tmax <- 100 #timesteps
-    r <- 1.2 #population growth at low abundance
-    K <- 20 #population carrying capacity
-    sdev <- 0.1 #standard deviation for population variation
+    #timesteps
+    tmax <- 100
+    #pop growth
+    r <- 1.2
+    #capacity
+    K <- 20
+    #abundance sd
+    sdev <- 0.1
 
 
 Now we generate a series of random numbers. We will multiply these by population size at each time-step to create stochastic variation:
