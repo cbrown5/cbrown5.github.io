@@ -60,7 +60,8 @@ Now, let's implement a function that uses a normal for loop to loop over abundan
 	    x2 <- rep(NA, tmax)
 	    x2[1] <- 0.1
 	    for (t in 2:tmax){
-	        x2[t] <- popmod(x2[t-1],pmult[t-1],  r, K)
+	        x2[t] <-
+            popmod(x2[t-1],pmult[t-1],  r, K)
 	   }
 	  x2
     }
