@@ -1,6 +1,6 @@
 ---
 layout: md_layout
-category: Rstats
+category: rstats
 title: "Barebones guide to creating R packages"
 published: false  
 ---

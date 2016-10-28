@@ -1,6 +1,6 @@
 ---
 layout: md_layout
-category: Research Rstats
+category: Research rstats
 title: "Twitter stats from ICRS2016"
 published: true  
 ---

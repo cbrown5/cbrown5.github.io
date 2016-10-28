@@ -1,6 +1,6 @@
 ---
 layout: md_layout
-category: Rstats Research
+category: rstats Research
 title: "Why you should write R packages"
 published: false  
 ---

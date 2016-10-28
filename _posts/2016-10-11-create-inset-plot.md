@@ -1,6 +1,6 @@
 ---
 layout: md_layout
-category: Rstats
+category: rstats
 title: "Create an inset plot"
 published: true  
 ---

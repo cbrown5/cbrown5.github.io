@@ -1,6 +1,6 @@
 ---
 layout: md_layout
-category: Research Rstats
+category: Research rstats
 title: "R programming tools for conservation scientists"
 published: true  
 ---
