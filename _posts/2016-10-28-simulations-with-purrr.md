@@ -1,6 +1,6 @@
 ---
 layout: md_layout
-category: Rstats
+category: rstats
 title: "A 'tidyverse' approach to simulation models"
 published: true  
 ---
