@@ -21,7 +21,7 @@ Check out the [conference webpage](http://www.speciesonthemove.com/provisional-p
 
 ### 1. Science tells a story and telling stories in itself is a suitable objective for science  
 
-A great talk from Emma Lee changed the way I think about science. I come from a very quantitative background, where the point of science is knowledge and improving the future for nature and humanity. But Lee convinced me that telling a story is a suitable goal in itself. People love to tell stories, so much so it is almost a basic human need. Science is the way to come closer to the truth in our thinking and in doing so provide an outlet for people to communicate authentic stories.
+A great talk from Emma Lee changed the way I think about science. I come from a very quantitative background, where the point of science is knowledge and improving the future for nature and humanity. But Lee convinced me that telling a story is a suitable goal in itself. People love to tell stories, so much so it is almost a basic human need. Science is the way to come closer to the truth in our thinking and in doing so provide an outlet for people to communicate authentic stories.  
 
 ### 2. Climate change impacts on ecosystems have become a personal experience  
 
