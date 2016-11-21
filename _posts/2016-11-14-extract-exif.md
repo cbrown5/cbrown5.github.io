@@ -11,6 +11,8 @@ See the other [parts in this series of blog posts](/rstats/2016/11/14/photos-to-
 
 My camera comes with an inbuilt GPS allowing you to geo-reference photos you take. Here is a simple example for how we can use this feature to create an interactive web map in R.  
 
+The photos come from a survey I did of oysters on a rocky shoreline. I took photos of each quadrat enabling me to geolocate the quadrats as well as record what occurred within them.  
+
 First get your hands on a few packages, `exif` for extracting exif info in R, `dplyr` for data management and `leaflet` for making maps:  
 
 	library(exifr)
