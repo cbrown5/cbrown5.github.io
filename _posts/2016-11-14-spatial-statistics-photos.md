@@ -2,14 +2,14 @@
 layout: md_layout
 category: rstats
 title: "Extracting exif data from photos using R"
-published: false  
+published: false    
 ---
 
 ## Part 1: Extracting exif data from photos using R  
 
 See the other [parts in this series of blog posts](/rstats/2016/11/14/photos-to-spatialstat.html).  
 
-My camera comes with an inbuilt GPS allowing
+
 #
 # Spatial interpolation
 #
@@ -136,11 +136,3 @@ addLegend("topright", pal = pal,
 values = brks,
 title = "Chance of live oysters <a href = 'https://en.wikipedia.org/wiki/Pacific_oyster' target = '_blank'> (Crassostrea gigas)</a>",
 opacity = 1)
-
-
-
-
-
-
-
- 
