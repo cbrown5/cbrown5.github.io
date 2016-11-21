@@ -32,7 +32,8 @@ Neat, we have our exif info as a dataframe. Now let's select just the useful col
 		GPSLongitude, GPSLatitude,
 		GPSTimeStamp)
 
-		write.csv(dat2, 'Exifdata.csv', row.names = F)
+		write.csv(dat2, 'Exifdata.csv',
+		row.names = F)
 
 NB the select function comes from the `dplyr` package. You can do this with base R too, but I prefer `dplyr`.  (You can get my dataframe [here](/data/Exifdata.csv))
 
