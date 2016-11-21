@@ -14,8 +14,8 @@ Google scholar has become increasingly useful and dominant in helping us find th
 
 
 <div class = "image_caption">
-<img src ="/Images/google-recommended-papers.jpg_large.jpeg" alt="" class="image_normal"/>
-<p> Google scholar recommended these two papers to me, effectively predicting the paper I am working on before it has even been submitted (They are both great reads) </p>
+<img src ="/Images/google-recommended-papers.jpg_large.jpeg" alt="" class="image_float"/>
+<p> Google scholar recommended these two papers to me, effectively predicting the paper I am working on before it has even been submitted (They are both great reads by the way) </p>
 </div>  
 
 I recently wondered how searches on Google Scholar are ordered. **If your paper comes out on top for popular key word searches, like 'climate change', you are much more likely to get read and therefore cited.**  I don't have quantitative evidence for an effect of search rankings on cites, but there is plenty of circumstantial evidence for it.  
