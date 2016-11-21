@@ -14,7 +14,7 @@ Google scholar has become increasingly useful and dominant in helping us find th
 
 
 <div class = "image_caption">
-<img src ="/Images/google-recommended-papers.jpg_large.jpeg" alt="" class="image_float"/>
+<img src ="/Images/google-recommended-papers.jpg_large.jpeg" alt="" class="image_normal"/>
 <p> Google scholar recommended these two papers to me, effectively predicting the paper I am working on before it has even been submitted (They are both great reads) </p>
 </div>  
 
