@@ -1,11 +1,11 @@
 ---
 layout: md_layout
 category: rstats
-title: "Extracting exif data from photos using R"
+title: "Create an interactive web map with geotagged photos"
 published: false  
 ---
 
-## Part 2: 
+## Part 2: Create an interactive web map with geotagged photos
 
 See the other [parts in this series of blog posts](/rstats/2016/11/14/photos-to-spatialstat.html).  
 

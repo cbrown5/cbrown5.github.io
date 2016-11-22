@@ -54,4 +54,4 @@ And here's what it should look like:
 <iframe src="/data/hornby_pic_loc.html" style = "width: 95%; height: 30em"> It no map appears here your browser doesn't support iframes. Try <a href = "/data/hornby_pic_loc.html">this link instead</a></iframe>
 
 
-Next up we will look at how to match these locations to the quadrat data I collected.  
+Next up we will look at how to match these locations to the quadrat data I collected. I will also show you how to add photos to the pop-ups at the site locations.   

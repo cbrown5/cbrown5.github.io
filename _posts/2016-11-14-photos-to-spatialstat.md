@@ -15,7 +15,7 @@ The oyster data-set has inspired a series of blog posts taking you from geotagge
 
 A further two posts are still to come but will be:  
 
-### Part 2: [Create an interactive web map with the photos](/rstats/2016/11/14/mapping-abundance-photos.html).
+### Part 2: [Create an interactive web map with geotagged photos](/rstats/2016/11/14/mapping-abundance-photos.html).
 
 ### Part 3: [Spatial analysis of geotagged data](/rstats/2016/11/14/spatial-statistics-photos.html).  
 
