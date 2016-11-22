@@ -26,7 +26,7 @@ It is not totally transparent how Google Scholar searchers are ordered. On other
 
 Google Scholar's algorithm is opaque, so we don't know how it is biasing our citation practices.  You can find some useful help on the search engine [here](https://scholar.google.com/intl/en/scholar/help.html). Of course they don't tell you exactly how searches are ordered, otherwise people would game the system.  
 
-[Authors note: after I published this blog [Rich Grenyer](https://twitter.com/rich_) sent me a link to [this article](http://www.sciplore.org/publications/2009-Google_Scholar%27s_Ranking_Algorithm_--_An_Introductory_Overview_--_preprint.pdf) from 2009 where they tried to reverse engineer how Google Scholar ranks searches. I recommend reading it if you use GS!]
+[Authors note: after I published this blog [Rich Grenyer](https://twitter.com/rich_) sent me a link to [this article](http://www.sciplore.org/publications/2009-Google_Scholar%27s_Ranking_Algorithm_--_An_Introductory_Overview_--_preprint.pdf) from 2009 where some folk tried to reverse engineer how Google Scholar ranks searches. I recommend reading it if you use GS!]
 
 <div class = "image_caption">
 <img src ="/Images/marine-reserves-search.png" alt="" class="image_float"/>
