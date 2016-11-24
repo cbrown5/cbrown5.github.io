@@ -13,7 +13,7 @@ In part 1 we looked at making a simple interactive map using locations from our 
 
 We will also add a geo-referenced pop-up that includes a picture of our study site. You might be familiar with this idea from Google Earth or Flickr.  
 
-To get you excited, here is the end result (try clicking on things!):
+To get you excited, here is the end result (try clicking on things! If you are viewing this blog on Rbloggers you will need to go [here](http://www.seascapemodels.org/data/hornby_oysters_map.html) to see the map):
 
 <iframe src="/data/hornby_oysters_map.html" style = "width: 95%; height: 30em"> It no map appears here your browser doesn't support iframes. Try <a href = "/data/hornby_oysters_map.html">this link instead</a></iframe>
 
