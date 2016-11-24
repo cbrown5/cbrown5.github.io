@@ -13,9 +13,9 @@ The oyster data-set has inspired a series of blog posts taking you from geotagge
 
 ### Part 1: [Extracting exif data from photos](/rstats/2016/11/14/extract-exif.html).  
 
-A further two posts are still to come but will be:  
+### Part 2: [Create an interactive web map with geotagged photos](/rstats/2016/11/23/mapping-abundance-photos.html).
 
-### Part 2: [Create an interactive web map with geotagged photos](/rstats/2016/11/14/mapping-abundance-photos.html).
+A further posts is still to come but will be:  
 
 ### Part 3: [Spatial analysis of geotagged data](/rstats/2016/11/14/spatial-statistics-photos.html).  
 
