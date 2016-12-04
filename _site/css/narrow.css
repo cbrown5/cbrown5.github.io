@@ -200,12 +200,22 @@ img.image_normal{
 }
 
 img.image_float{
-   max-width:300px;
+   max-width:100%;
    width:auto;
 }
 
+img.image_long{
+    max-width:100%;
+    width:auto;
+}
+
+img.image_float_wide{
+    max-width:100%;
+    width:auto;
+}
+
 div.image_caption{
-    max-width:300px;
+    max-width:100%;
     width:auto;
      padding:10px;
      font-size:90%;
@@ -216,6 +226,31 @@ div.image_caption{
 }
 
 div.image_caption_wide{
+    max-width: 100%;
+    width:auto;
+     height:auto;
+     padding:10px;
+     font-size:90%;
+     font-style:italic;
+     padding: 10px;
+     padding-bottom: 5px;
+     margin: 10px;
+}
+
+div.image_caption_long{
+    max-width: 100%;
+    width:auto;
+     height:auto;
+     padding:10px;
+     font-size:90%;
+     font-style:italic;
+     padding: 10px;
+     padding-bottom: 5px;
+     margin: 10px;
+}
+
+div.image_caption_fixed{
+    max-width: 100%;
     width:auto;
      height:auto;
      padding:10px;

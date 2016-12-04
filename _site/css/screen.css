@@ -231,6 +231,13 @@ img.image_normal{
    width: 50%;
 }
 
+img.image_long{
+    float:left;
+    width:50%;
+     height:auto;
+     padding:10px;
+}
+
 
 img.wide_image{
   width:700px;
@@ -249,6 +256,30 @@ div.image_caption{
      padding-bottom: 5px;
      margin: 10px;
 }
+
+div.image_caption_long{
+    float:right;
+    width:50%;
+     height:auto;
+     padding:10px;
+     font-size:90%;
+     font-style:italic;
+     padding: 10px;
+     padding-bottom: 5px;
+     margin: 10px;
+}
+
+div.image_caption_fixed{
+    width:95%;
+     height:auto;
+     padding:10px;
+     font-size:90%;
+     font-style:italic;
+     padding: 10px;
+     padding-bottom: 5px;
+     margin: 10px;
+}
+
 
 div.image_caption_wide{
     float:right;
