@@ -37,9 +37,9 @@ Major environmental issues and development pressures face the island of Vanua Le
 
 The hard work done by our WCS colleagues, particularly Sangeeta Mangubhai and Stacy Jupiter, to develop collaborations with communities and government on Vanua Levu meant our working group had a direct avenue to contribute toward environmental planning.  
 
-When the Wildlife Conservation Society invited my colleague and I to present our group’s science at a workshop with community and government leaders, **I was both thrilled and daunted.** Thrilled, because my science had chance to inform environmental change. Daunted, because I had never visited Vanua Levu, but would be presenting to local people who live from the land and ocean resources I had studied remotely.  
+When the Wildlife Conservation Society invited my colleague (Amelia Wenger from Uni of Queensland) and I to present our group’s science at a workshop with community and government leaders, **I was both thrilled and daunted.** Thrilled, because my science had chance to inform environmental change. Daunted, because I had never visited Vanua Levu, but would be presenting to local people who live from the land and ocean resources I had studied remotely.  
 
-My own contribution before the workshop in Fiji was largely analytical. Our group brought together data from WCS to measure how land-use change has affected stream fish, coral reefs and coral reef fish (e.g. [see my recent talk and paper](/Research/2016/07/07/SCBO2016-talk.html)). If I needed local advice on our work I could easily call up my WCS colleagues.  
+My own contribution before the workshop in Fiji was largely analytical. Our group brought together data from WCS to measure how land-use change has affected stream fish, coral reefs and coral reef fish (e.g. [see this recent talk and paper](/research/2016/07/07/SCBO2016-talk.html)). If I needed local advice on our work I could easily call up my WCS colleagues.  
 
 
 Travelling to Nabouwalu a government centre on Vanua Levu where the workshop would be held, was something of a pilgrimage for me. On the way I finally got to see the ecosystems I had studied extensively on maps and satellite images. We flew over extensive reefs, pristine forest. We also saw the environmental damage the region will face more of in the future – Bauxite mining, logging, pine plantations, agriculture and murky rivers.  
@@ -54,7 +54,7 @@ Travelling to Nabouwalu a government centre on Vanua Levu where the workshop wou
 The objective for the workshop was to bring together leaders from government departments representing these different industries and local leaders from different districts to build a spatial plan across the Bua Province (south-west portion of Vanua Levu). It is also an opportunity for communities to voice their concerns about environmental protection to central government.  
 
 
-My role was to present our work that showed the connections between land-use change and reef fish. In particularly, I was highlighting how actions in one district can affect the catchments and marine areas of neighbouring districts.  
+Our role was to present our work that showed the connections between land-use change and reef fish. In particular, we highlighted how actions in one district can affect the catchments and marine areas of neighbouring districts.  
 
 After our initial presentations we had almost two days for community leaders and government members to discuss proposals for a new spatial plan.  
 
@@ -62,7 +62,7 @@ We then developed the spatial and management plans with community members. The p
 
 <div class = "image_caption">
 <img src ="/Images/land-use-change-bua.png" alt="Land-use change around Bua" class="image_float"/>
-<p> Clockwise from top-left: Fire threatens a pine plantation on Vanua Levu. A truck carries logs to a nearby sawmill. farmland on Vanua Levu. Dr Wenger speaks at the workshop about balancing nature conservation with logging, farming and development.
+<p> Clockwise from top-left: Fire threatens a pine plantation on Vanua Levu. A truck carries logs to a nearby sawmill. Farmland on Vanua Levu. Dr Wenger speaks at the workshop about balancing nature conservation with logging, farming and development.
  </p>
 </div>     
 
