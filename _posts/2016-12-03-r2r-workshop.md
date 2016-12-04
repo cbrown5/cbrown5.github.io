@@ -103,4 +103,4 @@ I was heartened though, by the closing speech from the local administrator. He s
 Now, I am back in Fiji’s capital city and a brief encounter convinced me the Fijian people have the right mentality to protect their environment for future generations. Last night I was leaving a restaurant in the rain with a colleague and her baby. A group of burly men approached us in the dark car-park. “Baby Jack!” one of them greeted the baby warmly. The others swooned over him, tickling his toes to make him laugh.  
 
 
-In that moment, I saw a country bound by a sense of community and a people who clearly love the next generation. A desire to help the next generation, and the knowledge for how to do so should be all a community needs to make decisions that protect the future of their environment  
+In that moment, I saw a country bound by a sense of community and a people who clearly love the next generation. A desire to help the next generation, and the knowledge for how to do so should be all a community needs to make decisions that protect the future of their environment.  
