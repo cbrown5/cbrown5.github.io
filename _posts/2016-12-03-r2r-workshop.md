@@ -37,7 +37,7 @@ Major environmental issues and development pressures face the island of Vanua Le
 
 The hard work done by our WCS colleagues, particularly Sangeeta Mangubhai and Stacy Jupiter, to develop collaborations with communities and government on Vanua Levu meant our working group had a direct avenue to contribute toward environmental planning.  
 
-When the Wildlife Conservation Society invited my colleague (Amelia Wenger from Uni of Queensland) and I to present our group’s science at a workshop with community and government leaders, **I was both thrilled and daunted.** Thrilled, because my science had chance to inform environmental change. Daunted, because I had never visited Vanua Levu, but would be presenting to local people who live from the land and ocean resources I had studied remotely.  
+When the Wildlife Conservation Society invited my colleague (Amelia Wenger from Uni of Queensland) and I to present our group’s science at a workshop with community and government leaders, **I was both thrilled and daunted.** Thrilled, because my science had a chance to inform environmental change. Daunted, because I had never visited Vanua Levu, but would be presenting to local people who live from the land and ocean resources I had studied remotely.  
 
 My own contribution before the workshop in Fiji was largely analytical. Our group brought together data from WCS to measure how land-use change has affected stream fish, coral reefs and coral reef fish (e.g. [see this recent talk and paper](/research/2016/07/07/SCBO2016-talk.html)). If I needed local advice on our work I could easily call up my WCS colleagues.  
 
@@ -58,7 +58,7 @@ Our role was to present our work that showed the connections between land-use ch
 
 After our initial presentations we had almost two days for community leaders and government members to discuss proposals for a new spatial plan.  
 
-We then developed the spatial and management plans with community members. The plans were designed through discussion around maps with textas. All my training in the sophisticated quantitative and computerised methods used spatial planning went out the window.  
+We then developed the spatial and management plans with community members. The plans were designed through discussion around maps with marker pens. All my training in the sophisticated quantitative and computerised methods used spatial planning went out the window.  
 
 <div class = "image_caption">
 <img src ="/Images/land-use-change-bua.png" alt="Land-use change around Bua" class="image_float"/>
@@ -68,7 +68,7 @@ We then developed the spatial and management plans with community members. The p
 
 You can run the computer programs for spatial planning interactively. However, in this case we had to ask the locals about where the pristine catchments were and where their drinking water came from. We also learned that one large catchment with intact forest on the south-coast had now been largely sold into logging concessions. Sadly, my earlier modelling had identified this very catchment as a major contributor to sedimentation to reefs if it was logged.   
 
-Despite the technical simplicity of our approach, we did use many of the principles for conservation planning I had learned over the years. So our knowledge of the science was helpful.  
+Despite the technical simplicity of our approach, we did use many of the principles for conservation planning I had learned over the years. So science did underpin our advice.  
 
 For instance, we encouraged community members to identify and protect drinking water catchments – WCS has some evidence that typhoid outbreaks after cyclones are worsened in logged catchments.  
 
