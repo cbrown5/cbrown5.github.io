@@ -30,7 +30,7 @@ Yet, the daily life of a university scientist often feels distant from any real 
  </p>
 </div>   
 
-The opportunity to advise on management plans for Fiji came through with a Science for Nature and People Partnership working group I have helped to lead (along with Carissa Klein and Hugh Possingham). These working groups are funded by the Wildlife Conservation Society (WCS) and The Nature Conservancy. They bring together scientists with the conservation staff who are working on the ground with environmental issues.  
+The opportunity to advise on management plans for Fiji came through with a [Science for Nature and People Partnership](http://snappartnership.net/groups/ridges-to-reef-fisheries/) working group I have helped to lead (along with Carissa Klein and Hugh Possingham). These working groups are funded by the Wildlife Conservation Society (WCS) and The Nature Conservancy. They bring together scientists with the conservation staff who are working on the ground with environmental issues.  
 
 Major environmental issues and development pressures face the island of Vanua Levu. In particular, agriculture, logging, mining and road development cause soils and pollutants to run-off into streams where they can flow out to coral reef ecosystems. Run-off may be a major threat to coastal reefs and the local fisheries they support.  
 
