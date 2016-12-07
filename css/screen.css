@@ -234,6 +234,14 @@ img.image_normal{
    width: 50%;
 }
 
+img.image_people{
+    float:left;
+    padding:10px;
+   width: 20%;
+
+}
+
+
 img.image_long{
     float:left;
     width:50%;
@@ -283,6 +291,13 @@ div.image_caption_fixed{
      margin: 10px;
 }
 
+div.image_caption_ppl{
+    width:95%;
+     height:auto;
+     padding:0px;
+     font-size:100%;
+     margin: 0px;
+}
 
 div.image_caption_wide{
     float:right;

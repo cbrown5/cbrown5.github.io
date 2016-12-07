@@ -202,6 +202,12 @@ img.image_normal{
     width:auto;
 }
 
+img.image_people{
+    width:60%;
+
+}
+
+
 img.image_float{
    max-width:100%;
    width:auto;
@@ -229,15 +235,23 @@ div.image_caption{
 }
 
 div.image_caption_wide{
-    max-width: 100%;
+    ax-width:100%;
     width:auto;
-     height:auto;
      padding:10px;
      font-size:90%;
      font-style:italic;
      padding: 10px;
      padding-bottom: 5px;
      margin: 10px;
+}
+
+div.image_caption_ppl{
+    width:95%;
+     height:auto;
+     padding:0px;
+     font-size:100%;
+     padding-bottom: 40px;
+     margin: 0px;
 }
 
 div.image_caption_long{
