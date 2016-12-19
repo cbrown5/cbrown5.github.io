@@ -152,7 +152,7 @@ pre.r {
 }
 
 pre.image_under{
-  width:50%  /* for when pre overlaps an image */
+  width:50%;   /* for when pre overlaps an image */
 }
 
 .code_box{
