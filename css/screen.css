@@ -1,7 +1,7 @@
 ---
----  
+---
 
-html, body {
+html, body, p {
    height: 100%;
    font-family: 'avenir', Arial, Helvetica, sans-serif;
 }
