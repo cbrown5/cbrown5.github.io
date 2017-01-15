@@ -1,6 +1,6 @@
 html, body {
    height: 100%;
-   font-family: 'avenir', Arial, Helvetica, sans-serif;
+   font-family: sans-serif;
 }
 
 
@@ -169,15 +169,11 @@ pre.image_under{
    width:80%;
    background-color:#EAEEEF;
    margin:0;
-padding:0;
- border-color:#cad4d6;
- border:solid;
- width:90%;
- border-width:0.2px;
-}
-
-#toc {
-
+   padding:0;
+   border-color:#cad4d6;
+   border:solid;
+   width:90%;
+   border-width:0.2px;
 }
 
 /*
@@ -193,7 +189,6 @@ a {
 
 a:hover {
    color: #f6561b;
-
 }
 
 /*
@@ -219,12 +214,10 @@ img.image_float_wide{
 
 img.small_image{
    width: 100px;
-
 }
 
 img.med_image{
    width: 190px;
-
 }
 
 img.image_normal{
@@ -235,7 +228,6 @@ img.image_people{
     float:left;
     padding:10px;
    width: 20%;
-
 }
 
 
