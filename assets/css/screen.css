@@ -3,7 +3,7 @@
 
 html, body {
    height: 100%;
-   font-family: 'avenir', Arial, Helvetica, sans-serif;
+   font-family: 'avenir', Arial, Helvetica, sans-serif !important;
 }
 
 
