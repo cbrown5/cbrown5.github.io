@@ -16,7 +16,7 @@ title: blog
 
 <p> Chris Brown's blog on ocean science, quantitative ecology and R programming. Find us on <a href = "https://www.r-bloggers.com/" target="_blank">Rbloggers</a> </p>
 
-<ul class="postlist_main">
+<div class="postlist_main">
   {% for post in site.posts %}
     <div class = "posts_boxes">
     <h3 class = "posts_dates"> {{ post.date | date: "%d %b %Y" }} </h3>
@@ -27,7 +27,7 @@ title: blog
     </a>
     </div>
   {% endfor %}
-</ul>
+</div>
 
 {% include footer.html %}
 
