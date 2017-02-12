@@ -55,6 +55,15 @@ function initMap() {
             class: 'source'
           });
 
+          var source2 = $('<a>', {
+            text: feature.properties['source2-credit'],
+            href: feature.properties['source2-link'],
+            target: "_blank",
+            class: 'source'
+          });
+
+          var linebreak = $('<p></p>');
+
           var description = $('<p></p>', {
             text: feature.properties['description'],
             class: 'description'
@@ -71,7 +80,7 @@ function initMap() {
 
           imgHolder.append(image);
 
-          container.append(chapter).append(imgHolder).append(source).append(description);
+          container.append(chapter).append(imgHolder).append(source).append(source2).append(description);
           $('#contents').append(container);
 
           var i;
