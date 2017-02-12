@@ -80,7 +80,7 @@ function initMap() {
 
           imgHolder.append(image);
 
-          container.append(chapter).append(imgHolder).append(source).append(source2).append(description);
+          container.append(chapter).append(imgHolder).append(source).append(linebreak).append(source2).append(description);
           $('#contents').append(container);
 
           var i;
