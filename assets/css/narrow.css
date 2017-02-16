@@ -393,22 +393,22 @@ ul.menu{
    left:0%;
    position:relative;
    width:95%;
-   background-color: #e7f8fd;
+   background-color: #cce5ff;
 }
 
 li.menu_item{
    border-style:solid;
-   border-color: #D3D3D3;
    display:inline;
-   padding: 3px;
+   padding: 5px;
    margin: 1px;
-   font-size:60%;
-   line-height:20px;
+   font-size:80%;
+   line-height:50px;
    text-align:center;
    border-width:2px;
    width:100px;
-   background-color: white;
-   color:black;
+   background-color: #e7f8fd;
+   color:#1d3b77;
+   border-color: #f0f0f5;
 }
 
 li:hover.menu_item{
