@@ -19,7 +19,7 @@
 					<description>{{ post.content | xml_escape }}</description>
 				{% endif %}
 				<pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-				<link>{{ site.url }}{{ post.url }}</link>
+				<link>http://www.seascapemodels.org/{{ post.url }}</link>
 				<guid isPermaLink="true">http://www.seascapemodels.org/{{ post.url }}</guid>
 			</item>
 		{% endfor %}
