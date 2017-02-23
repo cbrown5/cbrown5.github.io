@@ -5,7 +5,7 @@ title: "Part 3: Spatial analysis of geotagged data"
 published: true
 ---
 
-##Part 3: Spatial analysis of geotagged data
+## Part 3: Spatial analysis of geotagged data
 
 See the other [parts in this series of blog
 posts](/rstats/2016/11/14/photos-to-spatialstat.html).
@@ -17,7 +17,7 @@ interpolate to unmeasured locations.
 
 Here we will build an interactive map showing model results from an interpolation of oyster presence/absence.
 
-<iframe src="/data/hornby_oysters_interp.html" style = "width: 95%; height: 30em"> It no map appears here your browser doesn't support iframes. Try <a href = "/data/hornby_oysters_interp.html">this link instead</a></iframe>
+<iframe src="/data/hornby_oysters_interp.html" style = "width: 80%; height: 30em"> It no map appears here your browser doesn't support iframes. Try <a href = "/data/hornby_oysters_interp.html">this link instead</a></iframe>
 
 [Get the data for this blog](/data/Oysters_merged.csv').
 
