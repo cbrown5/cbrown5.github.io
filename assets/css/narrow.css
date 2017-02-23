@@ -38,7 +38,7 @@ Banner
 
 h1.banner {
     float:left;
-   font-size: 130%;
+   font-size: 140%;
    text-align: left;
    color: black;
    position:relative;
@@ -61,7 +61,7 @@ h1.banner {
        max-width:40%;
        width:auto;
        position:relative;
-        background: #1d3b77;
+        background: #4675d2;
        border-radius: 4px;
        border:2em;
        }
