@@ -5,6 +5,8 @@ title: "Part 3: Spatial analysis of geotagged data"
 published: true
 ---
 
+##Part 3: Spatial analysis of geotagged data
+
 See the other [parts in this series of blog
 posts](/rstats/2016/11/14/photos-to-spatialstat.html).
 
