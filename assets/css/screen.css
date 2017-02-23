@@ -23,6 +23,7 @@ Banner
    background-position: center;
    z-index:-1;
    margin-bottom:20px;
+  border-bottom: solid;
 }
 
 #banner{
@@ -36,22 +37,33 @@ Banner
    top:10px;
 }
 
-
-h1 {
-   font-size: 200%;
+h1.banner {
+    float:left;
+    font-size: 200%;
    text-align: left;
    color: black;
    position:relative;
    left:20px;
-   width:100%;
-   margin-bottom:5px;
+   width:70%;
+   margin-bottom:0px;
+   margin-top:0;
 }
 
-p.banner{
-    margin-top: 0px;
-   font-size:100%;
-   text-align:left;
-   color: #99caff;
+div.explore{
+    max-width:20%;
+    width:auto;
+    position:relative;
+     background: #1d3b77;
+    border-radius: 4px;
+    border:2em;
+    }
+
+p.explore{
+    color:white;
+    font-size:110%;
+    text-align:right;
+    padding:0.2em;
+    padding-right:0.4em;
 }
 
 img.banner_image{
@@ -59,7 +71,7 @@ img.banner_image{
     float: right;
     position:relative;
     margin-right:30px;
-    top:-30px;
+    top:-1em;
 }
 
 /*
@@ -88,6 +100,12 @@ p.large_font{
 
 p.sub_line{
 margin-bottom:0px;
+}
+
+h1 {
+    color:#142953;
+    line-height:40px;
+    margin-top:5px;
 }
 
 h2, h3 {
@@ -403,7 +421,7 @@ ul.menu{
   list-style-type: none;
    margin: 0;
    padding: 5px;
-   border-bottom-style: solid;
+   border-top-style: solid;
    border-color: #6176A0;
 }
 
@@ -412,7 +430,7 @@ li.menu_item{
    text-decoration: none;
    padding: 15px;
    margin: 1px;
-   font-size:80%;
+   font-size:100%;
 }
 
 li.menu_item a:hover{

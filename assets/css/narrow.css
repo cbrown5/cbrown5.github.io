@@ -21,6 +21,7 @@ Banner
    height:auto;
    background-position:center;
    z-index:-1;
+   border-bottom: solid;
 }
 
 #banner{
@@ -35,8 +36,9 @@ Banner
    left:10px;
 }
 
-h1 {
-   font-size: 150%;
+h1.banner {
+    float:left;
+   font-size: 130%;
    text-align: left;
    color: black;
    position:relative;
@@ -45,19 +47,33 @@ h1 {
    margin-top:0px;
    }
 
-  p.banner{
-      margin-top: 0px;
-      font-size:70%;
-      color: #99caff;
-  }
 
-img.banner_image{
-    max-width: 25%;
-    float: right;
-    position:relative;
-    margin-right:30px;
-    top:-10px;
-}
+   img.banner_image{
+       max-width: 25%;
+       float: right;
+       position:relative;
+       margin-right:30px;
+       top:-1em;
+        z-index:-1;
+   }
+
+   div.explore{
+       max-width:40%;
+       width:auto;
+       position:relative;
+        background: #1d3b77;
+       border-radius: 4px;
+       border:2em;
+       }
+
+   p.explore{
+    width:auto;
+       color:white;
+       font-size:80%;
+       text-align:right;
+       padding:0.2em;
+   }
+
 
 /*
 --------------
@@ -85,7 +101,7 @@ p.large_font{
    line-height:28px;
    }
 
-h2, h3 {
+h1, h2, h3 {
    color:#142953;
    line-height:40px;
    margin-top:5px;
