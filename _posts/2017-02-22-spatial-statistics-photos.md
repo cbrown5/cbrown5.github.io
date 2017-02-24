@@ -65,7 +65,7 @@ structuring of the sampling (I wandered around on the rocky shore
 throwing the quadrat at intervals).
 
 Below we provide two parameters to `max.edge`, this will enable us to
-buffer the edges to obtain a slightly large spatial domain.
+buffer the edges to obtain a slightly larger spatial domain. Buffering is important because the INLA approximation will be inaccurate at the edges of the spatial domain. 
 
     max.edge.length <- c(25, 40)
     loc1 <- as.matrix(coordinates(spdf))
@@ -77,9 +77,10 @@ buffer the edges to obtain a slightly large spatial domain.
 ![](/Images/oyster_mesh-1.png)
 
 You can play with the edge length, offset and cutoff parameters to vary
-how the triangulations turns out. You can get more guidance at the
-[`INLA` page](http://www.r-inla.org/) and in [this
-tutorial](https://www.math.ntnu.no/inla/r-inla.org/tutorials/spde/inla-spde-howto.pdf).
+how the triangulations turns out.
+
+You can get more guidance at the [`INLA` page](http://www.r-inla.org/) and in [this
+tutorial](https://www.math.ntnu.no/inla/r-inla.org/tutorials/spde/inla-spde-howto.pdf). [This tutorial](https://drive.google.com/drive/folders/0B55S_W3X6C38WS13T1NtTVlvblU) also has some very excellent advice about how to choose boundaries and triangle sizes.
 
 An important step is to check that our maximum edge lengths are less
 than the estimated range (otherwise it is pointless including a spatial
@@ -191,9 +192,11 @@ And finally the plot:
 ![](/Images/oyster_inla_raster-1.png)
 
 So it looks like oysters are more common in the southern portion of the
-survey area. But note that our predictions extent a fair way from the
+survey area.
+
+But note that our predictions extent a fair way from the
 points. We might want to redo these with a more constrained spatial
-region.
+region. In general we should't trust predictions that are more than ~ 1 spatial range from the edge of our sampled region (in this case the posterior estimate for range was 181m).
 
 Finally, we could map this onto a satellite image to get a better view
 of what is going on. I am just using the same `leaflet` code as
