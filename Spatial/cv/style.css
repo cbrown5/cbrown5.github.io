@@ -35,15 +35,15 @@ body {
 }
 
 #contents .space-at-the-top {
-    height: 30px;
+    height: 90px;
     margin: 0px;
 }
 
 #contents .space-at-the-bottom {
-    height: 130px;
+    height: 250px;
     margin: 0px;
     text-align: center;
-    padding-top: 70px;
+    padding-top: 200px;
 }
 
 #chapter {
