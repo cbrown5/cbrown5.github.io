@@ -201,6 +201,21 @@ a:hover {
 
 }
 
+a.linkmain{
+    display:inline-block;
+    height:1.3em;
+    border:solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding-left:0.15em;
+    padding-right:0.15em;
+    padding-top:0.05em;
+    padding-bottom:0.05em;
+    background-color: #e7f8fd;
+    line-height: 1.5em;
+    font-size:108%;
+}
+
 /*
 --------------
 images
@@ -215,11 +230,6 @@ img{
 img.image_normal{
     max-width:300px;
     width:auto;
-}
-
-img.image_people{
-    width:60%;
-
 }
 
 
@@ -393,7 +403,20 @@ div:hover.image_projpage{
 p.clickablediv{
     font-weight: bolder;
     font-size: 105%;
+}
 
+div.profile{
+    width:95%;
+    height:auto;
+}
+
+img.profile{
+    width:80%;
+}
+
+h3.people{
+    margin:0em;
+    font-size:100%;
 }
 
 /*

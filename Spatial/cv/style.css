@@ -15,10 +15,10 @@ body {
 
 #narration {
     position: absolute;
-    width: 30vw;
+    width: 30%;
     min-width: 300px;
     right: 0px;
-    height: 100vh;
+    height: 100%;
     overflow: auto;
     z-index: 99;
     background: rgba(254,254,254, 1.0); /* to apply opacity background only. */
@@ -134,25 +134,45 @@ h3 {
     background-color: white;
 }
 
+a.source {
+    display:block;
+    height:2.5em;
+    width:90%;
+    border: 1px solid #8b8b8b;
+    background-color: #d9d9d9;
+    border-radius:5px;
+    text-decoration:none;
+    text-align:center;
+    font-size:120%;
+    margin-top:1em;
+    color:#1d3b77;
+}
+
 @media only screen and (max-device-width: 480px) {
   ::-webkit-scrollbar {
       display: none;
   }
   #map {
-    width: 100vw;
+    width: 100%;
   }
   #title {
-    width: 80%;
-    left: 10%;
+    width: 95%;
+    left: 2%;
     min-width: 0;
   }
   #narration {
-    width: 80%;
+    width: 95%;
+    height:60%;
     min-width: 0;
-    left: 10%;
+    left: 2%;
     background: none;
     opacity: 0.8;
   }
+
+.img-holder {
+    height:150px;
+}
+
   .description {
       padding: 0;
       padding-bottom: 10px;
