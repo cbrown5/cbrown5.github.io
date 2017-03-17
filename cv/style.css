@@ -46,6 +46,14 @@ body {
     padding-top: 200px;
 }
 
+.blog-at-bottom {
+    height: 2.5em;
+    margin: 0px;
+    text-align: center;
+    padding-top: 20px;
+    font-size:120%
+}
+
 #chapter {
     position: absolute;
     z-index: 999;

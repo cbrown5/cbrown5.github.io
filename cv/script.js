@@ -113,6 +113,7 @@ function initMap() {
     });
 
     $('div#container1').addClass("inFocus");
+    $('#contents').append("<div class='blog-at-bottom'><a href='/bluecology_blog/index.html' class='source'</br>Blog</a></div>");
     $('#contents').append("<div class='space-at-the-bottom'><a href='#space-at-the-top'><i class='fa fa-chevron-up'></i></br><small>Top</small></a></div>");
     map.fitBounds(geojson.getBounds());
     geojson.addTo(map);
