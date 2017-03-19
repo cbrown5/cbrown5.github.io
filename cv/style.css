@@ -146,10 +146,8 @@ a.source {
     display:block;
     height:2.5em;
     width:90%;
-    border: 1px solid #8b8b8b;
-    background-color: #d9d9d9;
-    border-radius:5px;
-    text-decoration:none;
+    border: none;
+    text-decoration:underline;
     text-align:center;
     font-size:120%;
     margin-top:1em;
@@ -160,6 +158,11 @@ a.source {
   ::-webkit-scrollbar {
       display: none;
   }
+
+a.source{
+    font-size: 90%;
+}
+
   #map {
     width: 100%;
   }
@@ -170,7 +173,7 @@ a.source {
   }
   #narration {
     width: 95%;
-    height:60%;
+    height:65%;
     min-width: 0;
     left: 2%;
     background: none;
