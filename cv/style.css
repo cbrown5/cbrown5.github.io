@@ -149,7 +149,7 @@ a.source {
     border: none;
     text-decoration:underline;
     text-align:center;
-    font-size:120%;
+    font-size:100%;
     margin-top:1em;
     color:#1d3b77;
 }
@@ -160,7 +160,7 @@ a.source {
   }
 
 a.source{
-    font-size: 90%;
+    font-size: 110%;
 }
 
   #map {
