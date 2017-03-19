@@ -16,7 +16,7 @@ function initMap() {
   });
 
   // This displays a base layer map (other options available)
-  var lightAll = new L.tileLayer('http://{s}.basemaps.cartocdn.com/base-antique/{z}/{x}/{y}.png', {
+  var lightAll = new L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
   }).addTo(map);
 
