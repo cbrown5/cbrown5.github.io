@@ -163,6 +163,12 @@ a.source{
     font-size: 110%;
 }
 
+.image-container {
+    /* margin + padding = imageContainerMargin in script.js */
+    /* Important for scrolling! */
+    max-height:30px;
+}
+
   #map {
     width: 100%;
   }

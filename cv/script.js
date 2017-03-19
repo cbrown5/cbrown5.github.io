@@ -44,9 +44,9 @@ function initMap() {
             class: 'chapter-header'
           });
 
-        //  var image = $('<img>', {
-        //    src: feature.properties['image'],
-        //  });
+          var image = $('<img>', {
+            src: feature.properties['image'],
+          });
 
           var source = $('<a>', {
             text: feature.properties['source-credit'],
