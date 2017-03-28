@@ -8,10 +8,10 @@ published: true
 A fast method to add annotations to a plot
 ---------------------------------------------
 
-Making professional looking plots in R can be fiddly. One task that I often spends ages doing is manually finding coordinates to add labels.
+Making professional looking plots in R can be fiddly. One task that I often spend ages doing is manually finding coordinates to add labels.
 Wouldn't it be nice if you could just send the coordinates directly to your text editor?
 
-I did some searching and found on [stackoverflow](http://stackoverflow.com/questions/14547069/how-to-write-from-r-to-the-clipboard-on-a-mac) that you can send R objects to the clipboard. So here is my solution using that trick. 
+I did some searching and found on [stackoverflow](http://stackoverflow.com/questions/14547069/how-to-write-from-r-to-the-clipboard-on-a-mac) that you can send R objects to the clipboard. So here is my solution using that trick.
 
 <div class = "image_caption">
 <img src ="/Images/locator-plot.png" alt="" class="image_float"/>
