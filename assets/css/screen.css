@@ -76,6 +76,28 @@ img.banner_image{
 
 /*
 --------------
+Tables
+--------------
+*/
+
+
+th, td {
+    font-size:90%;
+    border-bottom: 1px solid grey;
+    padding: 5px;
+    text-align: center;
+}
+
+tr:hover {background-color: #EAEEEF}
+
+table {
+    font-size:90%;
+    width: auto;
+    border-collapse: collapse;
+}
+
+/*
+--------------
 Body
 --------------
 */

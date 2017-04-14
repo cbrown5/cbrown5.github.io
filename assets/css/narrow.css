@@ -74,6 +74,25 @@ h1.banner {
        padding:0.2em;
    }
 
+   /*
+   --------------
+   Tables
+   --------------
+   */
+
+   th, td {
+       font-size:auto;
+       border-bottom: 1px solid grey;
+       padding: 5px;
+       text-align: center;
+   }
+
+   table {
+       font-size:60%;
+       width: 100%;
+       border-collapse: collapse;
+   }
+
 
 /*
 --------------
