@@ -14,25 +14,21 @@ needle](https://medium.com/@jofu/openvis-2017-a-recap-3e945bb9f267) and
 wondered, could animating uncertainty help communicate for the kind of
 work I do on population modelling?
 
-<div class = "image_caption">
-<img src ="/Images/time_series_uncertainty_figs/images_pause.gif" alt="" class="image_float"/>
-<p> The end result, an animation showing the wandering nature of random walks.  </p>
-</div>
+<img src ="/Images/time_series_uncertainty_figs/images_pause.gif" alt="" class="image"/>
 
 One challenge when plotting uncertainty intervals for population trends
 is that confidence intervals don't capture the wandering nature of
 population processes. The figure here shows the median of a poisson
 random walk, with 90% quantiles.
 
-![](/Images/time_series_uncertainty_figs/tsu_ciplot.png)
-
 In fact, each trend line will wander around, like the next image. So,
 the median and intervals give a false impression that an individual
 trend will experience relative stability.
 
 <div class = "image_caption">
+<img src ="/Images/time_series_uncertainty_figs/tsu_ciplot.png" alt="" class="image_float"/>
 <img src ="/Images/time_series_uncertainty_figs/tspng_30.png" alt="" class="image_float"/>
-<p> A single trend line can wobble much more than appears if looking at the median and quantiles.  </p>
+<p> A graph of the median and quantiles doesn't represent the uncertainty in any single trend line very well. </p>
 </div>
 
 I decided to try and animate the uncertainty, using R.
