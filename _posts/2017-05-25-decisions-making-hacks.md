@@ -5,7 +5,6 @@ title: "Hacks for making time-effective and lower stress decisions"
 published: true
 ---
 
-
 ## Hacks for making time-effective and lower stress decisions
 
 Decisions are a fundamental currency of human life. Let me give you some examples.
@@ -97,7 +96,7 @@ If you copy yourself enough you will develop muscle memory. This is a very time 
 
 For instance, when I surf I don't have to think about when to paddle for a wave and when to pop up onto my feet. I just know from having done it thousands of times.
 
-Some times of analysis also just flow out of my fingers into code without me thinking about it. This is because I have done them so many times.
+Some types of analysis also just flow out of my fingers into code without me thinking about it. This is because I have done them so many times.
 
 The cost is that you have to invest extensive training into getting muscle memory. So it is only worthwhile doing this deliberately for decisions you think you will have to make very frequently.
 
@@ -117,7 +116,7 @@ You could ask them to do something, ask for their staff's time to help you with 
 
 ### 10. Put it off
 
-Sometimes if you put off decisions they will make themselves. Though this is not always an advisable hack.
+Sometimes if you put off decisions, they will make themselves. Though this is not always an advisable hack.
 
 For instance, if I put off choosing a house to buy I will never own a house. I would consider this a poor outcome.
 
@@ -137,7 +136,7 @@ For instance, bidding on an auction for a house is pretty huge and stressful dec
 
 The way to solve this one is to have already decided you want the house and what you are willing to pay.
 
-This means not searching for the 'one ideal house', because you may lose many auctions. Instead you should have a category of house types that you consider 'suitable for living'. For instance, 3 bedroom houses in a local suburb.
+This means searching not for the 'one ideal house', because you may lose many auctions. Instead you should have a category of house types that you consider 'suitable for living'. For instance, 3 bedroom houses in a local suburb.
 
 So long as the type of house and the price remain within your parameters then you keep bidding. If the price exceeds your pre-approved boundaries, then you stop.
 
@@ -149,7 +148,7 @@ For instance, I usually ride a fast road bike to work. I recently bought a mount
 
 This added decisions to my day - which bike should I ride and which trails should I take?
 
-When I ride home from work I often find I think about work the next day needlessly - I can deal with the decisions at work when I am actually in the office.
+When I ride home from work I often find I needlessly think about work the next day, when instead I should deal with the work decisions when I am actually in the office.
 
 Now when I ride home I find myself thinking about what trail to ride on and what bike to take.
 
