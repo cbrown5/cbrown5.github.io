@@ -111,4 +111,4 @@ Finally, here is the unix code to run imageMagick from your terminal to turn you
 
 The first line creates the gif and the second line adds a pause of 30
 1/100ths of a second after each image and a pause of 1 second at the end
-of the loop.  
+of the loop.
