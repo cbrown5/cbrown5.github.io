@@ -58,7 +58,9 @@ For instance, you are not sure where to start addressing a critique on your work
 
 So break the problem into smaller parts, address the first part and then test it. Do this iteratively until you reach an adequate solution.
 
-For instance, if a reviewer didn't like the didn't like the method you used, perhaps it was because you explained it poorly. So edit the explanation and show your edits to someone else. If it works for them, you might have solved the problem. If it doesn't work, maybe its time to try and change the method.
+For instance, if a reviewer didn't like the method you used, perhaps it was because you explained it poorly. So edit the explanation and show your edits to someone else. If it works for them, you might have solved the problem. If it doesn't work, maybe its time to try and change the method.
+
+Self awareness is very helpful here too. You might not realise that the uncertainty of a decision is stressing you out until you conciously analyse your feelings on the topic.
 
 ### 4. Learn more
 
@@ -66,7 +68,6 @@ Another obvious way to deal with uncertainty in the outcome of decisions is to d
 
 For instance, we want to buy a house, but don't want to get ripped off. So we need to research what people are paying. Simple.
 
-Self awareness is very helpful here too. You might not realise that the uncertainty of a decision is stressing you out until you conciously analyse your feelings on the topic.
 
 ### 5. Copy someone else
 
