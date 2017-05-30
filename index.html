@@ -12,22 +12,25 @@ title: main
 <div id="page_text">
 
 <p>
-    We help data tell stories about more effective environmental decisions. We do this by bringing ecological complexity to the planning tools used to inform decisions.
+    Welcome to the page of Chris Brown's lab group at Griffith University. We help data tell stories about more effective environmental decisions. We do this by bringing ecological complexity to the planning tools used to inform decisions.
 </p>
 <p>
 Read more about our <a href ="/Research/index.html#page_content" class = "linkmain"> research</a>, <a href ="/Rstats/index.html#page_content" class = "linkmain">R coding tools</a>, skip straight to <a href="/bluecology_blog/index.html#page_content" class = "linkmain">Chris' blog</a>, or <a href="#Affiliation" class = "linkmain">contact us</a>.
 </p>
 
+{% for post in site.posts limit:1 %}
 <div class = "image_projpage">
-<p class = "clickablediv"> Protecting forests for coral reefs </p>
-<img src="/Images/r2rworkshop.JPG" class="box_image">
-<a href="{% post_url 2016-12-03-r2r-workshop %}">
+<p class = "clickablediv"> New post {{ post.date | date: "%d %b" }}:</p>
+<p class = "clickablediv"><em> {{ post.title }} </em></p>
+<a href="{{ post.url }}">
    <span class="emptyspan"></span>
 </a>
 </div>
+{% endfor %}
+
 
 <div class = "image_projpage">
-<p class = "clickablediv"> New paper on paradigms of connectivity in marine ecology </p>
+<p class = "clickablediv"> Paradigms of connectivity in marine ecology </p>
 <img src="/Images/sweetlips.jpg" class="box_image">
 <a href="/research/2016/06/08/reef-connectivity.html">
    <span class="emptyspan"></span>
