@@ -1,5 +1,5 @@
 ---
-title: Migratory species
+title: Networks of habitats increase the vulnerability of migratory species  to climate change
 layout: md_layout
 category: Research
 published: true
@@ -17,7 +17,7 @@ Migratory species are important components of many ecosystems and human societie
 
 For instance, the Australian Grayling has undergone large population declines and is a protected species. A primary threat is dams, which prevent it from migrating from its freshwater habitats to the sea and back again.
 
-Migratory fish may face a double jeopardy from climate change. Not only will climate change affect their marine and freshwater habitats, but it may also decouple the connections between those habitats.  
+Migratory fish may face a double jeopardy from climate change. Not only will climate change affect their marine and freshwater habitats, but it may also decouple the connections between those habitats.
 
 [In a recent study](http://onlinelibrary.wiley.com/doi/10.1111/ddi.12570/full), we combined species distribution models with network analysis to ask how climate change and dams affect the future persistence of the Grayling.
 
