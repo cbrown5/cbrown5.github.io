@@ -11,7 +11,7 @@ What defines a (successful) scientist? Their collaborations, their Phd superviso
 
 In short, scientists are defined by their network of influence.
 
-This is a brief blog using social media to enhance your research network. It has been prepared as a supplement for my talk at the Australian Rivers Institute (13/6/2017), but should also stand alone.
+This is a brief blog on using social media to enhance your research network. It has been prepared as a supplement for my talk at the Australian Rivers Institute (13/6/2017), but should also stand alone.
 
 ### Blogging
 
@@ -37,13 +37,15 @@ Another key style point is to write for a generalist audience (e.g. avoid jargon
 
 ### Example blogs
 
-Naturally you are already on my blog, so I check out some of my blogs about research papers [e.g. here](http://www.seascapemodels.org/research/2017/05/30/migratory-species-climate-change.html).
+Naturally you are already on my blog, so check out some of my blogs about research papers [e.g. here](http://www.seascapemodels.org/research/2017/05/30/migratory-species-climate-change.html).
 
 I also recommend you check out the Australian Rivers Institute [Catchment to Coast blog](https://catchmenttocoast.wordpress.com/).
 
 In my talk I will give the example of [Tyson Martin's](https://catchmenttocoast.wordpress.com/2017/04/11/reef-fishing/) post as a recent one that emphasises signficance in an easily accessible way.
 
-I love [The Conversation](https://theconversation.com/au). Their blogs are written for a generalist audience - their style guide encourages readibility for highschool students, but even discpline experts can learn a lot from this blog. In fact, I reckon one of their main followings is probably scientists.
+I love [The Conversation](https://theconversation.com/au). Their blogs are written for a generalist audience - their style guide encourages readibility for highschool students, but even discpline experts can learn a lot from this blog.
+
+In fact, I reckon one of their main followings is probably scientists. So you will reach your colleagues as well as a broader audience if you write for The Conversation.
 
 The Conversation does blogs about research papers, but also emphasises topical issues too.
 
@@ -81,11 +83,11 @@ There are a number of different Twitter strategies you can take, or mix and matc
 - Sharing personal views [e.g. here](https://twitter.com/RallidaeRule/status/873259176591601664)
 - News and topic expert [e.g. here](https://twitter.com/TrevorABranch/status/874123067324153856)
 - Science commmunicator [e.g. here](https://twitter.com/JacquelynGill)
-- The conversationalist [e.g. here](https://twitter.com/JacquelynGill/status/8732589462026526720)
+- The conversationalist [e.g. here](https://twitter.com/RallidaeRule/status/873259176591601664)
 - New publications (often anonymous)[e.g. here](https://twitter.com/remotelysense)
-- Tweet and blog combo [That's what I do!]()
+- Tweet and blog combo [That's what I do!](https://twitter.com/bluecology/status/874371959382867969)
 
 ### Summary
-Hope you found this helpful. Have fun out there on the network. 
+Hope you found this helpful. Have fun out there on the network.
 
 In short, successful scientists are good networkers. Social media helps us enhance our networks
