@@ -87,7 +87,31 @@ There are a number of different Twitter strategies you can take, or mix and matc
 - New publications (often anonymous)[e.g. here](https://twitter.com/remotelysense)
 - Tweet and blog combo [That's what I do!](https://twitter.com/bluecology/status/874371959382867969)
 
+### Costs and benefits of social media
+
+In addition to thinking about how social media can benefit your research career, its worth thinking about potential costs.
+
+While it can be time-efficient and cost-effective (i.e. no plane flights required to talk with overseas colleagues) way to communicate, it can also be a time sink. Personally, I only leave myself a limited amount of time for social media. e.g. I tweet on the bus and I usually set myself an hour max to finish a blog.
+
+I think writing fast blogs can actually help make you a more [efficient scientific writer](http://www.seascapemodels.org/research/2016/07/25/write-like-a-runner.html).
+
+Another potential risk in expanding your communication network is that some people might not like what you have to say. While some people thrive of confrontation, other people (like me!) feel uncomfortable about it.
+
+Commonsense prevails here. Be courteous, acknowledge other people's views and keep your conversations professional.
+
+An extreme case of confrontation is getting trolled. That is someone who deliberately sets out to demean your views and offend you. Good general advice is to ignore trolls, they are looking for a response. Most social media platforms offer a blocking option too, so you might want to use that.
+
+I will say that people's experiences of social media will vary depending on context. In particular, I know a lot of female colleagues are concerned about sexism. Unfortunately, if you are a women and become a well known communicator you will almost certainly recieve sexist comments.
+
+I don't want to put women off of using social media. Instead, I hope we can encourage a more forthright conversation about appropriate behaviour on social media. I also want to highlight this issue to men, who may not be aware of it. Guys, be supportive of your female colleagues engaging with public communication, they face much more discrimination than you!
+
+Social media can also be a force for good when it comes to sexism. For instance, two women submitted an article to PLoS One they recieved a review saying the paper would be better with a [male coauthor](https://twitter.com/FionaIngleby/status/593408243772297216).
+
+Tweets about their experience resulted in public outrage from the scientific community. Ultimately the handing editor was asked to [step from PLoS](http://www.sciencemag.org/news/2015/05/plos-one-ousts-reviewer-editor-after-sexist-peer-review-storm) and PLoS has reviewed its reviewing practices.
+
+So social media can help level the playing field and improve equity in  scientific careers.
+
 ### Summary
 Hope you found this helpful. Have fun out there on the network.
 
-In short, successful scientists are good networkers. Social media helps us enhance our networks
+In short, successful scientists are good networkers. Social media helps us enhance our networks.  
