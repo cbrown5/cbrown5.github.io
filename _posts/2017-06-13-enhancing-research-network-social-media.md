@@ -103,9 +103,9 @@ An extreme case of confrontation is getting trolled. That is someone who deliber
 
 I will say that people's experiences of social media will vary depending on context. In particular, I know a lot of female colleagues are concerned about sexism. Unfortunately, if you are a women and become a well known communicator you will almost certainly recieve sexist comments.
 
-I don't want to put women off of using social media. Instead, I hope we can encourage a more forthright conversation about appropriate behaviour on social media. I also want to highlight this issue to men, who may not be aware of it. Guys, be supportive of your female colleagues engaging with public communication. You can help by calling people out on sexist comments ([here's one recent example](https://twitter.com/TrevorABranch/status/872551407592718336)). 
+I don't want to put women off of using social media. Instead, I hope we can encourage a more forthright conversation about appropriate behaviour on social media. I also want to highlight this issue to men, who may not be aware of it. Guys, be supportive of your female colleagues engaging with public communication. You can help by calling people out on sexist comments ([here's one recent example](https://twitter.com/TrevorABranch/status/872551407592718336)).
 
-Social media can also be a force for good when it comes to sexism. For instance, two women submitted an article to PLoS One they recieved a review saying the paper would be better with a [male coauthor](https://twitter.com/FionaIngleby/status/593408243772297216).
+Social media can also be a force for good when it comes to sexism. For instance, two women who submitted an article to PLoS One recieved a review saying the paper would be better with a [male coauthor](https://twitter.com/FionaIngleby/status/593408243772297216).
 
 Tweets about their experience resulted in public outrage from the scientific community. Ultimately the handing editor was asked to [step down from PLoS](http://www.sciencemag.org/news/2015/05/plos-one-ousts-reviewer-editor-after-sexist-peer-review-storm) and PLoS has reviewed its reviewing practices.
 
