@@ -80,7 +80,7 @@ Some things to notice are:
 
 There are a number of different Twitter strategies you can take, or mix and match.  Here are some examples:
 
-- Sharing personal views [e.g. here](https://twitter.com/RallidaeRule/status/873259176591601664)
+- Sharing personal views [e.g. here](https://twitter.com/RallidaeRule)
 - News and topic expert [e.g. here](https://twitter.com/TrevorABranch/status/874123067324153856)
 - Science commmunicator [e.g. here](https://twitter.com/JacquelynGill)
 - The conversationalist [e.g. here](https://twitter.com/RallidaeRule/status/873259176591601664)
