@@ -18,59 +18,6 @@ title: main
 Read more about our <a href ="/Research/index.html#page_content" class = "linkmain"> research</a>, <a href ="/Rstats/index.html#page_content" class = "linkmain">R coding tools</a>, skip straight to <a href="/bluecology_blog/index.html#page_content" class = "linkmain">Chris' blog</a>, or <a href="#Affiliation" class = "linkmain">contact us</a>.
 </p>
 
-{% for post in site.posts limit:1 %}
-<div class = "image_projpage">
-<p class = "clickablediv"> New post {{ post.date | date: "%d %b" }}:</p>
-<p class = "clickablediv"><em> {{ post.title }} </em></p>
-<a href="{{ post.url }}">
-   <span class="emptyspan"></span>
-</a>
-</div>
-{% endfor %}
-
-
-<div class = "image_projpage">
-<p class = "clickablediv"> Paradigms of connectivity in marine ecology </p>
-<img src="/Images/sweetlips.jpg" class="box_image">
-<a href="/research/2016/06/08/reef-connectivity.html">
-   <span class="emptyspan"></span>
-</a>
-</div>
-<div class = "image_projpage">
-<p class = "clickablediv"> Conservation programming in R  </p>
-<img src="/Images/turtle.jpg" class="box_image">
-<a href="/Rstats/Conservation_R.html">
-   <span class="emptyspan"></span>
-</a>
-</div>
-
-<div class = "image_projpage">
-<p class = "clickablediv"> From geotagged photos to species distribution models </p>
-<img src="/Images/intertidal_scene2.JPG" class="box_image">
-<a href="/rstats/2016/11/14/photos-to-spatialstat.html">
-   <span class="emptyspan"></span>
-</a>
-</div>
-
-<div class = "image_projpage">
-<p class = "clickablediv"> Maps and GIS in R </p>
-<img src="/Images/rcoursemap.png" class="box_image">
-<a href="{% post_url 2015-06-22-R_Spatial_course %}">
-   <span class="emptyspan"></span>
-</a>
-</div>
-
-<div class = "image_projpage">
-<p class = "clickablediv"> Dataviz in R  </p>
-<img src="/Images/colourwheels.png" class="box_image">
-<a href="/Rstats/dataviz_in_R.html">
-   <span class="emptyspan"></span>
-</a>
-</div>
-
-
-<div class="floatclear"></div>
-
 <p> </p>
 
 <h3> latest posts </h3>
