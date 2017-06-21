@@ -95,8 +95,8 @@ to use a smaller value to create a smoother fit.
 ![](/Images/bayesian-smoothing_files/fitted-models-vary-n-1.png)
 
 And that is pretty much it. I haven't read how to choose the 'optimal'
-value of theta, but presumably one could do it with cross validation or
-perhaps a model selection measure. Message me on
+value of theta. Pragmatically, one could do it with cross validation or
+perhaps a model selection measure. However, that seems philosophically incorrect, because it is a 'prior'. There doesn't seem to be much guidance in the literature about how to choose priors for smoothing. Message me on
 [Twitter](https://twitter.com/bluecology/) if you have seen an example
 of doing this.
 
