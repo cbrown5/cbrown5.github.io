@@ -144,7 +144,7 @@ kind of smoothing effect.
 
 Also worth noting that modelling an trending (non-stationary)
 time-series with an `ar1` is not technically correct if we want to
-estimate rho. However, here we use `ar1` because it acts like a smoother
+estimate rho or forecast. However, here we use `ar1` because it acts like a smoother
 in a GAM \[e.g. [see
 here](https://www.r-bloggers.com/functional-anova-using-inla/).
 
