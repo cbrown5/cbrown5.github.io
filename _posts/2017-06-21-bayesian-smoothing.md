@@ -1,3 +1,10 @@
+---
+title: Smoothing a time-series with a Bayesian model
+layout: md_layout
+category: rstats
+published: true
+---
+
 Smoothing a time-series with a Bayesian model
 ---------------------------------------------
 
