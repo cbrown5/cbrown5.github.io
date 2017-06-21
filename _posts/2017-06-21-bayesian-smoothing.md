@@ -124,7 +124,7 @@ that had no temporal variation.
 
 If you are interested to learn more, it is worth reading at least the
 Introduction of [Simpson et al. Penalized Complexity Priors
-pup](https://arxiv.org/abs/1403.4630). Other good general guidance can
+pub](https://arxiv.org/abs/1403.4630). Other good general guidance can
 be found on the [STAN
 wiki](https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations).
 
