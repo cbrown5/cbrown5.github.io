@@ -1,3 +1,6 @@
 name: Bluecology blog
 description: Thoughts on science, ecology and Rstats
 url: http://www.seascapemodels.org/index.html
+
+gems:
+  - jekyll-redirect-from
