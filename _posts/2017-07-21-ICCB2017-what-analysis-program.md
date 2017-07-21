@@ -7,7 +7,7 @@ published: TRUE
 
 ## International Congress for Conservation Biology: What analysis program do conservation scientists use?
 
-With the [International Congress for Conservation Biology](http://conbio.org/mini-sites/iccb-2017) starting 23rd July I was wondering, what analysis program is most commonly used by conservation scientists?
+With the [International Congress for Conservation Biology](http://conbio.org/mini-sites/iccb-2017) starting 23rd July I was wondering, what analysis programs are most commonly used by conservation scientists? And, what do they use for spatial analysis and mapping? 
 
 To find out, if you are a conservation scientist please participate in these interactive polls:
 
