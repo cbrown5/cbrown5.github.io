@@ -1,5 +1,5 @@
 ---
-title: '"Memorable dataviz with the R program" awarded people's choice prize'
+title: 'Memorable dataviz with the R program' awarded people's choice prize
 layout: md_layout
 category: rstats
 published: TRUE
