@@ -1,5 +1,5 @@
 ---
-title: "Memorable dataviz with the R program" awarded people's choice prize
+title: '"Memorable dataviz with the R program" awarded people's choice prize'
 layout: md_layout
 category: rstats
 published: TRUE
@@ -16,4 +16,4 @@ Nick and the UQ Winterschool team have been kind enough to [post my talk on Vime
 
 I think it is something of a feat to have a talk win a people's choice award, when that talk is fundamentally about computer programming. The talk's success speaks not to my own presentation skill, but the rather the huge interest in the R program.
 
-I also borrowed a lot of neat ideas from people much more smarter than me (all duly acknowledged), like the Datasaurus (thanks [Alberto Cairo](http://www.thefunctionalart.com/)). So [check out the video](https://vimeo.com/226836846), I hope you find it insightful, and a bit entertaining. 
+I also borrowed a lot of neat ideas from people much more smarter than me (all duly acknowledged), like the Datasaurus (thanks [Alberto Cairo](http://www.thefunctionalart.com/)). So [check out the video](https://vimeo.com/226836846), I hope you find it insightful, and a bit entertaining.
