@@ -11,6 +11,8 @@ With the [International Congress for Conservation Biology](http://conbio.org/min
 
 I ran a quick poll on my blog (you can take it [here](http://www.seascapemodels.org/rstats/2017/07/21/ICCB2017-what-analysis-program.html)) to find out. Here are the results (as of 30th July 2017). Voters are allowed to pick multiple categories.
 
+I think the results are informative, particularly if you are a scientist in training and are wondering what programs to learn.
+
 ![barplot of most popular programs](/Images/iccb-analysis-programs-barplot.jpg)
 
 Programs with Graphical User Interfaces ("GUIs", like Excel) were less popular for analysis than programming languages, like R. This speaks to how skilled modern conservation scientists are becoming with computations and programming.
@@ -25,4 +27,8 @@ Somewhat surprisingly to me was that R also topped the question about GIS, thoug
 
 It is exciting to see so many of my colleagues using R for GIS and spatial analysis.
 
-It was a a surprise to me that R was so popular, because it is not that easy to do spatial analysis and mapping in R (if you want to learn, try my [ short course](http://www.seascapemodels.org/rstats/rspatial/2015/06/22/R_Spatial_course.html)). R can be used as a fully functional GIS, but you need to install a bunch of additional packages. Further, you need to know a lot more about the theory behind geographical sciences, and the storage of spatial data, to operate R as a GIS. 
+It was a a surprise to me that R was so popular, because it is not that easy to do spatial analysis and mapping in R (if you want to learn, try my [ short course](http://www.seascapemodels.org/rstats/rspatial/2015/06/22/R_Spatial_course.html)). R can be used as a fully functional GIS, but you need to install a bunch of additional packages. Further, you need to know a lot more about the theory behind geographical sciences, and the storage of spatial data, to operate R as a GIS.
+
+Once again, Python is a fair way down the list, which comes as a surprise to me. They are a bunch of great tools for spatial analysis in Python too.
+
+I hope you found this quick survey interesting. I love to hear about how people are using R or other programs to support conservation science. Join me on [Twitter](https://twitter.com/bluecology) if you want to continue the conversation.  
