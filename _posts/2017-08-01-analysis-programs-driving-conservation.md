@@ -31,4 +31,4 @@ It was a a surprise to me that R was so popular, because it is not that easy to 
 
 Once again, Python is a fair way down the list, which comes as a surprise to me. They are a bunch of great tools for spatial analysis in Python too.
 
-I hope you found this quick survey interesting. I love to hear about how people are using R or other programs to support conservation science. Join me on [Twitter](https://twitter.com/bluecology) if you want to continue the conversation.  
+I hope you found this quick survey interesting. I love to hear about how people are using R or other programs to support conservation science. Join me on [Twitter](https://twitter.com/bluecology) if you want to continue the conversation.
