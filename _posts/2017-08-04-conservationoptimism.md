@@ -7,7 +7,9 @@ published: TRUE
 
 ## Impact of the conservation optimism hashtag
 
-The hashtag \#conservationoptimism became popular during the recent [International Congress for Conservation Biology](http://conbio.org/mini-sites/iccb-2017) symposium.  [Michael Burgass](https://twitter.com/MJBurgass) asked me what its twitter impact was, so here is a quick analysis.
+The hashtag [\#conservationoptimism](https://twitter.com/hashtag/conservationoptimism?src=hash) became popular during the recent [International Congress for Conservation Biology](http://conbio.org/mini-sites/iccb-2017) symposium.  [Michael Burgass](https://twitter.com/MJBurgass) asked me what its twitter impact was, so here is a quick analysis.
+
+Michael also asked about \#iamaconservationist, but that has too few tweets so far to make for a meaningful analysis (about 100).
 
 To be honest, not too much has happened on this hashtag so far, so it is hard to say too much from a broad brush quantitative analysis like this, but here are a few stats.
 
@@ -15,11 +17,15 @@ The first tweet I got was only on 2017-07-26 and until now there have been 813 t
 
 ![](/Images/consopt-tweet-times.png)
 
+I think that spike on Wednesday corresponds to EJ Milner-Gulland's plenary at ICCB.
+
 The distribution of tweets per user is not quite as skewed as other hashtags I have analysed. I guess becaues there are fewer users and it is the sort of hashtag that people only post once to (thought they may RT multiple others).
 
 ![](/Images/consopt-number_users.png)
 
 ### Most popular tweets
+
+Here is a table of the most popular tweets.
 
 Handle|Tweet|# retweets
 ------|-----|----------
@@ -27,14 +33,6 @@ MorenaMills|.@EJMilnerGulland inspiring action and optimism at #ICCB2017  #conse
 suewalker2008|Post Doc opportunity on zebras in Africa! Please share widely 😊 #ICCB2018 #conservationoptimism https://t.co/gyXziTWinq|34
 ICCB2017|Keep the #conservationoptimism going! Thank you @EJMilnerGulland for a fantastic message of hope! #ICCB2017 #iamaconservationist https://t.co/i4g6Q5S4TB|20
 abigailrdan|Exciting PhD opportunity in Australia for promising marine scientists who want to channel #conservationoptimism @LAFFellows @sfgucsb https://t.co/K9astyMqH4|17
-Ana__Nuno|#conservationoptimism https://t.co/XGhKa1A3B2|14
-hstone_|Interested in #conservation and #environmental biosciences? Free conference next Friday: https://t.co/U4lAWgiNbP #conservationoptimism https://t.co/mK8uNhToof|14
-RebeccaEWThomas|Advice: Conservation is hard. Don't give up. Learn another language. #iamaconservationist #conservationoptimism https://t.co/uuY9cdGOQT|13
-AChausson|"It takes a long time to save a species" says @EJMilnerGulland be optimistic don't give up #conservationoptimism #iamaconservationist https://t.co/TjltY4Wvt8|13
-ConservOptimism|#ConservationOptimism is for everyone.
-Ballroom dancers, finance analysts, students, artists... we can all contribute!
-#iamaconservationist https://t.co/zIpdcxSFGz|13
-verissimodiogo|Want to hear some great #conservationoptimism  stories? Check out https://t.co/WF0WrYH6lG for stories of rediscovered species #ICCB2017|12
 
 ### Most popular terms
 
@@ -72,3 +70,6 @@ doc|35
 futur|35
 tcogyxzitwinq|35
 wide|35
+
+
+That's all. It might be worth doing an update on this in a few months if the tag takes off.
