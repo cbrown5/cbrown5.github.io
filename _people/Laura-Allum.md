@@ -7,4 +7,4 @@ category: current
 
 # Laura Allum
 ![](/images/people/Laura-Allum.jpeg)
-A Phd student.  
+A Phd student. Laura is studying the effects of multiple stressors on coastal marine ecosystems.  
