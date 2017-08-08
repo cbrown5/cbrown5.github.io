@@ -1,22 +1,11 @@
 ---
 category: Rstats Rspatial
 title: "Making maps on Google Earth with R"
+layout: default
 ---
 
-<!DOCTYPE html>
-{% include head.html %}
-
-
-<body>
-{% include top_banner.html %}
-
-<div id="page_content" class="codepage">
-
-{% include nav_bar.html %}
-
-<div id="page_text">
   <h2>Making google maps</h2>
-<p><img class = "image_float" src ="/Images/google_seagrass.png" alt="Banner Image"/></p>
+<p><img class = "image_float" src ="/images/google_seagrass.png" alt="Banner Image"/></p>
   <p>One of the fun things you can do with maps in R is make rasters and shapes that
    plot on Google Earth. All you really need to do is convert your spatial data to lon-lat
    coordinates then use one of the KML packages to save the layer as a KML, which can then
@@ -48,7 +37,3 @@ KML(rsg.ll, 'Seagrass_MoretonBay', col = sgcols)</code></pre>
 
 </div>
 </div>
-{% include footer.html %}
-
-</body>
-</html>

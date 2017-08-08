@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: rstats
 title: "Part 3: Spatial analysis of geotagged data"
 published: true
@@ -50,7 +50,7 @@ distances between sample sites in metres:
         spdf <- spTransform(spdat, CRS(utmproj))
         plot(spdf)
 
-![](/Images/oyster_surveys-1.png)
+![](/images/oyster_surveys-1.png)
 
 You should get a plot like that pictured just of the sample sites.
 
@@ -65,7 +65,7 @@ structuring of the sampling (I wandered around on the rocky shore
 throwing the quadrat at intervals).
 
 Below we provide two parameters to `max.edge`, this will enable us to
-buffer the edges to obtain a slightly larger spatial domain. Buffering is important because the INLA approximation will be inaccurate at the edges of the spatial domain. 
+buffer the edges to obtain a slightly larger spatial domain. Buffering is important because the INLA approximation will be inaccurate at the edges of the spatial domain.
 
     max.edge.length <- c(25, 40)
     loc1 <- as.matrix(coordinates(spdf))
@@ -74,7 +74,7 @@ buffer the edges to obtain a slightly larger spatial domain. Buffering is import
     plot(mesh)
     plot(spdf, add = T, col = 'red')
 
-![](/Images/oyster_mesh-1.png)
+![](/images/oyster_mesh-1.png)
 
 You can play with the edge length, offset and cutoff parameters to vary
 how the triangulations turns out.
@@ -149,7 +149,7 @@ object, asking for the estimated parameters for the random field
      xlim = c(0, 1000))
     abline(v = max.edge.length[2], col = 'red')
 
-![](/Images/oyster_rf_density-1.png)
+![](/images/oyster_rf_density-1.png)
 
 The red line shows our edge length parameter, which is well less than
 the model estimate for the spatial range.
@@ -189,7 +189,7 @@ And finally the plot:
     points(spdf)
     plot(spdat, add = TRUE)
 
-![](/Images/oyster_inla_raster-1.png)
+![](/images/oyster_inla_raster-1.png)
 
 So it looks like oysters are more common in the southern portion of the
 survey area.

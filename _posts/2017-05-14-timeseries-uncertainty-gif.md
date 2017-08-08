@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: rstats
 title: "Visualising uncertainty in time-series using animations"
 published: true
@@ -10,15 +10,15 @@ Visualising uncertainty in time-series using animations
 
 I was reading an example of visualising election outcome uncertainty using a [wobbly needle](https://medium.com/@jofu/openvis-2017-a-recap-3e945bb9f267) and wondered, could animating uncertainty help communicate for the kind of work I do on population modelling?
 
-<img src ="/Images/time_series_uncertainty_figs/images_pause.gif" alt="" class="image"/>
+<img src ="/images/time_series_uncertainty_figs/images_pause.gif" alt="" class="image"/>
 
 One challenge when plotting uncertainty intervals for population trends is that confidence intervals don't capture the wandering nature of population processes. The figure here shows the median of a poisson random walk, with 90% quantiles.
 
 In fact, each trend line will wander around, like the next image. So, the median and intervals give a false impression that an individual trend will experience relative stability.
 
 <div class = "image_caption">
-<img src ="/Images/time_series_uncertainty_figs/tsu_ciplot.png" alt="" class="image_float"/>
-<img src ="/Images/time_series_uncertainty_figs/tspng_30.png" alt="" class="image_float"/>
+<img src ="/images/time_series_uncertainty_figs/tsu_ciplot.png" alt="" class="image_float"/>
+<img src ="/images/time_series_uncertainty_figs/tspng_30.png" alt="" class="image_float"/>
 <p> A graph of the median and quantiles doesn't represent the uncertainty in any single trend line very well. </p>
 </div>
 

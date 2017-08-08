@@ -1,6 +1,6 @@
 ---
 title: Enhancing your research network with social media
-layout: md_layout
+layout: default
 category: Research
 published: true
 ---

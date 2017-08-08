@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: res_posts
 title: "Species on the Move - Day 2 synopsis"
 published: true  
@@ -22,7 +22,7 @@ Two big themes emerging today were
 
 
 <div class = "image_caption">
-<img src ="/Images/greenpcpic.png" alt="media interest" class="image_float"/>
+<img src ="/images/greenpcpic.png" alt="media interest" class="image_float"/>
 <p>
 Another day of extensive media interest directed at Species on the Move. Commendations are deserved for Gretta Pecl and the team for getting the important messages from this conference out there.
 </p>
@@ -60,7 +60,7 @@ Guilia Porra, Aus Fishery Management Authority biologist and foodie of [Love at 
 
 The community thermal index was highlighted in several talks. Rick Stuart-Smith and team have shown that there are thermal biases in fish communities, with most fish species being either [associated with temperate or tropical conditions](http://www.nature.com/nature/journal/v528/n7580/full/nature16144.html). This has implications for the effects of ocean warming on whole communities, as communities near their thermal limits may suffer large species losses. Mike Burrows is also using the community index to investigate sensitivity of different communities to warming.  
 <div class = "image_caption">
-<img src ="/Images/allfemalepanel.png" alt="all female panel" class="image_float"/>
+<img src ="/images/allfemalepanel.png" alt="all female panel" class="image_float"/>
 <p>
 Species on the Move is helping turn the tide on gender inequity in science by promoting #WomeninSTEM on what is the "International Women in STEM day": we saw an all female panel during an organised discussion.  </p>
 </div>
@@ -72,7 +72,7 @@ Some exciting work on modelling community responses is coming out of CSIRO. [Bru
 A keynote from Simon Ferrier, also of CSIRO, highlighted that species composition doesn't change linearly across environmental gradients, like we often assume it does. Karel Mokany presented [meta-community modelling](http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2486.2012.02760.x/full) as a solution to this problem, and showed its application to dynamic models of climate-driven shifts in whole plant communities.
 
 <div class = "image_caption">
-<img src ="/Images/seaurchinstweet.png" alt="all female panel" class="image_float"/>
+<img src ="/images/seaurchinstweet.png" alt="all female panel" class="image_float"/>
 <p>
 Sea-urchin invasion in Tasmania is now a major threatening process - Scott Ling explained. </p>
 </div>

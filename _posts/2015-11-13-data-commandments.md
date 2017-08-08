@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: Rstats Rspatial
 title: "Commandments for entering data to use in R"
 published: true  

@@ -1,6 +1,6 @@
 ---
 title: Impact of the conservation optimism hashtag
-layout: md_layout
+layout: default
 category: rstats
 published: TRUE
 ---
@@ -15,13 +15,13 @@ To be honest, not too much has happened on this hashtag so far, so it is hard to
 
 The first tweet I got was only on 2017-07-26 and until now there have been 813 tweets from 390 users of which 133 are original tweets and the rest RTs.
 
-![](/Images/consopt-tweet-times.png)
+![](/images/consopt-tweet-times.png)
 
 I think that spike on Wednesday corresponds to EJ Milner-Gulland's plenary at ICCB.
 
 The distribution of tweets per user is not quite as skewed as other hashtags I have analysed. I guess becaues there are fewer users and it is the sort of hashtag that people only post once to (thought they may RT multiple others).
 
-![](/Images/consopt-number_users.png)
+![](/images/consopt-number_users.png)
 
 ### Most popular tweets
 

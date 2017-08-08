@@ -1,56 +1,53 @@
 ---
-title: main
+layout: main
+title: Home page
 ---
-<!DOCTYPE html>
 
-{% include head.html %}
+<div class="main-box">
+<!-- {% include nav.html %} --->
+<img src="/images/sharks.JPG"/>
+<h1> seascape models </h1>
 
-<body>
+<div class="box-content">
 
-{% include top_banner.html %}
 
-<div id="page_text">
+<p>Welcome to the page of <a href="/people/chris-brown.html" class="name" target="_blank">Chris Brown's</a> lab group at <a class="uni" href="https://experts.griffith.edu.au/academic/chris.brown" target="_blank">Griffith University</a>. We help data tell stories about more effective environmental decisions.</p>
+<p>We do this by bringing ecological complexity to the planning tools used to inform decisions. </p>
 
-<p>
-    Welcome to the page of Chris Brown's lab group at Griffith University. We help data tell stories about more effective environmental decisions. We do this by bringing ecological complexity to the planning tools used to inform decisions.
-</p>
-<p>
-Read more about our <a href ="/Research/index.html#page_content" class = "linkmain"> research</a>, <a href ="/Rstats/index.html#page_content" class = "linkmain">R coding tools</a>, skip straight to <a href="/bluecology_blog/index.html#page_content" class = "linkmain">Chris' blog</a>, or <a href="#Affiliation" class = "linkmain">contact us</a>.
-</p>
-
-<p> </p>
-
-<h3> latest posts </h3>
-
-<ul class="postlist_main">
-  {% for post in site.posts limit:10 %}
-    <div class = "posts_boxes">
-    <h3 class = "posts_dates"> {{ post.date | date: "%d %b %Y" }} </h3>
-    <h3 class = "posts_titles"> {{ post.title }} </h3>
-
-    <a href="{{ post.url }}">
-       <span class="emptyspan"></span>
-    </a>
-    </div>
-  {% endfor %}
-</ul>
-
-{% include nav_bar.html %}
-
-<div id="Affiliation">
-<h2> Contact </h2>
-<p class="large_font">Dr. Christopher J. Brown</p>
-<p>Research Fellow</p>
-<p> <a href = "http://www.griffith.edu.au/environment-planning-architecture/australian-rivers-institute/members/dr-christopher-brown">
-Australian Rivers Institute</a></p>
-<p>Griffith University, Queensland, Australia</p>
-<p><a href="mailto:chris.brown@griffith.edu.au"> Email Chris</a>  </p>
-<!-- <p>Tweets: <a href = "https://twitter.com/bluecology"> @bluecology</a></p> -->
-<p>Code (including this webpage): <a href="https://github.com/cbrown5" target="_blank"> Github</a>
+</div>
 </div>
 
+<a href="/research.html" class="box-link">
+<div class="side-box bkg-1">
+<h2>our research</h2>
+<p>Ecosystem conservation, fisheries, climate change and modelling</p>
+</div></a>
 
-{% include footer.html %}
+<a href="/people.html" class="box-link">
+<div class="side-box bkg-2">
+<h2>people</h2>
+<p>Meet the team</p>
 </div>
-</body>
-</html>
+</a>
+
+<a href="/bluecology_blog.html" class="box-link">
+<div class="side-box bkg-3">
+<h2>blog</h2>
+<p> {% assign post = site.posts.first %}New post: {{ post.title }} </p>
+</div>
+</a>
+
+<a href="/publications.html" class="box-link">
+<div class="side-box bkg-4">
+<h2>publications</h2>
+<p>Read about our research</p>
+</div>
+</a>
+
+
+<a href="/code.html" class="box-link">
+<div class="side-box bkg-5">
+<h2>code</h2>
+<p>Learn how we use programming to solve environmental problems</p>
+</div>
+</a>

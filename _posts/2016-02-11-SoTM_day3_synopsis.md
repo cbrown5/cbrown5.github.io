@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: res_posts
 title: "Species on the Move - Day 3 synopsis"
 published: true  
@@ -15,7 +15,7 @@ You can read the complete [day 1](/res_posts/2016/02/10/SoTM_day1_synopsis.html)
 Also a summary of [some key things I learnt](/res_posts/2016/02/11/SoTM_five_lessons.html).
 
 <div class = "image_caption">
-<a href="http://www.speciesonthemove.com/sponsors"><img src ="/Images/sotm-sponsors.png" alt="media interest" class="image_float"/></a>
+<a href="http://www.speciesonthemove.com/sponsors"><img src ="/images/sotm-sponsors.png" alt="media interest" class="image_float"/></a>
 <p>
 Thanks to the Species on the Move Sponsors for supporting an exceptional conference. Via <a  href="https://twitter.com/GrettaPecl">Gretta Pecl</a>
 </p>

@@ -1,6 +1,6 @@
 ---
 title: What analysis programs drive conservation science?
-layout: md_layout
+layout: default
 category: rstats
 published: TRUE
 ---
@@ -13,7 +13,7 @@ I ran a quick poll on my blog (you can take it [here](http://www.seascapemodels.
 
 I think the results are informative, particularly if you are a scientist in training and are wondering what programs to learn.
 
-![barplot of most popular programs](/Images/iccb-analysis-programs-barplot.jpg)
+![barplot of most popular programs](/images/iccb-analysis-programs-barplot.jpg)
 
 Programs with Graphical User Interfaces ("GUIs", like Excel) were less popular for analysis than programming languages, like R. This speaks to how skilled modern conservation scientists are becoming with computations and programming.
 

@@ -1,7 +1,7 @@
 ---
 title: Quantifying the magnitude of a population decline with Bayesian time-series
   modelling
-layout: md_layout
+layout: default
 category: rstats
 published: true
 ---
@@ -18,7 +18,7 @@ uncertainty bounds on it too. Here I will use the [R-INLA
 package](http://www.r-inla.org/) to fit a time-series model to a
 population decline.
 
-![](/Images/estimating-popn-decline/noisy-abundance-trend-1.png)
+![](/images/estimating-popn-decline/noisy-abundance-trend-1.png)
 
 For instance, take the pictured time-series. Quantifying change as the
 difference between the first and last time-points is obviously
@@ -60,7 +60,7 @@ that is quite noisy (the variance will be &gt; than the mean).
 Notice that I put a bit of a 'kink' in eta by having the rate of decline
 (`acoef`), increase halfway through the time-series like this:
 
-![](/Images/estimating-popn-decline/expected-abundance-1.png)
+![](/images/estimating-popn-decline/expected-abundance-1.png)
 
 We can calculate the magnitude of change like this: `1 - (y[n]/y[1])` =
 0.77 which can be interpreted as what fraction of the intial years
@@ -160,7 +160,7 @@ time-series. They are all stored in the `m1` object:
     legend('topright', legend = c("observed", "expected", "95% CIs"), lty = c(1,1,2),
            col = c("grey", "tomato", "tomato"))
 
-![](/Images/estimating-popn-decline/fitted-abundance-1.png)
+![](/images/estimating-popn-decline/fitted-abundance-1.png)
 
 Now we can extract the change in population size from our linear
 combination:
@@ -200,4 +200,4 @@ of the % loss:
     polygon(x = c(losses, rev(losses)),
             y = c(dens, rep(0, length(dens))), col = "turquoise3")
 
-![](/Images/estimating-popn-decline/abundance-posterior-1.png)
+![](/images/estimating-popn-decline/abundance-posterior-1.png)

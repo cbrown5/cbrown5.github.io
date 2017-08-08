@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: res_posts
 title: "Species on the Move -some things I learned"
 published: true  

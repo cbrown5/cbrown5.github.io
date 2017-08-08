@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: rstats
 title: "From geotagged photos to species distribution models"
 published: true

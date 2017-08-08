@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: res_posts
 title: "Are more marine protected areas needed to protect ocean biodiversity?"
 published: true  
@@ -10,7 +10,7 @@ published: true
 Marine protected areas are a primary tool for conserving marine ecosystems, habitats and species. For instance, the Convention on Biological Diversity, has 193 signatory nations committing to protecting more than 10% of marine environments by 2020. We have [recently](http://www.nature.com/articles/srep17539) shown that there are a large number of species that are not protected or inadequately protected in the global protected area system. These 'gaps' will be challenging to fill by 2020.
 
 <div class = "image_caption">
-<img src ="/Images/gapspecies.png" alt="shark" class="image_float"/>
+<img src ="/images/gapspecies.png" alt="shark" class="image_float"/>
 <p>
 Density map of species not receiving any protection from protected areas, according to our <a href ="http://www.nature.com/articles/srep17539">recent analysis </a>
 </p>
@@ -18,7 +18,7 @@ Density map of species not receiving any protection from protected areas, accord
 
 New marine reserves are always contentious. Marine reserves are areas closed to fishing to protect native plants and animals, so protection often comes at a cost to local fishing industries who will be excluded from fishing in some places. For instance, Australia’s Great Barrier Reef Marine Protected Area was rezoned in 2004 to have 33.3% of its area as no fishing zones. The process was highly contentious and cost the Federal Government [~$250 million in compensation pay-outs to fisheries](http://www.sciencedirect.com/science/article/pii/S0964569110001006). Clearly, balancing the needs of conservation with its impacts on fisheries is important for both people and economies.
 <div class = "image_caption">
-<img src ="/Images/whitetip_shark.png" alt="shark" class="image_float"/>
+<img src ="/images/whitetip_shark.png" alt="shark" class="image_float"/>
 <p>
 Conserving ecosystems, like this coral reef, sustaining productive fisheries and restoring depleted fisheries are all potentially competing objectives.
 </p>

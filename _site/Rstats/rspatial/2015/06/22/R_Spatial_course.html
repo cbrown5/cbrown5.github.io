@@ -1,61 +1,53 @@
 <!DOCTYPE html>
-
-<html prefix="og: http://ogp.me/ns#">
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width">
-<meta charset="utf-8">
-<meta property="twitter:site" content="@bluecology"/>
-<meta property="twitter:creator" content="@bluecology"/>
-<meta property="og:site_name" content="seascapemodels"/>
-<meta property="og:description" content=""/>
-<meta property="og:type" content="website"/>
-<meta property="og:image" content="http://www.seascapemodels.org/Images/fish_image.png"/>
-<meta property="og:url" content="http://www.seascapemodels.org">
-<meta property="og:title" content="An Introduction to Spatial Analysis in R"/>
-<link rel="stylesheet"
-  media="screen and (max-width: 700px)"
-  type="text/css" href="/assets/css/narrow.css"/>
 
-<link rel="stylesheet"
-  media="screen and (min-width: 700px)"
-  type="text/css" href="/assets/css/screen.css"/>
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Testing CSS</title>
+  <meta name="description" content="Megs research">
+  <meta name="author" content="Chris Brown">
 
-  <link href="/feed.xml" type="application/rss+xml" rel="alternate" title="Latest 10 blog posts (atom)" />
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:300' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Exo+2:300,400' rel='stylesheet'>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/framework.css">
 
 </head>
 
-
-
 <body>
-<div class="explore">
-<p class="explore">  explore &#8675;</p>
-<a href="#site-nav"><span class="emptyspan"></span></a>
+<div id = "container-nav">
+ <a class="hamburger" href="#navbar">
+     <div class="bar bar-1"></div>
+     <div class="bar bar-2"></div>
+     <div class="bar bar-3"></div>
+ </a>
+     <nav id="navbar">
+       <ul class="navbar">
+        <li><a class="button-menu" href="/index.html">home</a></li>
+        <li><a class="button-menu" href="/research.html">research</a></li>
+        <li><a class="button-menu" href="/people.html">people</a></li>
+        <li><a class="button-menu" href="/bluecology_blog.html">blog</a></li>
+        <li><a class="button-menu" href="/publications.html">publications</a></li>
+        <li><a class="button-menu" href="/code.html">code</a></li>
+        <li><a class="button-menu" href="#">&#8679</a></li>
+       </ul>
+     </nav>
 </div>
-<div id="banner_wrap">
-<div id="inner_banner">
-    <h1 class ="banner"> seascape models </h1>
-    <img class = "banner_image" src = "/Images/fish_image.png">
-</div>
-<div class="floatclear"></div>
-</div>
 
-
-<div id="page_content" class="codepage">
-
-<br>
-<ul class = "menu", id ="site-nav">
-      <a href ="/index.html"><li class = "menu_item">home</li></a>
-      <a href ="/bluecology_blog/index.html"><li class = "menu_item">blog</li></a>
-      <a href ="/Research/index.html#page_content"><li class = "menu_item">about</li></a>
-      <a href ="https://scholar.google.com.au/citations?user=1qG6yFMAAAAJ&hl=en" target="_blank"><li class = "menu_item">publications</li></a>
-      <a href ="/People/index.html#page_content"><li class = "menu_item">people</li></a>
-      <a href ="/Rstats/index.html#page_content"><li class = "menu_item">code</li></a>
-      <a href ="/emedia/index.html#page_content"><li class = "menu_item">e-media</li></a>
-</ul>
-<br>
-
-
-<div id="page_text">
+<span class="header-span"></span>
+<h1 id="page-name">seascape models    </h1>
+<div class="clearme"></div>
+<div class = "container">
   <h2>An Introduction to Spatial Analysis in R</h2>
 
 <a href="/data/Data_Wrangling_Course_Data.zip"> Download a pdf of this course with data</a>
@@ -72,7 +64,7 @@
 <p>I come from a background of field ecology and ecological modelling. I realised that being able to perform your own quantitative analyses is incredibly useful (and helps with getting jobs). Hence, over the past few years I have been teaching myself how to use R. I use spatial analyses in R for a wide-variety of purposes, including producing publication quality maps and for analysing the extent of climate change impacts on ocean ecosystems.</p>
 <p>I designed this course not to comprehensively cover all the spatial tools in R (there are far too many to cover in one course), but rather to teach you skills for getting started. You can build on the basics we teach you today to perform a wide variety of spatial analyses. Every new project comes with its own problems and questions and I have found having some knowledge of spatial tools in R allows me to develop new tools and analyses as they are needed.</p>
 </div>
-<img src="/Images/river_dist_plot.jpg" alt="moreton bay" class="image_float" />
+<img src="/images/river_dist_plot.jpg" alt="moreton bay" class="image_float" />
 <div id="workshop-aims" class="section level2">
 <h2>Workshop aims</h2>
 <ol style="list-style-type: decimal">
@@ -709,26 +701,26 @@ text(524025, 6929337, '10 km', cex=1)</code></pre>
 </div>
 </div>
 
-<div id = "footer">
-    <head>
-        <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-57340034-2', 'auto');
-  ga('send', 'pageview');
-
-</script>
-    </head>
-<p id="footer_text">
-Christopher J. Brown 2016    <a href = "/index.html"> Home</a>
-<a href = "https://twitter.com/bluecology" target="_blank"> @bluecology</a>
-</p>
-
 </div>
 
+<div class="container" id="contact">
+    <hr>
+    <br>
+    <h4> Contact: Chris Brown </h4>
+    <p> <a class="button" href="mailto:chris.brown@griffith.edu.au" target="_top">Email</a>
+    <a class="button" href="https://github.com/cbrown5" target="_blank" target="_top">Code on Github</a>
+    </p>
 
+ </div>
+
+<div>
+    <p><a class="button totop" href="/index.html">home</a></p>
+       <p class="foot_text">
+        Designed by <a href="http://cbrown5.github.io">Chris Brown</a>.  Source on <a href="https://github.com/cbrown5" target="_blank">Github</a>
+       </p>
+ </div>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 </html>
+

@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: Research
 title: "Hacks for making time-effective and lower stress decisions"
 published: true

@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: Research
 title: "PhD position on fisheries dependence on marine habitats"
 published: true  
@@ -10,7 +10,7 @@ published: true
 Sustaining fisheries is important for economies, livelihoods and human health, but globally numerous fisheries are threatened by rapid loss of aquatic habitat. The role of habitat in fishery declines is poorly quantified, and we need new models that integrate existing datasets to attribute change in a fishery to change in its habitats.  
 
 <div class = "small_image">
-<img src ="/Images/sweetlips.jpg" alt="Image" class="image_float"/>
+<img src ="/images/sweetlips.jpg" alt="Image" class="image_float"/>
 </div>  
 
 I am seeking motivated candidates to work with me on one of a range of projects relating to marine ecology and fisheries.

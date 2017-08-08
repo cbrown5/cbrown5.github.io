@@ -1,6 +1,6 @@
 ---
 title: What analysis program do conservation scientists use?
-layout: md_layout
+layout: default
 category: rstats
 published: TRUE
 ---

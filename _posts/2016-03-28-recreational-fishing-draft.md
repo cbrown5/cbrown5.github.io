@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: Research
 title: "Impact of recreational fishing areas"
 published: true  

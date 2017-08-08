@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: rstats
 title: "Choosing R packages for mixed effects modelling based on the car you drive"
 published: true
@@ -131,7 +131,7 @@ tackle just about any terrian, but slow and prone to breaking down
 (usually a user error, rather than the package itself).
 
 <div class = "image_caption_wide">
-<img src ="/Images/cars-glmm.png" alt="" class="wide_image"/>
+<img src ="/images/cars-glmm.png" alt="" class="wide_image"/>
 <p> My take on reviewing R packages for Generalised Linear Mixed Effects. Clockwise from top left: The `lme4` package is fast but a bit older, like an early noughties Ferrari; the JAGS program goes anywhere like a Range Rover, but breaks often and is slow; the Stan language is modern and efficient like a hybrid BMW and INLA is fast and modern but requires technical expertise like a Tesla. </p>
 </div>
 

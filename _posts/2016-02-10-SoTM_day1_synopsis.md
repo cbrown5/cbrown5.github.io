@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: res_posts
 title: "Species on the Move - Day 1 synopsis"
 published: true  
@@ -13,7 +13,7 @@ published: true
 This is my take on some of the highlights and main themes from day one of the Species on the Move conference, in Hobart. See also the [day 2 synopsis](/res_posts/2016/02/11/SoTM_day2_synopsis.html) and [day 3 synopsis](/res_posts/2016/02/11/SoTM_day3_synopsis.html) and [some lessons learned](/res_posts/2016/02/11/SoTM_five_lessons.html).
 
 <div class = "image_caption">
-<img src ="/Images/pecl-laments.png" alt="tweet" class="image_float"/>
+<img src ="/images/pecl-laments.png" alt="tweet" class="image_float"/>
 <p>
 This is my take that is obviously biased towards the talks I saw. I feel your pain Gretta!
 </p>
@@ -32,7 +32,7 @@ From these talks I learnt that **science has an important role to play in helpin
 **Climate change is now so rapid that individual scientists have seen their predictions borne our during the course of their careers.**
 
 <div class = "image_caption">
-<img src ="/Images/abcnews.png" alt="tweet" class="image_float"/>
+<img src ="/images/abcnews.png" alt="tweet" class="image_float"/>
 <p>
 The conference was succesful at attracting broad interest in the media, including from ABC news.  
 </p>
@@ -52,7 +52,7 @@ On the topic of Sunday's talk we learnt that **Species traits can help predict v
 Climate change ecology has made a natural progression from documenting range shifts to asking why different species vary in the rate of their range shift. Sunday spoke about large range size and omnivory as determinants of more rapid range shifts. She then backed up these findings with solid ecological theories that [provide new hypotheses for our field to test](http://onlinelibrary.wiley.com/doi/10.1111/ele.12474/full).
 
 <div class = "image_caption">
-<img src ="/Images/40-spot.png" alt="tweet" class="image_float"/>
+<img src ="/images/40-spot.png" alt="tweet" class="image_float"/>
 <p>
 We should be careful to repeat resurveys, to make sure we don't miss rare species, like this 40-spotted pardalote (striated pardalote also pictured).
 </p>

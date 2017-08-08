@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: Research
 title: "Protecting forests in Fiji to give coral reefs a future"
 published: true
@@ -12,7 +12,7 @@ Many of us become scientists because we have witnessed the degradation of the en
 
 
 <div class = "image_caption_wide">
-<img src ="/Images/trevally-forest.png" alt="trevally and forest" class="image_float_wide"/>
+<img src ="/images/trevally-forest.png" alt="trevally and forest" class="image_float_wide"/>
 <p> Left: Fish like this Giant Trevally prefer to hunt in clear water. Right: Streams draining forested catchments will carry clean water to the ocean. </p>
 </div>
 
@@ -25,7 +25,7 @@ Yet, the daily life of a university scientist often feels distant from any real 
 
 
 <div class = "image_caption_long">
-<img src ="/Images/r2rpic.png" alt="mining and pollution" class="image_long"/>
+<img src ="/images/r2rpic.png" alt="mining and pollution" class="image_long"/>
 <p> From top: A Bauxite mine in Vanua Levu, the Bauxite is extracted from the top-soil. In the process much soil is released that flows into streams and out to the ocean. A river on Vanua Levu carrying sediment from mining and logging to the ocean. A reef smothered to death by sediment from on land.
  </p>
 </div>
@@ -46,7 +46,7 @@ Travelling to Nabouwalu a government centre on Vanua Levu where the workshop wou
 
 
 <div class = "image_caption">
-<img src ="/Images/r2rworkshop.JPG" alt="at the workshop" class="image_float"/>
+<img src ="/images/r2rworkshop.JPG" alt="at the workshop" class="image_float"/>
 <p> Discussing proposals for protected areas with local community members, WCS and Dr. Wenger from UQ.
  </p>
 </div>
@@ -61,7 +61,7 @@ After our initial presentations we had almost two days for community leaders and
 We then developed the spatial and management plans with community members. The plans were designed through discussion around maps with marker pens. All my training in the sophisticated quantitative and computerised methods used spatial planning went out the window.
 
 <div class = "image_caption">
-<img src ="/Images/land-use-change-bua.png" alt="Land-use change around Bua" class="image_float"/>
+<img src ="/images/land-use-change-bua.png" alt="Land-use change around Bua" class="image_float"/>
 <p> Clockwise from top-left: Fire threatens a pine plantation on Vanua Levu. A truck carries logs to a nearby sawmill. Farmland on Vanua Levu. Dr Wenger speaks at the workshop about balancing nature conservation with logging, farming and development.
  </p>
 </div>
@@ -77,7 +77,7 @@ Community members also proposed a large ridge-line protected area that linked th
 Our discussions also emphasised the importance of riparian buffers and suitable road construction to avoid sediment run-off. These principles are already captured in Fiji’s forest practices act, but logging companies often disregard them. A key outcome from our workshop was identifying the need for paid forest wardens, who could ensure forest practices were followed.
 
 <div class = "image_caption_fixed">
-<img src ="/Images/beli-goby.JPG" alt="A goby" class = "image_normal"/>
+<img src ="/images/beli-goby.JPG" alt="A goby" class = "image_normal"/>
 <p> One of Fiji’s iconic migratory fish (a goby) is represented on their $10 note.
  </p>
 </div>
@@ -89,7 +89,7 @@ Whether real change will happen in the region, we are yet to see. We discovered 
 
 
 <div class = "image_caption_wide">
-<img src ="/Images/bua-province.png" alt="bua province scenes" class="image_float_wide"/>
+<img src ="/images/bua-province.png" alt="bua province scenes" class="image_float_wide"/>
 <p> Scenes from around Bua Province, Vanua Levu. Clockwise from left: coconut palms, Bua's administrative centre, cleared land and forest adjacent to coral reefs.
  </p>
 </div>

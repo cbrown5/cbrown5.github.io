@@ -1,19 +1,17 @@
 ---
-layout: md_layout
+layout: default
 category: Rstats Rspatial
 title: "Digitising graphs with R"
-published: true  
+published: true
 ---
 
 ## How to digitise graphs using R
-
-
 
 I recent had reason to digitise some graphs from published papers. You could buy a program to help you do this, but it is actually also possible with R. Here is how to do it.
 
 First, take your graph, for instance, here I have taken a screen shot of a map from a  [paper on ecosystem modelling in Australia](http://onlinelibrary.wiley.com/doi/10.1111/j.1365-2486.2009.02046.x/full). I want to know the coordinates of each of the models plotted on the map. Just the centre point will do for now. You could extract the edges of all the polygons using this method too, but it would be tedious.
 
-<img src ="/Images/ecopath-models.png" alt="ecopath-models" class="image_float"/>
+<img src ="/images/ecopath-models.png" alt="ecopath-models" class="image_float"/>
 
 Then get and load in the PNG and raster packages, which will allow us to load the image file and plot it in R:
 
@@ -21,7 +19,7 @@ Then get and load in the PNG and raster packages, which will allow us to load th
     library(raster)
     pic <- as.raster(readPNG('sole.png'))
 
-Now plot the image on a graph that scales (0,1), so we know where everything has been plotted.  
+Now plot the image on a graph that scales (0,1), so we know where everything has been plotted.
 
     plot(c(0,1), c(0,1))
     rasterImage(pic, xleft = 0, xright = 1,
@@ -74,4 +72,4 @@ Now we have our true coordinates stored in `xvals` and `yvals`. We can replot to
 
 Here is our new map:
 
-<img src ="/Images/ecopath-models-new.png" alt="ecopath-models" class="wide_image"/>  
+<img src ="/images/ecopath-models-new.png" alt="ecopath-models" class="wide_image"/>

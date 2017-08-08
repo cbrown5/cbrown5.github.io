@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: Rstats
 title: "Sensitivity analysis in R the easy way"
 published: false  
@@ -139,4 +139,4 @@ We use it like this:
 
 The result is this:  
 
-<img src ="/Images/figlabels.png" alt="a figure with labels" class="wide_image"/>  
+<img src ="/images/figlabels.png" alt="a figure with labels" class="wide_image"/>  

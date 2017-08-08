@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: rstats
 title: "A fast method to add annotations to a plot"
 published: true
@@ -14,7 +14,7 @@ Wouldn't it be nice if you could just send the coordinates directly to your text
 I did some searching and found on [stackoverflow](http://stackoverflow.com/questions/14547069/how-to-write-from-r-to-the-clipboard-on-a-mac) that you can send R objects to the clipboard. So here is my solution using that trick.
 
 <div class = "image_caption">
-<img src ="/Images/locator-plot.png" alt="" class="image_float"/>
+<img src ="/images/locator-plot.png" alt="" class="image_float"/>
 <p> Adding text to the right position on a plot can be a real hassle. Here I show how to use a simple function to click on a figurea and put coordinates onto your clipboard. </p>
 </div>
 

@@ -1,6 +1,6 @@
 ---
 title: Memorable dataviz with the R program, talk awarded people's choice prize
-layout: md_layout
+layout: default
 category: rstats
 published: TRUE
 ---

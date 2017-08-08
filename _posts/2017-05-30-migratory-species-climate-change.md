@@ -1,6 +1,6 @@
 ---
 title: Networks of habitats increase the vulnerability of migratory species  to climate change
-layout: md_layout
+layout: default
 category: Research
 published: true
 ---
@@ -10,7 +10,7 @@ published: true
 Migratory species are important components of many ecosystems and human societies. Salmon are one of the most well known migratory fish, they move between freshwaters and the ocean to feed and breed. In Australia, we have our own unique assemblage of migratory fish, many of which are highly threatened.
 
 <div class = "image_caption">
-<img src ="/Images/Australian_grayling.jpeg" alt="" class="image_float"/>
+<img src ="/images/Australian_grayling.jpeg" alt="" class="image_float"/>
 <p> The Australian Grayling. Image: Nathan Litjens</p>
 </div>
 

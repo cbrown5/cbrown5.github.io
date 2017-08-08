@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: res_posts
 title: "Measuring range shifts"
 published: true  
@@ -13,7 +13,7 @@ It is well established that species are [moving their ranges towards the poles](
 [Species on the move](http://www.speciesonthemove.com/) is the topic of a major conference this week (10-Feb-2016). There are many talks about identifying range shifts. This is my take on climate range shifts in marine species, based on our recent [paper](http://onlinelibrary.wiley.com/doi/10.1111/gcb.13184/full).
 
 <div class = "image_caption">
-<img src ="/Images/climate-range-shifts.png" alt="fishing boats" class="image_float"/>
+<img src ="/images/climate-range-shifts.png" alt="fishing boats" class="image_float"/>
 <p>
 We want to know how fast species will move under global warming, so we can inform management policy, such as for fisheries of affected species </a>
 </p>
@@ -25,7 +25,7 @@ We set out to find out why species vary using an analysis of a global database o
 What we found surprised us. We were expecting ecological traits, like a species' dispersal ability to predict the rate of range shifts. It turned out that the rate of range shifts we measure was more strongly determined by how scientists measured the range shift, than by the traits of the species they measured.   
 
 <div class = "image_caption">
-<img src ="/Images/models-vs-obs.png" alt="world map of range shifts" class="image_float"/>
+<img src ="/images/models-vs-obs.png" alt="world map of range shifts" class="image_float"/>
 <p>
 We have the <a href="http://www.nature.com/nclimate/journal/vaop/ncurrent/full/nclimate2769.html?utm_source=tech.mazavr.tk&utm_medium=link&utm_compaign=article" target = "_blank"> models </a > to that can generate predictions for a large number of species, but we have very few <a href ="http://onlinelibrary.wiley.com/doi/10.1111/gcb.13184/full" target="_blank"> observations of range shifts </a> to test those models against. Finding generalities in species responses, for instance better dispersers may move faster, can help us fine tune the models to get more accurate predictions.
 </p>
@@ -44,7 +44,7 @@ We found the most important predictors of the rate species moved where the type 
 Abundance vs. occurrence measurements were important because they measure different parts of a population's range shift. Occurrence based measures measured faster range shifts than abundance based measures. Occurrence based measures are influenced by the movement of single individuals, who may represent the extremes of movement, not the norm. They likely pick up on the early colonisers that are extending a species range, but have not yet established new populations. These colonisers can move very rapidly. Abundance based measures focus more on established populations. Because population establishment is slower, rates measured by abundance are also slower.
 
 <div class = "image_caption">
-<img src ="/Images/abundance-measure.png" alt="abundances" class="image_float"/>
+<img src ="/images/abundance-measure.png" alt="abundances" class="image_float"/>
 <p>
 Abundance and occurrence surveys measure different rates of range shift because they measure different ecological processes </a>
 </p>

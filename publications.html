@@ -1,0 +1,30 @@
+---
+layout: default
+title: News and Views
+---
+
+<h1>Publications</h1>
+
+<p>First authored publications are in blue.</p>
+
+<ul class="list-cards">
+    {% for pubs in site.data.pubs %}
+    {% if pubs.first contains 'TRUE'%}
+    <li class="first-author"><a class="card-pubs first-author" href="{{ pubs.url }}" target="_blank">
+        <p>{{pubs.title}}</p>
+        <hr style="color:blue">
+        </br>
+        <p class="journal-title">{{pubs.journal}}</p>
+        <p class="journal-year">{{pubs.year}}</p>
+    </a></li>
+    {% else %}
+    <li class="coauthor"><a class="card-pubs" href="{{ pubs.url }}" target="_blank">
+        <p>{{pubs.title}}</p>
+        <hr>
+        </br>
+        <p class="journal-title">{{pubs.journal}}</p>
+        <p class="journal-year">{{pubs.year}}</p>
+    </a></li>
+    {% endif %}
+  {% endfor %}
+</ul>

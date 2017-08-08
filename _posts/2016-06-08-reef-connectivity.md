@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: Research
 title: "Wind predicts connectivity for coral reef fish"
 published: true  
@@ -12,7 +12,7 @@ Connectivity of organisms among habitats is fundamental to population dynamics, 
 In a new [paper published in the journal Ecology](http://onlinelibrary.wiley.com/doi/10.1002/ecy.1463/full), we show that sheltered conditions have both high larval and habitat connectivity and we subsequently **predict a synergistic increase in fish biomass** in sheltered environments.   
 
 <div class = "image_caption_wide">
-<img src ="/Images/wind-connectivity.png" alt="Image" class="image_float_wide"/>
+<img src ="/images/wind-connectivity.png" alt="Image" class="image_float_wide"/>
 <p>
 We hypothesized that larval retention would be lower on more exposed coasts, because of wind-driven advection. Exposed coasts also will have lower reef to mangrove connectivity, because mangroves prefer sheltered conditions. Under sheltered conditions, connectivity to mangroves and of larvae was hypothesized to be greater, leading to a synergistic increase in adult fish biomass on reefs. Image from our <a href ="http://onlinelibrary.wiley.com/doi/10.1002/ecy.1463/full">paper</a>
 </p>

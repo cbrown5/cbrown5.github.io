@@ -1,8 +1,8 @@
 ---
 title: What does under or over-dispersion look like?
-layout: md_layout
+layout: default
 category: rstats
-published: false
+published: true
 ---
 
 What does under or over-dispersion look like?
@@ -37,7 +37,7 @@ normal bell curve:
     plot(x, p, type = 'l', lwd = 2, col = "red",
         xlab = "Residual", ylab = "Density")
 
-![](/Images/what-is-underdispersed_files/norm-dist-1.png)
+![](/images/what-is-underdispersed_files/norm-dist-1.png)
 
 Now, we can add an over-dispersed curve to that. Here is one, calculated
 using the Student t distribution:
@@ -48,7 +48,7 @@ using the Student t distribution:
         xlab = "Residual", ylab = "Density")
     lines(x, p_t, col = "darkblue", lwd = 2)
 
-![](/Images/what-is-underdispersed_files/norm-t-dist-1.png)
+![](/images/what-is-underdispersed_files/norm-t-dist-1.png)
 
 It wouldn't matter how large we made the standard devation of the normal
 curve, we would never get it to match the Student-t.
@@ -67,7 +67,7 @@ Now plot them all together:
     legend("topright", legend = c("normal", "under-dispersed", "over-dispersed"),
           lty = c(2,1,1), col = c("red", "black", "darkblue"), lwd = 2)
 
-![](/Images/what-is-underdispersed_files/norm-t-laplace-dist-1.png)
+![](/images/what-is-underdispersed_files/norm-t-laplace-dist-1.png)
 
 Here's what they look like if we sample measures from each distribution
 and plot them on a normal QQ plot, which you may be familiar with. It is
@@ -82,7 +82,7 @@ one of the standard checks of model residuals:
     qqnorm(rlaplace(1000, m = 0, s = 0.4), main = "under-dispersed")
     abline(0,1)
 
-![](/Images/what-is-underdispersed_files/qqplots-dispersion-1.png)
+![](/images/what-is-underdispersed_files/qqplots-dispersion-1.png)
 
 Playing around with the parameters for each distribution should help
 your understanding. For instnace, if you set the scale for the Laplace

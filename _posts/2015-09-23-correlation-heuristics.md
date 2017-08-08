@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: Research
 title: "How statistics help us get causation right"
 published: true  
@@ -10,7 +10,7 @@ published: true
 Statistics are often maligned. People can play with numbers to bias the way we interpret reality. Or we can find reasons why two events happened at the same time without any real evidence. As the old adage goes, 'correlation isn't causation'. But proper use of statistics plays a crucial role in the advancement of knowledge.  
 
 <div class = "image_caption">
-<img src ="/Images/woodpecker.JPG" alt="woodpecker" class="image_float"/>
+<img src ="/images/woodpecker.JPG" alt="woodpecker" class="image_float"/>
 <p>
 Our brains are prone to making up stories to explain chance events. I was lucky to spot this woodpecker on an exceptionally warm day. Next time it is warm, I will be prone to expecting more woodpeckers.
 </p>
@@ -27,7 +27,7 @@ One skill we are particularly bad at is regression. Consider the figure. Maybe y
 
 
 <div class = "image_caption_wide">
-<img src ="/Images/correlations_heuristics.png" alt="correlation" class="image_float_wide"/>
+<img src ="/images/correlations_heuristics.png" alt="correlation" class="image_float_wide"/>
 <p>
 Our brains are prone to missing real correlations but then interpreting extreme chance events, like the red point, as causation
 </p>

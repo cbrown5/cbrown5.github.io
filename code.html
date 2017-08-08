@@ -1,0 +1,59 @@
+---
+layout: default
+title: Code
+---
+
+<h1>Code</h1>
+
+<h2>Popular R resources</h2>
+
+
+<ul class="list-cards">
+    <li class="r-resources"><a class="card-pubs" href="http://www.seascapemodels.org/rstats/2017/06/26/dataviz2017_notes.html" target="_blank">
+        <h4>Dataviz in R</h4>
+        <hr>
+    <p> Notes from my award winning presentation </p>
+    </a></li>
+    <li class="r-resources"><a class="card-pubs" href="http://www.seascapemodels.org/rstats/rspatial/2015/06/22/R_Spatial_course.html" target="_blank">
+        <h4>Maps and GIS in R</h4>
+        <hr>
+    <p>A short course </p>
+    </a></li>
+    <li class="r-resources"><a class="card-pubs" href="http://www.seascapemodels.org/Rstats/Conservation_R.html" target="_blank">
+        <h4>Conservation programming in R</h4>
+        <hr>
+        <p>A short course for conservation scientists and biologists</p>
+    </a></li>
+    <li class="r-resources"><a class="card-pubs" href="http://www.seascapemodels.org/research%20rstats/2016/03/15/create-rstats-culture.html" target="_blank">
+        <h4>Create an R culture at your institution</h4>
+        <hr>
+        <p>Get started with my most popular blog post</p>
+    </a></li>
+    <li class="r-resources"><a class="card-pubs" href="http://www.seascapemodels.org/data/ArcGIS_to_R_Spatial_CheatSheet.pdf" target="_blank">
+        <h4>ARC GIS to R Cheatsheet</h4>
+        <hr>
+        <p>Transfer your GIS skills to the R program</p>
+    </a></li>
+</ul>
+
+<div class="clearme"></div>
+
+<p>Feel free to download and share the courses. You are welcome to use them for your own teaching, and I would love to hear about it. If you would like me to come and teach one of these courses at your institution, then get in touch.</p>
+
+<p>Many people don't realise that the R programming language can work as a fully functioning GIS. It has several powerful advantages over many other GIS programs: you can program scripts for complete automation, it is relatively fast, and it is free.</p>
+
+<p>The downside is that it is not easy to get started, particularly if you are not simultaneously a geo-statistical expert and a gun programmer. I am trying to make the jump easier for ecologists by providing courses and helpful blog posts here.</p>
+
+<p>More code (including this webpage) is on my Github page.</p>
+
+<h2>Rstats Blog</h2>
+
+This is my blog for programming in R-stats (and occasionally other languages). I am interested in mapping, GIS, simulation modelling, statistics, optimization and visualisation, mainly for the biological sciences, but many of the applications are general.
+
+<ul class="list_post">
+{% for post in site.posts %}
+{% if post.category contains 'Rstats' or post.category contains 'rstats'%}
+  <li><a class="button-ppl" href="{{ post.url }}">{{ post.title }} - <em>{{ post.date | date: "%d %b %Y" }}</em> </a></li>
+    {% endif %}
+  {% endfor %}
+</ul>

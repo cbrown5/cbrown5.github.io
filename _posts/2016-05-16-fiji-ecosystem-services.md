@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: Research
 title: "Costing the impact of cyclone Winston on Fiji's ecosystem services"
 published: true  
@@ -25,7 +25,7 @@ Assessments of economic damage from natural disaster's typically only include di
 For instance, coral reef ecosystems support the livelihoods of hundreds of millions of people globally. In Fiji they support people through drawing tourists and providing for fisheries.  
 
 <div class = "image_caption">
-<img src ="/Images/spearfishing.jpeg" alt="Image" class="image_float"/>
+<img src ="/images/spearfishing.jpeg" alt="Image" class="image_float"/>
 <p>
 Coral reef fisheries support the livelihoods of many people in tropical nations.
 </p>
@@ -42,7 +42,7 @@ Run-off of turbid water can be worsened by land-clearing. Loss of forest destabl
 Our team has provided the Fiji government with some basic information about catchments and forest cover on the island of Vanua Levu, one of the most affected regions (see image).  
 
 <div class = "image_caption">
-<img src ="/Images/vanua_levu_forest_cover
+<img src ="/images/vanua_levu_forest_cover
 .png" alt="Image" class="image_float"/>
 <p>
 Forest cover in Vanua Levu's major catchments, estimated as part of our SNaP working group.

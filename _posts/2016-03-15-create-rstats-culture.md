@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: Research Rstats
 title: "How to create a culture of using R programming at your institution"
 published: true  

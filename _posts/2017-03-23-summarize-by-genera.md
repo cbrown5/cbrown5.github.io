@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: rstats
 title: "Mean trophic levels of a genera from FishBase"
 published: true
@@ -15,7 +15,7 @@ want to assign them the mean for their genus. I recently saw a [post from
 Trevor Branch](https://twitter.com/TrevorABranch/status/845032570081325056) saying he had figured out exactly how to do this.
 
 <div class = "image_caption">
-<img src ="/Images/estuary-cod.JPG" alt="" class="image_float"/>
+<img src ="/images/estuary-cod.JPG" alt="" class="image_float"/>
 <p> The well camoflaged Estuary Cod (<i>Epinephelus malabaricus</i>) doesn't have a diet based trophic level estimate on fishbase. One way to estimate it could be to assign it the mean for all <i>Epinephelus</i></p>
 </div>
 

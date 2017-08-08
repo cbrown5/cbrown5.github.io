@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: rstats
 title: "Make your R simulation models  20 times faster"
 published: true
@@ -19,7 +19,7 @@ redefined the problem (e.g. by using smaller spatial domain) so I could
 continue with R.
 
 <div class = "image_caption">
-<img src ="/Images/speeding-up-sims/popn-tseries-1.png" alt="" class="image_float"/>
+<img src ="/images/speeding-up-sims/popn-tseries-1.png" alt="" class="image_float"/>
 <p> Output of one of the population model runs showing solutions from an R function and an Rcpp function. The C++ version gives an identical results and was up to 20 times faster. </p>
 </div>
 
@@ -178,7 +178,7 @@ Let's plot the result, for the second value of `r`:
     legend('topleft', legend = c("R solution","C solution"),
            pch = 16, col = c("DarkBlue", "Tomato"))
 
-<img src ="/Images/speeding-up-sims/popn-tseries-1.png" alt="" class="image_normal"/>
+<img src ="/images/speeding-up-sims/popn-tseries-1.png" alt="" class="image_normal"/>
 
 They look identical, excellent.
 

@@ -1,5 +1,5 @@
 ---
-layout: md_layout
+layout: default
 category: Research
 title: "How long does it take to write major national grant?"
 published: true  
@@ -14,7 +14,7 @@ But, I wondered how much time does it take to write for a national grant scheme.
 #### *69 hours and 30 minutes or nearly 12 full working days (at least^1^)*  
 
 <div class = "image_caption">
-<img src ="/Images/ARC_DP2017.png" alt="timebarchart" class="image_float"/>
+<img src ="/images/ARC_DP2017.png" alt="timebarchart" class="image_float"/>
 <p>
 Time spent by days writing for a grant </a>
 </p>
@@ -29,7 +29,7 @@ Some further context for this grant. There is likely to be considerable variabil
 My grant is also modelling focussed, so that probably saved me some time in the budgeting step, as that could get very tricky if there was lots of field work to budget for.
 
 <div class = "image_caption">
-<img src ="/Images/ARC-submitted.png" alt="timebarchart" class="image_float"/>
+<img src ="/images/ARC-submitted.png" alt="timebarchart" class="image_float"/>
 <p>
 The screen you see on completion of 12 days solid work </a>
 </p>
