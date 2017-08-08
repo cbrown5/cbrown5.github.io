@@ -6,7 +6,7 @@ title: News and Views
 # People
 
 <ul class="list-ppl">
-  <li><a class="button-ppl" href="/people/chris-brown.html">Chris Brown </a></li>
+  <li><a class="button-ppl" href="/people/Chris-Brown.html">Chris Brown </a></li>
 </ul>
 <div class="clearme"><p></p></div>
 
