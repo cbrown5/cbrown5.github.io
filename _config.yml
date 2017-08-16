@@ -4,3 +4,5 @@ url: http://www.seascapemodels.org/index.html
 collections:
   people:
     output: true
+plugins_dir:
+  - jekyll-sitemap
