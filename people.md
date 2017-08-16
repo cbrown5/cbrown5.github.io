@@ -1,6 +1,10 @@
 ---
 layout: default
 title: News and Views
+sitemap:
+    priority: 0.7
+    changefreq: 'monthly'
+    lastmod: 2017-08-16
 ---
 
 # People
