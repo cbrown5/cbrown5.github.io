@@ -9,9 +9,12 @@ published: TRUE
 
 The hashtag [\#conservationoptimism](https://twitter.com/hashtag/conservationoptimism?src=hash) became popular during the recent [International Congress for Conservation Biology](http://conbio.org/mini-sites/iccb-2017) symposium.  [Michael Burgass](https://twitter.com/MJBurgass) asked me what its twitter impact was, so here is a quick analysis.
 
+
+Note that I edited this post (24/08/2017) after Michael Burgass asked me why so few tweets. It turns out (and I hadn't realised) that the twitter API (Application programming interface) will [only return tweets up to 2 weeks old](https://stackoverflow.com/questions/24214189/how-can-i-get-tweets-older-than-a-week-using-tweepy-or-other-python-libraries). You have to pay to get older ones. So the data in this post is only relevant to the period over the ICCB conference.
+
 Michael also asked about \#iamaconservationist, but that has too few tweets so far to make for a meaningful analysis (about 100).
 
-To be honest, not too much has happened on this hashtag so far, so it is hard to say too much from a broad brush quantitative analysis like this, but here are a few stats.
+There were not a huge amount of of tweets over ICCB conference, so it is hard to say too much from a broad brush quantitative analysis like this, but here are a few stats.
 
 The first tweet I got was only on 2017-07-26 and until now there have been 813 tweets from 390 users of which 133 are original tweets and the rest RTs.
 
@@ -72,4 +75,4 @@ tcogyxzitwinq|35
 wide|35
 
 
-That's all. It might be worth doing an update on this in a few months if the tag takes off.
+That's all. It would be good to do a full historical analysis, but as I note above you probably have to pay for that.
