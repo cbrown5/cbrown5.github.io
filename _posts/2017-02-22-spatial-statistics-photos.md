@@ -19,7 +19,7 @@ Here we will build an interactive map showing model results from an interpolatio
 
 <iframe src="/data/hornby_oysters_interp.html" style = "width: 80%; height: 30em"> It no map appears here your browser doesn't support iframes. Try <a href = "/data/hornby_oysters_interp.html">this link instead</a></iframe>
 
-[Get the data for this blog](/data/Oysters_merged.csv').
+[Get the data for this blog](/data/Oysters_merged.csv).
 
 First up we need to load some packages:
 
