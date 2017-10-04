@@ -19,7 +19,7 @@ Coal [rarely makes people ill](https://www.atse.org.au/Documents/Publications/Re
 
 A rogue group of scientists believe that climate change is caused by greenhouse gas emissions, such as all the CO2 that comes from burning coal. This extremist group (something like [97% of scientists](https://www.skepticalscience.com/global-warming-scientific-consensus-intermediate.htm))) will probably also tell you that climate change has [dire consequences for humanity and life on earth](https://www.ipcc.ch/report/ar5/syr/).
 
-Well, even if that is true, the global emissions of carbon are now so huge that Aussie coal mining doesn't really matter. One mine in Queensland will only contribute [about half a percent of the global emissions](http://www.abc.net.au/news/2016-11-02/fast-tracking-adani-carmichael-coal-mine-a-bad-idea/7988116) we have left before the Earth global warming will exceed 2^o^C. 0.5% from just one mine is pretty minor when you consider Australia's human population is only about 0.33% of the global population.
+Well, even if that is true, the global emissions of carbon are now so huge that Aussie coal mining doesn't really matter. One mine in Queensland will only contribute [about half a percent of the global emissions](http://www.abc.net.au/news/2016-11-02/fast-tracking-adani-carmichael-coal-mine-a-bad-idea/7988116) we have left before the Earth global warming will exceed 2 degrees. 0.5% from just one mine is pretty minor when you consider Australia's human population is only about 0.33% of the global population.
 
 We are also planting heaps of trees in Australia. If you didn't know it, trees actually suck carbon out of the atmosphere. So the trees we plant are helping to [offsett emissions we create from doing things like clearing native forests for farming and burning coal](https://theconversation.com/stopping-land-clearing-and-replanting-trees-could-help-keep-australia-cool-in-a-warmer-future-63654).
 
@@ -37,7 +37,7 @@ The government's level of concern is evidenced by the hefty fines they hand out 
 
 Anyway, people matter too. What you can't dispute is that coal mining provide significant numbers of jobs to honest hard working Australian's.
 
-The creation of a new coal mine can create [**up to 1500**](http://www.theaustralian.com.au/business/business-spectator/fact-check-will-adanis-coal-mine-really-boost-employment-by-10000-jobs/news-story/903c1932738b1d1a1763c74e45f4d7c7) new jobs over the life of the project.
+The creation of a new coal mine may create [**up to 1500**](http://www.theaustralian.com.au/business/business-spectator/fact-check-will-adanis-coal-mine-really-boost-employment-by-10000-jobs/news-story/903c1932738b1d1a1763c74e45f4d7c7) new jobs over the life of the project.
 
 Everyone knows the [10s of thousands of ongoing jobs in tourism](http://www.telegraph.co.uk/news/2017/06/26/great-barrier-reef-now-worth-56bn-australias-economy/) are not really related to the Great Barrier Reef. All those people are coming for another great Aussie industry - Casinos. But that's another story.
 
