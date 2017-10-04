@@ -1,15 +1,15 @@
 ---
-title: Why I support Aussie coal mines
+title: Why you should get behind Aussie coal mines
 layout: default
 category: Research
 published: TRUE
 ---
 
-# Why I support Aussie coal mines
+# Why you should get behind Aussie coal mines
 
 I'm over here in Scotland at their National marine science and technology conference (['MASTS'](https://theconversation.com/why-are-we-still-pursuing-the-adani-carmichael-mine-85100)). There are a lot of talks about the ecological issues associated with green energy derived from wind, waves and tides.
 
-Seeing these environmental issues crop with green energy made me think how glad I am that Australia is focussing its efforts on deriving energy from good old carbon.
+Seeing these environmental issues crop with green energy made me think how lucky the Australian environment is that we are focussing our efforts on deriving and exporting energy created with good old carbon.
 
 Queensland is leading the way in keeping the coal tradition going, with new coal mines that have [recently been criticised](https://theconversation.com/why-are-we-still-pursuing-the-adani-carmichael-mine-85100) by the less enlightened.
 
