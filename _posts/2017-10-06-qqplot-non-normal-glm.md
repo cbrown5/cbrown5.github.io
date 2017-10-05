@@ -1,5 +1,5 @@
 ---
-title: What does under or over-dispersion look like?
+title: Checking residual distributions for non-normal GLMs
 layout: default
 category: rstats
 published: TRUE
