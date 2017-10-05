@@ -2,12 +2,12 @@
 title: Managing for uncertain interactions among multiple stressors of marine populations
 layout: default
 category: Research
-published: FALSE
+published: TRUE
 ---
 
 # Managing for uncertain interactions among multiple stressors of marine populations
 
-This blog supplements my talk for [Marine Alliance for Science and Technology Scotland workshop on Cumulative Stressors]().  
+This blog supplements my talk for [Marine Alliance for Science and Technology Scotland workshop on Cumulative Stressors](http://www.masts.ac.uk/annual-science-meeting/). Some of it is published by myself and others and some of it I intend to publish. [Get in touch](http://www.seascapemodels.org/people/Chris-Brown.html) if you are interested in knowing more.
 
 ## Summary
 
@@ -179,7 +179,7 @@ If you can’t access one of the pubs cited here, please email me and I will try
 
 [McClenachan, L. and A. B. Cooper. 2008. Extinction rate, historical population structure and ecological role of the Caribbean monk seal. Proceedings of the Royal Society of London B: Biological Sciences 275:1351-1358.]( https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2602701/pdf/rspb20071757.pdf)
 
-Piggott, Townsend, Matthaei. 2015. Reconceptualizing synergism and antagonism among multiple stressors. Ecology and Evolution. 5: 1538-1547.
+[Piggott, Townsend, Matthaei. 2015. Reconceptualizing synergism and antagonism among multiple stressors. Ecology and Evolution. 5: 1538-1547.](https://www.google.co.uk/url?sa=t&rct=j&q=&esrc=s&source=web&cd=5&cad=rja&uact=8&ved=0ahUKEwjx-66Vh9nWAhXMKVAKHXLlCtwQFghMMAQ&url=http%3A%2F%2Fwww.wileyopenaccess.com%2Fview%2FNzY5NTkyMS9KQS8xMDg0OTQxL251bGw%3D%2FjournalArticleReferences.html&usg=AOvVaw0hug2rz6qUL_PyuKe9yBBX)
 
 [Sheppard JK, Marsh H, Jones RE, Lawler IR. Dugong habitat use in relation to seagrass nutrients, tides, and diel cycles. Marine mammal science. 2010 Oct 1;26(4):855-79.](http://onlinelibrary.wiley.com/doi/10.1111/j.1748-7692.2010.00374.x/full)
 
