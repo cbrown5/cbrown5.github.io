@@ -1,11 +1,11 @@
 ---
-title: Why you should get behind Aussie coal mines
+title: Queenland The Coal State
 layout: default
 category: Research
 published: TRUE
 ---
 
-# Why you should get behind Aussie coal mines
+# Queenland: The Coal State
 
 I'm over here in Scotland at their National marine science and technology conference (['MASTS'](https://theconversation.com/why-are-we-still-pursuing-the-adani-carmichael-mine-85100)). There are a lot of talks about the ecological issues associated with green energy derived from wind, waves and tides.
 
@@ -15,7 +15,7 @@ Seeing these environmental issues crop with green energy made me think how lucky
 
 Queensland is leading the way in keeping the coal tradition going, with new coal mines that have [recently been criticised](https://theconversation.com/why-are-we-still-pursuing-the-adani-carmichael-mine-85100) by the less enlightened.
 
-Queenslanders should call our state **"The Coal State"** not "The Sunshine State" like we currently do. What's sunshine ever done for us? You can't [run much more than a few servers with it](http://www.bbc.com/future/story/20161013-why-apple-and-google-are-going-solar), and its proven to give you cancer.
+Queenslanders should call our state **"The Coal State"** not "The Sunshine State" like we currently do. What's sunshine ever done for us? You can't [run much more than a few web  servers with it](http://www.bbc.com/future/story/20161013-why-apple-and-google-are-going-solar), and its proven to give you cancer.
 
 Coal [rarely makes people ill](https://www.atse.org.au/Documents/Publications/Reports/Energy/ATSE%20Hidden%20Costs%20Electricity%202009.pdf), a single power plant causing only about [18 deaths a year in Victoria](https://theconversation.com/why-coal-fired-power-stations-need-to-shut-on-health-grounds-68809). Coal also provides stacks of cheap energy.
 
