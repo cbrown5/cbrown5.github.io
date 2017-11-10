@@ -1,11 +1,11 @@
 ---
-title: New grant to study impacts of interacting stressors of marine ecosystems
+title: New grant to study impacts of interacting stressors on marine ecosystems
 layout: default
 category: Research
 published: TRUE
 ---
 
-# New grant to study impacts of interacting stressors of marine ecosystems
+# New grant to study impacts of interacting stressors on marine ecosystems
 
 I was excited to learn today that Professor Rod Connolly, Professor Isabelle Côté and I had been awarded an Australian Research Council grant to start in 2018.
 
