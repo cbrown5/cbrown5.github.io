@@ -28,5 +28,6 @@ ikeep <- !(dats$journal == "")
 dats <- dats[ikeep,]
 dats$year[is.na(dats$year)] <- "In press"
 dats <- arrange(dats, desc(year))
+dats$first <- toupper(as.character(dats$first))
 
 write.csv(dats, "~/Documents/Webpage/webpage/_data/pubs.csv", row.names = F)
