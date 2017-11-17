@@ -29,4 +29,4 @@ dats <- dats[ikeep,]
 dats$year[is.na(dats$year)] <- "In press"
 dats <- arrange(dats, desc(year))
 
-write.csv(dats, "/Users/s2973410/Documents/Webpage/webpagev2/_data/pubs.csv", row.names = F)
+write.csv(dats, "~/Documents/Webpage/webpage/_data/pubs.csv", row.names = F)
