@@ -11,7 +11,7 @@ I recently signed up for a [Slack channel](https://slack.com/), a kind of chat r
 
 Signing up for Slack made me realise how much I have been using e-media a range of e-media tools in the pipeline from ideas generation to publication and sharing of research. I wanted to document some of those tools and their uses in the pipeline here.
 
-> e-media tools have massive potential for changing the way we collaborate on and communicate our research
+> "e-media tools have massive potential for changing the way we collaborate on and communicate our research"
 
 We will work through the process from ideas generation to research communication, which wraps back around to generating new ideas.
 
