@@ -1,4 +1,5 @@
-# Extract data from google scholar, save to spreadsheet
+# Run this script to update pubs list on my webpage
+# CJ Brown 2017-11-17
 
 library(scholar)
 library(dplyr)
