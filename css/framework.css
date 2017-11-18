@@ -224,6 +224,19 @@ code{
     background-color: #F0F0F0;
 }
 
+blockquote{
+  display:block;
+  background: #cce0ff;
+  position: relative;
+  font-style: italic;
+  border-left-style: solid;
+  border-left-width: 15em;
+  border-right-style: solid;
+  border-right-width: 2em;
+  border-left-color: #ed5565;
+  border-right-color: #da4453;
+}
+
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
