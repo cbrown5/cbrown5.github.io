@@ -226,7 +226,8 @@ code{
 
 blockquote{
     display:block;
-    background: #ffff;
+    background: #F8F8F8;
+    font-size:130%;
     position: relative;
     padding: 15px 20px 15px 45px;
     margin: 0 0 25px;
