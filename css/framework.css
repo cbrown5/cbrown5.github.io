@@ -225,17 +225,20 @@ code{
 }
 
 blockquote{
-  display:block;
-  background: #cce0ff;
-  position: relative;
-  font-style: italic;
-  border-left-style: solid;
-  border-left-width: 15em;
-  border-right-style: solid;
-  border-right-width: 2em;
-  border-left-color: #ed5565;
-  border-right-color: #da4453;
+    display:block;
+    background: #ffff;
+    position: relative;
+    padding: 15px 20px 15px 45px;
+    margin: 0 0 25px;
+    font-style: italic;
+    border-left-style: solid;
+    border-left-width: 2em;
+    border-right-style: solid;
+    border-right-width: 0.5em;
+    border-left-color: #cce0ff;
+    border-right-color: #cce0ff;
 }
+
 
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
