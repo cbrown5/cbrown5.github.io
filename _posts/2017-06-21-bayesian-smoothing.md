@@ -1,6 +1,6 @@
 ---
 title: Smoothing a time-series with a Bayesian model
-layout: md_layout
+layout: default
 category: rstats
 published: TRUE
 ---

@@ -2,7 +2,7 @@
 title: What does under or over-dispersion look like?
 layout: default
 category: rstats
-published: TRUE 
+published: TRUE
 ---
 
 What does under or over-dispersion look like?

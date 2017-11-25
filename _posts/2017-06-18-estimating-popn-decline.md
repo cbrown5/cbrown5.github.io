@@ -1,7 +1,7 @@
 ---
 title: Quantifying the magnitude of a population decline with Bayesian time-series
   modelling
-layout: md_layout
+layout: default
 category: rstats
 published: TRUE
 ---
