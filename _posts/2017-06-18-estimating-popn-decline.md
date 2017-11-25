@@ -3,11 +3,10 @@ title: Quantifying the magnitude of a population decline with Bayesian time-seri
   modelling
 layout: md_layout
 category: rstats
-published: true
+published: TRUE
 ---
 
-Quantifying the magnitude of a population decline with Bayesian time-series modelling
--------------------------------------------------------------------------------------
+# Quantifying the magnitude of a population decline with Bayesian time-series modelling
 
 Population abundances tend to vary year to year. This variation can make
 it make it hard detect a change and hard to quantify exactly what that

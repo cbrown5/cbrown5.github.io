@@ -2,11 +2,10 @@
 title: Smoothing a time-series with a Bayesian model
 layout: md_layout
 category: rstats
-published: true
+published: TRUE
 ---
 
-Smoothing a time-series with a Bayesian model
----------------------------------------------
+# Smoothing a time-series with a Bayesian model
 
 Recently I looked at [fitting a smoother to a
 time-series](/rstats/2017/06/18/estimating-popn-decline.html) using
