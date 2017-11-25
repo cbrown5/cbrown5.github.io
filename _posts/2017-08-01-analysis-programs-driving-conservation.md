@@ -11,6 +11,6 @@ With the [International Congress for Conservation Biology](http://conbio.org/min
 
 I ran a quick poll on my blog (you can take it [here](http://www.seascapemodels.org/rstats/2017/07/21/ICCB2017-what-analysis-program.html)) to find out. Here are the results (as of 30th July 2017)
 
-![](/images/iccb-analysis-programs-barplot)
+![](/images/iccb-analysis-programs-barplot.jpg)
 
 The [R program](https://cran.r-project.org/) tops the list of most popular analysis programs. Not a surprising result, given its predominance in the biological, ecological and social sciences that conservation science draws from.
