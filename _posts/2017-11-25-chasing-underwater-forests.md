@@ -14,6 +14,7 @@ I was visiting colleagues in my childhood state of Tasmania when someone mention
 It sounded like the mythical ecosystems described in the accounts of early European explorers. That is, in the days before climate change and industrial fishing took their toll on ocean ecosystems across the globe, including in Tasmania.
 
 ![](/images/macrocystis.JPG)
+
 A *Macrocystis* forest. Photo: Megan Saunders
 
 I had only one weekend left in Tasmania, but I made it a priority to dive this kelp forest. I borrowed a mask from a friend, dug up my stiff old wetsuit from my parent's basement and fixed ageing fins with cable ties.
@@ -23,6 +24,7 @@ When growing up near Hobart I often sought out opportunities for diving in kelp 
 There is another world to explore in a kelp forest. If you free dive, as I typically did as a teen (scuba was too expensive) on every dive you swim down through a multitude of micro-ecosystems, from canopy to holdfast. Caprellid amphipods, which resemble a praying mantis, graze in the fronds near the surface. Mid-water you might encounter schools of Bastard Trumpeter or spiny boarfish. On the bottom, the kelp's holdfast, a tangled mass of root like structures, hosts an array of zany looking invertebrates.
 
 ![](/images/bastard-trumpeter.JPG)
+
 Bastard Trumpeter *Latridopsis forsteri*, cruise a kelp forest. Photo: Megan Saunders
 
 Kelp forests were so important to my upbringing that they were the topic of the first conversation I had with my now wife (she is also a diver from another other great bastion of kelp forests - the west coast of North America).
@@ -70,6 +72,8 @@ I hope my children don't have the same childhood experience of nature as I had. 
 There are signs of hope. The talk of Hobart that week had been the sighting of a southern right whale just a hundred metres from shore in the Derwent estuary. Right whales were almost driven to extinction by whale hunting, but now they are protected they are making a [slow recovery](http://onlinelibrary.wiley.com/doi/10.1111/faf.12241/full).
 
 ![](/images/southern-right-whale.jpg)
+
+*A snorkeller watches a southern right whale that visited the Derwent estuary.*
 
 Controversy surrounded this particular whale, which made the front page of the local news paper. Many onlookers reported it seemed distressed as it was mobbed by swimmers, boats and jetskis.
 
