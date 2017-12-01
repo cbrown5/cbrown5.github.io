@@ -65,7 +65,7 @@ It is indicative that the kelp holds on in a place where lobster fishing is bann
 
 That the kelp still holds on in a few places is a sign of hope that Tasmania's ecosystems can withstand climate change.
 
-As I made my way back up the cliff track after the dive, I thought about the cliche of arguing we do more to save nature, like creating more marine reserves, so our children can visit these places we were fortunate to experience. But our children will develop their own fixed points of experience as they grow and as the baseline for what is natural shifts from generation to generation the old baselines of their forebares may not give them much concern.
+As I made my way back up the cliff track after the dive, I thought about the cliche of arguing we do more to save nature, like creating more marine reserves, so our children can visit these places we were fortunate to experience. But our children will develop their own fixed points of experience as they grow and as the baseline for what is natural shifts from generation to generation the old baselines of their forbearers may not give them much concern.
 
 I hope my children don't have the same childhood experience of nature as I had. I hope they can expect things to get better and that their shifting baseline is one of degraded ecosystems that are recovering.
 
@@ -73,7 +73,7 @@ There are signs of hope. The talk of Hobart that week had been the sighting of a
 
 ![](/images/southern-right-whale.jpg)
 
-*A snorkeller watches a southern right whale that visited the Derwent estuary.*
+*A snorkeller watches a southern right whale that visited the Derwent estuary. Photo: Mick Brown*
 
 Controversy surrounded this particular whale, which made the front page of the local news paper. Many onlookers reported it seemed distressed as it was mobbed by swimmers, boats and jetskis.
 
