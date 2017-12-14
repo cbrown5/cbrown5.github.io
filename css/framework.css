@@ -227,17 +227,17 @@ code{
 blockquote{
     display:block;
     background: #F8F8F8;
-    font-size:130%;
+    font-size:110%;
     position: relative;
     padding: 15px 20px 15px 45px;
     margin: 0 0 25px;
     font-style: italic;
     border-left-style: solid;
-    border-left-width: 2em;
+    border-left-width: 1.5em;
     border-right-style: solid;
-    border-right-width: 0.5em;
-    border-left-color: #cce0ff;
-    border-right-color: #cce0ff;
+    border-right-width: 0.3em;
+    border-left-color: #e6e6e6;
+    border-right-color: #e6e6e6;
 }
 
 
