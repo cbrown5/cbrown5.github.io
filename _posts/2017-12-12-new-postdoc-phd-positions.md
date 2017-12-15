@@ -22,3 +22,5 @@ The postdoc position is nominally for 2.5 years full-time at academic level A (P
 Australian Resident applicants to Griffith's PhD program should have recieved Honours 1 or equivalent. A lead authored publication in a peer-reviewed journal will be helpful.
 
 International applicants to Griffith's PhD program must have led at least one peer-reviewed paper in an internationally recognised journal.
+
+Details on the application process to a PhD at Griffith, including deadlines are [here](https://degrees.griffith.edu.au/Program/6001/Overview/International).
