@@ -27,7 +27,9 @@ Linear equations
 As the name suggests General Linear Models rely on a linear equation,
 which in its basic form is simply:
 
-*y*<sub>*i*</sub> = *α* + *β**x*<sub>*i*</sub> + *ϵ*<sub>*i*</sub>
+*y*<sub>*i*</sub> = *α* + *β*x*<sub>*i*</sub> + *ϵ*<sub>*i*</sub>
+
+
  The equation for a straight line, with some error added on.
 
 If you aren't that familiar with mathematical notation, notice a few
@@ -56,7 +58,7 @@ Finally, don't forget *ϵ*<sub>*i*</sub>, which is the error.
 
 These predictions will simply be calculated as:
 
-*y*<sub>*i*</sub> = *α* + *β**x*<sub>*i*</sub>
+*y*<sub>*i*</sub> = *α* + *β*x*<sub>*i*</sub>
 
 (notice I just removed the *ϵ*<sub>*i*</sub> from the end). You can
 think of the linear predictions as: the mean or 'expected' value a new
