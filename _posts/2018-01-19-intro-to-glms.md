@@ -253,6 +253,7 @@ equation:
 4.  Account for hierarchies in your sampling, like transects sampled
     within sites (that's a mixed effects model)
 5.  Account for spatial or temporal dependencies.
+6.  Model varying error variance (e.g. when the variance increases with the mean).  
 
 You can also change the left-hand side, so that it no longer assumes
 normality (then that's a **Generalized** Linear Model). Or even add
