@@ -17,8 +17,7 @@ I wanted to share an abridged version of our conversation, as I think it is enli
 
 **Dom:** What criteria can I use to make inferences with my Bayesian model? I've used [MCMCglmm](https://cran.r-project.org/web/packages/MCMCglmm/index.html) (an R package) previously to run multivariate models. However, in addition to doing this in our study, we want to test the effect of multiple predictors (covariates) on our response variables. I'm curious to know if you recommend one in particular (parameter estimate and 95% CI, Bayes factor, ).
 
-**CB:**  You can test the covariates very much like you did for your correlated
-response model.  Your covariate model will estimate a slope very much like a linear regression. So if you want a criteria for inferences, you can just use the 95% CI on that slope estimate. If it overlaps zero then you could say that the effect of that covariate is 'insignificant'.
+**CB:**  You can test the covariates very much like you did for your correlated response model.  Your covariate model will estimate a slope very much like a linear regression. So if you want a criteria for inferences, you can just use the 95% CI on that slope estimate. If it overlaps zero then you could say that the effect of that covariate is 'insignificant'.
 
 You can just then compare the median and 95% CI values for your covariates to see which ones have the largest effect.
 
