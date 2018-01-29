@@ -64,4 +64,4 @@ formally test for it, never had this probelm in any bayesian models I've run. So
 
 Hit me up on Twitter if you want to join in on the conversation (or don't agree with something I said).
 
-Finally, if you are thinking of going Bayesian for your next GLM, [here's a nice review of ways you can do it in R](http://www.seascapemodels.org/rstats/2017/04/14/glmm-comparison.html).
+Finally, if you are thinking of going Bayesian for your next GLM, [here's a short review of ways you can do it in R](http://www.seascapemodels.org/rstats/2017/04/14/glmm-comparison.html).
