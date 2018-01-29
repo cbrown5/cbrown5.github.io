@@ -15,7 +15,7 @@ I wanted to share an abridged version of our conversation, as I think it is enli
 
 ## The email chain
 
-**Dom:** What criteria can I use to make inferences with my Bayesian model? I've used [MCMCglmm](https://cran.r-project.org/web/packages/MCMCglmm/index.html) \\[an R package\\] previously to run multivariate models. However, in addition to doing this in our study, we want to test the effect of multiple predictors (covariates) on our response variables. I'm curious to know if you recommend one in
+**Dom:** What criteria can I use to make inferences with my Bayesian model? I've used [MCMCglmm](https://cran.r-project.org/web/packages/MCMCglmm/index.html) (an R package) previously to run multivariate models. However, in addition to doing this in our study, we want to test the effect of multiple predictors (covariates) on our response variables. I'm curious to know if you recommend one in
 particular (parameter estimate and 95% CI, Bayes factor, ...).
 
 **CB:**  You can test the covariates very much like you did for your correlated response model.  Your covariate model will estimate a slope very much like a linear regression. So if you want a criteria for inferences, you can just use the 95% CI on that slope estimate. If it overlaps zero then you could say that the effect of that covariate is 'insignificant'.
@@ -25,12 +25,11 @@ You can just then compare the median and 95% CI values for your covariates to se
 Another option is to use the [WAIC](https://arxiv.org/abs/1507.04544)
 which some stats packages will calculate for you. It is very much like the AIC and can be used to select the most parsimonious model. i.e. your compare models with different sets of covariates and pick the one (or several) with the lowest WAIC.
 
-One thing to watch out for is that your model may give funky results if the covariates are strongly correlated with each other. A good reference is the book about eco stats by [Alain Zurr that has penguins
-on the front cover](http://highstat.com/index.php/mixed-effects-models-and-extensions-in-ecology-with-r) \\[one of my favourite reference books, I can never remember the title though\\].
+One thing to watch out for is that your model may give funky results if the covariates are strongly correlated with each other. A good reference is the book about eco stats by [Zuur that has penguins on the front cover](http://highstat.com/index.php/mixed-effects-models-and-extensions-in-ecology-with-r). (One of my favourite reference books, I can never remember the title though).
 
 **Dom:** Your answer confirms what I was thinking - that reporting an estimate and 95% CI is fine for hypothesis testing, which is great.
 
-I'm familiar with model selection and AIC but I usually also report a pseudo R2 (usually using r.squaredGLMM) to indicate how much of the variance my model explains. There is a short paper on that topic which came out recently in JAP [which is [worth reading](http://onlinelibrary.wiley.com/doi/10.1111/1365-2664.13060/full). Do you know if there a way to compute a pseudo R2 for a multivariate Bayesian model?
+I'm familiar with model selection and AIC but I usually also report a pseudo R2 (usually using r.squaredGLMM) to indicate how much of the variance my model explains. There is a short paper on that topic which came out recently in JAP (which is [worth reading](http://onlinelibrary.wiley.com/doi/10.1111/1365-2664.13060/full)). Do you know if there a way to compute a pseudo R2 for a multivariate Bayesian model?
 
 **CB:** In short by asking about an R2 for a Bayesian model you are opening a can of worms.
 Bayesians prefer WAIC or LOO (leave one out cross validation) for evaluating models because they integrate across the full posterior probability. The R2 is a point estimate, it is just an evaluation of the mean prediction of the model (so doesn't account for the uncertainty in parameter estimates).
@@ -44,7 +43,7 @@ But, a Bayesian isn't too bothered by R2 because they spend more time  looking a
 Some model specifications might have narrower CIs than others (for
 instance if you include more informative covariates).
 
-**Dom:** Also, from  a quick look at the paper you sent me \\[the one about WAIC\\] and the vignette for the loo package, it seems like implementing model selection for a a Bayesian model using WAIC is analogous to carrying out likelihood ratio tests to compare nested models.
+**Dom:** Also, from  a quick look at the paper you sent me (the one about WAIC) and the vignette for the loo package, it seems like implementing model selection for a a Bayesian model using WAIC is analogous to carrying out likelihood ratio tests to compare nested models.
 
 How would one go about comparing models with four predictors (no interactions)? Would you compute the WAIC by hand for all possible models and retain the 'best' model(s)? I've used the dredge function in [MuMln](https://cran.r-project.org/web/packages/MuMIn/index.html) to automate the process in the past...
 
