@@ -11,7 +11,7 @@ A good friend I met on a field trip long ago, [Dominique Roche](https://scholar.
 
 He has been delving into generalized linear models, using Bayesian methods, and needed to decide what criteria he should use for model simplification (the process of removing 'insignificant' covariates) and/or deciding which covariates had the strongest effect on his response of interest.
 
-I wanted to share an abridged version of our conversation, as I think it is enlightening. Specifically we discussed whether one can (and should) calculate the R-squared metric for Bayesian models (the short answer being that the R-squared doesn't make much sense for Bayesian models). 
+I wanted to share an abridged version of our conversation, as I think it is enlightening. Specifically we discussed whether one can (and should) calculate the R-squared metric for Bayesian models (the short answer being that the R-squared doesn't make much sense for Bayesian models).
 
 ## The email chain
 
