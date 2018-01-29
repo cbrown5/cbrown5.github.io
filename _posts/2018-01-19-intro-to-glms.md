@@ -27,7 +27,7 @@ Linear equations
 As the name suggests General Linear Models rely on a linear equation,
 which in its basic form is simply:
 
-*y*<sub>*i*</sub> = *α* + *β*x*<sub>*i*</sub> + *ϵ*<sub>*i*</sub>
+*y*<sub>*i*</sub> = *α* + *β*x*<sub>i</sub> + *ϵ*<sub>i</sub>
 
 
  The equation for a straight line, with some error added on.
