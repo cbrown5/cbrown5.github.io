@@ -11,7 +11,7 @@ A good friend I met on a field trip long ago, [Dominique Roche](https://scholar.
 
 He has been delving into generalized linear models, using Bayesian methods, and needed to decide what criteria he should use for model simplification (the process of removing 'insignificant' covariates) and/or deciding which covariates had the strongest effect on his response of interest.
 
-I wanted to share an abridged version of our conversation, as I think it is enlightening. Specifically we discussed whether one can (and should) calculate the R-squared metric for Bayesian models.
+I wanted to share an abridged version of our conversation, as I think it is enlightening. Specifically we discussed whether one can (and should) calculate the R-squared metric for Bayesian models (the short answer being that the R-squared doesn't make much sense for Bayesian models). 
 
 ## The email chain
 
@@ -64,4 +64,4 @@ formally test for it, never had this probelm in any bayesian models I've run. So
 
 Hit me up on Twitter if you want to join in on the conversation (or don't agree with something I said).
 
-Finally, if you are thinking of going Bayesian for your next GLM, [here's a nice review of ways you can do it in R](http://www.seascapemodels.org/rstats/2017/04/14/glmm-comparison.html).  
+Finally, if you are thinking of going Bayesian for your next GLM, [here's a nice review of ways you can do it in R](http://www.seascapemodels.org/rstats/2017/04/14/glmm-comparison.html).
