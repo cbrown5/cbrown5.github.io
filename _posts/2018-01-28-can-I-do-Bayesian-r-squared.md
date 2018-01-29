@@ -45,10 +45,9 @@ instance if you include more informative covariates).
 
 **Dom:** Also, from  a quick look at the paper you sent me (the one about WAIC) and the vignette for the loo package, it seems like implementing model selection for a a Bayesian model using WAIC is analogous to carrying out likelihood ratio tests to compare nested models.
 
-How would one go about comparing models with four predictors (no interactions)? Would you compute the WAIC by hand for all possible models and retain the 'best' model(s)? I've used the dredge function in [MuMln](https://cran.r-project.org/web/packages/MuMIn/index.html) to automate the process in the past...
+How would one go about comparing models with four predictors (no interactions)? Would you compute the WAIC by hand for all possible models and retain the 'best' model(s)? I've used the dredge function in [MuMln](https://cran.r-project.org/web/packages/MuMIn/index.html) to automate the process in the past.  
 
-**CB:** The WAIC is just like the AIC, so it is a relative measure of model merit. You would jsut run all candidate models (e.g. with 4, 3, 2, 1
- covariates) and compare them.
+**CB:** The WAIC is just like the AIC, so it is a relative measure of model merit. You would jsut run all candidate models (e.g. with 4, 3, 2, 1 covariates) and compare them.
 
 So far you will have to do this by hand, I'm not aware of anything that automates it like MuMln. Could be very time consuming, because bayes models tend to be slow to run.
 
