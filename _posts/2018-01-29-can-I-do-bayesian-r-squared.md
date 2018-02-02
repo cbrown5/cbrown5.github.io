@@ -36,6 +36,8 @@ Point estimates don't sit well with the Bayesian philosophy. A Bayesian assumes 
 
 But, a Bayesian isn't too bothered by R2 because they spend more time looking at the posterior credibility or predictive intervals. You can predict your data using the fitted model and then just see how wide the CIs or PIs are. Wide CIs would be analogous to a poor R2.Some model specifications might have narrower CIs than others (for instance if you include more informative covariates).
 
+(after I published this post [Ben Stewart-Koster](https://twitter.com/BStewartKoster/status/958873062602031104) wrote to tell me that their is a way to calculate a Baysian R-squared and Gelman and colleagues have written about it [here if your interested to learn more](https://twitter.com/BStewartKoster/status/958873062602031104))
+
 **Dom:** Also, from  a quick look at the paper you sent me (the one about WAIC) and the vignette for the loo package, it seems like implementing model selection for a Bayesian model using WAIC is analogous to carrying out likelihood ratio tests to compare nested models.
 
 How would one go about comparing models with four predictors (no interactions)? Would you compute the WAIC by hand for all possible models and retain the 'best' model(s)? I've used the dredge function in [MuMln](https://cran.r-project.org/web/packages/MuMIn/index.html) to automate the process in the past.
@@ -53,5 +55,6 @@ So far you will have to do this by hand, I'm not aware of anything that automate
 ## Going forward a Bayesian
 
 Hit me up on Twitter if you want to join in on the conversation (or don't agree with something I said).
+
 
 Finally, if you are thinking of going Bayesian for your next GLM, [here's a short review of ways you can do it in  R](http://www.seascapemodels.org/rstats/2017/04/14/glmm-comparison.html).
