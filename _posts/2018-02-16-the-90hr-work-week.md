@@ -21,7 +21,7 @@ There are several reasons I believe that this debate about how many work hours i
 
 Many people are inclined to exaggerate about their true work hours. I once heard an academic tell a group of early-career researchers that 90 hour work weeks were neccessary to make it. But various studies have shown that people tend to exaggerate their true work hours.
 
-For instance, in a recent interview with Indra Nui (CEO of Pepsi co), she claimed to sleep just 4 hours a night and work 20 hour days 7 days a week. In the same interview she also talks about playing a daily match of tennis. So clearly she is exaggerating, even if slightly.
+For instance, in a recent interview with Indra Nooyi (CEO of Pepsi co), she claimed to sleep just 4 hours a night and work 20 hour days 7 days a week. In the same interview she also talks about playing a daily match of tennis. So clearly she is exaggerating, even if slightly.
 
 When speaking about our work hours we have a strong cultural incentive to exaggerate. Indra Nui probably doesn't want her shareholders thinking she slacks off. And young academics may often be concerned about looking good to their seniors, for all important reference letters.
 
@@ -65,6 +65,6 @@ The boundary between work and non-work is not clear to me. If I think about an a
 
 If you followed the tax office's definition of work related activities, you could even classify some holidays as 'work hours'. For instance, if I go on a diving holiday I am eligible for some tax deductions, because that counts as maintaining my work skills (I'm  marine biologist).
 
-Or this webpage I maintain (its mostly a hobby I do outside of official work hours), should I count that towards work hours? Not everyone spends time maintaining their own webpage and blog rolls, but doesn't mean they aren't successful in their careers.
+Or this webpage I maintain (its mostly a hobby I do outside of official work hours), should I count that towards work hours? Not everyone spends time maintaining their own webpage and blog rolls, but that doesn't mean they aren't successful in their careers.
 
-Every one is different in how they work, so at the end of the day, it is not helpful to offer prescriptions about how many 'hours' someone must work to be successful.
+Every one is different in how they work, so at the end of the day, it is not helpful to offer prescriptions about how many hours someone must work to be successful.
