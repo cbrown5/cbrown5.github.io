@@ -21,7 +21,7 @@ There are several reasons I believe that this debate about how many work hours i
 
 Many people are inclined to exaggerate about their true work hours. I once heard an academic tell a group of early-career researchers that 90 hour work weeks were neccessary to make it. But various studies have shown that people tend to exaggerate their true work hours.
 
-For instance, in a recent interview with Indra Nooyi (CEO of Pepsi co), she claimed to sleep just 4 hours a night and work 20 hour days 7 days a week. In the same interview she also talks about playing a daily match of tennis. So clearly she is exaggerating, even if slightly (I am sure she does work ridiculously long hours by most people's standards).
+For instance, in a recent interview with Indra Nooyi (CEO of Pepsi co), she claimed to sleep just 4 hours a night and work 20 hour days 7 days a week. In the same interview she also talks about playing a daily match of tennis. So clearly she is exaggerating, even if slightly (I am sure she does work impossibly long hours by most people's standards).
 
 When speaking about our work hours we have a strong cultural incentive to exaggerate. Indra Nui probably doesn't want her shareholders thinking she slacks off. And young academics may often be concerned about looking good to their seniors, for all important reference letters.
 
