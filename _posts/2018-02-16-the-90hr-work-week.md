@@ -45,7 +45,7 @@ I don't think this is true. Academic success is defined by productivity, not wor
 
 Key determinants of academic productivity (e.g. papers written per year) are hours worked and your efficiency at work.
 
-What I have observed is that many people are highly inefficient at work. So to compete with their peers, they need to work long hours.
+What I have observed is that many people are inefficient at work. So to compete with their peers, they need to work long hours.
 
 I think most people need training to become more efficient. If our mentors think working long-hours is neccessary, that suggests they could also improve their efficiency. So you should seek alternative advice. A good place to start for acadmeics is the [iThinkwell](http://www.ithinkwell.com.au/) webpage and books.
 
@@ -56,6 +56,8 @@ I also found the book [The 4 Hour Work Week](https://fourhourworkweek.com/) help
 In fact a [Swedish study](http://www.bbc.com/news/business-38843341) that shorter work hours actually increased the productivity of their workforce, because people were happier and healthier and took less sick days.
 
 To improve your efficiency it can be helpful to log your activities at work. For instance, I learned that one of my pubs required about 100 hours of work to reach the point of submission. Looking at my data, I realised that a large portion of the time was spent following up on interesting, but not useful, ideas about complicated new analyses. As a result I have now changed my work practices to put greater emphasis on pre-planning of analyses, to stop myself from following multiple false leads.
+
+Remember too that there have been massive changes in technology since many of our mentors were trained. Technology can be a hinderance to productivity (email, social media!) but also a massive help (also email and social media!). You will need to do some experimentation to make technology work for your productivity.
 
 ## What is work anyway?
 
