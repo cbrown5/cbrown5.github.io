@@ -1,11 +1,11 @@
 ---
-title: The falacy of the 90 hour work week
+title: The fallacy of the 90 hour work week
 layout: default
 category: Research
 published: TRUE
 ---
 
-# The falacy of the 90 hour work week
+# The fallacy of the 90 hour work week
 
 You might often hear senior academics say you need to work extreme hours to 'make it' in academia. Such comments often elicit considerable debate.
 
