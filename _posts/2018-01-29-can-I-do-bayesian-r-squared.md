@@ -15,6 +15,8 @@ published: TRUE
 
 As an aside, I have received a lot of helpful feedback on this post since first putting it up, so I am updating it as this comes in. I'm particularly grateful to [Ben Stewart-Koster](https://twitter.com/BStewartKoster) and [Aki Vehtari](https://twitter.com/avehtari) (who's work I cited in the original post) for pointing me towards some important literature I missed in the earlier post (which changed the advice below somewhat).
 
+Model selection is a fast moving area of statistical theory, so it is worth keeping updated. Many of the methods I used a few years ago are now out-of-date. 
+
 ## The email chain
 
 **Dom:** What criteria can I use to make inferences with my Bayesian model? I've used [MCMCglmm](https://cran.r-project.org/web/packages/MCMCglmm/index.html) (an R package) previously to run multivariate models. However, in addition to doing this in our study, we want to test the effect of multiple predictors (covariates) on our response variables. I'm curious to know if you recommend one in particular (parameter estimate and 95% CI, Bayes factor, ).
@@ -47,7 +49,9 @@ Point estimates don't sit well with the Bayesian philosophy. A Bayesian assumes 
 
 But, a Bayesian isn't too bothered by R2 because they spend more time looking at the posterior credibility or predictive intervals. You can predict your data using the fitted model and then just see how wide the CIs or PIs are. Wide CIs would be analogous to a poor R2. Some model specifications might have narrower CIs than others (for instance if you include more informative covariates).
 
-(after I published this post [Ben Stewart-Koster](https://twitter.com/BStewartKoster/status/958873062602031104) wrote to tell me that their is a way to calculate a Baysian R-squared and Gelman and colleagues have written about it [here if your interested to learn more](https://twitter.com/BStewartKoster/status/958873062602031104))
+(after I published this post [Ben Stewart-Koster](https://twitter.com/BStewartKoster/status/958873062602031104) wrote to tell me that their is a way to calculate a Baysian R-squared and Gelman and colleagues have written about it [here if your interested to learn more](https://twitter.com/BStewartKoster/status/958873062602031104)).
+
+Another aside, if you are still using the DIC (similar to the WAIC) to evaluate Bayesian models you shouldn't be. It is a point estimate, so makes the same [philosophical fallacy that the R2](https://link.springer.com/article/10.1007/s11222-016-9649-y)) makes for a Bayesian model. It is also now understood to be quite unreliable.
 
 **Dom:** Also, from  a quick look at the paper you sent me (the one about WAIC) and the vignette for the loo package, it seems like implementing model selection for a Bayesian model using WAIC is analogous to carrying out likelihood ratio tests to compare nested models.
 
