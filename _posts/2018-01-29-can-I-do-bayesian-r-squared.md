@@ -11,7 +11,9 @@ published: TRUE
 
 He has been delving into generalized linear models, using Bayesian methods, and needed to decide what criteria he should use for model simplification (the process of removing 'insignificant' covariates) and/or deciding which covariates had the strongest effect on his response of interest.
 
-I wanted to share an abridged version of our conversation, as I think it is enlightening. Specifically we discussed whether one can (and should) calculate the R-squared metric for Bayesian models (the short answer being that the R-squared doesn't make much sense for Bayesian models).
+I wanted to share an abridged version of our conversation, as I think it is enlightening. Specifically we discussed whether one can (and should) calculate the R-squared metric for Bayesian models (the short answer being that the 'traditional' R-squared metric doesn't make much sense for Bayesian models, but there are alternatives).
+
+As an aside, I have received a lot of helpful feedback on this post since first putting it up, so I am updating it as this comes in. I'm particularly grateful to [Ben Stewart-Koster](https://twitter.com/BStewartKoster) and [Aki Vehtari](https://twitter.com/avehtari) (who's work I cited in the original post) for pointing me towards some important literature I missed in the earlier post (which changed the advice below somewhat).
 
 ## The email chain
 
@@ -23,18 +25,27 @@ You can just then compare the median and 95% CI values for your covariates to se
 
 Another option is to use the [WAIC](https://arxiv.org/abs/1507.04544) which some stats packages will calculate for you. It is very much like the AIC and can be used to select the most parsimonious model. i.e. your compare models with different sets of covariates and pick the one (or several) with the lowest WAIC.
 
+Now be careful with the WAIC. You don't want to use it for comparing a large number of candidate models, such as you would if you were fitting an model with many covariates and just simplifying it one by one (thanks to Aki Vehtari for pointing this out, [here's the details for the technically minded](https://link.springer.com/article/10.1007/s11222-016-9649-y)).
 
-One thing to watch out for is that your model may give funky results if the covariates are strongly correlated with each other. A good reference is the book about eco stats by [Zuur that has penguins on the front cover](http://highstat.com/index.php/mixed-effects-models-and-extensions-in-ecology-with-r). (One of my favourite reference books, I can never remember the title though).
+Using the WAIC too liberally can lead to over-fitting and poor predictive importance - by which I mean you model may fit the data at hand very well, but contains spurious effects and therefore would perform poorly if asked to explain a new dataset.
+
+Vehtari and colleagues provide an alternative statistic for covariate selection, but unfortunately an 'easy way' to calculate it is only available for a few [Bayesian rstats packages](https://cran.r-project.org/web/packages/projpred/index.html). If you are not using those, you will have to program it yourself or wait.
+
+The WAIC will perform better with large sample sizes or for comparing a limited subset of candidate models. I would encourage you to think about writing each model as an alternative hypothesis, then just testing your set of alternatives. This will result in fewer overall tests than testing all possible combinations of covariates with the WAIC.
+
+Another thing to watch out for is that your model may give funky results if the covariates are strongly correlated with each other. A good reference is the book about eco stats by [Zuur that has penguins on the front cover](http://highstat.com/index.php/mixed-effects-models-and-extensions-in-ecology-with-r). (One of my favourite reference books, I can never remember the title though).
+
+Aki Vehtari added (via email) that strongly correlated covariates will throw out your marginal CIs (they will be too wide), effectively increasing the chances of a Type II error (you miss an effect that is real). He has [written more about this here](https://protect-au.mimecast.com/s/C49eCoVzpvf7Z94CWNeLY?domain=rawgit.com).
 
 **Dom:** Your answer confirms what I was thinking - that reporting an estimate and 95% CI is fine for hypothesis testing, which is great.
 
 I'm familiar with model selection and AIC but I usually also report a pseudo R2 (usually using r.squaredGLMM) to indicate how much of the variance my model explains. There is a short paper on that topic which came out recently in JAP (which is [worth reading](http://onlinelibrary.wiley.com/doi/10.1111/1365-2664.13060/full)). Do you know if there a way to compute a pseudo R2 for a multivariate Bayesian model?
 
-**CB:** In short by asking about an R2 for a Bayesian model you are opening a can of worms.Bayesians prefer WAIC or LOO (leave one out cross validation) for evaluating models because they integrate across the full posterior probability. The R2 is a point estimate, it is just an evaluation of the mean prediction of the model (so doesn't account for the uncertainty in parameter estimates).
+**CB:** In short by asking about an R2 for a Bayesian model you are opening a can of worms. Bayesians prefer WAIC or LOO (leave one out cross validation) for evaluating models because they integrate across the full posterior probability. The R2 is a point estimate, it is just an evaluation of the mean prediction of the model (so doesn't account for the uncertainty in parameter estimates).
 
-Point estimates don't sit well with the Bayesian philosophy. A Bayesian assumes all parameters are random variables. Whereas, a frequentist would use the R-squared because they are assuming there are actually fixed true values we are trying to observe.I do see the appeal of the R2 though, because it is absolute in the sense that 0.9 is 10% better than 0.8. WAIC is not like this.
+Point estimates don't sit well with the Bayesian philosophy. A Bayesian assumes all parameters are random variables. Whereas, a frequentist would use the R-squared because they are assuming there are actually fixed true values we are trying to observe. I do see the appeal of the R2 though, because it is absolute in the sense that 0.9 is 10% better than 0.8. WAIC is not like this.
 
-But, a Bayesian isn't too bothered by R2 because they spend more time looking at the posterior credibility or predictive intervals. You can predict your data using the fitted model and then just see how wide the CIs or PIs are. Wide CIs would be analogous to a poor R2.Some model specifications might have narrower CIs than others (for instance if you include more informative covariates).
+But, a Bayesian isn't too bothered by R2 because they spend more time looking at the posterior credibility or predictive intervals. You can predict your data using the fitted model and then just see how wide the CIs or PIs are. Wide CIs would be analogous to a poor R2. Some model specifications might have narrower CIs than others (for instance if you include more informative covariates).
 
 (after I published this post [Ben Stewart-Koster](https://twitter.com/BStewartKoster/status/958873062602031104) wrote to tell me that their is a way to calculate a Baysian R-squared and Gelman and colleagues have written about it [here if your interested to learn more](https://twitter.com/BStewartKoster/status/958873062602031104))
 
@@ -54,7 +65,6 @@ So far you will have to do this by hand, I'm not aware of anything that automate
 
 ## Going forward a Bayesian
 
-Hit me up on Twitter if you want to join in on the conversation (or don't agree with something I said).
-
+Hit me up on [Twitter](https://twitter.com/bluecology)  if you want to join in on the conversation (or don't agree with something I said).
 
 Finally, if you are thinking of going Bayesian for your next GLM, [here's a short review of ways you can do it in  R](http://www.seascapemodels.org/rstats/2017/04/14/glmm-comparison.html).
