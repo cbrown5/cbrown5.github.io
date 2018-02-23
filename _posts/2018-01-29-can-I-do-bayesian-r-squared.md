@@ -15,7 +15,7 @@ published: TRUE
 
 As an aside, I have received a lot of helpful feedback on this post since first putting it up, so I am updating it as this comes in. I'm particularly grateful to [Ben Stewart-Koster](https://twitter.com/BStewartKoster) and [Aki Vehtari](https://twitter.com/avehtari) (who's work I cited in the original post) for pointing me towards some important literature I missed in the earlier post (which changed the advice below somewhat).
 
-Model selection is a fast moving area of statistical theory, so it is worth keeping updated. Many of the methods I used a few years ago are now out-of-date. 
+Model selection is a fast moving area of statistical theory, so it is worth keeping updated. Many of the methods I used a few years ago are now out-of-date.
 
 ## The email chain
 
@@ -49,7 +49,7 @@ Point estimates don't sit well with the Bayesian philosophy. A Bayesian assumes 
 
 But, a Bayesian isn't too bothered by R2 because they spend more time looking at the posterior credibility or predictive intervals. You can predict your data using the fitted model and then just see how wide the CIs or PIs are. Wide CIs would be analogous to a poor R2. Some model specifications might have narrower CIs than others (for instance if you include more informative covariates).
 
-(after I published this post [Ben Stewart-Koster](https://twitter.com/BStewartKoster/status/958873062602031104) wrote to tell me that their is a way to calculate a Baysian R-squared and Gelman and colleagues have written about it [here if your interested to learn more](https://twitter.com/BStewartKoster/status/958873062602031104)).
+After I published this post [Ben Stewart-Koster](https://twitter.com/BStewartKoster/status/958873062602031104) wrote to tell me that their is a way to calculate a Baysian R-squared and Gelman and colleagues have written about it [here if your interested to learn more](https://twitter.com/BStewartKoster/status/958873062602031104). The Bayesian R2 integrates across the modelled uncertainty, so is not a point estimate.
 
 Another aside, if you are still using the DIC (similar to the WAIC) to evaluate Bayesian models you shouldn't be. It is a point estimate, so makes the same [philosophical fallacy that the R2](https://link.springer.com/article/10.1007/s11222-016-9649-y)) makes for a Bayesian model. It is also now understood to be quite unreliable.
 
