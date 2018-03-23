@@ -1,74 +1,52 @@
 ---
-title: How do I calculate the R squared metric for a Bayesian model
+title: Should I learn sf or sp for spatial R programming
 layout: default
 category: rstats
 published: TRUE
 ---
 
-# How do I calculate the R squared metric for a Bayesian model?
+# Should I learn sf or sp for spatial R programming?
 
-A good friend I met on a field trip long ago, [Dominique Roche](https://scholar.google.com.au/citations?user=bXpyrNAAAAAJ&hl=en), recently emailed me to ask about evaluation of Bayesian models.
+I recently received an email about some of the [short-courses](http://www.seascapemodels.org/code.html#) on my webpage. The correspondant was asked whether my [course on Maps and GIS in R](http://www.seascapemodels.org/rstats/rspatial/2015/06/22/R_Spatial_course.html) was still relevant, it being written in 2014.
 
-He has been delving into generalized linear models, using Bayesian methods, and needed to decide what criteria he should use for model simplification (the process of removing 'insignificant' covariates) and/or deciding which covariates had the strongest effect on his response of interest.
+The R environment is changing so fast, it is worth asking whether course material that is a few years old is still relevant.
 
-I wanted to share an abridged version of our conversation, as I think it is enlightening. Specifically we discussed whether one can (and should) calculate the R-squared metric for Bayesian models (the short answer being that the 'traditional' R-squared metric doesn't make much sense for Bayesian models, but there are alternatives).
+Much of my 2014 course still remains relevant, like the aspects about spatial projections, raster package. The material about points and polygons is still relevant, but may not be soon. Finally, there are some things the course misses that I would include now, like integration with leaflet maps (which is in some of my later courses).
 
-As an aside, I have received a lot of helpful feedback on this post since first putting it up, so I am updating it as this comes in. I'm particularly grateful to [Ben Stewart-Koster](https://twitter.com/BStewartKoster) and [Aki Vehtari](https://twitter.com/avehtari) (who's work I cited in the original post) for pointing me towards some important literature I missed in the earlier post (which changed the advice below somewhat).
+Here are a few major changes in the R environment for spatial analysis as I see it, and some important trends.
 
-Model selection is a fast moving area of statistical theory, so it is worth keeping updated. Many of the methods I used a few years ago are now out-of-date.
+## Spatial data-structures and the simple features package
 
-## The email chain
+The `sp` package for R provides spatial data-structures (termed 'classes') and a few utility functions (like `spplot` for plotting). In the past having this package has been essential for just about any spatial analysis in R, whether it was GIS or spatial modelling.
 
-**Dom:** What criteria can I use to make inferences with my Bayesian model? I've used [MCMCglmm](https://cran.r-project.org/web/packages/MCMCglmm/index.html) (an R package) previously to run multivariate models. However, in addition to doing this in our study, we want to test the effect of multiple predictors (covariates) on our response variables. I'm curious to know if you recommend one in particular (parameter estimate and 95% CI, Bayes factor, ).
+A newish package on the block `sf` has much the same functionality as `sp`, but promises to be much more convenient and flexible. It has been around a few years (I think), but there was little information about it. The release of the book [Geocomputation with R](https://geocompr.robinlovelace.net/) and an increasing number of solutions on stackoverlow will probably see an many more people using `sf`.
 
-**CB:**  You can test the covariates very much like you did for your correlated response model.  Your covariate model will estimate a slope very much like a linear regression. So if you want a criteria for inferences, you can just use the 95% CI on that slope estimate. If it overlaps zero then you could say that the effect of that covariate is 'insignificant'.
+`sf` works with a language independent standard for structuring spatial data termed 'simple features'. Just a few of the many nice aspects of `sf` are:
 
-You can just then compare the median and 95% CI values for your covariates to see which ones have the largest effect.
+**Intuitive data structures** `sp` data, like the `SpatialPolygonsDataframe` were composed of lists inside lists and were quite hard to decompose (there was a good reason why it was coded like this, but I forget why).  `sf` objects are just data-frames that are collections of spatial objects. Each row is a spatial object (e.g. a polgyon), that may have data associated with it (e.g. its area) and a special geo variable that contains the coordinates.
 
-Another option is to use the [WAIC](https://arxiv.org/abs/1507.04544) which some stats packages will calculate for you. It is very much like the AIC and can be used to select the most parsimonious model. i.e. your compare models with different sets of covariates and pick the one (or several) with the lowest WAIC.
+**Intuitive operations** One thing that frustrated me about spatial operations (like intersection) with `sp` and `rgeos` (the package for geographic operations), was that a dataframe `sp` object changed to a different, data-less, class when the operation was performed. `sf` objects don't change class when you apply spatial operations to them (they keep there associated data).
 
-Now be careful with the WAIC. You don't want to use it for comparing a large number of candidate models, such as you would if you were fitting an model with many covariates and just simplifying it one by one (thanks to Aki Vehtari for pointing this out, [here's the details for the technically minded](https://link.springer.com/article/10.1007/s11222-016-9649-y)).
+**Spatial indexing** which can massively speed up spatial queries, like intersecting polygons, [especially on large datasets](https://www.r-spatial.org/r/2017/06/22/spatial-index.html).
 
-Using the WAIC too liberally can lead to over-fitting and poor predictive importance - by which I mean you model may fit the data at hand very well, but contains spurious effects and therefore would perform poorly if asked to explain a new dataset.
+## So should I learn sf or sp now?
 
-Vehtari and colleagues provide an alternative statistic for covariate selection, but unfortunately an 'easy way' to calculate it is only available for a few [Bayesian rstats packages](https://cran.r-project.org/web/packages/projpred/index.html). If you are not using those, you will have to program it yourself or wait.
+That's a tough question. If you have time, I would say, learn to use both. `sf` is pretty new, so a lot of packages that depend on spatial classes still rely on `sp`. So you will need to know `sp` if you want to do any integration with many other packages, including `raster` (as of March 2018).
 
-The WAIC will perform better with large sample sizes or for comparing a limited subset of candidate models. I would encourage you to think about writing each model as an alternative hypothesis, then just testing your set of alternatives. This will result in fewer overall tests than testing all possible combinations of covariates with the WAIC.
+However, in the future we should see an increasing shift toward the `sf` package and greater use of `sf` classes in other packages. I would say that `sf` is probably easier to learn to use than `sp`.
 
-Another thing to watch out for is that your model may give funky results if the covariates are strongly correlated with each other. A good reference is the book about eco stats by [Zuur that has penguins on the front cover](http://highstat.com/index.php/mixed-effects-models-and-extensions-in-ecology-with-r). (One of my favourite reference books, I can never remember the title though).
+Currently I use a hybrid of `sf` and `sp`, which has not been too hard to get my head around. I do most spatial operations in `sf` now, and convert to `sp` objects only when I have to, such as if I wanted to `rasterize` a polygon object.
 
-Aki Vehtari added (via email) that strongly correlated covariates will throw out your marginal CIs (they will be too wide), effectively increasing the chances of a Type II error (you miss an effect that is real). He has [written more about this here](https://protect-au.mimecast.com/s/C49eCoVzpvf7Z94CWNeLY?domain=rawgit.com).
+## What was missing in the 2014 course?
 
-**Dom:** Your answer confirms what I was thinking - that reporting an estimate and 95% CI is fine for hypothesis testing, which is great.
+A major trend in R packages now is integration with other platforms.
 
-I'm familiar with model selection and AIC but I usually also report a pseudo R2 (usually using r.squaredGLMM) to indicate how much of the variance my model explains. There is a short paper on that topic which came out recently in JAP (which is [worth reading](http://onlinelibrary.wiley.com/doi/10.1111/1365-2664.13060/full)). Do you know if there a way to compute a pseudo R2 for a multivariate Bayesian model?
+ This is exemplified by the [`leaflet` package](https://rstudio.github.io/leaflet/), which allows one to create interactive web maps via R. I think teaching some of this stuff is essential now, even in begginer courses (it is pretty easy to make these maps). In fact, I do teach it now, even in general R courses, like this one for [conservation biologists](http://www.seascapemodels.org/data/Conservation_R.html).
 
-**CB:** In short by asking about an R2 for a Bayesian model you are opening a can of worms. Bayesians prefer WAIC or LOO (leave one out cross validation) for evaluating models because they integrate across the full posterior probability. The R2 is a point estimate, it is just an evaluation of the mean prediction of the model (so doesn't account for the uncertainty in parameter estimates).
+Creating interactive maps is a lot of fun and potentially very useful. For instance see Ross Dwyer's maps that let you explore the [distributions of sharks and rays around the world](https://rossdwyer.shinyapps.io/sharkray_mpa/) (this one may take a moment to load, as the data-sets are large).
 
-Point estimates don't sit well with the Bayesian philosophy. A Bayesian assumes all parameters are random variables. Whereas, a frequentist would use the R-squared because they are assuming there are actually fixed true values we are trying to observe. I do see the appeal of the R2 though, because it is absolute in the sense that 0.9 is 10% better than 0.8. WAIC is not like this.
 
-But, a Bayesian isn't too bothered by R2 because they spend more time looking at the posterior credibility or predictive intervals. You can predict your data using the fitted model and then just see how wide the CIs or PIs are. Wide CIs would be analogous to a poor R2. Some model specifications might have narrower CIs than others (for instance if you include more informative covariates).
 
-After I published this post [Ben Stewart-Koster](https://twitter.com/BStewartKoster/status/958873062602031104) wrote to tell me that their is a way to calculate a Baysian R-squared and Gelman and colleagues have written about it [here if your interested to learn more](https://twitter.com/BStewartKoster/status/958873062602031104). The Bayesian R2 integrates across the modelled uncertainty, so is not a point estimate.
 
-Another aside, if you are still using the DIC (similar to the WAIC) to evaluate Bayesian models you shouldn't be. It is a point estimate, so makes the same [philosophical fallacy that the R2](https://link.springer.com/article/10.1007/s11222-016-9649-y)) makes for a Bayesian model. It is also now understood to be quite unreliable.
 
-**Dom:** Also, from  a quick look at the paper you sent me (the one about WAIC) and the vignette for the loo package, it seems like implementing model selection for a Bayesian model using WAIC is analogous to carrying out likelihood ratio tests to compare nested models.
-
-How would one go about comparing models with four predictors (no interactions)? Would you compute the WAIC by hand for all possible models and retain the 'best' model(s)? I've used the dredge function in [MuMln](https://cran.r-project.org/web/packages/MuMIn/index.html) to automate the process in the past.
-
-**CB:** The WAIC is just like the AIC, so it is a relative measure of model merit. You would jsut run all candidate models (e.g. with 4, 3, 2, 1 covariates) and compare them.
-
-So far you will have to do this by hand, I'm not aware of anything that automates it like MuMln. Could be very time consuming, because bayes models tend to be slow to run.
-
-Rather than just dredging for the best AIC, I prefer a hypothesis driven approach. So specify the subset of models that each addresses a specific hypotheses, then test and compare with WAIC to find which hypotheses have the greatest support.
-
-**Dom:** RE issues of multi-collinearity - yep, I'm aware that this is something to check for. I've used vifs in the past for frequentist models. Is there something analogous for Bayesian models or does one simply look at correlations?
-
-**CB:** Good question wrt multicollinearity. I'm not actually sure how to formally test for it, never had this probelm in any bayesian models I've run. Something to research. It will be an issue in Bayesian models just as it is in frequentist models, the only exception being that you could get around the issue with strongly informative priors, but that's another story (look at [this paper](https://projecteuclid.org/euclid.ss/1491465621) if you're interested).
-
-## Going forward a Bayesian
-
-Hit me up on [Twitter](https://twitter.com/bluecology)  if you want to join in on the conversation (or don't agree with something I said).
-
-Finally, if you are thinking of going Bayesian for your next GLM, [here's a short review of ways you can do it in  R](http://www.seascapemodels.org/rstats/2017/04/14/glmm-comparison.html).
+
