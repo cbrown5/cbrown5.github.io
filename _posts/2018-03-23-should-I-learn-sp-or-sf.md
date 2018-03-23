@@ -25,7 +25,7 @@ A newish package on the block `sf` has much the same functionality as `sp`, but 
 
 **Intuitive data structures** `sp` data, like the `SpatialPolygonsDataframe` were composed of lists inside lists and were quite hard to decompose (there was a good reason why it was coded like this, but I forget why).  `sf` objects are just data-frames that are collections of spatial objects. Each row is a spatial object (e.g. a polgyon), that may have data associated with it (e.g. its area) and a special geo variable that contains the coordinates.
 
-**Intuitive operations** One thing that frustrated me about spatial operations (like intersection) with `sp` and `rgeos` (the package for geographic operations), was that a dataframe `sp` object changed to a different, data-less, class when the operation was performed. `sf` objects don't change class when you apply spatial operations to them (they keep there associated data).
+**Intuitive operations** One thing that frustrated me about spatial operations (like intersection) with `sp` and `rgeos` (the package for geographic operations), was that a dataframe `sp` object changed to a different, data-less, class when the operation was performed. `sf` objects don't change class when you apply spatial operations to them (and they keep their associated data).
 
 **Spatial indexing** which can massively speed up spatial queries, like intersecting polygons, [especially on large datasets](https://www.r-spatial.org/r/2017/06/22/spatial-index.html).
 
@@ -33,9 +33,9 @@ A newish package on the block `sf` has much the same functionality as `sp`, but 
 
 That's a tough question. If you have time, I would say, learn to use both. `sf` is pretty new, so a lot of packages that depend on spatial classes still rely on `sp`. So you will need to know `sp` if you want to do any integration with many other packages, including `raster` (as of March 2018).
 
-However, in the future we should see an increasing shift toward the `sf` package and greater use of `sf` classes in other packages. I would say that `sf` is probably easier to learn to use than `sp`.
+However, in the future we should see an increasing shift toward the `sf` package and greater use of `sf` classes in other packages. I also think that `sf` is easier to learn to use than `sp`.
 
-Currently I use a hybrid of `sf` and `sp`, which has not been too hard to get my head around. I do most spatial operations in `sf` now, and convert to `sp` objects only when I have to, such as if I wanted to `rasterize` a polygon object.
+Currently I use a hybrid of `sf` and `sp`, which has not been too hard to get my head around. I do most spatial operations in `sf`, and convert to `sp` objects only when I have to, such as if I wanted to `rasterize` a polygon object.
 
 ## What was missing in the 2014 course?
 
@@ -45,7 +45,7 @@ A major trend in R packages now is integration with other platforms.
 
 Creating interactive maps is a lot of fun and potentially very useful. For instance see Ross Dwyer's maps that let you explore the [distributions of sharks and rays around the world](https://rossdwyer.shinyapps.io/sharkray_mpa/) (this one may take a moment to load, as the data-sets are large).
 
-
+So in the future GIS and spatial analysis in R should become more straightfoward and you should be able to smoothly integrate R's outputs with many other programs. 
 
 
 
