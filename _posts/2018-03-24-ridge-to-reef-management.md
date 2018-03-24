@@ -1,11 +1,11 @@
 ---
-title: The fallacy of the 90 hour work week
+title: Ridge to Reef management approaches for tropical catchments
 layout: default
 category: Research
 published: TRUE
 ---
 
-# Ridge to Reef management approaches For Tropical catchments
+# Ridge to Reef management approaches for tropical catchments
 
 The nascent field of Ridge to Reef management aims to help plan for the impacts of land-use change and pollutant runoff on coastal marine ecosystems.
 
@@ -98,4 +98,4 @@ Another important challenge is improving the accessibility of models and the dat
 
 [Another team](https://www.sciencedirect.com/science/article/pii/S0048969716327917) has been developing global models of sediment runoff, which may help fill this knowledge gap and make reliable models more accessible.
 
-As for our working group it is finished now, but we are still in the process of publishing the last few papers. Look out for our next one in a few months that looks at the range of models available for informing ridge to reef management or [get in touch](mailto:chris.brown@griffith.edu.au) if you would like to read a pre-print. 
+As for our working group it is finished now, but we are still in the process of publishing the last few papers. Look out for our next one in a few months that looks at the range of models available for informing ridge to reef management or [get in touch](mailto:chris.brown@griffith.edu.au) if you would like to read a pre-print.
