@@ -9,7 +9,7 @@ published: TRUE
 
 The nascent field of Ridge to Reef management aims to help plan for the impacts of land-use change and pollutant runoff on coastal marine ecosystems.
 
-Our [Science for Nature and People Partnership working group]() on Ridge to Reef fisheries sought to progress the scientific field and provide practical guidance for Ridge to Reef landing in Fiji, Papua New Guinea and the Solomon Islands.
+Our [Science for Nature and People Partnership working group](https://www.nceas.ucsb.edu/featured/possingham) on Ridge to Reef fisheries sought to progress the scientific field and provide practical guidance for Ridge to Reef landing in Fiji, Papua New Guinea and the Solomon Islands.
 
 The working group was a partnership between academic scientists, The Nature Conservancy and the Wildlife Conservation Society.
 
