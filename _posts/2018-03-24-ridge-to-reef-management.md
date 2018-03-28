@@ -1,26 +1,28 @@
 ---
-title: Ridge to Reef management approaches for tropical catchments
+title: Identifying conservation priorities for ridge to reef management in tropical catchments
 layout: default
 category: Research
 published: TRUE
 ---
 
-# Ridge to Reef management approaches for tropical catchments
+# Identifying conservation priorities for ridge to reef management in tropical catchments
 
-The nascent field of Ridge to Reef management aims to help plan for the impacts of land-use change and pollutant runoff on coastal marine ecosystems.
+The nascent field of Ridge to Reef management aims to help plan for the impacts of land-use change and pollutant runoff on coastal marine ecosystems. One way this planning can be done is to identify priorities for forest protection on land that help avoid pollutant run-off to ocean ecosystems.
 
-Our [Science for Nature and People Partnership working group](https://www.nceas.ucsb.edu/featured/possingham) on Ridge to Reef fisheries sought to progress the scientific field and provide practical guidance for Ridge to Reef landing in Fiji, Papua New Guinea and the Solomon Islands.
+Our [Science for Nature and People Partnership working group](https://www.nceas.ucsb.edu/featured/possingham) on Ridge to Reef fisheries sought to progress the scientific field and provide practical guidance for Ridge to Reef planning in Fiji, Papua New Guinea and the Solomon Islands.
 
 The working group was a partnership between academic scientists, The Nature Conservancy and the Wildlife Conservation Society.
 
 To begin we identified several major challenges for the science of ridge to reef management. Let's call these challenges the observation challenge, the tracing challenge, and the communication challenge.
 
+![](/images/reef-from-air.png)
+
 
 ## The Observation Challenge
 
-The first challenge was accessing sufficient observations of run-off and coastal ecosystems so that we would be able to understand where the runoff is coming from, where it goes in the ocean and what impacts it has to ecosystems and fisheries. This is a challenge in tropical catchments in particular, because they are typically poorly study.
+The first challenge was accessing sufficient observations of run-off and coastal ecosystems so that we would be able to understand where the runoff is coming from, where it goes in the ocean and what impacts it has to ecosystems and fisheries. Obtaining suffcient data is challenge in tropical catchments in particular, because they are typically poorly studied.
 
-We had to overcome this challenge in all the areas that we worked in
+We had to overcome this challenge in all the areas that we worked in.
 
 One way that we did so was to make the most of freely available global datasets, such as those measured by satellites. We also tried to make the most of data that were already available in our study regions.
 
@@ -36,7 +38,7 @@ Importantly, large predators may be some of the most affected by poor water clar
 
 ## The Tracing Challenge
 
-A major challenge for Ridge to Reef management is that we often to don't know where the pollutants come from or if there are multiple sources, which ones are the worest offenders.
+A major challenge for Ridge to Reef management is that we often to don't know where the pollutants come from or if there are multiple sources, which ones are the worest offenders. This is a crucial step if we want to then identify where forest protections should be placed.
 
 In Fiji we faced this challenge because there are so many rivers that empty near to coral reefs. So it is not immediately clear which catchments were the cause of poor water clarity.
 
@@ -46,7 +48,7 @@ Importantly this modelling technique worked with freely available satellite data
 
 For our work in the Kia region of the Solomon Islands with The Nature Conservancy we could not get accurate measurements of water clarity with satellites, because the islands were two topographic complex and the water too shallow.
 
-However The Nature Conservancy had extensive surveys of lagoonal coral reefs in the region of Kia.
+However, the Nature Conservancy had extensive surveys of lagoonal coral reefs in the region of Kia.
 
 In Kia logging operators create 'log ponds'. Log ponds are spots on the coast where they bulldoze mangroves so that they can drag logs off the land onto transport ships.
 
@@ -66,9 +68,9 @@ This was useful because it told us about 60% of the region had already been affe
 
 Furthermore we could evaluate what area of lagoonal coral reefs had been protected by recent actions to stop further illegal logging in the Kia region.
 
-So so the data on coral reefs helped us to resolve the tracing challenge of where pollutant impacts are sourced from.
+So so the data on coral reefs helped us to resolve the tracing challenge of where pollutant impacts are sourced from. This work could be used to inform on priorities for where future should not be located.
 
-The Communication Challenge
+## The Communication Challenge
 
 The final major challenge we identified that ridge to reef managers face is communicating the complex chain of processes that links land-use change to it's impacts on coastal marine ecosystems.
 
@@ -92,7 +94,7 @@ There are however some important challenges for the future.
 
 First is that we did not link impacts on reefs to their effects on  impacts on the value cultural services or value provided by fisheries.
 
-Doing so we'll be important because changes in fish abundance do not always translate into impacts on fisheries. The response of fishers themselves to changes in abundance can mitigate or amplify the impacts of pollution on fisheries, [e.g. this work in southern Chile](Landscape Influences on Fisher Success: Adaptation Strategies in Closed and Open Access Fisheries in Southern Chile).
+Doing so we'll be important because changes in fish abundance do not always translate into impacts on fisheries. The response of fishers themselves to changes in abundance can mitigate or amplify the impacts of pollution on fisheries.
 
 Another important challenge is improving the accessibility of models and the data that are required to build those models. This will mean they can be easily applied data poor tropical catchments by small research teams who are often working under tight stable time and budget constraints.
 
