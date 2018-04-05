@@ -21,9 +21,9 @@ So here's some activities I think parents can do.
 
 ## Social media
 
-Developing a solid social media network, e.g. on Twitter, and **focussing on people in your field**, is a very time effective way to engage with scientists across the globe.
+Developing a solid social media network, e.g. on Twitter is a very time effective way to engage with scientists across the globe.
 
-The key is that you don't need a 'big' following, but you need a network of key people - those people that are most likely to be interested in your research.
+The key is that **you don't need a 'big' following, but you need a network of key people** - those people that are most likely to be interested in your research.
 
 A good way to engage people on Twitter is to listen to them and ask questions about their own work (just like in real conversations!).
 
@@ -41,11 +41,13 @@ First up, submit abstracts to conferences you would go to, but can't make. Then 
 
 Ok this next tip is going to be a bit devious and could subvert the system a little (haven't done it myself). But also remember if you are a primary carer, the system is subverting you, by largely not recognizing the time you are taking away from your career.
 
-So the tip is: apply to host session at a conference you can't make it to. Make sure you get someone you trust, who can go, to go in on running the session to. Then lead the organisation of the session (so your name is on all the emails inviting speakers etc...,), to maxmise exposure.
+So the tip is: apply to host session at a conference you know you can't make it to. Make sure you get someone you trust, who can go to the conference, to co-host the session. Then lead the organisation of the session (so your name is on all the emails inviting speakers etc...,), to maxmise exposure.
 
 Then of course, you can't make it, but your trusted colleague can go and introduce speakers. They should apologise to speakers and attendees that unfortunately you couldn't make it, which ensures every one remembers you organised this session. Have your colleague hand out your business card too and suggest people follow up with you.
 
-Then after the session, write a blog about it - this will pay it forwards, because other people that couldn't make it can also learn about the frontier of research your session was addressing.
+Then after the session, write a blog about it. My blog about our [session on Ridge to Reef management](https://catchmenttocoast.wordpress.com/2016/06/25/ridge-to-reef-management-approaches/) at a conferencea few years ago still gets plenty of hits.
+
+A blog will also pay it forwards - other people that couldn't make your session can also learn about the frontier of research your session was addressing.
 
 ## Take longer trips to a single location
 
@@ -53,7 +55,7 @@ If you've travelled with young kids you will know it is easier to go one place a
 
 So plan an overseas sabbatical with your family of say 3-6 months. This way you have time to build some meaningful collaborations. Also, put the trip on your CV. Work overseas is considered an important CV 'trait', but can be hard if you are tied to a single city/university for family reasons.
 
-I have seen a few people list sabbaticals on their CV and it works quite well to communicate their international reputation I think.
+I have seen a few people list sabbaticals on their CV and it works well to communicate their international reputation I think.
 
 ## Visit every scientist that visits your city
 
@@ -69,12 +71,12 @@ These kind of chats can turn out to be very valuable. I just had accepted a pape
 
 ## Count the science you didn't do when you were on leave
 
-If you take a fair chunk of leave for parental care, like months or years, then when you apply for grants or jobs account for missed opportunities when you describe your career track record.
+If you take a fair chunk of leave for parental care, like months or years, then you should account for missed opportunities when you when  apply for grants or jobs.
 
-One way to do this, add up your total productivity (e.g. number of papers over 2 years) then multiply by 1 over you real FTE (full time equivalent). So if you published 3 papers in 2 years part-time (0.5 FTE), then your adjusted productivity is 6 papers.
+One way to do this is: add up your total productivity (e.g. number of papers over 2 years) then multiply by 1 over you real FTE (full time equivalent). So if you published 3 papers in 2 years part-time (0.5 FTE), then your adjusted productivity is 6 papers.
 
 [Emily Nicholson](https://emilynicholson.wordpress.com/2015/05/15/metrics-for-mums-tips-for-writing-about-a-track-record-with-career-interruptions/) explains this great idea (her idea!) in more detail.
 
 In fact, if you are taking parental leave, you should also read [this post](https://emilynicholson.wordpress.com/2016/03/30/10-tips-for-dealing-with-work-and-parental-leave/).
 
-That's all I have now, but message me on [Twitter](https://twitter.com/bluecology) if you have more ideas (or other useful links). 
+That's all I have now, but message me on [Twitter](https://twitter.com/bluecology) if you have more ideas (or other useful links).
