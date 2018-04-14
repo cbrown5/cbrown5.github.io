@@ -274,6 +274,8 @@ parsimonious fit. Model 1 now outperforms model 3 which had a slightly
 higher likelihood, but because of the extra covariate has a higher
 penalty too.
 
+You don't need to do these calculations yourself everytime you want an AIC. The function `AIC(m3)` will just give it to you.
+
 AIC basic principles
 --------------------
 
@@ -309,5 +311,7 @@ So to summarize, the basic principles that guide the use of the AIC are:
 
 8.  You should correct for small sample sizes if you use the AIC with
     small sample sizes, by using the AICc statistic.
+
+9. You can access the AIC in R with the `AIC()` function.  
 
 [1] Assuming it rains all day, which is reasonable for Vancouver.
