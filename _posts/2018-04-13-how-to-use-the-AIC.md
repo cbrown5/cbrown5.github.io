@@ -314,4 +314,7 @@ So to summarize, the basic principles that guide the use of the AIC are:
 
 9. You can access the AIC in R with the `AIC()` function.  
 
+Message me on [Twitter](https://twitter.com/bluecology) if you have comments on this post. 
+
+
 [1] Assuming it rains all day, which is reasonable for Vancouver.
