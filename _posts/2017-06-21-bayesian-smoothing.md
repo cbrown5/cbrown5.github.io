@@ -73,7 +73,7 @@ Here are the resulting fits:
     legend('topright', legend = c("data", "theta1 = 0.01", "theta1 = 0.05", "theta1 = 1"),
           lty = 1, col = c("grey80", "skyblue", "steelblue", "darkblue"), lwd = 2)
 
-![](/Images/bayesian-smoothing_files/fitted-models-vary-theta-1.png)
+![](/images/bayesian-smoothing_files/fitted-models-vary-theta-1.png)
 
 The exact value to use for theta1 will vary depending on our data. If
 the data are more informative (e.g. a longer time-series) we will have
@@ -91,7 +91,7 @@ to use a smaller value to create a smoother fit.
     legend('topright', legend = c("data", "theta1 = 0.05, 50 data points", "theta1 = 0.05, 40 data points"),
           lty = 1, col = c("grey80", "skyblue", "steelblue"), lwd = 2)
 
-![](/Images/bayesian-smoothing_files/fitted-models-vary-n-1.png)
+![](/images/bayesian-smoothing_files/fitted-models-vary-n-1.png)
 
 And that is pretty much it. I haven't read how to choose the 'optimal'
 value of theta. Pragmatically, one could do it with cross validation or

@@ -148,7 +148,7 @@ $(document).ready(function () {
 <div id="programming-to-help-save-a-species" class="section level2">
 <h2>Programming to help save a species</h2>
 <p>Today we are going to work with an example data-set that has the abundance of a threatened fish species across sites with different fishing pressure. Our aim is to explore the data to see if the abundance is related to fishing pressure. We will also ask if fishing pressure is predicted by distance to fishing ports.</p>
-<p><img src="/Images/sweetlips.jpg"/ max-width = "500"></p>
+<p><img src="/images/sweetlips.jpg"/ max-width = "500"></p>
 <p>Then we will bring in some extra data on fish health, to see how that varies across the gradient in fishing pressure.</p>
 <p>Finally, we will make a map of our results, and if you have time, look to see how proposed protected areas may benefit the species. But first, we need to learn how to get started with <strong>R</strong>.</p>
 </div>
@@ -163,7 +163,7 @@ $(document).ready(function () {
 <h2>Intro to Rstudio</h2>
 <p><strong>R</strong> is a programming language, which means there are very few commands available in the menus, rather you have to type in commands into the ‘Console’ (notice there is a window called ‘Console’). The hard part about learning to use <strong>R</strong> is knowing what the commands are that you want and how to structure the commands in a way <strong>R</strong> understands. RStudio does however, ease the transition to programming by providing you with some drop down menus.</p>
 <p>When you start up RStudio you should see a screen like this:</p>
-<p><img src="/Images/RConservation/RStudio1.png"/></p>
+<p><img src="/images/RConservation/RStudio1.png"/></p>
 </div>
 <div id="background-on-basic-calculations" class="section level2">
 <h2>Background on basic calculations</h2>
@@ -229,12 +229,12 @@ x[ix] </code></pre>
 <div id="scripts" class="section level2">
 <h2>Scripts</h2>
 <p>So far we have just been typing everything into the console. However, we might want to save our commands for later. To do this go to the menu and select file -&gt; New file -&gt; <strong>R</strong> Script. It will open a text editor. From now on, type all your code into this editor. To send the code to the console for evaluation (ie to make <strong>R</strong> perform the calculations), click on a line, or select a section and hit ctrl-R on windows or cmnd-enter on mac.</p>
-<p><img src="/Images/RConservation/RStudio2.png"/></p>
+<p><img src="/images/RConservation/RStudio2.png"/></p>
 <p>We can put comments in the script (see image below), to remind us what it does. <strong>R</strong> will not evaluate comments, which are preceeded by an <code>#</code>. For instance, start your script by typing:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># R Conservation science course</span>
 <span class="co"># Your name</span>
 <span class="co"># 7 July 2016 </span></code></pre>
-<p><img src="/Images/RConservation/RStudio3.png"/></p>
+<p><img src="/images/RConservation/RStudio3.png"/></p>
 <p>I recommend using comments frequently throughout your code. It will make life a lot easier when you come back to a piece of code after a few days, because the comments will remind you what the code does. It will also make it easier to share your code with collaborators and make your code more repeatable, which as I said, is a core principle of science.</p>
 <p>Keeping your code organised also means you can translate it directly into the Methods section of your paper. This will save you a lot of time (because you won’t have to remember everything you did to get from data to analysis!).<br />Another way to make your code more readable is to break up sections of code within your script, for instance here is how I often delineate sections in my code</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#-----------------------#</span>
@@ -265,7 +265,7 @@ fishdat </code></pre>
 <p>Notice we used the assign operator again, but this time assigned the input data to the name <code>fishdat</code>.</p>
 <p><code>read.csv</code> is function that reads a csv file and stores it in R’s local memory. Functions are simply algorithms that <strong>R</strong> has stored, which perform a task for you, in this case reading a csv file. Functions always begin with a name followed by <code>()</code>, which contain some arguments. In the case of the <code>read.csv()</code> function, the arguments are the name of the data file (‘dat.csv’) and <code>header = TRUE</code>. The <code>header</code> argument simply says the first row is a row of variable names (so we don’t treat them as measurements). Also notice we use <code>=</code> to specify the function’s arguments. As I said above, it is best to use <code>&lt;-</code> for assigning variable names and save <code>=</code> for function arguments.<br />If you need more help on any function in <strong>R</strong> type its name prefixed with a question mark, for instance <code>?read.csv</code>.<br /> By the way, remember what I said about typing the code in (don’t simply cut and paste from these notes). If you type it in, you will probably make mistakes. We can help you with those mistakes and thereby you learn more from this class!</p>
 <p>In RStudio you should notice that the data now appears under the ‘Environment’ tab.</p>
-<p><img src="/Images/RConservation/RStudio4.png"/></p>
+<p><img src="/images/RConservation/RStudio4.png"/></p>
 <div id="a-note-about-excel-files" class="section level3">
 <h3>A note about Excel files</h3>
 <blockquote>
@@ -302,11 +302,11 @@ fishdat[,<span class="st">&#39;transect&#39;</span>]</code></pre>
 <h2>Introduction to data visuals with ggplot2</h2>
 <p>In this course we will be using the <code>ggplot2</code> package to visualise data. <code>ggplot2</code> is an add-on toolbox for <strong>R</strong> that has to be loaded separately. To do this, navigate to the ‘Packages’ window in RStudio and click ‘Install’ type ‘ggplot2’ and then click ‘Install’ (you need to be connected to the internet). You only need to do this once.</p>
 <p>Each time we open <strong>R</strong> we also need to load <code>ggplot2</code> into our local session, so scroll down to <code>ggplot2</code> and click the check box to load it in. Alternatively you can use the <code>library</code> command to load the packages automatically, see below.</p>
-<p><img src="/Images/RConservation/RStudio5.png"/></p>
+<p><img src="/images/RConservation/RStudio5.png"/></p>
 <p>Now we know our way around a few summarises, let’s turn the data into visualisations using <code>ggplot2</code>. Let’s look at a boxplot:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 <span class="kw">ggplot</span>(fishdat, <span class="kw">aes</span>(<span class="dt">x =</span> site, <span class="dt">y =</span> abundance)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()  </code></pre>
-<p><img src="/Images/RConservation/plot2.png"/></p>
+<p><img src="/images/RConservation/plot2.png"/></p>
 <p>The <code>library()</code> command tells <strong>R</strong> to load in the package <code>ggplot2</code>. This is handy to have at the top of your scripts, to load in appropriate packages before analysis begins.</p>
 <p>We will be using a lot of <code>ggplot</code> today, so you might like to download RStudio’s <a href="https://www.rstudio.com/wp-content/uploads/2015/08/ggplot2-cheatsheet.pdf">ggplot cheatsheet</a> for reference.<br />Now we are ready to make a graph. Type this into the console: The function <code>ggplot()</code> creates a graph, rather than returning data like the other functions we have seen. You can read the above line as: Take <code>fishdat</code>, create an <code>aes</code> (aesthetic) where the x-axis is sites and the y-axis is abundances, finally add (<code>+</code>) a boxplot.<br />The ‘gg’ in <code>ggplot</code> stands for grammar of graphics. The intent is to turn a sequence of functions into a readable sentence, which is why we separate too different functions (<code>ggplot()</code> and <code>geom_boxplot()</code>) with a <code>+</code>. You can combine different functions into different sequences to create different types of graphics.</p>
 <p>So, what is the error in our data?</p>
@@ -337,7 +337,7 @@ fishdat$site &lt;-<span class="st"> </span><span class="kw">droplevels</span>(fi
 <p>Notice that after we used <code>droplevels()</code> (which drops the empty level <code>b</code>), the table did not include the zero count for <code>b</code>.</p>
 <p>Let’s check the boxplot to see that the two B sites have now be merged:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(fishdat, <span class="kw">aes</span>(<span class="dt">x =</span> site, <span class="dt">y =</span> abundance)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre>
-<p><img src="/Images/RConservation/plot3a.png"/></p>
+<p><img src="/images/RConservation/plot3a.png"/></p>
 </div>
 <div id="saving-our-corrected-data-frame" class="section level2">
 <h2>Saving our corrected data frame</h2>
@@ -349,15 +349,15 @@ fishdat$site &lt;-<span class="st"> </span><span class="kw">droplevels</span>(fi
 <h2>More on graphs</h2>
 <p>Lets do a few more graphical summaries. Try these</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(fishdat, <span class="kw">aes</span>(<span class="dt">x =</span> abundance)) +<span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">3</span>)</code></pre>
-<p><img src="/Images/RConservation/plot3.png"/></p>
+<p><img src="/images/RConservation/plot3.png"/></p>
 <p>See what happens if you change the <code>binwidth</code> parameter.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(fishdat, <span class="kw">aes</span>(<span class="dt">x =</span> fishing, <span class="dt">y =</span> abundance)) +<span class="st"> </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="/Images/RConservation/plot4.png"/></p>
+<p><img src="/images/RConservation/plot4.png"/></p>
 <p>Which plots a histogram and an xy plot of fish abundances against the fishing index at each transect. Note each command starts similarly (using <code>ggplot(fishdat...</code>) but ends with a different geom command. Looks like there is a relationship. We can improve our plot slightly by using some extra arguments to <code>plot()</code></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(fishdat, <span class="kw">aes</span>(<span class="dt">x =</span> fishing, <span class="dt">y =</span> abundance)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Fish abundance&#39;</span>) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;Fishing pressure index&#39;</span>)</code></pre>
-<p><img src="/Images/RConservation/plot5.png"/></p>
+<p><img src="/images/RConservation/plot5.png"/></p>
 <p>Here we inserted a new command into <code>geom_point()</code> to change the point size, then we also added axes labels.</p>
 <p>In fact, a whole host of graphical parameters you can manipulate. See the <a href="http://www.cookbook-r.com/Graphs/">R Graphics Cookbook</a> or the ggplot2 webpage for more help. As a final step, we could colour the points by site, by adding a <code>colour</code> command to the <code>aes()</code> function and then change the legend title using <code>labs()</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(fishdat, <span class="kw">aes</span>(<span class="dt">x =</span> fishing, <span class="dt">y =</span> abundance, <span class="dt">colour =</span> site)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>) +<span class="st"> </span>
@@ -385,7 +385,7 @@ fish_A</code></pre>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Fish abundance&#39;</span>) +<span class="st"> </span>
 <span class="st">   </span><span class="kw">xlab</span>(<span class="st">&#39;Fishing pressure index&#39;</span>)  </code></pre>
-<p><img src="/Images/RConservation/plot6.png"/></p>
+<p><img src="/images/RConservation/plot6.png"/></p>
 </div>
 <div id="summaries-using-dplyr" class="section level2">
 <h2>Summaries using dplyr</h2>
@@ -420,7 +420,7 @@ grps</code></pre>
 <p>Notice nothing happens. We have stored the plot in the object <code>p</code>. If we type <code>p</code> the plot will be printed to the screen. What we want to do now is add some lines for the standard deviations:</p>
 <pre class="sourceCode r"><code class="sourceCode r">p +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> mean_abund -<span class="st"> </span>sdabund, <span class="dt">ymax =</span> mean_abund +<span class="st"> </span>sdabund))</code></pre>
-<p><img src="/Images/RConservation/plot7.png"/></p>
+<p><img src="/images/RConservation/plot7.png"/></p>
 <p>Notice that we have added a new <code>geom_errorbar()</code> to our object <code>p</code>. We have coloured the sites and lines indicating the standard deviation. Can you figure out how to add bars for the sd of fishing on the x-axis too? Hint: you will want to use the <code>geom_errorbarh()</code> geom.</p>
 </div>
 <div id="aesthetics-in-multi-line-coding" class="section level2">
@@ -445,7 +445,7 @@ datnew</code></pre>
 <p>We have joined fishdat and sitedat by their common variable site. Notice the join automatically replicates <code>distance</code> and <code>depth</code> across all the transects, keeping the dataframe ‘tidy’. One analysis we could do is plot the fishing pressure values, <code>fishing</code> against distance to ports, <code>distance</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(datnew, <span class="kw">aes</span>(<span class="dt">x =</span>distance, <span class="dt">y =</span> fishing, <span class="dt">colour =</span> site)) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">4</span>)
 p2</code></pre>
-<p><img src="/Images/RConservation/plot8.png"/></p>
+<p><img src="/images/RConservation/plot8.png"/></p>
 <p>Looks like the fishing pressure index source is higher closer to the ports. Note we saved the plot as an object again. That is because we will come back to modify it later.<br />As a challenge, can you think of a way of plotting the mean values of <code>fishing</code> at each distance? Can you add error bars?</p>
 </div>
 <div id="formal-analysis" class="section level2">
@@ -494,7 +494,7 @@ p2</code></pre>
 ##  4.01926754 -0.09799672</code></pre>
 <p>see that this command returns the coefficients. Notice the use of the <code>$</code> which we also used to access variables in the data frame. Model objects are similar to dataframes in that we can access their output by using <code>$</code> and then the variable name. A key difference however is that not all variables in the model have the same length. For instance type <code>mod1$residuals</code>. You can see all the variables in <code>mod1</code> by typing <code>names(mod1)</code>. It is handy to be able to access the model coefficients directly, because we can re-use them in a our plotting command to draw a line. Then, if we have to update the dataset later, the plot will be automatically updated too. Here is how we add the line of best fit:</p>
 <pre class="sourceCode r"><code class="sourceCode r">p2 +<span class="st"> </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> mod1$coefficients[<span class="dv">1</span>], <span class="dt">slope =</span> mod1$coefficients[<span class="dv">2</span>])</code></pre>
-<p><img src="/Images/RConservation/plot9.png"/></p>
+<p><img src="/images/RConservation/plot9.png"/></p>
 <p>We can see that the fishing pressure declines with distance from ports. Let’s walk through that code a bit more. We took the plot object we had already created <code>p2</code> and added an abline with <code>geom_abline()</code>. For the abline, we specified a slope and intercept, taking these values from the model object we created.</p>
 <hr />
 </div>
@@ -502,7 +502,7 @@ p2</code></pre>
 <h3>A tip for quickly viewing lines of best fit</h3>
 <p>If you want to just quickly view the line of best fit and don’t need the table of summary statistics, <code>ggplot()</code> can plot the line directly for you. You can even add shading for the standard error bars. Here is how:</p>
 <pre class="sourceCode r"><code class="sourceCode r">p2 +<span class="st"> </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="dt">se =</span> T, <span class="kw">aes</span>(<span class="dt">group =</span><span class="dv">1</span>))</code></pre>
-<p><img src="/Images/RConservation/plot10.png"/></p>
+<p><img src="/images/RConservation/plot10.png"/></p>
 <p>The <code>stat_smooth()</code> function takes the x and y variables from <code>p2</code> and fits a model to them using the <code>lm</code> function. To see other options type <code>?stat_smooth()</code>. We have also asked for standard errors (<code>se=T</code>). The <code>aes()</code> command avoids an error that occurs when we have multiple y measurements for the same x-value.</p>
 <hr />
 </div>
@@ -558,7 +558,7 @@ fishcond</code></pre>
 <p>Now we have tidy data, let’s do boxplots by fish size and site. Note that below we add a <code>fill = ...</code> command. This just makes the boxes pretty colours.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(condtidy, <span class="kw">aes</span>(<span class="dt">x =</span> site, <span class="dt">y =</span> condition, <span class="dt">fill =</span> site)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()
 <span class="kw">ggplot</span>(condtidy, <span class="kw">aes</span>(<span class="dt">x =</span> size, <span class="dt">y =</span> condition, <span class="dt">fill =</span> size)) +<span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre>
-<p><img src="/Images/RConservation/plot11.png"/><br /><img src="/Images/RConservation/plot12.png"/></p>
+<p><img src="/images/RConservation/plot11.png"/><br /><img src="/images/RConservation/plot12.png"/></p>
 <p>If you can’t see both plots, click the back arrow at the top of the window to scroll through them. Type <code>?geom_boxplot()</code> if you are not sure what the boxes and whiskers correspond to. In short however, the boxes (‘hinges’) are 25% and 75% quantiles and the whiskers represent a wider range and the points potential outliers. We can see from these plots that condition varies by sites, but not much by size.</p>
 </div>
 <div id="summaries-with-missing-values" class="section level2">
@@ -602,13 +602,13 @@ sites_cond_mn</code></pre>
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Fish Condition&#39;</span>) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>)</code></pre>
 <p>What does this suggest about the effect of fishing on fish condition?</p>
-<p><img src="/Images/RConservation/plot13.png"/></p>
+<p><img src="/images/RConservation/plot13.png"/></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(datall, <span class="kw">aes</span>(<span class="dt">x =</span> mean_abund, <span class="dt">y =</span> meanC, <span class="dt">colour =</span> site)) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;Fish condition&#39;</span>) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;Abundance&#39;</span>) +<span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>)</code></pre>
 <p>What about this graph? It is always worth investigating alternative hypotheses.</p>
-<p><img src="/Images/RConservation/plot13b.png"/></p>
+<p><img src="/images/RConservation/plot13b.png"/></p>
 </div>
 <div id="just-for-fun-an-interactive-web-map" class="section level2">
 <h2>Just for fun: an interactive web map</h2>
