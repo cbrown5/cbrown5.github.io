@@ -2,7 +2,7 @@
 title: Ecologists are misusing isotope mixing models
 layout: default
 category: Research
-published: FALSE
+published: TRUE
 ---
 
 #  Ecologists are misusing isotope mixing models
@@ -69,4 +69,4 @@ Our analyses can be conducted with an [R package](https://github.com/cbrown5/rem
 
 We hope use of these methods will improve the study of nutrient and carbon flows in ecosystems.
 
-Feel free to message me on [Twitter](https://twitter.com/bluecology) if you have any thoughts or comments. 
+Feel free to message me on [Twitter](https://twitter.com/bluecology) if you have any thoughts or comments.
