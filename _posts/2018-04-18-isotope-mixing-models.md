@@ -9,9 +9,7 @@ published: TRUE
 
 The study of animal movement, animal diets and more generally nutrient and carbon flows in ecosystems has been transformed by stable isotope ecology. However, in a new [paper](https://link.springer.com/article/10.1007/s00442-018-4138-y) we present evidence that misuse of isotope mixing models, the statistical tools that underlie the analysis of stable isotopes, may be leading many studies to false conclusions.  
 
-![](/images/mangroves.JPG)  
-*Isotopes are one way to trace the source of carbon in sediments, which is crucial for
-estimating the role of mangrove ecosystems, like these pictured, in [sequestering carbon dioxide](https://onlinelibrary.wiley.com/doi/abs/10.1111/conl.12445)*
+![](/images/mixing-models.jpg)  
 
 The problem arises because Bayesian methods are used in the analysis of stable isotope ratios, without thought to how the priors affects the results.  
 
