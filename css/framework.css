@@ -536,6 +536,14 @@ img{
     }
 }
 
+img.largeimage{
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    padding:0.2rem;
+}
+
+
 #ppl-page img{
     max-width:200px;
     float:left;
