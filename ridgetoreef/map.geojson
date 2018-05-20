@@ -1,0 +1,190 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "chapter": "A fly-through of the science and outcomes from the ridge to reef fisheries working group.",
+        "zoom": 3,
+        "description": " "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          160.013187,
+          -16.497190
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "chapter": "Ridge to Reef Fisheries working group begins",
+        "zoom": 6,
+        "source-credit": "The group was funded by the Science for Nature and People Partnership",
+        "source-link": "https://snappartnership.net/teams/ridges-to-reefs-fisheries/",
+        "description": "A group of 20 scientists and conservation professionals from The Wildlife Conservation Society and\n        The Nature Conservancy meet in Brisbane to collaborate on ridge to reef planning to sustain fisheries."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          153.013187,
+          -27.497190
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "chapter": "Tracing soil erosion in Fiji to sedimentation in the ocean",
+        "zoom": 9,
+        "image": "img/r2rpic.png",
+        "source-credit": "Brown et al. 2017a",
+        "source-link": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5500483/",
+        "description": "We use satellite images and Bayesian modelling to identify which catchments are contributing most to sedimentation on coral reefs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          178.713753,
+          -16.849158
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "chapter": "Impacts of sedimentation on coral reef fish in Fiji",
+        "zoom": 11,
+        "image": "/images/trevally-forest.png",
+        "source-credit": "Brown et al. 2017b",
+        "source-link": "http://www.int-res.com/journals/ab/ab-home/",
+        "description": "Sedimentation degrades coral reefs, which are important habitats for valuable fisheries species"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          178.857941,
+          -16.54681
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5,
+        "chapter": "Advise Fijian communities on forest protection for reefs",
+        "zoom": 12,
+        "image": "img/r2rworkshop.jpg",
+        "source-credit": "We travelled to Nabouwalu, one of Fiji's district capitals.",
+        "source-link": "https://catchmenttocoast.wordpress.com/2016/12/04/protecting-forests-in-fiji-to-give-coral-reefs-a-future/",
+        "description": "We worked with local communities and the Wildlife Conservation Society on plans to protect important forests from logging."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          178.689699,
+          -16.993858
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6,
+        "chapter": "Help plan for new oil palm plantations in Papua New Guinea",
+        "zoom": 8,
+        "image": "https://www.whatisepigenetics.com/wp-content/uploads/2015/09/methylation-palm-oil.jpg",
+        "source-credit": "Tulloch et al. 2016",
+        "source-link": "https://www.sciencedirect.com/science/article/pii/S0006320716303160",
+        "description": "We help the Wildlife Conservation Society plan marine reserves that avoid pollution run-off from likely future oil palm plantations. "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          151.841370,
+          -3.217269
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7,
+        "chapter": "Logging threatens habitat for threatened coral reef fish in the Solomon Islands",
+        "zoom": 10,
+        "image": "img/bumphead.JPG",
+        "source-credit": "Hamilton et al. 2017",
+        "source-link": "https://www.sciencedirect.com/science/article/pii/S0006320716310461",
+        "description": "Bumphead parrotfish use only a specific type of coral for their nurseries. A team led by The Nature Conservancy finds this coral has died near logging sites in the Kia region of the Solomon Islands. Bumphead parrotfish  are IUCN listed threatened species and important for local fisheries. We estimate the parrotfish are 27 times less abundant at sites near logging. "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          158.413011,
+          -7.617354
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8,
+        "chapter": "50% of Kia's reefs have been affected by logging",
+        "zoom": 12,
+        "image": "https://catchmenttocoast.files.wordpress.com/2018/05/corals-lei1.jpg?w=700",
+        "source-credit": "Brown and Hamilton 2018",
+        "source-link": "https://onlinelibrary.wiley.com/doi/full/10.1111/cobi.13079",
+        "description": "Corals are replaced by other types of habitats when there is high sedimentation. We used coral diversity as an indicator of sediment impacts and estimated nearly 50% of Kia's reefs have already been impacted by sediments from logging. "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          158.327460,
+          -7.526437
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9,
+        "chapter": "Evidence from our worked help stop illegal logging",
+        "zoom": 15,
+        "image": "https://19mvmv3yn2qc2bdb912o1t2n-wpengine.netdna-ssl.com/science/files/2017/05/tnc_29508966_preview-1260x708.jpg",
+        "source-credit": "The Nature Conservancy supported court action to stop illegal logging to protect reefs and fisheries.",
+        "source-link": "https://blog.nature.org/science/2018/04/11/modeling-pollutions-footprint-on-coral-reefs/",
+        "description": "You can see the illegal logging in this satellite image. Photo The Nature Conservancy (Louise Goggin)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          158.201152,
+          -7.428937
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10,
+        "chapter": "Identifying conservation priorities for ridge to reef management in tropical catchments",
+        "zoom": 4,
+        "source-credit": "Next steps...",
+        "source-link": "http://www.seascapemodels.org/research/2018/03/24/ridge-to-reef-management.html",
+        "description": "The group's work is completed. This blog describes our work and next steps for the science of ridge to reef planning. "
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          165.7,
+          -14.36
+        ]
+      }
+    }
+  ]
+}
