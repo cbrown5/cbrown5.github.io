@@ -174,9 +174,10 @@
         "id": 10,
         "chapter": "Identifying conservation priorities for ridge to reef management in tropical catchments",
         "zoom": 4,
-        "source-credit": "Next steps...",
-        "source-link": "http://www.seascapemodels.org/research/2018/03/24/ridge-to-reef-management.html",
-        "description": "The group's work is completed. This blog describes our work and next steps for the science of ridge to reef planning. "
+        "image": "img/r2rschematic.jpg",
+        "source-credit": "Download a pdf of our review paper",
+        "source-link": "/data/Brown_etal-models-for-ridge-to-reef-planning-preprint.pdf",
+        "description": "This pre-print for our review paper shares what we learned about ridge to reef planning and what next steps are needed. "
       },
       "geometry": {
         "type": "Point",
