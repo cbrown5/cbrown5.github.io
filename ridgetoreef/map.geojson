@@ -5,8 +5,9 @@
       "type": "Feature",
       "properties": {
         "id": 1,
-        "chapter": "A fly-through of the science and outcomes from the ridge to reef fisheries working group.",
+        "chapter": "A fly-through of the science and outcomes from the ridge to reef fisheries working group. Supported by the Science for Nature and People Partnership. ",
         "zoom": 3,
+        "image": "img/reef-runoff.JPG",
         "description": " "
       },
       "geometry": {
@@ -23,6 +24,7 @@
         "id": 2,
         "chapter": "Ridge to Reef Fisheries working group begins",
         "zoom": 6,
+        "image": "img/snapp.JPG",
         "source-credit": "The group was funded by the Science for Nature and People Partnership",
         "source-link": "https://snappartnership.net/teams/ridges-to-reefs-fisheries/",
         "description": "A group of 20 scientists and conservation professionals from The Wildlife Conservation Society and\n        The Nature Conservancy meet in Brisbane to collaborate on ridge to reef planning to sustain fisheries."
