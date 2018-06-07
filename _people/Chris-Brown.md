@@ -16,4 +16,6 @@ Read more about Chris' research [on Google Scholar](https://scholar.google.com.a
 
 Chris is currently working on a Discovery Early Career Research Fellowship awarded by the Australian Research Council to uncover how [habitat change is influencing the sustainability of fisheries](http://www.seascapemodels.org/fishscape/).
 
-Chris is also leading a Discovery Project (2018-2020) ["*Predicting interactive effects of multiple stressors on marine ecosystems*"](http://www.seascapemodels.org/research/2017/11/10/interacting-impacts-grant.html). We aim to develop new models that can make predictions reliable enough to inform management of ecosystems, and that are effective when data are limited.
+Chris is leading a Discovery Project (2018-2020) ["*Predicting interactive effects of multiple stressors on marine ecosystems*"](http://www.seascapemodels.org/research/2017/11/10/interacting-impacts-grant.html). We aim to develop new models that can make predictions reliable enough to inform management of ecosystems, and that are effective when data are limited.
+
+Chris is research lead on the nascent Global Wetlands program (2018-2022), directed by Professor Rod Connolly at Griffith University. We are part way through recruiting several postdocs to work on this program, more info on that soon. 
