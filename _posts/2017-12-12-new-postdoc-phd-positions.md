@@ -7,6 +7,8 @@ published: TRUE
 
 # New postdoc and PhD positions on multiple stressors of ecosystems
 
+*Applications for the postdoc job and PhD position have now closed, but I have kept the post here for reference*
+
 Professor Rod Connolly (Griffith University), Professor Isabelle Côté (Simon Fraser University) and I will be recruiting a postdoc and a PhD student in 2018 to work on our project "Predicting interactive effects of multiple stressors on marine ecosystems" [funded by the Australian Research Council](http://www.seascapemodels.org/research/2017/11/10/interacting-impacts-grant.html).
 
 We will advertise officially next year, but feel free to get in touch with me ahead of time (chris.brown@griffith.edu.au) if you are interested in discussing either of these positions.
@@ -19,7 +21,7 @@ The postdoc position is nominally for 2.5 years full-time at academic level A (P
 
 **For the PhD position** we are seeking someone interested in the study of threatened marine ecosystems, particularly seagrass meadows, and ecosystem management. Candidates may undertake field work or purely modelling/analytical based work. Candidates must be enthusiastic about the analysis of data and should be keen to learn the R program language if they do not already have skills in this area.
 
-Australian Resident applicants to Griffith's PhD program should have recieved Honours 1 or equivalent. A lead authored publication in a peer-reviewed journal will be helpful.
+Australian Resident applicants to Griffith's PhD program should have received Honours 1 or equivalent. A lead authored publication in a peer-reviewed journal will be helpful.
 
 International applicants to Griffith's PhD program must have led at least one peer-reviewed paper in an internationally recognised journal.
 

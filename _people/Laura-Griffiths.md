@@ -7,4 +7,4 @@ category: current
 
 # Laura Griffiths
 ![](/images/people/laura-griffiths.jpg)
-A Phd student with a background in environmental management. Laura is studying the effects of multiple stressors on coastal marine ecosystems.
+A PhD student with a background in environmental management. Laura is studying the effects of multiple stressors on coastal marine ecosystems.

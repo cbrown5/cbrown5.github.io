@@ -7,6 +7,8 @@ published: TRUE
 
 # Four new postdoc and science communicator positions to work on the global health of wetlands
 
+*Applications for these jobs have now closed, but I have kept the post here for reference*
+
 GLOW is a program developing and applying globally applicable assessments of coastal wetland health to drive actions and investments towards protection, restoration and improvement of wetlands worldwide. We are hiring three research fellows in ecology, statistical modelling and software engineering, and a science communicator, to work on this project.
 
 See below to apply.
