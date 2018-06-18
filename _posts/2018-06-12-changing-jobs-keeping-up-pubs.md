@@ -49,7 +49,7 @@ He is sharing some writing time to work on outlines and concepts for this new pa
 
 Hopefully by the time it comes to writing up the new project, the old one will be submitted.
 
-It is broadly in a supervisor's best interests for postdocs to publish their old papers - because it helps the postdoc be more successful in the long-run. Successful postdocs reflect well on their supervisors. 
+It is broadly in a supervisor's best interests for postdocs to publish their old papers - because it helps the postdoc be more successful in the long-run. Successful postdocs reflect well on their supervisors.
 
 If you supervisor requires 100% commitment to the new project, or the new project just has you too busy during the days, then you will have to try the tactics above for jobs that don't allow you to publish. Just remember, writing is hard and you only get so many good hours of it per day, so you will need to save some brain power for that in mornings (ideal), evenings or weekends.
 
