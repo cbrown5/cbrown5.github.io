@@ -498,6 +498,7 @@ a.card-pubs:hover{
     font-size: 1rem;
     color:black;
     border-color: red;
+    border-width: 0.5px;
     border-style: solid;
     width:100%;
     max-width:40rem;
