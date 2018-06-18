@@ -498,13 +498,14 @@ a.card-pubs:hover{
     font-size: 1rem;
     color:black;
     border-color: red;
+    border-style: solid;
     width:100%;
     max-width:40rem;
     height:100%;
     display: inline-block;
     text-decoration: none;
-    padding:1rem;
-    margin:1rem;
+    padding: 1rem;
+    margin: 1rem;
     box-sizing: border-box;
     box-shadow: 0 1.5px 3px 0 rgba(0,0,0,0.4);
     transition: 0.3s;
