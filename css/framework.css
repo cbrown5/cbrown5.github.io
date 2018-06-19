@@ -517,6 +517,58 @@ a.card-news:hover{
     text-decoration: none;
 }
 
+#toppop {
+    position: absolute;
+    /* Use position: fixed; to make the box hover over top (which is annoying)*/
+    z-index: 98;
+    top: 0;
+    left: 60px;
+    right: 0;
+    background: #ffeb99;
+    text-align: center;
+    line-height: 2.5;
+    overflow: hidden;
+    -webkit-box-shadow: 0 0 5px black;
+    -moz-box-shadow:    0 0 5px black;
+    box-shadow:         0 0 5px black;
+}
+
+#toppop a{
+  text-decoration: none;
+}
+
+#toppop a p{
+  height:100%;
+  line-height:1.2;
+  text-align: center;
+  font-size:1.1rem;
+  color:black;
+  margin: 0;
+  padding:15px;
+}
+
+.pop-button{
+  border:none;
+  font-size:2rem;
+  display:inline-block;
+  padding:2px 6px;
+  line-height:1.5;
+  vertical-align:middle;
+  text-decoration:none;
+  color:inherit;
+  background-color:none;
+  text-align:center;
+  cursor:pointer;
+  white-space:nowrap;
+  position:absolute;
+  right:0;
+  top:0;
+}
+
+.pop-button:hover{
+  background-color: 	rgb(211,211,211, 0.6);
+}
+
 .first-author{
     color:#005ce6;
     box-shadow: 2px 5px 8px 0 rgba(0,0,0,0.7);
