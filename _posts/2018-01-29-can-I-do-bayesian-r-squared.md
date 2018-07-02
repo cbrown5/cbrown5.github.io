@@ -47,7 +47,7 @@ Aki Vehtari added (via email) that strongly correlated covariates will throw out
 
 Point estimates don't sit well with the Bayesian philosophy. A Bayesian assumes all parameters are random variables. Whereas, a frequentist would use the R-squared because they are assuming there are actually fixed true values we are trying to observe. I do see the appeal of the R2 though, because it is absolute in the sense that 0.9 is 10% better than 0.8. WAIC is not like this.
 
-But, a Bayesian isn't too bothered by R2 because they spend more time looking at the posterior credibility or predictive intervals. You can predict your data using the fitted model and then just see how wide the CIs or PIs are. Wide CIs would be analogous to a poor R2. Some model specifications might have narrower CIs than others (for instance if you include more informative covariates).
+But, a Bayesian isn't too bothered by R2 because they spend more time looking at the posterior credibility or predictive intervals. You can predict your data using the fitted model and then just see how wide the CIs or PIs are. Wide CIs would be analogous to a poor R2.Some model specifications might have narrower CIs than others (for instance if you include more informative covariates).
 
 After I published this post [Ben Stewart-Koster](https://twitter.com/BStewartKoster/status/958873062602031104) wrote to tell me that their is a way to calculate a Baysian R-squared and Gelman and colleagues have written about it [here if your interested to learn more](https://twitter.com/BStewartKoster/status/958873062602031104). The Bayesian R2 integrates across the modelled uncertainty, so is not a point estimate.
 
