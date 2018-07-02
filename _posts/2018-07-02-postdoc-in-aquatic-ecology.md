@@ -10,7 +10,7 @@ published: TRUE
 I am seeking a postdoctoral fellow in Aquatic Ecology to work on wetlands science and environmental accounting with Dr Mark Kennard, Professor Rod Connolly and I.
 This is a 2 year position.
 
-Applications close 30th July. [Apply here](https://ps-jobs.griffith.edu.au/psc/CAREERS/EMPLOYEE/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?FOCUS=Applicant&Page=HRS_APP_JBPST&Action=U&FOCUS=Applicant&SiteId=100&JobOpeningId=109379&PostingSeq=1), read more below or in the [position description](Read more [here](/data/00058808_PD.pdf) (links to a pdf).
+Applications close 30th July. [Apply here](https://ps-jobs.griffith.edu.au/psc/CAREERS/EMPLOYEE/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?FOCUS=Applicant&Page=HRS_APP_JBPST&Action=U&FOCUS=Applicant&SiteId=100&JobOpeningId=109379&PostingSeq=1), read more below or in the [position description](/data/00058808_PD.pdf) (links to a pdf).
 
 **The Project**
 
@@ -34,7 +34,7 @@ The successful applicant will have completed a PhD in aquatic ecology, have demo
 
 Griffith University values gender equality, diversity and inclusion and is committed to providing equal employment opportunities to persons from all backgrounds and identities. It offers a supportive and flexible working environment with excellent working conditions. For further information follow this [link](https://www.griffith.edu.au/equity).
 
- *All applications must be submitted online.*
+ *All applications must be [submitted online.](https://ps-jobs.griffith.edu.au/psc/CAREERS/EMPLOYEE/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?FOCUS=Applicant&Page=HRS_APP_JBPST&Action=U&FOCUS=Applicant&SiteId=100&JobOpeningId=109379&PostingSeq=1)*
 
 For further information about this role, please contact Dr Chris Brown, email chris.brown@griffith.edu.au.  
 For application queries, please contact Ms Kaitlin Reents, HR Officer on +61 (0) 7 3735 6614.
