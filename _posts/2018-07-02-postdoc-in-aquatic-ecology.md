@@ -7,7 +7,7 @@ published: TRUE
 
 # Postdoctoral job in Aquatic Ecology
 
-We are seeking a postdoctoral fellow in Aquatic Ecology to work on wetlands science and environmental accounting. The person will work be supervised by Dr Chris Brown and work with Dr Mark Kennard and Professor Rod Connolly to bring together two projects. This is a 2 year position.
+We are seeking a postdoctoral fellow in Aquatic Ecology to work on wetlands science and environmental accounting. The person will be supervised by Dr Chris Brown and work with Dr Mark Kennard and Professor Rod Connolly to bring together two projects. This is a 2 year position.
 
 Applications close 30th July. [Apply here](https://ps-jobs.griffith.edu.au/psc/CAREERS/EMPLOYEE/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?FOCUS=Applicant&Page=HRS_APP_JBPST&Action=U&FOCUS=Applicant&SiteId=100&JobOpeningId=109379&PostingSeq=1), read more below or in the [position description](/data/00058808_PD.pdf) (links to a pdf).
 
