@@ -61,22 +61,6 @@ I used the `googlesheets` package to read my survey answers from the
     library(googlesheets)
     gs_ls()
 
-    ## # A tibble: 24 x 10
-    ##    sheet_title  author perm  version updated             sheet_key ws_feed
-    ##    <chr>        <chr>  <chr> <chr>   <dttm>              <chr>     <chr>  
-    ##  1 Dataviz qui~ chris~ rw    new     2018-07-05 10:39:47 10i3v3NI https:~
-    ##  2 Science-pol~ "    ~ rw    new     2018-07-05 06:04:45 1aP8fYu1 https:~
-    ##  3 Dataviz qui~ chris~ rw    new     2018-07-04 10:11:18 156deWbu https:~
-    ##  4 "         S~ chris~ rw    new     2018-06-29 23:26:03 1yiBlbGB https:~
-    ##  5 "    Untitl~ chris~ rw    new     2018-06-23 07:06:59 16aeSpQe https:~
-    ##  6 "      Used~ chris~ rw    new     2018-03-27 23:49:58 15FLPXNj https:~
-    ##  7 Connectivit~ meg.i~ rw    new     2015-10-13 02:17:29 13B7eLQP https:~
-    ##  8 "  SEL Inte~ "    ~ r     new     2014-11-04 10:00:03 1ewHgpn6 https:~
-    ##  9 "  MSCB wed~ chris~ rw    new     2014-04-28 07:55:02 1a3GmpZT https:~
-    ## 10 quantmareco~ chris~ rw    new     2014-01-29 05:33:22 1SKWMa_k https:~
-    ## # ... with 14 more rows, and 3 more variables: alternate <chr>,
-    ## #   self <chr>, alt_key <chr>
-
 This will prompt you to login to your google account and authenticate an
 app that allows the connection to happen.
 
@@ -84,27 +68,6 @@ Now we can load our data:
 
     sheet_url <- "https://docs.google.com/spreadsheets/d/10i3v3NIVpgmURyLVzsiadPAMGeqa7dLFcDb9sqFe8KA/edit#gid=1513779153"
     dataviz <- gs_url(sheet_url) #creates connection
-
-    ## Sheet-identifying info appears to be a browser URL.
-    ## googlesheets will attempt to extract sheet key from the URL.
-
-    ## Putative key: 10i3v3NIVpgmURyLVzsiadPAMGeqa7dLFcDb9sqFe8KA
-
-    ## Sheet successfully identified: "Dataviz quiz 2018 v2 (Responses)"
-
-    dat <- gs_read(dataviz) #reads data into R
-
-    ## Accessing worksheet titled 'Form Responses 1'.
-
-    ## Parsed with column specification:
-    ## cols(
-    ##   Timestamp = col_character(),
-    ##   `Examine the figure below. At what point does the number of people in the shopping centre decrease: A, B, C or D?` = col_character(),
-    ##   `In the data presented below in the barchart, what per cent of people were sick?` = col_integer(),
-    ##   `In the data presented below in the pie chart, what per cent of people were absent?` = col_integer(),
-    ##   `Where are you sitting in this room?` = col_character(),
-    ##   `How old do you think Chris is?` = col_integer()
-    ## )
 
 If you want to keep your sheet private you can use `gs_ls()` to list all
 your sheets, and then pick a name to read it in. e.g. like this:
@@ -142,7 +105,7 @@ Now let's create some dataviz
       ylim(0, 75) +
       theme_bw()
 
-![](survey-your-audience_files/figure-markdown_strict/unnamed-chunk-5-1.png)
+![](/images/survey-your-audience_files/figure-markdown_strict/unnamed-chunk-5-1.png)
 
 A boxplot of the audience's guesses at my age by their position in the
 room. I limited the y-axis because there were some outrageously large
