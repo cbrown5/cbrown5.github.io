@@ -1,7 +1,7 @@
 ---
 title: New PhD opportunities to work on conserving the health of coastal wetlands
 layout: default
-category: rstats
+category: Research
 published: TRUE
 ---
 
