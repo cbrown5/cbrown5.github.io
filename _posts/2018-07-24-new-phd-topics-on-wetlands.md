@@ -30,13 +30,13 @@ Applications are due 2nd October 2018.
 
 This project will expand [Dr Tulloch's models](https://www.sciencedirect.com/science/article/pii/S0006320716303160) of land-based stressors to coastal ecosystems. The student will use the models at  a large scale to prioritise actions on land that can protect coastal wetlands.  
 
-**Contact:** <a href="mailto:chris.brown@griffith.edu.au">**Dr Viv Tulloch-McShane (via Dr Chris Brown)**</a>  
+**Contact:** <a href="mailto:v.tulloch@uq.edu.au">**Dr Viv Tulloch-McShane**</a>  
 
 #### Trade-offs among the coastal ecosystem services provided by wetlands  
 
 This study can involve modelling and/or field components to study synergies and trade-offs in the delivery of ecosystem services from coastal wetlands.  
 
-**Contact:** <a href="mailto:chris.brown@griffith.edu.au">**Dr Viv Tulloch-McShane (via Dr Chris Brown)**</a>  
+**Contact:** <a href="mailto:v.tulloch@uq.edu.au">**Dr Viv Tulloch-McShane**</a>  
 
 #### Global shifts in grazer functions under multiple stressors  
 
@@ -54,6 +54,11 @@ This project aims to model current and future habitat suitability of wetland pla
 
 **Contact:** <a href="mailto:msievers100@gmail.com">**Michael Sievers**</a>
 
+#### Validating multi-stressor null models on coastal seagrass habitats  
+
+Marine systems are under increasing threat from a number of human activities. This project will aim to use a combination of field and experimental studies to quantify the types of interactions found between a range of stressors impacting seagrass habitats. These findings can help improve and inform management practices for conservation.  
+
+**Contact:** <a href="mailto:m.turschwell@griffith.edu.au">**Mischa Turschwell**</a>  
 #### Automation of environmental monitoring  
 
 Environmental monitoring is on the brink of a step change in effectiveness. Building on GLOW’s automated fish identification system, the student will use ecological and statistical frameworks to determine how best to automate the gathering, quality assurance, and analysis, of environmental data.  
