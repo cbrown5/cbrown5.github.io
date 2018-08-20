@@ -31,7 +31,7 @@ The broader benefits and costs have been well covered in the blogosphere, but a 
 
 - Gain exposure for your work without waiting for review, which can be particularly important for early career scientists.   
 
-- You can share articles with the science community that you perhaps never intend to publish in a peer-reviewed journal, like this [guide to structuring papers](https://www.biorxiv.org/content/early/2016/11/28/088278).  
+- You can share articles with the science community that you perhaps never intend to publish in a peer-reviewed journal, like this [guide to structuring papers](https://www.biorxiv.org/content/early/2016/11/28/088278). They will also have a DOI so you can get credit for citations.  
 
 - You claim priority for a piece of work that someone else may be about to publish.  
 
@@ -44,11 +44,15 @@ I think most of the cons can actually be avoided or mitigated. The first oft cit
 
 The second is that some journals don't support pre-prints, though I haven't encountered any. Even Science and Nature support pre-prints.  
 
-The third is that some journals don't support you talking to the press about pre-prints. For instance Science Magazine may take any pre-publication press into account when making a decision on your article. Easy to avoid this problem, just don't do a press release on your article, the press are unlikely to hear about it on their own.  
+The next few issues are important, but are discussed more rarely in the broader blogosphere.
 
-A fourth problem is there is a time cost to preprints. You have to submit them like any other journal and I've never met a scientist that enjoys working their way through a journal submission page...
+The third problem is that some journals don't support you talking to the press about pre-prints. For instance Science Magazine may take any pre-publication press into account when making a decision on your article. Easy to avoid this problem, just don't do a press release on your article, the press are unlikely to hear about it on their own.  
 
-A fifth consideration is that pre-prints are meant to speed up science, but they may actually slow down publication of your paper. There is a time lag involved in uploading it and then waiting for it to appear online before submitting to a journal.  This is even longer if you want to wait to get comments.
+A fourth problem is that pre-prints can reveal the identity of a paper's authors, which may break double-blind peer review. A reviewer apparently googled one of my paper titles that was under double blind peer review and find the pre-print (a dubious practice perhaps?). Then they wrote in their review - Chris you should never post pre-prints before submitting the article.  
+
+But what's the point of a pre-print if it isn't posted pre-review? I think its the authors' prerogative to decide whether they might waive anonymity for the sake of a pre-print (an issue I did consider before submitting said paper). Either way, I think it is a potential issue you should consider, particularly if you want double-blind review.
+
+I look forwards to starting a debate between the double-blind proponents and the pre-print proponents on Twitter one day so, but will leave that for another blog.
 
 The final and I think most problematic issue that I see is that there will be multiple versions of your paper online once it is published. [This blog](https://smallpondscience.com/2017/07/24/whats-up-with-preprints/) has a more detailed discussion of how that is potentially an issue.  If your paper changes considerably in peer-review, then these different versions may also have very different content. The multiple version problem is something that is worth considering carefully.  
 
@@ -59,6 +63,14 @@ See my guide below for how you can mitigate the final issue.
 Overall I think the pros **just** outweigh the cons. I started posting pre-prints because I was using other people's to inform my science, so it made sense to post my own. Having said that I don't post every article as a pre-print and largely let my students decide whether they want to do it or not.  
 
 If you follow my guide below it will help you avoid some of the cons and maximise some of the pros.  
+
+## Practical considerations  
+
+A few practical considerations are worth mentioning. People are in such a rush to publish these days and pre-prints can actually slow you down a bit...  
+
+There is a slight time cost to preprints. You have to submit them like any other journal and I've never met a scientist that enjoys working their way through a journal submission page...  
+
+A pre-print may actually slow down publication of your paper by a few days or weeks. There is a time lag (~24 hours) involved in uploading it and then waiting for it to appear online before submitting to a journal.  This is lag is longer if you want to wait to get comments.  
 
 ## Guide to submitting and revising pre-prints  
 
