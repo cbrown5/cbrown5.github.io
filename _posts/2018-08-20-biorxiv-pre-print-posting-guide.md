@@ -1,5 +1,5 @@
 ---
-title: New PhD opportunities to work on conserving the health of coastal wetlands
+title: Guide to posting pre-prints for ecologists
 layout: default
 category: Research
 published: TRUE
