@@ -132,7 +132,18 @@ If the titles are different and they don't pick up the published version, you ca
 
 **11. Optional: Check links to your article on search engines**
 
-You might want to check if search engines, e.g. Google Scholar, pick up on the open-access pdf version of your article. If they don't you can also try posing the post-review, pre-print version to a university repository or your webpage or ResearchGate (if the journal's license allows you to do so, which many do).  
+You might want to check if search engines, e.g. Google Scholar, pick up on the open-access pdf version of your article. If they don't you can also try posting the post-review, pre-print version to a university repository or your webpage or ResearchGate (if the journal's license allows you to do so, which many do).   
+
+
+## My personal experience  
+
+So far my personal experience has been mixed. The first article I posted went through peer-review at an OA journal so quickly that the pre-print was pretty redundant in the end.  
+
+The second article has been stuck in review/resubmit cycle for ages! The pre-print has actually been cited, though it is still not published. I am a bit worried how different the pre-print and the published version may be, though I just need to make sure I submit a revision before it is accepted.  
+
+The third article has just been accepted and I just realised the title was changed in review. So I need to make sure it links back. Aside from that they are pretty similar.
+
+The fourth article I just submitted. I am in no rush to publish it, so am going to wait a few weeks and seek pre-review comments on the article. Will update you how that goes. Hopefully the article will be stronger when it comes to submission. For instance I plan on seeking feedback from some statisticians who wouldn't likely be approached by the journal's editor.  
 
 ### Summary
 
