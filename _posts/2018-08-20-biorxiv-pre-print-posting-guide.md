@@ -126,11 +126,11 @@ You can do this straight away after it appears on bioRXiv, or wait a few weeks t
 
 **8. Revise your pre-print BEFORE your article is accepted at a peer-review journal**  
 
-Your can't revise pre-prints once the article is accepted at a peer-review journal. I tried to update a title once and was blocked - it seems bioRXiv automatically searches the literature for matching titles. If they find your article listed at a journal they will block you from revising it.
+Your can't revise pre-prints once the article is accepted at a peer-review journal. I tried to update a title once and was blocked - it seems bioRXiv automatically searches the literature for matching titles (and can find accepted articles even before they are posted online!). If they find your article listed at a journal they will block you from revising it.
 
 It is important to revise it to minimise issues with having different versions on the web. For instance, people may be confused about similar articles with slightly different titles.  
 
-Check the journal's copyright policy though, some consider that they own the rights to review comments and your revisions, in which case any revision to your pre-print based on review comments are illegal.
+Check the journal's copyright policy though, some consider that they own the rights to review comments and your revisions, in which case any revision to your pre-print based on review comments may be illegal. Other publishers apparently allow posting of the accepted version as a pre-print.
 
 **9. Optional: Do press on your article**
 

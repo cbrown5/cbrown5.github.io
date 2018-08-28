@@ -46,7 +46,7 @@ This experimental study will aim to sample marine grazers from multiple location
 
 #### Finding function among structure: developing and validating indicators of ecosystem health in coastal wetlands  
 
-**Contact:** <a href="mailto:msievers100@gmail.com">**Michael Sievers**</a>
+**Contact:** <a href="mailto:m.sievers@griffith.edu.au">**Dr Michael Sievers**</a>
 
 #### Habitat suitability models for prioritisation of global action in coastal wetlands  
 
