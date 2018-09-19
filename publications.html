@@ -9,13 +9,24 @@ sitemap:
 
 <h1>Publications</h1>
 
-<p>First authored publications are in blue.</p>
-
-<p> Chris' <a href="https://scholar.google.com.au/citations?hl=en&user=1qG6yFMAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Google Scholar</a> profile.  </p>
-
-<p> Where available links below are to open-access pdfs</p>
+<!---<p>First authored publications are in blue.</p>-->
+<p> Some key publications are below. </p>
+<p> See Chris' <a href="https://scholar.google.com.au/citations?hl=en&user=1qG6yFMAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Google Scholar</a> profile for a full list.  </p>
+<!---<p> Where available links below are to open-access pdfs</p> -->
 
 <ul class="list-cards">
+   {% for pubs in site.data.pubsshort %}
+   <li class="coauthor"><a class="card-pubs" href="{{ pubs.url }}" target="_blank">
+       <p>{{pubs.title}}</p>
+       <hr>
+       </br>
+       <p class="journal-title">{{pubs.journal}}</p>
+       <p class="journal-year">{{pubs.year}}</p>
+   </a></li>
+ {% endfor %}
+</ul>
+
+<!--- <ul class="list-cards">
     {% for pubs in site.data.pubs %}
     {% if pubs.first contains 'TRUE'%}
     <li class="first-author"><a class="card-pubs first-author" href="{{ pubs.url }}" target="_blank">
@@ -35,4 +46,4 @@ sitemap:
     </a></li>
     {% endif %}
   {% endfor %}
-</ul>
+</ul> -->
