@@ -11,11 +11,14 @@ Our new research [published in Fish and Fisheries](https://onlinelibrary.wiley.c
 
 The study reviewed the habitat requirements for fish stocks across the globe. Nearly half of those reviewed were found to use habitats that are known to be in decline.  
 
+![](/images/guide-to-habitat-assessment.JPG)  
+*Our guide to assessing the risk of misclassification of stock status when there are unrecorded changes in fish habitat*
+
 Overfishing is often pinned as the only cause of declines in the productivity of fisheries, which implies stricter fisheries regulations are the sole solution to overfishing. We found that nearly half of the world’s best researched fish stocks are using habitats that are in decline, like seagrass and mangroves.
 
 Many fish habitats are under-threat from human activities like coastal development, pollution and destructive fishing that not only catches fish, but also damages habitats on the ocean floor. Queensland for instance, has lost large areas of its seagrass meadows and mangrove forests to development ¬of coastal infrastructure and pollution.
 
-The study looks at how protecting or restoring lost habitats can improve the status of fisheries, so that the fisheries can sustainably support higher catches.
+The study looks at how protecting or restoring lost habitats can improve the status of fisheries, so that the fisheries can sustainably support higher catches. If habitats are declining and we don't know about it, we can mistakenly believe that fish stocks are better or worse off than they actually are (see figure).  
 
 Managing fish catch is an important part of ensuring we have sustainable fisheries that support food production and jobs. But we can’t just count on good fisheries management. Protecting the fish habitats we have left and restoring lost habitats like mangroves is crucial.
 
@@ -33,4 +36,4 @@ The results suggest we need to look beyond fisheries to other activities that ar
 
 Managing fish habitats can be hard – we need to coordinate our management across the land and sea and across different industries, like infrastructure development and fisheries. But doing so is crucial to supporting the jobs created by fisheries and the opportunity to fish recreationally that is enjoyed by millions of Australians.  
 
-We hope to continue to use this work to inform our new project on [mapping the health of coastal wetlands globally](https://globalwetlandsproject.org/). 
+We hope to continue to use this work to inform our new project on [mapping the health of coastal wetlands globally](https://globalwetlandsproject.org/).
