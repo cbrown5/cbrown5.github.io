@@ -7,7 +7,7 @@ published: TRUE
 
 # How I became a science communicator without realizing it  
 
-Would you consider yourself to be science communicators, that is not just writing papers but doing other activities like doing interviews on radio?  
+Would you consider yourself to be a science communicator, that is not just writing papers but doing other activities like doing interviews on radio?  
 
 <div style="float:left;">
 <img src="/images/CB-scicomm-pres.jpg">
