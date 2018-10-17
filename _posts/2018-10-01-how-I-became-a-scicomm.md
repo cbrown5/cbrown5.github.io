@@ -27,7 +27,7 @@ I never got very good marks in writing, but my creative writing teacher (Karen C
 
 When I went on to do my PhD at UQ, writing become about papers and very technical.  
 
-During my PhD I attended training on science communications at the University of California, Santa Barbara.  
+During my PhD I was invited by Ben Halpern to attend training on science communications at the University of California, Santa Barbara.  
 It was there I learned about Nancy Baron’s work “[Escape from the Ivory Tower](https://islandpress.org/books/escape-ivory-tower)”. I became convinced that it was crucial for us to escape the ivory tower if science was to inform better policies and decisions about the environment. I thought I should try to do more scicomm.  
 
 The course was a lot about media interviews. I did a mock interview with an actual journalist from Scientific American, and failed badly. I felt that if this was what scicomm was about, it definitely wasn’t for me.
@@ -56,7 +56,7 @@ Things changed when I came to the Australian Rivers Institute and I started to i
 
 At ARI I set up the institute's blog and twitter feed (where I also do 10s of blogs per year and edit many more). I would help my colleagues write blogs about their science papers in a more accessible form. And I found I really enjoyed it.  
 
-I also learned there never was an ivory tower at ARI. Everyone was doing such great applied work, such as that through the National Environmental Science Program, where they were working directly with stakeholders to set science priorities and do the research that was needed.  
+I also learned there never was an ivory tower at ARI. Everyone was doing such great applied work, such as that the work Stuart Bunn and Michele Burford do with the National Environmental Science Program. Under this funding they are working directly with stakeholders to set science priorities and do the research that was needed.  
 
 That really changed my perspective on scicomm, it wasn’t just about interviews with journalists, it could be more targeted, directly speaking to the people that needed the research the most.  
 
