@@ -1,11 +1,11 @@
 ---
-title: Generalized Linear Models: The elegance of the Link
+title: Generalized Linear Models understanding the link function
 layout: default
 category: rstats
 published: TRUE
 ---
 
-Generalized Linear Models: The Elegance of the Link
+Generalized Linear Models: understanding the link function
 =================================================
 
 Generalized Linear Models ('GLMs') are one of the most useful modern
@@ -103,7 +103,8 @@ data. Let's see what that looks like:
     hist(x1, xlim = c(0, 25), seq(0, 25, by = 1))
     hist(x10, xlim = c(0, 25), seq(0, 25, by = 1))
 
-![](/images/beauty-of-the-glm-link_files/figure-markdown_strict/unnamed-chunk-2-1.png)
+![](/images/beauty-of-the-glm-link_files/figure-markdown_strict/unnamed-chunk-2-1.png)  
+
 
 So the data drawn from the poisson with `lambda = 1` are concentrated
 near zero and strongly skewed (not very Normal). The data with
@@ -132,7 +133,7 @@ covariates as variables in a simple linear equation, after all that is
 what we do with linear regression (and [general linear
 models](http://www.seascapemodels.org/rstats/2018/01/19/intro-to-glms.html)):
 
-$$y\_{i} = \\alpha + \\beta x\_{i}}$$
+![img](http://latex.codecogs.com/svg.latex?y_%7Bi%7D%3D%5Calpha%2B%5Cbeta%2Ax_%7Bi%7D)
 
 Let's generate some such data ourselves. We will assume pollution is
 measured on a zero to one (low to high) scale, that the mean number of
@@ -149,9 +150,11 @@ to simulate some data to practice with:
     x <-  seq(0, 1, length.out = n) #pollution levels
     ymean <- alpha + beta*x
     plot(x, ymean, type = 'l', xlab = "Pollution level", ylab = "Number of fish counted")
-    abline(h = 0, lty = 2, lwd = 2)
+    abline(h = 0, lty = 2, lwd = 2)  
 
-![](/images/beauty-of-the-glm-link_files/figure-markdown_strict/unnamed-chunk-3-1.png)
+
+![](/images/beauty-of-the-glm-link_files/figure-markdown_strict/unnamed-chunk-3-1.png)  
+
 There is something odd about this model: we are predicting negative fish
 (on average) for pollution levels over 0.5.
 
