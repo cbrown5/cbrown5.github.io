@@ -30,6 +30,8 @@ GLMs extend 'General Linear Models' (confusing names I know), read [this
 post first if you are not yet familiar with General Linear
 Models](http://www.seascapemodels.org/rstats/2018/01/19/intro-to-glms.html).
 
+Thanks is due to Brad Biggerstaff for emailing some errors in my original post (which I've updated and hopefully fixed 19/10/2018). 
+
 Choosing the right distribution for your data
 ---------------------------------------------
 
@@ -235,7 +237,7 @@ of the samples gets smaller as the mean gets smaller.
 The beauty of the link: combining linear models with bespoke distributions
 --------------------------------------------------------------------------
 
-In the real world, you will have the the sample points, but not the
+In the real world, you will have the sample points, but not the
 'true' mean. In the example above we just made up the true mean
 ourselves. In the real world Nature provides the 'truth' about how
 pollution impacts fish abundance and the best we can do is take as many
@@ -264,16 +266,8 @@ zero. If you use the identity link, which is basically no link function,
 your model will be linear, not log-linear, so your slope estimate will
 once again be additive.
 
-Technically we would say we fitted a *Generalized Linear Model with
-Poisson errors and a log link function*. We talk about Poisson errors
-(not Poisson data), because it is the left over variation after we fit
-the model (AKA the errors or residuals) that we are assuming is Poisson
-distributed.
-
-The model actually doesn't make any assumptions about how the raw data
-are distributed, so long as they are integers and non-negative. Note
-that the data can contain zeros, but the mean of the Poisson is always
-&gt;0.
+Technically we would say we fitted a *Poisson Generalized Linear Model with a log link function*. So the model's predictions for the data will be Poisson distributed about its estimate for the mean. Note
+that the data can contain zeros, but the mean of the Poisson is always &gt;0.
 
 So what do the coefficients mean? Remember the coefficients are on the
 log scale. So the mean abundance at a pollution level of zero =
@@ -301,16 +295,14 @@ You can see the fitted line falls close to the 'true' line, and the
 standard errors are pretty tight around our best estimate.
 
 The fitting algorithm itself is attempting the maximise the
-log-likelihood of the sample mean given the observations (in technical
+log-likelihood of the observations given the mean (in technical
 speak). You can read [more about likelihoods
 here](http://www.seascapemodels.org/rstats/2018/04/13/how-to-use-the-AIC.html).
 
 It is also worth noting that we still need to do assumption checks, like
-we would for a regression with normal errors. That is we should check
-that the residuals are Poisson distributed and that the residual
-variance approximately equals the mean.
-
-A cool way to check assumptions of the Poisson model is to use
+we would for a regression with normal errors. For instance, we can check the model's residuals
+(the difference between the data and the model's predicted values) to see that the residual
+variance approximately equals the mean. A cool way to check assumptions of the Poisson model is to use
 'rootograms', look it up.
 
 The beauty of the link: combining linear models with bespoke distributions to describe natural processes
@@ -338,7 +330,7 @@ So our mathematically convenient link function actually ended up being a
 better description of the natural process.
 
 The effort to use a non-negative model also forced us to think about
-using a more appropriate distribution for the model's errors: the
+using a more appropriate distribution for the data: the
 Poisson rather than the Normal. The Poisson has the variance increasing
 with the mean.
 
@@ -347,8 +339,7 @@ increases in the variance in situations where we count more. Counts near
 zero will naturally have low variance, because they are constrained by
 zero, whereas higher counts will naturally have a greater variabilty.
 
-You can also relax the assumption of mean = variance with other GLM
-error distributions like the negative binomial.
+You can also relax the assumption of mean = variance with other GLM distributions like the negative binomial.
 
 It turns out that proper models of variance are crucial for [getting the
 standard-errors right, and so crucial for detecting real effects over
@@ -360,7 +351,7 @@ You might spuriously attribute differences between groups from high
 counts to some covariate, but the difference is actually just natural
 variation. Conversely, you might miss differences between groups with
 low counts, because a smaller difference at low counts should actually
-be statistically signficant.
+be statistically significant.
 
 The increased power we get to detect differences at low counts with a
 GLM over a regression happens because it is the multiple of the
