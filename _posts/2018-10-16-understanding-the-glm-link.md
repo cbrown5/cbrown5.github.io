@@ -30,7 +30,7 @@ GLMs extend 'General Linear Models' (confusing names I know), read [this
 post first if you are not yet familiar with General Linear
 Models](http://www.seascapemodels.org/rstats/2018/01/19/intro-to-glms.html).
 
-Thanks is due to Brad Biggerstaff for emailing some errors in my original post (which I've updated and hopefully fixed 19/10/2018). 
+Thanks is due to Brad Biggerstaff for emailing some errors in terminology in my original post (which I've updated and hopefully fixed 19/10/2018). 
 
 Choosing the right distribution for your data
 ---------------------------------------------
