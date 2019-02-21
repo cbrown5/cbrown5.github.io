@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Data wrangling visualisation and spatial analysis: R Workshop</title>
+
+<script src="data-wrangling-spatial-course_files/jquery-1.12.4/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="data-wrangling-spatial-course_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="data-wrangling-spatial-course_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="data-wrangling-spatial-course_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="data-wrangling-spatial-course_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="data-wrangling-spatial-course_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="data-wrangling-spatial-course_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="data-wrangling-spatial-course_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="data-wrangling-spatial-course_files/navigation-1.1/tabsets.js"></script>
+<link href="data-wrangling-spatial-course_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="data-wrangling-spatial-course_files/highlightjs-9.12.0/highlight.js"></script>
+<script src="data-wrangling-spatial-course_files/htmlwidgets-1.0/htmlwidgets.js"></script>
+<link href="data-wrangling-spatial-course_files/leaflet-0.7.7/leaflet.css" rel="stylesheet" />
+<script src="data-wrangling-spatial-course_files/leaflet-0.7.7/leaflet.js"></script>
+<link href="data-wrangling-spatial-course_files/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<link href="data-wrangling-spatial-course_files/leaflet-label-0.2.2/leaflet.label.css" rel="stylesheet" />
+<script src="data-wrangling-spatial-course_files/leaflet-label-0.2.2/leaflet.label.js"></script>
+<script src="data-wrangling-spatial-course_files/Proj4Leaflet-0.7.2/proj4-compressed.js"></script>
+<script src="data-wrangling-spatial-course_files/Proj4Leaflet-0.7.2/proj4leaflet.js"></script>
+<script src="data-wrangling-spatial-course_files/leaflet-binding-1.1.0/leaflet.js"></script>
+<script src="data-wrangling-spatial-course_files/leaflet-providers-1.0.27/leaflet-providers.js"></script>
+<script src="data-wrangling-spatial-course_files/leaflet-providers-plugin-1.1.0/leaflet-providers-plugin.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Data wrangling visualisation and spatial analysis: R Workshop</h1>
+
+</div>
+
+
+<p>Dr Chris J. Brown (Griffith University, <a href="mailto:chris.brown@griffith.edu.au">chris.brown@griffith.edu.au</a>, Twitter: <span class="citation">@bluecology</span>)</p>
+<p>Professor David Schoeman (University of the Sunshine Coast, <a href="mailto:dschoema@usc.edu.au">dschoema@usc.edu.au</a>)</p>
+<p>Professor Anthony J. Richardson (The University of Queensland and CSIRO, <a href="mailto:a.richardson@maths.uq.edu.au">a.richardson@maths.uq.edu.au</a>)</p>
+<p>Dr Bill Venables (The University of Queensland and CSIRO, Honorary Research Fellow, <a href="mailto:Bill.Venables@gmail.com">Bill.Venables@gmail.com</a>)</p>
+<p>© 2019 Chris J. Brown, David Schoeman, Anthony J. Richardson, Bill Venables</p>
+<div id="notes-for-this-online-content" class="section level3">
+<h3>Notes for this online content</h3>
+<p>These notes were created for an <strong>R</strong> Workshop, held at The University of Queensland 8<sup>th</sup> February 2019. But feel free to use them to teach yourself or others, they are self explanatory. If you use the notes, we’d love to hear about it on <a href="mailto:chris.brown@griffith.edu.au">email</a> or <a href="https://twitter.com/bluecology">Twitter</a>.</p>
+<p>You can <a href="/data/spatial-tidyverse-data-for-course.zip">download the data for this course here</a> as a zip file (< 1 Mb file).</p>
+<p>The course will take a day or more to complete (our workshop was 1 day, but we skipped a few sections).</p>
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>The aim of today’s course is to train you in data wrangling, visualisation, spatial analysis and mapping. We’re going to focus on some popular packages for these tasks, many of which are drawn from a group of packages known as the ‘tidyverse’.</p>
+<p>We’ll get into the details of the tidyerse and other packages later, but just for now know they are very useful tools for a whole range of activities we commonly need to do as quantitative scientists, including combing different data-sets, error checking, stats, creating publication quality graphs and creating interactive maps.</p>
+<p>We’re aiming to give you a realistic experience, so today’s course will be based around a particular project that requires wrangling data, building up analysis and creating maps.</p>
+<div id="now-just-imagine" class="section level2">
+<h2>Now just imagine…</h2>
+<p>You’re close to finishing your PhD on plankton ecology and just need to do one final chapter. You’re supervisor isn’t being much help (he’s off on a global trek promoting his new book).</p>
+<p>You’re at the International Plankton Symposium (IPS2020) and you gather the courage to talk to Professor Calanoid, your academic hero. After enduring a long rant about Professor Salp’s plenary talk (“she’s just a backboneless filter feeder who doesn’t do any real research herself”), Prof Calanoid mentions that she’s read your first PhD paper on zooplankton biogeography.</p>
+<p>Prof Calanoid was impressed with the extent of <strong>R</strong> analysis in your biogeography paper and goes onto suggest you collaborate on a new database she is ‘working with’.</p>
+<p>The database has extensive samples of copepod richness throughout Australia’s oceans and the Southern Ocean too. Prof Calanoid has a hypothesis - that like many organisms, copepod species richness (just the number of unique species) will be higher in warmer waters than cooler waters. But she needs help sorting out the data and running some stats.</p>
+<p>It will be a super easy paper for you, just do some of your <strong>R</strong> stuff and you will be a coauthor. It will likely be published in the top journal, The Nature of Plankton.</p>
+<p>Of course, if you do this job she will support your fellowship application to the International Plankton Research Insitute.</p>
+<p>All you have to do is sort out the copepod data, match it to ocean temperature data and run some stats to test this hypothesis.</p>
+<p>Prof Calanoid also wants you to make some flashy graphs to put in the paper, and make an interactive map of the data that they can share with their funders.</p>
+<p>Oh and time is short, this is an open-access database, so Prof Calanoid needs this done in the next 3 weeks so that she can submit a paper on it before Professor Salp does. So better drop all your other commitments.</p>
+</div>
+<div id="the-copepod-example-data" class="section level2">
+<h2>The copepod example data</h2>
+<p>Professor Calanoid sends you the data files. The spreadsheet <code>copepods-raw.csv</code> has measurements of copepod species richness from around Australia. Copepods are a type of zooplankton, perhaps the most abundant complex animals on the planet and an important part of ocean food-webs. Prof Calanoid has also sent you some other data, but has not explained what that is for yet. You’ll have to figure that out.</p>
+<p>Copepod species were counted using samples taken from a Continuous Plankton Recorder. The CPR was towed behind ‘ships of opportunity’ (including commercial and research vessels). ‘Silks’ run continuously through the CPR and the plankton are trapped onto the silks, kind of like a printer that runs all day and night to record plankton in the ocean.</p>
+<p>(The data we’ve given you are in fact modified from real data, provided by Professor Ant Richardson. Ant runs a plankton lab that is collecting and processing this data from a program called AusCPR, find out more <a href="http://imos.org.au/facilities/shipsofopportunity/auscontinuousplanktonrecorder/">here</a>.</p>
+<p>So Prof Calanoid’s data is what we’ll work with today. We’ve tried to make this as realistic a learning experience as possible. So be ready to face some errors in the data from Prof Calanoid!</p>
+<p>So now we’re almost ready to start the course. But before we get started, there are a few technical things you need to know about how we will use <strong>R</strong> today.</p>
+<div id="r-versions-and-packages-required" class="section level3">
+<h3>R versions and Packages required</h3>
+<p>We’re going to assume you’re using the lastest version of <strong>R</strong> (3.5.2) and in the course we will use the RStudio editor.</p>
+<p>To work through these notes you will need to install the add-on packages <code>readr</code>, <code>tidyr</code>, <code>ggplot2</code> and <code>dplyr</code>. Or you can just get the package <code>tidyverse</code> which has these and more. You will also need <code>maps</code>, <code>raster</code>, <code>leaflet</code>, <code>RColorBrewer</code> and <code>mgcv</code>.</p>
+</div>
+<div id="data" class="section level3">
+<h3>Data</h3>
+<p>We’ve provided all the data from Professor Calanoid in a sub-folder <code>data-for-course</code> (if you are looking at this on my blog, you’ll need to download, rename and <a href="/data/spatial-tidyverse-data-for-course.zip">unzip the datafile</a>). The easiest way to start is just to open the file <code>data wrangling and spatial course.r</code> with Rstudio and start coding there.</p>
+<p>If Rstudio is already open when you open the script, then don’t forget to set the working directory with <code>setwd()</code> or under the ‘Session’ menu.</p>
+<p>If you make your own scripts, you should save them with the data folder as a subfolder and everything should work fine.</p>
+</div>
+<div id="your-knowledge-of-r" class="section level3">
+<h3>Your knowledge of R</h3>
+<p>This isn’t an absolute beginner course, so we going to assume you have some knowledge of <strong>R</strong> already. If you are an absolute beginner, then you should take our other course.</p>
+<p>We will assume you have at least basic understanding of how <strong>R</strong> works (e.g. scripts, console, how to access data and what a ‘package’ is). As a guide you should already be able to read data into <strong>R</strong> using <strong>R</strong> code (ie not using the menus in Rstudio) and create some basic plots.</p>
+<p>The code in these notes is however complete, so you can run this entire course successfully without having to ‘know’ anything. Though it will be better for your own learning if you type the code out yourself.</p>
+<p>If you get an error, well done! That is a chance to learn for the real world. So ask one of us for help. And if you don’t understand something, also don’t be afraid to just ask one of us for help.</p>
+</div>
+</div>
+<div id="section" class="section level2">
+<h2></br></h2>
+<p></br></p>
+</div>
+</div>
+<div id="data-wrangling-and-plotting-with-tidyverse" class="section level1">
+<h1>4.1 Data wrangling and plotting with tidyverse</h1>
+<div id="introduction-1" class="section level2">
+<h2>Introduction</h2>
+<div id="whats-the-deal-with-data-wrangling" class="section level3">
+<h3>What’s the deal with ‘data wrangling’</h3>
+<p>The modern quantitative scientist has to know a lot more about working with databases and data analysis than in the past. Scientists are increasingly integrating a large variety of data-sets into their work. These analyses require matching data-sets that may have been entered in different ways, or cover different temporal and spatial scales.</p>
+<p>All of these procedures can be termed data wrangling. In this course we are going to learn how <strong>R</strong> can be used for data wrangling. We’re going to work through a ‘realistic’ case-study.</p>
+<p>As expert <strong>R</strong> users we have often been faced with situations where a collaborator has asked us to ‘just run some numbers’ on a dataset, and be rewarded with an ‘easy’ paper.</p>
+<p>Easy is often far from the truth. And the time-consuming part isn’t the stats. It’s error checking and getting it into the right shape that takes a lot of time. And then often we need to match up the new data to existing data-sets, such as when we want to know whether the spatial distribution plankton correlates with ocean temperature.</p>
+<p>If you have to deal with large data-sets you may realise that data wrangling can take a considerable amount of time and skill with spreasheets programs like excel. Data wrangling is also dangerous for your analysis- if you stuff something up, like accidentally deleting some rows of data, it can affect all your results and the problem can be hard to detect.</p>
+</div>
+<div id="why-data-wrangling-in-r" class="section level3">
+<h3>Why data wrangling in R?</h3>
+<p>It makes sense to do your data wrangling in <strong>R</strong>, because today <strong>R</strong> is the leading platform for environmental data analysis. You can also create all of your visualisations there too. <strong>R</strong> is also totally <a href="http://cran.r-project.org/"><strong>free</strong></a>. <strong>R</strong> is a powerful language for data wrangling and analysis because</p>
+<ol style="list-style-type: decimal">
+<li>It is relatively fast to process commands<br />
+</li>
+<li>You can create repeatable scripts<br />
+</li>
+<li>You can trace errors back to their source<br />
+</li>
+<li>You can share your wrangling scripts with other people<br />
+</li>
+<li>You can conveniently search large databases for errors<br />
+</li>
+<li>Having your data in <strong>R</strong> opens up a huge array of cutting edge analysis tools.</li>
+</ol>
+<p>A core principle of science is repeatability. Creating and sharing your data scripts helps you to fulfill the important principle of repeatability. It makes you a better scientist and can also make you a more popular scientist: a well thought out script for a common wrangling or analysis problem may be widely used by others. In fact, these days it is best practice to include your scripts with publications.</p>
+<p>Most statistical methods in <strong>R</strong> require your data is input in a certain ‘tidy’ format. This course will cover how to use <strong>R</strong> to easily convert your data into a ‘tidy’ format, which makes error checking and analysis easy. Steps include restructuring existing datasets and combining different data-sets. We will also create some data summaries and plots. We will use these data visualisations to check for errors and perform some basic analysis. Just for fun, we will finish by creating a web based map of our data.</p>
+<p>The course will be useful for people who want to explore, analyse and visualise their own field and experimental data in <strong>R</strong>. The skills covered are also a useful precusor for management of very large datasets in <strong>R</strong>.</p>
+</div>
+<div id="the-main-principles-i-hope-you-will-learn-are" class="section level3">
+<h3>The main principles I hope you will learn are</h3>
+<ul>
+<li>Data wrangling in <strong>R</strong> is safe, fast, reliable and repeatable<br />
+</li>
+<li>Coding aesthetics for readable and repeatable code<br />
+</li>
+<li>How to perform simple analyses that integrate across different data-sets</li>
+</ul>
+</div>
+</div>
+<div id="copepod-data" class="section level2">
+<h2>Copepod data</h2>
+<p>Remember Prof Calanoid? Well let’s get started with that copepod richness data. In this part of the course we are going to clean it up and run some basic analyses.</p>
+<p>Fire up RStudio, start a new <strong>R</strong> script (just click the symbol with the little green plus) and save the script it in the same folder as where you have ‘data-for-course/’ as a sub-folder. You might like to call your script <code>copepod-wrangling.R</code>.</p>
+<p>We always start our scripts with some comments that include a description of goals, our name and date. So do that too.</p>
+</div>
+<div id="loading-data" class="section level2">
+<h2>Loading data</h2>
+<p>Now let’s look at that first spreadsheet Prof Calanoid sent us. We don’t know the data well, and Prof Calanoid hasn’t told us much about it (or sent us any meta-data on what it all means), so we will want to do some thorough checks and visuals before we run any analyses.</p>
+<p>This mirrors situations that all of us (Dave, Ant, Bill and Chris) of us have often come across. We are given data by collaborators, so we need to check and do some visuals on it before we do the analysis, to make sure we understand it well and avoid errors.</p>
+<p>It is common to see people hired to do an analysis of a ‘complete’ data-set, but it ends up taking them the entire contract just to sort out the data, which weren’t really complete after all. <strong>R</strong> can help speed up this process, so the analysis (what you’re ultimately paid to do) gets done.</p>
+<p>We will load in the data using a package from the tidyverse called <code>readr</code>. <code>readr</code> is handy because it does extra checks on data consistency over and above what the base <strong>R</strong> functions do. Data frames imported by <code>readr</code> also print in summary form by default. Let’s see how:</p>
+<pre class="r"><code>library(readr)
+dat_input &lt;- read_csv(&quot;data-for-course/copepods_raw.csv&quot;)
+dat_input</code></pre>
+<pre><code># A tibble: 5,313 x 11
+   silk_id segment_no latitude longitude sample_time_utc project route
+     &lt;int&gt;      &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;
+ 1       1          1    -28.3      154. 26/6/09 22:08   AusCPR  BRSY
+ 2       1          5    -28.7      154. 26/6/09 23:12   AusCPR  BRSY
+ 3       1          9    -29.0      154. 27/6/09 0:17    AusCPR  BRSY
+ 4       1         13    -29.3      154. 27/6/09 1:22    AusCPR  BRSY
+ 5       1         17    -29.7      154. 27/6/09 2:26    AusCPR  BRSY
+ 6       1         18    -29.8      154. 27/6/09 2:43    AusCPR  BRSY
+ 7       1         26    -30.4      153. 27/6/09 4:52    AusCPR  BRSY
+ 8       1         30    -30.7      153. 27/6/09 5:57    AusCPR  BRSY
+ 9       1         33    -31.0      153. 27/6/09 6:45    AusCPR  BRSY
+10       1         37    -31.3      153. 27/6/09 7:50    AusCPR  BRSY
+# ... with 5,303 more rows, and 4 more variables: vessel &lt;chr&gt;,
+#   meanlong &lt;dbl&gt;, region &lt;chr&gt;, richness_raw &lt;int&gt;</code></pre>
+<p>(if you want to print the <em>entire</em> data frame, then use this code: <code>data.frame(dat_input)</code> to turn it back into a base <strong>R</strong> data frame).</p>
+<p>In this data you will see a <code>silk_id</code> column, which is just the ID for each of the silks, onto which plankton are recorded. For processing, silks are divided into segments, so you will also see a <code>segment_no</code> column. The other columns are pretty self explanatory.</p>
+</div>
+<div id="initial-checks-for-errors-and-visuals" class="section level2">
+<h2>Initial checks for errors and visuals</h2>
+<p>It’s a good idea to do some visuals with new data to check they are in shape.</p>
+<p>We will be learning <code>ggplot2</code> for graphics in this course, it is part of the tidyverse and has some pretty powerful tools for quickly creating plots.</p>
+<p>You might like to download RStudio’s <a href="https://www.rstudio.com/wp-content/uploads/2015/08/ggplot2-cheatsheet.pdf">ggplot cheatsheet</a> for reference.</p>
+<div id="checks-on-the-coordinates" class="section level3">
+<h3>Checks on the coordinates</h3>
+<p>Now we are ready to make a graph. Type this into the console:</p>
+<pre class="r"><code>library(ggplot2)
+ggplot(dat_input, aes(x = longitude, y = latitude)) +
+  geom_point()</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Which just shows the location of every segment. You can kind of see the CPR surveys wrapping around the coast of Australia.</p>
+<p>The function <code>ggplot()</code> creates a graph, rather than returning data like the other ‘normal’ functions You can read the above line as: Take <code>dat_input</code>, create an <code>aes</code> (aesthetic) where the x-axis is longitude and the y-axis is latitude, finally add (<code>+</code>) a points ‘geom’.</p>
+<p>The ‘gg’ in <code>ggplot</code> stands for grammar of graphics. The intent of this package is to turn a sequence of functions into a readable sentence, which is why we separate two different functions (<code>ggplot()</code> and <code>geom_point()</code>) with a <code>+</code>. You can combine different functions into different sequences to create different types of graphics.</p>
+<p>Now, let’s plot lines instead of points. We will add a <code>group</code> command to make sure lines from different ‘silks’ aren’t connected (try the below without the <code>group = silk_id</code> if you want to see what we mean).</p>
+<pre class="r"><code>ggplot(dat_input, aes(x = longitude, y = latitude,
+                group = silk_id)) +
+  geom_line()</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-5-1.png" width="672" /></p>
+<p>We can also colour the silk IDs:</p>
+<pre class="r"><code>ggplot(dat_input, aes(x = longitude, y = latitude,
+                group = silk_id, color = factor(silk_id))) +
+  geom_line() +
+  theme(legend.position=&quot;none&quot;)</code></pre>
+<p>We’ve added a <code>theme</code> here to remove the legend. We did this because there are so many silks the legend ends up WAY bigger than the plot itself. We also wrapped <code>factor</code> around <code>silk_id</code> in the colour command, so that silk IDs (which are numbers) would be treated as discrete color levels, rather than a continuous measure.</p>
+<p>Once again, you can try the above with the <code>factor</code> to help your understanding.</p>
+<p>So far so good, now let’s look at the richness data, our main variable for analysis</p>
+</div>
+<div id="checks-on-richness" class="section level3">
+<h3>Checks on richness</h3>
+<p>Let’s do our plot of locations again, but this time colour by copepod species richness:</p>
+<pre class="r"><code>ggplot(dat_input, aes(x = longitude, y = latitude, color = richness_raw)) +
+  geom_point()</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Looks the same as before, but note the legend, which is now coloured by species richness. One of the smart things that <code>ggplot2</code> does is automatically scale axes based on the range of all the data we’ve plotted. This means our locations always fit nicely within the space of the map.</p>
+<p>The colours are also an ‘axis’, note that ggplot has them going to all the way to about -1000. This is a bit odd, and suggests that there are richness values that are close to -1000 (though we might not be able to see them under the other points). Obviously we can’t have negative species richness values, that makes no sense.</p>
+<p>Let’s try another plot of latitude versus richness to see if we can figure out what is going on.</p>
+<pre class="r"><code>ggplot(dat_input, aes(x = latitude, y = richness_raw)) +
+  geom_point()</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Ah, so most of the data are smallish (&lt;100) positive values. But there are maybe three values near -1000. Glad we found those outliers before we ran any stats for Prof Calanoid. The results would’ve been junk and we don’t want to embarrass ourselves in front of Prof Calanoid.</p>
+</div>
+</div>
+<div id="correcting-errors" class="section level2">
+<h2>Correcting errors</h2>
+<p>Let’s use some <strong>logical indexing</strong> to learn more about these outliers before we ask Prof Calanoid about them.</p>
+<pre class="r"><code>dat_input$richness_raw &lt; 0</code></pre>
+<p>The above command just returns TRUE/FALSE for rows have values less than (or greater than) zero. We can fold this back into a call to the data-frame to see what those rows are:</p>
+<pre class="r"><code>subset(dat_input, richness_raw &lt; 0 )</code></pre>
+<p>Ah, so they are all <code>-999</code>. In some programs, this value indicates missing data. Let’s email Prof Calanoid and ask about them.</p>
+<p>Prof Calanoid fires an email straight back, apologising, and telling you that these are a hang-over from old software their assistant used and should actually be <code>richness_raw = 0</code>.</p>
+<p>So what we need to do now is change all the <code>-999</code> to <code>0</code>.</p>
+<p>Perhaps the most familiar way for you is to use a spreadsheet editor to fix the -999. But this is an <strong>R</strong> course, so we will use R!</p>
+<p>From <strong>R</strong> you could do this:</p>
+<pre class="r"><code>dat_corrected &lt;- edit(dat_input)</code></pre>
+<p>Then make your changes in the editor that pops up and it will save the new data frame to <code>dat_corrected</code>.</p>
+<p>But that is slow and tedious with large datasets. It is also not repeatable.</p>
+<p>What we want to do is use <strong>R</strong> to identify the mistakes, then correct them and create a new data frame. So let’s use our logical indexing again:</p>
+<pre class="r"><code>dat &lt;- within(dat_input, {
+  richness_raw[richness_raw &lt; 0] &lt;- 0
+})</code></pre>
+<p>We copied <code>dat_input</code> to a new dataframe <code>dat</code> and corrected the <code>-999</code> in <code>dat</code>.</p>
+<p>Let’s have a look at our graphs again:</p>
+<pre class="r"><code>ggplot(dat, aes(x = longitude, y = latitude, color = richness_raw)) +
+  geom_point(size = 0.4)</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-13-1.png" width="672" /></p>
+<p>Looks better (note the scale of the colour axis).</p>
+<p>You might want to use logical indexing to double check all the values are really positive. This command will ask if any value is &lt;0:</p>
+<pre class="r"><code>any(dat$richness_raw&lt;0)</code></pre>
+<pre><code>[1] FALSE</code></pre>
+<p>At this point we might want to save the ‘corrected’ data frame as an external file, then only work with that one in the future:</p>
+<pre class="r"><code>write_csv(dat, &quot;data-for-course/copepods-corrected.csv&quot;)</code></pre>
+<p>But we should still keep the code above we used to correct it. Why? If someone ever wants to repeat what we’ve done, they can follow our code and correct the mistakes too. What would happen if it turns out the -999 were instead meant to be <code>NA</code> (missing data) rather than <code>0</code>? Well a future analyst could easily see we used <code>0</code> instead of <code>NA</code>.</p>
+<p>Let’s do the latitude plot too. This is really a key plot for us, because we know that temperatures tend to get warmer at lower latitudes. So, if Prof Calanoid’s hypothesis is right, we are expecting to see here a decline in richness at higher latitudes:</p>
+<pre class="r"><code>ggplot(dat, aes(x = latitude, y = richness_raw)) +
+  geom_point()</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-16-1.png" width="672" /></p>
+<p>Something looks odd with this graph (and the map too), because we expected a strong gradient in richness with latitude. Well, at least we have some results.</p>
+</div>
+<div id="saving-ggplots-as-a-png-file" class="section level2">
+<h2>Saving ggplots as a png file</h2>
+<p>Let’s save this figure and email it to Prof Calanoid to get their opinion. At least they will be happy to hear we are making progress:</p>
+<pre class="r"><code>cope_graph &lt;- ggplot(dat, aes(x = latitude, y = richness_raw)) +
+  geom_point()
+ggsave(&quot;Richness-latitude.png&quot;, cope_graph)</code></pre>
+<p><code>ggsave</code> is just a function for saving ggplots. Try <code>?ggsave</code> for other options, like changing the figure size, resolution, or file type. The only other trick we used above was to save the ggplot to a variable name, <code>cope_graph</code>. This meant we could drop that variable name into <code>ggsave</code>, which identifies which figure we want to save.</p>
+</div>
+<div id="introduction-to-dplyr-package" class="section level2">
+<h2>Introduction to dplyr package</h2>
+<p><code>dplyr</code> stands for ‘data pliers’. Along with <code>tidyr</code> it is one of the most useful packages for getting your data into shape for analysis. <code>dplyr</code> is part of the tidyverse so it plays very nicely with <code>ggplot2</code> and <code>readr</code>.</p>
+<p>One of the nice things about <code>dplyr</code> is that the core code isn’t written in R, it is written in C++. This means it runs a lot faster than many of the base <strong>R</strong> functions. You won’t notice much difference today, but you will if you ever work with very large data-sets.</p>
+</div>
+<div id="dplyr-joins" class="section level2">
+<h2>dplyr joins</h2>
+<p>One thing <code>dplyr</code> is good at is joining data frames by matching columns. Try type <code>?inner_join</code> in your console and you will get a list of all the join types it supports. If you go further there are even extension packages, like <code>fuzzyjoin</code> that let you join on partial matches (but we won’t cover those today).</p>
+<p>Today we will just use <code>inner_join</code>. Below, the code will join <code>dat</code> to the <code>routes</code> data using columns with the same names to match by. It will keep all rows from <code>dat</code> where there are matching rows in <code>routes</code>, so if rows don’t match, they will be chucked out (use <code>left_join</code> if you want to keep rows in <code>dat</code> that don’t match too). <code>inner_join</code> will also <em>duplicate</em> rows if there are multiple matches (this potential to duplicate data is something we will come back to later).</p>
+<p>So learning about joins has given Prof Calanoid time to write back to us about the figure we sent. The results are junk as we suspected. Prof Calanoid has now explained that we need to standardize richness estimates, because silks from different routes have different sizes.</p>
+<p>Prof Calanoid had already provided the silk sizes in a file <code>Route-data.csv</code>, but had neglected to tell us we needed to use this for a standarisation (typical!). No worries though, we can use our join skills to match the routes data and silk sizes to our richness data and then the standarization will be easy right?</p>
+<pre class="r"><code>routes &lt;- read_csv(&quot;data-for-course/Route-data.csv&quot;)</code></pre>
+<p>Have a quick look at <code>routes</code> now to make sure you are happy with it. Then we will just use <code>inner_join</code> (making sure we check the number or rows stays the same):</p>
+<pre class="r"><code>dat_std &lt;- inner_join(dat, routes)
+nrow(dat)</code></pre>
+<pre><code>[1] 5313</code></pre>
+<pre class="r"><code>nrow(dat_std)</code></pre>
+<pre><code>[1] 6991</code></pre>
+<p>Um, how come the number rows has increased after the join?</p>
+<div id="dangerous-joins" class="section level3">
+<h3>Dangerous joins</h3>
+<p><strong>Joins are a very important but very dangerous data wrangling operation!</strong> You must always choose your join type carefully. For instance, <code>inner_join</code> vs <code>left_join</code> vs <code>full_join</code> will all give the same result for some datasets, but not others.</p>
+<p>Even after you think you know what you are doing, you still need to check the outcome. As we explained above, you can lose samples that don’t match, or duplicate samples that match multiple times. I (CB) have made (and thankfully corrected) this mistake many times, often because of small inconsistencies in the data I was provided, like when some site names have all lower case, and a handful have title case.</p>
+<p>We don’t say this to put you off joins, they are one of the most useful data wrangling tasks you can do in R, but just be careful.</p>
+<p>So let’s do a bit more of a thorough check of the routes data:</p>
+<pre class="r"><code>nrow(routes)</code></pre>
+<pre><code>[1] 28</code></pre>
+<pre class="r"><code>length(unique(routes$route))</code></pre>
+<pre><code>[1] 25</code></pre>
+<p>Oops. The routes data they gave us has duplicate entries. So let’s now check if duplicated routes have some matching data</p>
+<pre class="r"><code>idup &lt;- duplicated(routes$route)
+dup_routes &lt;- routes$route[idup]
+
+filter(routes, route %in% dup_routes)</code></pre>
+<pre><code># A tibble: 6 x 7
+  route project number_segments meanlat meanlong silk_area region
+  &lt;chr&gt; &lt;chr&gt;             &lt;int&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;int&gt; &lt;chr&gt;
+1 BRFI  AusCPR               14   -24.3     160.         2 East
+2 FRBO  AusCPR               47   -24.0     115.         2 West
+3 HOAN  SOCPR              1617   -52.7     133.         8 Southern Ocean
+4 BRFI  AusCPR               14   -24.3     160.         2 East
+5 FRBO  AusCPR               47   -24.0     115.         2 West
+6 HOAN  SOCPR              1617   -52.7     133.         8 Southern Ocean</code></pre>
+<p>Luckily the duplicated routes have the same matching variables (<code>silk_area</code> etc…), if they didn’t we’d have to go back to the data provider and find out which ones were correct. But since they are the same, we can just remove the duplicates. This is easy with a <code>dplyr</code> function <code>distinct()</code>, which selects distinct entries:</p>
+<pre class="r"><code>routes2 &lt;- distinct(routes)
+nrow(routes2)</code></pre>
+<pre><code>[1] 25</code></pre>
+<p>Now try the join again, and do a few checks to make sure it worked as expected.</p>
+<pre class="r"><code>dat_std &lt;- inner_join(dat, routes2)
+nrow(dat)</code></pre>
+<pre><code>[1] 5313</code></pre>
+<pre class="r"><code>nrow(dat_std)</code></pre>
+<pre><code>[1] 5313</code></pre>
+<pre class="r"><code>
+sum(dat$segment_no == dat_std$segment_no)</code></pre>
+<pre><code>[1] 5313</code></pre>
+<pre class="r"><code>plot(dat$segment_no, dat_std$segment_no)</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-24-1.png" width="672" /></p>
+<p>So the new and old dataframes have the same number of rows and the segment numbers are the same in the new and old data, which means <code>inner_join</code> has just appended on the new route variables and left the rest unchanged.</p>
+</div>
+</div>
+<div id="adding-new-variables" class="section level2">
+<h2>Adding new variables</h2>
+<p>Once we have a matching <code>silk_area</code> value for each sample, it is easy to add a new variable that is standardised richness. To do this we use <code>mutate</code> which just takes exisiting variables and calculates a new variable (or overwrites an existing one if we give it the same name). In addition to the standardised variables, we will also calculate the number of species per individual observed.</p>
+<pre class="r"><code>dat_std &lt;-  mutate(dat_std,
+                   region = factor(region, levels = c(&quot;East&quot;, &quot;West&quot;, &quot;Southern Ocean&quot;)),
+              richness = richness_raw/silk_area)</code></pre>
+<p>We’ve also made <code>region</code> a factor, which means we get to choose the order of the levels. This will be handy later.</p>
+<p>Ok, let’s plot standardized richness so we can send a new graph to Prof Calanoid:</p>
+<pre class="r"><code>ggplot(dat_std, aes(x = latitude, y = richness)) +
+  geom_point()</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-26-1.png" width="672" /></p>
+<p>Do you see a pattern now?</p>
+<p>We should also save the standardised data for use later:</p>
+<pre class="r"><code>write_csv(dat_std, &quot;data-for-course/spatial-data/copepods_standardised.csv&quot;)</code></pre>
+</div>
+<div id="styling-ggplot" class="section level2">
+<h2>Styling ggplot</h2>
+<p>This time we want to impress Prof Calanoid a bit more by sending a graph that looks a bit flashier. Changing the graph’s look can also help us better communicate the pattern. So we will learn about styling in ggplot2.</p>
+<p>To change the look of a ggplot, just keep using the <code>+</code> to add on new layers or change the theme. For instance, we can use a built in theme <code>bw</code> like this:</p>
+<pre class="r"><code>ggplot(dat_std, aes(x = latitude, y = richness, color = richness)) +
+  geom_point() +
+  theme_bw()</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-28-1.png" width="672" /></p>
+<p>Try <code>theme_classic()</code> if you want it to look like a regular <strong>R</strong> plot.</p>
+<p>We can go further and add axis labels, and choose our own colour scale (using the package <code>RColorBrewer</code>) like this:</p>
+<pre class="r"><code>library(RColorBrewer)
+
+ggplot(dat_std, aes(x = latitude, y = richness, color = richness)) +
+  geom_point() +
+  xlab(&quot;Latitude&quot;) +
+  ylab(&quot;Richness&quot;) +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  scale_color_gradientn(colours = brewer.pal(7,&quot;YlGn&quot;)) +
+  guides(color=guide_legend(title=&quot;Copepod richness&quot;))</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-29-1.png" width="672" /></p>
+<p>The <code>theme</code> commands change it to the BW theme first of all, then another <code>theme</code> command to modify the plot to remove the the grid lines. The commands are evaluated in order of appearance, so make sure <code>theme</code> goes after <code>theme_bw</code> otherwise we will just get the settings from <code>theme_bw</code> overwriting our changes (try it!).</p>
+<p>The bit about <code>element_blank()</code> is a peculiar ggplot command for getting rid of something we don’t want. Personally I (CB) can never remember this stuff, so I am always googling things like ‘remove grid ggplot’ to get the answers. This is common among professional programmers, so don’t worry if you do it too.</p>
+<p>The <code>scale_color_gradientn</code> just creates a continuous colour scale out of a discrete sequence of colours (RColorBrewer gives us just 7). Check out <a href="http://colorbrewer2.org/" class="uri">http://colorbrewer2.org/</a> for other ideas for colour palettes.</p>
+<p>The <code>guides</code> command is just there to let us change the colour legend title.</p>
+</div>
+<div id="graphics-with-stats-in-ggplot2" class="section level2">
+<h2>Graphics with stats in ggplot2</h2>
+<p>So our graph looks cleaner now, but what about adding a trend-line, so we can see if all the noise in Prof Calanoid’s data amounts to a real trend or not. Well one nice thing about ggplot is that it can add many different types of trend lines for quick visual assessment without having to think about building a model in R!</p>
+<p>We can just <code>+</code> a ‘smooth’ like this:</p>
+<pre class="r"><code>ggplot(dat_std, aes(x = latitude, y = richness, color = richness)) +
+  geom_point() +
+  geom_smooth() +
+  theme_bw()</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-30-1.png" width="672" /> The little message informs us that the spline is cubic regression spline (‘cs’) made with ‘gam’ (generalized additive model).</p>
+<p>We can be more picky about how the spline looks by specifying some additional options:</p>
+<pre class="r"><code>ggplot(dat_std, aes(x = latitude, y = richness, color = richness)) +
+  geom_point() +
+  geom_smooth(method = &quot;gam&quot;, formula = y ~ s(x, k = 5),
+              method.args = list(family = &quot;poisson&quot;)) +
+  theme_bw()</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-31-1.png" width="672" /></p>
+<p>So this time we’ve limited the degress of freedom of the spline, so it can’t be too ‘bendy’. We’ve also asked <code>gam</code> to use a quasi-Poisson distribution (default is Gaussian), because our data are discrete counts of the number of species.</p>
+<p>This is good for visual checking, but doesn’t tell us much about how the GAM performed. To do that we need to go back to the basic <strong>R</strong> code for building that model. For instance, we could build the above model like this:</p>
+<pre class="r"><code>library(mgcv)
+m1 &lt;- gam(richness ~ s(latitude, k = 5), data = dat_std,
+          family = &quot;poisson&quot;)
+plot(m1)
+summary(m1)</code></pre>
+<p>And so on, you can get all the stats you need from that to write up, but use ggplot to do the graphics, which is easier than trying to build them up from the basic code above yourself.</p>
+<p>So we send the results of our GAM to Prof Calanoid and we get the response:</p>
+<p>“The poisson model you use for your GAMs is clearly pretty bad and potentially misleading. It is very overdispersed, as such models often are. I would suggest changing to a negative binomial. The catch is you have to supply theta (the dispersion parameter). A good way to pick one is just to start with a trial value and adjust it until your deviance matches your df.residual fairly closely.”</p>
+<p>So we tried that and in this case negbin(theta = 1.548) does a pretty good job, and much more restrained than the poisson. It does make a difference. Let’s have a look:</p>
+<pre class="r"><code>deviance(m1)
+m1$df.residual
+m2 &lt;- gam(richness ~ s(latitude, k = 5), data = dat_std,
+          family = mgcv::negbin(theta=1.548))
+deviance(m2)
+m2$df.residual
+
+plot(m2)
+summary(m1)</code></pre>
+<p>Note the broader standard-errors, which reflect the increased uncertainty about the mean in the negative binomial. We’ll use the negative binomial in our ggplots from now on.</p>
+</div>
+<div id="multipanel-ggplots" class="section level2">
+<h2>Multipanel ggplots</h2>
+<p>ggplot isn’t limited to single panel plots. And its just as well, because we have a sneaking suspicion that Prof Calanoid might have neglected to tell us something else about the data.</p>
+<p>You might have noticed the CPR data covers both the East and West Coast of Australia, and the Southern Ocean. Well it would be fair to say that different ocean basins might have slightly different latitudinal patterns of richness.</p>
+<p>So let’s investigate patterns by different oceans. You may have noticed that their is a <code>region</code> variable in the <code>routes</code> data frame. Well that is joined into our standardized samples, so why don’t we start by just plotting the samples coloured by regions to check it out:</p>
+<pre class="r"><code>ggplot(dat_std, aes(x = longitude, y = latitude, group = region, color = region))+
+  geom_point()</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-34-1.png" width="672" /></p>
+<p>Looks like a good place to start. We could plot all the results, colouring by ocean basins like this:</p>
+<pre class="r"><code>ggplot(dat_std, aes(x = latitude, y = richness, color = region, group = region)) +
+  geom_point(size = 0.1) +
+  geom_smooth(method = &quot;gam&quot;, formula = y ~ s(x, k = 5),
+              method.args = list(family = mgcv::negbin(theta = 1.548))) +
+    theme_bw()</code></pre>
+<pre><code>Warning in newton(lsp = lsp, X = G$X, y = G$y, Eb = G$Eb, UrS = G$UrS, L =
+G$L, : Fitting terminated with step failure - check results carefully</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-35-1.png" width="672" /></p>
+<p>Notice that the use of <code>group = region</code> has meant that ggplot applies the smooth by regions too. Pretty handy, now we can see what looks like an interaction between latitude and East vs West. It also looks like the southern ocean pattern is a continuation of the West coast pattern.</p>
+<p>(I used <code>size</code> just to shrink the points so the smooths stand out).</p>
+<p>These results are pretty exciting because they suggest biogeographic breaks where the humps occur. If warm and cold water species mix at biogeographic breaks, then we might see a sudden jump in richness, as opposed to our original hypothesis that was there would be a steady increase in richness to warmer waters.</p>
+<p>However, when we email this plot to Prof Calanoid, she complains that the East and West data look too similar. Why might that be?</p>
+<p>Since this plot is a bit busy, it might help Prof Calanoid see these stunning results if we do ‘facets’ by regions.</p>
+<pre class="r"><code>ggplot(dat_std, aes(x = latitude, y = richness, color = richness)) +
+  geom_point() +
+  facet_grid(region~.) +
+  theme_bw()</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-36-1.png" width="672" /></p>
+<p><code>facet_grid</code> adds the facets. The <code>region ~.</code> simply means add regions in rows versus nothing (<code>.</code>) in columns. If we replacted the <code>.</code> with another category, like <code>project</code> it would create a grid with rows and columns. Try it yourself.</p>
+<p>It is pretty clear now that we have to be careful with this comparison, because there is no overlap in latitude between the Southern Ocean and the other regions.</p>
+<p>We can easily add the smoothers to our grid too:</p>
+<pre class="r"><code>psmooth &lt;- ggplot(dat_std, aes(x = latitude, y = richness, color = richness)) +
+  geom_point(size = 0.1) +
+  geom_smooth(method = &quot;gam&quot;, formula = y ~ s(x, k = 5),
+              method.args = list(family = mgcv::negbin(theta=1.548))) +
+  facet_grid(.~region) +
+    theme_bw()
+psmooth</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-37-1.png" width="672" /></p>
+<p>We wanted to compare the smooths across regions, so we’ve put regions all on one row this time. These have been called ‘super plots’ because you can do a quick visual check for interactive effects very easily using these kind of plots.</p>
+<p>And let’s just save that plot for Prof Calanoid</p>
+<pre class="r"><code>ggsave(&quot;Richness-lat-smoothers.png&quot;, psmooth,
+       width = 12, height = 4)</code></pre>
+<p>“Much better” she responds. “Interesting about your biogeographic breaks hypothesis too.”&quot;</p>
+<hr />
+<div id="convenience-and-frustration-with-ggplot2" class="section level3">
+<h3>Convenience and frustration with ggplot2</h3>
+<p>ggplot is great, because you can make quite complex plots very quickly. The key skills are (A) to understand that it is just layering different components and (B) how to structure your data frames for ggplot.</p>
+<p>ggplot likes long format data, so each variable should be in a single column. It wouldn’t work so well for instance if we had richness for different variables recorded in different columns.</p>
+<p>If get you competent at tidying your data frames in R, then getting decent ggplots quickly will become easy for you. Your plotting life will seem good until one day, you decide you want to change the colours, or the legend, or the order of panels or some other detail. Then very quickly you will find yourself bashing your head against your monitor in frustration (at least I do). That’s the thing about ggplot, its really convenient, until suddenly it isn’t. Some things that are a pain are:</p>
+<ul>
+<li><p>Customising themes or at least remembering how to do this (remember those grid lines)</p></li>
+<li><p>Getting colour palettes right</p></li>
+<li><p>Getting categorical variables in ordered the way you want, so facets or legends or axes are ordered the way you want (the default is just alphabetical).</p></li>
+<li><p>Putting the little (a), (b), (c) labels on the top of plots.</p></li>
+<li><p>ggplot facets won’t plot <strong>different types of variables</strong> for you, they are designed to plot different categories for the same variable.</p></li>
+</ul>
+</div>
+<div id="tips-for-handling-frustrating-ggplot2-situations" class="section level3">
+<h3>Tips for handling frustrating ggplot2 situations</h3>
+<ul>
+<li><p><a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">Download the cheatsheet</a></p></li>
+<li><p><a href="http://www.cookbook-r.com/Graphs/">Get the R graphics cookbook (most of it is in ggplot)</a></p></li>
+<li><p>Try packages with built in themes for scientific papers, like <code>cowplot</code>.</p></li>
+<li><p>Design your own custom themes and then always use them.</p></li>
+<li><p>Just google things like ‘remove legend from ggplot’ (My personal favourite). Stackoverflow almost always will provide you with an answer</p></li>
+</ul>
+<p>If you are trying to make panels for different variables, then look into the package <code>gridExtra</code>. It lets you arrange ggplot panels into a single page and print it.</p>
+</div>
+<div id="plots-that-ggplot-makes-it-hard-for-you-to-do-on-purpose" class="section level3">
+<h3>Plots that ggplot makes it hard for you to do on purpose</h3>
+<p>ggplot has opinions about the types of plots you should and shouldn’t do (see it adds gridlines as a default!).</p>
+<p>ggplot doesn’t like plotting different variables on the same panel. It can be done (using the <code>data</code> argument to geoms like <code>geom_line</code>), and sometimes is desirable, for instance, if you want to plot model predictions over data points. Don’t even think about trying y-y plots (you shouldn’t use them anyway, they are misleading). If you are thinking about a y-y plot you probably want to do a correlation or a facet instead.</p>
+<hr />
+</div>
+</div>
+<div id="summaries-with-dplyr" class="section level2">
+<h2>Summaries with dplyr</h2>
+<p>All the plots and pretty smooths are nice, but Prof Calanoid wants us to know that she is a hard numbers person (maybe that’s why she seems so obsessed with comparing her H-index to Prof Salp’s H-index?). So we better compute some numbers too. Prof Calanoid is interested to see how richness changes according to the different survey routes.</p>
+<p>To do this we’re going to get into <strong>grouping</strong> with the <code>group_by</code> function.</p>
+<p><code>group_by</code> is an odd function in that it does nothing to the data in the dataframe. All it does is set-up for a summary, by adding a tag saying what to group the data by. Its what we do after the group_by that really makes a difference.</p>
+<p>Let’s see it in action.</p>
+<pre class="r"><code>nrow(dat_std)</code></pre>
+<pre><code>[1] 5313</code></pre>
+<pre class="r"><code>datg &lt;- group_by(dat_std, route)
+nrow(datg)</code></pre>
+<pre><code>[1] 5313</code></pre>
+<p>Look at <code>datg</code> to convince yourself that nothing has changed. But note that if you type <code>datg</code> into the console it will print out <code>Groups: route [25]</code> now, indicating the data is grouped by 25 routes.</p>
+<p>What we want to do is put group_by together with a summarize:</p>
+<pre class="r"><code>datg &lt;- group_by(dat_std, route)
+dats &lt;- summarize(datg,
+                  mean_rich = mean(richness),
+                  sd_rich = sd(richness))
+dats</code></pre>
+<pre><code># A tibble: 25 x 3
+   route mean_rich sd_rich
+   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+ 1 ADFR       3.82    4.05
+ 2 ANHO       1.95    1.81
+ 3 AUHO       7.86    4.89
+ 4 BRER       8.73    8.68
+ 5 BRFI       3.93    3.52
+ 6 BRGL      13.7     6.99
+ 7 BRNC       8.63    7.07
+ 8 BRSY      11.6     8.22
+ 9 BUNE       4.60    2.79
+10 FRBO      16.1     6.39
+# ... with 15 more rows</code></pre>
+<p>And we get a nice summary table of means and standard deviations by routes. To understand the groups a bit better try the summarize on the ungrouped data.</p>
+<pre class="r"><code>summarize(dat_std, mean_rich = mean(richness),
+                  sd_rich = sd(richness))</code></pre>
+<pre><code># A tibble: 1 x 2
+  mean_rich sd_rich
+      &lt;dbl&gt;   &lt;dbl&gt;
+1      4.32    5.49</code></pre>
+<p>And see we just get one value for the mean and SD each for the entire data frame.</p>
+</div>
+<div id="piping" class="section level2">
+<h2>Piping</h2>
+<p>To run multiple steps like those above we can use a handy <code>dplyr</code> feature called <strong>pipes</strong>. A pipe looks like this <code>%&gt;%</code>. What it does is pipe the output of one function into the first argument of the next. For instance, these too lines of code do the same thing:</p>
+<pre class="r"><code>group_by(dat_std, route)
+dat_std %&gt;% group_by(., route)</code></pre>
+<p>The argument (dat_std) before the <code>%&gt;%</code> just gets dropped into the place where I’ve put the <code>.</code>. Pipes are handy for chaining together multi-step operations on dataframes, like grouping and summaries:</p>
+<pre class="r"><code>dats &lt;- dat_std %&gt;% group_by(., route) %&gt;%
+  summarize(., mean_rich  = mean(richness),
+                  sd_rich = sd(richness))</code></pre>
+<p>If we wanted to write that on one line we have to embed function calls inside each other, which gets tricky to read for long sequences of steps:</p>
+<pre class="r"><code>dats &lt;- summarize(group_by(dat_std, route),
+                  mean_rich = mean(richness),
+                  sd_rich = sd(richness))</code></pre>
+<p>Finally, in a pipe, you can even drop the <code>.</code>, so it would just be like this:</p>
+<pre class="r"><code>dats &lt;- dat_std %&gt;% group_by(route) %&gt;%
+  summarize(mean_rich  = mean(richness),
+                  sd_rich = sd(richness))</code></pre>
+<p>I like pipes, because they read in order like a sentence: “first take <code>dat_std</code>, then group it, then summarize it”.</p>
+</div>
+<div id="wrapping-up" class="section level2">
+<h2>Wrapping up…</h2>
+<p>That’s pretty much the course for the first session. There’s a bit more below that we will tackle if there is time, or feel free to look into at a later time to learn some handy tricks.</p>
+</div>
+<div id="bonus-material" class="section level2">
+<h2>Bonus material</h2>
+<div id="grouping-and-mutating" class="section level3">
+<h3>Grouping and mutating</h3>
+<p>Groups are also handy way to calculate percentages and proportions by groups (normally a fiddly operation). For instance, try this plot of proportional richness:</p>
+<pre class="r"><code>datprop &lt;- mutate(dat_std, prop_rich = richness/max(richness))
+
+ggplot(datprop, aes(x = latitude, y = prop_rich)) +
+  geom_point() +
+  facet_grid(region~.)</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-46-1.png" width="672" /></p>
+<p>And we get facets of richness as a proportion of the sample with the maximum overall richness. But what if we want to do the plots with proportions of the max within each region?</p>
+<p>Too easy, just group by region first:</p>
+<pre class="r"><code>datg &lt;- group_by(dat_std, region)
+datprop &lt;- mutate(datg, prop_rich = richness/max(richness))
+
+ggplot(datprop, aes(x = latitude, y = prop_rich, color = richness)) +
+  geom_point() +
+  facet_grid(region~.)</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-47-1.png" width="672" /> Notice now that the values go all the way to 1 for every region, so proportional richness values are by regions now. (I added colours by richness just to be a bit fancy).</p>
+</div>
+<div id="standard-errors" class="section level3">
+<h3>Standard errors</h3>
+<p>Above we calculated standard deviations, but we might like to show standard errors too. Remember for the SE we have to calculate sample size first (SE = SD/sqrt(n)).</p>
+<p>The <code>n()</code> function is pretty handy for calculating samples sizes.</p>
+<pre class="r"><code>datg &lt;- group_by(dat_std, route)
+dats &lt;- summarize(datg,
+                  mean_rich = mean(richness),
+                  sd_rich = sd(richness),
+                  nsamples = n(),
+                  se_rich = sd_rich/sqrt(nsamples))</code></pre>
+<p>To explain. <code>n()</code> has just calculated the sample size by each group. Then we use that variable in our SE calculation (remember that we can use variables straight after we create them in mutate arguments).</p>
+<p>To see the results, lets do a ggplot with error bars on it:</p>
+<pre class="r"><code>ggplot(dats, aes(x = route, y = mean_rich)) +
+  geom_point() +
+  geom_linerange(aes(ymin = mean_rich - se_rich, ymax = mean_rich + se_rich))</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-49-1.png" width="672" /> The <code>geom_linerange()</code> just adds the error bars (you can also try <code>geom_errorbar()</code>), which we’ve specified as ranging from a <code>ymax</code> of the mean + SE to a <code>ymin</code> of the mean - SE.</p>
+</div>
+<div id="reshaping-data" class="section level3">
+<h3>Reshaping data</h3>
+<p>Prof Calanoid also sent us some abundance data. Abundances of copepods are not our main interest, but if we have time, let’s take a look.</p>
+<pre class="r"><code>dat_abund &lt;- read_csv(&quot;data-for-course/copepods_abundance.csv&quot;)
+nrow(dat_abund)</code></pre>
+<pre><code>[1] 179</code></pre>
+<pre class="r"><code>length(unique(dat$silk_id))</code></pre>
+<pre><code>[1] 179</code></pre>
+<pre class="r"><code>ncol(dat_abund)</code></pre>
+<pre><code>[1] 110</code></pre>
+<pre class="r"><code>length(unique(dat$segment_no))</code></pre>
+<pre><code>[1] 109</code></pre>
+<p>So it looks like the abundance data has the same number of rows as the number of unique silk IDs in the richness data. It also has the same number of columns as the number of unique segment numbers.</p>
+<p>It seems Prof Calanoid’s abundance data is in ‘wide’ or table format, with rows as silk IDs, columns as segment numbers and values are the abundances.</p>
+<p>Our richness data was in ‘long’ format. Long format tends to work better with most <strong>R</strong> packages, including ggplot and most stats packages (though there are of course annoying exceptions). In long format data, each variable has its own column and rows are samples.</p>
+<p>So we want to reshape the wide format data into long format data, so we can match it to the richness data (and get the longs and lats etc.).</p>
+<p>To reshape it into long-format data, we can use the tidyr package.</p>
+<pre class="r"><code>library(tidyr)
+dat_abund &lt;- gather(dat_abund, segment_no, abundance_raw, -silk_id, na.rm = TRUE)</code></pre>
+<p>The function gather turns the table of abundances in <code>dat_abund</code> into a column of abundances. How it does this reshaping is a bit like origami, so can be hard to conceptualise. But here we go.</p>
+<p>There will be two new columns replacing the table of abundances: one called <code>segment_no</code> that has the column names (segment numbers), and another column called <code>abundance_raw</code> that has abundances in it.</p>
+<p>We’ve specified <code>-silk_id</code> which means silk ID will be kept outside the refolding, so it will remain as a column (and be replicated for all the new rows).</p>
+<p>Finally, <code>na.rm = TRUE</code> removes the empty cells that had no abundances. There were empty cells because not every silk ID had every segment number.</p>
+<p>Now let’s check out how the gathered data frame looks:</p>
+<pre class="r"><code>dat_abund</code></pre>
+<pre><code># A tibble: 5,313 x 3
+   silk_id segment_no abundance_raw
+ *   &lt;int&gt; &lt;chr&gt;              &lt;dbl&gt;
+ 1       1 1                   2.00
+ 2       2 1                   2.00
+ 3       3 1                   2.00
+ 4       4 1                   0.
+ 5       5 1                   0.
+ 6       6 1                   6.00
+ 7       7 1                  11.3
+ 8       8 1                  12.0
+ 9       9 1                  34.0
+10      12 1                  52.0
+# ... with 5,303 more rows</code></pre>
+<p>Looks ok, save for one tiny detail. Can you see it? If not, don’t worry about it for now, just know we will hit an error in a moment. Joining data frames</p>
+<p>Now we want to join our abundance data to the richness data by ‘segment numbers’. Why don’t we just append the abundance data onto the richness data? Well they may not be in the same order. Let’s check it by plotting the richness segment numbers against the abundance segment numbers them:</p>
+<pre class="r"><code>plot(dat_abund$segment_no, dat$segment_no)
+abline(0,1)</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-53-1.png" width="672" /></p>
+<p>Let’s try a join:</p>
+<pre class="r"><code>dat_all &lt;- inner_join(dat, dat_abund)</code></pre>
+<p>How did you go? Did <strong>R</strong> throw an error? Don’t worry it was all part of our plan. Let’s try and debug it. First you need to read the error message. Much of it may not make sense, but we just need a clue to get started (even the best of us <strong>R</strong> programmers can’t always make complete sense of an error message).</p>
+<p>The most comprehensible part of the message says the two <code>segment_no</code> columns are incompatible types. Well they are meant to be numbers, but let’s check if something went wrong when we just created the abundance data</p>
+<pre class="r"><code>dat_abund$segment_no[1:10]</code></pre>
+<pre><code> [1] &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot;</code></pre>
+<pre class="r"><code>class(dat_abund$segment_no)</code></pre>
+<pre><code>[1] &quot;character&quot;</code></pre>
+<p>Notice the quotes around the numbers? So <code>gather</code> has turned the numbers into character types. We need to convert them back so inner_join works. That is easy as:</p>
+<pre class="r"><code>dat_abund$segment_no &lt;- as.numeric(dat_abund$segment_no)
+dat_all &lt;- inner_join(dat, dat_abund)
+dat_all</code></pre>
+<pre><code># A tibble: 5,313 x 12
+   silk_id segment_no latitude longitude sample_time_utc project route
+     &lt;int&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;
+ 1       1         1.    -28.3      154. 26/6/09 22:08   AusCPR  BRSY
+ 2       1         5.    -28.7      154. 26/6/09 23:12   AusCPR  BRSY
+ 3       1         9.    -29.0      154. 27/6/09 0:17    AusCPR  BRSY
+ 4       1        13.    -29.3      154. 27/6/09 1:22    AusCPR  BRSY
+ 5       1        17.    -29.7      154. 27/6/09 2:26    AusCPR  BRSY
+ 6       1        18.    -29.8      154. 27/6/09 2:43    AusCPR  BRSY
+ 7       1        26.    -30.4      153. 27/6/09 4:52    AusCPR  BRSY
+ 8       1        30.    -30.7      153. 27/6/09 5:57    AusCPR  BRSY
+ 9       1        33.    -31.0      153. 27/6/09 6:45    AusCPR  BRSY
+10       1        37.    -31.3      153. 27/6/09 7:50    AusCPR  BRSY
+# ... with 5,303 more rows, and 5 more variables: vessel &lt;chr&gt;,
+#   meanlong &lt;dbl&gt;, region &lt;chr&gt;, richness_raw &lt;dbl&gt;, abundance_raw &lt;dbl&gt;</code></pre>
+<p>Looks good now! Let’s also check to see if we lost or gained any rows in the joins:</p>
+<pre class="r"><code>nrow(dat_all)</code></pre>
+<pre><code>[1] 5313</code></pre>
+<pre class="r"><code>nrow(dat)</code></pre>
+<pre><code>[1] 5313</code></pre>
+<pre class="r"><code>nrow(dat_abund)</code></pre>
+<pre><code>[1] 5313</code></pre>
+<p>Nope, all still the same. The reason we do this is if the abundance data was missing samples that the richness data had, we would see fewer rows in <code>dat_all</code>.</p>
+<p>Now let’s celebrate the join by doing a quick plot of abundance versus latitude:</p>
+<pre class="r"><code>ggplot(dat_all, aes(x = latitude, y = abundance_raw)) +
+  geom_point()</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-58-1.png" width="672" /></p>
+</div>
+</div>
+<div id="section-1" class="section level2">
+<h2></br></h2>
+<p></br> </br> </br></p>
+</div>
+</div>
+<div id="introduction-to-mapping-and-spatial-analysis-in-r" class="section level1">
+<h1>4.2 Introduction to mapping and spatial analysis in R</h1>
+<div id="the-copepod-richness-data" class="section level2">
+<h2>The copepod richness data</h2>
+<p>In the first session we tidied and analysed Prof Calanoid’s data so that we could run some analysis of the relationship between latitude and species richness. But the job isn’t done yet.</p>
+<p>Prof Calanoid’s actual hypothesis was about sea surface temperature. She also wanted to see some maps and create an interactive map for her funders.</p>
+<p>So in this session we are going to look at how we combine our copepod data with spatial layers for temperature so we can do some spatial analysis on the relationship between temperature and richness.</p>
+<p>Then we will generate some predictions for species richness, and map them, like a species distribution model.</p>
+<p>Finally we will look at creating interactive maps.</p>
+</div>
+<div id="a-simple-map-of-sample-sites" class="section level2">
+<h2>A simple map of sample sites</h2>
+<p>Let’s read in the copepod richness data, and check it out.</p>
+<pre class="r"><code>cope &lt;- read.csv(&quot;data-for-course/spatial-data/copepods_standardised.csv&quot;)
+head(cope)</code></pre>
+<p>You should see four variables here. We have info on the spatial coordinates for each tow (<code>longitude</code> and <code>latitude</code>) and the ‘ship of opportunity’. Importantly, the dataframe also contains the mean richness of copepods observed in that grid cell (<code>richness</code>).</p>
+<p>We can make a quick map of our data using the <code>maps</code> package. First install <code>maps</code>. Then you can use the <code>map</code> function to add a map, and just add points for the longitude and latitude like this:</p>
+<pre class="r"><code>library(maps)
+map(database = &#39;world&#39;)
+points(cope$longitude, cope$latitude)</code></pre>
+<p>This looks ok, but we needn’t represent the entire world here. Let’s make a few modifications to our map. We can set x-limits and y-limits just like a normal plot. Also, let’s colour the land and add an axis for latitudeitudes. Good general guidance for making maps is to have the ocean white and land shaded if you are mapping sites in the ocean and vice-versa if you are mapping sites on land.</p>
+<pre class="r"><code>range(cope$longitude)</code></pre>
+<pre><code>[1]  89.6107 174.3350</code></pre>
+<pre class="r"><code>range(cope$latitude)</code></pre>
+<pre><code>[1] -65.24280 -16.80253</code></pre>
+<pre class="r"><code>
+map(database = &#39;world&#39;,xlim = c(100, 160), ylim = c(-67, -10), col = &#39;grey&#39;, fill = T, border = NA)
+points(cope$longitude, cope$latitude, cex = 0.5, col = &#39;grey20&#39;)
+
+axis(2, las = 1, ylim = c(-65, -10), cex.axis = 0.7)
+ylabel &lt;- expression(paste(&quot;latitudeitude (&quot; ^o, &quot;N)&quot;))
+text(85, -35, ylabel, xpd = NA, srt = 90, cex = 0.8)</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-61-1.png" width="672" /></p>
+<p>The command <code>axis(2, ...)</code> added a vertical axis (use <code>axis(1)</code> for an x-axis). We set the ylimits of the axis and also shrunk the labels slightly using <code>cex.axis = 0.7</code>.</p>
+<p>Then we created a ylabel, using expression. We used expression so we could create a degree symbol. Then we added that label using <code>text()</code>, which just adds a label to an existing plot at the given coordinates of <code>x= 112</code> and <code>y = -35</code>. The command <code>srt=90</code> rotates the text 90 degrees and <code>xpd = NA</code> allows the text to be plotted outside of the axes window. Without the <code>xpd</code> command, only text that was inside the map would show up.</p>
+<p>Check out <code>?axis</code> if you want to make further modifications to this axis. Some other ideas would be to add a legend using <code>legend</code>.</p>
+</div>
+<div id="viewing-raster-data" class="section level2">
+<h2>Viewing raster data</h2>
+<p>Our aim was to uncover the relationship between temperature and copepod richness. To do that we need some spatial data on temperature, so we can extract temperature at the sampling sites.</p>
+<p>We have provided you with two files <code>MeanAVHRRSST.gri</code> and <code>MeanAVHRRSST.grd</code> which contain gridded maps of annual mean sea surface temperature from the Hadley dataset. Gridded data, also known as raster data, can be read and manipulatitudeed with the <code>raster</code> package. Once you have installed this package, load it in:</p>
+<pre class="r"><code>library(raster)</code></pre>
+<p>We can then load and view the SST raster like this:</p>
+<pre class="r"><code>rsst &lt;- raster(&#39;data-for-course/spatial-data/MeanAVHRRSST&#39;)
+plot(rsst)</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-63-1.png" width="672" /></p>
+<p>This creates a pretty decent first plot of the raster. However, note the colour scale isn’t that appropriate for temperatures - green where temperatures are high and red where they are low. Further, these default colours wouldn’t be that great if our audience was red-green colour blind (and we suspect that Prof Calanoid is colour blind).</p>
+<p>First, up lets’ recreate the above plot using ggplot. We need to turn the raster into a dataframe to do that:</p>
+<pre class="r"><code>dat_grid &lt;- data.frame(xyFromCell(rsst, 1:ncell(rsst)),
+                       vals = rsst[])</code></pre>
+<p>Then we can plot that dataframe (still a grid), using ggplot:</p>
+<pre class="r"><code>ggplot(dat_grid, aes(x = x, y = y, fill = vals)) +
+  geom_tile() </code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-65-1.png" width="672" /></p>
+<p>The <code>RColorBrewer</code> package provides a great catalogue of colour palettes. Install that package then type this:</p>
+<pre class="r"><code>library(RColorBrewer)
+?brewer.pal</code></pre>
+<p>If you click the link to <a href="http://www.colorbrewer.org">colorbrewer.org</a> you will be taken to an interactive web browser for choosing colour palettes.</p>
+<p>We can also access <code>RColorBrewer</code> directly through ggplot with <code>scale_fill_brewer</code> (for discrete colours) and <code>scale_fill_distiller</code> (for continuous colours):</p>
+<pre class="r"><code>ggplot(dat_grid, aes(x = x, y = y, fill = vals)) +
+  geom_tile() +
+  scale_fill_distiller(type = &quot;seq&quot;, palette = &quot;RdPu&quot;,
+                        direction = 1) +
+  theme_dark()</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-67-1.png" width="672" /></p>
+<p>I think the sequential palettes are a good choice for temperatures. Sequential palettes like <code>Reds</code> are most appropriate when our data has a linear scale. You may also see some people use palettes like <code>RdBu</code> (red-blue). However, such palettes are diverging and would give the impression that there is a breakpoint at ~12 degrees, where the colours change from red to blue. In this case there is nothing special about 12 degrees temperatures, so a sequential palette is more appropriate.</p>
+<p>Finally, we might want to add the sample points back on:</p>
+<pre class="r"><code>ggplot(dat_grid, aes(x = x, y = y, fill = vals)) +
+  geom_tile() +
+  scale_fill_distiller(type = &quot;seq&quot;, palette = &quot;RdPu&quot;,
+                        direction = 1) +
+  geom_point(data = cope, aes(x = longitude, y = latitude), fill = grey(0.8, 0.5), size = 0.5)+
+  theme_dark()</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-68-1.png" width="672" /></p>
+<p>We need to be explicit about <code>fill = grey(0.5, 0.5)</code> in our call to <code>geom_point</code> here, because otherwise ggplot will try to use the values from the raster to fill, and will fail.</p>
+</div>
+<div id="changing-the-map-projection" class="section level2">
+<h2>Changing the map projection</h2>
+<p>ggplot can change map projections for us on the fly. For instance, to use an orthographic projection we can use <code>coord_map</code>. One trick here is that it can take a long time to transform projections for larger datasets.</p>
+<p>So we will simplify our raster first by aggregating it:</p>
+<pre class="r"><code>rsst_blocky &lt;- aggregate(rsst, 5)
+dat_block &lt;- data.frame(xyFromCell(rsst_blocky,
+                                   1:ncell(rsst_blocky)),
+                       vals = rsst_blocky[])</code></pre>
+<p>This will make our image a bit blockier, but will speed up image creation. If you have lots of time you can skip the <code>aggregate</code>. If your computer is slow, you might want to increase the <code>5</code> to a bigger number (like <code>20</code>).</p>
+<p>Now the plot, we just add a projection feature:</p>
+<pre class="r"><code>ggplot(dat_block, aes(x = x, y = y, fill = vals)) +
+  geom_tile() +
+  scale_fill_distiller(type = &quot;seq&quot;, palette = &quot;RdPu&quot;,
+                        direction = 1) +
+   geom_point(data = cope, aes(x = longitude, y = latitude), fill = grey(0.8, 0.5), size = 0.5) +
+  theme_dark() +
+  coord_map(&quot;ortho&quot;, orientation = c(-40, 135, 0))</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-70-1.png" width="672" /></p>
+<p>Oh dear, Tasmania has disappeared! How is that? Well when we aggregated it aggregated Tassie right off the map. Prof Calanoid will be particularly annoyed about losing Tasmania, because she grew up there (and Tasmanian’s are always sensitive about being left off of maps of Australia). So we will look at fixing this problem below.</p>
+<p>Another way to do this is to transform the underlying data. Then we can do the transform once and save the data. This will save time if we want to replot the same map over and over.</p>
+<p>We won’t cover transforming projections here, except to say that for rasters can you transform the projection using <code>projectRaster()</code> and for point (or polygon, or line) data you will want to use <code>spTransform()</code> from the <code>sp</code> package or <code>st_transform()</code> from the <code>sf</code> package (newer and better).</p>
+</div>
+<div id="plotting-shapefiles" class="section level2">
+<h2>Plotting shapefiles</h2>
+<p>One way to fix the ‘missing Tasmania issue’ from above is to plot some land over the top of our raster. We will use the <code>sf</code> package to do that. <code>sf</code> is the new kid on the block when it comes to R spatial analysis. It is pretty powerful, but as we will see below, not a fully integrated part of the R ecosystem.</p>
+<p>In the past we used a similar package <code>sp</code>, and will still have to use that sometimes when <code>sf</code> doesn’t play nicely with other packages. Eventually <code>sf</code> will replace <code>sp</code>, so we will focus on <code>sf</code> today.</p>
+<p>A good introduction can be found in <a href="https://geocompr.robinlovelace.net/">Geocomputation in R</a>, which is free online.</p>
+<p>So first install <code>sf</code> if you don’t have it. This may prove to be a bit tricky depending on your OSX. <code>sf</code> depends on lots of other packages including <code>rgdal</code> and <code>rgdal</code> is famous for issues with installation. So see how you go. If <code>sf</code> won’t install, then just follow along on our screen for now and figure that out later (with lots of googling).</p>
+<p>Once <code>sf</code> is installed we can load the library and read in the Aussie data, which I have provided:</p>
+<pre class="r"><code>library(sf)
+aus &lt;- st_read(dsn = &quot;data-for-course/spatial-data&quot;, &quot;Aussie&quot;)</code></pre>
+<p>We can then plot Aus like this:</p>
+<pre class="r"><code>ggplot() +
+  geom_sf(data = aus) </code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-72-1.png" width="672" /></p>
+<p>Note we’ve used <code>ggplot()</code>, with nothing in the brackets. That is because we are going to plot different layers now, and each has different names for its coordinates, so we should specific them geom by geom.</p>
+<p>Adding our raster data is as simple as adding those layers from before:</p>
+<pre class="r"><code>ggplot() +
+  geom_tile(data = dat_block, aes(x = x, y = y, fill = vals)) +
+  scale_fill_distiller(type = &quot;seq&quot;, palette = &quot;RdPu&quot;,
+                        direction = 1) +
+   geom_point(data = cope, aes(x = longitude, y = latitude), fill = grey(0.8, 0.5), size = 0.5) +
+  geom_sf(data = aus)  +
+  theme_dark() </code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-73-1.png" width="672" /></p>
+<p>Oops, New Zealand is missing and we have samples from their side of the Tasman. Oh well, who cares? Prof Calanoid certainly won’t, because Prof Salp is from NZ.</p>
+<p>If you try to reproject this with <code>coord_map()</code> it will fail. Didn’t I say <code>sf</code> wasn’t fully integrated with other packages yet? It is so new that if you haven’t updated <code>ggplot2</code> recently, you won’t even have the <code>geom_sf</code> function. So updated <code>ggplot2</code> if you need to by installing it again (<code>install.packages(&quot;ggplot2&quot;)</code>).</p>
+<p>You can try <code>coord_sf()</code> to change the projection, but we won’t have time today to go over that.</p>
+</div>
+<div id="extracting-temperatures-at-the-sampling-sites" class="section level2">
+<h2>Extracting temperatures at the sampling sites</h2>
+<p>We have overlaid our copepod sampling points on the map of temperature, now let’s extract the temperature values at those sampling sites, so we can test Prof Calanoid’s hypothesis about SST and our new hypothesis about biogeographic breaks.</p>
+<p>First we need to compile a two-column matrix just of the longitudes and latitudes:</p>
+<pre class="r"><code>pts &lt;- cbind(cope$longitude, cope$latitude)</code></pre>
+<p>This matrix gives the coordinates we want to extract SST for. Now we just use the <code>extract</code> function in the <code>raster</code> package to obtain SST at each site. We can assign the outcome of <code>extract</code> directly back into our dataframe for copepods too:</p>
+<pre class="r"><code>cope$sst &lt;- raster::extract(rsst, pts)</code></pre>
+<p>We just added the SST at each site to our copepod dataframe. We can do this because the <code>pts</code> matrix was made directly from <code>cope</code>, so the order of sampling sites is maintained.</p>
+<p>Now we can plot the correlation between richness and SST. We can also run a test to calculate the Pearson correlation coefficient:</p>
+<pre class="r"><code>library(ggplot2)
+ggplot(cope, aes(sst, richness)) +
+  geom_point() +
+  theme_minimal()</code></pre>
+<pre><code>Warning: Removed 3 rows containing missing values (geom_point).</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-76-1.png" width="672" /></p>
+<pre class="r"><code>with(cope, cor.test(sst, richness))</code></pre>
+<pre><code>
+    Pearson&#39;s product-moment correlation
+
+data:  sst and richness
+t = 46.698, df = 5308, p-value &lt; 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.5202827 0.5584213
+sample estimates:
+      cor
+0.5396288 </code></pre>
+<p>The test indicates a signficant positive correlation with latitude. However, if you examine the plot you may notice that variance in richness tends to increase with SST. Can you think of a more appropriate way to model this data that will be more satisfactory to Prof Calanoid?</p>
+<p>Note that ggplot warned us ‘removed 3 rows because of missing data’. That is because some of the sst values are missing:</p>
+<pre class="r"><code>subset(cope, is.na(sst))</code></pre>
+<pre><code>     silk_id segment_no  latitude longitude sample_time_utc project route
+5172     362         93 -32.10338  152.4542   7/12/15 16:09  AusCPR  BRNC
+5173     362         97 -32.39329  152.2590   7/12/15 17:51  AusCPR  BRNC
+5174     362        101 -32.68290  152.0625   7/12/15 19:33  AusCPR  BRNC
+           vessel meanlong region richness_raw number_segments   meanlat
+5172 Island Chief 153.3348   East           24              27 -28.91666
+5173 Island Chief 153.3348   East           40              27 -28.91666
+5174 Island Chief 153.3348   East           56              27 -28.91666
+     silk_area richness sst
+5172         2       12  NA
+5173         2       20  NA
+5174         2       28  NA</code></pre>
+<p>Let’s get rid of those rows, because the missing data will cause us issues later:</p>
+<pre class="r"><code>cope &lt;- subset(cope, !is.na(sst))</code></pre>
+<p>The <code>!</code> just means ‘NOT’, so we are asking for the rows that are not NA (missing).</p>
+</div>
+<div id="simple-model-of-sst" class="section level2">
+<h2>Simple model of SST</h2>
+<p>We could use a GAM like that we did for latitude, with a Poisson distribution. But recall that last time we observed different patterns on the east and west coast of Australia. So let’s include a fixed effect for region also:</p>
+<pre class="r"><code>library(mgcv)
+m1 &lt;- gam(richness ~ s(sst, k=5, by = region) + region, data = cope, family = &#39;poisson&#39;)
+deviance(m1)</code></pre>
+<pre><code>[1] 14747.35</code></pre>
+<pre class="r"><code>m1$df.residual</code></pre>
+<pre><code>[1] 5296.817</code></pre>
+<pre class="r"><code>ggplot(cope, aes(x = sst, y = richness)) +
+  geom_point() +
+  facet_grid(.~region) +
+  geom_smooth(method = &quot;gam&quot;, formula = y ~ s(x, k = 5),
+              method.args = list(family = &quot;poisson&quot;)) +
+  theme_bw()</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-80-1.png" width="672" /></p>
+<p>Note that the residual deviance is much much greater than the residual degress of freedom. This indicates the data is overdispersed for a Poisson, so we should try a negative binomial again.</p>
+<pre class="r"><code>m2 &lt;- gam(richness ~ s(sst, by = region) + region, data = cope, family = mgcv::negbin(theta = 1.99))
+deviance(m2)</code></pre>
+<pre><code>[1] 5294.408</code></pre>
+<pre class="r"><code>m2$df.residual</code></pre>
+<pre><code>[1] 5291.915</code></pre>
+<p>Here I just tried different values of theta (the dispersion parameter) until I got the deviance and resid DF reasonably close. You can also see the script ‘find-theta.R’ in your data folder for a way to automate this. Ok let’s check out the results</p>
+<pre class="r"><code>par(mfrow = c(1,3))
+plot(m2)</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-82-1.png" width="672" /></p>
+<p>As a challenge see if you can recreate the the smoother plot from the morning (with the negative binomial), but using SST instead of latitude.</p>
+<p>So there is a fair bit less variation attributed to the spline when we use the negative binomial.</p>
+</div>
+<div id="spatial-model-of-sst-and-richness" class="section level2">
+<h2>Spatial model of SST and richness</h2>
+<p>Now we might like to get a bit more sophisticated with our spatial model. We haven’t accounted for dependencies between the locations. Sampling sites that are close together are often more similar to each other than those that are further apart, so each sample is not a true ‘independent replicate’.</p>
+<p>This phenomenon is often called <strong>spatial auto-correlation</strong>. It is a concern because if we over-estimate the number of truly independent replicates, then we will also tend to overestimate p-values and effect sizes. In effect a ‘significant’ finding may not truly be significant.</p>
+<p>So we would like to account for the spatial dependencies in our analysis.</p>
+<div id="words-of-caution-on-spatial-modelling-from-bill-venables" class="section level3">
+<h3>Words of caution on spatial modelling from Bill Venables</h3>
+<blockquote>
+<p>In this context we really need to regard GAMs (and GLMs) as exploratory tools. They are powerful, but they rely on the (usually naive, but often harmless) assumption that, given the predictors, the observations can be regarded as independent.</p>
+</blockquote>
+<blockquote>
+<p>Even if this is plainly not so, it doesn’t rule out the approach entirely as an exploratory tool. GAMMs and GLMMs have the capacity to allow for non-independence of various forms, but taking this to a realistic level would also be extremely intricate and usually dependent on the specifics of any example.</p>
+</blockquote>
+<blockquote>
+<p>One approach to account for spatial dependencies is to use lat and longitude as predictors. However, they usually confound with other predictors of a more general kind, such as SST, and foregoing the chance to build a more generally applicable, and interpretable model.</p>
+</blockquote>
+<blockquote>
+<p>Another approach is to choose a spatial scale larger than the distance between samples, within which we will ‘clump’ samples. Then we can apply a random effect to those clumps. Of course, this assumes the ‘clumps’ are independent of each other.</p>
+</blockquote>
+<blockquote>
+<p>While I can agree with these approaches, I favour a two-pronged attack, namely try with and without lat and lon as predictors. The purpose of the model that has lat/lon is merely to assess just how much you might be losing out on by omitting location. If this is “not much” then you can feel comfortable with your primary model, (omitting Lat &amp; Long from the picture). If this is “wow, that’s a lot!” then firstly, you need to be aware of it and secondly, you might want to look around for other suitable predictors, of a non-location kind, to fill in the void.</p>
+</blockquote>
+<blockquote>
+<p>Best practice would be to model the spatial dependencies directly, but we won’t cover those more complicated models here.</p>
+</blockquote>
+</div>
+<div id="spatial-model-for-the-west-coast" class="section level3">
+<h3>Spatial model for the West Coast</h3>
+<p>Let’s focus on the West Coast of Australia, because there was some indication that richness there indicated a strong biogeographic boundary. Zooming in on this region to explore the biogeographic boundary will help us convince Prof Calanoid that we are truly an independent thinker capable of testing our own hypotheses.</p>
+<p>So first we will subset the data to the west</p>
+<pre class="r"><code>westcope &lt;- subset(cope, (longitude &lt; 120) &amp; (latitude &gt; -40)) </code></pre>
+<p>We just selected samples that are west of 120 degrees and north of -40.</p>
+<p>It doesn’t make sense here to include latitude as well as SST in the model, because they strongly covary. So instead, let’s try the clumping approach.</p>
+<p>We will group samples into 3-degree latitude bins. We are going to assume groups samples are independent at scales greater than this.</p>
+<pre class="r"><code>westcope$group &lt;- cut(westcope$latitude, breaks = seq(-37, -16, by = 1.5))</code></pre>
+<p><code>cut</code> created the groups for us and the <code>seq</code> function specified a sequence of break points in steps of three degrees.</p>
+</div>
+<div id="gam-of-west-coast-data" class="section level3">
+<h3>GAM of West Coast data</h3>
+<p>First we will just do the straight GAM of west coast data:</p>
+<pre class="r"><code>m3 &lt;- gam(richness ~ s(sst), data = westcope,
+          family = mgcv::negbin(theta = 3.8))
+deviance(m3)</code></pre>
+<pre><code>[1] 115.5055</code></pre>
+<pre class="r"><code>m3$df.residual</code></pre>
+<pre><code>[1] 113.166</code></pre>
+<pre class="r"><code>plot(m3)</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-86-1.png" width="672" /></p>
+<p>It suggests a steady increase in richness as we approach 23 degrees, then a slight decline. You might notice this is a bit different to our region by region model, that is because this west data excludes the south coast of Aus.</p>
+</div>
+</div>
+<div id="gamm-with-spatial-dependency" class="section level2">
+<h2>GAMM with spatial dependency</h2>
+<p>You are about to get started on the next model, but you get an odd email from Prof Salp, Prof Calanoid’s nemesis. Prof Salp claims to have seen you talk at IPS2020 (you were sure she wasn’t in the room, there were only 5 people there!) and to be impressed by your analytical firepower. She wonders if you will help her analyse this new copepod dataset that has become available…</p>
+<p>Better get cracking on the analysis, before Prof Salp finds someone else, it won’t be long before she catches up. So do we save time and skip the GAMM, or risk getting beaten by Prof Salp for the sake of a more thorough model?</p>
+<p>If we have time to go on with a GAMM, then let’s add in the spatial dependencies with a generalized additive mixed effects model (GAMM)</p>
+<pre class="r"><code>m4 &lt;- gamm(richness ~ s(sst), data = westcope,
+           random = list(group=~1),
+          family = mgcv::negbin(theta = 3.8))</code></pre>
+<pre><code>
+ Maximum number of PQL iterations:  20 </code></pre>
+<p>Looks much like the above, except now we have <code>gamm</code> instead of <code>gam</code>. Note we’ve also included a term <code>random</code>, which is for random effects. This specifies the groups. The model will estimate ‘random’ between group variance as well as the usual random between samples variance. This helps us control for dependencies of samples within 3-degree bins.</p>
+<p>Now to check the results the object <code>m4</code> actually has two components, a GAM and a random effects model. So to see what the GAM did we need to write:</p>
+<pre class="r"><code>summary(m4$gam)</code></pre>
+<pre><code>
+Family: Negative Binomial(3.8)
+Link function: log
+
+Formula:
+richness ~ s(sst)
+
+Parametric coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)  2.14996    0.09801   21.94   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Approximate significance of smooth terms:
+        edf Ref.df     F  p-value
+s(sst) 4.08   4.08 10.37 2.34e-07 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+R-sq.(adj) =  0.564
+  Scale est. = 0.829     n = 121</code></pre>
+<p>Note that the GAM details are now nested with <code>m4</code>. IT looks like SST is still a signficant predictor, with a pretty high EDF (non-linearity).</p>
+<p>To see how the random effects component went we can write:</p>
+<pre class="r"><code>summary(m4$lme)</code></pre>
+<p>There is a lot of information here. The most interesting aspect is that the variance between groups is <code>0.2069^2</code> (see the value labelled <code>StdDev</code>, under <code>Formula: ~1 | group %in% g</code>). As a comparison, we can look at the estimate of the variance between samples, which is in <code>summary(m4$gam)</code>, under <code>scale.est</code> (= <code>0.829</code>). So the within latitude groups variance is much smaller than that between samples.</p>
+<p>Let’s look at the results:</p>
+<pre class="r"><code>plot(m4$gam)</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-90-1.png" width="672" /></p>
+<p>So much the same as above, but slightly smoother, because the random effect is capturing some of the variation.</p>
+<p>Prof Calanoid will be impressed. But let’s really blow her away by mapping this trend first.</p>
+</div>
+<div id="generating-and-mapping-model-predictions" class="section level2">
+<h2>Generating and mapping model predictions</h2>
+<p>So we want to map our predictions for richness back onto an SST raster (we will try the GAM, not the the GAMM today, that’s a bit trickier). There are two ways we could do this: (1) create a raster with the predictions, or (2) plot the predictions as tiles with ggplot. Either works, we will do the second way here.</p>
+<p>First, we need to crop SST down to the west. So let’s plot it. Then we use <code>drawExtent()</code> which enters <strong>R</strong> into an interactive mode. In the interactive mode we can click two points on the graph and <strong>R</strong> will tell us their grid coordinates. So click the corners for where you want to crop to:</p>
+<pre class="r"><code>plot(rsst)
+drawExtent()</code></pre>
+<p>Now the coordinates will be in the console. You can paste them into the script and use them to crop <code>rsst</code> like this:</p>
+<pre class="r"><code>westrsst &lt;- crop(rsst, extent(108, 120, -37, -15))</code></pre>
+<p>If we wanted to generate predictions at the original sample sites, we could just say:</p>
+<pre class="r"><code>westcope$richness_pred &lt;- predict(m3, type = &quot;response&quot;)</code></pre>
+<p>But we want predictions for the raster grid instead. So we need to set up a dataframe that has the SST values from the raster and their cell numbers. Cells are numbered 1 to the total number of cells, starting at the top left cell.</p>
+<pre class="r"><code>icell &lt;- 1:ncell(westrsst)
+westpred &lt;- data.frame(sst = westrsst[icell],
+                       cells = icell)
+westpred &lt;- na.omit(westpred)</code></pre>
+<p>We used <code>na.omit</code> to get rid of <code>NA</code> SST values (land basically).</p>
+<p>Now we can use <code>predict</code> to predict the richness values for <code>m3</code>, but with our new SST values, using the <code>newdata</code> argument.</p>
+<pre class="r"><code>westpred$richness_pred &lt;- predict(m3, newdata = westpred, type = &quot;response&quot;)</code></pre>
+<p>We chose the <code>response</code> type, so that predictions units of species richness, not log species richness (because of the log link in the negative binomial).</p>
+<p>So we need to also add the coordinates, so ggplot knows how to plot the predictions as a map. We do this with a call to <code>yFromCell</code>:</p>
+<pre class="r"><code>westpred$x &lt;- xFromCell(westrsst, westpred$cells)
+westpred$y &lt;- yFromCell(westrsst, westpred$cells)</code></pre>
+<p>(If you wanted to plot this as a raster, not with ggplot, you need to drop the predicted values back into a raster. Because we know what cells they belong to, we can just create a fresh raster and drop them in at the locations specified by <code>westpred$cells</code>.</p>
+<pre class="r"><code>rpredicted &lt;- raster(westrsst)
+rpredicted[westpred$cells] &lt;- westpred$richness_pred</code></pre>
+<p>)</p>
+<p>Now let’s use all our ggplot skills to impress Prof Calanoid:</p>
+<pre class="r"><code>
+ggplot() +
+  geom_tile(data = westpred, aes(x = x, y = y, fill = richness_pred)) +
+  scale_fill_distiller(type = &quot;seq&quot;, palette = &quot;RdPu&quot;,
+                        direction = 1) +
+  geom_point(data = westcope, aes(x = longitude, y = latitude), fill = &quot;grey&quot;) +
+  theme_dark()</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-98-1.png" width="672" /></p>
+<p>Prof Calanoid would probably also like to see a map of SST, so have a go at that yourself.</p>
+<p>You could also overlay the land polygon over this too (hint, you will need to set <code>xlim()</code> and <code>ylim()</code> to zoom into the West coast).</p>
+<p>Finally, Prof Calanoid would probably also like to see the model fit. We can get the data and fitted line from <code>westcope$richness_pred</code> our predicted values. But in this case it might be easier to refit the same model using <code>ggplot2</code>:</p>
+<pre class="r"><code>ggplot(westcope, aes(x = sst, y = richness)) +
+  geom_point() +
+  geom_smooth(method = &quot;gam&quot;, formula = y ~ s(x),
+              method.args = list(family = mgcv::negbin(theta=3.8))) +
+    theme_bw() +
+  ylab(&quot;Richness&quot;) +
+  xlab(expression(&#39;SST (&#39;*~degree*C*&#39;)&#39;))</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-99-1.png" width="672" /></p>
+<p>There are some interesting deviations from the trend around 20-21 degrees. What is going on there? Maybe one of our local plankton experts can answer that question?</p>
+</div>
+<div id="combining-polygons-and-rasters" class="section level2">
+<h2>Combining polygons and rasters</h2>
+<p>So our map of predictions looks pretty, but it is not very realistic - we’ve plotted predictions way outside the extent of our original sample sites. How about we crop it to the sample sites?</p>
+<p>We will want to use a polygon to do that, so the edges are shaped to the irregular shape of our point locations. We will create the polygon from scratch by buffering the points.</p>
+<p>A warning that it may get confusing below. We need to do lots of conversions to achieve this buffer.</p>
+<p>First up, turn out points into an <code>sf</code> object:</p>
+<pre class="r"><code>sf_cope &lt;- st_as_sf(westcope, coords = c(&quot;longitude&quot;, &quot;latitude&quot;), crs = 4326)
+sf_cope</code></pre>
+<p>Now to buffer by a fixed difference we need to change the projection to one that has units of distance (not lat-lon, which is about preserving angles):</p>
+<pre class="r"><code>sf_cope_m &lt;- st_transform(sf_cope, crs = 3577)
+sf_cope_m</code></pre>
+<p>Note the <code>proj4string</code> has changed. I looked up the <code>crs = 3577</code> on spatialreference.org, it is just a code that sets a projection for Australia.</p>
+<p>Now we can use pipes (<code>%&gt;%</code>) to make our code a bit more compact when we do the buffer:</p>
+<pre class="r"><code>sf_poly &lt;- st_buffer(sf_cope_m, dist = 200*1000) %&gt;%
+  st_union(.) %&gt;%
+  st_transform(., crs = 4326) </code></pre>
+<p>to run over that we: (1) buffered by 400*1000 metres, (2) joined the polygons (one for each point) together and (3) transformed it back to lon-lat.</p>
+<p>Now match this polygon to the raster. Below I will convert the polygons to an <code>sp</code> object to do this. Apparently you can now (as of quite recently) run extract directly on <code>sf</code> objects. We have to convert our <code>sf</code> object back to an old-school <code>sp</code> object because <code>raster</code> package didn’t yet handle <code>sf</code> objects:</p>
+<pre class="r"><code>sp_poly &lt;- as(sf_poly, &quot;Spatial&quot;)</code></pre>
+<p>Now, we can do extract again, but this time on the polygon:</p>
+<pre class="r"><code>cells &lt;- extract(westrsst, sp_poly, cellnumbers = TRUE)</code></pre>
+<p>This creates a list where each item is the SST values for a single polygon (we only have one list item, because we only have one polygon).</p>
+<p>Now just join our extract back to <code>westpred</code> so westpred is filtered by sites within the buffer:</p>
+<pre class="r"><code>cells &lt;- extract(westrsst, sp_poly, cellnumbers = TRUE)
+dfcells &lt;- data.frame(cells[[1]]) %&gt;%
+  left_join(westpred, by = c(&quot;cell&quot; = &quot;cells&quot;))</code></pre>
+<p>And we can plot it all:</p>
+<pre class="r"><code>ggplot() +
+  geom_tile(data = dfcells, aes(x = x, y = y, fill = richness_pred)) +
+  scale_fill_distiller(type = &quot;seq&quot;, palette = &quot;RdPu&quot;,
+                        direction = 1) +
+  geom_point(data = westcope, aes(x = longitude, y = latitude), color = grey(0.5, 0.5)) +
+  geom_sf(data = aus) +
+  xlim(110, 125) +
+  ylim(-38, -17) +
+  theme_dark()</code></pre>
+<pre><code>Warning: Removed 382 rows containing missing values (geom_tile).</code></pre>
+<p><img src="images-spatial-tidyverse-course/unnamed-chunk-107-1.png" width="672" /></p>
+</div>
+<div id="create-an-interactive-map" class="section level2">
+<h2>Create an interactive map</h2>
+<p>You are almost there with meeting all of Prof Calanoid’s requests. The analysis hasn’t been quite as quick, or gone quite as smoothly (pardon the pun) as she led us to believe, but there’s only one step to go - the interactive map to impress her funders (though we secretly suspect she just wants to post it on the web to taunt Prof Salp).</p>
+<p>You want to deliver 100% of what she asked, so you can get that fellowship.</p>
+<p>We will create the interactive map using the <code>leaflet</code> package. You will need to be connected to the internet for this to work properly. First, install the <code>leaflet</code> package and load it into this <strong>R</strong> session:</p>
+<pre class="r"><code>library(leaflet)</code></pre>
+<p>Leaflet makes use of a Javascript (this is the language that dynamic web pages tend to use) package for mapping. It builds maps of your data ontop a range of freely available map layers. Check out this guide to <a href="https://rstudio.github.io/leaflet/">leaflet in R</a> for more examples.</p>
+<p>To build a leaflet map, you layer it up in a series of steps with ‘pipes’. Pipes look like this: <code>%&gt;%</code>. Pipes basically connect a series of functions in a sentence like manner, you can think of a pipe as being like a <code>+</code> but for functions.</p>
+<div id="data-size-and-leaflet" class="section level3">
+<h3>Data size and leaflet</h3>
+<p>Leaflet uses javascript, so it is code that runs in a user’s browser. This means anyone looking at the map on the web has to download all the data before they can render the map. So you should keep your spatial datasets small if you want to use leaflet - imagine your collegues trying to download your 100mb spatial data layer on their mobile data plan.</p>
+<p>Many sophisticated web mapping applications, like Google Maps, use <em>server-side</em> code. These can render much larger data-sets because they are only transferring the data that is needed for a particular view. Creating these kinds of applications requires specialised expertise that we won’t cover in this course.</p>
+<p>So what we need to do now is simplify our copepod data, before we turn it into a leaflet map. Let’s summarize it on 1-degree grids like we did this morning.</p>
+<pre class="r"><code>library(dplyr)
+cope_gridded &lt;- cope %&gt;%
+  mutate(lat = round(latitude), lon = round(longitude)) %&gt;%
+  group_by(lat, lon) %&gt;%
+  summarize(richness = mean(richness), sst = mean(sst))
+print(object.size(cope), units = &quot;Kb&quot;)</code></pre>
+<pre><code>794.7 Kb</code></pre>
+<pre class="r"><code>print(object.size(cope_gridded), units = &quot;Kb&quot;)</code></pre>
+<pre><code>17.5 Kb</code></pre>
+</div>
+<div id="get-started-with-a-map" class="section level3">
+<h3>Get started with a map</h3>
+<p>To make the map, we first specify the dataframe to use with <code>leaflet(cope)</code>. Then we add tiles, which is the base layer. Then we add markers at the coordinates of our copepod sites:</p>
+<pre class="r"><code>leaflet(cope_gridded) %&gt;%
+  addTiles() %&gt;%
+  addCircleMarkers(lng = ~lon, lat = ~lat, radius = 0.5)</code></pre>
+<p><div id="htmlwidget-4fbf36f3656d82de144a" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4fbf36f3656d82de144a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircleMarkers","args":[[-65,-64,-64,-63,-63,-63,-63,-62,-62,-62,-62,-62,-62,-62,-62,-62,-62,-62,-61,-61,-61,-61,-61,-61,-61,-61,-61,-61,-61,-61,-61,-61,-61,-60,-60,-60,-60,-60,-60,-60,-60,-60,-60,-60,-60,-60,-60,-60,-60,-60,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-54,-54,-54,-54,-54,-54,-54,-54,-54,-54,-54,-54,-54,-54,-54,-53,-53,-53,-53,-53,-53,-53,-53,-53,-53,-53,-53,-53,-53,-53,-53,-53,-52,-52,-52,-52,-52,-52,-52,-52,-52,-52,-52,-52,-52,-52,-52,-51,-51,-51,-51,-51,-51,-51,-51,-51,-51,-51,-50,-50,-50,-50,-50,-50,-50,-50,-50,-50,-50,-50,-50,-49,-49,-49,-49,-49,-49,-49,-49,-49,-49,-49,-49,-48,-48,-48,-48,-48,-48,-48,-48,-48,-48,-48,-48,-48,-48,-47,-47,-47,-47,-47,-47,-47,-47,-47,-47,-47,-47,-47,-47,-46,-46,-46,-46,-46,-46,-46,-46,-46,-46,-46,-46,-45,-45,-45,-45,-45,-45,-45,-44,-44,-44,-44,-43,-43,-43,-43,-43,-43,-42,-42,-42,-42,-42,-42,-42,-42,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-38,-38,-38,-38,-38,-38,-38,-38,-38,-38,-38,-38,-38,-38,-38,-38,-37,-37,-37,-37,-37,-37,-37,-37,-37,-37,-37,-37,-37,-36,-36,-36,-36,-36,-36,-36,-36,-36,-36,-36,-36,-36,-36,-36,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-34,-34,-34,-34,-34,-33,-33,-33,-32,-32,-31,-31,-31,-30,-30,-30,-30,-29,-29,-28,-28,-27,-27,-27,-26,-26,-26,-25,-25,-25,-25,-25,-25,-24,-24,-24,-24,-24,-24,-24,-24,-24,-23,-23,-23,-23,-23,-22,-22,-22,-21,-21,-21,-21,-20,-20,-20,-20,-20,-20,-19,-19,-19,-19,-19,-18,-17],[143,140,143,90,140,143,147,90,91,92,93,114,115,140,141,143,147,150,94,95,96,97,115,116,117,118,119,140,141,143,147,149,150,90,91,92,97,98,99,100,101,117,119,120,121,122,141,143,147,149,92,93,94,95,96,101,102,103,104,105,106,117,118,122,123,124,125,126,141,142,143,147,149,150,96,97,98,99,100,101,102,104,105,106,107,108,109,118,119,126,127,128,129,141,142,143,147,150,102,103,104,105,106,107,108,109,110,111,112,119,120,121,129,130,131,132,142,143,147,150,106,107,108,109,110,111,112,113,114,115,121,122,132,133,134,135,142,143,150,109,110,111,112,113,114,115,116,117,118,122,123,124,135,136,142,143,144,150,116,117,118,119,120,121,122,124,125,136,137,142,143,144,150,118,119,120,121,122,123,124,125,126,127,137,138,142,143,144,145,150,121,122,123,124,125,126,127,128,138,139,142,143,144,145,150,126,127,128,129,130,136,140,143,145,146,150,129,130,131,132,136,137,138,143,144,145,146,147,150,131,132,133,134,135,138,139,140,144,146,147,150,132,133,134,135,136,137,138,140,141,142,144,146,147,150,134,135,136,137,138,139,140,141,142,143,144,146,147,150,137,138,139,140,141,142,143,144,145,146,147,150,141,142,143,144,145,146,147,144,145,146,147,144,145,146,147,148,149,142,143,144,145,148,149,150,151,141,142,144,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,137,138,139,140,141,142,143,149,157,158,159,160,161,162,168,169,170,171,172,173,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,163,165,166,126,127,128,129,130,131,135,136,140,141,144,145,148,149,150,167,120,121,125,126,133,134,135,139,140,150,151,168,169,116,117,118,119,120,131,132,133,134,135,136,138,139,150,151,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,151,172,174,114,115,151,152,173,115,152,153,115,153,115,153,154,114,115,153,154,114,154,113,154,113,153,154,112,153,154,112,113,153,154,157,158,113,152,153,154,158,159,160,161,162,113,114,151,153,154,114,151,153,114,115,150,153,115,116,117,148,149,153,117,118,119,147,148,146,146],0.5,null,null,{"lineCap":null,"lineJoin":null,"clickable":true,"pointerEvents":null,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2,"dashArray":null},null,null,null,null,null,null,null]}],"limits":{"lat":[-65,-17],"lng":[90,174]}},"evals":[],"jsHooks":[]}</script> If this code fails you will may need to update Rstudio.</p>
+<p>We can do a bit more with leaflet maps than this. One option is to change the tiles. See a full list of options <a href="http://leaflet-extras.github.io/leaflet-providers/preview/index.html">here</a>. We can also colour the markers by the species richness.</p>
+<p>To build a colour palette, we can use some utility functions provided in the <code>leaflet</code> package:</p>
+<pre class="r"><code>copedomain &lt;- range(cope_gridded$richness)
+oranges &lt;- colorNumeric(&quot;YlOrRd&quot;, domain = copedomain)</code></pre>
+<p>Which creates a function that will generate a Yellow-Orange-Red palette from <code>RColorBrewer</code>. The <code>domain</code> argument ensures that our colour scale will grade from the minimum to maximum copepod richness.</p>
+<p>Now let’s build up our leaflet map, but this time we will specify the fill colour of our circle markers to be set using <code>oranges</code>.</p>
+<p>We will also add a legend to tell us what shade of purple corresponds to which copepod richness.</p>
+<pre class="r"><code>leaflet(cope_gridded) %&gt;%
+  addProviderTiles(&quot;Esri.OceanBasemap&quot;) %&gt;%
+  addCircleMarkers(lng = ~lon, lat = ~lat, radius = 3,
+                   color = &#39;grey80&#39;,
+                   weight = 1,
+                   fill = TRUE,
+                   fillOpacity = 0.7, fillColor = ~oranges(richness)) %&gt;%
+  addLegend(&quot;topright&quot;, pal = oranges,
+values = copedomain,
+title = &quot;Number of copepod species&quot;,
+opacity = 1) </code></pre>
+<div id="htmlwidget-8699b630f69f3914eb54" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8699b630f69f3914eb54">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.OceanBasemap",null,null,{"errorTileUrl":"","noWrap":false,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false}]},{"method":"addCircleMarkers","args":[[-65,-64,-64,-63,-63,-63,-63,-62,-62,-62,-62,-62,-62,-62,-62,-62,-62,-62,-61,-61,-61,-61,-61,-61,-61,-61,-61,-61,-61,-61,-61,-61,-61,-60,-60,-60,-60,-60,-60,-60,-60,-60,-60,-60,-60,-60,-60,-60,-60,-60,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-59,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-58,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-57,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-56,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-55,-54,-54,-54,-54,-54,-54,-54,-54,-54,-54,-54,-54,-54,-54,-54,-53,-53,-53,-53,-53,-53,-53,-53,-53,-53,-53,-53,-53,-53,-53,-53,-53,-52,-52,-52,-52,-52,-52,-52,-52,-52,-52,-52,-52,-52,-52,-52,-51,-51,-51,-51,-51,-51,-51,-51,-51,-51,-51,-50,-50,-50,-50,-50,-50,-50,-50,-50,-50,-50,-50,-50,-49,-49,-49,-49,-49,-49,-49,-49,-49,-49,-49,-49,-48,-48,-48,-48,-48,-48,-48,-48,-48,-48,-48,-48,-48,-48,-47,-47,-47,-47,-47,-47,-47,-47,-47,-47,-47,-47,-47,-47,-46,-46,-46,-46,-46,-46,-46,-46,-46,-46,-46,-46,-45,-45,-45,-45,-45,-45,-45,-44,-44,-44,-44,-43,-43,-43,-43,-43,-43,-42,-42,-42,-42,-42,-42,-42,-42,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-41,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-40,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-39,-38,-38,-38,-38,-38,-38,-38,-38,-38,-38,-38,-38,-38,-38,-38,-38,-37,-37,-37,-37,-37,-37,-37,-37,-37,-37,-37,-37,-37,-36,-36,-36,-36,-36,-36,-36,-36,-36,-36,-36,-36,-36,-36,-36,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-35,-34,-34,-34,-34,-34,-33,-33,-33,-32,-32,-31,-31,-31,-30,-30,-30,-30,-29,-29,-28,-28,-27,-27,-27,-26,-26,-26,-25,-25,-25,-25,-25,-25,-24,-24,-24,-24,-24,-24,-24,-24,-24,-23,-23,-23,-23,-23,-22,-22,-22,-21,-21,-21,-21,-20,-20,-20,-20,-20,-20,-19,-19,-19,-19,-19,-18,-17],[143,140,143,90,140,143,147,90,91,92,93,114,115,140,141,143,147,150,94,95,96,97,115,116,117,118,119,140,141,143,147,149,150,90,91,92,97,98,99,100,101,117,119,120,121,122,141,143,147,149,92,93,94,95,96,101,102,103,104,105,106,117,118,122,123,124,125,126,141,142,143,147,149,150,96,97,98,99,100,101,102,104,105,106,107,108,109,118,119,126,127,128,129,141,142,143,147,150,102,103,104,105,106,107,108,109,110,111,112,119,120,121,129,130,131,132,142,143,147,150,106,107,108,109,110,111,112,113,114,115,121,122,132,133,134,135,142,143,150,109,110,111,112,113,114,115,116,117,118,122,123,124,135,136,142,143,144,150,116,117,118,119,120,121,122,124,125,136,137,142,143,144,150,118,119,120,121,122,123,124,125,126,127,137,138,142,143,144,145,150,121,122,123,124,125,126,127,128,138,139,142,143,144,145,150,126,127,128,129,130,136,140,143,145,146,150,129,130,131,132,136,137,138,143,144,145,146,147,150,131,132,133,134,135,138,139,140,144,146,147,150,132,133,134,135,136,137,138,140,141,142,144,146,147,150,134,135,136,137,138,139,140,141,142,143,144,146,147,150,137,138,139,140,141,142,143,144,145,146,147,150,141,142,143,144,145,146,147,144,145,146,147,144,145,146,147,148,149,142,143,144,145,148,149,150,151,141,142,144,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,137,138,139,140,141,142,143,149,157,158,159,160,161,162,168,169,170,171,172,173,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,163,165,166,126,127,128,129,130,131,135,136,140,141,144,145,148,149,150,167,120,121,125,126,133,134,135,139,140,150,151,168,169,116,117,118,119,120,131,132,133,134,135,136,138,139,150,151,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,151,172,174,114,115,151,152,173,115,152,153,115,153,115,153,154,114,115,153,154,114,154,113,154,113,153,154,112,153,154,112,113,153,154,157,158,113,152,153,154,158,159,160,161,162,113,114,151,153,154,114,151,153,114,115,150,153,115,116,117,148,149,153,117,118,119,147,148,146,146],3,null,null,{"lineCap":null,"lineJoin":null,"clickable":true,"pointerEvents":null,"className":"","stroke":true,"color":"grey80","weight":1,"opacity":0.5,"fill":true,"fillColor":["#FFFECA","#FFF6B7","#FFFFCB","#FFF6B7","#FFF6B7","#FFFECA","#FFFFCC","#FFF5B3","#FFF3AF","#FFF9BE","#FFFCC6","#FFFBC2","#FFFAC0","#FFF6B6","#FFFECA","#FFF2AD","#FFFAC0","#FFFDC8","#FFF7B8","#FFF4B2","#FFF3AF","#FFEA9A","#FFF9BE","#FFFDC7","#FFFAC0","#FFF8BC","#FFF1AB","#FFF6B7","#FFF7B8","#FFE590","#FFF3AE","#FFF2AC","#FFF2AC","#FFFAC0","#FFF8BC","#FFF4B2","#FFEB9D","#FFF4B1","#FFF9BE","#FFF9BE","#FFF9BE","#FFED9F","#FFF8BA","#FFFCC6","#FFF7BA","#FFEFA4","#FFF6B7","#FFFABF","#FFDF83","#FFF4B1","#FFFCC5","#FFFBC2","#FFF7B9","#FFF8BC","#FFF9BE","#FFFDC7","#FFFBC2","#FFF6B6","#FFF5B3","#FFF2AD","#FFEC9E","#FFF5B5","#FFF3AF","#FFEA9A","#FFEDA1","#FFFAC0","#FFFFCC","#FFFFCC","#FFF3AE","#FFFFCC","#FFFFCC","#FFEC9F","#FFF1AA","#FFF7B8","#FFFFCC","#FFFFCC","#FFF9BE","#FFFECA","#FFEDA1","#FFF1A9","#FFFBC2","#FFEA9A","#FFE794","#FFEC9E","#FFEEA2","#FFE289","#FEDA78","#FFFAC0","#FFFFCC","#FFFFCC","#FFFEC8","#FFFDC8","#FFFBC1","#FFF3AF","#FFF9BE","#FFF1AB","#FFFAC0","#FFF2AD","#FFF8BA","#FFFECA","#FFFFCC","#FFFAC0","#FFFFCC","#FFF3AF","#FFF7B8","#FFEDA0","#FFF1A9","#FFF4B1","#FFF2AB","#FFFFCC","#FFFEC9","#FFFBC3","#FFF3AF","#FFEA9A","#FFED9F","#FFF2AB","#FFF4B0","#FFEDA0","#FFFEC8","#FFF0A8","#FFFAC0","#FFF8BC","#FFF3AF","#FFEC9F","#FFF9BE","#FFF4B1","#FFF0A8","#FFED9F","#FFEA9A","#FFDF84","#FFFBC3","#FFEFA5","#FFE794","#FFED9F","#FFFECA","#FFFFCC","#FFF3AF","#FFEFA5","#FFEDA0","#FFE186","#FEDB7A","#FFE999","#FFEB9B","#FFF3AF","#FFEB9C","#FFEB9B","#FFEFA5","#FFEEA3","#FFEFA6","#FFEDA1","#FFF1AA","#FFFBC1","#FFFFCC","#FFFFCC","#FFF1A9","#FFF2AD","#FFF7B7","#FFF7B8","#FFEDA1","#FFFAC1","#FFF8BB","#FFEEA2","#FFEB9C","#FFEEA4","#FFF6B7","#FFFBC2","#FFFCC6","#FFFCC5","#FFE998","#FFF4B1","#FFF0A8","#FFF3AF","#FFFAC1","#FFFFCC","#FFFECA","#FFFABF","#FFF2AC","#FFF2AD","#FFF4B2","#FFF5B4","#FFF9BE","#FFFDC7","#FFFFCC","#FFEDA1","#FFF4B1","#FFF6B5","#FFF8BB","#FFEFA5","#FFF3AF","#FFF8BC","#FFEC9E","#FFEB9D","#FFF7B9","#FFF6B6","#FFF1AA","#FFF0A6","#FFFDC7","#FFF0A8","#FFEDA1","#FFF6B6","#FFEC9E","#FFF1A9","#FFFFCB","#FFEFA5","#FFF2AC","#FFFAC0","#FFF9BE","#FFF8BA","#FFF6B5","#FFF9BE","#FFFDC7","#FFF9BE","#FFF9BE","#FFF8BC","#FFF2AC","#FFE998","#FFF5B3","#FFF7B9","#FFF4B2","#FFF7B9","#FFFFCC","#FFFEC9","#FFFECA","#FFFDC8","#FFFFCC","#FFF9BE","#FFF7B9","#FFFBC3","#FFF9BD","#FFFFCC","#FFF6B7","#FFF9BE","#FFFABF","#FFF1A9","#FFF8BA","#FFF8BA","#FFEC9E","#FFFEC9","#FFF9BD","#FFF2AD","#FFFBC2","#FFFAC1","#FFFBC3","#FFFCC5","#FFF8BC","#FFF6B5","#FFEC9D","#FFF7B8","#FED06C","#FEDD80","#FFE187","#FFF9BE","#FFFABF","#FFF0A8","#FFEFA6","#FFFABF","#FFF4B2","#FFF3AE","#FFEFA6","#FFF8BB","#FFF7B8","#FFF4B1","#FFF6B7","#FFEEA1","#FFEC9F","#FFEC9E","#FFFEC8","#FFFBC1","#FFE895","#FFFFCC","#FFFECA","#FFF9BE","#FFF3AF","#FFE997","#FFEDA1","#FFFAC1","#FFF3B0","#FFE691","#FFF5B3","#FFFCC4","#FFFCC6","#FFEC9E","#FFE58F","#FFF6B6","#FFFABF","#FFF5B4","#FFF7B8","#FFFBC2","#FFF9BE","#FFF6B6","#FFFBC1","#FFF7B9","#FFE794","#FFF3AF","#FFF3AF","#FFF7B9","#FFE289","#FFDE81","#FFE794","#FFF0A8","#FFF5B4","#FFF3AF","#FFC25D","#FD953F","#FFCF6B","#FFE998","#FFE38B","#FFF0A8","#FFFFCC","#FFC762","#FFE794","#FFE794","#FED875","#FFF0A8","#FFE288","#FEBC57","#FED976","#FFC864","#FFC864","#FED571","#FFE186","#FFEDA1","#FFE590","#FFEDA1","#FFEA99","#FFE289","#FEDD7F","#FFEC9E","#FFDE81","#FFF0A8","#FFF6B7","#FFEDA1","#FEAF4B","#FEAF4B","#FFC25D","#FEDB7B","#FD7434","#CA0A23","#FFFEC8","#FEB04B","#FFCF6B","#FEAF4B","#FE9941","#FFE794","#FFEDA1","#FFC25D","#FD913E","#FFE794","#FFCF6B","#FFCF6B","#FFE998","#FFEDA1","#FFEDA1","#FFF6B7","#FFF6B5","#FFF7B8","#FFE997","#FFE38B","#FFE289","#FFE58F","#FFFDC7","#FFC35E","#FED06C","#FEDB7A","#FFE58F","#FFE084","#FED976","#FED26E","#FFBF5A","#FFE38B","#FE9A42","#FFDE81","#FEB54F","#FD8A3B","#FFC25D","#FED774","#FEDA78","#FFF3AF","#FFC864","#FEA948","#FFFCC5","#FFF5B4","#FED06C","#FFBF5A","#FFEDA0","#FFE794","#FFC25D","#FEB752","#FEB650","#FEA948","#FEB54F","#FEA345","#FFF9BE","#FFEDA1","#FFFFCC","#FFF9BE","#FFF9BE","#FFCE6A","#FED36F","#FE9841","#FEB752","#FFEDA1","#FFE794","#FFE794","#FEBC56","#FEBC56","#FFC662","#FEA948","#FFF9BE","#FFF3AF","#FFF6B7","#FFFFCC","#FFFFCC","#FFFFCC","#FFDE80","#FEDC7C","#D9141F","#FEAF4B","#FFC864","#FED977","#FFDF82","#FFF0A7","#FFEA9A","#FFF0A7","#FFEA9A","#FFF5B3","#FFF2AD","#FFF4B1","#FFF6B6","#FFF7B8","#FFF7B8","#FFEFA5","#FFEC9D","#FFEC9E","#FFE38B","#FFE691","#FFEC9F","#FFEC9E","#FFF2AC","#FFE997","#FFE999","#FFEFA4","#FEB651","#FFE58F","#FEB54F","#FFF3AF","#FD8138","#FEB44E","#F74527","#D71320","#FFDE81","#FD602E","#FE9740","#FED774","#FD7A36","#FD8138","#FD8F3D","#FFEDA1","#D00F22","#DD161E","#FD7A36","#FE9740","#8D0026","#FEAD4A","#8D0026","#FEB24C","#800026","#FFE186","#FFC15C","#FC502A","#FE9C42","#FEDA78","#DD161E","#B50026","#FD7835","#FFEFA6","#FFF3AF","#FFE794","#EF3723","#FB4C29","#FD8E3D","#FEDD7F","#FFF0A8","#FFE998","#FFF9BE","#FED774","#FEDA78","#D71320","#EF3723","#FFBF5A","#830026","#FD6A31","#FD7835","#FEB34D","#FEAF4B","#E7261E","#D00F22","#FEAA48","#FFEFA5","#FD913E","#FD913E","#FD913E","#F54126","#FEA245","#FFF9BE","#FEA948","#FED26E","#FE9941","#FED36F","#FFBF5A","#FD873A","#FD7B36"],"fillOpacity":0.7,"dashArray":null},null,null,null,null,null,null,null]},{"method":"addLegend","args":[{"colors":["#FFFFCC , #FFFFCC 0%, #FFE186 20.2702702702703%, #FEA948 40.5405405405405%, #FC582C 60.8108108108108%, #D00F22 81.0810810810811%, #800026 "],"labels":["0","5","10","15","20"],"na_color":null,"na_label":"NA","opacity":1,"position":"topright","type":"numeric","title":"Number of copepod species","extra":{"p_1":0,"p_n":0.810810810810811},"layerId":null,"className":"info legend"}]}],"limits":{"lat":[-65,-17],"lng":[90,174]}},"evals":[],"jsHooks":[]}</script>
+<p>I encourage you to play around the options for the leaflet maps, look at the <a href="https://rstudio.github.io/leaflet/">help files</a> and <a href="http://leaflet-extras.github.io/leaflet-providers/preview/index.html">provider tiles</a>.</p>
+<p>Maps done. We can save this as a webpage and email it to Prof Calanoid: click the ‘Export’ button above the figure window in RStudio (Better yet, the data are open access, so you just post the html to our own webpage and share the link on Twitter with #beatyoutoit. That way Prof Calanoid can’t usurp all the credit for this. Prof Salp and Prof Calanoid are constantly glued to their phones, promoting themselves on Twitter, so they are bound to see it. ).</p>
+<p>Job done. Now we await this esteemed paper Prof Calanoid promised to publish in “The Nature of Plankton”, and her support of our fellowship application.</p>
+</div>
+</div>
+</div>
+<div id="conclusion" class="section level1">
+<h1>4.3 Conclusion</h1>
+<p>We hoped you enjoyed this course. We went all the way from data-wrangling, to spatial analysis to mapping and back again, all in 1 day (and Prof Calanoid thought we would need 3 weeks!).</p>
+<p>You need to practice to build your <strong>R</strong> skills, so we encourage you to try and make <strong>R</strong> a part of your normal analysis and graphing workflows, even if it seems harder at first.</p>
+<div id="getting-help" class="section level2">
+<h2>Getting help</h2>
+<blockquote>
+<p>Writing code is 80% googling the answer (unattributed)</p>
+</blockquote>
+<p>If you are going to be a succesful <strong>R</strong> user, then you need to get good at finding help to deal with bugs. The above aphorism is widely subscribed to by professional programmers. <strong>R</strong> is no exception. If you web search an issue, like ‘ggplot remove legend’ you will commonly get a pretty decent answer on <a href="https://stackoverflow.com/questions/35618260/remove-legend-ggplot-2-2">Stack Overflow</a> or a similar site. I probably used google tens of times to write these course notes (I can never remember how to put the degrees symbols on plots for instance).</p>
+<p>If the answer doesn’t already exist there then sign up to Stack Overflow and ask it yourself (but spend a bit of time looking, no one wants to get tagged for duplicating an existing question!).</p>
+<p>Another good idea is to find a local support group. <a href="http://www.seascapemodels.org/rstats/2017/09/18/emotions-of-programming-rstats.html">R coding is an emotional experience</a>, frustration is a common one, but the elation of finding a solution can help us persist. Having other people to help, or even just listen to your frustrations is a huge help for your motivation to keep learning R.</p>
+</div>
+<div id="r-books-and-web-material" class="section level2">
+<h2>R books and web material</h2>
+<p>There are plenty of good books out there (too many to choose from in fact). For the content we covered today, some good resources are:</p>
+<ul>
+<li><p><a href="https://r4ds.had.co.nz/">R for Data Science</a>, for data wrangling mainly</p></li>
+<li><p><a href="http://www.cookbook-r.com/Graphs/">R Graphics Cookbook</a>, for ggplot and free on the web</p></li>
+<li><p>Chris often refers to <a href="https://www.springer.com/gp/book/9780387874579">Mixed Effects Models and Extensions in Ecology with R</a></p></li>
+<li><p>The classic text for GAMs is <a href="https://www.taylorfrancis.com/books/9781420010404">Generalized Additive Models: An Introduction with R</a></p></li>
+<li><p><a href="https://geocompr.robinlovelace.net/">Geocomputation in R</a>, free on the web</p></li>
+<li><p><a href="https://rstudio.github.io/leaflet/">Leaflet for R</a>, free on the web</p></li>
+<li><p>If you want to learn new tricks, or stay up-to-date with the latest packages, the blog aggregator <a href="https://www.r-bloggers.com/">R-Bloggers</a> has a non-step feed of R blogs from all over the world and all disciplines, including <a href="http://www.seascapemodels.org/bluecology_blog.html">Chris’ blog</a></p></li>
+</ul>
+<p>If you prefer to have a printed guide, another tactic is to web search your favourite package and ‘cheatsheet’. There are lots out there like Chris’ <a href="http://www.seascapemodels.org/code.html">ARC GIS to R cheatsheet</a>.</p>
+</div>
+<div id="one-more-thing" class="section level2">
+<h2>One more thing…</h2>
+<p>So you are probably wondering what happened after you delivered the results to Prof Calanoid.</p>
+<p>Well you heard nothing for days, then weeks, then months. You emailed her several times, but no drafts of the paper were forthcoming. By this time your fellowship application was due, to her credit Prof Calanoid did support your application.</p>
+<p>After seeing the impressive maps on your webpage, Prof Salp gave you a surprise call. You sheepishly explained you were already collaborating with Prof Calanoid on this particular analysis. Prof Salp didn’t seem perturbed and suggested you work with her on a different dataset. But she doesn’t believe in unpaid labour, so she asked you to apply for a fellowship at her institute, The Global Plankton Research Institute.</p>
+<p>The next week you check your email to find you’ve been offered both fellowships. So which would you choose?</p>
+<hr />
+<div class="figure">
+<img src="images-spatial-tidyverse-course/copepod.png" />
+
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
