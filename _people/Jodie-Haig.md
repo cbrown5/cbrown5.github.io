@@ -1,5 +1,5 @@
 ---
-title: Jodie Haig
+title: Dr Jodie Haig
 layout: default-ppl
 published: true
 category: currentstaff
