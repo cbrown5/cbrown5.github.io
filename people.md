@@ -14,6 +14,8 @@ sitemap:
 </ul>
 <div class="clearme"><p></p></div>
 
+</br>
+
 ## Staff
 
 <ul class="list-ppl">
@@ -24,6 +26,8 @@ sitemap:
   {% endfor %}
 </ul>
 <div class="clearme"></div>
+
+</br>
 
 ## Research students
 
