@@ -1,16 +1,16 @@
 ---
-title: Chris Brown
+title: Dr Chris Brown
 layout: default-ppl
 published: true
 ---
 
 # Chris Brown
-![](/images/people/cjbrown.jpeg)
-The instigator of seascapemodels.org. Research Fellow at Australian Rivers Institute and Research Lead on the [Global Wetlands Program](https://globalwetlandsproject.org/).
 
+![](/images/people/cjbrown.jpeg)
+The instigator of seascapemodels.org.
 Chris is an enthusiastic science communicator. He also enjoys teaching statistics and modelling to applied scientists, and particularly how to access data visualisation and modelling tools using the R program.
 
-Read more about Chris' research [on Google Scholar](https://scholar.google.com.au/citations?hl=en&user=1qG6yFMAAAAJ&view_op=list_works&sortby=pubdate).
+Read more about Chris' publications [on Google Scholar](https://scholar.google.com.au/citations?hl=en&user=1qG6yFMAAAAJ&view_op=list_works&sortby=pubdate).
 
 ## Current research projects
 
