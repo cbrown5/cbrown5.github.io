@@ -1,7 +1,7 @@
 ---
 title: R course in data wrangling and spatial analysis notes are online
 layout: default
-category: Research
+category: rstats
 published: TRUE
 ---
 
@@ -21,4 +21,4 @@ The R course was written for a 1-day workshop at University of Queensland with m
 
 I would guestimate that if you do this course on your own you will need a day or a bit more. It took us a whole day in class, but we skipped a lot of the bonus material.
 
-I hope you find the course helpful. 
+I hope you find the course helpful.
