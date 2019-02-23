@@ -14,7 +14,7 @@ sitemap:
 </ul>
 <div class="clearme"><p></p></div>
 
-</br>
+<br>
 
 ## Staff
 
@@ -27,7 +27,7 @@ sitemap:
 </ul>
 <div class="clearme"></div>
 
-</br>
+<br>
 
 ## Research students
 
