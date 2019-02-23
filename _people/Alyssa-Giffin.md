@@ -2,7 +2,7 @@
 title: Alyssa Giffin
 layout: default-ppl
 published: true
-category: current
+category: currentphd
 ---
 
 # Alyssa Giffin

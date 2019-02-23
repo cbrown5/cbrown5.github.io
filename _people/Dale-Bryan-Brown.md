@@ -2,7 +2,7 @@
 title: Dale Bryan-Brown
 layout: default-ppl
 published: true
-category: current
+category: currentphd
 ---
 
 # Dale Bryan-Brown

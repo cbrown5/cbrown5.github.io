@@ -2,7 +2,7 @@
 title: Jodie Haig
 layout: default-ppl
 published: true
-category: current
+category: currentstaff
 ---
 
 # Jodie Mehrtens nee Haig

@@ -2,7 +2,7 @@
 title: Kristin Jinks
 layout: default-ppl
 published: true
-category: current
+category: currentphd
 ---
 
 # Kristin Jinks

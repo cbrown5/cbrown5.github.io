@@ -2,7 +2,7 @@
 title: Mischa Turschwell
 layout: default-ppl
 published: true
-category: current
+category: currentstaff
 ---
 
 # Mischa Turschwell

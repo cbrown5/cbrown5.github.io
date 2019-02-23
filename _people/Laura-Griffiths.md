@@ -2,7 +2,7 @@
 title: Laura Griffiths
 layout: default-ppl
 published: true
-category: current
+category: currentphd
 ---
 
 # Laura Griffiths

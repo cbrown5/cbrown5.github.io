@@ -14,11 +14,22 @@ sitemap:
 </ul>
 <div class="clearme"><p></p></div>
 
-## Current members
+## Staff
 
 <ul class="list-ppl">
     {% for people in site.people %}
-    {% if people.category contains 'current'%}
+    {% if people.category contains 'currentstaff'%}
+  <li><a class="button-ppl" href="{{ people.url }}">{{ people.title }} </a></li>
+    {% endif %}
+  {% endfor %}
+</ul>
+<div class="clearme"></div>
+
+## Research students
+
+<ul class="list-ppl">
+    {% for people in site.people %}
+    {% if people.category contains 'currentphd'%}
   <li><a class="button-ppl" href="{{ people.url }}">{{ people.title }} </a></li>
     {% endif %}
   {% endfor %}
