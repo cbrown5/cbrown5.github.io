@@ -40,6 +40,10 @@
     border-color: white;
 }
 
+.box-link{
+  cursor: grab;
+}
+
 .main-box h1{
     position:absolute;
     left:2%;
@@ -603,6 +607,39 @@ img.largeimage{
 #ppl-page img{
     max-width:200px;
     float:left;
+}
+
+img.icon-image{
+  max-width:200px;
+  padding:0px;
+  margin:0px;
+}
+
+/* main page images */
+
+div.main-image{
+  position:relative;
+  margin:0 auto;
+}
+
+img.image-top{
+  position:absolute;
+  left:0;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+}
+img.image-top:hover{
+  opacity:0;
+}
+
+img.image-bottom{
+  max-height:400px;
+}
+
+a.nohand{
+  cursor:zoom-in;
 }
 
 /* Code for overlaid gif

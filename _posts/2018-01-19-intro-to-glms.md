@@ -19,7 +19,8 @@ models, which are a related but different class of model) may seem
 mysterious to many, but are actually pretty accessible. You would have
 learned the basics in high school maths.
 
-We will cover some of those basics here.
+We will cover some of those basics here. You might like to read my blog
+on [Genealized linear model link functions](/rstats/2018/10/16/understanding-the-glm-link.html) after this one. 
 
 Linear equations
 ----------------
