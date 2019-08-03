@@ -7,6 +7,8 @@ published: TRUE
 
 # We're hiring a quantitative ecologist
 
+Applications to this position closed, July 2019. Here's the original posts, for record purposes.  
+
 I’m looking to hire a quantitative ecologist to work with the [Global Wetlands Project](https://globalwetlandsproject.org/) at Griffith University, Australia.
 
 The position is 2.5 years, at either postdoctoral level or academic level 2 (also known as level B).

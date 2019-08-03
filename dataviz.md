@@ -13,4 +13,4 @@ sitemap:
 
 If you are **interested in learning more about R** then take one of our courses. The next set of courses (as of writing) is at [University of Queensland on 5th February 2019](https://smp.uq.edu.au/event/session/5650). These cover topics from an introduction for absolute beginners to advanced R programming.  
 
-You can read more about the talk in [these notes, which include an R code 'how to' for the figures, which go with my talk](/rstats/2018/07/04/dataviz2018_notes.html). 
+You can read more about the talk in [these notes, which include an R code 'how to' for the figures, which go with my talk](/rstats/2018/07/04/dataviz2018_notes.html).
