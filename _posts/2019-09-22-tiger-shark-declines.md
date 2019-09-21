@@ -7,7 +7,7 @@ published: TRUE
 
 # Informing priors for a time-series models to detect declines in tiger sharks  
 
-[Our new research](https://www.sciencedirect.com/science/article/pii/S0006320719306020) has revealed a 71% decline in tiger sharks across Queensland’s coastline ((open-access version)[https://www.biorxiv.org/content/biorxiv/early/2019/01/13/395509.full.pdf]).
+[Our new research](https://www.sciencedirect.com/science/article/pii/S0006320719306020) has revealed a 71% decline in tiger sharks across Queensland’s coastline ([open-access version](https://www.biorxiv.org/content/biorxiv/early/2019/01/13/395509.full.pdf)).
 
 In this blog I will explore the time-series modelling techniques we used to estimate this trend. (I've written about the significance of this [decline elsewhere](https://catchmenttocoast.org/2019/09/11/decline-in-tiger-shark-population-defies-expectations/).)
 
