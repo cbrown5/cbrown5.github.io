@@ -27,7 +27,7 @@ non-linearity.
     plot(x, y)
     lines(x, exp(mu))
 
-![](/images/glm-tip-non-linear-splines_files/figure-markdown_strict/unnamed-chunk-1-1.png)
+![](/images/glm-tip-non-linear-splines/figure-markdown_strict/unnamed-chunk-1-1.png)
 
 Now, we could just fit a polynomial, but for real data we wouldn't know
 the mean structure was generated as a polynomial. So we might want to
@@ -64,7 +64,7 @@ polynomial, we'd expect the 3 df model will do best
     lines(x, exp(mu), lwd = 2, col = "grey")
     lines(x, m3pred, col = "darkblue", lwd = 2)
 
-![](/images/glm-tip-non-linear-splines_files/figure-markdown_strict/unnamed-chunk-2-1.png)
+![](/images/glm-tip-non-linear-splines/figure-markdown_strict/unnamed-chunk-2-1.png)
 The orange line is the naive linear fit, it basically shows no trend.
 The purple line (df = 2) does better, but misses the kick up at the end.
 The blue line looks closest to the 'true' mean function (grey line).
@@ -114,7 +114,7 @@ First, set the knots using `x`:
     lines(x, xcs[,2], col = "salmon")
     lines(x, xcs[,3], col = "steelblue")
 
-![](/images/glm-tip-non-linear-splines_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+![](/images/glm-tip-non-linear-splines/figure-markdown_strict/unnamed-chunk-4-1.png)
 
 This splits `x` into three covariates (note the new matrix `xcs` has
 three columns), which I've plotted above. The cubic spline algorithm
