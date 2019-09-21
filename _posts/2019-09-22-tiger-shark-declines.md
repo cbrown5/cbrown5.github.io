@@ -2,7 +2,7 @@
 title: Informing priors for a time-series models to detect declines in tiger sharks
 layout: default
 category: rstats
-published: FALSE
+published: TRUE
 ---
 
 # Informing priors for a time-series models to detect declines in tiger sharks  
