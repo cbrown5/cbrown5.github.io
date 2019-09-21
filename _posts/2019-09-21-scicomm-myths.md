@@ -45,7 +45,7 @@ The study encourages us to build a following on twitter, so that we do eventuall
 
 ## Why tackle the myths?
 
-I wanted to write about these three myths, because I still hear them pretty commonly. I hope that by recognizing them as myths, we can give ourselves and each other better recognition for the scicomm we do. And I hope recognizing these myths will help us keep scicomm training up to speed with scientists needs. 
+I wanted to write about these three myths, because I still hear them pretty commonly. I hope that by recognizing them as myths, we can give ourselves and each other better recognition for the scicomm we do. And I hope recognizing these myths will help us keep scicomm training up to speed with scientists needs.
 
 That last topic is something science communicator Tom Rayner and I will be writing about soon.
 
