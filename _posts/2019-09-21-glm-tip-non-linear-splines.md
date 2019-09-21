@@ -1,7 +1,7 @@
 ---
 title: GLM tip getting non-linear with splines
 layout: default
-category: Research
+category: rstats
 published: TRUE
 ---
 
