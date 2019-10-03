@@ -118,5 +118,5 @@ Finally, you can save your map to file
 
 Have fun mapping. For more help see [tmap
 basics](https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html)
-or the book []**Geocomputation with
-R**](https://geocompr.robinlovelace.net/adv-map.html) or come to our [course in Queensland February 2018](https://smp.uq.edu.au/research/centres/carm/events). 
+or the book [**Geocomputation with
+R**](https://geocompr.robinlovelace.net/adv-map.html) or come to our [course in Queensland February 2018](https://smp.uq.edu.au/research/centres/carm/events).
