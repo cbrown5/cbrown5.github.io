@@ -7,7 +7,7 @@ category: currentstaff
 
 # Mischa Turschwell
 ![](/images/people/Mischa-Turschwell.jpg)
-A postdoctoral fellow, Mischa has just begun work on multiple stressors of coastal ecosystems, funded by an ARC Discovery Project.
+A postdoctoral fellow, Mischa is working on multiple stressors of coastal ecosystems, funded by an ARC Discovery Project.
 
 Mischa finished his PhD with Griffith and CSIRO in 2017 where he used a range of modelling techniques to investigate the thermal and habitat characteristics of a threatened headwater fish species.
 
