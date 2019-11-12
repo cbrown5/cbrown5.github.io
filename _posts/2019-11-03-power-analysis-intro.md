@@ -178,7 +178,7 @@ To get the power, we just sum `Signif` and divide by the 1000 trials:
 
 So an ~40% chance we'd detect a 2x difference in wrasse abundance with
 20 transects. This is the 2-sided probability, arguably for this question
- we could also use a one-sided test. 
+ we could also use a one-sided test.
 
 Try it again for the sweetlips (expected abundance doubling from 10 to
 20). You'll see you get much more power with this more abundance species
@@ -200,7 +200,7 @@ answer that by looking at the estimates from the GLM:
       geom_vline(xintercept = 2) +
       xlab("Estimated times difference")
 
-![](/images/power-analysis-intro_files/figure-markdown_strict/unnamed-chunk-7-1.png)
+![](/images/blogs-2019/power-analysis-intro_files/figure-markdown_strict/unnamed-chunk-7-1.png)
 
 This distribution shows the expected outcomes we'd estimate over 1000
 repeats of the surveys. So the solid vertical line is the 'real'
@@ -254,7 +254,7 @@ but with different colours for significant versus non-significant.
       xlab("Estimated times difference") +
       xlim(0,5)
 
-![](/images/power-analysis-intro_files/figure-markdown_strict/unnamed-chunk-9-1.png)
+![](/images/blogs-2019/power-analysis-intro_files/figure-markdown_strict/unnamed-chunk-9-1.png)
 
 You can clearly see the significant trials almost always overestimate
 the true difference (vertical line).
