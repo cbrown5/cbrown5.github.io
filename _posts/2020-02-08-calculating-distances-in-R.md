@@ -1,3 +1,10 @@
+---
+title: Three ways to calculate distances in R
+layout: default
+category: rstats
+published: TRUE
+---
+
 Three ways to calculate distances in R
 ======================================
 
