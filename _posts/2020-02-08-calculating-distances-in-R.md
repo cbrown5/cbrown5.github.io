@@ -43,7 +43,7 @@ Here's a map:
 Note I've included a scale bar, but of course the distance between
 longitude lines gets closer at higher latitudes.
 
-1. Great circle distances
+Great circle distances
 -------------------------
 
 The first method is to calculate great circle distances, that account
@@ -63,7 +63,7 @@ distances (in metres).
 The matrix m gives the distances between points (we divided by 1000 to
 get distances in KM).
 
-2. Euclidean distances
+Euclidean distances
 ----------------------
 
 Another option is to first project the points to a projection that
@@ -125,7 +125,7 @@ point 1, because it is so far outside the zone of the UTM projection.
 Points 2 & 3 are within the UTM zone, so the distance between these
 points is almost identical to the great circle calculation.
 
-3. Distances around a barrier
+Distances around a barrier
 -----------------------------
 
 The basic idea here is that we turn the data into a raster grid and then
@@ -179,7 +179,7 @@ it looks:
 
 ![](/images/blogs-2020/calculating-distances-in-R_files/figure-markdown_strict/unnamed-chunk-13-1.png)
 
-Colours correspond to distances.
+Colours correspond to distances from point 3 (the location we gave a value of '2' to in the raster).
 
 Now we can just ask for the distance values at the cells of the other
 points:
