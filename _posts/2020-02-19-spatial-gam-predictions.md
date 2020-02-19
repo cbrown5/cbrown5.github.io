@@ -1,3 +1,11 @@
+---
+title: Spatial predictions with GAMs and rasters
+layout: default
+category: rstats
+published: TRUE
+---
+
+
 Spatial predictions with GAMs and rasters
 =========================================
 
