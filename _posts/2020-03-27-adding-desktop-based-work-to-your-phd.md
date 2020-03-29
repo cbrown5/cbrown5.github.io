@@ -68,6 +68,8 @@ Combining existing data together in new ways can be a good way to make something
 
 Remember that if you are using data, even if you've downloaded it 'for free' it is generally courteous to contact the data providers and let them know what you are doing. Obviously, you don't need to ask to use landsat data (but do read the data license). But, say you want to use data published with a study, you should write the authors and tell them what you are doing. They may already be working on that analysis, so this simple step is both polite and will save you time.
 
+Otlet, a data sharing service, [are offering a 'match-making' service](https://docs.google.com/forms/d/e/1FAIpQLSdl32ju3IifAETih1F116fdqygS-WGVOI_7NVBhKTg7m6P6ZQ/viewform) to help students and postdocs find data. Thanks Gretta Pecl for sharing this tip. 
+
 ### Your strengths
 
 If you are a field or lab ecologists about to embark on a modelling study, you have some unique strengths to bring to a modelling study.
