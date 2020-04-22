@@ -155,6 +155,8 @@ Which tells us TRUE/FALSE if the condition is met. To get an error use
 Common unit tests for data wrangling
 ------------------------------------
 
+Let's start with the basics. No special packages, just simple logical queries.
+
 Of the top of my head here are a few of my most commonly used unit tests
 To check the number of sites has stayed the same, use
 `length(unique(`... to get the number of unique cases:
@@ -284,6 +286,25 @@ We could check for this by checking for the number of transects e.g.
     ## [1]  TRUE FALSE FALSE FALSE FALSE
 
 (Yes I used a pipe this time, but a simple one).
+
+More sophisticated method for unit testing
+-------------------------------------------      
+
+(This part is new as of 2020-04-22)
+
+So once this post got shared I got a lot of feedback. A lot of lovely people wrote me with the timeless rstats cliche "there's a package for that" (I say that being an abuser of that cliche myself).
+
+So if you really want to get into unit testing and take it to the next level here's a few of the tips I received.
+
+Roger Bivand wrote to tell me about [validate package)[https://cran.r-project.org/web/packages/validate/vignettes/introduction.html], which comes with a [whole book](https://cran.r-project.org/doc/contrib/de_Jonge+van_der_Loo-Introduction_to_data_cleaning_with_R.pdf.) on data cleaning (that is now on my 'lockdown' reading list).
+
+Another popular one is [testthat](https://cran.r-project.org/web/packages/testthat/index.html), which I received many recommendations for (haven't used it myself).
+
+Ed Hagen shared [tidylog](https://github.com/elbersb/tidylog/) that conveniently prints messages telling you what join and so on have done did (pretty low overhead on learning this one!). Might be good package to install if you are just learning dplyr too, as it reveals more about what is going on.  
+
+David Aja and others messaged me about [point blank](https://github.com/rich-iannone/pointblank), which integrates unit testing into pipes.
+
+These are all great solutions for the advanced R user. My challenge with them is that students get worn down by hearing "there's another R package for that". So best solution is take it step-by-step, get some simple unit testing going first. If that's not enough to get the job done, then start using these tools, once you're comfortable with the basics.
 
 Going forward
 -------------
