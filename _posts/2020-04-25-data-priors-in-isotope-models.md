@@ -109,8 +109,6 @@ First load the packages we need:
     library(BayeSens)
     library(MixSIAR)
 
-    ## Warning: package 'MixSIAR' was built under R version 3.6.3
-
 Now load the data (this is verbatim from the Killer whale example).
 
     mix.filename <- system.file("extdata", "killerwhale_consumer.csv", package = "MixSIAR")
@@ -263,7 +261,7 @@ practice data wrangling. For Chinook and Coho:
 
 It is pretty clear that contributions for Chinook have shifted higher,
 whereas the data doesn't give us much reason to believe Coho are any
-more important than the prior suggested.
+more important than the prior suggested. 
 
 Note that you can also get high information criteria stats if the
 posterior mean stays the same as the prior's mean, but the distribution
