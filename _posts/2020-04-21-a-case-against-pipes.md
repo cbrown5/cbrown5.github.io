@@ -296,7 +296,7 @@ So once this post got shared I got a lot of feedback. A lot of lovely people wro
 
 So if you really want to get into unit testing and take it to the next level here's a few of the tips I received.
 
-Roger Bivand wrote to tell me about [validate package)[https://cran.r-project.org/web/packages/validate/vignettes/introduction.html], which comes with a [whole book](https://cran.r-project.org/doc/contrib/de_Jonge+van_der_Loo-Introduction_to_data_cleaning_with_R.pdf.) on data cleaning (that is now on my 'lockdown' reading list).
+Roger Bivand wrote to tell me about [validate package](https://cran.r-project.org/web/packages/validate/vignettes/introduction.html), which comes with a [whole book in pdf format](https://cran.r-project.org/doc/contrib/de_Jonge+van_der_Loo-Introduction_to_data_cleaning_with_R.pdf) on data cleaning (that is now on my 'lockdown' reading list).
 
 Another popular one is [testthat](https://cran.r-project.org/web/packages/testthat/index.html), which I received many recommendations for (haven't used it myself).
 
