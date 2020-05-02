@@ -61,14 +61,14 @@ This is a big one. Joining datasets is a major, major, timesink.
 
 So much so, you could basically say my niche in my field is joining different datasets in new ways. We can get new interesting results, but it can be hard (which is why not everyone is doing it).
 
-First, joins present opportunities for errors. If you are doing a simple join on a shared variable (e.g. with dplyr's inner_join), but the variable is coded inconsistently across dataframes you might loose data.
+First, joins present opportunities for errors. If you are doing a simple join on a shared variable (e.g. with dplyr's inner_join), but the variable is coded inconsistently across dataframes you might loose data. This might be hard to detect in large datasets.
 
-Second, joins might be based more loosely on spatial or temporal similarities. These can get fiddly. Say you want to extract wave height data at some diver survey sites. Just use the coordinates right? Well, what if the wave data doesn't extend all the way to the coast, or the resolution is too 'blocky' and it misses some dive sites? Now you have to invent a way to find wave values *near to* dive sites, ideally only when dive data are missing. It gets fiddly.
+Second, joins might be based more loosely on spatial or temporal similarities. These can get fiddly. Say you want to extract wave height data at some diver survey sites. Just use the coordinates right? Well, what if the wave data doesn't extend all the way to the coast, or the resolution is too 'blocky' and it misses some dive sites? Now you have to invent a way to find wave values *near to* dive sites, ideally only when wave data are missing. It gets fiddly.
 
-The same issue happens with times. Maybe rainfall isn't measured on the exact day you had bird counts. So perhaps now you impute rainfall to the missing day, but what algorithm of the 1000s possible are you going to use for the imputation?
+The same issue happens with joins on times/dates. Maybe rainfall isn't measured on the exact day you had bird counts. So perhaps now you impute rainfall to the missing day, but what algorithm of the 1000s possible are you going to use for the imputation?
 
 ## Summary
 
-So think carefully about the issues your project's data might present. If you're not still sure how long it might take, then try this formula recommended by a friend:
+So think carefully about the issues your project's data might present. If you're still not sure how long it might take, then try this formula recommended by a friend:
 
 "Time to write-up a PhD thesis: Guess how long you will need to write up your thesis. Add 3 months. Double it. Drink heavily"
