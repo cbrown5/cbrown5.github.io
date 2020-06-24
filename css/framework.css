@@ -69,33 +69,33 @@
 }
 
 .bkg-1{
-    background-color: #cce0ff;
+    background-color: #10E7DC;
     color:#616866;
-    border-color:#cce0ff;
+    border-color:#10E7DC;
 }
 
 .bkg-2{
-    background-color: #80b3ff;
+    background-color: #0074E1;
     color:white;
-    border-color:#80b3ff;
+    border-color:#0074E1;
 }
 
 .bkg-3{
-    background-color: #3385ff;
+    background-color: #1B9CE5;
     color:white;
-    border-color:#3385ff;
+    border-color:#1B9CE5;
 }
 
 .bkg-4{
-    background-color: #005ce6;
+    background-color: #6CDAEE;
     color:white;
-    border-color:#005ce6;
+    border-color:#6CDAEE;
 }
 
 .bkg-5{
-    background-color: #003d99;
+    background-color: #F79E02;
     color:white;
-    border-color:#003d99;
+    border-color:#F79E02;
 }
 
 @media (min-width: 641px) {

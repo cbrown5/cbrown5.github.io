@@ -12,9 +12,9 @@ Our lab uses quantitative tools, including statistics, AI and numerical models, 
 ## Conservation and restoration of coastal habitats
 Work with the team on [Global Wetlands Project](https://globalwetlandsproject.org/) to help solve pressing challenges for conservation of coastal wetland habitats. PhD and Honours projects available to work on predicting the impact of multiple interacting stressors and assessing the impact of habitat loss on the sustainability of fisheries. Email Chris (chris.brown@griffith.edu.au) for more information. PhD and honours projects available.
 
-## How can marine conservation recover from the COVID pandemic
+## How can marine conservation recover from the economic recession and decline in ecotourism?
 
-Many marine conservation initiatives are supported by ecotourism, but that industry has been hit hard by COVID19 and travel restrictions. PhD projects are available to work with international agencies to understand how conservation of marine life has been affected and plan recovery strategies. Contact Chris Brown (chris.brown@griffith.edu.au) for more information. PhD and honours projects available.
+Many marine conservation initiatives are supported by ecotourism, but that industry has been hit hard by COVID19 and travel restrictions. PhD projects are available to work with international agencies to understand how conservation of marine life has been affected and plan recovery strategies. This is an opportunity to develop new science and engage in meaningful conservation actions to address a global issue. Contact Chris Brown (chris.brown@griffith.edu.au) for more information. PhD and honours projects available.
 
 ## Criteria for potential PhD applicants
 
