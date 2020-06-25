@@ -16,6 +16,14 @@
     padding: 0;
     box-sizing: border-box; }
 
+.container-flip {
+    border-style:solid;
+    border-width:1px;
+    border-color:gray;
+    padding:5px;
+    margin:0.5em;
+  }
+
 .main-box{
       width:100%;
       float:none;
@@ -70,7 +78,7 @@
 
 .bkg-1{
     background-color: #10E7DC;
-    color:#616866;
+    color:#101010;
     border-color:#10E7DC;
 }
 
@@ -88,7 +96,7 @@
 
 .bkg-4{
     background-color: #6CDAEE;
-    color:white;
+    color:#101010;
     border-color:#6CDAEE;
 }
 

@@ -4,8 +4,17 @@ title: News and Views
 sitemap:
     priority: 0.7
     changefreq: 'monthly'
-    lastmod: 2017-08-16
+    lastmod: 2020-06-24
 ---
+
+<link href="{{ base.url | prepend: site.url }}/assets/js/aos/dist/aos.css" rel="stylesheet">
+<script src="{{ base.url | prepend: site.url }}/assets/js/aos/dist/aos.js"></script>
+
+<script>
+  AOS.init({
+  duration: 1200,
+});
+</script>
 
 <div class="research-header">
     {% include nav.html %}
@@ -18,91 +27,135 @@ sitemap:
 <h1 class="research-h1" id="ani4">ecosystem modelling </h1>
 </div>
 
+
 <div class="container">
 
 <h2>Research</h2>
-<p> We work on balancing the conservation of marine ecosystems with human uses of the oceans.
-   We aim to bring ecological complexity to the planning tools used to inform
-decision making. </p>
+<p> We work on balancing the conservation of marine ecosystems with human
+  uses of the oceans.
+   We aim to bring ecological complexity to the planning tools used to
+   inform decision making. </p>
 
-<p> Read more about our <a href="/people.html"> research team</a> or our research on our <a href="/bluecology_blog.html">blog</a> or check out our <a href="/publications/html"> publications</a>. </p>
+   <p> Our research applies both mathematical models and
+     statistical analysis. </p>
+   <p> We specialise in integrating ecologically complex
+     models with tools for informing decision makers.
+    We also work with large databases of the marine environment. </p>
+   <p>We use the
+   <a href="http://cran.r-project.org/" target="_blank">R
+     programming language</a> and teach R to others.
+   Chris' teaching resources are on this site and are
+    <a href="/code.html">open-access</a>. </p>
 
-<h3> Research opportunities </h3>
+<p> Read more about our <a href="/people.html"> research team</a> or our
+  research on our <a href="/bluecology_blog.html">blog</a> or check out
+   our <a href="/publications/html"> publications</a>. </p>
+
+<h3> Future research opportunities </h3>
 
 <a href ="/research/2020/06/15/PhD-projects-available.html" class="button-ppl"
 style="border-color:#10E7DC; border-style:solid;border-width:2px;">We are currently seeking applicants for
-  PhD projects to study AI in marine conservation monitoring,
+  PhD projects to study AI for marine conservation monitoring,
   the managment of Pacific tuna fisheries and their bycatch, and
   to develop science to inform recovery of marine conservation projects after the recent economic
   recession.</a>
 
 <h3> Current projects</h3>
 
+<div class="container-flip bkg-5" data-aos="zoom-in-left">
+
 <h4> Multiple stressors of marine ecosystems</h4>
-<div style="float:left;max-width:300px;">
 <img src="/images/dp18-image.JPG" style="max-width:280px;">
-</div>
 
 <p> We are currently funded by the Australian Research Council
-  (2018-2020) on a project <a href="http://www.seascapemodels.org/research/2017/11/10/interacting-impacts-grant.html)">
+  (2018-2020) on a project <a href="http://www.seascapemodels.org/research/2017/11/10/interacting-impacts-grant.html">
     Predicting interactive effects of multiple stressors on marine ecosystems</a>.
     We aim to develop new models that can make predictions reliable enough to inform management of ecosystems,
     and that are effective when data are limited. </p>
     <p> Existing approaches predict that the impacts of multiple stressors accumulate in an additive and linear way. Our proposed approach can predict that multiple
 stressors interact to have non-linear effects on ecosystems.</p>
-
-    <div class="clearme"></div>
-
+<p> Team: Dr Chris Brown (lead), Professor Rod Connolly (Simon Fraser University),
+  Professor Isabelle Cote,
+  Dr Mischa Turschwell, Ms Olivia King, Ms Laura Griffiths </p>
+</div>
+<div class="container-flip bkg-1" data-aos="zoom-in-right">
  <h4> Global wetlands project </h4>
 <img class="icon-image" src="/images/GLOW-logo-wide-01.png"/>
  <p>The <a href="https://globalwetlandsproject.org/">Global Wetlands Project</a> is
  a global research program looking at mapping the health of seagrass, mangroves
   and saltmarsh to inform on conservation actions.</p>
 
+  <p> Team:  Professor Rod Connolly, Dr Chris Brown and many others, see
+    <a href="https://globalwetlandsproject.org/">project page</a> </p>
+</div>
+
+<div class="container-flip bkg-2" data-aos="zoom-in-left">
 <h4> Improved monitoring and management of Pacific tuna fisheries</h4>
 
 <p> We are helping The Nature Conservancy improve management of Pacific tuna fisheries, through
   the use of electronic monitoring systems. Our team is analysing trial monitoring data
   and demonstrating how it can be used to inform tuna management and mitigate bycatch. </p>
 
+<p> Team: Dr Chris Brown and The Nature Conservancy</p>
+</div>
+
+<div class="container-flip bkg-3" data-aos="zoom-in-right">
+<h4> Tools to assess cross-sector interactions in the Blue Economy </h4>
+
+<p> We are working with the <a href="https://blueeconomycrc.com.au/projects/tools-to-assess-cross-sector-interactions/" target = "_blank"> Blue Economy CRC</a>
+  to identify tools that can assess opportunities and risks for cross sector
+  interactions in the blue economy. These include biodiversity, fisheries,
+  aquaculture and offshore renewable energy. </p>
+  <p> Team: Dr Mischa Turschwell (lead), Dr Chris Brown, Dr Beth Fulton (CSIRO)
+    and many others </p>
+</div>
+
+<div class="container-flip bkg-4" data-aos="zoom-in-left">
 <h4> Economic environmental accounting</h4>
 
-<p> We are currently funded by the National Environmental Science Program
+<p> We are working with the National Environmental Science Program Northern Hub
   to develop <a href="https://www.nespnorthern.edu.au/projects/nesp/environmental-economic-accounting/"
   target = "_blank">Economic-Environmental accounts</a> for Northern Australia and Coastal ecosystems </p>
+  <p> Team: Dr Jim Smart (economics), Professor Sue Jackson (social science),
+    Dr Chris Brown and Ms Chantal Saint Ange</p>
+</div>
 
-<h2>Project pages</h2>
-<p> Visit the page of our projects to learn more, access code or download data. </p>
-<ul class="list-cards">
-    <li class="r-resources"><a class="card-pubs" href="http://www.seascapemodels.org/fishscape/" target="_blank">
-        <h4>Fishscape</h4>
-        <img class="icon-image" src="/images/fishscape.jpg"/>
-    <p> A global database of fish-habitat associations </p>
-    </a></li>
-    <li class="r-resources"><a class="card-pubs" href="https://globalwetlandsproject.org/" target="_blank">
-        <h4></h4>
-        <img class="icon-image" src="/images/GLOW-logo-wide-01.png"/>
-    <p> Mapping the health of seagrass, mangroves and saltmarsh globally to inform conservation actions</p>
-    </a></li>
+<h3>Past projects and outcomes</h3>
 
-  </ul>
+<div class="container-flip bkg-5" data-aos="zoom-in-right">
+<h4> Predicting fisheries change from cumulative impacts to aquatic habitats </h4>
+<p> 2016-2019 </p>
+<p> Dr Chris Brown's Australian Research Council Discovery Early Career
+   Award fellowship</p>
+<p> We created a global database of fish-habitat associations:
+  <a href="http://www.seascapemodels.org/fishscape/" target="_blank">
+  Fishcape </a></p>
+</div>
+
+<div class="container-flip bkg-1" data-aos="zoom-in-left">
+<h4> Ridge to reef fisheries management </h4>
+<p> 2014-2016 </p>
+<p> The National Center for Ecological Analysis and Synthesis
+  funded us to work on <a href="https://snappartnership.net/teams/ridges-to-reefs-fisheries/" target="_blank">
+    ridge to reef fisheries management</a>.
+  We helped inform management of catchments on Pacific Islands
+to improve coastal water quality, marine habitats and fisheries. </p>
+<p> We were able to link deforestation to pollution and its
+  impacts on coastal ecosystems. Using modelling tools, we could
+  then conduct assessments of how land-use change and forest protection
+  could benefit coastal fish stocks </p>.
+</div>
+
+<div class="container-flip bkg-2" data-aos="zoom-in-right">
+<h4> Predicting trade-offs between marine conservation and fisheries </h4>
+<p> 2012-2014 </p>
+<p> Dr Chris Brown's University of Queensland post-doctoral research fellowship. We showed how
+marine reserves and fisheries management can be optimized to balance trade-offs between
+biodiversity and fisheries objectives. </p>
+</div>
+
   <br>
   <div class="clearme"></div>
 
-    <p> Our research applies both mathematical models and statistical analysis. </p>
-    <p> We specialise in integrating ecologically complex models with tools for informing decision makers.
-     We also work with large databases of the marine environment. </p>
-    <p>We use the
-    <a href="http://cran.r-project.org/" target="_blank">R programming language</a>
-    and teach R to others.
-    Chris' teaching resources are on this site and are <a href="/code.html">open-access</a>. </p>
-<br>
 
-<h2> Research blog </h2>
-<ul class="list_post">
-{% for post in site.posts %}
-{% if post.category contains 'Research'%}
-  <li><a class="button-ppl" href="{{ post.url }}">{{ post.title }} - <em>{{ post.date | date: "%d %b %Y" }}</em> </a></li>
-    {% endif %}
-  {% endfor %}
-</ul>
+<br>

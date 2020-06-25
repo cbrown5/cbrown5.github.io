@@ -1,11 +1,13 @@
 ---
-title: PhD projects available
+title: PhD projects on marine conservation and ecosystem modelling available
 layout: default
 category: research
 published: TRUE
 ---
 
-# PhD projects available
+# PhD projects on marine conservation and ecosystem modelling available
+
+Current June 2020 until January 2021
 
 Our lab uses quantitative tools, including statistics, AI and numerical models, to help conservation managers address a range of issue facing marine ecosystems. Below are two current projects where we are recruiting students.
 
