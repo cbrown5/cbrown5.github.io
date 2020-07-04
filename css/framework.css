@@ -2,6 +2,14 @@
 
 /* Layouts
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.bkg-image{
+  background-image: url("/images/matsykrockbg.jpg");
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-size:cover;
+}
+
 .container {
   position: relative;
   width: 95%;
@@ -14,14 +22,7 @@
     width: 100%;
     margin: 0 auto;
     padding: 0;
-    box-sizing: border-box; }
-
-.container-flip {
-    border-style:solid;
-    border-width:1px;
-    border-color:gray;
-    padding:5px;
-    margin:0.5em;
+    box-sizing: border-box;
   }
 
 .main-box{
@@ -77,36 +78,62 @@
 }
 
 .bkg-1{
-    background-color: #10E7DC;
-    color:#101010;
-    border-color:#10E7DC;
+    background-color: #3500D3;
+    color:white;
+    border-color: #3500D3;
 }
 
 .bkg-2{
-    background-color: #0074E1;
+    background-color: #190061;
     color:white;
-    border-color:#0074E1;
+    border-color:#190061;
 }
 
 .bkg-3{
-    background-color: #1B9CE5;
+    background-color: #240090;
     color:white;
-    border-color:#1B9CE5;
+    border-color:#240090;
 }
 
 .bkg-4{
-    background-color: #6CDAEE;
-    color:#101010;
-    border-color:#6CDAEE;
+    background-color: #0C0032;
+    color:white;
+    border-color:#0C0032;
+
 }
 
 .bkg-5{
-    background-color: #F79E02;
+    background-color: #282828;
     color:white;
-    border-color:#F79E02;
+    border-color:#282828;
+}
+
+.portfolio{
+  position: relative;
+  width: 90%;
+  height:20%;
+  margin: 0;
+  padding: 2rem;
+  color:white;
+}
+
+div.portfolio:hover{
+      box-shadow: inset 4px 8px 10px 1px rgba(0,0,0,0.7);
+      text-decoration: none;
+  }
+
+p.portfolio{
+    font-size:1.5rem;
+    text-align:center;
+    color:white;
+    padding:0rem;
 }
 
 @media (min-width: 641px) {
+
+  img.icon-image{
+    float:left;
+}
 
     .container {
       position: relative;
@@ -142,6 +169,10 @@
     border-left:14px;
     float:none;
     }
+
+.portfolio{
+  margin:1.5rem;
+}
 }
 
 @media (min-width: 1000px) {
@@ -260,9 +291,10 @@ blockquote{
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: #0052cc; }
+  color: #3500D3;
+  text-decoration: none;}
 a:hover {
-    text-decoration: underline;}
+    text-decoration: none;}
 
  /* Site nav
  –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -348,8 +380,6 @@ a:hover {
  }
 
 a.button{
-    color:white;
-    background-color: #99CCFF;
     width:auto;
     padding:0em 0.4em;
     display: inline-block;
@@ -416,7 +446,7 @@ ul.list_post {
 
 a.button_post{
     font-size: 1.2rem;
-    color:#0073e6;
+    color:white;
     width:100%;
     display: inline-block;
     text-decoration: none;
@@ -425,7 +455,7 @@ a.button_post{
 }
 
 a.button_post:hover{
-    background-color: #e5faff;
+    background-color:#3500D3 ;
 }
 
 .button_post p{
@@ -451,16 +481,17 @@ ul.list-ppl {
 
 .button-ppl{
     font-size: 1.2rem;
-    color:black;
+    color:white;
     width:100%;
     display: inline-block;
     text-decoration: none;
     padding:0.4rem;
     box-sizing: border-box;
+    opacity:0.8;
 }
 
 .button-ppl:hover{
-    background-color: #e5faff;
+    background-color: #3500D3;
 }
 
 /* Cards
@@ -480,7 +511,6 @@ ul.list-cards {
     margin:0.5em;
     border-style: solid;
     border-width: 0.1em;
-    background: white;
 }
 
 
@@ -494,7 +524,6 @@ ul.list-cards {
 
 .card-pubs{
     font-size: 1rem;
-    color:black;
     width:100%;
     height:100%;
     display: inline-block;
@@ -503,6 +532,7 @@ ul.list-cards {
     box-sizing: border-box;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,0.7);
     transition: 0.3s;
+    opacity:0.8;
 }
 
 a.card-pubs:hover{
@@ -620,7 +650,7 @@ img.largeimage{
 img.icon-image{
   max-width:200px;
   padding:0px;
-  margin:0px;
+  margin:4px;
 }
 
 /* main page images */
@@ -665,6 +695,8 @@ a.nohand{
 
 .research-header{
     color:white;
+    position:relative;
+    text-align:center;
 }
 
 .research-h1{
@@ -672,8 +704,10 @@ a.nohand{
     margin-right: auto;
     position: absolute;
     width: 100%;
-    top:10%;
-    left:0;
+    top:75%;
+    left:50%;
+    transform: translate(-50%, -50%);
+
     font-size: 3em;
     text-align: center;
     line-height: 1.8;
@@ -693,7 +727,7 @@ a.nohand{
 #ani1{
     webkit-animation-delay:0s;
     animation-delay:0s;
-}
+  }
 #ani2{
     webkit-animation-delay:2.9s;
    animation-delay:2.9s;
