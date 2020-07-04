@@ -77,37 +77,6 @@
     font-size:0.9rem;
 }
 
-.bkg-1{
-    background-color: #3500D3;
-    color:white;
-    border-color: #3500D3;
-}
-
-.bkg-2{
-    background-color: #190061;
-    color:white;
-    border-color:#190061;
-}
-
-.bkg-3{
-    background-color: #240090;
-    color:white;
-    border-color:#240090;
-}
-
-.bkg-4{
-    background-color: #0C0032;
-    color:white;
-    border-color:#0C0032;
-
-}
-
-.bkg-5{
-    background-color: #282828;
-    color:white;
-    border-color:#282828;
-}
-
 .portfolio{
   position: relative;
   width: 90%;
@@ -187,6 +156,42 @@ p.portfolio{
         margin-top:1.5em;
     }
 }
+
+/* Colour themes ----------------------- */
+/* if you change this, also do a find and replace on
+the hashcodes in framework.css, to pick up manually edited ones*/
+
+.bkg-1{
+    background-color: #3500D3;
+    color:white;
+    border-color: #3500D3;
+}
+
+.bkg-2{
+    background-color: #190061;
+    color:white;
+    border-color:#190061;
+}
+
+.bkg-3{
+    background-color: #240090;
+    color:white;
+    border-color:#240090;
+}
+
+.bkg-4{
+    background-color: #0C0032;
+    color:white;
+    border-color:#0C0032;
+
+}
+
+.bkg-5{
+    background-color: #282828;
+    color:white;
+    border-color:#282828;
+}
+
 
 /* Base Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
