@@ -20,18 +20,10 @@
 .container-main {
     position: relative;
     width: 100%;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-
-.main-box{
-      width:100%;
-      float:none;
-      padding: 1% 5% 2% 5%;
-      box-sizing: border-box;
-      background-color:#FFFFFF;
- }
 
 .side-box{
       width:100%;
@@ -51,19 +43,6 @@
 
 .box-link{
   cursor: grab;
-}
-
-.main-box h1{
-    position:absolute;
-    left:2%;
-    top:0%;
-    font-size:2.2em;
-    text-decoration: none;
-    font-weight: 400;
-    border-radius: 10px;
-    padding: 3px 3px 3px 3px;
-    background-color: white;
-     opacity: 0.7;
 }
 
 
@@ -111,50 +90,20 @@ p.portfolio{
       padding: 0;
       box-sizing: border-box; }
 
-    .main-box{
-    height:100vh;
-    width:66%;
-    float:left;
-    padding: 1% 5% 2% 5%;
-    box-sizing: border-box;
-    }
     .box-content{
     position: relative;
-    margin-top: 2.5em;
+    margin-top: 1.5rem;
     }
     .side-box{
     height:20vh;
-    width:34%;
+    width:100%;
     box-sizing: border-box;
     padding: 1% 5% 2% 5%;
-    float:right;
-    }
-    .box-content p{
-    max-width: 50vw;
-    }
-    .main-box img{
-    width:90%;
-    max-width:500px;
-    border-left:14px;
-    float:none;
     }
 
 .portfolio{
   margin:1.5rem;
 }
-}
-
-@media (min-width: 1000px) {
-    .main-box h1{
-        font-size:3em;
-        font-weight: 400;
-        left:10%;
-        top:10%;
-    }
-    .main-box p{
-        font-size:1.2em;
-        margin-top:1.5em;
-    }
 }
 
 /* Colour themes ----------------------- */
@@ -661,8 +610,28 @@ img.icon-image{
 /* main page images */
 
 div.main-image{
-  position:relative;
-  margin:0 auto;
+  background-image: url("/images/manta-lei.JPG");
+  height: 450px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color:#FFFF;
+}
+
+div.main-image2{
+  background-image: url("/images/bastard-trumpeter.JPG");
+  height: 200px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color:#FFFF;
+}
+
+
+h4.main-subtext{
+  color:white;
 }
 
 img.image-top{
@@ -681,9 +650,6 @@ img.image-bottom{
   max-height:400px;
 }
 
-a.nohand{
-  cursor:zoom-in;
-}
 
 /* Code for overlaid gif
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
