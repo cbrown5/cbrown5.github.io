@@ -4,7 +4,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .bkg-image{
-  background-image: url("/images/matsykrockbg.jpg");
+  background-image: url("/images/BETrevally2.jpg");
   background-repeat:no-repeat;
   background-attachment:fixed;
   background-size:cover;
@@ -607,20 +607,21 @@ img.icon-image{
   margin:4px;
 }
 
-/* main page images */
+/* main page images with paralax scrolling*/
 
 div.main-image{
-  background-image: url("/images/manta-lei.JPG");
+  background-image: url("/images/coast.jpg");
   height: 450px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-color:#FFFF;
+  position:relative;
 }
 
 div.main-image2{
-  background-image: url("/images/bastard-trumpeter.JPG");
+  background-image: url("/images/BETrevally2.jpg");
   height: 200px;
   background-attachment: fixed;
   background-position: center;
@@ -629,9 +630,36 @@ div.main-image2{
   background-color:#FFFF;
 }
 
+div.main-image-research{
+  background-image: url("/images/output/animat.gif");
+  height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color:#FFFF;
+  position:relative;
+}
 
-h4.main-subtext{
+
+div.main-image2{
+  background-image: url("/images/BETrevally2.jpg");
+  height: 200px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color:#FFFF;
+}
+
+h2.main-subtext{
   color:white;
+  position:absolute;
+  bottom:0;
+}
+
+.main-image h1{
+  font-size:3rem;
 }
 
 img.image-top{
@@ -695,6 +723,7 @@ img.image-bottom{
     }
 }
 
+/*
 #ani1{
     webkit-animation-delay:0s;
     animation-delay:0s;
@@ -712,6 +741,7 @@ img.image-bottom{
     webkit-animation-delay:8.7s;
     animation-delay:8.7s;
 }
+*/
 
 /* Animations
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
