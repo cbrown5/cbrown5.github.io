@@ -200,15 +200,15 @@ p.foot_text{
 }
 
 a.name{
-    color:#0000ff;
+    color:white;
     font-style: normal;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 a.uni{
-    color:red;
+    color:white;
     font-style: normal;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 #contact p{
