@@ -246,7 +246,8 @@ blockquote{
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
   color: #3500D3;
-  text-decoration: none;}
+  text-decoration: none;
+  font-weight: bold;}
 a:hover {
     text-decoration: none;}
 

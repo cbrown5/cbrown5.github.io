@@ -132,9 +132,14 @@ To see this, we can do a plot with the `visreg` package:
     library(visreg)
     visreg(m1, scale = "response")
 
+
 ![](/images/blogs-2020/correcting-with-glms_files/figure-markdown_strict/unnamed-chunk-8-1.png)
+
 So predicting an effect of habitat area that decreases with habitat
 area.
+
+Region adjusted GLM
+-------------------
 
 Ok, so now try including region:
 
@@ -191,12 +196,15 @@ We see this if we do a plot, and habitat area appears insignificant:
 
     visreg(m2, xvar = "habitat_area")
 
+
 ![](/images/blogs-2020/correcting-with-glms_files/figure-markdown_strict/unnamed-chunk-11-1.png)
+
 Now replot the predictions, asking for habitat area just in the first
 bioregion (labelled `0` in the data):
 
     visreg(m2, xvar = "habitat_area",
            cond = list(region = 0), scale = "response")
+
 
 ![](/images/blogs-2020/correcting-with-glms_files/figure-markdown_strict/unnamed-chunk-12-1.png)
 
