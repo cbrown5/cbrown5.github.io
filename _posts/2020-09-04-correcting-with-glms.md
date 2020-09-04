@@ -76,14 +76,14 @@ Plot simulations
 
     plot(habitat_area, y)
 
-![](images/blogs-2020/correcting-with-glms_files/figure-markdown_strict/unnamed-chunk-5-1.png)
+![](/images/blogs-2020/correcting-with-glms_files/figure-markdown_strict/unnamed-chunk-5-1.png)
 
 So not strong evidence of any effect of habitat area on abundance. What
 about if we colour points by bioregion?
 
     plot(habitat_area, y, col = region + 1)
 
-![](images/blogs-2020/correcting-with-glms_files/figure-markdown_strict/unnamed-chunk-6-1.png)
+![](/images/blogs-2020/correcting-with-glms_files/figure-markdown_strict/unnamed-chunk-6-1.png)
 
 So it appears the red region (the region with `1` in the region
 variable) has not habitat relationship, whereas the black region (region
@@ -132,7 +132,7 @@ To see this, we can do a plot with the `visreg` package:
     library(visreg)
     visreg(m1, scale = "response")
 
-![](images/blogs-2020/correcting-with-glms_files/figure-markdown_strict/unnamed-chunk-8-1.png)
+![](/images/blogs-2020/correcting-with-glms_files/figure-markdown_strict/unnamed-chunk-8-1.png)
 So predicting an effect of habitat area that decreases with habitat
 area.
 
@@ -191,14 +191,14 @@ We see this if we do a plot, and habitat area appears insignificant:
 
     visreg(m2, xvar = "habitat_area")
 
-![](images/blogs-2020/correcting-with-glms_files/figure-markdown_strict/unnamed-chunk-11-1.png)
+![](/images/blogs-2020/correcting-with-glms_files/figure-markdown_strict/unnamed-chunk-11-1.png)
 Now replot the predictions, asking for habitat area just in the first
 bioregion (labelled `0` in the data):
 
     visreg(m2, xvar = "habitat_area",
            cond = list(region = 0), scale = "response")
 
-![](images/blogs-2020/correcting-with-glms_files/figure-markdown_strict/unnamed-chunk-12-1.png)
+![](/images/blogs-2020/correcting-with-glms_files/figure-markdown_strict/unnamed-chunk-12-1.png)
 
 Now we see the trend.
 
