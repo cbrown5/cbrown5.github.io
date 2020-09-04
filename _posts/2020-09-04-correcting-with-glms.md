@@ -9,12 +9,16 @@ Correcting for confounded variables with GLMs
 ========================================
 
 General (and generalized) linear models can be useful for analyzing
-field data, were sampling is often distributed unevenly across different
+field data, where sampling is often distributed unevenly across different
 environmental gradients or treatment groups. They help us correct for
 confounded gradients and discover effects that are hidden in plots of
 raw data.
 
-In this post I'll demonstrate that application with a simple example.
+For instance, we used GLMs in a meta-analysis of the rates species are shifting their ranges under climate change. We used the GLMs to correct for [differences in ways different studies had measured species ranges](https://onlinelibrary.wiley.com/doi/abs/10.1111/gcb.13184), so we could then study the unique effects of ecological variables.
+
+You can also think of these GLMs with multiple covariates as 'statistically' (rather than experimentally) controlling for the effects of each variable when looking at the effects of the other variables.
+
+In this post I'll demonstrate this application for statistical controls  with a simple example.
 
 Simulate data
 -------------
@@ -64,6 +68,8 @@ data:
     y <- rpois(nsites, y_mean)
 
 We took an exponent to ensure positive values.
+
+If this confuses you so far, you can read more about [linear models](http://www.seascapemodels.org/rstats/2018/01/19/intro-to-glms.html) and then [generalized linear models](http://www.seascapemodels.org/rstats/2018/10/16/understanding-the-glm-link.html) on my other blogs.
 
 Plot simulations
 ----------------
@@ -162,7 +168,7 @@ Ok, so now try including region:
 Habitat area is significant and positive now. Note also the effect size
 (0.885) is within the error bounds (SE = 0.132) for the true effect size
 (=1). Let's also confirm our better model (most parsimonious) with the
-AIC.
+AIC ([you can read more about what the AIC is on this blog](http://www.seascapemodels.org/rstats/2018/04/13/how-to-use-the-AIC.html)).
 
     AIC(m1, m2)
 
