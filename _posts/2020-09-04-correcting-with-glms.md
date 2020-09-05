@@ -18,7 +18,9 @@ For instance, we used GLMs in a meta-analysis of the rates species are shifting 
 
 You can also think of these GLMs with multiple covariates as 'statistically' (rather than experimentally) controlling for the effects of each variable when looking at the effects of the other variables.
 
-In this post I'll demonstrate this application for statistical controls  with a simple example.
+In this post I'll demonstrate this application for statistical controls  with a simple example of fish abundance observed in two regions.
+
+![](/images/blogs-2020/correcting-with-glms_files/figure-markdown_strict/region-plot.png)
 
 Simulate data
 -------------
