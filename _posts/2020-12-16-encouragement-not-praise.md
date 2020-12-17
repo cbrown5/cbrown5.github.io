@@ -45,10 +45,12 @@ So what's the alternative to praise for supervisors who want to build a student'
 
 Encouragement is about helping someone find their own intrinsic values for what they are doing. To give some examples, lets revisit our Prof from before, but re-write what she said as encouragement:
 
-"What do you think are the most important next steps for solving the statistical issues our field faces? Do you enjoy the work on analysis you are doing? Thank you for presenting your work, it has been really helpful for my own research to learn about these new techniques. What are you most proud of in the paper you just published?"
+"What do you think are the most important next steps for solving the statistical issues our field faces? Do you enjoy the work on analysis you are doing? What are you most proud of in the paper you just published?"
 
 Now these questions are asking the student what their intrinsic values are. The student isn't being labelled. The prof isn't making any value judgements on the work. They are helping the student identify their own values.
 
+It could also be encouragement for the Prof to say "Thank you for presenting your work, it has been really helpful for my own research to learn about these new techniques." Here the Prof is sharing how she was encouraged by the presentation, without offering any labels for the student's work. 
+
 Ultimately encouragement helps someone to become more independent of what others think of them. If you deeply understand what you like doing and what you value most, then you can pursue career satisfaction without the need for external validation.
 
-*Endnote* I learned these ideas about praise vs encouragement in an odd way. I was listening to a parenting podcast about raising confident children and it was talking about praise vs encouragement. I wouldn't normally draw parallels between students and children! But 'praise' has also come up in several recent bullying cases and at the same time I've been 'encouraged' to use encouragement in leadership courses I've taken. In fact, many global leaders say having children was a turning point that enabled them to be better leaders. Just goes to show we should be supporting parents of all genders to stay in academia. 
+*Endnote* I learned these ideas about praise vs encouragement in an odd way. I was listening to a parenting podcast about raising confident children and it was talking about praise vs encouragement. I wouldn't normally draw parallels between students and children! But 'praise' has also come up in several recent bullying cases and at the same time I've been 'encouraged' to use encouragement in leadership courses I've taken. In fact, many global leaders say having children was a turning point that enabled them to be better leaders. Just goes to show we should be supporting parents of all genders to stay in academia.
