@@ -45,7 +45,7 @@ Let’s use it to plot two randomly generated variables:
     rank_plot(x) #rank ordered data
     rank_plot(y)
 
-![](2020-12-29-pipe-functions_files/figure-markdown_strict/unnamed-chunk-2-1.png)
+![](/images/blogs-2020/2020-12-29-pipe-functions_files/figure-markdown_strict/unnamed-chunk-2-1.png)
 
 Maps
 ----
@@ -100,7 +100,7 @@ Now we can use it to map any of our dataframes. For instance:
     # mymap(amanita)
     mymap(psilocybe)
 
-![](2020-12-29-pipe-functions_files/figure-markdown_strict/screen-shot-map.png)
+![](/images/blogs-2020/2020-12-29-pipe-functions_files/figure-markdown_strict/screen-shot-map.png)
 
 
 (This is a screen shot, but if you do this yourself it will be interactive)
