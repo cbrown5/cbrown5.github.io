@@ -116,9 +116,9 @@ wrangle a dataset. They could be combined with loops, `apply` or
 
 One thing that I find challenging with `%>%` is debugging is very hard. So a word
 of warning, keep your pipes short and simple so they are easy to debug
-(or use on of the specialist pipe debugging packages).
+(or use one of the specialist pipe debugging packages).
 
 Pipes will likely be included in base R soon, and the R Core team are
-promising to make them more debuggble.
+promising to make them more debuggable.
 
 Enjoy.
