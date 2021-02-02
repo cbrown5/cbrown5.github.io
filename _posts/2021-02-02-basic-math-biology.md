@@ -1,5 +1,5 @@
 ---
-title: Basic math for biologists
+title: Basic math biologist should know by heart
 layout: default
 category: research
 published: TRUE
@@ -9,7 +9,7 @@ published: TRUE
 
 Here's my list of basic math biologists that will help a biologist understand fundamental biological principles and be able to broadly read the literature. If you are working in statistics or modelling or a specialist area that is math heavy, you will obviously need to know much more.
 
-Thanks to the contributions from others [made via this Twitter thread.]()
+Thanks to the contributions from others [made via this Twitter thread.](https://twitter.com/bluecology/status/1355988519441768451)
 
 This is a work in progress. I will keep updating this list, so message me if you have more to add (or remove!).  
 
@@ -19,7 +19,7 @@ Counting might seem so basic a skill it is not worth mentioning, but counting ac
 
 You get bonus credentials if you can count and keep track of multiple categories in your head at the same time (if you want to practice this, just get the ebird app go to a local park and try counting as many bird species as you can without looking at your phone)
 
-## Adapt at handing different measurement scales
+## Adept at handing different measurement scales
 
 We often converting among different measurement scales, whether it be length scales, concentrations, areas or volumes. Obviously this requires ability at adding, subtracting, multiplication and division. I find areas and volumes often trip people up, so I don't take this knowledge for granted.
 
@@ -37,11 +37,11 @@ Primarily in 2 dimensions, but bonus points for three dimensions.
 
 Because why multiply when you can add?
 
-It's useful to know that log(0) is undefined, how log10(x) relates to 10^x, that log(1) = 0, log of a number <1 is negative, log of a number more than 1 is positive, and log(a*b) = log(a) + log(b).
+It's useful to know what a base is, that log(0) is undefined, how log10(x) relates to 10^x, that log(1) = 0, log of a number <1 is negative, log of a number more than 1 is positive, that log(a*b) = log(a) + log(b) and that log(a+b) doesn't equal log(a) + log(b).
 
-## Exponential growth
+## Exponential growth and the exponential equation
 
-Exponential growth and decline are particularly common in biology, from temperate dependent rates to population growth.
+Exponential growth and decline are particularly common in biology (and physics, and finance, and economics...), from temperate dependent rates to population growth.
 
 ## Intuitive understanding of probability and uncertainty
 
@@ -57,8 +57,8 @@ Including additive rule, multiplicative rule and the meaning of independence and
 
 ## Derivates and integrals
 
-It is helpful to know that a derivate defines a rate and that an integral relates to a sum. This will help you read and understand modelling papers better. I don't think non-modelling biologists need to know the rules of differentiation or integration by heart.
+It is helpful to know that a derivate defines a rate and that an integral relates to a sum. This will help you read and understand modelling papers better. I don't think non-modelling biologists need to know the rules of differentiation or integration.
 
 ### Tentative list
 
-I'm still thinking about whether I also include: normal distribution (bell curve), central limit theorem, additive property of variances. I haven't included specialist statistical concepts (e.g. p-values, or bayes theorem), but I think all of the above sets one up to understand those applications of probability. I haven't included matrix algebra, I don't think you need to know that unless you are working in modelling or statistics, but message me if you have examples that disagree. 
+I'm still thinking about whether I also include: normal distribution (bell curve), central limit theorem, additive property of variances. I haven't included specialist statistical concepts (e.g. p-values, or bayes theorem), but I think all of the above sets one up to understand those applications of probability. I haven't included matrix algebra, I don't think you need to know that unless you are working in modelling or statistics, but message me if you have examples that disagree.
