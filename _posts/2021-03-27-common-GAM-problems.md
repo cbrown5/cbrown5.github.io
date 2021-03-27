@@ -59,7 +59,7 @@ of freedom (which controls the ‘wiggliness’) from the data. But this
 routine can fail if you many more replicates than levels in the smooth.
 Consider this data:
 
-![](images/2021-03-27-common-GAM-problems/unnamed-chunk-1-1.png)
+![](/images/2021-03-27-common-GAM-problems/unnamed-chunk-1-1.png)
 
 We have ten replicates for each of 5 levels of x. Data like this is
 common in experimental settings.
@@ -78,7 +78,7 @@ parameter:
 
 Now my GAM fits fine and looks like this:
 
-![](images/2021-03-27-common-GAM-problems/unnamed-chunk-4-1.png)
+![](/images/2021-03-27-common-GAM-problems/unnamed-chunk-4-1.png)
 
 If you want to force the GAM to fit a smooth a specific degrees of
 freedom, then use `fx = TRUE`:
@@ -105,7 +105,7 @@ mgcv](https://www.routledge.com/Generalized-Additive-Models-An-Introduction-with
 Here’s an example. Say you were expecting a smooth, but non-linear, fit
 to your data. You use a GAM, but you get a result like this:
 
-![](images/2021-03-27-common-GAM-problems/unnamed-chunk-6-1.png)
+![](/images/2021-03-27-common-GAM-problems/unnamed-chunk-6-1.png)
 
 Those bumps in the curve cannot be justified by any a-priori knowledge
 you have about the system you are studying. So you’d like a smoother
@@ -120,7 +120,7 @@ sizes. So generally in ecological datasets you’ll want to specify the
 
 Now our smooth looks like a more reasonable linear slope:
 
-![](images/2021-03-27-common-GAM-problems/unnamed-chunk-8-1.png)
+![](/images/2021-03-27-common-GAM-problems/unnamed-chunk-8-1.png)
 
 Now your trend reduces to a straight linear trend.
 
@@ -154,7 +154,7 @@ possible here are some options:
     explanation](https://www.seascapemodels.org/rstats/2021/03/27/GAMs-interpolation.html).
     You’ll get a fit like this:  
 
-![](/images/2021-03-27-GAMs-interpolation/unnamed-chunk-2-1.png)
+![](//images/2021-03-27-GAMs-interpolation/unnamed-chunk-2-1.png)
 
 
 Detailed example of fitting GAM with categorical variable
@@ -183,7 +183,7 @@ below:
       geom_point() +
       theme_classic()
 
-![](images/2021-03-27-common-GAM-problems/unnamed-chunk-9-1.png) First
+![](/images/2021-03-27-common-GAM-problems/unnamed-chunk-9-1.png) First
 we’ll fit a model that fits a spline to x and estimates a constant
 additive term for each group. This should provide a good fit to the
 original data, because it is very close to the model we used to generate
@@ -201,7 +201,7 @@ each group.
            by = "grp", data = dat,
            method = "REML")
 
-![](images/2021-03-27-common-GAM-problems/unnamed-chunk-11-1.png)
+![](/images/2021-03-27-common-GAM-problems/unnamed-chunk-11-1.png)
 
 Now say we want to compare this to a model where we allow splines to
 vary for each group. This model looks like this:
@@ -219,6 +219,6 @@ declare a new variable) and use that:
            by = "grp", data = dat,
            method = "REML")
 
-![](images/2021-03-27-common-GAM-problems/unnamed-chunk-13-1.png)
+![](/images/2021-03-27-common-GAM-problems/unnamed-chunk-13-1.png)
 
 Now it works fine.
