@@ -40,7 +40,8 @@ But if you want the spline to vary by groups like this:
 
 You will get this obscure error message:
 
-    Error in smoothCon(split$smooth.spec[[i]], data, knots, absorb.cons, scale.penalty = scale.penalty, : Can't find by variable
+    Error in smoothCon(split$smooth.spec[[i]], data, knots, absorb.cons,
+        scale.penalty = scale.penalty, : Can't find by variable
 
 The solution is as simple as changing the class of your categorical
 variable before using the GAM: `dat$group <- factor(dat$group)`.
@@ -68,7 +69,9 @@ If I try fit a GAM with default settings I get an error:
 
     fit1 <- gam(y ~ s(x), data = dat)
 
-    ## Error in smooth.construct.tp.smooth.spec(object, dk$data, dk$knots): A term has fewer unique covariate combinations than specified maximum degrees of freedom
+    ## Error in smooth.construct.tp.smooth.spec(object, dk$data, dk$knots):
+    A term has fewer unique covariate combinations than specified maximum
+    degrees of freedom
 
 Meaning the GAM has failed to construct a sensible smooth term for this
 data. You can limit the maximum df of the smooth using the `k`
@@ -208,7 +211,8 @@ vary for each group. This model looks like this:
 
     fit2 <- gam(y ~s(x, by = grp), data = dat)
 
-    ## Error in smoothCon(split$smooth.spec[[i]], data, knots, absorb.cons, scale.penalty = scale.penalty, : Can't find by variable
+    ## Error in smoothCon(split$smooth.spec[[i]], data, knots, absorb.cons,
+        scale.penalty = scale.penalty, : Can't find by variable
 
 Which gives us an error. So simply convert the group to a factor (here I
 declare a new variable) and use that:
