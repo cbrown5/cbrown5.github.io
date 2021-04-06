@@ -15,6 +15,8 @@ Below I describe the key papers we worked on, please contact me (chris.brown@gri
 
 Habitat loss can contribute to overfishing because it reduces the productivity of fisheries. But, if those declines in productivity are detected by monitoring and wrongly attributed to overfishing, the management response could actually make management more conservative, as we described in our [review of how habitat loss impacts fisheries](https://onlinelibrary.wiley.com/doi/abs/10.1111/faf.12318).
 
+![](/images/sweetlips.jpg)
+
 Habitat loss likely threatens many of the world's coral reef fisheries. An unprecedented heatwave in 2016 affected reefs globally, and on Australia's Great Barrier Reef caused extensive mortality of corals. We studied this event to see how it may impact reef fisheries.
 
 [We reviewed Queensland's fisheries](https://www.nature.com/articles/s41598-020-74652-2) for the effects of coral loss on key fishery species. There was marked regional variation within Queensland in the dependence of fisheries on reef species. This variation corresponded to the types of fisheries dominating particular regions.
@@ -35,4 +37,4 @@ We hypothesised that coral trout got easier to catch during the heatwave because
 
 If fish get easier to catch then the risk of overfishing them could also be higher. The current management regime for the Great Barrier Reef fishery is based on a total allowable catch. If this system is adhered to, it should prevent overfishing of coral trout, even if they are easier to catch in the future. In many other coral reef fisheries around the world though there are no limits on catch. In such places overfishing will be a greater risk under recurrent heatwaves.
 
-Overall this body of work has identified multiple ways that heatwaves impact reef fisheries. Importantly habitat loss and the direct effects of warming will both impact fish species, but the sustainability of the fishery also depends on how it is managed. This finding provides hope that proactive fishery management can maintain sustainable fisheries in the face of climate change. 
+Overall this body of work has identified multiple ways that heatwaves impact reef fisheries. Importantly habitat loss and the direct effects of warming will both impact fish species, but the sustainability of the fishery also depends on how it is managed. This finding provides hope that proactive fishery management can maintain sustainable fisheries in the face of climate change.
