@@ -7,7 +7,7 @@ published: TRUE
 
 # How will heatwaves and coral loss affect reef fisheries?
 
-There has been a lot of focus on the challenge of managing overfishing with the controversial new documentary Seaspiracy on Netflix. But the overfishing issue isn't as simple as the picture that documentary paints.
+There has been a lot of focus on the challenge of managing overfishing with the controversial new documentary Seaspiracy on Netflix. But the overfishing issue isn't as simple an issue as the picture that documentary paints.
 
 The sustainability of coral reef fisheries around the world is threatened by too much fishing, but also by extensive change in reef habitats.
 
