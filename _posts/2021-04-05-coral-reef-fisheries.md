@@ -7,11 +7,17 @@ published: TRUE
 
 # How will heatwaves and coral loss affect reef fisheries?
 
-Heatwave are becoming more intense and frequent under climate change and are now a main driver of coral loss. But how will they impact reef fisheries? This is a question we have been working on over the past few years.
+There has been a lot of focus on the challenge of managing overfishing with the controversial new documentary Seaspiracy on Netflix. But the overfishing issue isn't as simple as the picture that documentary paints.
 
-Below I describe the key papers we worked on, please contact me (chris.brown@griffith.edu.au) if you can't access the full-text versions (some but not all are open access).
+The sustainability of coral reef fisheries around the world is threatened by too much fishing, but also by extensive change in reef habitats.
 
-[A significant proportion of fish stocks](https://onlinelibrary.wiley.com/doi/abs/10.1111/faf.12318) at a global scale are dependent on habitats that have been degraded over recent decades, like corals. But the mechanisms for habitat loss to impact fisheries are complex. Habitat loss also interacts with [fishery management in surprising ways](https://onlinelibrary.wiley.com/doi/abs/10.1111/faf.12318).
+Notably, heatwaves are becoming more intense and frequent under climate change and are now a main driver of coral loss. But how will heatwaves and coral loss impact the sustainability of reef fisheries? This is a question we have been working on over the past few years.
+
+Please contact me (chris.brown@griffith.edu.au) if you can't access the full-text versions of the work below (some but not all are open access).
+
+Overfishing is the main human-driven cause of stock declines, but we shouldn't focus solely on that issue. [A significant proportion of fish stocks](https://onlinelibrary.wiley.com/doi/abs/10.1111/faf.12318) at a global scale are dependent on habitats that have been degraded over recent decades, like corals.
+
+But, it is hard to pin fishery declines on habitat loss, because the mechanisms for habitat loss to impact fisheries are complex. We found that habitat loss interacts with [fishery management in surprising ways](https://onlinelibrary.wiley.com/doi/abs/10.1111/faf.12318).
 
 Habitat loss can contribute to overfishing because it reduces the productivity of fisheries. But, if those declines in productivity are detected by monitoring and wrongly attributed to overfishing, the management response could actually make management more conservative, as we described in our [review of how habitat loss impacts fisheries](https://onlinelibrary.wiley.com/doi/abs/10.1111/faf.12318).
 
