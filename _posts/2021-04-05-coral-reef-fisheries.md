@@ -15,7 +15,7 @@ Below I describe the key papers we worked on, please contact me (chris.brown@gri
 
 Habitat loss can contribute to overfishing because it reduces the productivity of fisheries. But, if those declines in productivity are detected by monitoring and wrongly attributed to overfishing, the management response could actually make management more conservative, as we described in our [review of how habitat loss impacts fisheries](https://onlinelibrary.wiley.com/doi/abs/10.1111/faf.12318).
 
-![](/images/sweetlips.jpg)
+![sweetlips on a reef](/images/sweetlips.jpg)
 
 Habitat loss likely threatens many of the world's coral reef fisheries. An unprecedented heatwave in 2016 affected reefs globally, and on Australia's Great Barrier Reef caused extensive mortality of corals. We studied this event to see how it may impact reef fisheries.
 
