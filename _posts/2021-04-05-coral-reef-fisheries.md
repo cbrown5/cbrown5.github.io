@@ -37,6 +37,8 @@ There was extensive coral mortality, [but most fish species did not respond to t
 
 If heatwaves have direct physiological effects on fish communities, they may also how easily fish can be caught in fisheries. [We addressed this question for coral trout, the most important commercial finfish taxa on the Great Barrier Reef](https://onlinelibrary.wiley.com/doi/abs/10.1111/gcb.15472).
 
+We used a unique dataset of reef fish surveys, collected by citizen scientists working with the Reef Life Survey not-for-profit. We matched that data to fish catch data. This enabled us to look at how fish populations and fish catch changed over the heatwave.
+
 We found modest evidence for a southward shift in coral trout after the heatwave. More important though was that we found coral trout were easier to catch when it is warmer. We predicted the heatwave raised catches by as much as 18%, given the for the amount of fishing effort in the heatwave year.
 
 We hypothesised that coral trout got easier to catch during the heatwave because they were hungrier. Coral trout eat more when it's warmer, to keep up with their metabolic demands. The line fishery uses baited lines and lures, so coral trout may have been more attracted to bait when temperatures were raised.
