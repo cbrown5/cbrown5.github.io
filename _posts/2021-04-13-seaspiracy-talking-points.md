@@ -7,20 +7,20 @@ published: TRUE
 
 # Seaspiracy talking points for discussions with general public
 
-The Netflix film ['Seaspiracy'](https://www.youtube.com/watch?v=1Q5CXN7soQg) has stirred up controversy for among scientists for good reason. For better or worse though it is creating many opportunities to talk about ocean conservation issues with the general public.
+The Netflix film ['Seaspiracy'](https://www.youtube.com/watch?v=1Q5CXN7soQg) has stirred up controversy for among scientists for good reason. BUT the film is creating lots of opportunities to talk about ocean conservation with general public, like family, uber drivers and hairdressers.
 
 In our lab meeting today we discussed the film (I refuse to call it a 'documentary').
 
-It mixes up true facts with misrepresentation in a narrative that one supposes is designed to confuse people and turn them off eating seafood altogether. This message does damage to efforts that are trying to make fisheries more sustainable by having people make sustainable choices in their purchases. BUT the film is creating lots of opportunities to talk about ocean conservation with general public, like family, uber drivers and hairdressers.
+The film mixes up true facts with misrepresentation in a narrative that one supposes is designed to confuse people and turn them off eating seafood altogether. This message does damage to efforts that are trying to make fisheries more sustainable by having people make sustainable choices in their purchases.
 
-If you find yourself in such a situation, here are some talking points (with an Australian spin):
+If you find yourself in a discussion about the film, here are some talking points (with an Australian spin):
 
 ### Talking points for scientists
 
 Overfishing is a global issue and arguably the most significant issue marine life and ocean food production face.
-It is not just Japanese and Chinese to blame, and its not just industrial fishers. Australia still has in some fisheries an overfishing problem. Many small scale fisheries, including some of Australia's recreational fisheries, have overfishing issues. But many nations, including Australia, have worked hard to manage their fisheries better (e.g. the [Great Barrier Reef Marine Park](https://www.sciencedirect.com/science/article/pii/S096098221630344X) was designed alongside fisheries regulations very effectively) and many fisheries are [doing better](https://science.sciencemag.org/content/325/5940/578.abstract) thanks to those efforts.
+It is not just Japanese and Chinese to blame, and its not just industrial fisheries. Australia still has in some fisheries an overfishing problem. Many small scale fisheries, including some of Australia's recreational fisheries, have overfishing issues. But many nations, including Australia, have worked hard to manage their fisheries better (e.g. the [Great Barrier Reef Marine Park](https://www.sciencedirect.com/science/article/pii/S096098221630344X) was designed alongside fisheries regulations very effectively) and many fisheries are [doing better](https://science.sciencemag.org/content/325/5940/578.abstract) thanks to those efforts.
 
-The film misrepresents the facts and tells mistruths in a way that was deliberately designed to turn people off seafood. It is not true what they say that you can't tell where your seafood comes from. There are many resources to help you make sustainable choices. Making sustainable choices is a positive way to make change, it encourages the industry to do better. There are many examples of where this has worked, but the film neglected to show them.
+The film misrepresents the facts and tells mistruths in a way that one can only suppose was deliberately designed to turn people off seafood. It is not true what they say that you can't tell where your seafood comes from. There are many resources to help you make sustainable choices. Making sustainable choices is a positive way to make change, it encourages the industry to do better. There are many examples of where this has worked, but the film neglected to show them.
 Things you can do include:
 Refer to your local sustainable seafood guide. In Australia that would be the very reputable one published by the Australian Marine Conservation Society (https://www.marineconservation.org.au/sustainable-seafood-choices/ also comes as a handy app!).
 
