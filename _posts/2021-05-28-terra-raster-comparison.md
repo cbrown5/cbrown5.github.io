@@ -37,7 +37,7 @@ The data
 We’ll use [this data from one of my
 courses](https://www.seascapemodels.org/data/data-wrangling-spatial-course-data.zip).
 
-1. How long will it take to learn terra’s syntax?
+ 1 How long will it take to learn terra’s syntax?
 -------------------------------------------------
 
 First, let’s take a look at some basic syntax and compare it with raster
@@ -48,7 +48,7 @@ You can read in data much the same way, with the command `rast()`:
     r <- rast("data-for-course/spatial-data/MeanAVHRRSST.grd")
     plot(r)
 
-![](images/2021-05-28-terra-raster-comparison/unnamed-chunk-1-1.png)
+![](/images/2021-05-28-terra-raster-comparison/unnamed-chunk-1-1.png)
 
     ext(r)
 
@@ -69,7 +69,7 @@ Now let’s crop and reproject it:
 
     plot(r3)
 
-![](images/2021-05-28-terra-raster-comparison/unnamed-chunk-2-1.png)
+![](/images/2021-05-28-terra-raster-comparison/unnamed-chunk-2-1.png)
 
 So much of the syntax is familiar (or identical), if slightly different.
 It took me about 10 minutes to translate what I know from raster to
@@ -78,7 +78,7 @@ terra syntax.
 Note there are some important caveats with terra when it comes to
 cluster computations and saving data see `?terra` for more information.
 
-2. How much help is available online?
+ 2 How much help is available online?
 -------------------------------------
 
 It’s early days yet. But the terra package documentation is outstanding,
@@ -103,7 +103,7 @@ troubleshooting errors and bugs online. So you might have to ask
 yourself. But online content will grow as the package becomes more
 popular.
 
-3. Is terra faster than raster?
+ 3 Is terra faster than raster?
 -------------------------------
 
 I take the author’s word that its faster, but let’s see how much faster:
@@ -131,7 +131,7 @@ I take the author’s word that its faster, but let’s see how much faster:
 So something like 7 times faster for the computationally demanding task
 of reprojecting a raster.
 
-4. Will terra be compatible with other packages I use?
+ 4 Will terra be compatible with other packages I use?
 ------------------------------------------------------
 
 The answer here obviously depends on what packages you want to use. A
@@ -146,7 +146,7 @@ unfortunately. So the next question, how onerous is it to convert a
     tm_shape(r_raster) +
       tm_raster()
 
-![](images/2021-05-28-terra-raster-comparison/unnamed-chunk-4-1.png) The
+![](/images/2021-05-28-terra-raster-comparison/unnamed-chunk-4-1.png) The
 multi-tool function `raster()` does the job, so I’ll take that for now.
 
 Summary
