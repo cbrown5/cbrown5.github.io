@@ -121,12 +121,9 @@ I take the author’s word that its faster, but let’s see how much faster:
     tout
 
     ## Unit: milliseconds
-    ##                                               expr       min        lq
-    ##                             project(r, robin_proj)  68.23819  70.89847
-    ##  raster::projectRaster(r_raster, crs = robin_proj) 497.84206 511.87547
-    ##       mean    median        uq        max neval
-    ##   76.65799  76.37549  81.01373   87.56849    10
-    ##  630.53099 529.62801 674.34082 1268.99468    10
+    ##                                               expr     median    
+    ##                             project(r, robin_proj)      76.3  
+    ##  raster::projectRaster(r_raster, crs = robin_proj)     529.6 
 
 So something like 7 times faster for the computationally demanding task
 of reprojecting a raster.
@@ -146,13 +143,14 @@ unfortunately. So the next question, how onerous is it to convert a
     tm_shape(r_raster) +
       tm_raster()
 
-![](/images/2021-05-28-terra-raster-comparison/unnamed-chunk-4-1.png) The
-multi-tool function `raster()` does the job, so I’ll take that for now.
+![](/images/2021-05-28-terra-raster-comparison/unnamed-chunk-4-1.png)
+
+The multi-tool function `raster()` does the job, so I’ll take that for now.
 
 Summary
 -------
 
-`terra` lots set to replace `raster`. It is faster and just as easy to
+`terra` looks set to replace `raster`. It is faster and just as easy to
 use as `raster`. Making the switch to `terra` isn’t as hard as it may
 seem, its use will seem very familiar to `raster` users.
 
