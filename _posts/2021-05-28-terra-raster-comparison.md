@@ -123,7 +123,7 @@ I take the author’s word that its faster, but let’s see how much faster:
     ## Unit: milliseconds
     ##                                               expr     median    
     ##                             project(r, robin_proj)      76.3  
-    ##  raster::projectRaster(r_raster, crs = robin_proj)     529.6 
+    ##  raster::projectRaster(r_raster, crs = robin_proj)     529.6
 
 So something like 7 times faster for the computationally demanding task
 of reprojecting a raster.
@@ -132,9 +132,14 @@ of reprojecting a raster.
 ------------------------------------------------------
 
 The answer here obviously depends on what packages you want to use. A
-key one for me is tmap for mapping. This doesn’t work with `terra`
-unfortunately. So the next question, how onerous is it to convert a
+key one for me is tmap for mapping. This now works with `terra`.
+
+But at the time of first writing this post my version of `tmap` was out of date
+and `terra` wasn't compatible with `tmap`. So if you package isn't compatible,
+the next question, how onerous is it to convert a
 `terra` raster to a `raster` raster?
+
+Here's a demonstration (with my out of date version of `tmap`)
 
     library(tmap)
 
@@ -155,7 +160,7 @@ use as `raster`. Making the switch to `terra` isn’t as hard as it may
 seem, its use will seem very familiar to `raster` users.
 
 There are probably common errors and bugs with particular data types for
-the R community to find and there isn’t help online for thoes yet. There
+the R community to find and there isn’t help online for those yet. There
 will be challenges in compatibility with other packages. But conversion
 back to `raster` objects is easy.
 
