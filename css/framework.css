@@ -659,7 +659,6 @@ h2.main-subtext{
   bottom:0;
   background-color:#190061;
   opacity:0.8;
-  max-width:40%;
   padding:6px;
   border-radius: 0px 10px 10px 0px;
 }
@@ -726,6 +725,9 @@ img.image-bottom{
 @media (min-width: 641px) {
     .research-h1{
         font-size: 5em;
+    }
+    h2.main-subtext{
+      max-width:40%;
     }
 }
 
