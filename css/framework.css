@@ -657,8 +657,11 @@ h2.main-subtext{
   color:white;
   position:absolute;
   bottom:0;
-  background-color:grey;
-  opacity:0.75;
+  background-color:#190061;
+  opacity:0.8;
+  max-width:40%;
+  padding:6px;
+  border-radius: 0px 10px 10px 0px;
 }
 
 .main-image h1{
