@@ -3,4 +3,5 @@ _site/
 .jekyll-metadata
 .Rhistory
 .DS_Store
+.jekyll-cache
 blogs-markdown/
