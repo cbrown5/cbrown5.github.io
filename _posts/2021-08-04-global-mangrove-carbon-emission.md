@@ -1,20 +1,22 @@
 ---
-title: Predicting global emissions from mangrove deforestation
+title: Combining local knowledge and scientific surveys to estimate declines in threatened species
 layout: default
 category: research
 published: TRUE
 ---
 
-# Predicting global emissions from mangrove deforestation
+# Combining local knowledge and scientific surveys to estimate declines in threatened species
 
-[In a new study](https://onlinelibrary.wiley.com/doi/full/10.1111/gcb.15571) we predict global carbon emissions from different drives of mangrove deforestation. Our predictions can help nations value mangrove conservation, identify what actions are needed to reduce carbon emissions and set targets for reducing carbon emissions.
+In the study "[Community-based management fails to halt declines of bumphead parrotfish and humphead wrasse in Roviana Lagoon, Solomon Islands](https://link.springer.com/article/10.1007/s00338-019-01801-z)" we report on declines in two threatened fish species bumphead parrotfish (*Bolbometopon muricatum*) and humphead wrasse (*Cheilinus undulatus*).
 
-![](/images/2021-08-04-global-carbon-emissions.png)
+Announcing here I've made the [R code for this paper freely available](https://github.com/cbrown5/bolbometopon-cheilinus-roviana). A unique feature of this analysis is that we integrated local knowledge into the analysis of the scientific survey data.
 
-**Predicted emissions to 2090 and primary drivers of emissions**
+To do this, we used a Bayesian GLM, where the rate of decline was informed by both change in fish density in the scientific survey data (2000-2018) and change in the maximum catch rate that local fishers could recall for the 1980s, 2000s and 2018.
 
-Announcing here that the R code for the study is [now available on github](https://github.com/cbrown5/mangrove-drivers-carbon-emissions/tree/main).
+The integration of local knowledge meant we could verify the declines in catch rate with scientific survey data, and adjust for bias between fisher recall and the surveys. We could then infer the population density in the 1980s, when there were no scientific surveys.
 
-We went an extra step with this model to also produce an interactive web app. So if you want to explore this model, without having to use R, then check out [our interactive web app](https://mangrove-carbon.wetlands.app/).
+Unfortunately, the significant magnitudes of the declines over multiple generations suggest these species meet the criteria for being 'Critically Endangered' on the IUCN Red List (at least at this local site, if not regionally).
 
-You can learn more about the study, and watch a tutorial on the web app in [this online seminar](https://globalwetlandsproject.org/carbonapp/).
+Read more about the study in the paper:
+
+[Hamilton RJ, Hughes A, Brown CJ, Leve T, Kama W. Community-based management fails to halt declines of bumphead parrotfish and humphead wrasse in Roviana Lagoon, Solomon Islands. Coral Reefs. 2019 Jun;38(3):455-65.](https://link.springer.com/article/10.1007/s00338-019-01801-z)
