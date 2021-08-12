@@ -1,5 +1,5 @@
 ---
-title: Time for grants grant writing strategies
+title: New fellowship on predicting coastal ecological futures in an era of unprecedented change
 layout: default
 category: research
 published: TRUE
@@ -9,11 +9,9 @@ published: TRUE
 
 We are entering a new era of science where ecosystem change is uncharted by historical observations. Observations are the foundation of predictive science, so how can we predict a future that is outside the envelope of the environments?
 
-<iframe width="420" height="315"
-src="https://youtu.be/WHzcdEH12HA">
-</iframe>
-
 This is the question I will address in a new 2021 Australian Research Council Future Fellowship. Specifically, I will focus on predicting future change for coastal ecosystems.
+
+[Watch a short video about the project](https://www.youtube.com/watch?v=WHzcdEH12HA)
 
 Humanities footprint on the Earth’s ecosystem has never been greater. The oceans are increasingly being industrialized, and climate change means the footprint of human economic activity now touches even the most remote ecosystems.
 
