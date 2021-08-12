@@ -2,7 +2,7 @@
 title: Time for grants grant writing strategies
 layout: default
 category: research
-published: FALSE
+published: TRUE
 ---
 
 # Predicting coastal ecological futures in an era of unprecedented change
@@ -26,4 +26,4 @@ In this four-year fellowship I will lead a team to develop new modelling techniq
 
 I will show how we can define the limits of prediction by studying our ability to predict change in environments that have never been seen. These predictions will help us transition to a sustainable relationship with coastal ecosystems.
 
-If you are interested in further study on this topic a couple of PhD positions have just opened up. [See here for further details](https://www.seascapemodels.org/research/2021/08/01/PhD-projects-available.html) 
+If you are interested in further study on this topic a couple of PhD positions have just opened up. [See here for further details](https://www.seascapemodels.org/research/2021/08/01/PhD-projects-available.html)
