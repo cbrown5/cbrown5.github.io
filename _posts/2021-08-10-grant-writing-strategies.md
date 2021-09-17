@@ -23,6 +23,6 @@ Writing major grant applications (like ARC grants) takes time, this requires pla
 
 7. I don't spend much time on the budget until the final month. I have a rough idea of the limit and what I need to do what's in the grant, but its one of the last things I refine, since the details are very dependent on what ends up in the project design.
 
-Finally, if its your first time writing a grant prepare to be overwhelmed by the number of different sections. There's project design, institutional support statement, budget, budget justification, industry partner support letters (for some grants), investigator career opportunities, investigator career impact, investigator citation metrics, ... it goes on and on.
+Finally, if its your first time writing a grant prepare to be overwhelmed by the number of different sections. In an ARC there's project design, institutional support statement, budget, budget justification, industry partner support letters (for some grants), investigator career opportunities, investigator career impact, investigator citation metrics, ... it goes on and on.
 
 Starting early will give you time to focus on getting your head around what needs to go into each individual section.
