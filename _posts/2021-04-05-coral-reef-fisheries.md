@@ -46,3 +46,5 @@ We hypothesised that coral trout got easier to catch during the heatwave because
 If fish get easier to catch then the risk of overfishing them could also be higher. The current management regime for the Great Barrier Reef fishery is based on a total allowable catch. If this system is adhered to, it should prevent overfishing of coral trout, even if they are easier to catch in the future. In many other coral reef fisheries around the world though there are no limits on catch. In such places overfishing will be a greater risk under recurrent heatwaves.
 
 Overall this body of work has identified multiple ways that heatwaves impact reef fisheries. Importantly habitat loss and the direct effects of warming will both impact fish species, but the sustainability of the fishery also depends on how it is managed. This finding provides hope that proactive fishery management can maintain sustainable fisheries in the face of climate change.
+
+*The work discussed in this article was supported by an Australian Research Council Discovery Early Career Award to Chris Brown* 
