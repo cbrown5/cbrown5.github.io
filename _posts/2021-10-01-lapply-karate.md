@@ -5,7 +5,8 @@ category: rstats
 published: TRUE
 ---
 
-#Running R code for all combinations of some parameters with lapply karate
+Running R code for all combinations of some parameters with lapply karate  
+---------------------------------------------  
 
 Sometimes we want to run the same bit of code many times for different
 parameters. Then if we have multiple parameters, we may want to run the
