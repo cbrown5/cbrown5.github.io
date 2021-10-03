@@ -2,7 +2,7 @@
 title: Time for grants grant writing strategies
 layout: default
 category: research
-published: FALSE
+published: TRUE
 ---
 
 # Time for grants: Grant writing strategies

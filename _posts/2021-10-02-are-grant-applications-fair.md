@@ -2,7 +2,7 @@
 title: Are lengthy grant applications 'fair'
 layout: default
 category: research
-published: FALSE
+published: TRUE
 ---
 
 # Are lengthy grant applications 'fair'?
@@ -47,4 +47,4 @@ Of course, the simplification would have to be done carefully so that other type
 
 Another approach is to use ['grant lotteries'](https://www.nature.com/articles/d41586-019-03572-7), where funding is allocated randomly to a pool of grants that are deemed fundable. That way you can have a shorter application that has to tick off on some minimal standards. Then leave the rest to an unbiased lottery.
 
-To sum up, as grant applications become increasingly complex, it increasingly favours people with the time and support networks to develop the application. This means good researchers with great ideas who don't get the time will be at a disadvantage. That isn't isn't in the interest of high quality science. 
+To sum up, as grant applications become increasingly complex, it increasingly favours people with the time and support networks to develop the application. This means good researchers with great ideas who don't get the time will be at a disadvantage. That isn't isn't in the interest of high quality science.
