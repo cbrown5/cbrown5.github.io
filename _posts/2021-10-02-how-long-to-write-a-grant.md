@@ -63,9 +63,10 @@ year, but I’ve plotted them concurrently for comparison. My typical
 grant writing time of 70 hours counts only my time writing, editing or
 engaged in meetings about the grant. It doesn’t include tea breaks,
 reading time or thinking time or other people’s time. So actual time
-investment would be much greater than 70 hours.
+investment would be much greater than 70 hours.  
 
-![](/images/2021-10-02-how-long-to-write-a-grant/unnamed-chunk-2-1.png)
+![](/images/2021-10-02-how-long-to-write-a-grant/unnamed-chunk-2-1.png)  
+
 The most recent grant took significantly less time than the others. This
 grant was a collaborative effort. It also came easily in that I had
 material and experience to draw on from previous years.
@@ -90,9 +91,10 @@ I’m just tying up lose ends and making minor corrections from the review
 feedback.
 
 I have replotted that data as fraction of my monthly work hours (not
-accounting for holidays).
+accounting for holidays).  
 
-![](/images/2021-10-02-how-long-to-write-a-grant/unnamed-chunk-3-1.png)
+![](/images/2021-10-02-how-long-to-write-a-grant/unnamed-chunk-3-1.png)  
+
 You clearly see the peak between 3 and 2 months out.
 
 To sum up, it takes time and planning to write a major grant. In follow

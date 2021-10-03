@@ -7,7 +7,7 @@ published: TRUE
 
 # Time for grants: Grant writing strategies
 
-Writing major grant applications (like ARC grants) takes time, this requires planning. In a [previous post I looked at how much time it takes me](/research/2021/08/07/how-long-to-write-a-grant.html). Here I'll discuss some of the strategies I when planning the application.
+Writing major grant applications (like ARC grants) takes time, this requires planning. In a [previous post I looked at how much time it takes me](/research/2021/10/02/how-long-to-write-a-grant.html). Here I'll discuss some of the strategies I when planning the application.
 
 1. I start writing the proposal early. Starting writing months ahead gets me thinking seriously about the ideas and gives me plenty of thinking time (not reported above). I always have a notebook on hand, once I start I never know when an idea will pop into my head.
 

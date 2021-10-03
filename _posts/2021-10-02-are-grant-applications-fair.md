@@ -7,7 +7,7 @@ published: TRUE
 
 # Are lengthy grant applications 'fair'?
 
-In a previous post I looked at [how long it takes to write for a major national grant](/research/2021/08/07/how-long-to-write-a-grant.html) and the [strategies I use to get the application done to a decent standard](/research/2021/08/10/grant-writing-strategies.html).
+In a previous post I looked at [how long it takes to write for a major national grant](/research/2021/10/02/how-long-to-write-a-grant.html) and the [strategies I use to get the application done to a decent standard](/research/2021/10/02/grant-writing-strategies.html).
 
 In this post I'll  discuss specifically how the complex process of writing ARC grant applications can impact equity in scientific careers and individual career outcomes.
 
