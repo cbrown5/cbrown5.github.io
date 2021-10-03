@@ -1,5 +1,5 @@
 ---
-title: Are lengthy grant applications 'fair'
+title: "Are lengthy grant applications fair?"
 layout: default
 category: research
 published: TRUE
@@ -27,7 +27,7 @@ I have a young family, so my time outside of work hours is significantly constra
 
 Many early career researchers and researchers who are trying to return to science after a career break don't have this luxury. This may mean they need to write the application on their own time, either because they've don't have an academic job, or their present job doesn't allow time for grant writing.
 
-I've also seen the process suck a lot out of people. Here's a common situation: a postdoc's research contract is ending soon and their supervisor doesn't have ongoing funding for their position. So they write for an early career fellowship.
+I've also seen the process suck the soul out of people. Here's a common situation: a postdoc's research contract is ending soon and their supervisor doesn't have ongoing funding for their position. So they write for an early career fellowship.
 
 But chances are the postdoc won't win the grant (the overall success rate is about 15-20%) and the time invested in the application is time lost from chasing up other higher probability job opportunities.
 
@@ -47,4 +47,4 @@ Of course, the simplification would have to be done carefully so that other type
 
 Another approach is to use ['grant lotteries'](https://www.nature.com/articles/d41586-019-03572-7), where funding is allocated randomly to a pool of grants that are deemed fundable. That way you can have a shorter application that has to tick off on some minimal standards. Then leave the rest to an unbiased lottery.
 
-To sum up, as grant applications become increasingly complex, it increasingly favours people with the time and support networks to develop the application. This means good researchers with great ideas who don't get the time will be at a disadvantage. That isn't isn't in the interest of high quality science.
+To sum up, as grant applications become increasingly complex, it increasingly favours people with the time and support networks to develop the application. This means good researchers with great ideas who don't get the time will be at a disadvantage. That isn't in the interest of high quality science.

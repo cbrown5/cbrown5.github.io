@@ -1,5 +1,5 @@
 ---
-title: How much time does it take to write a grant
+title: "How much time does it take to write a grant?"
 layout: default
 category: research
 published: TRUE

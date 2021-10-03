@@ -1,5 +1,5 @@
 ---
-title: Time for grants grant writing strategies
+title: "Time for grants: grant writing strategies"
 layout: default
 category: research
 published: TRUE
