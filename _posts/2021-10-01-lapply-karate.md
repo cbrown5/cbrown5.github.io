@@ -94,7 +94,8 @@ non-linear deviations from the mean):
       geom_line() +
       geom_line(aes(y = pred), col = "red")
 
-    ## Don't know how to automatically pick scale for object of type ts. Defaulting to continuous.
+
+## Don't know how to automatically pick scale for object of type ts. Defaulting to continuous.
 
 ![](/images/2021-10-01-lapply-karate/lapply-karate_files/figure-markdown_strict/unnamed-chunk-1-1.png)
 Black line shows the data, red line shows the GAM fit. You can see the
@@ -105,8 +106,13 @@ programmatically like this:
 
     ## [1] 36.32412
 
-lapply karate
--------------
+
+## lapply karate
+
+Note Pablo García wrote into me after this blog was published. He pointed out that the base
+R functions `mapply` and `Map` are setup to be multivariate equivalents of `sapply` and `lapply`.
+So you may want to look at those as a slightly more intuitive way of performing the below
+computations. 
 
 ### Step 1: Setup a function
 
