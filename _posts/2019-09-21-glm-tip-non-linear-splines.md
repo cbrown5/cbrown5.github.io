@@ -69,7 +69,7 @@ The orange line is the naive linear fit, it basically shows no trend.
 The purple line (df = 2) does better, but misses the kick up at the end.
 The blue line looks closest to the 'true' mean function (grey line).
 
-The purple and blue lines are our spline fits with 2 and 3 knots
+The purple and blue lines are our spline fits with 1 and 2 knots
 respectively. Both clearly capture the non-linearity. The grey line is
 the 'true' mean structure we created above. So our splines just peaks a
 bit too hard, but does get the shape right.
