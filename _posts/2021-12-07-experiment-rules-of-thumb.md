@@ -112,8 +112,9 @@ overestimating the effect of a covariate.
 An alternative option is to randomize your sampling with respect to
 background sources of variation. Such a design will have reduced power
 compared to a controlled design, but the effect sizes you estimate will
-be more general and realistic (typically they are smaller). \#\#\#
-Randomize your sampling
+be more general and realistic (typically they are smaller).  
+
+### Randomize your sampling
 
 Random sampling is the basic assumption underlying most stats tests.
 
