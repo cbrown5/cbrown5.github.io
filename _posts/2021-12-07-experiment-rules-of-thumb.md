@@ -23,8 +23,10 @@ For a more complete discussion of experimental design I recommend [Quinn
 and Keough’s classic book: Experimental Design and Data Analysis for
 Biologists](https://www.cambridge.org/highereducation/books/experimental-design-and-data-analysis-for-biologists/BAF276114278FF40A7ED1B0FE77D691A#overview).
 
-See also [this recent review](Kimmel%20et%20al.) of four important
-logical principles that need to be met in design to infer causality.
+See also [this recent
+review](https://www.sciencedirect.com/science/article/pii/S0169534721002263?casa_token=yCc9bRLcIlsAAAAA:MXEQyE-MRglV4AaQfLeDleVTWoKfExOJU1eX10lqez3bUwhhlL2p3aO_SSQ0E1UGq8zjC8ak)
+of four important logical principles that need to be met in design to
+infer causality.
 
 This is a working document for my students, so please write me
 (<a href="mailto:chris.brown@griffith.edu.au" class="email">chris.brown@griffith.edu.au</a>)
@@ -214,36 +216,7 @@ three ways to assign them to nutrient levels: Gradient (every flask gets
 a different nutrient level), replicated (just two nutrient levels), or
 hybrid of gradient and replicated.
 
-    library(ggplot2)
-    library(patchwork)
-    theme_set(theme_classic())
-
-    simdata <- function(n, nunits, a, b ,sigma){
-      x <- seq(0, 1, length.out = nunits)
-      xperunit <- round(n/nunits)
-      x <- rep(x, each = xperunit)
-      n <- length(x)
-      y <- a + b*x + rnorm(n, sd = sigma)
-      data.frame(x,y)
-    }
-
-
-    datrep <- simdata(30, 2, 0, 2, 1)
-    datrep$design <- "Replicated"
-    dathyb <- simdata(30, 5, 0, 2, 1)
-    dathyb$design <- "Hybrid"
-    datgrad <- simdata(30, 30, 0, 2, 1)
-    datgrad$design <- "Gradient"
-
-    datall <- rbind(datrep, dathyb, datgrad)
-    ggplot(datall) +
-      aes(x = x, y = y) +
-      facet_wrap(~design) +
-      geom_point() +
-      stat_smooth(method = "lm")
-
-![](images/2021-12-07-experiment-rules-of-thumb/unnamed-chunk-1-1.png)
-
+![](/images/2021-12-07-experiment-rules-of-thumb/unnamed-chunk-1-1.png)
 What should you do?
 
 The replicated design is more typical of ecological experiments. This
@@ -261,32 +234,7 @@ then your replicated design implies a linear relationship between the
 two levels, e.g. here are results of a gradient vs replicated design for
 a non-linear response:
 
-    simdata2 <- function(n, nunits, a, b ,sigma){
-      x <- seq(0.01, 1, length.out = nunits)
-      xperunit <- round(n/nunits)
-      x <- rep(x, each = xperunit)
-      n <- length(x)
-      ymn <- a*(1-exp(-b*x))
-      y <- ymn + rnorm(n, sd = sigma)
-      data.frame(x,y)
-    }
-    set.seed(712)
-    d <- simdata2(50, 50, 100, 5, 10)
-    d$design <- "Gradient"
-    d2 <- simdata2(50, 2, 100, 5, 10)
-    d2$design <- "Replicated"
-    d3 <- rbind(d, d2)
-
-    ggplot(d) +
-      aes(x = x, y = y) +
-      geom_point(color = "darkblue") +
-      stat_smooth(se = FALSE,method = "gam") +
-      geom_point(data = d2, aes(x = x, y = y), color = "red") +
-      stat_smooth(data = d2, se = FALSE,method = "lm",
-                  color = "red")
-
-![](images/2021-12-07-experiment-rules-of-thumb/unnamed-chunk-2-1.png)
-
+![](/images/2021-12-07-experiment-rules-of-thumb/unnamed-chunk-2-1.png)
 So your ability to predict the ecological response is very poor with the
 replicated design.
 
