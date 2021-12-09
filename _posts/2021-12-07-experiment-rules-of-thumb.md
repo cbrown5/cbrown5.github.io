@@ -1,11 +1,11 @@
 ---
-title: Rules of thumb for the design of ecological experiments
+title: Tips for the design of ecological experiments
 layout: default
 category: rstats
 published: TRUE
 ---
 
-Rules of thumb for the design of ecological experiments
+Tips for the design of ecological experiments
 =======================================================
 
 Are you planning an experiment in the lab or field, or an observational
@@ -16,15 +16,16 @@ their data. However, it’s common they need help with statistics because
 of issues with the experimental (or observational) design.
 
 A stats model can never completely fix design flaws. So below are some
-tips and rules of thumb, based on my experiences helping students
-analyze their datasets.
+tips, based on my experiences helping students analyze their datasets.
+
+Experimental design is complex because ultimately you are balancing logistical practicalities (like cost of sampling) with with is theoretically optimal. This blog is a starting point, but I recommend reading deeper into the references below.
 
 For a more complete discussion of experimental design I recommend [Quinn
 and Keough’s classic book: Experimental Design and Data Analysis for
 Biologists](https://www.cambridge.org/highereducation/books/experimental-design-and-data-analysis-for-biologists/BAF276114278FF40A7ED1B0FE77D691A#overview).
 
 See also [this recent
-review](https://www.sciencedirect.com/science/article/pii/S0169534721002263?casa_token=yCc9bRLcIlsAAAAA:MXEQyE-MRglV4AaQfLeDleVTWoKfExOJU1eX10lqez3bUwhhlL2p3aO_SSQ0E1UGq8zjC8ak)
+review](https://doi.org/10.1016/j.tree.2021.08.008)
 of four important logical principles that need to be met in design to
 infer causality.
 
@@ -37,7 +38,7 @@ Some definitions
 
 Just quickly, below I’ll refer to:
 
-‘Experiments’ as manipulative experiments in the lab or field
+‘Experiments’ as manipulative experiments in the lab or field. Field studies in particular may also have some elements of 'Observational' studies, so there is a grey-area with:
 
 ‘Observational studies’ as field studies that sample across gradients of
 natural variation to try and identify effects on a response variable
@@ -47,12 +48,17 @@ natural variation to try and identify effects on a response variable
 e.g. rainfall or fishing pressure. These can occur naturally in the
 field, or be the result of manipulation in an experiment.
 
-‘Nuisance variables’ are sources of variation you aren’t interested in
-studying, but which you have to deal with.
-
 ‘Samples’ are the units of observation.
 
-Rules of thumb
+'Response' is the variable(s) of interest that you hypothesize are affected by the treatments and/or covariates.
+
+'Covariates', 'predictors' or 'explanatory' variables are the hypothesized drivers of changes in the response. Usually we'd use predictor or explanatory variable in the case of a manipulative experiment, whereas any term is fine in the case of an observational study.
+
+'Confounded' means that you cannot distinguish the effects of two predictors. In a field observational study we could say that two covariates are 'colinear'.
+
+All of the experimental design concepts below also apply to analysis of field surveys or pre-existing datasets (e.g. citizen science data or meta-analyses). In these cases you are limited in the pre-existing 'treatments' available to you, so you will need to constrain your interpretation based on experimental design principles.
+
+Tips
 --------------
 
 ### Plan for failure
@@ -98,8 +104,9 @@ fishing, as well as estimate their interaction.
 
 ### Dealing with background variation: randomize or control?
 
-You have two broad options for dealing with background variation and
-‘nuisance’ variables. You can try and control them, so they are constant
+"Stratify experiments with respect to your knowledge and randomise with respect to your ignorance" - unattributed via Bill Venables.
+
+You have two broad options for dealing with background variation. You can try and control them, so they are constant
 across all samples. For instance, in an experiment you may keep
 temperature constant, so you can examine the effects of nutrients on
 algal growth.
@@ -113,6 +120,8 @@ An alternative option is to randomize your sampling with respect to
 background sources of variation. Such a design will have reduced power
 compared to a controlled design, but the effect sizes you estimate will
 be more general and realistic (typically they are smaller).  
+
+If you go with randomisation you may want to try increase replication, to address power issues.
 
 ### Randomize your sampling
 
@@ -143,7 +152,7 @@ psuedo-reps (because they share the same water).
 
 This issue can be hidden. For instance, climate change tank experiments
 often have a single water circulation system per treatment level
-(e.g. controlling OA or temperature). This means all the replicate tanks
+(e.g. [controlling OA](https://academic.oup.com/icesjms/article/73/3/572/2458712?login=true) or temperature). This means all the replicate tanks
 on the same system aren’t truly independent samples. Solutions are to
 have one circulation system per treatment (but expensive!) or run the
 experiment multiple times to get temporally independent samples.
@@ -182,7 +191,7 @@ will let you remove (statistically) that nuisance variable.
 sample.**
 
 Initial plans I see from students, especially for field designs, often
-involve measuring a lot of variables at very few samples But, such
+involve measuring a lot of variables at very few sites. But, such
 designs end up with have low power and a lot of confounded variables,
 because you end up with more covariates to test than samples to test
 them.
@@ -203,6 +212,14 @@ Of course the replication level you need depends on how variable the
 system is, but in my (marine fish biased) experience of analyzing
 ecological field experiments, ~50 independent sites is usually a
 minimum.
+
+I'll add that if you can easily sample more covariates, go for it. You may want to condition on them to statistically control for them when you do the analysis.
+
+### More sites or more replication at fewer sites?
+
+Closely related to the above idea, I often see students intensely replicating their designs at very few sites (e.g. doing many days of sampling at a single site, or numerous transects per site). But these are psuedoreps. Your study will be more general if you can cover more sites with less replication at each site.
+
+Aiming for greater replication can also help you obtain a deeper understanding of your study topic. You'll see more different circumstances which may help you formulate better hypotheses.
 
 ### Replicated or Gradient design?
 
@@ -230,10 +247,9 @@ instance, it may be expensive or time consuming to have multiple levels
 of the treatment (e.g. requiring multiple different incubators in a
 warming experiment).
 
-BUT, there’s a catch. What if your ecological response is non-linear,
-then your replicated design implies a linear relationship between the
+BUT, there’s a catch. What if your ecological response shows a humped or saturating relationship with the predictor variable? Then your replicated design implies a straight-line relationship between the
 two levels, e.g. here are results of a gradient vs replicated design for
-a non-linear response:
+a curved relationship:
 
 ![](/images/2021-12-07-experiment-rules-of-thumb/unnamed-chunk-2-1.png)
 So your ability to predict the ecological response is very poor with the
@@ -259,12 +275,28 @@ stressors](https://royalsocietypublishing.org/doi/full/10.1098/rspb.2020.0421),
 and for testing fundamental theories. So I encourage you to consider a
 gradient or hybrid design.
 
+### Realistic treatment ranges, but consider extreme scenarios too
+
+The classic example is early ocean acidification experiments that acidified water in experimental treatments to what would be equivalent to atmospheric concentrations of CO2 of 1000ppm (we're currently at about 420ppm and projected to reach ~500-600ppm by 2050).
+
+So treatments should be environmentally relevant. BUT, the increasing prevalence of extreme weather events means that you may want to consider some extreme scenarios, e.g. for heatwaves. In some fields [not enough experiments consider the impacts of extreme events](https://doi.org/10.1038/s41558-019-0609-3). For instance, a gradient design could consider both contemporary as well as projected mid-range and extremes values of the predictor.
+
+### Ask dumb questions
+
+I often hear from students questions like 'this might be a dumb question but, why do we always do 3 transects per site?'.
+
+Dumb questions are great because they reveal tacit knowledge of experts and hidden assumptions. And sometimes they reveal important assumptions that could overturn or invalidate a study's findings. Like the emperors new clothes.
+
+So don't be afraid to ask 'dumb' questions about experimental design.
+
 Summary
 -------
 
 Designing experiments takes careful thought and planning. The skill of
 design is finding where statistical and logical requirements meet
 practical realities.
+
+The above are some of my tips, but there are of course always exceptions, the best you can do is read the literature, consult people with experience in your field and ask lots of questions.
 
 If you have advice to add, or don’t agree with any of the above, feel
 free to let me know:
