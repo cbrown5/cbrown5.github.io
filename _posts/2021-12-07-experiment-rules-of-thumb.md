@@ -226,7 +226,7 @@ Aiming for greater replication can also help you obtain a deeper understanding o
 **Easy answer: gradient designs are better for prediction, and designing
 for prediction is the future of ecology.**
 
-But, replicated designs have more power to detect an effect.
+But, replicated designs have more power to detect monotonically increasing responses to the predictor.
 
 Say we are doing an experiment measuring how fast algae grow in flasks
 under different nutrient levels. We can fit 30 flasks in the lab. Here’s
@@ -251,7 +251,8 @@ BUT, there’s a catch. What if your ecological response shows a humped or satur
 two levels, e.g. here are results of a gradient vs replicated design for
 a curved relationship:
 
-![](/images/2021-12-07-experiment-rules-of-thumb/unnamed-chunk-2-1.png)
+![](/images/2021-12-07-experiment-rules-of-thumb/unnamed-chunk-2-1.png)  
+
 So your ability to predict the ecological response is very poor with the
 replicated design.
 
