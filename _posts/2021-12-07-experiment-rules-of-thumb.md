@@ -54,7 +54,7 @@ field, or be the result of manipulation in an experiment.
 
 'Covariates', 'predictors' or 'explanatory' variables are the hypothesized drivers of changes in the response. Usually we'd use predictor or explanatory variable in the case of a manipulative experiment, whereas any term is fine in the case of an observational study.
 
-'Confounded' means that you cannot distinguish the effects of two predictors. In a field observational study we could say that two covariates are 'colinear'.
+'Confounded' means that you cannot distinguish the effects of two predictors. In a field observational study we could say that two covariates are 'collinear'.
 
 All of the experimental design concepts below also apply to analysis of field surveys or pre-existing datasets (e.g. citizen science data or meta-analyses). In these cases you are limited in the pre-existing 'treatments' available to you, so you will need to constrain your interpretation based on experimental design principles.
 
@@ -104,7 +104,7 @@ fishing, as well as estimate their interaction.
 
 ### Dealing with background variation: randomize or control?
 
-"Stratify experiments with respect to your knowledge and randomise with respect to your ignorance" - unattributed via Bill Venables.
+"Stratify experiments with respect to your knowledge and randomise with respect to your ignorance" - Professor Alan T. James, via Bill Venables.
 
 You have two broad options for dealing with background variation. You can try and control them, so they are constant
 across all samples. For instance, in an experiment you may keep
