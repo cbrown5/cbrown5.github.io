@@ -215,6 +215,10 @@ minimum.
 
 I'll add that if you can easily sample more covariates, go for it. You may want to condition on them to statistically control for them when you do the analysis.
 
+### Conceptual model
+
+Developing a conceptual model of your system, through talking with experts and reading the literature, can help you identify key predictors and refine your research question. This means you can better target your sampling design. 
+
 ### More sites or more replication at fewer sites?
 
 Closely related to the above idea, I often see students intensely replicating their designs at very few sites (e.g. doing many days of sampling at a single site, or numerous transects per site). But these are psuedoreps. Your study will be more general if you can cover more sites with less replication at each site.
@@ -275,6 +279,8 @@ multiple
 stressors](https://royalsocietypublishing.org/doi/full/10.1098/rspb.2020.0421),
 and for testing fundamental theories. So I encourage you to consider a
 gradient or hybrid design.
+
+When designing a gradient, look out for high leverage points, e.g. one temperature extreme 5 degrees greater than any of your other treatments/surveys (with no replication) will have a high influence on your fitted model.
 
 ### Realistic treatment ranges, but consider extreme scenarios too
 
