@@ -4,7 +4,7 @@ layout: default-ppl
 published: true
 ---
 
-# Chris Brown
+# Associate Professor Chris Brown
 
 ![](/images/people/cjbrown.jpeg)
 The leader of the Seascape Models group.
@@ -21,14 +21,16 @@ Chris is an enthusiastic science communicator. He also enjoys teaching statistic
 
 ## Current research
 
-Dr Brown will soon begin an [ARC Future Fellowship](https://www.seascapemodels.org/research/2021/08/12/future-fellowship.html) on predicting unprecedented ecological futures.
+Dr Brown began an [ARC Future Fellowship](https://www.seascapemodels.org/research/2021/08/12/future-fellowship.html) on predicting unprecedented ecological futures in January of 2022.
 
-Dr Brown also is research lead on the [Global Wetlands Program](https://globalwetlandsproject.org/) a major new program of research looking at mapping the health of seagrass, mangroves and saltmarsh globally to inform on conservation actions.
+Dr Brown also is research lead on the [Global Wetlands Program](https://globalwetlandsproject.org/) a major program of research looking at mapping the health of seagrass, mangroves and saltmarsh globally to inform on conservation actions.
 
-Chris is leading a Discovery Project (2018-2020) ["*Predicting interactive effects of multiple stressors on marine ecosystems*"](http://www.seascapemodels.org/research/2017/11/10/interacting-impacts-grant.html). The team aims to develop new models that can make predictions reliable enough to inform management of ecosystems, and that are effective when data are limited.
+Chris is leading a Project with the World Wildlife Fund (2021-2024) *Global Prioritization of Mangrove Conservation and Restoration incorporating future Climate Change Impacts*. The team aims to inform WWF's mangrove conservation actions at local and global scales. 
 
 
 ## Career history
+
+2022 ongoing. ARC Future Fellow, Coastal and Marine Research Centre, Australian Rivers Institute, and Associate Professor in the School of Environment and Science, Griffith University
 
 2019 - 2021 Senior Lecturer, Coastal and Marine Research Centre, Australian Rivers Institute, School of Environment and Science, Griffith University
 
