@@ -2,7 +2,7 @@
 title: Multivariate data analysis with Generalized Linear Models
 layout: default
 category: rstats
-published: TRUE
+published: FALSE
 ---
 
 # Multivariate data analysis with Generalized Linear Models    

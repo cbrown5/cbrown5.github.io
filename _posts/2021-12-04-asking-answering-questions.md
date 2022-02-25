@@ -49,4 +49,4 @@ Responding to difficult questions, especially questions that catch you off guard
 For instance, one mock question I asked one lab member about their work with an industry partner was along the lines of an accusation: "your work is just helping this industry green-wash their dirty operations".
 He answered: "In our work we are engaging with stakeholders on all sides of this contentious issue. The scientific process is helping improve the transparency of industry operations and create a dialogue between different sides. "
 
-Coming up with well-framed answers to difficult questions can take thought, so it is worth practising for your specific topic. 
+Coming up with well-framed answers to difficult questions can take thought, so it is worth practising for your specific topic.
