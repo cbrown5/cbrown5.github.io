@@ -5,7 +5,7 @@ category: research
 published: TRUE
 ---
 
-# How to ask more questions and be a better scientist
+# How to ask more questions and be a better scientist  
 
 As the world opens up we get to reconnect with our peers in person and make new connections. Much effort is put into training graduates to 'make the pitch' for their research when they first meet someone. But I find asking good questions is a more effective way to connect with others.
 
@@ -79,6 +79,5 @@ Its a bit harder if you don't know the people or its a large group. One way to d
 use the I wonder questions above. Another way is to say something along the lines of:
 
 "It would be great to hear from an expert on that for what they think about what Dana jus said"
-
 
 Hope this has helped. Let me know on twitter (@bluecology) if you use any of the tips above and how they went.
