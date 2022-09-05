@@ -42,6 +42,4 @@ Australian citizens and permanent residents should have been awarded a 1st Class
 
 ### International students
 
-Due to international travel restrictions international student scholarships are currently extremely limited. To be competitive for a scholarship international students should have been awarded a 1st Class Honours degree or equivalent (e.g. Masters with a 40 credit point research thesis) in a relevant field. They must be lead author on at least one publication in an internationally recognized peer-reviewed journal. To be considered, journals should be internationally recognized, for instance they should have an Impact Factor rating from ISI or be listed by Scimago.
-
-Preference will be given to international students who are already located in Australia.
+Due to international travel restrictions international student scholarships are currently extremely limited. To be competitive for a scholarship international students should have been awarded a 1st Class Honours degree or equivalent (e.g. Masters with a 40 credit point research thesis) in a relevant field. They must be lead author on at least one publication in an internationally recognized peer-reviewed journal. To be considered, journals should be internationally recognized, for instance they should have an Impact Factor rating from ISI or be listed by Scimago. 
