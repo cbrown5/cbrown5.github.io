@@ -2,7 +2,7 @@
 title: Tessie Liddell
 layout: default-ppl
 published: true
-category: currentphd
+category: alumnus
 ---
 
 # Tessie Liddell

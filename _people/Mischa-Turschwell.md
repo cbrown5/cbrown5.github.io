@@ -2,12 +2,12 @@
 title: Dr Mischa Turschwell
 layout: default-ppl
 published: true
-category: currentstaff
+category: alumnus
 ---
 
 # Mischa Turschwell
 ![](/images/people/Mischa-Turschwell.jpg)
-A research fellow, Mischa is working on multiple stressors of coastal ecosystems, funded by an ARC Discovery Project.
+A former research fellow with the team, Mischa was worked on multiple stressors of coastal ecosystems, funded by an ARC Discovery Project. He then went on to work on a project funded by the Blue Economy Cooperative Research Centre to assess hazards in Australia's Blue Economy. 
 
 Mischa finished his PhD with Griffith and CSIRO in 2017 where he used a range of modelling techniques to investigate the thermal and habitat characteristics of a threatened headwater fish species.
 
