@@ -36,7 +36,9 @@ Dates: 17 February 2023 Venue: UQ, St Lucia Campus
 Cost: $250/$200 students
 
 
-Resources for participants: Detailed html notes including
-basic theory, applied worked examples in biology/ecology, and solution code.
+Resources for participants:
+Detailed html notes including basic theory, applied worked examples in biology/ecology, and solution code.
+
 Registration Open Online at https://smp.uq.edu.au/events
+
 Contact: roxanne.jemison@uq.edu.au for more information.
