@@ -97,7 +97,7 @@ And it continued with other plausible suggestions.
 
 ### Making stats more fun
 
-You can go further with the bunnies above, using any example you like to keep yourself entertained (topics that are well known on the web will work best). For instance, I prompted GPT to write an explanation of generalized additive models in the style of an 18th century author. It used the classic 'cars' dataset. So I additionally prompted it to use [horses as an example instead.]().  
+You can go further with the bunnies above, using any example you like to keep yourself entertained (topics that are well known on the web will work best). For instance, I prompted GPT to write an explanation of generalized additive models in the style of an 18th century author. It used the classic 'cars' dataset. So I additionally prompted it to use [horses as an example instead.](https://www.seascapemodels.org/rstats/2023/04/07/GAMs-in-R-18th-century-style.html).  
 
 Any style that is well known on the internet should work. You can ask for a crime novel with a gripping plot twist, in the style of a particular author like J.K. Rowling or as a script from Netflix series Bridgerton. If you are really passionate about R you could even try asking GPT for an explanation in the style of 50 Shades of Grey... 
 

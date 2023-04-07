@@ -7,7 +7,7 @@ published: TRUE
 
 # Making predictions from GAMs in R explained by an 18th century author 
 
-As explained by ChatGPT with some minor edits by me. This post is an example for my post ["Tips for using chatGPT to learn R"]() 
+As explained by ChatGPT with some minor edits by me. This post is an example for my post ["Tips for using chatGPT to learn R"](https://www.seascapemodels.org/rstats/2023/04/07/using-chatgpt-to-learn-R.html) 
 
 Pray, let us first summon the mgcv package, that we may avail ourselves of its functions in our quest to fashion a GAM.
 Hark! Let us summon the 'mgcv' package
