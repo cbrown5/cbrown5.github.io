@@ -21,9 +21,9 @@ If you can find code on the web, from collaborators or a supervisor you don't un
 
 Here's what each part of the code means:
 
-    m1 <- : assigns the output of the model to the object named m1.
-    gam() : specifies that we want to fit a generalized additive model.
-    y ~ s(year, by = sites) : specifies the model formula, where y is the response variable and year is the predictor variable of interest. The function s() specifies that year is a smooth function, which allows for a flexible fit to the data. The by = sites argument specifies that we want to fit separate smooth functions for each sites level, which is a way to model site-specific effects.
+m1 <- : assigns the output of the model to the object named m1.
+gam() : specifies that we want to fit a generalized additive model.
+y ~ s(year, by = sites) : specifies the model formula, where y is the response variable and year is the predictor variable of interest. The function s() specifies that year is a smooth function, which allows for a flexible fit to the data. The by = sites argument specifies that we want to fit separate smooth functions for each sites level, which is a way to model site-specific effects.
 
 Overall, this code fits a GAM to the data in my_data, with year as a smooth predictor variable and site-specific effects modeled with by = sites.*
 
@@ -60,8 +60,8 @@ x2 <- rnorm(n) # predictor variable 2
 lambda <- exp(0.5 + 0.8*x1 - 0.2*x2) # log-linear model with intercept 0.5 and coefficients 0.8 and -0.2
 
 y <- rpois(n, lambda) 
-
 ```
+
 ... And then GPT continues to explain what the above code does. 
 
 
@@ -86,11 +86,9 @@ I further prompted it again to explain what `x1` and `x2` could be
 **Prompt:** *What would be predictors of the number of easter eggs?* 
 
 *There are many potential predictors that could influence the number of Easter eggs brought by the Easter bunny. Here are a few possibilities:
-
-    Number of children in a household: It stands to reason that the number of Easter eggs brought by the Easter bunny would be higher in households with more children, since the bunny would have more individuals to provide for.
-
-    Household income: Depending on the cultural context, the number of Easter eggs brought by the Easter bunny could be influenced by the socioeconomic status of the household. For example, in some cultures, more affluent households may be more likely to provide larger quantities of Easter eggs.
-    ....
+Number of children in a household: It stands to reason that the number of Easter eggs brought by the Easter bunny would be higher in households with more children, since the bunny would have more individuals to provide for.
+Household income: Depending on the cultural context, the number of Easter eggs brought by the Easter bunny could be influenced by the socioeconomic status of the household. For example, in some cultures, more affluent households may be more likely to provide larger quantities of Easter eggs.
+....
 *
 
 And it continued with other plausible suggestions. 
