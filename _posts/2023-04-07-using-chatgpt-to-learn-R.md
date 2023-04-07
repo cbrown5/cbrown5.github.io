@@ -17,15 +17,15 @@ If you can find code on the web, from collaborators or a supervisor you don't un
 
 **Prompt:** *explain this R code: m1 <- gam(y ~ s(year, by = sites), data  = my_data, family = "poisson")* 
 
-**GPT**: *The code m1 <- gam(y ~ s(year, by = sites), data = my_data) specifies a generalized additive model (GAM) in R.
+**GPT**: *The code m1 <- gam(y ~ s(year, by = sites), data = my_data) specifies a generalized additive model (GAM) in R.*
 
-Here's what each part of the code means:
+*Here's what each part of the code means:*
 
-m1 <- : assigns the output of the model to the object named m1.
-gam() : specifies that we want to fit a generalized additive model.
-y ~ s(year, by = sites) : specifies the model formula, where y is the response variable and year is the predictor variable of interest. The function s() specifies that year is a smooth function, which allows for a flexible fit to the data. The by = sites argument specifies that we want to fit separate smooth functions for each sites level, which is a way to model site-specific effects.
+*m1 <- : assigns the output of the model to the object named m1.*
+*gam() : specifies that we want to fit a generalized additive model.
+*y ~ s(year, by = sites) : specifies the model formula, where y is the response variable and year is the predictor variable of interest. The function s() specifies that year is a smooth function, which allows for a flexible fit to the data. The by = sites argument specifies that we want to fit separate smooth functions for each sites level, which is a way to model site-specific effects.*
 
-Overall, this code fits a GAM to the data in my_data, with year as a smooth predictor variable and site-specific effects modeled with by = sites.*
+*Overall, this code fits a GAM to the data in my_data, with year as a smooth predictor variable and site-specific effects modeled with by = sites.*
 
 It gets everything right. 
 
@@ -75,7 +75,7 @@ Following the poisson regression example above, we could ask GPT to modify its e
 
 **Prompt:** *Rewrite the R code for simulating data using an example of what predicts the number of easter eggs the easter bunny brings* 
 
-**GPT:** *Sure, here's an example of how to simulate count data based on a linear model that predicts the number of Easter eggs brought by the Easter bunny:... * 
+**GPT:** *Sure, here's an example of how to simulate count data based on a linear model that predicts the number of Easter eggs brought by the Easter bunny:...* 
 
 Then GPT continued with basically the same code as above, where it gave `x1` and `x2` as the predictors. It also provided a warning at the end: 
 
@@ -85,11 +85,9 @@ I further prompted it again to explain what `x1` and `x2` could be
 
 **Prompt:** *What would be predictors of the number of easter eggs?* 
 
-*There are many potential predictors that could influence the number of Easter eggs brought by the Easter bunny. Here are a few possibilities:
-Number of children in a household: It stands to reason that the number of Easter eggs brought by the Easter bunny would be higher in households with more children, since the bunny would have more individuals to provide for.
-Household income: Depending on the cultural context, the number of Easter eggs brought by the Easter bunny could be influenced by the socioeconomic status of the household. For example, in some cultures, more affluent households may be more likely to provide larger quantities of Easter eggs.
-....
-*
+*There are many potential predictors that could influence the number of Easter eggs brought by the Easter bunny. Here are a few possibilities:*
+*Number of children in a household: It stands to reason that the number of Easter eggs brought by the Easter bunny would be higher in households with more children, since the bunny would have more individuals to provide for.
+*Household income: Depending on the cultural context, the number of Easter eggs brought by the Easter bunny could be influenced by the socioeconomic status of the household. For example, in some cultures, more affluent households may be more likely to provide larger quantities of Easter eggs....*
 
 And it continued with other plausible suggestions. 
 
