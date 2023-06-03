@@ -4,13 +4,13 @@ title: News and Views
 sitemap:
     priority: 0.7
     changefreq: 'monthly'
-    lastmod: 2020-07-04
+    lastmod: 2023-06-03
 ---
 
 # People
 
 <ul class="list-ppl">
-  <li><a class="button-ppl bkg-2" href="/people/Chris-Brown.html">Chris Brown, Research Leader </a></li>
+  <li><a class="button-ppl bkg-1" href="/people/Chris-Brown.html">Chris Brown, Research Leader </a></li>
 </ul>
 <div class="clearme"><p></p></div>
 
@@ -19,7 +19,7 @@ sitemap:
 <ul class="list-ppl">
     {% for people in site.people %}
     {% if people.category contains 'currentstaff'%}
-  <li><a class="button-ppl bkg-2" href="{{ people.url }}">{{ people.title }} </a></li>
+  <li><a class="button-ppl bkg-1" href="{{ people.url }}">{{ people.title }} </a></li>
     {% endif %}
   {% endfor %}
 </ul>
@@ -30,7 +30,7 @@ sitemap:
 <ul class="list-ppl">
     {% for people in site.people %}
     {% if people.category contains 'currentphd'%}
-  <li><a class="button-ppl bkg-2" href="{{ people.url }}">{{ people.title }} </a></li>
+  <li><a class="button-ppl bkg-1" href="{{ people.url }}">{{ people.title }} </a></li>
     {% endif %}
   {% endfor %}
 </ul>
@@ -41,7 +41,7 @@ sitemap:
 <ul class="list-ppl">
     {% for people in site.people %}
     {% if people.category contains 'alumnus'%}
-  <li><a class="button-ppl bkg-5" href="{{ people.url }}">{{ people.title }} </a></li>
+  <li><a class="button-ppl bkg-2" href="{{ people.url }}">{{ people.title }} </a></li>
     {% endif %}
   {% endfor %}
 </ul>

@@ -56,17 +56,29 @@
     font-size:0.9rem;
 }
 
+/* Research page boxes 
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+ul.list-research {
+  list-style-type: none;
+    margin:0em;
+    padding:0em;
+}
+
 .portfolio{
   position: relative;
   width: 90%;
   height:20%;
   margin: 0;
   padding: 2rem;
+  background-color: black;
   color:white;
 }
 
 div.portfolio:hover{
-      box-shadow: inset 4px 8px 10px 1px rgba(0,0,0,0.7);
+      border-style: solid;
+      border-width: 5px;
+      border-color: silver;
       text-decoration: none;
   }
 
@@ -111,36 +123,16 @@ p.portfolio{
 the hashcodes in framework.css, to pick up manually edited ones*/
 
 .bkg-1{
-    background-color: #3500D3;
+    background-color: #000000;
     color:white;
-    border-color: #3500D3;
+    border-color: #faf9fc;
 }
 
 .bkg-2{
-    background-color: #190061;
+    background-color: #010444;
     color:white;
-    border-color:#190061;
+    border-color:#010444;
 }
-
-.bkg-3{
-    background-color: #240090;
-    color:white;
-    border-color:#240090;
-}
-
-.bkg-4{
-    background-color: #0C0032;
-    color:white;
-    border-color:#0C0032;
-
-}
-
-.bkg-5{
-    background-color: #282828;
-    color:white;
-    border-color:#282828;
-}
-
 
 /* Base Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -433,7 +425,6 @@ ul.list-ppl {
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
 
-
 .button-ppl{
     font-size: 1.2rem;
     color:white;
@@ -604,6 +595,7 @@ img.largeimage{
 
 img.icon-image{
   max-width:200px;
+  object-fit: scale-down;
   padding:0px;
   margin:4px;
 }
@@ -697,59 +689,11 @@ img.image-bottom{
     padding:0;
 }
 
-.research-header{
-    color:white;
-    position:relative;
-    text-align:center;
-}
-
-.research-h1{
-    margin-left: auto;
-    margin-right: auto;
-    position: absolute;
-    width: 100%;
-    top:75%;
-    left:50%;
-    transform: translate(-50%, -50%);
-
-    font-size: 3em;
-    text-align: center;
-    line-height: 1.8;
-    opacity: 0;
-    webkit-animation-name: fadeinout;
-    webkit-animation-duration: 2.8s;
-    animation-name: fadeinout;
-    animation-duration: 2.8s;
-}
-
 @media (min-width: 641px) {
-    .research-h1{
-        font-size: 5em;
-    }
     h2.main-subtext{
       max-width:40%;
     }
 }
-
-/*
-#ani1{
-    webkit-animation-delay:0s;
-    animation-delay:0s;
-  }
-#ani2{
-    webkit-animation-delay:2.9s;
-   animation-delay:2.9s;
-}
-#ani3{
-    webkit-animation-delay:5.8s;
-    animation-delay:5.8s;
-}
-
-#ani4{
-    webkit-animation-delay:8.7s;
-    animation-delay:8.7s;
-}
-*/
 
 /* Animations
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
