@@ -73,6 +73,9 @@ ul.list-research {
   padding: 2rem;
   background-color: black;
   color:white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: silver;
 }
 
 div.portfolio:hover{
@@ -348,10 +351,10 @@ a.hamburger{
     text-decoration: none;
     padding:0.1em;
     margin:0.2em;
+    border-style: solid;
+    border-width: 1px;
     float:left;
-    border-radius: 25px;
     padding:3px;
-    box-shadow: 2px 2px 1px 1px grey;
 }
 
 .bar{
