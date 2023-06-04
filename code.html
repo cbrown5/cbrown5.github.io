@@ -77,7 +77,7 @@ This is my blog for programming in R-stats (and occasionally other languages). I
 <ul class="list_post">
 {% for post in site.posts %}
 {% if post.category contains 'Rstats' or post.category contains 'rstats'%}
-  <li><a class="button_post bkg-2" href="{{ post.url }}">{{ post.title }} - <em>{{ post.date | date: "%d %b %Y" }}</em> </a></li>
+  <li><a class="button_post bkg-1" href="{{ post.url }}">{{ post.title }} - <em>{{ post.date | date: "%d %b %Y" }}</em> </a></li>
     {% endif %}
   {% endfor %}
 </ul>
