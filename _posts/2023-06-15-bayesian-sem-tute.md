@@ -1,3 +1,10 @@
+---
+title: Bayesian structural equation model tutorial
+layout: default
+category: rstats
+published: TRUE
+---
+
 # Bayesian structural equation model tutorial
 
 Structural equation modelling (SEM) is a tool for exploring
