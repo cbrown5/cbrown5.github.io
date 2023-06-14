@@ -27,7 +27,7 @@ Social media is designed to make cheap content engaging, indeed often highly add
 
 I often find myself on youtube for much longer than 50 minutes, without even intending too. 
 
-How that happens is I start watching one short video ("its only five minutes"), that then leads me to another video and so on. 
+How that happens is I start watching one short video "its only five minutes", that then leads me to another video and so on. 
 
 And each of these videos is done on the cheap, often only with a phone camera and perhaps a microphone or gopro.  
 
@@ -51,28 +51,8 @@ Or imagine the lecturer is at a conference and meets the person who wrote the se
 
 All this videos are short. 7 minutes or even shorter is ideal, because that is what people are happy to watch. The lecturer weaves the series of videos into a lesson. The catch is, once you start the first 7 minutes its good enough that students are happy to roll onto the next one and the next one. Before they know it your student has consumed 50 minutes 'lectures'. 
 
-When I get the time I'll make an example of a social media style lecture and post it to my [youtube channel](). 
+When I get the time I'll make an example of a social media style lecture and post it to my [youtube channel](https://www.youtube.com/channel/UCSH4ctGD-waPSI_4w6PlTBg) 
 
 You may same this will all take more time than just doing a powerpoint. But you'd be surprised how quick you can make videos once you get an eye for good content.
 
 I can tell you, making the videos is a whole lot more fun too. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
