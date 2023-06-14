@@ -33,7 +33,7 @@ This leads me to the point that GLMs can be used as a predictive tool. In contra
 
 In my own area of marine science for instance, fishery scientist may use a GLM to quantify how fish catch varies with different mesh sizes of nets (smaller mesh size will generally will catch smaller fish). The fitted GLM can then be used to make predictions that standardise comparison of catches from nets with different mesh sizes. ([Read about another example that is a GLM version of ANCOVA](https://www.seascapemodels.org/rstats/2020/09/04/correcting-with-glms.html)). 
 
-![Graph showing GLM predictions of abundance for different habitat areas](/Users/s2973410/Documents/Webpages/cbrown5_github/images/blogs-2020/correcting-with-glms_files/figure-markdown_strict)
+![Graph showing GLM predictions of abundance for different habitat areas](/images/blogs-2020/correcting-with-glms_files/figure-markdown_strict)
 
 **Figure:** Example of using a GLM to correct for differences in habitat use across two regions. In the left panel we model fish abundance just on habitat. However, region 2 has more habitat but no fish, so the fit is negative. On the right we additionally control for region, and see that abundance increases with habitat in region 1. 
 
