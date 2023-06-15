@@ -382,7 +382,7 @@ just setting up the position of things:
 
 ![](images/2023-06-15-bayesian-sem-tute/unnamed-chunk-19-1.png) As its a
 Bayesian analysis we could also add CIs or probability that an effect is
-&gt;0. They could be calculated like this.
+>0. They could be calculated like this.
 
 e.g. upper 95th quantile:
 
