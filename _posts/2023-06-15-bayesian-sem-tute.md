@@ -78,7 +78,7 @@ Northern Australia:
                    SF ~ LV)
     ggdag(dag1)
 
-![](images/2023-06-15-bayesian-sem-tute/unnamed-chunk-1-1.png)
+![](/images/2023-06-15-bayesian-sem-tute/unnamed-chunk-1-1.png)
 
 Our observed indicators are SF (streamflow), NDVI (veg greeness) and
 CPUE (catch per unit effort). LV is a latent variable that represents
@@ -269,7 +269,7 @@ unimodal distribution:
     hist(samps$beta_CPUE)
     hist(samps$beta_SF)
 
-![](images/2023-06-15-bayesian-sem-tute/unnamed-chunk-11-1.png)
+![](/images/2023-06-15-bayesian-sem-tute/unnamed-chunk-11-1.png)
 
 ## Explore model results
 
@@ -298,7 +298,7 @@ Now use ggplot to plot posterior distributions
       geom_vline(xintercept = 0) + 
       geom_violin()
 
-![](images/2023-06-15-bayesian-sem-tute/unnamed-chunk-14-1.png)
+![](/images/2023-06-15-bayesian-sem-tute/unnamed-chunk-14-1.png)
 
 All have positive values, indicating all indicators are positively
 associated with each other.
@@ -340,7 +340,7 @@ data is to do a quantile-quantile plot of the residuals:
     qqnorm(resids)
     qqline(resids)
 
-![](images/2023-06-15-bayesian-sem-tute/unnamed-chunk-16-1.png)
+![](/images/2023-06-15-bayesian-sem-tute/unnamed-chunk-16-1.png)
 
 We want to see the points fall close to straight on the line, which in
 general they do.
@@ -350,7 +350,7 @@ predictions:
 
     plot(med, datstan$NDVI)
 
-![](images/2023-06-15-bayesian-sem-tute/unnamed-chunk-17-1.png)
+![](/images/2023-06-15-bayesian-sem-tute/unnamed-chunk-17-1.png)
 
 Of course this is Bayesian analysis, so we could also create credible
 intervals for the residuals.
@@ -380,7 +380,7 @@ just setting up the position of things:
                label = meds) +
       lims(y = c(-0.5, 1.5))
 
-![](images/2023-06-15-bayesian-sem-tute/unnamed-chunk-19-1.png) As its a
+![](/images/2023-06-15-bayesian-sem-tute/unnamed-chunk-19-1.png) As its a
 Bayesian analysis we could also add CIs or probability that an effect is
 >0. They could be calculated like this.
 
@@ -423,7 +423,7 @@ points:
       geom_point(aes(y = ndvi_obs)) +
       labs(x = "Year", y = "NDVI (normalized)")
 
-![](images/2023-06-15-bayesian-sem-tute/unnamed-chunk-22-1.png)
+![](/images/2023-06-15-bayesian-sem-tute/unnamed-chunk-22-1.png)
 
 ## Conclusion
 
