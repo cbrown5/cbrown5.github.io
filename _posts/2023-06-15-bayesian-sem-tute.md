@@ -58,7 +58,7 @@ missing data.
 Now we’ll step through a broad overview of how to get started with
 Bayesian SEM. We’ll use the data from my paper as an example.
 
-[Download the data](https://github.com/cbrown5/ecological-condition-latent-model/blob/main/simple-model.stan)
+[Download the data](https://github.com/cbrown5/ecological-condition-latent-model/blob/main/Data%20for%20Barramundi%20model.csv)
 
 ## Define your DAG (directed acyclical graph)
 
@@ -97,7 +97,7 @@ CPUE). Priors are weakly informative to encourage convergence.
 
 I won’t include the full stan model definition below, just the model
 component. [Click here to download the full model file you’ll need to
-run this]().
+run this](https://github.com/cbrown5/ecological-condition-latent-model/blob/main/simple-model.stan).
 
 Here’s the core of the model:
 
