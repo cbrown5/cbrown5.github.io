@@ -12,10 +12,11 @@ relationships among multiple variables. `lavaan` and `piecewiseSEM` are
 too of the most widely used and accessible packages for latent variable
 modelling in R. Both use frequentist methods.
 
-It is also possible to develop SEMs in a Bayesian framework. There are
-no easily accessible packages for Bayesian SEM, but there are advantages
-to using this framework. So here I provide a brief tutorial on creating
+It is also possible to develop SEMs in a Bayesian framework. There are advantages
+to using the Bayesian framework. So here I provide a brief tutorial on creating
 a simple Bayesian SEM with the stan program.
+
+The [blavaan](https://ecmerkle.github.io/blavaan/) package creates and fits SEMs in a Bayesian framework, but using similar syntax to lavaan. But it can help your understanding to code your own models and give you greater flexibility (though blavaan can do a lot!). 
 
 The tutorial is based on our [recent
 study](https://www.sciencedirect.com/science/article/pii/S0048969723002851)
