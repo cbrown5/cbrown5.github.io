@@ -195,13 +195,11 @@ p.foot_text{
 }
 
 a.name{
-    color:white;
     font-style: normal;
     text-decoration: underline;
 }
 
 a.uni{
-    color:white;
     font-style: normal;
     text-decoration: underline;
 }
@@ -240,7 +238,7 @@ blockquote{
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: #3500D3;
+  color: #346bf7;
   text-decoration: none;
 }
 a:hover {
@@ -346,8 +344,9 @@ a.totop{
 a.hamburger{
     display: inline-block;
     background-color: rgb(255,255,255, 0.8);
+    border-color: black;
     width: 40px;
-    height: 40px;
+    height: 31px;
     text-decoration: none;
     padding:0.1em;
     margin:0.2em;
@@ -366,7 +365,7 @@ a.hamburger{
 }
 
 .bar-1{
-    margin: 12px 5px 5px 5px;
+    margin: 5px 5px 5px 5px;
 }
 
 .bar-2{
@@ -537,6 +536,7 @@ a.card-pubs:hover{
   top:0;
 }
 
+
 .pop-button:hover{
   background-color: 	rgb(211,211,211, 0.6);
 }
@@ -605,9 +605,8 @@ img.icon-image{
 
 /* main page images with paralax scrolling*/
 
-div.main-image{
-  background-image: url("/images/mangrove-paddle2.jpg");
-  height: 450px;
+div.paralax{
+  height: 150px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -618,12 +617,6 @@ div.main-image{
 
 div.main-image2{
   background-image: url("/images/BETrevally2.jpg");
-  height: 200px;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color:#FFFF;
 }
 
 div.main-image-research{
@@ -648,16 +641,6 @@ div.main-image3{
   background-color:#FFFF;
 }
 
-h2.main-subtext{
-  color:white;
-  position:absolute;
-  bottom:0;
-  background-color:#190061;
-  opacity:0.8;
-  padding:6px;
-  border-radius: 0px 10px 10px 0px;
-}
-
 .main-image h1{
   font-size:3rem;
 }
@@ -676,26 +659,6 @@ img.image-top:hover{
 
 img.image-bottom{
   max-height:400px;
-}
-
-
-/* Code for overlaid gif
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-.gif-bg{
-    display:block;
-    margin-left: auto;
-    margin-right: auto;
-    width:100%;
-    max-width: 100%;
-    float:none;
-    padding:0;
-}
-
-@media (min-width: 641px) {
-    h2.main-subtext{
-      max-width:40%;
-    }
 }
 
 /* Animations
