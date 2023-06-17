@@ -9,7 +9,7 @@ published: TRUE
 
 Structural equation modelling (SEM) is a tool for exploring
 relationships among multiple variables. `lavaan` and `piecewiseSEM` are
-too of the most widely used and accessible packages for latent variable
+two of the most widely used and accessible packages for latent variable
 modelling in R. Both use frequentist methods.
 
 It is also possible to develop SEMs in a Bayesian framework. There are advantages
