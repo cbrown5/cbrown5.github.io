@@ -66,7 +66,6 @@ what happens:
       aes(x = t, y = yt) +
       geom_line()
 
-    ## Don't know how to automatically pick scale for object of type ts. Defaulting to continuous.
 
 ![](lapply-karate_files/figure-markdown_strict/cars-1.png) The higher
 the `ar` parameter the stronger the deviations in time.
@@ -94,8 +93,6 @@ non-linear deviations from the mean):
       geom_line() +
       geom_line(aes(y = pred), col = "red")
 
-
-## Don't know how to automatically pick scale for object of type ts. Defaulting to continuous.
 
 ![](/images/2021-10-01-lapply-karate/lapply-karate_files/figure-markdown_strict/unnamed-chunk-1-1.png)
 Black line shows the data, red line shows the GAM fit. You can see the
