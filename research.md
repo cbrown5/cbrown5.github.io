@@ -38,8 +38,8 @@ sitemap:
 <h3> Future research opportunities </h3>
 
 <p>
-<a href ="/research/2020/06/15/PhD-projects-available.html"
-class="button-ppl bkg-2">
+<a href ="/research/2023/06/17/PhD-projects-available.html"
+class="button-ppl bkg-1">
 We are currently seeking applicants for
   PhD projects to study quantitative marine conservation science.
 </a> 
