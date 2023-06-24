@@ -6,74 +6,62 @@ sitemap:
     changefreq: 'monthly'
     lastmod: 2021-08-01
 ---
+<div class = "container-main bkg-1">
+<link href="/assets/js/aos.css" rel="stylesheet">
+<script src="/assets/js/aos.js"></script>
 
+<script>
+  AOS.init({
+  duration: 1200,
+});
+</script>
 
-<h2 class="container">Seascape models</h2>
+<!-- TODO
+Update paralax images
+shift title to right
+Make main page look good in wide format
+Add more 
+Change fontphd project ideas to that post
+fix research page boxes so they fit
+-->
+
+{% include nav.html %}
+<h2 class="container" style="text-align: right;">Seascape models</h2>
 
 <div class="paralax main-image2">
 </div>
 
-<h2 class="container">What is the future of ocean life?</h2>
+<h2 class="container fadeups" data-aos="fade-up">What is the future of ocean life?</h2>
 
-<div class="paralax main-image2">
+<div class="paralax main-image4">
 </div>
 
-<h2 class="container">Change in the oceans today has no analogue in the past</h2>
-
-<div class="paralax main-image2">
-</div>
-
-<h2 class="container">Humanity increasingly depends on the ocean for food and energy</h2>
-
-<div class="paralax main-image2">
-</div>
-
-<h2 class="container">The pace of climate change and the scale of ocean industries are
+<h2 class="container fadeups" data-aos="fade-up">The pace of climate change and the scale of ocean industries are
   unprecedented
 </h2>
 
-<div class="paralax main-image2">
+<div class="paralax main-image5">
 </div>
 
+<h2 class="container fadeups" data-aos="fade-up">Humanity increasingly depends on the ocean for food and energy</h2>
 
-<h2 class="container">We need to find balance
+<div class="paralax main-image6">
+</div>
+
+<h2 class="container fadeups">We need to find balance
   between human needs and ocean conservation
 </h2>
-
-<div class="paralax main-image2">
-</div>
-
-
-<h2 class="container">We are a team of ecologists, data scientists,
+<h4 class="container fadeups" data-aos="fade-left">We are a team of ecologists, data scientists,
   social scientists
-</h2>
-
-<div class="paralax main-image2">
-</div>
-
-
-<h2 class="container">We work to support ocean decisions
-</h2>
-
-<div class="paralax main-image2">
-</div>
-
-<h2 class="container">We provide the evidence needed for sustainable
+</h4>
+<h4 class="container fadeups" data-aos="fade-right">We provide the evidence needed for sustainable
   ocean management
-</h2>
+</h4>
 
-<div class="paralax main-image2">
+<div class="paralax main-image7">
 </div>
-
-
-<h2 class="container">We excel at science communication
-</h2>
-
-<div class="paralax main-image2">
 </div>
-
-
-<div class="container">
+<div class="container bkg-2">
   </br>
 <p style="font-size:1.3rem;">Welcome to the Seascape Models group at
   <a class="uni" href="https://discover.utas.edu.au/C.J.Brown" target="_blank">the University of Tasmania</a> and 
@@ -81,34 +69,34 @@ sitemap:
   led by
    <a href="/people/Chris-Brown.html" class="name" target="_blank">
      Dr Chris Brown</a>.
-   We bring ecological complexity to planning tools used to inform decisions. </p>
+     We work to support ocean decisions in an era of change that has no analogues in the past. </p>
 </div>
 <br>
 <div class="main-image2">
 </div>
 
 <a href="/research.html" class="box-link">
-<div class="side-box bkg-1">
+<div class="side-box bkg-2">
 <h2>our research</h2>
 <p>Ecosystem conservation, fisheries, climate change and modelling</p>
 </div></a>
 
 <a href="/people.html" class="box-link">
-<div class="side-box bkg-1">
+<div class="side-box bkg-2">
 <h2>people</h2>
 <p>Meet the team</p>
 </div>
 </a>
 
 <a href="/bluecology_blog.html" class="box-link">
-<div class="side-box bkg-1">
+<div class="side-box bkg-2">
 <h2>blog</h2>
 <p> {% assign post = site.posts.first %}New post: {{ post.title }} </p>
 </div>
 </a>
 
 <a href="/publications.html" class="box-link">
-<div class="side-box bkg-1">
+<div class="side-box bkg-2">
 <h2>publications</h2>
 <p>Read about our research</p>
 </div>
@@ -116,8 +104,9 @@ sitemap:
 
 
 <a href="/code.html" class="box-link">
-<div class="side-box bkg-1">
+<div class="side-box bkg-2">
 <h2>code</h2>
 <p>Learn how we use programming to solve environmental problems</p>
 </div>
 </a>
+</div>

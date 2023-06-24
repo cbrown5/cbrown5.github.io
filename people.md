@@ -1,5 +1,5 @@
 ---
-layout: default-bgimg
+layout: default
 title: News and Views
 sitemap:
     priority: 0.7
@@ -41,7 +41,7 @@ sitemap:
 <ul class="list-ppl">
     {% for people in site.people %}
     {% if people.category contains 'alumnus'%}
-  <li><a class="button-ppl bkg-2" href="{{ people.url }}">{{ people.title }} </a></li>
+  <li><a class="button-ppl bkg-1" href="{{ people.url }}">{{ people.title }} </a></li>
     {% endif %}
   {% endfor %}
 </ul>
