@@ -23,7 +23,7 @@ Work with the team on [Global Wetlands Project](https://globalwetlandsproject.or
 
 Please consider the below criteria before contacting us. We will not be considering students for applications that do not meet these criteria, because they will not be competitive for funded positions. 
 
-Our primary research methods are quantitative tools. Potential applicants should have either experience in quantiative methods like R, or a very strong desire to learn more quantitative skills. Chris does not supervise projects that are primarily field or lab based, except as cosupervisor with other group leaders.
+Our primary research methods are modelling tools. Potential applicants should have either experience in quantiative methods like R, or a very strong desire to learn more quantitative skills. Chris does not supervise projects that are primarily field or lab based, except as cosupervisor with other group leaders.
 
 Our students come with training in a diverse range of fields, including field ecology, maths and IT. Our lab group is outstanding at supporting quantitative training and current PhD students have ample opportunities to learn quantitative skills by working with their peers, postdoctoral researchers, Chris and through specialized training courses.
 
