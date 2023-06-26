@@ -95,6 +95,10 @@ p.portfolio{
     float:left;
 }
 
+div.paralax{
+  background-attachment: fixed;
+}
+
     .container {
       position: relative;
       width: 90%;
