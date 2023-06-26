@@ -616,13 +616,15 @@ img.icon-image{
 
 div.paralax{
   height: 150px;
-  background-attachment: fixed;
+  /*background-attachment: fixed;*/
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-color:#FFFF;
   position:relative;
 }
+
+
 
 div.main-image2{
   background-image: url("/images/BETrevally3.jpg");
