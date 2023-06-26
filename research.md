@@ -16,8 +16,6 @@ sitemap:
   threatens humanity's place on the blue planet. We urgently need to adapt
   human uses of the ocean to conserve its ecosystems and ensure it continues
   to provide us with food, energy, recreation, clean water and clean air. </p>
-  <div class="paralax main-image3">
-  </div>
   <p> We are marine scientists who use quantitative tools to inform environmental
     decisions in the oceans. We do this by bringing ecological complexity to the planning tools used to
    inform decision making. We work with decision makers to provide
