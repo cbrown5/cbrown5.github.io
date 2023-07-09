@@ -11,13 +11,17 @@ I caught up with some marine scientists (and a couple of other marine profession
 
 ## What do you love about your career? 
 
-<iframe src="https://www.youtube.com/embed/sw8LAf9HwQA" data-external="1">
+<iframe src="https://www.youtube.com/embed/sw8LAf9HwQA" data-external="1"> </iframe> 
+
 
 ## What do you find hard about your career? 
 
-<iframe src="https://www.youtube.com/embed/p4HxONLep7M" data-external="1">
+<iframe src="https://www.youtube.com/embed/p4HxONLep7M" data-external="1">  </iframe> 
+
 
 ## What's your advice to aspiring marine scientists? 
 
-<iframe src="https://www.youtube.com/embed/9Lw44JPeLT0" data-external="1">
+<iframe src="https://www.youtube.com/embed/9Lw44JPeLT0" data-external="1"> </iframe>
+
+
 
