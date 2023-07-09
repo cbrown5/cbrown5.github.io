@@ -692,6 +692,22 @@ img.image-bottom{
   max-height:400px;
 }
 
+/* VIDEOS */
+
+.container-video {
+  display: flex; 
+  width: 85%; 
+  height: 20em; 
+  flex-direction: column; 
+  overflow: hidden;}
+
+.video-box { 
+  flex-grow: 1; 
+  border: none; 
+  margin: 0; 
+  padding: 0; 
+}
+
 
 /* Clearing
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
