@@ -7,7 +7,7 @@ category: collaborators
 
 # Global Wetlands Project
 
-[This international collaboration lead by Dr Chris Brown, Professor Rod Connolly and Dr Fernanda Adame](https://globalwetlandsproject.org/). It includes a team of more than 15 researchers and students
+[This international collaboration lead by Dr Chris Brown, Professor Rod Connolly and Dr Fernanda Adame](https://globalwetlandsproject.org/). It includes a team of more than 15 researchers and studesnts
 
 The Global Wetlands Project (GLOW) elevates scientific understanding of critical issues facing coastal wetlands and builds online tools to help address these issues.
 
