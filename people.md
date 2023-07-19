@@ -36,6 +36,17 @@ sitemap:
 </ul>
 <div class="clearme"></div>
 
+## Collaborators
+
+<ul class="list-ppl">
+    {% for people in site.people %}
+    {% if people.category contains 'collaborators'%}
+  <li><a class="button-ppl bkg-1" href="{{ people.url }}">{{ people.title }} </a></li>
+    {% endif %}
+  {% endfor %}
+</ul>
+<div class="clearme"></div>
+
 ## Alumni
 
 <ul class="list-ppl">

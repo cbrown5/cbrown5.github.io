@@ -5,6 +5,8 @@ category: research
 published: TRUE
 ---
 
+# What does generative AI mean for literature reviews? 
+
 Literature reviews are about to change in a big way thanks to artificial intelligence that can generate text, like chatGPT.
 This technology can be used to define search times to identify literature, filter papers to review, and write the review itself. These tasks will save researchers time that they could spend on other things, like sipping cocktails or spending more time with their families.  
 However, experience tells me researchers won’t spend their idle time on enjoying a better personal life. Research is competitive, and a tool that speeds up literature reviews will just increase the standard of what is expected. 
