@@ -1,0 +1,12 @@
+---
+title: Jackson Stockbridge
+layout: default-ppl
+published: true
+category: collaborators
+---
+
+# Jackson Stockbridge
+
+Jackson completed his PhD at The University of Adelaide in December 2022 and joined the team in early 2023. His PhD research evaluated the methods used to estimate the effect of multiple stressors on seagrass ecosystems. 
+
+He's now working with Dr Caitie Kuempel's [Conservation Action Team](https://cdkuempel.github.io/website/) and Dr Chris Brown's Seascapemodels Lab. Jackson uses spatial data to map the cumulative effects of multiple stressors on industries and the environment to support marine spatial planning.
