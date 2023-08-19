@@ -12,8 +12,8 @@ sitemap:
 <ul class="list-cards">
   {% for ilink in site.data.links %}
   <li>
-    <a class="card-pubs bkg-1" href="{{ links.url }}" target="_blank">
-      <p>{{links.title}}</p>
+    <a class="card-pubs bkg-1" href="{{ ilink.url }}" target="_blank">
+      <p>{{ilink.title}}</p>
       <hr>
   </a></li>
 {% endfor %}
