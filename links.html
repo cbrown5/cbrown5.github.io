@@ -9,22 +9,16 @@ sitemap:
 
 <h1>Links</h1>
 
-<ul class="list-cards">
+<ul class="list-research">
   {% for ilink in site.data.links %}
   <li>
-    <a class="card-pubs bkg-1" href="{{ ilink.url }}" target="_blank">
+    <a class="box-link" href="{{ ilink.url }}" target="_blank"></a>
+    <div class="portfolio">
       <p>{{ilink.title}}</p>
       <hr>
-  </a></li>
+    </a>
+  </div>
+  </li>
 {% endfor %}
 </ul>
-
-
-<a href="/publications.html" class="box-link">
-  <div class="side-box bkg-2">
-  <h2>publications</h2>
-  <p>Read about our research</p>
-  </div>
-  </a>
-
 
