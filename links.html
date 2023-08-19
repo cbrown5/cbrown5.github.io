@@ -1,0 +1,30 @@
+---
+layout: default
+title: Links
+sitemap:
+    priority: 0.7
+    changefreq: 'monthly'
+    lastmod: 2023-08-19
+---
+
+<h1>Links</h1>
+
+<ul class="list-cards">
+  {% for ilink in site.data.links %}
+  <li>
+    <a class="card-pubs bkg-1" href="{{ links.url }}" target="_blank">
+      <p>{{links.title}}</p>
+      <hr>
+  </a></li>
+{% endfor %}
+</ul>
+
+
+<a href="/publications.html" class="box-link">
+  <div class="side-box bkg-2">
+  <h2>publications</h2>
+  <p>Read about our research</p>
+  </div>
+  </a>
+
+
