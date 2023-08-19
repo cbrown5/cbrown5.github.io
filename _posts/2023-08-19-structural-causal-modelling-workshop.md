@@ -17,5 +17,6 @@ So all of the existing statistical inference engines (like generalized linear mo
 
 The workshop shows how to develop causal hypotheses, using R to visualise your hypotheses. It then steps through some examples of develping and testing causal tests with ecological data.
 
+The workshop covers packages `daggity` and `ggdag` for visualising causal models (directed acyclic graphs) and developing causal tests. We also look at making tests with `glm()` and how to simulate your own data to test models. Finally, we cover `visreg` for visualising model output. 
 
 
