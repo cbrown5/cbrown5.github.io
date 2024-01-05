@@ -36,7 +36,7 @@ as an additive term like:
 
 But if you want the spline to vary by groups like this:
 
-    fit1 <- gam(y ~ s(x, by = group))
+    fit1 <- gam(y ~ group + s(x, by = group))
 
 You will get this obscure error message:
 
@@ -209,7 +209,7 @@ each group.
 Now say we want to compare this to a model where we allow splines to
 vary for each group. This model looks like this:
 
-    fit2 <- gam(y ~s(x, by = grp), data = dat)
+    fit2 <- gam(y ~s(x, by = grp) + grp, data = dat)
 
     ## Error in smoothCon(split$smooth.spec[[i]], data, knots, absorb.cons,
         scale.penalty = scale.penalty, : Can't find by variable
@@ -218,8 +218,8 @@ Which gives us an error. So simply convert the group to a factor (here I
 declare a new variable) and use that:
 
     dat$grp2 <- factor(dat$grp)
-    fit2 <- gam(y ~s(x, by = grp2), data = dat)
-    visreg(fit1, xvar = "x",
+    fit2 <- gam(y ~s(x, by = grp2) + grp2, data = dat)
+    visreg(fit2, xvar = "x",
            by = "grp", data = dat,
            method = "REML")
 
