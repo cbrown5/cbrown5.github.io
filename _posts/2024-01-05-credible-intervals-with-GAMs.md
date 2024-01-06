@@ -68,7 +68,9 @@ measuring biological responses (\`y’) to a toxin:
       geom_point() + 
       geom_line(aes(y = ytrue))
 
-![](/images/gam-CIs_files/figure-markdown_strict/unnamed-chunk-2-1.png) `ytrue`
+![](/images/gam-CIs_files/figure-markdown_strict/unnamed-chunk-2-1.png)
+
+ `ytrue`
 is the true values of the function, and `yobs` are our data on this
 variable.
 
@@ -146,6 +148,7 @@ Let’s plot that:
 
 ![](/images/gam-CIs_files/figure-markdown_strict/unnamed-chunk-5-1.png)
 
+
 #### Probability of exceeding a threshold
 
 A non-linear transform we might like to do is to find the probability of
@@ -173,8 +176,9 @@ specify `func_to_apply = "sum"`.
       geom_line() +
       ylab("Probability of the mean of y exceeding a value of 1")
 
-![](/images/gam-CIs_files/figure-markdown_strict/unnamed-chunk-6-1.png) Couple
-of important points. When providing a formula `x` is the name I used in
+![](/images/gam-CIs_files/figure-markdown_strict/unnamed-chunk-6-1.png) 
+
+Couple of important points. When providing a formula `x` is the name I used in
 the function to refer to the linear predictor (ie predictions for mean
 of our response), its not the ‘x-variable’.
 
