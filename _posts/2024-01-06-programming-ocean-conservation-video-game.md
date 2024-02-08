@@ -2,12 +2,12 @@
 title: Making an ocean science video game
 layout: default
 category: research
-published: FALSE
+published: TRUE
 ---
 
 # Coding an ocean conservation video game
 
-I programmed my own video game. Its called 'otter vs. urchins'. It's a space invaders style game, where sea urchins rain down on a kelp forest. The player is an otter and has to protect the kelp forest by munching and crushing the urchins. 
+[I programmed my own video game](https://youtube.com/shorts/Kl8R7_2Z7tw?si=lwxGCarj9MiTfF-W). Its called 'otter vs. urchins'. It's a space invaders style game, where sea urchins rain down on a kelp forest. The player is an otter and has to protect the kelp forest by munching and crushing the urchins. 
 
 When I say 'programmed my own game', I actually mean 'wrote instructions for the Copilot AI to program the game'. 
 
