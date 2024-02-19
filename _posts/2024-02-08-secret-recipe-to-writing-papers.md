@@ -17,7 +17,7 @@ published: TRUE
 
 4. Have a clearly defined plan. 
 
-5. Have a relatively simple question to address to address, one that can be clearly defined as 1-3 aims/hypotheses and the methods need to be clear and well established (and things you or your collaborotors can easily do)
+5. Have a relatively simple question to address, one that can be clearly defined as 1-3 aims/hypotheses and the methods need to be clear and well established (and things you or your collaborotors can easily do)
 
 6. Don't get too hung on how much work it takes to write 'The Paper'. The amount of time it takes is hugely variable and there is no minimum time. 
 
