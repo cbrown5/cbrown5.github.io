@@ -23,7 +23,7 @@ published: TRUE
 
 7. 80/20 rule - 20% of the effort for 80% of the results. 
 
-8. Have some skills. Be decent at writing. Have some methodology skills (e.g. modelling or field work skills) that are well known to you and you will rely on for this study. 
+8. Have some skills. Be decent at writing. Have some methodology skills (e.g. modelling or field work skills) that are well known to you and you will rely on for this study. Flip side is don't expect to write a paper if you are still learning to write scientifically (e.g. early in your PhD). 
 
 9. Work with a system you know well, e.g. a study system, lab system or type of modelling/data for analysis. 
 
