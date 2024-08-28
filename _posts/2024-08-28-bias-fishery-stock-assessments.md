@@ -5,7 +5,7 @@ category: research
 published: TRUE
 ---
 
-# Chris' secret recipe to writing papers quickly 
+# Stock assessment models overstate sustainability of the world’s fisheries
 
 A deep dive into stock assessments of fisheries around the world has revealed their sustainability is overstated – and it has implications for fisheries management and consumer awareness.
 
