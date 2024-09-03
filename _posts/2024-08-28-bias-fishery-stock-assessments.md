@@ -11,7 +11,7 @@ A deep dive into stock assessments of fisheries around the world has revealed th
 
 Stock assessments are conducted regularly to measure the impact of fishing on fish and shellfish populations in global fisheries management regions. These assessments inform approaches for preventing overfishing, rebuilding overfished stocks and protecting marine ecosystems. 
 
-In a new study [published in the journal Science](https://www.science.org/stoken/author-tokens/ST-2068/full), Dr Chris Brown and an international research team  compared past and recent stock assessments across 230 fisheries worldwide. 
+In a new study [published in the journal Science](https://www.science.org/stoken/author-tokens/ST-2068/full), an international research team  compared past and recent stock assessments across 230 fisheries worldwide. 
 
 “Independent scientific monitoring is essential for accurately assessing fish stock sustainability,” said IMAS marine ecologist and lead author of the study, Professor Graham Edgar. 
 
