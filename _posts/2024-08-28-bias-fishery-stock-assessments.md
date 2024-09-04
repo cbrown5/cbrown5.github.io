@@ -23,7 +23,7 @@ The study showed an inconsistency in stock assessments, with a strong pattern of
 
 IMAS researcher and co-author, Dr Nils Krueck, said stock assessment scientists around the world acknowledge the issues highlighted in the study.
 
-“As a stock assessment scientist myself, I believe it’s vital to bring these issues into focus, as it will lead to improvements in the way we do our assessments and ultimately improve fisheries management globally.”
+“I believe it’s vital to bring these issues into focus, as it will lead to improvements in the way we do our assessments and ultimately improve fisheries management globally.”
 
 IMAS marine ecologist and study co-author, Associate Professor Chris Brown, said the rising trends in the biomass of overfished stocks noted in some stock assessments often disappeared in later assessments, suggesting they were too optimistic about the pace of recovery in overfished stocks. 
 
