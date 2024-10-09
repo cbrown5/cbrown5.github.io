@@ -13,33 +13,33 @@ Our modelling approach could be applied to any coastal habitat, including coral 
 
 ![](/images/conceptual-diagram-fig1-final.png)
 
-Here's an FAQ for the study, generated with Google Notebook and edited and verified for accuracy by me.  
+Here's an FAQ for the study, generated from the study by Google Notebook and edited and verified for accuracy by me.  
 
 1. What factors influence the recovery time of coastal habitats?
 
 The recovery time of coastal habitats, such as seagrass meadows, coral reefs, and mangrove forests, is influenced by several factors:
 
-    Connectivity: The presence of nearby healthy habitat patches that can act as propagule (seeds, larvae, dislodged shoots) sources is crucial. Higher connectivity generally leads to faster recovery.
+Connectivity: The presence of nearby healthy habitat patches that can act as propagule (seeds, larvae, dislodged shoots) sources is crucial. Higher connectivity generally leads to faster recovery.
 
-    Dispersal: The ability of propagules to successfully travel from source habitats to the disturbed area. Dispersal is affected by factors like currents, winds, and the dispersal mechanisms of the species.
+Dispersal: The ability of propagules to successfully travel from source habitats to the disturbed area. Dispersal is affected by factors like currents, winds, and the dispersal mechanisms of the species.
 
-    Recruitment: The successful establishment of dispersed propagules in the disturbed area. Recruitment depends on suitable environmental conditions, such as sediment stability, light availability, and water quality.
+Recruitment: The successful establishment of dispersed propagules in the disturbed area. Recruitment depends on suitable environmental conditions, such as sediment stability, light availability, and water quality.
     
-    Growth rate: The inherent growth rate of the species influences how quickly it can repopulate the area.
+Growth rate: The inherent growth rate of the species influences how quickly it can repopulate the area.
 
-    Chronic stressors: Ongoing pressures like pollution or low light conditions can significantly hinder recovery.
+Chronic stressors: Ongoing pressures like pollution or low light conditions can significantly hinder recovery.
 
 2. How does the model in the study predict recovery times?
 
 The study developed a mathematical model that simulates the recovery of coastal habitats. It incorporates:
 
-    Habitat patches: Represents the disturbed area and nearby remnant habitats as interconnected patches.
+Habitat patches: Represents the disturbed area and nearby remnant habitats as interconnected patches.
 
-    Propagule production: Estimates the amount of propagules produced by each remnant patch based on its size and condition.
+Propagule production: Estimates the amount of propagules produced by each remnant patch based on its size and condition.
 
-    Dispersal and recruitment: Models the probability of propagules successfully dispersing and recruiting to the disturbed patch, considering connectivity, dispersal limitations, and environmental conditions.
+Dispersal and recruitment: Models the probability of propagules successfully dispersing and recruiting to the disturbed patch, considering connectivity, dispersal limitations, and environmental conditions.
 
-    Growth: Uses a growth function (e.g., logistic growth for seagrass) to simulate habitat regeneration in the disturbed patch based on factors like light availability and species-specific growth rates.
+Growth: Uses a growth function (e.g., logistic growth for seagrass) to simulate habitat regeneration in the disturbed patch based on factors like light availability and species-specific growth rates.
 
 The model runs simulations with different parameter combinations to predict recovery times and evaluate the effectiveness of various management interventions.
 
@@ -47,11 +47,11 @@ The model runs simulations with different parameter combinations to predict reco
 
 The study highlights three key management interventions:
 
-    Spreading propagules or planting seedlings: Directly increases propagule supply to overcome dispersal limitations, particularly in isolated areas.
+Spreading propagules or planting seedlings: Directly increases propagule supply to overcome dispersal limitations, particularly in isolated areas.
 
-    Stabilizing recruitment conditions: Addresses recruitment limitations by creating more favorable conditions for propagule establishment, such as using biodegradable structures to stabilize sediments or improve substrate.
+Stabilizing recruitment conditions: Addresses recruitment limitations by creating more favorable conditions for propagule establishment, such as using biodegradable structures to stabilize sediments or improve substrate.
 
-    Mitigating chronic stressors: Improves overall ecosystem health and enhances both dispersal and recruitment by addressing factors like pollution, nutrient loading, or low light conditions.
+Mitigating chronic stressors: Improves overall ecosystem health and enhances both dispersal and recruitment by addressing factors like pollution, nutrient loading, or low light conditions.
 
 The most effective intervention depends on the specific context and the dominant limitations to recovery.
 
@@ -59,9 +59,9 @@ The most effective intervention depends on the specific context and the dominant
 
 Distinguishing between dispersal and recruitment limitations is crucial for effective management:
 
-    Dispersal limitation: Occurs when propagules don't reach the disturbed area due to limited connectivity or inefficient dispersal mechanisms. Solution: Focus on interventions that enhance propagule supply, like seeding or planting.
+Dispersal limitation: Occurs when propagules don't reach the disturbed area due to limited connectivity or inefficient dispersal mechanisms. Solution: Focus on interventions that enhance propagule supply, like seeding or planting.
 
-    Recruitment limitation: Arises when propagules reach the disturbed area but fail to establish due to unfavorable environmental conditions. Solution: Prioritize interventions that improve local conditions, such as stabilizing sediments or improving water quality.
+Recruitment limitation: Arises when propagules reach the disturbed area but fail to establish due to unfavorable environmental conditions. Solution: Prioritize interventions that improve local conditions, such as stabilizing sediments or improving water quality.
 
 Identifying the dominant limitation helps target restoration efforts for the fastest recovery times and greatest rates of success.
 
@@ -69,11 +69,11 @@ Identifying the dominant limitation helps target restoration efforts for the fas
 
 Low light stress, often caused by pollution or turbidity, significantly hinders recovery by:
 
-    Reducing growth: Limits the photosynthetic ability of habitat-forming species, slowing down their growth and expansion.
+Reducing growth: Limits the photosynthetic ability of habitat-forming species, slowing down their growth and expansion.
 
-    Increasing recovery time: Extends the time it takes for the disturbed area to regain its functionality and ecological value.
+Increasing recovery time: Extends the time it takes for the disturbed area to regain its functionality and ecological value.
 
-    Amplifying the impact of low connectivity: The negative effects of low light are more pronounced in poorly connected areas with limited propagule supply.
+Reduces propagule supply: Low light conditions can limit the production of propagules in remnant habitats, further impeding recovery.
 
 Addressing low light conditions, often through catchment management to improve water quality, is crucial for successful restoration, especially in light-limited environments.
 
@@ -81,11 +81,11 @@ Addressing low light conditions, often through catchment management to improve w
 
 This study provides a valuable framework for:
 
-    Identifying recovery bottlenecks: By understanding the factors limiting recovery (dispersal, recruitment, growth), managers can prioritize appropriate interventions.
+Identifying recovery bottlenecks: By understanding the factors limiting recovery (dispersal, recruitment, growth), managers can prioritize appropriate interventions.
 
-    Predicting recovery timelines: The model offers estimates of recovery times, helping set realistic expectations and inform adaptive management strategies.
+Predicting recovery timelines: The model offers estimates of recovery times, helping set realistic expectations and inform adaptive management strategies.
 
-    Optimizing restoration efforts: Simulating different management scenarios can identify the most effective approach for specific contexts and maximize restoration success.
+Optimizing restoration efforts: Simulating different management scenarios can identify the most effective approach for specific contexts and maximize restoration success.
 
 By combining ecological understanding with modeling tools, this research paves the way for more efficient and successful coastal habitat restoration efforts globally.
 
