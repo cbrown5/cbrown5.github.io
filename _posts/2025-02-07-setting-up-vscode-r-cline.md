@@ -68,9 +68,7 @@ Now click the cog icon in the R extension and select 'settings' from the dropdow
 Search for 'rpath'. Check that it has the correct path to R on your computer. 
 You can find the path by opening a terminal and typing `which R` (on mac) or in a  windows terminal `where R`.
 
-While you have the extension settings open search for 'httgp' and make sure  `Plot: Use Httpgd` is enabled.
-
-If you want to use radian terminal instead of the default R terminal, you can change the setting in the R extension settings as well. Look for the Rterm setting and change it to radian. More [instructions here](https://github.com/randy3k/radian?tab=readme-ov-file). Radian terminal has more features than the basic terminal, like multi-line editing and autocomplete. 
+While you have the extension settings open search for 'httgp' and make sure  `Plot: Use Httpgd` is enabled. 
 
 ## Install Cline 
 
@@ -104,16 +102,26 @@ Now you're set and ready to start using Cline to code and write text.
 
 ## Issues and tips
 
-This is just a list of issues I've had. 
+This is just a list of issues I've had and how I've solved them. 
 
-If your R plots look weird (like tiny font), make sure httpgp is enabled. Go back to steps above and see how to do that. 
+*Plotting* If your R plots look weird (like tiny font), make sure httpgp is enabled. Go back to steps above and see how to do that. 
 
-There are various extensions for viewing csv and excel files. It is worth looking into these so that when you do `View(dat)` in R you get a nice table. Some also allow editing. 
+*Viewing data* There are various extensions for viewing csv and excel files. It is worth looking into these so that when you do `View(dat)` in R you get a nice table. Some also allow editing. 
 
-My computer is somewhat locked down by IT, so getting this set-up was a bit fiddly and required a few requests to IT to install software. 
+*Getting help to install software* My computer is somewhat locked down by IT, so getting this set-up was a bit fiddly and required a few requests to IT to install software. 
 
-I also had trouble getting radian to work, so I just use the basic R terminal. Its ok but the most annoying thing is it lacks autocomplete (which Rstudio has)
+*R markdown* There are options in the R extension settings for how to knit markdown. You may need to configure these if you want to knit markdown docs from VScode. If you are having trouble knitting markdown it may mean that the path to pandoc is not set correctly. [There is some helpful instructions here](https://stackoverflow.com/questions/60766646/need-help-assigning-global-settings-for-rstudios-pandoc-in-vscode-to-knit-pdf-d)
 
-There are options in the R extension settings for how to knit markdown. You may need to configure these if you want to knit markdown docs from VScode.
+*R terminal crashes* If I run too much R code at once (like selecting a big block then running) the terminal tends to crash. Initially I see a little highlighted box saying 'PTY HOST'. Then I need to close all the terminals (with the bin icon) and start again. Try radian if this is a problem. You can also code run line-by-line or source whole scripts from the terminal (which works fine). I tried debugging this by increasing the buffer but to on avail. 
 
-If I run too much R code at once (like selecting a big block then running) the terminal tends to crash. Then I need to close all the terminals (with the bin icon) and start again. So I run line-by-line or source whole scripts from the terminal (which works fine). I tried debugging this by increasing the buffer but to on avail. 
+*Shortcut keys* (on osx) cmd-/ to comment uncomment lines. cmd-shift-p to open the command palette, cmd-b to open the file explorer, cmd-enter to run lines or selection of R code, cmd-shift-c to open terminal in new window, cntrl-shift-` to open a new terminal in vs code. 
+
+## Installing radian (optional)
+
+Radian is a terminal editor that is a bit nicer than the base R one. It does autocomplete in the terminal (like Rstudio does in the console), colours code/brackets etc... and allows multi-line editing in the terminal.
+
+To set this up, install radian (you need python to do this). More [instructions here](https://github.com/randy3k/radian?tab=readme-ov-file).
+
+Then go to the terminal and find the path where radian is installed (e.g. `which radian` on mac or `where radian` on windows). 
+
+Now open your settings in VScode (cmd-,) and search for 'rterm' (stands for 'R Terminal', don't change the rpath which we set just before). Add the path to radian to the rterm setting. Also search for the setting 'R: Bracketed Paste' and make sure it is enabled.
