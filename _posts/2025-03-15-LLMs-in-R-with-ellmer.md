@@ -5,10 +5,7 @@ category: rstats
 published: TRUE
 ---
 
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
-```
+# The ellmer package for using LLMs with R is a game changer for scientists
 
 ## Why is ellmer a game changer for scientists? 
 
