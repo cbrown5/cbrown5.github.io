@@ -76,7 +76,7 @@ assistant, which is the response
 Many prompt engineer pros have found better results if you put as much of your request in the
 system as possible. So I recommend you play around with this yourself. 
 
-```{r eval=FALSE}
+```
 library(ellmer)
 
 chat <- chat_claude(
@@ -91,7 +91,7 @@ live_browser(chat)
 
 Try this but experiment with a new system prompts. Here's an example, try your own. 
 
-```{r eval=FALSE}
+```
 chat <- chat_claude(
   system_prompt = "You are a mystic with expertise in R programming. You answer questions indirectly in riddles and rhymes.",
   model = "claude-3-5-haiku-20241022", 
@@ -101,7 +101,7 @@ chat <- chat_claude(
 live_console(chat)
 ```
 
->>> how can I do a glm in R?
+>User: how can I do a glm in R?
 
 ```
 *Swirling mystical orb glows with R code*
@@ -117,7 +117,7 @@ And formula written as y ~ x4.
 
 So once you've tested your prompt you can run it like this: 
 
-```{r eval = FALSE}
+```
 chat <- chat_claude(
   system_prompt = "You are a surfy dude who likes waves, tubes and statistics.",
   model = "claude-3-5-haiku-20241022", 
@@ -138,7 +138,7 @@ has some handy functions for processing pdfs to text, so they can then be fed in
 
 I'm going to attempt to summarize my [recent paper on turtle fishing](https://conbio.onlinelibrary.wiley.com/doi/10.1111/conl.13056). 
 
-```{r eval=FALSE}
+```
 x <- content_pdf_url("https://conbio.onlinelibrary.wiley.com/doi/epdf/10.1111/conl.13056")
 ```
 
@@ -147,13 +147,13 @@ This fails with a 403 error. This means the server is blocking the request, it p
 
 We can also try with a file on our hard drive, we just have to manually download the pdf. 
 
-```{r eval=FALSE}
+```
 mypdf <- content_pdf_file("pdf-examples/Brown_etal2024 national scale turtle mortality.pdf")
 ```
 
 That works, now let's use it within a chat. First set-up our chat: 
 
-```{r eval=FALSE}
+```
 chat <- chat_claude(
   system_prompt = "You are a research assistant who specializes in extracting structured data from scientific papers.",
   model = "claude-3-5-haiku-20241022", 
@@ -170,7 +170,7 @@ to generate data in the JSON format (they were specifically trained with that in
 You use the `type_object` then `type_number`, `type_string` etc.. to specify the 
 types of data. [Read more in the ellmer package vignettes](https://ellmer.tidyverse.org/articles/structured-data.html)
 
-```{r eval=FALSE}
+```
 paper_stats <- type_object(
   sample_size = type_number("Sample size of the study"),
   year_of_study = type_number("Year data was collected"),
@@ -181,7 +181,7 @@ paper_stats <- type_object(
 
 Finally, we send the request for a summary to the provider: 
 
-```{r eval=FALSE}
+```
 turtle_study <- chat$extract_data(mypdf, type = paper_stats)
 ```
 
@@ -189,7 +189,7 @@ The `turtle_study` object will contain the structured data from the pdf. I *thin
 (the ellmer documentation is a bit sparse on implementation details) ellmer is converting 
 a JSON that comes from the LLM to a friendly R list. 
 
-```{r eval=FALSE}
+```
 class(turtle_study)
 #list
 ```
@@ -227,9 +227,8 @@ in Madagascar](https://zslpublications.onlinelibrary.wiley.com/doi/10.1111/j.146
 What we'll do is create a function that reads in the text, then passes it to the LLM, using
 the request for structured data from above. 
 
-```{r eval=FALSE}
-# Function to process abstracts with ellmer
-process_abstract <- function(file_path, chat) {
+```
+  process_abstract <- function(file_path, chat) {
   # Read in the text file
   abstract_text <- readLines(file_path, warn = FALSE)
   
@@ -242,7 +241,7 @@ process_abstract <- function(file_path, chat) {
 
 Now set-up our chat and data request
 
-```{r eval=FALSE}
+```
 # Create chat object if not already created
 chat <- chat_claude(
       system_prompt = "You are a research assistant who specializes in extracting structured data from scientific papers.",
@@ -255,7 +254,7 @@ There's a risk that the LLM will hallucinate data if it can't find an answer. To
 try to prevent this we can set an option , required = FALSE. Then the LLM should
 return 'NULL' if it can't find the data.
 
-```{r eval=FALSE}
+```
 # Define the structured data format
 paper_stats <- type_object(
     sample_size = type_number("Number of surveys conducted to estimate turtle catch", required = FALSE),
@@ -267,7 +266,7 @@ paper_stats <- type_object(
 
 Now we can batch process the abstracts and get the structured data
 
-```{r eval=FALSE}
+```
 
 abstract_files <- list.files(path = "pdf-examples", pattern = "\\.txt$", full.names = TRUE)
 results <- lapply(abstract_files, function(file) process_abstract(file, chat))
