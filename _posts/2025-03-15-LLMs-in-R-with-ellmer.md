@@ -194,7 +194,9 @@ class(turtle_study)
 #list
 ```
 
-```{r, eval=FALSE}
+And: 
+
+```
 turtle_study$sample_size
 #11935
 turtle_study$year_of_study
