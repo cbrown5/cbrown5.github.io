@@ -69,9 +69,12 @@ than the web interfaces you might be used to. This is because, unlike on the web
 you can control the system message. 
 
 Most models have three types of messages:
-system, which sets the context
-user, which is what you type
-assistant, which is the response
+
+**system**, which sets the context, role and is given higher priority than the user message
+
+**user**, which is your conversation or request
+
+**assistant**, which is the model's response
 
 Many prompt engineer pros have found better results if you put as much of your request in the
 system as possible. So I recommend you play around with this yourself. 
