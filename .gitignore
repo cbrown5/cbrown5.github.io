@@ -5,3 +5,5 @@ _site/
 .DS_Store
 .jekyll-cache
 blogs-markdown/
+.Renviron
+.env
