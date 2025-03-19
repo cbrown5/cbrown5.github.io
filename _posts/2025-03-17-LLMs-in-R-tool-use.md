@@ -19,8 +19,7 @@ computer programmers. There are some generally useful tools out there
 (like creating files or searching the web). However, I wanted to see if
 I could make a tool that was specifically useful in my research field.
 
-In this tutorial I’ll look at using them to get ocean data from an
-online database.
+In this tutorial I’ll look at using them to get ocean data from a public database that has an API. 
 
 ## How tools work
 
