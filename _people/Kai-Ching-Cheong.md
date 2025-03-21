@@ -7,4 +7,5 @@ category: currentphd
 
 # Kai Ching Cheong
 ![](/images/people/)
-A PhD student with a background in ...
+
+Kai Ching Cheong is working on the conservation of mangrove biodiversity under climate change. 
