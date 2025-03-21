@@ -56,8 +56,7 @@ and time.
 
 ## Use case
 
-[The `remora` package lets you extract ocean data from the IMOS BlueLink
-database](https://imos-animaltracking.github.io/remora/index.html). We
+[The `remora` package lets you extract ocean data from the Integrated Marine Observing System (IMOS) and Bluelink Reanalysis (BRAN) model.](https://imos-animaltracking.github.io/remora/index.html). We
 can give an LLM access to this data by creating a tool that uses
 `remora` to extract the data.
 
