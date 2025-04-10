@@ -1,86 +1,58 @@
 ---
 layout: default
 title: Research
-sitemap:
-    priority: 0.7
-    changefreq: 'monthly'
-    lastmod: 2023-06-03
+subtitle: Marine conservation, ecosystem modeling, and data science
 ---
 
-# Research
+<div class="card mb-2">
+  <h2>Research Overview</h2>
+  <p>Our research combines ecological theory, statistical modeling, and field studies to understand and protect marine ecosystems. We focus on developing practical solutions for marine conservation and sustainable resource management.</p>
+</div>
 
-### We work on balancing the conservation of marine ecosystems with human uses of the oceans
+<h2 class="mb-2">Key Research Areas</h2>
 
-<div class="container">
-  <p>The future of ocean and coastal biodiversity is uncertain. This uncertainty
-  threatens humanity's place on the blue planet. We urgently need to adapt
-  human uses of the ocean to conserve its ecosystems and ensure it continues
-  to provide us with food, energy, recreation, clean water and clean air. </p>
-  <p> We are marine scientists who use quantitative tools to inform environmental
-    decisions in the oceans. We do this by bringing ecological complexity to the planning tools used to
-   inform decision making. We work with decision makers to provide
-   quantitative advice on ocean and coastal conservation and fishery management.
-   Our tools of choice are computer programming, mathematical models and statistical analysis.
-    These tools allow us to work with complex datasets to find solutions for
-    ocean management. </p>
-   <p>We specialize in the
-   <a href="http://cran.r-project.org/" target="_blank">R
-     programming language</a> and teach R to others.
-   Chris' teaching resources are on this site and are
-    <a href="/code.html">open-access</a>. </p>
+<div class="grid grid-2">
+  <div class="card">
+    <h3>Marine Conservation Planning</h3>
+    <p>Developing strategies for marine protected areas and conservation initiatives that balance ecological needs with human uses. Our work helps inform policy decisions and management practices.</p>
+  </div>
 
-<p> Read more about our <a href="/people.html"> research team</a> or our
-  research on our <a href="/bluecology_blog.html">blog</a> or check out
-   our <a href="/publications/html"> publications</a>. </p>
+  <div class="card">
+    <h3>Ecosystem Modeling</h3>
+    <p>Creating and applying mathematical models to understand marine ecosystem dynamics, predict responses to environmental change, and inform management decisions.</p>
+  </div>
 
-<h3> Future research opportunities </h3>
+  <div class="card">
+    <h3>Data Science in Ecology</h3>
+    <p>Developing and applying statistical methods and software tools for analyzing ecological data, with a focus on R programming and reproducible research.</p>
+  </div>
 
-<p>
-<a href ="/research/2023/06/17/PhD-projects-available.html"
-class="button-ppl bkg-1">
-We are currently seeking applicants for
-  PhD projects to study quantitative marine conservation science.
-</a> 
-</p>
+  <div class="card">
+    <h3>Sustainable Fisheries</h3>
+    <p>Studying fish population dynamics and developing management strategies that support both conservation goals and sustainable fishing practices.</p>
+  </div>
+</div>
 
-<h2>  Current projects  </h2>
+<h2 class="mt-2 mb-2">Current Projects</h2>
 
-<div class="clearme"><p></p></div>
+<div class="grid">
+  <div class="card">
+    <h3>Global Wetlands Project</h3>
+    <p>A comprehensive study of coastal wetland ecosystems, their biodiversity, and their role in supporting coastal communities and mitigating climate change.</p>
+  </div>
 
-<ul class="list-research">
-{% for projects in site.data.projects %}
-{% if projects.category contains 'current'%}
-<li>
-<a href="{{ projects.url }}" class="box-link">
-        <div class="portfolio">
-          <h4> {{projects.title}} </h4>
-          <p><img src="{{ projects.imgsrc }}" class="icon-image"></p>
-          <p>{{projects.blurb}} </p>
-          <p> Team:  {{ projects.team }} </p>
-        </div>
-</a></li>
-{% endif %}
-{% endfor %}
-</ul>
+  <div class="card">
+    <h3>Marine Protected Areas Effectiveness</h3>
+    <p>Evaluating the performance of marine protected areas in conserving biodiversity and supporting ecosystem recovery.</p>
+  </div>
 
+  <div class="card">
+    <h3>Climate Change Impacts</h3>
+    <p>Studying how climate change affects marine ecosystems and developing adaptation strategies for marine conservation.</p>
+  </div>
+</div>
 
-<div class="clearme"></div>
-
-<h2>  Past projects  </h2>
-
-<ul class="list-research">
-{% for projects in site.data.projects %}
-{% if projects.category contains 'past'%}
-<li>
-<a href="{{ projects.url }}" class="box-link">
-        <div class="portfolio">
-          <h4> {{projects.title}} </h4>
-          <p><img src="{{ projects.imgsrc }}" class="icon-image"></p>
-          <p> Team:  {{ projects.team }} </p>
-        </div>
-</a></li>
-{% endif %}
-{% endfor %}
-</ul>
-
-<div class="clearme"></div>
+<div class="card mt-2">
+  <h2>Publications</h2>
+  <p>For a complete list of our research publications, please visit our <a href="/publications.html">publications page</a>.</p>
+</div>

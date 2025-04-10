@@ -1,88 +1,47 @@
 ---
 layout: default
-title: Code
-sitemap:
-    priority: 0.7
-    changefreq: 'monthly'
-    lastmod: 2020-06-24
+title: R Courses & Resources
+subtitle: Learn data analysis and visualization for marine science
 ---
 
-<h1>Code</h1>
+<div class="card mb-2">
+  <h2>About Our R Courses</h2>
+  <p>We provide practical courses in R programming focused on ecological and environmental data analysis. These courses are designed for scientists, students, and practitioners working with environmental data.</p>
+</div>
 
-<h2>Popular R resources</h2>
+<h2 class="mb-2">Available Courses</h2>
 
+<div class="grid grid-2">
+  <div class="card">
+    <h3>Introduction to R for Ecologists</h3>
+    <p>Learn the basics of R programming with ecological examples. This course covers data import, basic statistics, and creating publication-quality graphs.</p>
+    <a href="https://www.seascapemodels.org/RLS-data-prep-course">Access Course</a>
+  </div>
 
-<ul class="list-cards">
-  <li class="r-resources"><a class="card-pubs" href="http://www.seascapemodels.org/RLS-data-prep-course/" target="_blank">
-      <h4>Cleaning ecological survey data for conservation scientists</h4>
-      <hr>
-      <p>A short course in the tidyverse, graphing and basic summary stats</p>
-  </a></li>
-  <li class="r-resources"><a class="card-pubs" href="https://www.seascapemodels.org/spatial-analysis-in-r/spatial-analysis-in-r.html" target="_blank">
-      <h4>Data wrangling and spatial analysis</h4>
-      <hr>
-      <p>A short course on mapping, GIS and spatial analysis in R from 2023</p>
-  </a></li>
-  <li class="r-resources"><a class="card-pubs" href="https://www.seascapemodels.org/structural-causal-models-tutorial/scm-tute.html" target="_blank">
-    <h4>Intro to structural causal modelling</h4>
-    <hr>
-    <p>A short course structural causal modelling from 2023</p>
-</a></li>
-    <li class="r-resources"><a class="card-pubs" href="http://www.seascapemodels.org/rstats/2018/07/04/dataviz2018_notes.html" target="_blank">
-        <h4>Dataviz in R</h4>
-        <hr>
-    <p> Notes from my award winning presentation </p>
-    </a></li>
+  <div class="card">
+    <h3>Data Wrangling in R</h3>
+    <p>Master data manipulation techniques using tidyverse packages. Learn to clean, transform, and prepare ecological data for analysis.</p>
+    <a href="https://www.seascapemodels.org/data-wrangling-course">Access Course</a>
+  </div>
 
-    <li class="r-resources"><a class="card-pubs" href="https://www.seascapemodels.org/SDM-fish-course-notes/" target="_blank">
-        <h4>Current approaches in species distribution models</h4>
-        <hr>
-        <p>A short course on species distribution models in R (2021)</p>
-    </a></li>
-    <li class="r-resources"><a class="card-pubs" href="http://www.seascapemodels.org/research%20rstats/2016/03/15/create-rstats-culture.html" target="_blank">
-        <h4>Create an R culture at your institution</h4>
-        <hr>
-        <p>Get started with this popular blog post</p>
-    </a></li>
-    <li class="r-resources"><a class="card-pubs" href="http://www.seascapemodels.org/rstats/2020/02/19/spatial-gam-predictions.html" target="_blank">
-        <h4>Spatial statistical prediction</h4>
-        <hr>
-        <p>Learn the basics of making spatial predictions with GAMs in R</p>
-    </a></li>
-    <li class="r-resources"><a class="card-pubs" href="http://www.seascapemodels.org/rstats/2018/01/19/intro-to-glms.html" target="_blank">
-        <h4>General linear models: the basics</h4>
-        <hr>
-        <p>The maths behind linear models is easy to learn</p>
-    </a></li>
-</ul>
+  <div class="card">
+    <h3>Spatial Analysis in R</h3>
+    <p>Work with spatial data in R. Learn to create maps, analyze spatial patterns, and work with GPS data.</p>
+    <a href="https://www.seascapemodels.org/spatial-analysis-course">Access Course</a>
+  </div>
 
-<div class="clearme"></div>
+  <div class="card">
+    <h3>Statistical Modeling</h3>
+    <p>Learn to build and interpret statistical models for ecological data, including GLMs, GAMs, and mixed effects models.</p>
+    <a href="https://www.seascapemodels.org/stats-course">Access Course</a>
+  </div>
+</div>
 
-<p>Feel free to download and share the courses.
-  You are welcome to use them for your own teaching,
-  and I would love to hear about it. </p>
+<h2 class="mt-2 mb-2">Additional Resources</h2>
 
-<p>Many people don't realise that the R programming language
-  can work as a fully functioning GIS. It has several powerful
-  advantages over many other GIS programs: you can program scripts
-  for complete automation, it is relatively fast, and it is free.</p>
-
-<p>The downside is that it is not easy to get started,
-  particularly if you are not simultaneously a geo-statistical
-   expert and a gun programmer. I am trying to make the
-   jump easier for ecologists by providing courses and helpful
-   blog posts here.</p>
-
-<p>More code (including this webpage) is on my Github page.</p>
-
-<h2>Rstats Blog</h2>
-
-This is my blog for programming in R-stats (and occasionally other languages). I am interested in mapping, GIS, simulation modelling, statistics, optimization and visualisation, mainly for the biological sciences, but many of the applications are general.
-
-<ul class="list_post">
-{% for post in site.posts %}
-{% if post.category contains 'Rstats' or post.category contains 'rstats'%}
-  <li><a class="button_post bkg-1" href="{{ post.url }}">{{ post.title }} - <em>{{ post.date | date: "%d %b %Y" }}</em> </a></li>
-    {% endif %}
-  {% endfor %}
-</ul>
+<div class="grid">
+  <div class="card">
+    <h3>R Tips & Tutorials</h3>
+    <p>Find helpful tips, code snippets, and tutorials for working with ecological data in R on our <a href="/bluecology_blog.html">blog</a>.</p>
+  </div>
+</div>

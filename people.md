@@ -1,59 +1,23 @@
 ---
 layout: default
-title: News and Views
-sitemap:
-    priority: 0.7
-    changefreq: 'monthly'
-    lastmod: 2023-06-03
+title: Our Team
+subtitle: Meet the researchers and students working on marine science and conservation
 ---
 
-# People
-
-<ul class="list-ppl">
-  <li><a class="button-ppl bkg-1" href="/people/Chris-Brown.html">Chris Brown, Research Leader </a></li>
-</ul>
-<div class="clearme"><p></p></div>
-
-## Staff
-
-<ul class="list-ppl">
-    {% for people in site.people %}
-    {% if people.category contains 'currentstaff'%}
-  <li><a class="button-ppl bkg-1" href="{{ people.url }}">{{ people.title }} </a></li>
+<div class="grid grid-3">
+{% for person in site.people %}
+  <div class="profile-card card">
+    {% if person.image %}
+    <img src="{{ person.image }}" alt="{{ person.name }}">
     {% endif %}
-  {% endfor %}
-</ul>
-<div class="clearme"></div>
-
-## Research students
-
-<ul class="list-ppl">
-    {% for people in site.people %}
-    {% if people.category contains 'currentphd'%}
-  <li><a class="button-ppl bkg-1" href="{{ people.url }}">{{ people.title }} </a></li>
+    <h3>{{ person.name }}</h3>
+    {% if person.role %}
+    <p><strong>{{ person.role }}</strong></p>
     {% endif %}
-  {% endfor %}
-</ul>
-<div class="clearme"></div>
-
-## Collaborators
-
-<ul class="list-ppl">
-    {% for people in site.people %}
-    {% if people.category contains 'collaborators'%}
-  <li><a class="button-ppl bkg-1" href="{{ people.url }}">{{ people.title }} </a></li>
+    {{ person.content }}
+    {% if person.email %}
+    <p><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>
     {% endif %}
-  {% endfor %}
-</ul>
-<div class="clearme"></div>
-
-## Alumni
-
-<ul class="list-ppl">
-    {% for people in site.people %}
-    {% if people.category contains 'alumnus'%}
-  <li><a class="button-ppl bkg-1" href="{{ people.url }}">{{ people.title }} </a></li>
-    {% endif %}
-  {% endfor %}
-</ul>
-<div class="clearme"></div>
+  </div>
+{% endfor %}
+</div>

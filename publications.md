@@ -12,15 +12,3 @@ sitemap:
 <p> Some key publications are below. </p>
 <p> See Chris' <a href="https://scholar.google.com.au/citations?hl=en&user=1qG6yFMAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Google Scholar</a> profile for a full list.  </p>
 
-<ul class="list-cards">
-   {% for pubs in site.data.pubsshort %}
-   <li>
-     <a class="card-pubs bkg-1" href="{{ pubs.url }}" target="_blank">
-       <p>{{pubs.title}}</p>
-       <hr>
-       </br>
-       <p class="journal-title">{{pubs.journal}}</p>
-       <p class="journal-year">{{pubs.year}}</p>
-   </a></li>
- {% endfor %}
-</ul>
