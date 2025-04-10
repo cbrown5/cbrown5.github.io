@@ -31,19 +31,19 @@
 ### Next Steps
 1. **Fix Layout Issues**
    - Create missing 'default-ppl' layout for people pages
-   - Update people collection to use correct layout
+   - The cards for blogs and research show the title twice in different font sizes, edit so they only show it once. 
+   - the people in `/_people` collection are .md files with a category, arrange them in a grid by category. Put the 'alumnus' category last. 
+   - Change the people cards so they show the first few words of each profile and the image and then just link to each person's page (See note below on how to do this)
    - Ensure consistent styling across all layouts
    - Test layout with sample content
 
 2. **Fix Image Issues**
-   - Create images/people directory for profile photos
-   - Move existing profile photos to correct location
-   - Update image paths in people's markdown files
+   - Properly link to images/people directory for profile photos, see files in `_people/` for appropriate image paths
    - Add placeholder images for missing profiles
 
 3. **Content Refinement**
    - Review and update content on all pages
-   - Ensure all links are working
+   - Ensure all links are working, the links to research, people, blog page are currently broken
    - Add featured images to research projects
    - Optimize existing images
 
@@ -58,6 +58,25 @@
    - Check all navigation links
    - Verify blog post formatting
    - Test contact links in footer
+
+### Note on people cards
+Here's an example of how to use templates in Jekyll to insert the link to the appropriate people page. 
+
+```html
+{% for people in site.people %}
+  {% if people.category contains 'currentstaff'%}
+    <li><a class="button-ppl bkg-1" href="{{ people.url }}">{{ people.title }} </a></li>
+  {% endif %}
+{% endfor %}
+```
+
+<ul class="list-ppl">
+    {% for people in site.people %}
+    {% if people.category contains 'currentstaff'%}
+  <li><a class="button-ppl bkg-1" href="{{ people.url }}">{{ people.title }} </a></li>
+    {% endif %}
+  {% endfor %}
+</ul>
 
 ## 1. Design Philosophy
 ```mermaid
