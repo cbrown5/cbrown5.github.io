@@ -1,6 +1,39 @@
-name: Bluecology blog
-description: Thoughts on science, ecology and Rstats
-url: http://www.seascapemodels.org/index.html
+name: Marine Science & Ecology Research
+description: Research in marine conservation, ecosystem modeling, and data science
+url: http://www.seascapemodels.org
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+
+# Collections
 collections:
   people:
     output: true
+    permalink: /people/:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "people"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Exclude files from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .bundle/
+  - website-redesign-plan.md

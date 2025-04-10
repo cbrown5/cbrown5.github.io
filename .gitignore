@@ -7,3 +7,6 @@ _site/
 blogs-markdown/
 .Renviron
 .env
+
+#gemfiles for jekyll
+vendor/

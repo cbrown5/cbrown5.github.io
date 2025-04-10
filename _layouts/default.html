@@ -1,10 +1,20 @@
 {% include header.html %}
 <body>
-{% include nav.html %}
-<span class="header-span"></span>
-<h1 id="page-name"> seascape models </h1>
-<div class="clearme"></div>
-<div class = "container">
-{{ content }}
-</div>
-{% include footer.html %}
+  {% include nav.html %}
+
+  <main class="container">
+    {% if page.title %}
+    <div class="hero">
+      <h1>{{ page.title }}</h1>
+      {% if page.subtitle %}
+      <p>{{ page.subtitle }}</p>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+</body>
+</html>
