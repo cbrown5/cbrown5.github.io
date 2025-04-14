@@ -2,6 +2,7 @@
 layout: default
 title: Bluecology Blog
 subtitle: Thoughts on marine science, ecology, and R programming
+permalink: /bluecology_blog.html
 ---
 
 <div class="card mb-2">
@@ -11,13 +12,11 @@ subtitle: Thoughts on marine science, ecology, and R programming
 
 <div class="grid">
   {% for post in site.posts %}
-    <div class="post-preview card">
-      <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-      <p class="post-date">{{ post.date | date: "%B %d, %Y" }}</p>
-      {% if post.excerpt %}
-        {{ post.excerpt }}
-        <p><a href="{{ post.url }}">Read more...</a></p>
-      {% endif %}
-    </div>
+    <a href="{{ post.url }}" class="card-link">
+      <div class="post-preview card">
+        <h3>{{ post.title }}</h3>
+        <p class="post-date">{{ post.date | date: "%B %d, %Y" }}</p>
+      </div>
+    </a>
   {% endfor %}
 </div>

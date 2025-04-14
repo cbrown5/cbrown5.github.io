@@ -1,5 +1,9 @@
 # Website Modernization Plan
 
+## CB to do next
+do bundle exec jekyll serve 
+Then just work on stuff myself. 
+
 ## Progress Update (April 10, 2025)
 
 ### Completed Items
@@ -28,14 +32,29 @@
    - Added default layouts
    - Set up proper permalinks
 
-### Next Steps
-1. **Fix Layout Issues**
-   - Create missing 'default-ppl' layout for people pages
-   - The cards for blogs and research show the title twice in different font sizes, edit so they only show it once. 
-   - the people in `/_people` collection are .md files with a category, arrange them in a grid by category. Put the 'alumnus' category last. 
-   - Change the people cards so they show the first few words of each profile and the image and then just link to each person's page (See note below on how to do this)
-   - Ensure consistent styling across all layouts
-   - Test layout with sample content
+### Progress Update (April 11, 2025)
+
+#### Completed Items
+1. **Layout Improvements**
+   - Created default-ppl layout for people pages
+   - Made all cards (research, blog, people, courses) clickable with hover effects
+   - Implemented responsive grid layout for people cards
+   - Added category-based organization with 'alumnus' last
+   - Updated card styling:
+     - Reduced image size to 120x120px
+     - Added fallback SVG for missing images
+     - Limited text to first sentence with 12-word max
+     - Made cards more compact with consistent heights
+     - Added hover effects (shadow and lift)
+
+#### Next Steps
+1. **Layout Refinements**
+   - Fix missing profile images and add proper fallback images
+   - Fine-tune card spacing and grid layout
+   - Test layout across different screen sizes
+   - Consider adding role/position labels to profile cards
+   - Add loading states for images
+   - Ensure consistent card heights within each row
 
 2. **Fix Image Issues**
    - Properly link to images/people directory for profile photos, see files in `_people/` for appropriate image paths

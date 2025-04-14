@@ -5,6 +5,7 @@ sitemap:
     priority: 0.7
     changefreq: 'monthly'
     lastmod: 2023-06-03
+permalink: /publications.html
 ---
 
 <h1>Publications</h1>

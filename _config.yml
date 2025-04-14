@@ -24,7 +24,7 @@ defaults:
       path: ""
       type: "people"
     values:
-      layout: "default"
+      layout: "default-ppl"
   - scope:
       path: ""
     values:

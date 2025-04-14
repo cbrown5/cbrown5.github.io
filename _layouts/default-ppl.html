@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+{% assign categories = "currentstaff,postdoc,currentphd,phd,masters,honours,alumnus" | split: "," %}
+
+{{ content }}
+
+{% for category in categories %}
+  {% assign people_in_category = site.people | where: "category", category %}
+  {% if people_in_category.size > 0 %}
+    {% assign category_title = category %}
+    {% case category %}
+      {% when 'currentstaff' %}
+        {% assign category_title = 'Current Staff' %}
+      {% when 'currentphd' %}
+        {% assign category_title = 'Current Students' %}
+      {% when 'postdoc' %}
+        {% assign category_title = 'Postdoctoral Researchers' %}
+      {% when 'phd' %}
+        {% assign category_title = 'PhD Alumni' %}
+      {% when 'masters' %}
+        {% assign category_title = 'Masters Alumni' %}
+      {% when 'honours' %}
+        {% assign category_title = 'Honours Alumni' %}
+      {% when 'alumnus' %}
+        {% assign category_title = 'Alumni' %}
+    {% endcase %}
+    <h2 class="mb-2">{{ category_title }}</h2>
+    <div class="grid grid-3 mb-2">
+      {% for person in people_in_category %}
+        <a href="{{ person.url }}" class="card-link">
+          <div class="profile-card card">
+            {% assign image_match = person.content | split: "![" | first | split: "]" | last | split: "(" | last | split: ")" | first %}
+            {% if image_match contains "/images/people/" %}
+              <img src="{{ image_match }}" alt="{{ person.title }}">
+            {% else %}
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' fill='%23f8f9fa'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='20' fill='%232d3436'%3E{{ person.title | slice: 0 }}%3C/text%3E%3C/svg%3E" alt="{{ person.title }}">
+            {% endif %}
+            <h3>{{ person.title }}</h3>
+            {% assign first_sentence = person.content | strip_html | split: "." | first %}
+            <p>{{ first_sentence | append: "." | truncatewords: 12 }}</p>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endfor %}

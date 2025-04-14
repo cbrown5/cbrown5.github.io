@@ -58,7 +58,8 @@ p {
   }
   
   .grid-3 {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
   }
   
   .grid-4 {
@@ -109,15 +110,73 @@ p {
   border-radius: 4px;
   padding: var(--spacing-unit);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+/* Clickable Cards */
+a.card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+a.card-link .card {
+  height: 100%;
+}
+
+a.card-link:hover .card,
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Ensure links inside cards maintain their color */
+.card a {
+  position: relative;
+  z-index: 1;
 }
 
 /* Hero Section */
-.hero {
-  background-color: var(--color-primary);
-  color: white;
-  padding: 4rem 2rem;
-  text-align: center;
+.hero-image {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
   margin-bottom: 2rem;
+}
+
+.feature-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  background: rgba(26, 76, 107, 0.7); /* Using primary color with opacity */
+  padding: 2rem;
+  border-radius: 4px;
+  width: 80%;
+  max-width: 800px;
+}
+
+.hero-text h1 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 0;
 }
 
 .hero h1 {
@@ -128,14 +187,39 @@ p {
 /* Profile Cards */
 .profile-card {
   text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem;
+  min-height: 200px;
 }
 
 .profile-card img {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--color-background);
+}
+
+.profile-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.profile-card p {
+  font-size: 0.8rem;
+  line-height: 1.3;
+  margin-bottom: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 /* Blog Posts */
