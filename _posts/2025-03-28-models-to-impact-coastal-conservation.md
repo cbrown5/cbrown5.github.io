@@ -32,9 +32,9 @@ Blog for above paper:
 
 ### Global Wetlands Project 
 
-[Blue Forest Data Explorer](globalwetlandsproject.org/tools)
+[Blue Forest Data Explorer](www.globalwetlandsproject.org/tools)
 
-[Global Wetlands Project](globalwetlandsproject.org)
+[Global Wetlands Project](www.globalwetlandsproject.org)
 
 
 ## Understanding the Impact of Quantitative Ecology
