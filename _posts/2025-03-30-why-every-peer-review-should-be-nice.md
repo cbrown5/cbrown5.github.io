@@ -2,7 +2,7 @@
 title: Why every peer review you write should be nice
 layout: default
 category: research
-published: FALSE
+published: TRUE
 ---
 
 # Why every peer review you write should be nice
