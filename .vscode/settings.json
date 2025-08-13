@@ -1,6 +1,11 @@
 {
     "github.copilot.enable": {
+        "quarto": true,
         "*": false,
-        "quarto": true
+        "markdown": false,
+        "rmd": false,
+        "r": true,
+        "bibtex": false,
+        "yaml": false
     }
 }

@@ -1,6 +1,5 @@
 ---
 title: Prompting large language models for quality ecological statistics
-
 layout: default
 category: rstats
 published: TRUE
