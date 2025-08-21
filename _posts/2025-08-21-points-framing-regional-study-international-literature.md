@@ -9,6 +9,8 @@ published: TRUE
 
 At lab meeting today we discussed how to take your regional study and frame it for the global literature. This framing is essential for engaging international audiences and navigating editors and reviewers when publishing in international journals.
 
+Thanks to the Seascapemodels and Conservation Action Team labs at Utas and Griffith Uni for their contributions. 
+
 ## Foundational Principles
 
 **1. Consider your audience**
