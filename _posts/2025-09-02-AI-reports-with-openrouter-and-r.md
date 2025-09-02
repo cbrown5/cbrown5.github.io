@@ -13,7 +13,7 @@ I did get `ellmer` to run Perplexity's Sonar web search model, however it didn't
 
 If you haven't seen these AI generated reports, check out the example at the end. Its a useful way to get a quick literature summary or create bespoke R tutorials. 
 
-Here I'm just announcing a couple of simple R scripts that you can use to do web search powered AI reports with the Openrouter service. 
+Here [I'm just announcing a couple of simple R scripts that you can use to do web search powered AI reports with the Openrouter service.](https://github.com/cbrown5/web-search-ai/blob/main/README.md)
 
 I just created two functions (with the help of copilot of course), one that makes a call to the Openrouter API to send a question to a model. The second function processes the output (which is in JSON format) to make a nice qmd, with the references hyper-linked (be sure to check the url before clicking them, who knows what the AI will turn up!). From there you can render the qmd to get a pdf/word/html report. 
 
