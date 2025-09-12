@@ -17,9 +17,15 @@ I used the Roo Code agent software with the Claude Sonnet 4.0 large language mod
 
 I've also pasted the abstracts from the two replicates below. Both used identical prompts and settings in Roo Code. Its interesting how they are different. For instance the first one frames the study in terms of estimating the scale of human impacts. The second frames the study as being about studying an under-studied mechanism. 
 
-The experiment started with a project folder with data and detailed instructions for the research question, the data and the analyses I wanted. I also provided basic instructions for how to write the paper. The agent had web search capabilities, allowing it to access real references.
+The experiment started with a project folder with data and detailed instructions for the research question, the data and the analyses I wanted. I also provided basic instructions for how to write the paper. The agent had web search capabilities, allowing it to access , and read real references, and then incorporate insights from those into the paper.
 
-It is important to note that this draft has not been edited by a human. Parts of it are not scientifically accurate. It should not be read as anything other than an experiment. It contains errors and some of the references are false.
+It is important to note that this draft has not been edited by a human. Parts of it are not scientifically accurate. It should not be read as anything other than an experiment. It contains errors and some of the references are false. 
+
+For instance, it made up the following reference, but oddly linked it to a real reference (that is different) using a real DOI: 
+
+Hamilton, Richard J et al. 2025. “Modeling Sediment Impacts on Juvenile Reef Fish.” Frontiers in Marine Science. https://doi.org/10.3389/fmars.2025.1513498. 
+
+It didn't make much of an effort to create good instructions for writing a paper. I'm sure you could do a lot better than this with more careful prompting. 
 
 AI generated papers should never replace human oversight. If you rely solely on AI, you miss the chance to truly understand your subject. Science is about learning, not just producing content.
 
