@@ -2,20 +2,30 @@
 title: Paper in a prompt creating a first draft in one prompt
 layout: default
 category: research
-published: FALSE
+published: TRUE
 ---
 
 # Paper in a prompt creating a first draft in one prompt*
 
-* It was a rather long prompt
+\*It was a rather long prompt
 
 I wanted to see if I could get an AI agent to complete a first draft of a paper, including data analysis, searching for references on the web and writing a complete draft. 
 
 I used the Roo Code agent software with the Claude Sonnet 4.0 large language model. 
 
-[I've shared the results from replicate 1 here](). 
+[I've shared the results from replicate 1 here](https://www.seascapemodels.org/data/ai-generated-manuscript). 
 
 I've also pasted the abstracts from the two replicates below. Both used identical prompts and settings in Roo Code. Its interesting how they are different. For instance the first one frames the study in terms of estimating the scale of human impacts. The second frames the study as being about studying an under-studied mechanism. 
+
+The experiment started with a project folder with data and detailed instructions for the research question, the data and the analyses I wanted. I also provided basic instructions for how to write the paper. The agent had web search capabilities, allowing it to access real references.
+
+It is important to note that this draft has not been edited by a human. Parts of it are not scientifically accurate. It should not be read as anything other than an experiment. It contains errors and some of the references are false.
+
+AI generated papers should never replace human oversight. If you rely solely on AI, you miss the chance to truly understand your subject. Science is about learning, not just producing content.
+
+What this sort of thing could be useful for is as a way to iterate and quickly explore alternative options for how to write a paper, or explore alternative interpretations. 
+
+It can also help you get over 'the fear of the white page' (writers block), by giving you something to start editing. 
 
 ## Abstract from replicate 1
 
