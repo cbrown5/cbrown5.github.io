@@ -19,7 +19,7 @@ We used network models to analyze how mangroves respond at both their seaward an
 
 Here's the projections for persistence of mangroves as they are currently (ie without any loss) from one of our scenarios: 
 
-![](images/Buelow_etal2025 graphical-abstract.png)
+![]("images/Buelow_etal2025 graphical-abstract.png")
 
 Our models reveal a stark contrast. 77% of mangrove units worldwide are likely to lose area at their seaward edge by 2040-2060. Rising seas, storms and reduced sediment from dammed rivers create multiple pressures. In contrast, about 30% of units could gain area landward, but coastal development often blocks this migration.
 
