@@ -19,13 +19,10 @@ Here's the results, they are simple html and javascript based games.
 
 Thanks to the workshop participants for generously contributing their ideas. 
 
-[Fish in a pond](https://www.seascapemodels.org/data/tassie-scicomm-games/fish-in-a-pond/)
 
-[Fish crush](https://www.seascapemodels.org/data/tassie-scicomm-games/fish-crush/)
+Here's the links to the games and the game rules (which incidentally are also the prompts I used)
 
-Here's the game rules (which incidentally are also the prompts I used)
-
-## Fish crush
+## [Fish in a pond](https://www.seascapemodels.org/data/tassie-scicomm-games/fish-in-a-pond/)
 
 In this game the player is working to replenish the fish population and racing a truck that is taking fish out of the ocean.
 
@@ -36,7 +33,7 @@ The bottom bucket is like candy candy crush. The player is trying to match four 
 The game ends if the the ocean runs out of fish. 
 If the player gets the fish over 80% full then the truck speeds up. 
 
-## Fish in a pond 
+## [Fish crush](https://www.seascapemodels.org/data/tassie-scicomm-games/fish-crush/)
 
 In this game the player is to make a large amount of money. They are working to look after fish in a pond, then they catch the fish to make money. 
 
