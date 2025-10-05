@@ -1,5 +1,3 @@
-
-
 /* Layouts
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
@@ -228,6 +226,14 @@ a.uni{
 
 code{
     background-color: #F0F0F0;
+}
+
+/* Auto-wrap long lines in code blocks */
+pre,
+pre code {
+  white-space: pre-wrap;       /* preserve newlines, wrap long lines */
+  overflow-wrap: anywhere;     /* break long tokens if needed */
+  word-break: break-word;      /* fallback */
 }
 
 blockquote{

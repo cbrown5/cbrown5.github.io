@@ -66,6 +66,6 @@ From here it would be easy to create a loop over different subdirectory paths, a
 
 You could use this to see how different prompts perform, or do complex prompt strategies like 'tree of thought'. In tree of thought you ask an agent to create the same thing many times, it will do it slightly differently each time. Then you aggregate the results and pick the most common or most accurate one. 
 
-My one grip is that Github have provided us with woeful documentation of what the tool names R. I'm guessing the tools are what you can see if you open the chat window, click 'Agent' mode, then click the tool symbol. 
+My one gripe is that Github have provided us with woeful documentation of what the tool names are. I'm guessing the tools are what you can see if you open the chat window, click 'Agent' mode, then click the tool symbol. 
 
 I'd love to have some default tool sets that simplify the tool permissions. For instance a tool set that locks down all web access. 
