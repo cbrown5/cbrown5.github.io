@@ -1,0 +1,37 @@
+---
+title: "People"
+listing: 
+  - id: Staff
+    contents: "people/staff"
+    type: grid
+  - id: Students
+    contents: "people/students"
+    type: grid
+  - id: Collaborators
+    contents: "people/collaborators"
+    type: grid
+  - id: Alumni
+    contents: "people/alumni"
+    type: grid
+---
+
+## Staff
+
+:::{#Staff}
+:::
+
+## Students
+
+:::{#Students}
+:::
+
+## Collaborators
+
+:::{#Collaborators}
+:::
+
+
+## Alumni
+
+:::{#Alumni}
+:::

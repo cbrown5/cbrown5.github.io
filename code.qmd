@@ -1,0 +1,56 @@
+---
+title: "R tutorials"
+listing:
+  type: grid
+  contents:
+    - path: https://www.seascapemodels.org/AI-assistants-for-scientific-coding
+      image: "images/ai-book-cover.png"
+      title: "AI Assistants for Scientific Coding"
+      description: "How to use generative AI coding assistants for data analysis and statistics"
+      date: "2025-10-19"
+      categories: [rstats, lllms]
+    - path: https://www.seascapemodels.org/predictive-ecological-models/
+      image: images/bolbo-predictions.png
+      title: "Predictive Ecological Models"
+      description: "Tutorial on building predictive models in ecology"
+      date: "2025-05-01"
+      categories: [rstats]
+    - path: https://github.com/cbrown5/example-ecological-data
+      image: images/bolbo-thumb.png
+      title: "Example Ecological Data"
+      description: "GitHub repository with example ecological datasets"
+      date: "2025-06-01"
+      categories: [data, ecology, rstats]
+    - path: https://www.seascapemodels.org/rstats/2018/01/19/intro-to-glms.html
+      image: images/placeholder.JPG
+      title: "Introduction to GLMs"
+      description: "Tutorial on Generalized Linear Models in R"
+      date: "2018-01-19"
+      categories: [rstats, ecology, modelling]
+    - path: https://www.seascapemodels.org/structural-causal-models-tutorial/scm-tute.html
+      image: images/causal-model.png
+      title: "Structural Causal Modelling Tutorial"
+      description: "Guide to structural causal models and causal inference"
+      date: "2023-06-01"
+      categories: [rstats, ecology, modeling]
+    - path: https://www.seascapemodels.org/spatial-analysis-in-r/spatial-analysis-in-r.html
+      image: images/cpr-map.png
+      title: "Spatial Analysis in R"
+      description: "Tutorial on spatial data analysis and modelling using R"
+      date: "2023-01-01"
+      categories: [rstats, spatial, gis, modelling]
+    - path: https://www.seascapemodels.org/RLS-data-prep-course/
+      image: images/parrotfish.jpg
+      title: "Cleaning ecological survey data for conservation scientists"
+      description: "Tutorial on preparing ecological survey data for analysis"
+      date: "2021-01-01"
+      categories: [rstats, data, ecology]
+---
+
+Feel free to download and share these tutorials. You are welcome to use them for your own teaching, and I would love to hear about it.
+
+There are also many more [blog post length tutorials on our blog](code.qmd). 
+
+The downside is that it is not easy to get started, particularly if you are not simultaneously a geo-statistical expert and a gun programmer. I am trying to make the jump easier for ecologists by providing courses and helpful blog posts here.
+
+More code (including this webpage) is on my [Github page](https://github.com/cbrown5). 

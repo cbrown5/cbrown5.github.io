@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fish Catch Management Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>🎣 Fish Catch Management Game</h1>
+            <div class="timer">Time: <span id="timer">60</span>s</div>
+        </header>
+        
+        <div class="game-panels">
+            <!-- Panel 1: Fish Pond -->
+            <div class="panel pond-panel">
+                <h2>🐟 Fish Population</h2>
+                <div class="pond">
+                    <div class="fish-count">
+                        <span id="fish-count">1000</span> fish
+                    </div>
+                    <div class="fish-visual" id="fish-visual">
+                        <!-- Fish will be dynamically added here -->
+                    </div>
+                    <div class="pond-info">
+                        <div>Carrying Capacity: <span id="carrying-capacity">2000</span></div>
+                        <div>Growth Rate: <span id="growth-rate">0.1</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Panel 2: Management Controls -->
+            <div class="panel control-panel">
+                <h2>⚙️ Catch Management</h2>
+                <div class="controls">
+                    <div class="slider-group">
+                        <label for="recreational-catch">🎣 Recreational Catch</label>
+                        <input type="range" id="recreational-catch" min="0" max="200" value="50" step="5">
+                        <span id="recreational-value">50</span> fish/year
+                    </div>
+                    
+                    <div class="slider-group">
+                        <label for="commercial-catch">🚢 Commercial Catch</label>
+                        <input type="range" id="commercial-catch" min="0" max="500" value="100" step="10">
+                        <span id="commercial-value">100</span> fish/year
+                    </div>
+                    
+                    <div class="total-catch">
+                        Total Annual Catch: <span id="total-catch">150</span> fish
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Panel 3: Happiness Indicators -->
+            <div class="panel happiness-panel">
+                <h2>📊 Sector Happiness</h2>
+                <div class="happiness-indicators">
+                    <div class="happiness-item">
+                        <div class="happiness-label">🌊 Environment</div>
+                        <div class="happiness-emoji" id="env-emoji">😊</div>
+                        <div class="happiness-text" id="env-text">Healthy</div>
+                    </div>
+                    
+                    <div class="happiness-item">
+                        <div class="happiness-label">🎣 Recreational</div>
+                        <div class="happiness-emoji" id="rec-emoji">😊</div>
+                        <div class="happiness-text" id="rec-text">Satisfied</div>
+                    </div>
+                    
+                    <div class="happiness-item">
+                        <div class="happiness-label">🚢 Commercial</div>
+                        <div class="happiness-emoji" id="com-emoji">😊</div>
+                        <div class="happiness-text" id="com-text">Profitable</div>
+                    </div>
+                </div>
+                
+                <div class="overall-score">
+                    <h3>Overall Balance Score</h3>
+                    <div class="score" id="overall-score">100</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-status">
+            <div id="game-message">Adjust the sliders to balance fish catches and keep everyone happy!</div>
+            <button id="restart-btn" style="display: none;">Play Again</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

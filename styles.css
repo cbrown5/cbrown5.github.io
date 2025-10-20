@@ -1,0 +1,26 @@
+/* css styles */
+.listing-item-img-placeholder {
+  height: 150px;                         /* match the listing height */
+  background: #f6f6f6;                   /* neutral background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;                        /* icon color */
+}
+
+/* Use Font Awesome glyph via pseudo-element */
+.listing-item-img-placeholder::before {
+  font-family: "Font Awesome 6 Free";    /* FA included by Quarto */
+  font-weight: 900;                      /* solid style */
+  content: "\f007";                      /* user icon unicode */
+  font-size: 42px;
+  line-height: 1;
+}
+
+.thumbnail-image {
+  display: block;
+  height: 100% !important;       /* ensure it fills column width */
+  object-fit: contain;          /* show the whole image (use `cover` to crop/zoom) */
+  object-position: center;
+  background-color: #f6f6f6;    /* optional neutral background for letterboxing */
+}

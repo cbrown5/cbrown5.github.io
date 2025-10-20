@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainable Fishery Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>Sustainable Fishery Manager</h1>
+            <div class="game-stats">
+                <div class="stat">
+                    <span class="label">Time:</span>
+                    <span id="timer">60</span>s
+                </div>
+                <div class="stat">
+                    <span class="label">Money:</span>
+                    $<span id="money">0</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Fish Population:</span>
+                    <span id="fish-count">50</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="game-area">
+            <div class="left-panel">
+                <div class="fish-caught-bar">
+                    <h3>Fish Caught</h3>
+                    <div class="bar-container">
+                        <div class="bar-fill" id="caught-bar"></div>
+                        <div class="bar-labels">
+                            <span>0</span>
+                            <span>Target</span>
+                            <span>Max</span>
+                        </div>
+                    </div>
+                    <div class="caught-count">
+                        Caught: <span id="fish-caught">0</span>
+                    </div>
+                </div>
+
+                <div class="equipment-panel">
+                    <h3>Equipment</h3>
+                    <button id="buy-net" class="equipment-btn" data-cost="50">
+                        Better Net ($50)
+                    </button>
+                    <button id="buy-filter" class="equipment-btn" data-cost="100">
+                        Water Filter ($100)
+                    </button>
+                    <button id="buy-monitor" class="equipment-btn" data-cost="75">
+                        Water Monitor ($75)
+                    </button>
+                </div>
+            </div>
+
+            <div class="pond-container">
+                <div class="pond" id="pond">
+                    <div class="water-quality-indicator">
+                        <div class="quality-bar">
+                            <div class="quality-fill" id="water-quality"></div>
+                        </div>
+                        <span>Water Quality</span>
+                    </div>
+                </div>
+                <div class="pond-controls">
+                    <button id="catch-fish" class="action-btn">Cast Net</button>
+                    <button id="clean-water" class="action-btn">Clean Water ($10)</button>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="environmental-status">
+                    <h3>Environment</h3>
+                    <div class="env-stat">
+                        <span>Pollution Level:</span>
+                        <div class="mini-bar">
+                            <div class="mini-bar-fill" id="pollution-bar"></div>
+                        </div>
+                    </div>
+                    <div class="env-stat">
+                        <span>Algae Growth:</span>
+                        <div class="mini-bar">
+                            <div class="mini-bar-fill" id="algae-bar"></div>
+                        </div>
+                    </div>
+                    <div class="env-stat">
+                        <span>Oxygen Level:</span>
+                        <div class="mini-bar">
+                            <div class="mini-bar-fill" id="oxygen-bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="messages-panel">
+                    <h3>Messages</h3>
+                    <div id="messages" class="messages-list">
+                        <p>Welcome to your fishery! Maintain a sustainable balance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-over-screen" id="game-over" style="display: none;">
+            <div class="game-over-content">
+                <h2 id="game-result">Game Over</h2>
+                <p id="final-score">Final Score: $0</p>
+                <p id="game-message">Try to balance fishing with environmental care!</p>
+                <button id="restart-game" class="action-btn">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

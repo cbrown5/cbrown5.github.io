@@ -1,0 +1,34 @@
+project:
+  type: website
+
+website:
+  title: "Seascapemodels"
+  site-url: "https://www.seascapemodels.org"
+  navbar:
+    right:
+      - href: index.qmd
+        text: Home
+      - href: bluecology_blog.qmd
+        text: "{{<fa regular newspaper>}}  Blog"
+      - href: people.qmd
+        text: "{{<fa regular user>}} People"
+      - href: code.qmd
+        text: "{{<fa solid laptop-code>}} R tutorials"
+      - text: "{{< fa brands google-scholar>}}"
+        href: https://scholar.google.com.au/citations?hl=en&user=1qG6yFMAAAAJ&view_op=list_works&sortby=pubdate
+      - text: "{{< fa solid building-columns>}}"
+        href: https://discover.utas.edu.au/C.J.Brown
+      - icon: github
+        href: https://github.com/cbrown5
+      - text: "{{< fa brands bluesky>}}"
+        href: https://bsky.app/profile/bluecology.bsky.social
+      - icon: linkedin
+        href: https://www.linkedin.com/in/christopher-brown-32466785/
+
+format:
+  html:
+    theme: flatly
+    css: styles.css
+
+
+

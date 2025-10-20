@@ -1,0 +1,18 @@
+---
+title: "Seascape Models"
+listing:
+  contents: posts
+  feed: 
+    categories: rstats
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: true
+---
+
+Chris Brown’s blog on ocean science, quantitative ecology and R programming. Find our R blogs on [R-Bloggers](https://www.r-bloggers.com/). 
+
+

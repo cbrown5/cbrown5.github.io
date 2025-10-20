@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocean Conservation Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Ocean Section -->
+        <div class="ocean-section">
+            <div class="ocean-header">
+                <h1>Ocean Conservation</h1>
+                <div class="fish-counter">
+                    <span>Fish Population: <span id="fish-percentage">50</span>%</span>
+                </div>
+            </div>
+            
+            <div class="ocean-display">
+                <div class="ocean-water" id="ocean-water">
+                    <div class="fish-container" id="fish-container">
+                        <!-- Fish will be dynamically added here -->
+                    </div>
+                    <div class="water-level" id="water-level"></div>
+                </div>
+                
+                <div class="truck-container">
+                    <div class="truck" id="truck">
+                        🚛
+                    </div>
+                    <div class="truck-speed">Speed: <span id="truck-speed">Normal</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Status -->
+        <div class="game-status">
+            <div class="score">Score: <span id="score">0</span></div>
+            <div class="matches">Matches: <span id="matches">0</span></div>
+        </div>
+
+        <!-- Puzzle Section -->
+        <div class="puzzle-section">
+            <div class="puzzle-header">
+                <h2>Match 4 to Save Fish!</h2>
+                <p>Match 4 symbols in a row to add fish to the ocean</p>
+            </div>
+            
+            <div class="puzzle-grid" id="puzzle-grid">
+                <!-- Grid will be dynamically generated -->
+            </div>
+            
+            <div class="selected-tiles" id="selected-tiles">
+                <!-- Selected tiles will appear here -->
+            </div>
+        </div>
+
+        <!-- Game Over Modal -->
+        <div class="game-over-modal" id="game-over-modal" style="display: none;">
+            <div class="modal-content">
+                <h2 id="game-over-title">Game Over!</h2>
+                <p id="game-over-message">The ocean ran out of fish!</p>
+                <div class="final-stats">
+                    <p>Final Score: <span id="final-score">0</span></p>
+                    <p>Fish Saved: <span id="fish-saved">0</span></p>
+                </div>
+                <button onclick="restartGame()">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

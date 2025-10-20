@@ -1,0 +1,289 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: #2d3436;
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.timer {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #e17055;
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.game-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.panel {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ddd;
+}
+
+.panel h2 {
+    color: #2d3436;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+/* Fish Pond Panel */
+.pond {
+    text-align: center;
+}
+
+.fish-count {
+    font-size: 2em;
+    font-weight: bold;
+    color: #0984e3;
+    margin-bottom: 20px;
+}
+
+.fish-visual {
+    height: 150px;
+    background: linear-gradient(to bottom, #74b9ff, #0984e3);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.fish {
+    font-size: 20px;
+    animation: swim 3s infinite ease-in-out;
+    margin: 2px;
+}
+
+@keyframes swim {
+    0%, 100% { transform: translateX(0px) rotate(0deg); }
+    50% { transform: translateX(10px) rotate(5deg); }
+}
+
+.pond-info {
+    font-size: 0.9em;
+    color: #636e72;
+}
+
+.pond-info div {
+    margin: 5px 0;
+}
+
+/* Control Panel */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.slider-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.slider-group label {
+    font-weight: bold;
+    color: #2d3436;
+    font-size: 1.1em;
+}
+
+.slider-group input[type="range"] {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #ddd;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.slider-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0984e3;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.slider-group input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0984e3;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.total-catch {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    color: #2d3436;
+    border: 2px solid #e9ecef;
+}
+
+/* Happiness Panel */
+.happiness-indicators {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.happiness-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+}
+
+.happiness-label {
+    font-weight: bold;
+    color: #2d3436;
+}
+
+.happiness-emoji {
+    font-size: 2em;
+    margin: 0 10px;
+}
+
+.happiness-text {
+    font-weight: bold;
+    min-width: 80px;
+    text-align: right;
+}
+
+.overall-score {
+    text-align: center;
+    background: linear-gradient(135deg, #00b894, #00a085);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.overall-score h3 {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.score {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+/* Game Status */
+.game-status {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#game-message {
+    font-size: 1.2em;
+    color: #2d3436;
+    margin-bottom: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+}
+
+#restart-btn {
+    background: #00b894;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1em;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+#restart-btn:hover {
+    background: #00a085;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .game-panels {
+        grid-template-columns: 1fr;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+    
+    .happiness-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .happiness-text {
+        text-align: center;
+    }
+}
+
+/* Color coding for happiness levels */
+.happy { color: #00b894; }
+.neutral { color: #fdcb6e; }
+.unhappy { color: #e17055; }
+.very-unhappy { color: #d63031; }
