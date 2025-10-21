@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2017-02-22">
+
+<title>Part 3: Spatial analysis of geotagged data – Seascapemodels</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Seascapemodels</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../bluecology_blog.html"> 
+<span class="menu-text"><i class="fa-regular fa-newspaper" aria-label="newspaper"></i> Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../people.html"> 
+<span class="menu-text"><i class="fa-regular fa-user" aria-label="user"></i> People</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../code.html"> 
+<span class="menu-text"><i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> R tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.com.au/citations?hl=en&amp;user=1qG6yFMAAAAJ&amp;view_op=list_works&amp;sortby=pubdate"> 
+<span class="menu-text"><i class="fa-brands fa-google-scholar" aria-label="google-scholar"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://discover.utas.edu.au/C.J.Brown"> 
+<span class="menu-text"><i class="fa-solid fa-building-columns" aria-label="building-columns"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cbrown5"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/bluecology.bsky.social"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/christopher-brown-32466785/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Part 3: Spatial analysis of geotagged data</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">rstats</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 22, 2017</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="part-3-spatial-analysis-of-geotagged-data" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-spatial-analysis-of-geotagged-data">Part 3: Spatial analysis of geotagged data</h2>
+<p>See the other <a href="../../rstats/2016/11/14/photos-to-spatialstat.html">parts in this series of blog posts</a>.</p>
+<p>In parts 1 and 2 we extracted spatial coordinates from our photos and then made an interactive web map that included data associate with those photos. Here I describe how we can build a spatial statistical model to interpolate to unmeasured locations.</p>
+<p>Here we will build an interactive map showing model results from an interpolation of oyster presence/absence.</p>
+<iframe src="../../data/hornby_oysters_interp.html" style="width: 80%; height: 30em">
+It no map appears here your browser doesn’t support iframes. Try <a href = "/data/hornby_oysters_interp.html">this link instead</a>
+</iframe>
+<p><a href="../../data/Oysters_merged.csv">Get the data for this blog</a>.</p>
+<p>First up we need to load some packages:</p>
+<pre><code>    library(readr)
+    library(INLA)
+    library(sp)
+    library(raster)
+    library(rgeos)</code></pre>
+<p>The <a href="http://www.r-inla.org/"><code>INLA</code></a> package is crucial here. We will be using <code>INLA</code> to perform Bayesian Kriging. In non-technical terms, Bayesian kriging lets us fill in the gaps between observations of oyster counts by interpolating from nearby points.</p>
+<section id="getting-the-data-in-the-right-form" class="level3">
+<h3 class="anchored" data-anchor-id="getting-the-data-in-the-right-form">Getting the data in the right form</h3>
+<p>Before we begin, we need to load in the data, and transform it into a spatial data frame. In particular, it is important to transform the lon-lats into UTM coordinates. UTM coordinates allow us to measure distances between sample sites in metres:</p>
+<pre><code>    dat &lt;- read_csv('Oysters_merged.csv')
+    n &lt;- nrow(dat)
+    utmproj &lt;- "+proj=utm +zone=10 +north +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"
+    spdat &lt;- dat
+    coordinates(spdat) &lt;- ~ GPSLongitude + GPSLatitude
+    proj4string(spdat) &lt;- "+init=epsg:4326"
+    spdf &lt;- spTransform(spdat, CRS(utmproj))
+    plot(spdf)</code></pre>
+<p><img src="oyster_surveys-1.png" class="img-fluid"></p>
+<p>You should get a plot like that pictured just of the sample sites.</p>
+</section>
+<section id="creating-an-inla-mesh" class="level3">
+<h3 class="anchored" data-anchor-id="creating-an-inla-mesh">Creating an INLA “Mesh”</h3>
+<p>Now we can start building the specialised data-structures we need for the <code>INLA</code> package. First up, we have to build what’s called a mesh. This is a <a href="https://en.wikipedia.org/wiki/Delaunay_triangulation">Delaunay triangulation</a> built around our data points. It accounts for the non-regular spatial structuring of the sampling (I wandered around on the rocky shore throwing the quadrat at intervals).</p>
+<p>Below we provide two parameters to <code>max.edge</code>, this will enable us to buffer the edges to obtain a slightly larger spatial domain. Buffering is important because the INLA approximation will be inaccurate at the edges of the spatial domain.</p>
+<pre><code>max.edge.length &lt;- c(25, 40)
+loc1 &lt;- as.matrix(coordinates(spdf))
+mesh &lt;- inla.mesh.2d(loc=loc1, max.edge = max.edge.length, offset=1, cutoff = 5)
+
+plot(mesh)
+plot(spdf, add = T, col = 'red')</code></pre>
+<p><img src="oyster_mesh-1.png" class="img-fluid"></p>
+<p>You can play with the edge length, offset and cutoff parameters to vary how the triangulations turns out.</p>
+<p>You can get more guidance at the <a href="http://www.r-inla.org/"><code>INLA</code> page</a> and in <a href="https://www.math.ntnu.no/inla/r-inla.org/tutorials/spde/inla-spde-howto.pdf">this tutorial</a>. <a href="https://drive.google.com/drive/folders/0B55S_W3X6C38WS13T1NtTVlvblU">This tutorial</a> also has some very excellent advice about how to choose boundaries and triangle sizes.</p>
+<p>An important step is to check that our maximum edge lengths are less than the estimated range (otherwise it is pointless including a spatial effect!). We will check the range size below, once we have fitted the model.</p>
+<p>You might like to think of a-prior reasons for modelling a certain range, for instance, what is a reasonable spatial scale for ‘clumping’ of oyster patches?</p>
+</section>
+<section id="build-inla-stack" class="level3">
+<h3 class="anchored" data-anchor-id="build-inla-stack">Build INLA stack</h3>
+<p>Now we need to implement a few more steps to build up an appropriate ‘stack’ of data for <code>INLA</code>. Note that I have transformed oyster count to presence - absence. We will build a binomial model and just predict whether any given quadrat had oysters or not.</p>
+<pre><code>A.data &lt;- inla.spde.make.A(mesh, loc1)
+spde &lt;- inla.spde2.matern(mesh, alpha = 2)
+spdf$presabs &lt;- ifelse(spdf$oysters_live&gt;0, 1, 0)
+
+stk &lt;- inla.stack(data=list(y=spdf$presabs), A=list(A.data, 1),
+                  effects=list(s=1:mesh$n, intercept=rep(1, n)),
+                  remove.unused = FALSE, tag = "est")</code></pre>
+<p>Note that here we choose <code>alpha = 2</code>. <code>alpha</code> is a smoothness parameter that must be 0 &lt;= <code>alpha</code> &lt;= 2, higher values will give smoother spatial interpolation. Also note that we have to specify ‘data’ for the intercept (just a vector of <code>1</code>).</p>
+<p>The <code>tag = "est"</code> argument just gives a name tag to the fitted model. In other applications you might want to join the estimation stack with a prediction stack (just build two stacks, one where the response is <code>NA</code> and then join them by applying <code>inla.stack</code> to both).</p>
+</section>
+<section id="model" class="level3">
+<h3 class="anchored" data-anchor-id="model">Model</h3>
+<p>Now, after that considerable amount of prepartion, we get to fitting the model. We use standard <strong>R</strong> syntax for the formula, with the addition of the <code>f()</code> term to specify a function.</p>
+<pre><code>    formula &lt;- y ~ 0 + intercept + f(s, model=spde)
+
+    mod &lt;- inla(formula, data=inla.stack.data(stk),
+            control.predictor=list(A = inla.stack.A(stk)),
+            family = 'binomial')</code></pre>
+<p>We can extract summary parameters using <code>summary</code>. Here we are interested in the random effects, it is good practice to call <code>inla.hyperpar</code> before we inspect random effects:</p>
+<pre><code>hyper &lt;- inla.hyperpar(mod)
+summary(hyper)</code></pre>
+</section>
+<section id="checking-the-range-parameter" class="level3">
+<h3 class="anchored" data-anchor-id="checking-the-range-parameter">Checking the range parameter</h3>
+<p>We should also check that our triangle edge length is less than the estimated spatial range. We can do that by making a call to the model object, asking for the estimated parameters for the random field</p>
+<pre><code>rf &lt;- inla.spde.result(inla = mod, name = "s",
+spde = spde, do.transf = TRUE)
+
+plot(rf$marginals.range[[1]], type = "l",
+ xlab = "Range (m)", ylab = "Density",
+ xlim = c(0, 1000))
+abline(v = max.edge.length[2], col = 'red')</code></pre>
+<p><img src="oyster_rf_density-1.png" class="img-fluid"></p>
+<p>The red line shows our edge length parameter, which is well less than the model estimate for the spatial range.</p>
+</section>
+<section id="model-predictions" class="level3">
+<h3 class="anchored" data-anchor-id="model-predictions">Model predictions</h3>
+<p>Now we have a fitted model, we can extracted predicted probabilities of oyster presence and map them. First transform the predictions from the logit scale back to probabilities:</p>
+<pre><code>  ypred &lt;- exp(mod$summary.random$s$mean)/(1 + exp(mod$summary.random$s$mean))</code></pre>
+<p>Then we can turn our predictions into a spatial points, that can be be mapped onto a raster for plotting:</p>
+<pre><code>extent &lt;- extent(spdf)
+xdims &lt;- 100; ydims &lt;- 200
+xlim &lt;- c(extent[1], extent[2]); ylim = c(extent[3], extent[4]);
+proj &lt;- inla.mesh.projector(mesh, xlim = xlim, ylim = ylim, dims=c(xdims, ydims))
+field.proj &lt;- inla.mesh.project(proj, ypred)
+
+datpred &lt;- data.frame(x = rep(proj$x, ydims), y = rep(proj$y, each = xdims), pred = as.numeric(field.proj))
+coordinates(datpred) &lt;- ~x + y
+
+proj4string(datpred) &lt;- utmproj
+dat3 &lt;- spTransform(datpred, crs("+init=epsg:4326"))
+
+r &lt;- raster(extent(dat3), ncols = xdims, nrows= ydims, crs = crs(spdat))
+icell &lt;- cellFromXY(r, dat3)
+
+r[icell] &lt;- as.numeric(dat3$pred)</code></pre>
+<p>And finally the plot:</p>
+<pre><code>cols &lt;- RColorBrewer::brewer.pal(9, "Purples")
+plot(r, col = cols)
+points(spdf)
+plot(spdat, add = TRUE)</code></pre>
+<p><img src="oyster_inla_raster-1.png" class="img-fluid"></p>
+<p>So it looks like oysters are more common in the southern portion of the survey area.</p>
+<p>But note that our predictions extent a fair way from the points. We might want to redo these with a more constrained spatial region. In general we should’t trust predictions that are more than ~ 1 spatial range from the edge of our sampled region (in this case the posterior estimate for range was 181m).</p>
+<p>Finally, we could map this onto a satellite image to get a better view of what is going on. I am just using the same <code>leaflet</code> code as <a href="">before</a>:</p>
+<pre><code>library(leaflet)
+brks &lt;- seq(0,1, by = 0.1)
+ncol &lt;- length(brks)
+oystercols &lt;- RColorBrewer::brewer.pal(min(ncol, 9), 'Reds')
+pal &lt;- colorBin(oystercols, dat$oysters_live, bins = brks)
+
+x1 &lt;- -124.5997
+y1 &lt;- 49.52848
+
+leaflet() %&gt;%
+addProviderTiles("Esri.WorldImagery") %&gt;%
+
+setView(lng = x1, lat = y1, zoom = 16) %&gt;%
+addRasterImage(r, opacity = 0.8, color = pal) %&gt;%
+addCircleMarkers(lng = dat$GPSLongitude, lat = spdat$GPSLatitude,
+radius = 4) %&gt;%
+addLegend("topright", pal = pal,
+values = brks,
+title = "Chance of live oysters &lt;a href = 'https://en.wikipedia.org/wiki/Pacific_oyster' target = '_blank'&gt; (Crassostrea gigas)&lt;/a&gt;",
+opacity = 1)</code></pre>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.seascapemodels\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2018-10-16">
+
+<title>Generalized Linear Models understanding the link function – Seascapemodels</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Seascapemodels</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../bluecology_blog.html"> 
+<span class="menu-text"><i class="fa-regular fa-newspaper" aria-label="newspaper"></i> Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../people.html"> 
+<span class="menu-text"><i class="fa-regular fa-user" aria-label="user"></i> People</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../code.html"> 
+<span class="menu-text"><i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> R tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.com.au/citations?hl=en&amp;user=1qG6yFMAAAAJ&amp;view_op=list_works&amp;sortby=pubdate"> 
+<span class="menu-text"><i class="fa-brands fa-google-scholar" aria-label="google-scholar"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://discover.utas.edu.au/C.J.Brown"> 
+<span class="menu-text"><i class="fa-solid fa-building-columns" aria-label="building-columns"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cbrown5"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/bluecology.bsky.social"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/christopher-brown-32466785/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Generalized Linear Models understanding the link function</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">rstats</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 16, 2018</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="generalized-linear-models-understanding-the-link-function" class="level1">
+<h1>Generalized Linear Models: understanding the link function</h1>
+<p>Generalized Linear Models (‘GLMs’) are one of the most useful modern statistical tools, because they can be applied to many different types of data. Count, binary ‘yes/no’, and waiting time data are just some of the types of data that can be handled with GLMs.</p>
+<p>We often call such data ‘non-normal’ because its distribution doesn’t follow a normal distribution (also known as the bell curve or Gaussian Distribution).</p>
+<p>In this post I will look at how GLMs use a ‘link function’ to model non-normal data. I think there is a sort of beautiful elegance in the maths of how the link function works. Understanding this theory will also help you build better models for your data and interpret them in more nuanced ways.</p>
+<p>We will step through the math behind the GLM and build it up from scratch.</p>
+<p>GLMs extend ‘General Linear Models’ (confusing names I know), read <a href="http://www.seascapemodels.org/rstats/2018/01/19/intro-to-glms.html">this post first if you are not yet familiar with General Linear Models</a>.</p>
+<p>Thanks is due to Brad Biggerstaff for emailing some errors in terminology in my original post (which I’ve updated and hopefully fixed 19/10/2018).</p>
+<section id="choosing-the-right-distribution-for-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-the-right-distribution-for-your-data">Choosing the right distribution for your data</h2>
+<p>I learned about the Normal distribution in primary school. The normal distribution is central to much of statistics (no pun intended), but there are many types of data that don’t meet the basic assumptions of the normal.</p>
+<p>The normal distribution has ‘infinite support’, which means values modelled by the normal can take any negative or positive number. Often the normal is a pretty reasonable approximation of data that doesn’t meet these assumptions, but there are many cases when using a normal for data that isn’t will lead us to make errors in our inferences.</p>
+<p>Statisticians have invented whole families of distributions to describe any type of data you can imagine, from the morbid (the Exponential distribution for deaths or decay), to wealth inequality (the Pareto distribution) and even days of the year (the Von Mises distribution).</p>
+<p>More specifically, we should think of the distribution as a description of the process that generates the data.</p>
+<p>Let’s start with something simple. Let’s assume you have been counting fish on coral reefs. So your data are count data.</p>
+<p>If the counts are large they may well look pretty normal. But there are some important differences.</p>
+<p>Counts are integers, whereas the normal distribution is for continuous data that can include any fraction.</p>
+<p>Counts also can’t be less than zero, but the Normal distribution model’s stochastic processes that draw zeros and negative numbers.</p>
+<p>Statisticians have invented many distributions for counts, one of the simplest is the Poisson distribution. It is a model of positive integers. It has one parameter <em>λ</em>, which is both its mean and variance.</p>
+<p>Let’s see what that looks like with some simple R code to draw random numbers from two Poisson distributions:</p>
+<pre><code>n &lt;- 1000
+set.seed(42)
+x1 &lt;- rpois(n, lambda = 1)
+x10 &lt;- rpois(n, lambda = 10)
+mean(x1)
+
+## [1] 0.976
+
+var(x1)
+
+## [1] 0.9663904
+
+mean(x10)
+
+## [1] 10.083
+
+var(x10)
+
+## [1] 10.75086</code></pre>
+<p>We just sampled random numbers from two Poisson distributions with means of 1 and 10. Notice that the means and variances of each are approximately equal (not exactly equal because of we drew a small random sample).</p>
+<p>You can think of this sampling from the Poisson as a model of count data. Let’s see what that looks like:</p>
+<pre><code>par(mfrow=c(1,2))
+hist(x1, xlim = c(0, 25), seq(0, 25, by = 1))
+hist(x10, xlim = c(0, 25), seq(0, 25, by = 1))</code></pre>
+<p><img src="beauty-of-the-glm-link_files/figure-markdown_strict/unnamed-chunk-2-1.png" class="img-fluid"></p>
+<p>So the data drawn from the poisson with <code>lambda = 1</code> are concentrated near zero and strongly skewed (not very Normal). The data with <code>lambda = 10</code> are approximately normally distribution and have a much larger variance than the former data.</p>
+</section>
+<section id="linear-models" class="level2">
+<h2 class="anchored" data-anchor-id="linear-models">Linear models</h2>
+<p>So far our Poisson model only has one parameter, a mean (and variance). But what if we wanted the mean to change?</p>
+<p>For instance, we might have counted fish on different types of coral reefs and we want to test whether there are difference abundances on each type of reef.</p>
+<p>Or we might have counted fish across a gradient of pollution and we want to know how their numbers change from low to high pollution.</p>
+<p>I will call these hypothesized causes of changes in fish counts ‘covariates’. Others might call them explanatory variables, treatments (if experiments) or predictor variables.</p>
+<p>We are using <strong>Generalized Linear Models</strong>, so we could include the covariates as variables in a simple linear equation, after all that is what we do with linear regression (and <a href="http://www.seascapemodels.org/rstats/2018/01/19/intro-to-glms.html">general linear models</a>):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="http://latex.codecogs.com/svg.latex?y_%7Bi%7D%3D%5Calpha%2B%5Cbeta%2Ax_%7Bi%7D" class="img-fluid"></p>
+<figcaption>img</figcaption>
+</figure>
+</div>
+<p>Let’s generate some such data ourselves. We will assume pollution is measured on a zero to one (low to high) scale, that the mean number of fish with no pollution =4 and that on average there are no fish anymore when pollution levels = 0.5 (half their maximum).</p>
+<p>The plot below illustrates our model for the mean expected number of fish across the pollution gradient. In this case we are building a model to simulate some data to practice with:</p>
+<pre><code>n &lt;- 50
+beta &lt;- -8 #effect of polluted reefs
+alpha &lt;- 4 #intercept = mean at 'zero' pollution
+x &lt;-  seq(0, 1, length.out = n) #pollution levels
+ymean &lt;- alpha + beta*x
+plot(x, ymean, type = 'l', xlab = "Pollution level", ylab = "Number of fish counted")
+abline(h = 0, lty = 2, lwd = 2)  </code></pre>
+<p><img src="beauty-of-the-glm-link_files/figure-markdown_strict/unnamed-chunk-3-1.png" class="img-fluid"></p>
+<p>There is something odd about this model: we are predicting negative fish (on average) for pollution levels over 0.5.</p>
+<p>It gets even worse if we model sampling with a normal distribution:</p>
+<pre><code>set.seed(55)
+yobs_normal &lt;- ymean + rnorm(n)
+plot(x, ymean, type = 'l', xlab = "Pollution level", ylab = "Number of fish counted")
+points(x, yobs_normal)
+abline(h = 0, lty = 2, lwd = 2)</code></pre>
+<p><img src="beauty-of-the-glm-link_files/figure-markdown_strict/unnamed-chunk-4-1.png" class="img-fluid"></p>
+<p>Clearly if we went in the real world to sample data, we wouldn’t ever get any negative counts.</p>
+<p>So we are going to have to redesign our model, which is the basis of our statistical tests, so that negative values don’t happen.</p>
+<p>But we still want to use a linear model, because they are convenient to work with mathematically and convenient when it comes to estimating the unknown effects.</p>
+</section>
+<section id="simulating-poisson-data-from-a-linear-model" class="level2">
+<h2 class="anchored" data-anchor-id="simulating-poisson-data-from-a-linear-model">Simulating Poisson data from a linear model</h2>
+<p>So now we come to link functions. Link functions elegantly solve the problem of using linear models with with non-normal data. There are many types of link functions, but we will look at one that is popular for use with count data.</p>
+<p>If you wanted to stop a linear function from taking negative values what is one simple transformation you could make?</p>
+<p>Well, you could take the function’s exponent. We will redo the above linear equation as log-linear. I will change the parameter names to reflect that they are now logs:</p>
+<pre><code>gamma &lt;- -3.2 #effect of polluted reefs
+alpha &lt;- 4 #intercept = mean at 'zero' pollution
+yexp &lt;- alpha*exp(gamma*x)
+plot(x, yexp, type = 'l', xlab = "Pollution level", ylab = "Number of fish counted")
+abline(h = 0, lty = 2, lwd = 2)</code></pre>
+<p><img src="beauty-of-the-glm-link_files/figure-markdown_strict/unnamed-chunk-5-1.png" class="img-fluid"></p>
+<p>Here we have the equation <code>y = alpha *exp(gamma*x)</code> which is the same as the linear equation for <code>log(y)</code>: <code>log(y) = log(alpha) +gamma*x</code>. Note I have retained <code>alpha=4</code> in both, because for both equations <code>alpha</code> is the expected value at pollution of zero.</p>
+<p>I changed the slope parameter in the log-linear equation to <code>gamma</code> because it is not a direct analogue of our slope parameter <code>beta</code> above.</p>
+<p>One of the nice things about the log-linear equation is that the slope parameter now represents multiples of change. For instance, <code>gamma = -3.2</code> means the abundance declines about 25 times decline (=<code>1/exp(-3.2)</code>) when going from a pollution level of <code>0</code> to <code>1</code>.</p>
+<p>Abundance declines about a five times decline if we go from a pollution of <code>0</code> to <code>0.5</code> (= <code>1/exp(-3.2*0.5)</code>). Noting this will be important when we come to interpreting fitted models below.</p>
+<p>We could now use this exponential curve as the mean (and variance!) of a Poisson:</p>
+<pre><code>yobs_pois &lt;- rpois(n, yexp)
+plot(x, yexp, type = 'l', xlab = "Pollution level",
+     ylab = "Number of fish counted",
+     ylim = c(0, 8))
+points(x, yobs_pois)</code></pre>
+<p><img src="beauty-of-the-glm-link_files/figure-markdown_strict/unnamed-chunk-6-1.png" class="img-fluid"></p>
+<p>Notice that no data fall below zero now. Also, notice how the variance of the samples gets smaller as the mean gets smaller.</p>
+</section>
+<section id="the-beauty-of-the-link-combining-linear-models-with-bespoke-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="the-beauty-of-the-link-combining-linear-models-with-bespoke-distributions">The beauty of the link: combining linear models with bespoke distributions</h2>
+<p>In the real world, you will have the sample points, but not the ‘true’ mean. In the example above we just made up the true mean ourselves. In the real world Nature provides the ‘truth’ about how pollution impacts fish abundance and the best we can do is take as many measurements as we can and hope to get near the truth.</p>
+<p>To estimate the effect of the pollution covariate you can use R’s <code>glm()</code> function:</p>
+<pre><code>m1 &lt;- glm(yobs_pois ~ x, family = poisson(link = "log"))
+coef(m1)
+
+## (Intercept)           x
+##    1.409704   -3.345646</code></pre>
+<p>The values we printed give the estimates for the intercept and slope coeffcients (alpha and gamma). You can check that these are similar to the true estimates we provided by comparing them to <code>log(alpha)</code> and <code>gamma</code>.</p>
+<p>I have specified above the type of distribution to use (<code>family = poission()</code>) and which link to use. <code>"log"</code> is in fact the default choice, but I put it there so you know you can change it.</p>
+<p>For instance, you can use <code>"identity"</code> link for data that is far from zero. If you use the identity link, which is basically no link function, your model will be linear, not log-linear, so your slope estimate will once again be additive.</p>
+<p>Technically we would say we fitted a <em>Poisson Generalized Linear Model with a log link function</em>. So the model’s predictions for the data will be Poisson distributed about its estimate for the mean. Note that the data can contain zeros, but the mean of the Poisson is always &gt;0.</p>
+<p>So what do the coefficients mean? Remember the coefficients are on the log scale. So the mean abundance at a pollution level of zero = <code>{r} exp(coef(m1)[1])</code> and a change in pollution from 0 to 1 causes an estimated <code>{r} 1/exp(coef(m1)[2])</code> times decline in fish abundance.</p>
+<p>Let’s also plot the fitted model with standard errors.</p>
+<pre><code>ypredict &lt;- predict(m1, type = "response", se = TRUE)
+plot(x, yexp, type = 'l', xlab = "Pollution level",
+     ylab = "Number of fish counted",
+     ylim = c(0, 8))
+lines(x, ypredict$fit, lwd = 2, col = "red", lty = 2)
+#Add lines for standard errors
+lines(x, ypredict$fit + ypredict$se.fit, lty = 3, col = "red")
+lines(x, ypredict$fit - ypredict$se.fit, lty = 3, col = "red")
+#plot observations
+points(x, yobs_pois)
+legend('topright', legend = c("True mean", "Estimated mean"),
+       lwd = 2, lty = c(1,2), col = c("black", "red"))</code></pre>
+<p><img src="beauty-of-the-glm-link_files/figure-markdown_strict/unnamed-chunk-8-1.png" class="img-fluid"></p>
+<p>You can see the fitted line falls close to the ‘true’ line, and the standard errors are pretty tight around our best estimate.</p>
+<p>The fitting algorithm itself is attempting the maximise the log-likelihood of the observations given the mean (in technical speak). You can read <a href="http://www.seascapemodels.org/rstats/2018/04/13/how-to-use-the-AIC.html">more about likelihoods here</a>.</p>
+<p>It is also worth noting that we still need to do assumption checks, like we would for a regression with normal errors. For instance, we can check the model’s residuals (the difference between the data and the model’s predicted values) to see that the residual variance approximately equals the mean. A cool way to check assumptions of the Poisson model is to use ‘rootograms’, look it up.</p>
+</section>
+<section id="the-beauty-of-the-link-combining-linear-models-with-bespoke-distributions-to-describe-natural-processes" class="level2">
+<h2 class="anchored" data-anchor-id="the-beauty-of-the-link-combining-linear-models-with-bespoke-distributions-to-describe-natural-processes">The beauty of the link: combining linear models with bespoke distributions to describe natural processes</h2>
+<p>So in my introduction I claimed that maths of GLMs is beautiful. I think that because the maths is nicely coherent with the way nature often works.</p>
+<p>We wanted to fit a linear function to data that can’t be less than zero, because linear functions are convenient to work with. So we used a log link function to describe the mean and to ensure that the mean is always greater than zero.</p>
+<p>We ended up with a model where the slope describes multiples of change in fish abundance over the pollution gradient. So the model itself is actually multiplicative, not additive.</p>
+<p>If you think about it, natural processes that generate counts often are multiplicative, not additive. For instance, we may talk about ‘fish multiplying’ when they breed, because population growth can be exponential.</p>
+<p>So our mathematically convenient link function actually ended up being a better description of the natural process.</p>
+<p>The effort to use a non-negative model also forced us to think about using a more appropriate distribution for the data: the Poisson rather than the Normal. The Poisson has the variance increasing with the mean.</p>
+<p>Once again, natural processes that generate counts often lead to increases in the variance in situations where we count more. Counts near zero will naturally have low variance, because they are constrained by zero, whereas higher counts will naturally have a greater variabilty.</p>
+<p>You can also relax the assumption of mean = variance with other GLM distributions like the negative binomial.</p>
+<p>It turns out that proper models of variance are crucial for <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.12552">getting the standard-errors right, and so crucial for detecting real effects over spurious ones</a>.</p>
+<p>Imagine if you used a Normal distribution and assumed equal variances. You might spuriously attribute differences between groups from high counts to some covariate, but the difference is actually just natural variation. Conversely, you might miss differences between groups with low counts, because a smaller difference at low counts should actually be statistically significant.</p>
+<p>The increased power we get to detect differences at low counts with a GLM over a regression happens because it is the multiple of the difference that matters with the log link, not the absolute (additive) difference.</p>
+<p>My final point is to remember that coefficients from a model with a log link (and some other links too, like the logit) are multiplicative. This can be very useful when it comes to making sense of your results and may change the way you present your findings.</p>
+<p>For instance, we used this key insight from a GLM to make a case that <a href="https://www.sciencedirect.com/science/article/pii/S0006320716310461">pollution from logging causes a 24 times decline in the abundance of a threatened fish species</a>.</p>
+<p>Before we considered using the GLM, we had actually presented the results in terms of a % change in fish abundance. But % are not as easy to generalize, because they depend on your baseline. Multiples do not.</p>
+<p>Hope you found this post helpful, and as always you can get me on <a href="https://twitter.com/bluecology">Twitter</a> if you have comments or questions.</p>
+<section id="homework-for-the-keen-whats-the-difference-between-a-log-link-and-log-transforming-your-data" class="level3">
+<h3 class="anchored" data-anchor-id="homework-for-the-keen-whats-the-difference-between-a-log-link-and-log-transforming-your-data">Homework for the keen: What’s the difference between a log link and log transforming your data?</h3>
+<p>I wanted to add a brief appendix to address this question, because the answer is insightful as to how link functions work.</p>
+<p>Try take the data we generated above and fit two GLMs (you will have to add a small number so you can log the zeros, not ideal but a common practice)</p>
+<pre><code>yobsplus &lt;- yobs_pois+0.1
+model1 &lt;- glm(yobsplus ~ x, family = gaussian(link = "log"))
+model2 &lt;- glm(log(yobsplus) ~ x, family = gaussian(link = "identity"))</code></pre>
+<p>In the first model we fitted a Gaussian (=Normal distributed errors) with a log link. In the second we fitted a Gaussian to log(y) with the identity link (which is no link).</p>
+<p>Now compare the results. Notice that the estimate of the slope is quite different. Why is this?</p>
+<p>The model with the log link is fitting the mean on the log scale, the Gaussian errors will be on the natural scale. So the residual (or error) variance will be constant for all mean values of y.</p>
+<p>The model with the log of the data and identity link is fitting the mean and variance on the log scale. So if we retransform log(y) back to y, the variance will change with the mean.</p>
+<p>So a log link isn’t the same as a log transformation. The transformation changes the raw data. The link function doesn’t touch the raw data, instead you can think of it as a transformation of the <strong>model for the mean of the raw data</strong>.</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.seascapemodels\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

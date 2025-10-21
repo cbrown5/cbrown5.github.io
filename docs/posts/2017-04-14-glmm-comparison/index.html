@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2017-04-14">
+
+<title>Choosing R packages for mixed effects modelling based on the car you drive – Seascapemodels</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Seascapemodels</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../bluecology_blog.html"> 
+<span class="menu-text"><i class="fa-regular fa-newspaper" aria-label="newspaper"></i> Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../people.html"> 
+<span class="menu-text"><i class="fa-regular fa-user" aria-label="user"></i> People</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../code.html"> 
+<span class="menu-text"><i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> R tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.com.au/citations?hl=en&amp;user=1qG6yFMAAAAJ&amp;view_op=list_works&amp;sortby=pubdate"> 
+<span class="menu-text"><i class="fa-brands fa-google-scholar" aria-label="google-scholar"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://discover.utas.edu.au/C.J.Brown"> 
+<span class="menu-text"><i class="fa-solid fa-building-columns" aria-label="building-columns"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cbrown5"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/bluecology.bsky.social"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/christopher-brown-32466785/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Choosing R packages for mixed effects modelling based on the car you drive</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">rstats</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 14, 2017</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="choosing-r-packages-for-mixed-effects-modelling-based-on-the-car-you-drive" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-r-packages-for-mixed-effects-modelling-based-on-the-car-you-drive">Choosing R packages for mixed effects modelling based on the car you drive</h2>
+<p>There are many roads you can take to fit a mixed effects model (sometimes termed hierarchical models) in <code>R</code>. There are numerous packages that each deploy different engines to fit mixed effects models.</p>
+<p>In this driveability review, I look at some of the dominant packages for mixed effects models The focus of this review is on the practicality of each package, rather than their numerical accuracy. Information on numerical accuracy can be found in the academic literature, see the bibliography below. I will lookat each package’s handling, speed and adaptability for tackling different types of questions.</p>
+<p><em>Summary of the packages strengths and weaknesses. Speeds are relative to <code>lme4</code> in a test case problem, see below for details.</em></p>
+<table class="table">
+<colgroup>
+<col width="15%">
+<col width="12%">
+<col width="13%">
+<col width="12%">
+<col width="12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>
+Parameter
+</th>
+<th>
+<code>lme4</code>
+</th>
+<th>
+<code>rjags</code>
+</th>
+<th>
+<code>INLA</code>
+</th>
+<th>
+<code>RStan</code>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>
+Relative speed
+</td>
+<td>
+1
+</td>
+<td>
+100
+</td>
+<td>
+10
+</td>
+<td>
+60
+</td>
+</tr>
+<tr class="even">
+<td>
+Handling- ease of coding<sup>1</sup>
+</td>
+<td>
+Straightforward
+</td>
+<td>
+Hard
+</td>
+<td>
+Moderate
+</td>
+<td>
+Hard
+</td>
+</tr>
+<tr class="odd">
+<td>
+User manual
+</td>
+<td>
+Accessible
+</td>
+<td>
+Brief and technical
+</td>
+<td>
+Very technical<sup>2</sup>
+</td>
+<td>
+Highly accessible
+</td>
+</tr>
+<tr class="even">
+<td>
+Online documentation
+</td>
+<td>
+Extensive
+</td>
+<td>
+Extensive
+</td>
+<td>
+Nascent
+</td>
+<td>
+Nascent
+</td>
+</tr>
+<tr class="odd">
+<td>
+Support from developers<sup>3</sup>
+</td>
+<td>
+Good
+</td>
+<td>
+Good
+</td>
+<td>
+Outstanding
+</td>
+<td>
+Good
+</td>
+</tr>
+<tr class="even">
+<td>
+Testing for accuracy
+</td>
+<td>
+Extensive
+</td>
+<td>
+Extensive for some types of models
+</td>
+<td>
+Nascent
+</td>
+<td>
+Nascent
+</td>
+</tr>
+<tr class="odd">
+<td>
+Adaptability - types of models you can fit
+</td>
+<td>
+Limited
+</td>
+<td>
+Your imagination is the limit
+</td>
+<td>
+Extensive
+</td>
+<td>
+Almost as much as JAGS
+</td>
+</tr>
+<tr class="even">
+<td>
+Best for
+</td>
+<td>
+Simple problems, quick implementation
+</td>
+<td>
+Customising complex models
+</td>
+<td>
+Spatio-temporal models
+</td>
+<td>
+Developing new types of models
+</td>
+</tr>
+<tr class="odd">
+<td>
+How you will look driving it
+</td>
+<td>
+Traditional, but elegant
+</td>
+<td>
+You like to take the scenic route
+</td>
+<td>
+Edgy and slightly mysterious
+</td>
+<td>
+Hanging with the cool kids
+</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>but see below for some add-on packages which make life easier for STAN and JAGS</li>
+<li>= lots of equations</li>
+<li>In my experience. But, heck these packages are all free and all give better user support than many paid services!</li>
+</ol>
+<p>The first is <a href="https://cran.r-project.org/web/packages/lme4/index.html"><code>lme4</code></a>, meaning linear mixed effects models with <code>S4</code> classes. <code>lme4</code> is like an older model sports-car - fast, respectable, well known and able to handle common types of questions. <code>lme4</code> uses maximum likelihood methods for estimation, so interpret its statistics as a <a href="https://stats.stackexchange.com/questions/22/bayesian-and-frequentist-reasoning-in-plain-english">frequentist</a>.</p>
+<p>The next three packages are Bayesian techniques.</p>
+<p>The second package is <a href="https://cran.r-project.org/web/packages/rjags/index.html"><code>rjags</code></a>, which is an interface to the <a href="http://mcmc-jags.sourceforge.net/">“Just Another Gibbs Sampler”</a> program. <code>rjags</code> is the Land-Rover of packages for mixed effects models: well tested, able to tackle just about any terrian, but slow and prone to breaking down (usually a user error, rather than the package itself).</p>
+<div class="image_caption_wide">
+<img src="cars-glmm.png" alt="" class="wide_image">
+<p>
+My take on reviewing R packages for Generalised Linear Mixed Effects. Clockwise from top left: The <code>lme4</code> package is fast but a bit older, like an early noughties Ferrari; the JAGS program goes anywhere like a Range Rover, but breaks often and is slow; the Stan language is modern and efficient like a hybrid BMW and INLA is fast and modern but requires technical expertise like a Tesla.
+</p>
+</div>
+<p>The third package is <a href="http://www.r-inla.org/"><code>INLA</code></a>, standing for “Integrated Nested Laplace Approximation”. <code>INLA</code> is like an electric sports car: it is a modern technique that is lightning fast, but there has been limited testing to date and you better understand what is under the hood before you attempt to drive it.</p>
+<p>The final package is <a href="https://cran.r-project.org/web/packages/rstan/index.html"><code>RStan</code></a>, which is the <code>R</code> interface to the <a href="http://mc-stan.org/">Stan modelling language</a>. <code>RStan</code> is like like BMW’s hybrid, combining computational speed with flexibility and with exceptional documentation and support.</p>
+<p>Now, let’s look at each packages computational speed, handling (ease of use), driver support (documentation, existing knowledge and forums) and flexibility.</p>
+<p>Skip to the end for a biblography of examples and some cool packages that build on these tools.</p>
+<section id="a-note-about-philosophy" class="level3">
+<h3 class="anchored" data-anchor-id="a-note-about-philosophy">A note about philosophy</h3>
+<p>The frequentist and Bayesian approaches I review here come from <a href="https://stats.stackexchange.com/questions/22/bayesian-and-frequentist-reasoning-in-plain-english">fundamentally different statistical philosophies</a>. Here I will tackle the approaches pragmatically, looking at estimation speed and so on, however you might exclude one or the other a-prior based on your bent towards Bayesian or frequentist thinking.</p>
+</section>
+<section id="speed" class="level3">
+<h3 class="anchored" data-anchor-id="speed">Speed</h3>
+<p>I simulated a simple hierarchical data-set to test each of the models. The script is available <a href="../../data/glmm-comparison-script.R">here</a>. The data-set has 100 binary measurements. There is one fixed covariate (continuous ) and one random effect with five groups. The linear predictor was transformed to binomial probabilities using the logit function. For the Bayesian approaches, slightly different priors were used for each package, depending on what was available. See the script for more details on priors.</p>
+<p>For each package I fit the same linear model with binomial errors and a logit link. To fit the models I used the functions <code>glmer()</code> from <code>lme4</code>, <code>inla()</code> from <code>INLA</code>, custom code for <code>rjags</code> and the <code>stan_glmer()</code> from the package <a href="https://cran.r-project.org/web/packages/rstanarm/index.html"><code>rstanarm</code></a> to fit the Stan model (you can also write your own custom code for <code>RStan</code>, but for convenience I used the canned version of mixed effects models).</p>
+<p><em>Computational speeds for fitting a binomial Generalised Linear Model to 100 samples with one random and one fixed effect. Relative times are relative to <code>lme4</code></em></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>
+Measurement
+</th>
+<th>
+<code>lme4</code>
+</th>
+<th>
+<code>rjags</code>
+</th>
+<th>
+<code>INLA</code>
+</th>
+<th>
+<code>RStan</code>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>
+<strong>Speed (Seconds)</strong>
+</td>
+<td>
+0.063
+</td>
+<td>
+6.2
+</td>
+<td>
+0.59
+</td>
+<td>
+3.8
+</td>
+</tr>
+<tr class="even">
+<td>
+<strong>Speed (relative)</strong>
+</td>
+<td>
+1
+</td>
+<td>
+99
+</td>
+<td>
+9.4
+</td>
+<td>
+60
+</td>
+</tr>
+</tbody>
+</table>
+<p>So <code>lme4</code> is by far the fastest, clocking in at around 6 tenths of a second (on my 3GHz Intel i7 Macbook Pro). <code>INLA</code> comes in second, ten times slower than <code>lme4</code>, then followed an order of magnitude later by <code>RStan</code> and finally <code>rjags</code> came plodding along behind about 100 times slower than <code>lme4</code>.</p>
+<p>If you run the code I have provided you will see that all packages come up with similar estimates for the model parameters.</p>
+</section>
+<section id="handling---ease-of-use" class="level3">
+<h3 class="anchored" data-anchor-id="handling---ease-of-use">Handling - ease of use</h3>
+<p><code>lme4</code> leads the pack when it comes to ease of use. If you have your data sorted, then you can go from zero to fitted model in one line of code. <code>INLA</code> is similar, however you should generally not rely on default priors but specify your own, which requires additional code and thinking.</p>
+<p>Use of <code>RStan</code> and <code>rjags</code> depends on how you use them. You can write your own model code, which can lead to quite lengthy scripts, but also gives you greater number of choices for how you design your model. However, there are also many packages that provide wrapper’s to <code>RStan</code> and <code>rjags</code> that will fit common types of models (like mixed effects models). These tend to be as simple as <code>INLA</code>’s functions, remembering that you should think carefully about <a href="https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations">prior choice</a>.</p>
+<p>If you are going to write your own models, you will need to get good at debugging, so there is an extra overhead there.</p>
+<p><strong>Model checking</strong> is another important consideration.</p>
+<p>For users familiar with GLMs, <code>lme4</code> probably provides the most familiar support for model checking. <code>INLA</code> can be more difficult to use, because it requires the user to hand-code many model checking routines. <code>INLA</code>, <code>rjags</code> and <code>RStan</code> also require the user to carefully check that the fitting algorithms have performed properly.</p>
+<p>Each of these packages use different types of algorithms, so the statistics you will use to check algorithm performance are different. See each package’s documentation for further advice.</p>
+</section>
+<section id="driver-support---documentation-and-support" class="level3">
+<h3 class="anchored" data-anchor-id="driver-support---documentation-and-support">Driver support - documentation and support</h3>
+<p><code>lme4</code> and <code>RStan</code> have the highest quality user-manuals. Both are well written and provide numerous examples that users will find helpful.</p>
+<p>The user manual for <code>rjags</code> and JAGS is somewhat brief, but the user can easily find many helpful examples on the web, and these packages are covered by numerous books. So if you are willing to broaden your search you should have no trouble finding help.</p>
+<p><code>RStan</code> and <code>INLA</code> are both relatively new, so fewer examples can be found on the web. While <code>RStan</code> has an excellent manual for both the mathsy and non-mathsy types, documentation of <code>INLA</code> can be difficult to follow for novice users, because much of it is equations.</p>
+<p><strong>Web support and chat groups</strong> are also an important aspect of model development. Help for all packages can be found on sites like <a href="http://stackoverflow.com/questions/tagged/lme4">Stackoverflow</a>, or you can post your own new questions there.</p>
+<p>Personally, I have found that support for <code>INLA</code>, <a href="https://groups.google.com/forum/#!forum/r-inla-discussion-group">through their forum</a>, is exceptional. On several occaisons I have posted questions for which I could not find documentation and have generally recieved a response from <code>INLA</code>’s developers before the end of the working day. This is amazing, because it is better than you would expect from many paid services.</p>
+<p>I have not participated in forums for the other packages, so I can’t add comments here.</p>
+<p>One final note on support is that <code>lme4</code> and JAGS are both pretty well studied approaches to modelling and there are numerous academic papers dealing with their biases and accuracy. <code>INLA</code> and <code>RStan</code> are relatively new on the scene, so for new and different types of problems you might want to run your own simulation study to check that your model is performing as expected.</p>
+</section>
+<section id="adaptability---ability-to-tackle-different-types-of-problems" class="level3">
+<h3 class="anchored" data-anchor-id="adaptability---ability-to-tackle-different-types-of-problems">Adaptability - ability to tackle different types of problems</h3>
+<p>Your imagination is the limit with <code>rjags</code> - take it on well driven routes, like a mixed effects model, or off-road on new adventures with Bayesian structural equation modelling - it can do it all.</p>
+<p><code>rjags</code> is followed closely by <code>RStan</code>. <code>RStan</code> has a few limitations, but can basically do anything JAGS can do, and often faster (e.g.&nbsp;<a href="http://onlinelibrary.wiley.com/doi/10.1111/2041-210X.12681/full">this ecological study</a>). <code>RStan</code> will probably eventually replace <code>rjags</code>, but to date <code>rjags</code> persists because of the extensive range of well documented examples users can build on.</p>
+<p><code>INLA</code> comes in fourth with a diverse range of built in likelihoods and model functions (you can even ask the developers to add more and they might do it!). <code>INLA</code> is becoming particularly popular for modelling spatial and temporal auto-correlation, partly due to its speed. You can do these types of models with <code>RStan</code> and <code>rjags</code> but computations might be impossibly slow.</p>
+<p><code>lme4</code> is the least flexible of packages - though there are some options to customise it’s models. The similar <code>nlme</code> package also provides a range of tools for fitting random effects for spatial and temporal autocorrelation.</p>
+<p>There are however, some clever tricks you can do with <code>lme4</code> to fit a broader range of models. For instance, you can include a random effect where every sample is a separate group in a Poisson GLM to get a Poisson with extra variation.</p>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>That’s all. I hope this blog helps you make a good choice before investing in learning a new tool for mixed effects models. <a href="https://twitter.com/bluecology?lang=en">Let me know</a> how you go and if you found this useful.</p>
+</section>
+<section id="cool-applications-of-mixed-effects-models-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="cool-applications-of-mixed-effects-models-in-r">Cool applications of mixed effects models in R</h3>
+<p><a href="https://cran.r-project.org/web/packages/rstanarm/vignettes/rstanarm.html">rstanarm</a> for mixed effects models coded like <code>glm()</code> but using Stan for estimation.</p>
+<p><a href="https://cran.r-project.org/web/packages/glmmBUGS/index.html">glmmBUGS</a> for mixed effects models coded like <code>glm()</code> but using JAGS for estimation.</p>
+<p><a href="https://www.jstatsoft.org/article/view/v075i07/v75i07.pdf">A new function in the mgcv package (links to pdf)</a> for auto-writing code for Bayesian Generalised Additive Models.</p>
+<p><a href="http://www.r-inla.org/barrier-model">A new study</a> showing how you can fit spatial models with barriers.</p>
+<p>Fit <a href="https://cran.r-project.org/web/packages/boral/index.html">Bayesian Latent Variable models</a> for analysing multivariate data (e.g.&nbsp;ecological communities).</p>
+<p><a href="http://glmm.wikidot.com/faq">The GLMM in R FAQ</a></p>
+</section>
+<section id="bibliography" class="level3">
+<h3 class="anchored" data-anchor-id="bibliography">Bibliography</h3>
+<p>Unless otherwise indicated, these resources are open access.</p>
+<p><a href="http://mc-stan.org/documentation/">Stan</a> user manual.</p>
+<p><a href="https://www.google.com.au/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwjn2ZSp9KPTAhVDTrwKHRueAbMQFggjMAA&amp;url=http%3A%2F%2Fwww.stats.ox.ac.uk%2F~nicholls%2FMScMCMC15%2Fjags_user_manual.pdf&amp;usg=AFQjCNH7r4e1fZFtwIh9qlUGLcuHXXXZdQ">JAGS</a> user manual.</p>
+<p><a href="https://cran.r-project.org/web/packages/lme4/vignettes/lmer.pdf">Introduction to lme4 (pdf)</a>.</p>
+<p><a href="http://www.r-inla.org/home">INLA</a> project page.</p>
+<p><a href="https://groups.google.com/forum/#!forum/r-inla-discussion-group">INLA</a> forum.</p>
+<p><a href="http://www.springer.com/gp/book/9780387874579">Mixed Effects Models and Extensions in Ecology with R</a> my go-to book for theory and code for fitting likelihood based mixed effects models (e.g. with <code>lme4</code>). You will have to buy it.</p>
+<p><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0075957">A good example for how to design a simulation study to test your models</a></p>
+<p><a href="http://onlinelibrary.wiley.com/doi/10.1111/j.2041-210X.2012.00211.x/full">Example for INLA for spatial models</a> in ecology.</p>
+<p><a href="https://academic.oup.com/icesjms/article/72/5/1245/758333/Mixed-effects-a-unifying-framework-for-statistical">A review of mixed effects models in fisheries science</a> (good for other disciplines too).</p>
+<p><a href="https://r-nimble.org/">NIMBLE</a> another R package for Bayesian modelling.</p>
+<p><a href="http://glmmadmb.r-forge.r-project.org/">glmmADMB</a> another R package giving greater flexibility for fitting using maximum likelihood.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.seascapemodels\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

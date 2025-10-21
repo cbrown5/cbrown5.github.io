@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2023-06-15">
+
+<title>Bayesian structural equation model tutorial – Seascapemodels</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Seascapemodels</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../bluecology_blog.html"> 
+<span class="menu-text"><i class="fa-regular fa-newspaper" aria-label="newspaper"></i> Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../people.html"> 
+<span class="menu-text"><i class="fa-regular fa-user" aria-label="user"></i> People</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../code.html"> 
+<span class="menu-text"><i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> R tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.com.au/citations?hl=en&amp;user=1qG6yFMAAAAJ&amp;view_op=list_works&amp;sortby=pubdate"> 
+<span class="menu-text"><i class="fa-brands fa-google-scholar" aria-label="google-scholar"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://discover.utas.edu.au/C.J.Brown"> 
+<span class="menu-text"><i class="fa-solid fa-building-columns" aria-label="building-columns"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cbrown5"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/bluecology.bsky.social"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/christopher-brown-32466785/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Bayesian structural equation model tutorial</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">rstats</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 15, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>Structural equation modelling (SEM) is a tool for exploring relationships among multiple variables. <code>lavaan</code> and <code>piecewiseSEM</code> are two of the most widely used and accessible packages for latent variable modelling in R. Both use frequentist methods.</p>
+<p>It is also possible to develop SEMs in a Bayesian framework. There are advantages to using the Bayesian framework. So here I provide a brief tutorial on creating a simple Bayesian SEM with the stan program.</p>
+<p>The <a href="https://ecmerkle.github.io/blavaan/">blavaan</a> package creates and fits SEMs in a Bayesian framework, but using similar syntax to lavaan. But it can help your understanding to code your own models and give you greater flexibility (though blavaan can do a lot!).</p>
+<p>The tutorial is based on our <a href="https://www.sciencedirect.com/science/article/pii/S0048969723002851">recent study</a> that sought to understand relationships among indicators of catchment and fishery condition. If you find the SEM methods described here useful, please cite the paper.</p>
+<p>Code for that study, including a more complicated SEM, is available <a href="https://github.com/cbrown5/ecological-condition-latent-model">on the study’s github repo</a>.</p>
+<p>I won’t cover much SEM theory or background on Bayesian modelling. For more info on those topics:</p>
+<ul>
+<li><p>A introduction to SEM theory, check out <a href="https://jslefche.github.io/sem_book/">Jon Lefcheck’s online book</a></p></li>
+<li><p><a href="https://mc-stan.org/users/documentation/tutorials">rstan documentation and tutorials</a></p></li>
+<li><p>Learn Bayesian stats with the The Statistical Rethinking <a href="https://xcelab.net/rm/statistical-rethinking/">book</a> and <a href="https://www.youtube.com/watch?v=cclUd_HoRlo">Youtube series</a></p></li>
+</ul>
+<section id="advantages-of-bayesian-sem" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-of-bayesian-sem">Advantages of Bayesian SEM</h2>
+<p>The key advantage is the flexibility Bayesian methods give you. We used Bayesian methods because we wanted to combine a state-space model and a SEM. The state-space model was a timeseries model of fish population change through time.</p>
+<p>The population model was linked to a latent (unobserved) variable that represented cathcment condition. Other observed indicators of catchment condition were pasture biomass and vegetation greenness.</p>
+<p>Other applications of Bayesian SEM could be to model non-gaussian data, incorporating spatial and temporal models into a SEM, or modelling missing data.</p>
+<p>Now we’ll step through a broad overview of how to get started with Bayesian SEM. We’ll use the data from my paper as an example.</p>
+<p><a href="https://github.com/cbrown5/ecological-condition-latent-model/blob/main/Data%20for%20Barramundi%20model.csv">Download the data</a></p>
+</section>
+<section id="define-your-dag-directed-acyclical-graph" class="level2">
+<h2 class="anchored" data-anchor-id="define-your-dag-directed-acyclical-graph">Define your DAG (directed acyclical graph)</h2>
+<p>SEMs need to be directed acyclical graphs. The DAG defines the proposed relationships among variables. It is the starting point for writing the math that describes the model.</p>
+<p>We’ll define a simple DAG that aligns to a factor analysis. We’ll model relationships between streamflow, fish (barramundi) catch per unit effort (CPUE) and vegetation greenness (NDVI) for a catchment in Northern Australia:</p>
+<pre><code>library(dagitty)
+library(ggdag)
+dag1 &lt;- dagify(CPUE ~ LV, 
+               NDVI ~ LV,
+               SF ~ LV)
+ggdag(dag1)</code></pre>
+<p><img src="2023-06-15-bayesian-sem-tute/unnamed-chunk-1-1.png" class="img-fluid"></p>
+<p>Our observed indicators are SF (streamflow), NDVI (veg greeness) and CPUE (catch per unit effort). LV is a latent variable that represents correlations among the observed variables.</p>
+<p>This system is strongly driven by rainfall and river flow, so we expect positive correlations among flow, fish and vegetation.</p>
+</section>
+<section id="define-the-stan-model" class="level2">
+<h2 class="anchored" data-anchor-id="define-the-stan-model">Define the stan model</h2>
+<p>Now we have a DAG, we need to write equations to represent the proposed relationships. We also need to specify the priors.</p>
+<p>Here I’m assuming normal distributions for each variable (logging for CPUE). Priors are weakly informative to encourage convergence.</p>
+<p>I won’t include the full stan model definition below, just the model component. <a href="https://github.com/cbrown5/ecological-condition-latent-model/blob/main/simple-model.stan">Click here to download the full model file you’ll need to run this</a>.</p>
+<p>Here’s the core of the model:</p>
+<pre><code>cfa_mod &lt;- "model{ 
+
+  //
+  //Ecological condition 
+  //
+  nu ~ std_normal(); 
+  //Note variance fixed to 1 by using standard normal here
+  
+  //Priors for indiator params 
+  a_NDVI ~ normal(0,10);
+  a_CPUE~ normal(0,10);
+  a_SF ~ normal(0,10);
+  
+  beta_NDVI ~ normal(0,1);
+  beta_CPUE ~ normal(0,1);
+  beta_SF ~ exponential(1.8);
+  //Note use of exponential() for streamflow to ensure positive
+  // only values. Helps convergence. 
+  
+  //Observation errors
+  sigma_CPUE ~  exponential(0.1);
+  sigma_NDVI ~  exponential(0.1);
+  sigma_SF ~  exponential(0.1);
+  
+  // Observations
+  lnCPUE ~ normal(lnCPUE_hat, sigma_CPUE);
+  NDVI ~ normal(NDVI_hat, sigma_NDVI);
+  SF ~ normal(SF_hat, sigma_SF);
+}"</code></pre>
+<p>Read in the full model file and compile it for stan:</p>
+<pre><code>library(rstan)
+
+mod &lt;- stan_model(file = "simple-model.stan", verbose = FALSE)</code></pre>
+<p>At this point there is usually a fair bit of debugging and fixing of typos until the model parses correctly.</p>
+</section>
+<section id="consider-identifiability" class="level2">
+<h2 class="anchored" data-anchor-id="consider-identifiability">Consider identifiability</h2>
+<p>Identifiability is a common issue in SEM. Roughly it means that some of the free parameters you are trying to estimate are interchangeable. Therefore, even with an infinite amount of data you would be unable to identify their values precisely (e.g.&nbsp;one could be high the other low or vice-versa).</p>
+<p>A basic example would be the model:</p>
+<p><code>y = a*x + b*x + c</code></p>
+<p>parameters <code>a</code> and <code>b</code> are interchangeable.</p>
+<p>Identifiability is a bit different in Bayesian models, because we have priors. For instance, in the model above, if we set a very strong priors on <code>a</code> and/or <code>b</code> (based on theory for instance) we may still be able to estimate their values precisely.</p>
+<p>In a complex SEM issues of identifiability can be much harder to distinguish than the example above, as we will see.</p>
+<p>Identifiability issues in a Bayesian will manifest as poor convergence of MCMC chains. You will see high Rhats. Digger deeper you may find some parameters have bimodal posterior distributions (e.g.&nbsp;if you do a histogram of all samples for a parameter). You will also find strong correlations in parameter estimates. For instance in the model above parameters <code>a</code> and <code>b</code> would be strongly correlated (near 1).</p>
+<p>You may be able to get convergence if you run your model for really long chains, however, it will be more efficient to try and fix the model. It will also mean your parameters are easier to interpret.</p>
+<p>If you have identifiability issues, parameters that have the property above are a good place to start to try to fix issues in your SEM formulation.</p>
+<p>In the stsan code above I’ve made two key decisions to facilitate convergence.</p>
+<p>First, I’ve fixed the latent standard deviation to 1 to ensure identifiability. You could also have the latent’s SD free, but then fix one of the regression slopes to 1.</p>
+<p>Second, I’ve set the prior for the streamflow beta (regression slope on the latent variable) to be an exponential. This ensures it has only positive values.</p>
+<p>For example, imagine that streamflow, NDVI and CPUE are all positively correlated with each other. Then their beta’s all need to be the same sign. However, they could equally well be all positive, or all negative. The meaning is the same, since the latent variable has not units.</p>
+<p>If we run the model where all betas are sampled from normal priors, then we would hit issues with parameter switching. We see strong bimodality in the posteriors for the betas, because they can equally well be all positive or all negative. This slows converngence significantly.</p>
+<p>So instead I’ve used an <code>exponential(1.8)</code> prior for the streamflow beta. This peg the sign to whatever streamflow is doing. So if streamflow is positive and the other covariates are positively associated with it, they will all have positive betas.</p>
+<p>I chose <code>1.8</code> so that my prior has similar 90th percentile as a normal distribution. e.g.&nbsp;compare <code>qnorm(0.9, 0,1)</code> to <code>qexp(0.9, 1.8)</code> both have 90th percentiles at about 1.28.</p>
+</section>
+<section id="do-some-data-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="do-some-data-cleaning">Do some data cleaning</h2>
+<p>Now let’s get the data and just clean it up a bit.</p>
+<pre><code>dat &lt;- read.csv("Data for Barramundi model.csv")</code></pre>
+<p>First calculate the log of the CPUE:</p>
+<pre><code>dat$lnCPUE &lt;- log(dat$Barramundicatch/dat$Effort)</code></pre>
+<p>Some variables are missing data. In our paper I modelled missing data, but here we will just use years with complete data for simplicity:</p>
+<pre><code>dat2 &lt;- subset(dat, Year %in% 1995:2015)</code></pre>
+<p>Now we will standardize and centre each variable, makes it easier to set priors and interpret the regression coefficients (AKA loadings). We’ll also define a list to use in the stan model</p>
+<pre><code>datstan &lt;- with(dat2, {
+  x = list(N = nrow(dat2),
+       SF = (Streamflow - mean(Streamflow))/sd(Streamflow), 
+       NDVI = (NDVI - mean(NDVI))/sd(NDVI), 
+       lnCPUE = (lnCPUE - mean(lnCPUE))/sd(lnCPUE)
+  )})</code></pre>
+</section>
+<section id="fit-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="fit-the-model">Fit the model</h2>
+<p>Now we are ready to fit the stan model:</p>
+<pre><code># options(mc.cores = 1) #parallel::detectCores())
+
+fitm1 &lt;- sampling(mod, data = datstan,
+               iter=8000, chains=3, thin = 10)</code></pre>
+</section>
+<section id="investigate-convergence" class="level2">
+<h2 class="anchored" data-anchor-id="investigate-convergence">Investigate convergence</h2>
+<p>For this task I recommend launching the shiny tool for exploring stan fits. Can be done like this:</p>
+<pre><code>shinystan::launch_shinystan(fitm1)</code></pre>
+<p>If convergence is poor (e.g.&nbsp;higher Rhat values or strong autocorrelation in the chains) a good place to start in a SEM is to check for parameter non-identifiability, as described above. This means some parameters are interchangeable (or nearly so).</p>
+<p>A handy way to explore for the above issues is to click the “Explore” tab in the shiny, then do bivariate plots of parameters against each other.</p>
+<p>The histograms for this model fit look like they’ve converged on a unimodal distribution:</p>
+<pre><code>samps &lt;- extract(fitm1)
+
+par(mfrow = c(1,3))
+hist(samps$beta_NDVI)
+hist(samps$beta_CPUE)
+hist(samps$beta_SF)</code></pre>
+<p><img src="2023-06-15-bayesian-sem-tute/unnamed-chunk-11-1.png" class="img-fluid"></p>
+</section>
+<section id="explore-model-results" class="level2">
+<h2 class="anchored" data-anchor-id="explore-model-results">Explore model results</h2>
+<p>For this model the regression slopes (AKA factor loadings) are of primary interest. They tell us how the different indicators are related to each other.</p>
+<p>Make a dataframe of the samples of interest:</p>
+<pre><code>fit_dat &lt;- with(samps, data.frame(beta_SF, beta_NDVI, beta_CPUE))</code></pre>
+<p>Now use tidyr to reshape for easy plotting:</p>
+<pre><code>library(tidyr)
+library(dplyr)
+fittidy &lt;- fit_dat %&gt;% 
+  mutate(sample = 1:nrow(fit_dat)) %&gt;%
+  pivot_longer(-sample, names_to = "Parameter", values_to = "value")</code></pre>
+<p>Now use ggplot to plot posterior distributions</p>
+<pre><code>library(ggplot2)
+theme_set(theme_classic())
+ggplot(fittidy) + 
+  aes(x = value, y = Parameter, fill = Parameter) + 
+  geom_vline(xintercept = 0) + 
+  geom_violin()</code></pre>
+<p><img src="2023-06-15-bayesian-sem-tute/unnamed-chunk-14-1.png" class="img-fluid"></p>
+<p>All have positive values, indicating all indicators are positively associated with each other.</p>
+</section>
+<section id="check-model-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="check-model-assumptions">Check model assumptions</h2>
+<p>We need to check assumptions like any regular model. This means checking distributions are appropriate to model the data, same as you would for any GLM.</p>
+<p>In a SEM we also have to think about d-separation. In short, this means checking for residual correlations between a our variables that aren’t explicitly part of the model.</p>
+<p><a href="https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/11-1899.1">There’s formal tests of d-separation for Bayesian models</a>, but <a href="https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/15-0833.1">many authors have just used visual checks of residual correlations</a>.</p>
+<p>There are many resources on d-separation, <a href="https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/08-1034.1">here’s one paper</a>. Books by Judea Pearl and Bill Shipley are also good ways to learn.</p>
+<p>Our data here also has the additional complexity of being time-series. Our model above assumes d-separation of a variable from itself through time, so this is also something we could check (by testing for autocorrelation in the residuals).</p>
+<p>I won’t show all these tests in this brief tute, but here’s a start on getting residuals. Just subtract the predictions from the observations, e.g.&nbsp;for NDVI:</p>
+<pre><code>med &lt;- apply(samps$NDVI_pred, 2, median)
+resids &lt;- datstan$NDVI - med</code></pre>
+<p>One way to check the normal distribution is appropriate for the NDVI data is to do a quantile-quantile plot of the residuals:</p>
+<pre><code>qqnorm(resids)
+qqline(resids)</code></pre>
+<p><img src="2023-06-15-bayesian-sem-tute/unnamed-chunk-16-1.png" class="img-fluid"></p>
+<p>We want to see the points fall close to straight on the line, which in general they do.</p>
+<p>We can also check for non-linearities by plotting observations vs predictions:</p>
+<pre><code>plot(med, datstan$NDVI)</code></pre>
+<p><img src="2023-06-15-bayesian-sem-tute/unnamed-chunk-17-1.png" class="img-fluid"></p>
+<p>Of course this is Bayesian analysis, so we could also create credible intervals for the residuals.</p>
+<p>If you do the above for CPUE you’ll see there is clearly strong autocorrelation. This is one reason I used a <a href="https://www.sciencedirect.com/science/article/pii/S0048969723002851">state-space model in the paper</a>.</p>
+</section>
+<section id="graph-model-results" class="level2">
+<h2 class="anchored" data-anchor-id="graph-model-results">Graph model results</h2>
+<p>Let’s make a plot of the result. First we’ll get median effect sizes (just the median of the chains for each parameter)</p>
+<pre><code>meds &lt;- round(apply(fit_dat, 2, median),2)</code></pre>
+<p>Now we can make the plot with labels on the arrows. Most of this code is just setting up the position of things:</p>
+<pre><code>dag1 &lt;- dagify(CPUE ~ LV, 
+               NDVI ~ LV,
+               SF ~ LV)
+coords &lt;- list(x = c(CPUE = -1, NDVI = 0, SF = 1, LV = 0),
+               y = c(CPUE = 1, NDVI = 1, SF = 1, LV = 0))
+coordinates(dag1) &lt;- coords
+ggdag(dag1) +
+  annotate("text", x = c(-0.6, 0.1, 0.6), y = c(0.5, 0.5, 0.5),
+           label = meds) +
+  lims(y = c(-0.5, 1.5))</code></pre>
+<p><img src="2023-06-15-bayesian-sem-tute/unnamed-chunk-19-1.png" class="img-fluid"> As its a Bayesian analysis we could also add CIs or probability that an effect is &gt;0. They could be calculated like this.</p>
+<p>e.g.&nbsp;upper 95th quantile:</p>
+<pre><code>round(apply(fit_dat, 2, quantile, 0.975),2)
+
+##   beta_SF beta_NDVI beta_CPUE 
+##      1.27      1.21      1.13</code></pre>
+<p>Or probability effect is greater than zero:</p>
+<pre><code>nsamps &lt;- nrow(fit_dat)
+round(apply(fit_dat, 2, function(x){sum(x&gt;0)/nsamps}),2)
+
+##   beta_SF beta_NDVI beta_CPUE 
+##      1.00      1.00      0.98</code></pre>
+</section>
+<section id="model-predictions" class="level2">
+<h2 class="anchored" data-anchor-id="model-predictions">Model predictions</h2>
+<p>Our model also predicts the mean for each variable. Let’s just look at CPUE. In this matrix rows are samples are columns are years. So we can summarize each column to get the prediction with intervals for that year.</p>
+<p>Here is the median with 90th credible intervals and data shown as points:</p>
+<pre><code>ndvi_pred &lt;- data.frame(year = dat2$Year, 
+                        ndvi_obs = datstan$NDVI, 
+                        med = apply(samps$NDVI_pred, 2, median),
+                        lwr = apply(samps$NDVI_pred, 2, quantile, 0.05),
+                        upr = apply(samps$NDVI_pred, 2, quantile, 0.95))
+
+ggplot(ndvi_pred) + 
+  aes(x = year, y = med) +
+  geom_line() + 
+  geom_ribbon(aes(ymin = lwr, ymax =upr), color = NA, 
+                 fill = "black", alpha = 0.5) +
+  geom_point(aes(y = ndvi_obs)) +
+  labs(x = "Year", y = "NDVI (normalized)")</code></pre>
+<p><img src="2023-06-15-bayesian-sem-tute/unnamed-chunk-22-1.png" class="img-fluid"></p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Bayesian modelling is a powerful framework for building SEMs. It gives you greater flexibility in developing models than the standard SEM R packages.</p>
+<p>You can use all types of non-gaussian distributions to model data, as well as build in other model types like non-linear or state-space models.</p>
+<p>The cost is an extra overhead to learn the theory of SEM and the methods for Bayesian modelling. But if you have a background in one or the other, and some programming ability, then it won’t be too hard.</p>
+<p>I learned Bayesian modelling well before I started on SEMs. When I came to SEM (through the lavaan package) I was overwhelmed and confused by jargon and interpretation of greek letters that have a special meaning to SEM specialists. I found it much easier to gain a high level understanding of SEM issues (like d-seperation) then work in the Bayesian framework to build models.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.seascapemodels\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

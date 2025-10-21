@@ -1,0 +1,2699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Seascapemodels</title>
+<link>https://www.seascapemodels.org/bluecology_blog.html#category=rstats</link>
+<atom:link href="https://www.seascapemodels.org/bluecology_blog-rstats.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.8.25</generator>
+<lastBuildDate>Mon, 20 Oct 2025 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>modelbased package for plotting interactions</title>
+  <link>https://www.seascapemodels.org/posts/2025-10-21-modelbased/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I’ve been a big fan of the <code>visreg</code> package for a while, it makes it convenient to plot predictions from models. But recently I was struggling with a model that had many two-way interactions terms.</p>
+<p>I checked out the key alternative to <code>visreg</code>, <code>ggeffects</code>, which is very popular (the paper has over 2000 citations). But the <code>ggeffects</code> page states it will be superseded by the <a href="(https://easystats.github.io/modelbased/)"><code>modelbased</code> package</a>. So here’s a quick demo of how to use <code>modelbased</code> to plot interaction effects from a GLM.</p>
+<p><code>modelbased</code> is part of an ecosystem of packages for handling statistical models: <a href="https://easystats.github.io/modelbased/reference/estimate_slopes.html#references"><code>easystats</code></a>.</p>
+<p>First I’m going to load data on coral cover and fish abundance from my <a href="https://github.com/cbrown5/example-ecological-data">Example ecological data</a> repo:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(easystats)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code># Attaching packages: easystats 0.7.5 (red = needs update)
+✔ bayestestR  0.17.0   ✔ correlation 0.8.8 
+✖ datawizard  1.2.0    ✔ effectsize  1.0.1 
+✔ insight     1.4.2    ✔ modelbased  0.13.0
+✖ performance 0.15.1   ✔ parameters  0.28.2
+✔ report      0.6.1    ✔ see         0.12.0
+
+Restart the R-Session and update packages with `easystats::easystats_update()`.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(readr)</span>
+<span id="cb7-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Load data from https://github.com/cbrown5/example-ecological-data</span></span>
+<span id="cb7-3"></span>
+<span id="cb7-4">dat_url <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://raw.githubusercontent.com/cbrown5/example-ecological-data/refs/heads/main/data/benthic-reefs-and-fish/fish-coral-cover-sites.csv"</span></span>
+<span id="cb7-5"></span>
+<span id="cb7-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#Convert counts of coral to proportions</span></span>
+<span id="cb7-7">dat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>(dat_url) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb7-8">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb7-9">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cb_cover =</span> cb_cover <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> n_pts, </span>
+<span id="cb7-10">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">soft_cover =</span> soft_cover <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> n_pts</span>
+<span id="cb7-11">    ) </span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 49 Columns: 13</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (2): flow, logged
+dbl (11): site, reef.id, pres.topa, pres.habili, secchi, coordx, coordy, cb_...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>Now we’ll fit a simple poisson GLM. <code>pres.topa</code> is count of topa fish, a fish that likes to live in branching corals (<code>cb_cover</code>), and <code>logged</code> is a binary variable indicating whether the site was near to logging or not (which causes pollution that harms fish and corals).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">m1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glm</span>(pres.topa <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> cb_cover <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>  logged,</span>
+<span id="cb10-2">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> dat,</span>
+<span id="cb10-3">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">family =</span> poisson)</span>
+<span id="cb10-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summary</span>(m1)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = pres.topa ~ cb_cover * logged, family = poisson, 
+    data = dat)
+
+Coefficients:
+                          Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)                 -3.839      1.124  -3.415 0.000639 ***
+cb_cover                     8.691      1.979   4.392 1.12e-05 ***
+loggedNot logged             5.313      1.136   4.675 2.93e-06 ***
+cb_cover:loggedNot logged   -7.830      2.017  -3.882 0.000104 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 426.61  on 48  degrees of freedom
+Residual deviance: 265.33  on 45  degrees of freedom
+AIC: 353.22
+
+Number of Fisher Scoring iterations: 6</code></pre>
+</div>
+</div>
+<p>It simple to then plot the interaction effects. I’m going to do so on <code>link</code> scale (log scale for poisson models):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">pr <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">estimate_means</span>(m1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cb_cover"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"logged"</span>),</span>
+<span id="cb12-2">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">estimate =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"typical"</span>,</span>
+<span id="cb12-3">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"link"</span>)</span>
+<span id="cb12-4"></span>
+<span id="cb12-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot</span>(pr) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb12-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb12-7">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hard coral cover"</span>,</span>
+<span id="cb12-8">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Predicted Topa abundance (log scale)"</span>,</span>
+<span id="cb12-9">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Soft coral cover"</span>, </span>
+<span id="cb12-10">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Soft coral cover"</span></span>
+<span id="cb12-11">    ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>  </span>
+<span id="cb12-12">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_classic</span>()</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2025-10-21-modelbased/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>One neat thing that <code>modelbased</code> does is give you different options for how to estimate marginal means. The default is “typical”, which estimates marginal means at the average value of numerical predictors and averages over frequencies of categorical predicotrs. But you can also do “average” which averages over sample distributions and “population” which attemps to create a counterfactual for all possible combinations of variables.</p>
+<p>These answer different questions, see the <a href="https://easystats.github.io/modelbased/reference/estimate_means.html">documentation for more details</a>.</p>
+<p>I’m going to make a dataframe of all three methods so we can compare them:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">pr_typical <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">estimate_means</span>(m1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cb_cover"</span>,</span>
+<span id="cb13-2">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">estimate =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"typical"</span>,</span>
+<span id="cb13-3">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"link"</span>)</span>
+<span id="cb13-4"></span>
+<span id="cb13-5">pr_average <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">estimate_means</span>(m1, </span>
+<span id="cb13-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cb_cover =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(dat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>cb_cover)),</span>
+<span id="cb13-7">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">estimate =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"average"</span>,</span>
+<span id="cb13-8">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"link"</span>)</span>
+<span id="cb13-9"></span>
+<span id="cb13-10">pr_population <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">estimate_means</span>(m1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cb_cover"</span>),</span>
+<span id="cb13-11">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">estimate =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"population"</span>,</span>
+<span id="cb13-12">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"link"</span>)</span>
+<span id="cb13-13"></span>
+<span id="cb13-14">pr_all <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bind_rows</span>(</span>
+<span id="cb13-15">    pr <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"typical by logging"</span>),</span>
+<span id="cb13-16">    pr_typical <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"typical"</span>),</span>
+<span id="cb13-17">    pr_average <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"average"</span>),</span>
+<span id="cb13-18">    pr_population <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"population"</span>)</span>
+<span id="cb13-19">)</span></code></pre></div></div>
+</div>
+<p>Now we plot them:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(pr_all, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> cb_cover, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Mean, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> logged)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb14-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb14-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_linerange</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymin =</span> CI_low, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymax =</span> CI_high)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb14-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>method) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb14-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb14-6">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hard coral cover"</span>,</span>
+<span id="cb14-7">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Predicted Topa abundance (log scale)"</span>,</span>
+<span id="cb14-8">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Logged"</span></span>
+<span id="cb14-9">    ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>  </span>
+<span id="cb14-10">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_classic</span>()</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2025-10-21-modelbased/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And one more plot just of population and typical to more easily see the diffence:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">pd <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">position_dodge</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span>)</span>
+<span id="cb15-2">pr_all <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb15-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(method <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"population"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"typical"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb15-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(., <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> cb_cover, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Mean, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> method)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb15-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">position =</span> pd) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb15-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_linerange</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymin =</span> CI_low, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymax =</span> CI_high), </span>
+<span id="cb15-7">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">position =</span> pd) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb15-8">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb15-9">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hard coral cover"</span>,</span>
+<span id="cb15-10">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Predicted Topa abundance (log scale)"</span>,</span>
+<span id="cb15-11">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Logged"</span></span>
+<span id="cb15-12">    ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>  </span>
+<span id="cb15-13">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_classic</span>()</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2025-10-21-modelbased/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can see see some key differences. The typical method shows effects of hard coral cover for a typical observation. There are slightly more unlogged than logged sites in the data:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">table</span>(dat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>logged)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Logged Not logged 
+        21         28 </code></pre>
+</div>
+</div>
+<p>So the typical sample is different from a balanced population level average.</p>
+<p>The population and typical predictions fall in between the predictions that are conditional on logging status, because both are kinds of averages over the two logging categories.</p>
+<p>Predictions from the ‘average’ method show an inconsistent pattern, because they are averaging over samples. You can roughly see the trends for logged and unlogged sites.</p>
+<p>Finally, let’s convince ourselves that the unbalanced data is causing these differences. I’m going to randomly remove some unlogged sites to create a balanced dataset, and refit the model:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#randomly remove 7 'Not logged' sites to create balance</span></span>
+<span id="cb18-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">707</span>)</span>
+<span id="cb18-3">irm <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sample</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">which</span>(dat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>logged <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Not logged"</span>), <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>)</span>
+<span id="cb18-4">dat2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> dat[<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>irm, ]</span>
+<span id="cb18-5"></span>
+<span id="cb18-6">m2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glm</span>(pres.topa <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> cb_cover <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>  logged,</span>
+<span id="cb18-7">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> dat2,</span>
+<span id="cb18-8">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">family =</span> poisson)</span>
+<span id="cb18-9"></span>
+<span id="cb18-10">pr_typical2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">estimate_means</span>(m2, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cb_cover"</span>,</span>
+<span id="cb18-11">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">estimate =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"typical"</span>,</span>
+<span id="cb18-12">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"link"</span>)</span>
+<span id="cb18-13"></span>
+<span id="cb18-14">pr_population2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">estimate_means</span>(m2, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cb_cover"</span>),</span>
+<span id="cb18-15">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">estimate =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"population"</span>,</span>
+<span id="cb18-16">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"link"</span>)</span>
+<span id="cb18-17"></span>
+<span id="cb18-18">pr_all2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bind_rows</span>(</span>
+<span id="cb18-19">    pr_typical2 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"typical"</span>),</span>
+<span id="cb18-20">    pr_population2 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"population"</span>)</span>
+<span id="cb18-21">)</span>
+<span id="cb18-22"></span>
+<span id="cb18-23">pd <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">position_dodge</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.02</span>)</span>
+<span id="cb18-24"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(pr_all2, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> cb_cover, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Mean, </span>
+<span id="cb18-25">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> method)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb18-26">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">position =</span> pd) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb18-27">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_linerange</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymin =</span> CI_low, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymax =</span> CI_high),</span>
+<span id="cb18-28">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">position =</span> pd) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb18-29">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb18-30">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hard coral cover"</span>,</span>
+<span id="cb18-31">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Predicted Topa abundance (log scale)"</span>,</span>
+<span id="cb18-32">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Logged"</span></span>
+<span id="cb18-33">    ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>  </span>
+<span id="cb18-34">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_classic</span>()</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2025-10-21-modelbased/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can see the two types of predictions are identical with balanced data.</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2025-10-21-modelbased/</guid>
+  <pubDate>Mon, 20 Oct 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Resource for using Large Language Model tools in R</title>
+  <link>https://www.seascapemodels.org/posts/2025-10-06-llm-tools-for-r-book/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>If you’re interested in using Large Language Models (LLMs) with R, you should check out Luis D. Verde Arregoitia’s new online resource: <a href="https://luisdva.github.io/llmsr-book/index.html">Large Language Model tools for R</a>. Its available in English and Spanish.</p>
+<p>The resouce provides a comprehensive guide to working with LLMs in R, covering packages, techniques, and practical applications.</p>
+<p>This is a great complement to my <a href="https://www.seascapemodels.org/AI-assistants-for-scientific-coding/">workshop and book</a> that guides you through some of the options and prompt engineering for high quality R analyses.</p>
+<p>If you’re looking to integrate AI capabilities into your R workflows, this book is definitely worth exploring.</p>
+<p>Check it out: <a href="https://luisdva.github.io/llmsr-book/index.html">https://luisdva.github.io/llmsr-book/index.html</a></p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-10-06-llm-tools-for-r-book/</guid>
+  <pubDate>Sun, 05 Oct 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>New online book AI Assistants for Scientific Coding</title>
+  <link>https://www.seascapemodels.org/posts/2025-10-05-AI-assistants-for-scientific-coding/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I’ve released a new online book, <a href="https://www.seascapemodels.org/AI-assistants-for-scientific-coding/">AI Assistants for Scientific Coding</a>. It’s a practical guide to using language models to support scientific computing and analysis.</p>
+<p>The book focuses on helping people who already use R or Python for data analysis. It’s not an introduction to programming; instead, it shows how to work with AI tools effectively and responsibly once you know the basics.</p>
+<p>What you’ll find inside:</p>
+<ul>
+<li>Choosing and using AI coding assistants, from simple chat tools to agents that can run and test code</li>
+<li>Prompting strategies that improve reliability for real analysis tasks</li>
+<li>Examples from environmental science (GLMs, multivariate stats), with methods general to other fields</li>
+<li>Notes on ethics, copyright, costs, and environmental impacts</li>
+</ul>
+<p>Read it here: https://www.seascapemodels.org/AI-assistants-for-scientific-coding/</p>
+<p>The material also serves as reference notes for a one‑day workshop and will evolve as the field changes. If you’re interested in the prompting side of statistical workflows, there’s an accompanying preprint: https://doi.org/10.32942/X2CS80</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-10-05-AI-assistants-for-scientific-coding/</guid>
+  <pubDate>Sat, 04 Oct 2025 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Automating the Github Copilot Agent from the command line with Copilot CLI</title>
+  <link>https://www.seascapemodels.org/posts/2025-10-04-running-github-copilot-CLI-agents-from-R/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><a href="https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli">Github Copilot CLI (Command Line Interface)</a> recently became available. It is an AI agent, meaning it can use tools autonomously in a loop. It has two modes:</p>
+<ol type="1">
+<li><p>An interactive mode that is like a terminal version of the Copilot agent that runs in the chat window</p></li>
+<li><p>A programmatic mode that can be run with shell scripts.</p></li>
+</ol>
+<p>The Copilot CLI is available with paid versions of github copilot.</p>
+<p>The programmatic mode interested me, because it allows you to write scripts that call github copilot agents. This means you could run replicate agents on the same problem, then gather there results for analysis.</p>
+<p>I, of course, want to do everything from the R program, because I’m not great with unix code or Python. <a href="https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli">Once you’ve setup the copilot CLI</a>, its very easy to run it from R:</p>
+<pre><code>
+copilot_cmd &lt;- "copilot -p 'Set-up this project directory with a readme.md file, and directories for outputs, scripts, plots.' --allow-all-tools"
+
+system(copilot_cmd)
+</code></pre>
+<p>This will run the agent autonomously in the current working directory of your R session.</p>
+<p>Now I wouldn’t recommend using <code>--allow-all-tools</code> like this however. <a href="https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli#security-considerations">There are important security considerations</a>. Like prompt injection attacks where an Agent goes on the web and gets tricked into doing something bad to your computer when it reads some malicious content. Likewise, agents can just stuff up and just delete or overwrite a bunch of files you wanted to keep.</p>
+<p>You do need to allow some tools however, otherwise you might as well run the agent in interactive mode (because you’ll have to manually approve every tool use). This defeats the time-saving goal of running agents in a loop.</p>
+<p>Here’s my current set-up:</p>
+<p><code>copilot -p 'A prompt here' --allow-all-tools --deny-tool 'shell(cd)' --deny-tool 'shell(git)' --deny-tool 'shell(pwd)' --deny-tool 'fetch' --deny-tool 'extensions' --deny-tool 'websearch' --deny-tool 'githubRepo'"</code></p>
+<p>I allow all tools, then prevent tools related to changing working directory, accessing the web or viewing directory context.</p>
+<p>There is still some risk here. e.g., if you want it to run Rscripts you might want to include in your prompt something like ‘Use <code>Rscript my-script.R</code> to run R scripts from the terminal.’ The R scripts could include anything (including connecting to the web).</p>
+<p>Here’s an example in action. I use sprintf to format the terminal command with the prompt, tools and sub-directory path.</p>
+<pre><code>copilot_prompt &lt;- "Set-up this project directory with a readme.md file, and directories for outputs, scripts, plots. Then create example data to illustrate a poisson GLM. Make prediction plots. Use `Rscript 'my-script.R'` to run R files. "
+
+copilot_tools &lt;- "--allow-all-tools --deny-tool 'shell(cd)' --deny-tool 'shell(git)' --deny-tool 'shell(pwd)' --deny-tool 'fetch' --deny-tool 'extensions' --deny-tool 'websearch' --deny-tool 'githubRepo'"
+
+subdir_path &lt;- "dir1"
+
+ copilot_cmd &lt;- sprintf(
+    "cd '%s' &amp;&amp; copilot -p '%s' %s",
+    subdir_path,
+    copilot_prompt,
+    copilot_tools
+  )
+
+system(copilot_cmd)
+</code></pre>
+<p>From here it would be easy to create a loop over different subdirectory paths, and run a separate agent in each one. The advantage of <code>cd</code>ing into each path before the agent opens is that the agent can’t then see context from other sub-directories. So you get independent agent runs.</p>
+<p>You could use this to see how different prompts perform, or do complex prompt strategies like ‘tree of thought’. In tree of thought you ask an agent to create the same thing many times, it will do it slightly differently each time. Then you aggregate the results and pick the most common or most accurate one.</p>
+<p>My one gripe is that Github have provided us with woeful documentation of what the tool names are. I’m guessing the tools are what you can see if you open the chat window, click ‘Agent’ mode, then click the tool symbol.</p>
+<p>I’d love to have some default tool sets that simplify the tool permissions. For instance a tool set that locks down all web access.</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-10-04-running-github-copilot-CLI-agents-from-R/</guid>
+  <pubDate>Fri, 03 Oct 2025 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Generative AI and R workshops in Hobart Australia</title>
+  <link>https://www.seascapemodels.org/posts/2025-09-18-ai-r-workshops/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>In person Hobart Australia 11th and 12th November 2025</p>
+<p><a href="https://www.seascapemodels.org/CMS-R-workshop/">Course page and further details</a></p>
+<section id="registration" class="level2">
+<h2 class="anchored" data-anchor-id="registration"><a href="https://payments.utas.edu.au/Register/booking?UDS_ACTION=S1I&amp;UDS_ACTION_DATA=bFAgA0dNWAFOKFdyNEJDBShXQg1KKE0bKUcyXAE1VDR7NVtc">Registration</a></h2>
+<p>The R program is a powerful tool for data analysis, but has a steep learning curve. Join us for a 2-day workshop that will accelerate your R skills. Our modern approach to teaching leverages AI to help you create analyses with natural language, and code with fewer errors, but higher accuracy.</p>
+<p>Presenter: A/Prof Chris J Brown c.j.brown@utas.edu.au Guest presenter: Professor Anthony Richardson, The University of Queensland and CSIRO Environment</p>
+<p>Cost per day: $200 students, $300 professionals. Waiver available for indigenous scholars. Register for 1 or 2 days.</p>
+</section>
+<section id="day-1-11th-nov-quality-data-analysis-with-ai-coding-assistants" class="level2">
+<h2 class="anchored" data-anchor-id="day-1-11th-nov-quality-data-analysis-with-ai-coding-assistants">Day 1 (11th Nov): Quality data analysis with AI coding assistants</h2>
+<p>Suitable for R or Python users**. We’ll show you how to use large language models (like chatGPT) directly in your R or Python coding environment. You can accelerate your coding and get personalised help on your research. But there are risks, AI makes mistakes. We’ve developed guidelines to help you get the most out of AI for coding. We’ll also discuss the ethical implications of using AI to assist with research and whether ‘vibe coding’ is appropriate for scientists. This workshop is suitable for people with limited coding experience (e.g.&nbsp;can read data into Rstudio and make plots) as well as experts who want to know more about AI assistants.</p>
+</section>
+<section id="day-2-12th-nov-generalized-linear-models-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="day-2-12th-nov-generalized-linear-models-in-r">Day 2 (12th Nov): Generalized linear models (in R**)</h2>
+<p>GLMs are a powerful tool for statistical analysis and prediction. We’ll teach the basics of the linear model and how it can be extended to all sorts of data in the generalized linear model. We’ll cover model verification, estimating effect size and significance and making predictions. The beauty of GLMs is that you only need some basic principles and you are ready to tackle many types of data, not like the old days when you had to know a different test for each new type of data.</p>
+<ul>
+<li>There may be additional subscription costs for AI software of up to USD20. Students can get free licenses. I will email instructions for getting software licenses prior to the workshops.</li>
+</ul>
+<p>**Note these workshops are not suitable for coding beginners. If you’ve never used R or Python before we suggest you take an introductory workshop. IMAS runs one, feel free to contact us for more info on that. As a rule of thumb, if you have Rstudio, know how to read data into R and make some plots you are ready for these workshops.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-09-18-ai-r-workshops/</guid>
+  <pubDate>Wed, 17 Sep 2025 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Paper in a prompt creating a first draft in one prompt</title>
+  <link>https://www.seascapemodels.org/posts/2025-09-12-creating-a-first-draft-in-one-prompt/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>*It was a rather long prompt</p>
+<p>I wanted to see if I could get an AI agent to complete a first draft of a paper, including data analysis, searching for references on the web and writing a complete draft.</p>
+<p>I used the Roo Code agent software with the Claude Sonnet 4.0 large language model.</p>
+<p><a href="https://www.seascapemodels.org/data/ai-generated-manuscript">I’ve shared the results from replicate 1 here</a>.</p>
+<p>I’ve also pasted the abstracts from the two replicates below. Both used identical prompts and settings in Roo Code. Its interesting how they are different. For instance the first one frames the study in terms of estimating the scale of human impacts. The second frames the study as being about studying an under-studied mechanism.</p>
+<p>The experiment started with a project folder with data and detailed instructions for the research question, the data and the analyses I wanted. The instructions included details of R packages and specific statistics, for instance I told the model to use Bray-Curtis distances for the multivariate analysis.</p>
+<p>I also provided basic instructions for how to write the paper. The agent had web search capabilities, allowing it to access , and read real references, and then incorporate insights from those into the paper.</p>
+<p>It is important to note that this draft has not been edited by a human. Parts of it are not scientifically accurate. It should not be read as anything other than an experiment. It contains errors and some of the references are false.</p>
+<p>For instance, it made up the following reference, but oddly linked it to a real reference (that is different) using a real DOI:</p>
+<p>Hamilton, Richard J et al.&nbsp;2025. “Modeling Sediment Impacts on Juvenile Reef Fish.” Frontiers in Marine Science. https://doi.org/10.3389/fmars.2025.1513498.</p>
+<p>It didn’t make much of an effort to create good instructions for writing a paper. I’m sure you could do a lot better than this with more careful prompting.</p>
+<p>AI generated papers should never replace human oversight. If you rely solely on AI, you miss the chance to truly understand your subject. Science is about learning, not just producing content.</p>
+<p>What this sort of thing could be useful for is as a way to iterate and quickly explore alternative options for how to write a paper, or explore alternative interpretations.</p>
+<p>It can also help you get over ‘the fear of the white page’ (writers block), by giving you something to start editing.</p>
+<section id="abstract-from-replicate-1" class="level2">
+<h2 class="anchored" data-anchor-id="abstract-from-replicate-1">Abstract from replicate 1</h2>
+<p>Terrestrial logging threatens coral reef ecosystems through increased sedimentation, yet the spatial patterns of impact remain poorly understood. We examined benthic community composition at 49 coral reef sites across a gradient of logging impacts in Kia Province, Solomon Islands, spanning distances from 0.20 to 22.4 km from logging operations. Using multidimensional scaling ordination and permutational multivariate analysis of variance, we tested for differences in community structure between logged and not logged sites and across distance categories. Benthic communities differed significantly between logged and not logged sites (PERMANOVA p = 0.027), with logged sites showing 14.2% lower coral cover (48.0% vs 62.2%). Distance-dependent effects were highly significant (p = 0.002), explaining 11.9% of community variance. Sites within 1 km of logging showed severely degraded conditions (31.2% coral cover, 33.3% sand cover), while sites beyond 10 km maintained high coral cover (62.9%). Recovery followed a clear gradient: moderate distance sites (1-3 km) had 55.3% coral cover, far sites (3-10 km) had 60.4% coral cover. Categorical distance analysis proved more informative than continuous distance relationships, indicating threshold effects rather than linear gradients. These findings demonstrate that logging impacts extend further than previously documented, with measurable effects at sites 1-3 km from operations. Our results provide quantitative evidence for establishing buffer zones around coral reefs and highlight the need for watershed-scale conservation planning that integrates terrestrial forest management with marine protected area design.</p>
+</section>
+<section id="abstract-from-replicate-2" class="level2">
+<h2 class="anchored" data-anchor-id="abstract-from-replicate-2">Abstract from replicate 2</h2>
+<p>Coral reef ecosystems face increasing threats from terrestrial activities, with logging-induced sedimentation representing a significant but understudied impact mechanism. This study examined benthic community structure across 49 coral reef sites in the Solomon Islands using multidimensional scaling (MDS) ordination to test the hypothesis that logging activities influence reef community composition through sedimentation. We applied non-metric multidimensional scaling to benthic cover data using both Euclidean and Bray-Curtis distance metrics, with environmental vector fitting to identify ecological gradients. The analysis revealed strong community gradients primarily associated with coral branching cover (r² = 0.82) and soft coral cover (r² = 0.62), while water clarity showed moderate correlation (r² = 0.24) with community structure. Contrary to expectations, distance to logging showed weak correlation with community patterns (r² = 0.056, p = 0.101), suggesting that logging impacts operate through pathways not captured by simple proximity measures. The results demonstrate MDS ordination effectiveness for revealing coral community structure patterns while highlighting the complexity of logging-reef relationships in tropical marine systems.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-09-12-creating-a-first-draft-in-one-prompt/</guid>
+  <pubDate>Thu, 11 Sep 2025 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Create reports and tutorials with generative AI from R</title>
+  <link>https://www.seascapemodels.org/posts/2025-09-02-AI-reports-with-openrouter-and-r/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Several AI model providers have integrated web search capabilities into their large language models. I was attempting to use these features via the R <code>ellmer</code> package. However, changes to LLMs are so frequent that <code>ellmer</code> isn’t keeping up.</p>
+<p>I did get <code>ellmer</code> to run Perplexity’s Sonar web search model, however it didn’t provide me with the references, which are essential.</p>
+<p>If you haven’t seen these AI generated reports, check out the example at the end. Its a useful way to get a quick literature summary or create bespoke R tutorials.</p>
+<p>Here <a href="https://github.com/cbrown5/web-search-ai/blob/main/README.md">I’m just announcing a couple of simple R scripts that you can use to do web search powered AI reports with the Openrouter service.</a></p>
+<p>I just created two functions (with the help of copilot of course), one that makes a call to the Openrouter API to send a question to a model. The second function processes the output (which is in JSON format) to make a nice qmd, with the references hyper-linked (be sure to check the url before clicking them, who knows what the AI will turn up!). From there you can render the qmd to get a pdf/word/html report.</p>
+<p>The functions are easy to use. First <a href="https://github.com/cbrown5/web-search-ai/blob/main/perplexity-search-functions.R">download or copy these functions from my github</a>.</p>
+<p>Note never trust any code from someone else that sends requests to LLMs! It could potentially include harmful prompts. I recommend reading all code that is sending prompts to LLMs just to be sure you know what it does.</p>
+<section id="using-the-code-to-do-a-search-and-create-a-report" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-code-to-do-a-search-and-create-a-report">Using the code to do a search and create a report</h2>
+<p>Once you have my two functions, you will need to <a href="https://www.seascapemodels.org/AI-assistants-for-scientific-coding/03-set-up.html#sec-apikeys">set-up your Openrouter API key</a> and save the key somewhere (e.g.&nbsp;you can use <code>usethis::edit_r_environ()</code> and save it in there like OPENROUTER_API_KEY=“MY-KEY-HERE”)</p>
+<p>Here’s an example of using the function:</p>
+<pre><code>library(httr)
+library(jsonlite)
+
+source("perplexity-search-functions.R")
+
+openrouter_api_key &lt;- Sys.getenv("OPENROUTER_API_KEY")
+
+user_message &lt;- "I want to learn how to use the NIMBLE package to fit autoregressive time-series models"
+
+system_message &lt;- "You are a helpful AI agent who creates statistical analysis tutorials in R. 
+        Rules: 
+        1. Include text and examples of code in your responses. 
+        2. Produce reports that are less than 10000 words."
+
+#Send response to openrouter 
+response &lt;- call_openrouter_api(
+  openrouter_api_key,
+  model = "perplexity/sonar-deep-research",
+  system_message = system_message,
+  user_message,
+  search_context_size = "medium"
+  #Options "low"  "medium", "high"
+)
+
+#Save the response as a qmd
+save_response_as_qmd(response, "results/AR-models-in-NIMBLE.qmd")</code></pre>
+</section>
+<section id="inputs-for-the-llm" class="level2">
+<h2 class="anchored" data-anchor-id="inputs-for-the-llm">Inputs for the LLM</h2>
+<p>The user message is your prompt for searching. The system message sets the scope of how the report is created. Note that anything for the web search goes in the user message, not the system message <a href="https://docs.perplexity.ai/guides/prompt-guide">see the Perplexity guidelines for more info on prompting advice, its different than for regular LLMs</a>.</p>
+<p>For example, another idea for a system prompt could be:</p>
+<pre><code>system_message &lt;- "You are a helpful AI agent who creates summary reports of the scientific literature. 
+        Rules: 
+        1. Produce reports that are less than 2000 words.
+        2. Include a Summary section that summarizes key research trends. "
+
+user_message &lt;- "What are the impacts of climate warming on fish physiology documented in the peer-reviewed academic literature"
+</code></pre>
+<p><code>search_context_size</code> is meant to control how much effort it puts in, its hard to tell if that impacts results or not, see <a href="https://openrouter.ai/docs/features/web-search">openrouter’s docs for more information.</a>.</p>
+</section>
+<section id="model-choices" class="level2">
+<h2 class="anchored" data-anchor-id="model-choices">Model choices</h2>
+<p>Other models to try are:</p>
+<ul>
+<li><p><code>perplexity/sonar</code> for a simpler, cheaper searches, including citations.</p></li>
+<li><p><code>perplexity/sonar-deep-research</code> For deeper, more expensive searches with citations and reasoning.</p></li>
+<li><p><code>openai/o4-mini</code> Is another option, but doesn’t return citations.</p></li>
+</ul>
+<p>Explore the openrouter site for other web search enabled LLMs.</p>
+</section>
+<section id="customization" class="level2">
+<h2 class="anchored" data-anchor-id="customization">Customization</h2>
+<p>The <code>call_openrouter_api.R</code> function is a template for customizing, not a comprehensive framework for using the openrouter API. Its actually very easy to connect to LLMs from R (even though most examples online are in python or typscript). Here’s a basic template:</p>
+<pre><code>library(httr)
+library(jsonlite)
+response &lt;- POST(
+    url = "https://openrouter.ai/api/v1/chat/completions",
+    add_headers(
+      "Content-Type" = "application/json",
+      "Authorization" = paste("Bearer", openrouter_api_key)
+    ),
+    body = toJSON(list(
+      model = model,
+      messages = list(
+        list(
+          role = "system",
+          content = system_message
+        ),  
+        list(
+          role = "user",
+          content = user_message
+        )
+      )
+    ), auto_unbox = TRUE),
+    encode = "raw"
+  )
+</code></pre>
+<p>The trick then is formatting the output, which is what my other function does (focussing on perplexities models).</p>
+</section>
+<section id="report-example" class="level2">
+<h2 class="anchored" data-anchor-id="report-example">Report example</h2>
+<p>Below is an example, I asked used the system prompt above and asked about fitting surplus production models (for fisheries science) with the NIMBLE package. Note one minor bug with my function converting qmd references to hyperlinks, it potential does R sub-scripts as well. Something to work on later. Here’s the AI report:</p>
+<p>You can fit a <strong>surplus production model (SPM)</strong> with the NIMBLE package in R by writing the model in BUGS language, which NIMBLE extends, specifying your likelihood (e.g., production dynamics with catch data) and priors for the parameters, and then using NIMBLE’s MCMC capabilities to estimate the posterior distributions of parameters. Here is a stepwise approach with example code snippets:</p>
+<ol type="1">
+<li><strong>Specify the surplus production model in BUGS code</strong>:<br>
+This typically models biomass ( B_t ) evolving over time according to a logistic growth or Gompertz model minus catches ( C_t ). For example, the Schaefer model can be expressed as:<br>
+[ B_{t+1} = B_t + r B_t (1 - ) - C_t + _t ]<br>
+where (r) is intrinsic growth rate, (K) is carrying capacity, and (_t) models process noise.</li>
+</ol>
+<pre><code>library(nimble)
+
+# Define the model in BUGS syntax
+spm_code &lt;- nimbleCode({
+  # Priors for parameters
+  r ~ dunif(0, 2)           # growth rate
+  K ~ dunif(maxCatch, 10 * maxCatch)  # carrying capacity (expand as appropriate)
+  sigma ~ dunif(0, 5)       # process noise SD
+
+  B&lt;a href="https://oliviergimenez.github.io/banana-book/intronimble.html" target="_blank"&gt;[1]&lt;/a&gt; ~ dunif(0, K)       # initial biomass
+  
+  for(t in 1:(nYears - 1)) {
+    mu[t] &lt;- B[t] + r * B[t] * (1 - B[t]/K) - catch[t]
+    B[t + 1] ~ dnorm(mu[t], sd = sigma)
+  }
+})</code></pre>
+<ol start="2" type="1">
+<li><strong>Prepare the data and constants</strong> (e.g., catch time series, number of years):</li>
+</ol>
+<pre><code>data &lt;- list(catch = catch_vector)  # your observed catches
+constants &lt;- list(nYears = length(catch_vector), maxCatch = max(catch_vector))
+inits &lt;- list(r = 0.5, K = max(catch_vector)*5, sigma = 0.1, B = rep(NA, length(catch_vector)))</code></pre>
+<ol start="3" type="1">
+<li><strong>Build, compile, and run the model with NIMBLE</strong>:</li>
+</ol>
+<pre><code># Create model object
+spm_model &lt;- nimbleModel(spm_code, data = data, inits = inits, constants = constants)
+
+# Compile model
+c_spm_model &lt;- compileNimble(spm_model)
+
+# Configure MCMC; default samplers are usually fine
+mcmc_conf &lt;- configureMCMC(spm_model)
+mcmc &lt;- buildMCMC(mcmc_conf)
+c_mcmc &lt;- compileNimble(mcmc, project = spm_model)
+
+# Run MCMC sampling
+samples &lt;- runMCMC(c_mcmc, niter = 10000, nburnin = 2000, thin = 5)
+
+# Check results
+summary(samples)</code></pre>
+<p>This workflow follows NIMBLE’s general approach of specifying hierarchical Bayesian models in an extended BUGS language, compiling fast C++ versions of the model and samplers, and running MCMC algorithms<a href="https://oliviergimenez.github.io/banana-book/intronimble.html" target="_blank">[1]</a><a href="https://www.rdocumentation.org/packages/nimble/versions/1.3.0/topics/nimble-package" target="_blank">[2]</a><a href="https://github.com/nimble-dev/nimble" target="_blank">[4]</a><a href="https://r-nimble.org" target="_blank">[7]</a>. The key is coding the surplus production dynamics explicitly as state-transition equations with observation or process error as needed.</p>
+<p>For clarity, here is a <strong>minimal example with dummy catch data</strong>:</p>
+<pre><code>library(nimble)
+
+catch_vector &lt;- c(100, 120, 90, 80, 110) # example catches
+
+spm_code &lt;- nimbleCode({
+  r ~ dunif(0, 2)
+  K ~ dunif(maxCatch, 10 * maxCatch)
+  sigma ~ dunif(0, 5)
+
+  B&lt;a href="https://oliviergimenez.github.io/banana-book/intronimble.html" target="_blank"&gt;[1]&lt;/a&gt; ~ dunif(0, K)
+  for(t in 1:(nYears - 1)) {
+    mu[t] &lt;- B[t] + r * B[t] * (1 - B[t]/K) - catch[t]
+    B[t+1] ~ dnorm(mu[t], sd = sigma)
+  }
+})
+
+data &lt;- list(catch = catch_vector)
+constants &lt;- list(nYears = length(catch_vector), maxCatch = max(catch_vector))
+inits &lt;- list(r = 0.5, K = max(catch_vector)*5, sigma = 0.1, B = rep(NA, length(catch_vector)))
+
+spm_model &lt;- nimbleModel(spm_code, data = data, inits = inits, constants = constants)
+c_spm_model &lt;- compileNimble(spm_model)
+
+mcmc_conf &lt;- configureMCMC(spm_model)
+mcmc &lt;- buildMCMC(mcmc_conf)
+c_mcmc &lt;- compileNimble(mcmc, project = spm_model)
+
+samples &lt;- runMCMC(c_mcmc, niter = 5000, nburnin = 1000, thin = 2)
+print(summary(samples))</code></pre>
+<p>This example models biomass dynamics probabilistically and fits parameters (r), (K), and noise level () given known catches using Bayesian inference.</p>
+<p>If you want to implement maximum likelihood fitting instead, NIMBLE lets you compile the model and evaluate likelihoods for optimization, as demonstrated in tutorials<a href="https://oliviergimenez.github.io/banana-book/intronimble.html" target="_blank">[1]</a>.</p>
+<p>In summary: - <strong>Write your surplus production model in NIMBLE’s BUGS language</strong>, defining biomass dynamics, catch, and priors for parameters<br>
+- <strong>Compile and run MCMC</strong> sampling in NIMBLE to fit the model<br>
+- <strong>Extract posterior samples</strong> for growth rate, carrying capacity, biomass, and uncertainty<br>
+- Optionally, use <strong>likelihood-based methods</strong> by compiling the model and defining your own optimizer function in R<a href="https://oliviergimenez.github.io/banana-book/intronimble.html" target="_blank">[1]</a><a href="https://r-nimble.org" target="_blank">[7]</a>.</p>
+<p>This approach leverages NIMBLE’s power for hierarchical, Bayesian time-series stock assessment models including surplus production models.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://oliviergimenez.github.io/banana-book/intronimble.html" target="_blank">oliviergimenez.github.io/banana-book/intronimble.html</a></li>
+<li><a href="https://www.rdocumentation.org/packages/nimble/versions/1.3.0/topics/nimble-package" target="_blank">www.rdocumentation.org/packages/nimble/versions/1.3.0/topics/nimble-package</a></li>
+<li><a href="https://www.youtube.com/watch?v=DE4Q82QgSBs" target="_blank">www.youtube.com/watch</a></li>
+<li><a href="https://github.com/nimble-dev/nimble" target="_blank">github.com/nimble-dev/nimble</a></li>
+<li><a href="https://r-nimble.org/documentation-2" target="_blank">r-nimble.org/documentation-2</a></li>
+<li><a href="https://cran.r-project.org/web/packages/nimbleCarbon/vignettes/nimble_carbon_vignette.html" target="_blank">cran.r-project.org/web/packages/nimbleCarbon/vignettes/nimble_carbon_vignette.html</a></li>
+<li><a href="https://r-nimble.org" target="_blank">r-nimble.org/</a></li>
+<li><a href="https://www.rdocumentation.org/packages/nimble/versions/1.3.0" target="_blank">www.rdocumentation.org/packages/nimble/versions/1.3.0</a></li>
+</ol>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2025-09-02-AI-reports-with-openrouter-and-r/</guid>
+  <pubDate>Mon, 01 Sep 2025 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Writing scientific papers with quarto and AI assistants</title>
+  <link>https://www.seascapemodels.org/posts/2025-07-07-writing-papers-with-quarto/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Below is my suggested workflow for using quarto to write scientific papers. I’m currently switching to doing as many projects as possible with quarto rather than word for a few reasons:</p>
+<ol type="1">
+<li>Easier to manage document style</li>
+<li>Easier to manage references</li>
+<li>Workflows that auto-update figures/tables when R code is re-run</li>
+<li>Generative AI integration that is customizable.</li>
+</ol>
+<p>Point 3 is great, no more cut and pasting figures into word documents!</p>
+<p>Point 4 is the big one. I’m developing my own ‘writing mentor’ scripts for large language models. Using quarto lets me implement writing advice specific to science direclty into my manuscripts.</p>
+<p>Quarto is ‘What You See is What you Make’, meaning that you write special syntax for formatting. Once you are used to it, this is way easier way to manage styles than word.</p>
+<p>The downside is getting your (non-coding) collaborators to edit files in quarto. This is the biggest bottleneck to my use of quarto/markdown. Currently I send them word documents then have to manually integrate the feedback. Or I work in quarto until the near final stages, accepting comments only, then get them to edit the final manuscript.</p>
+<p>For instance, <a href="https://conbio.onlinelibrary.wiley.com/doi/full/10.1111/cobi.13079?casa_token=zF8vihnFfcMAAAAA%3A9WlbXPCghdwS2WvyRqGjRqYPrng7q4_xPwZvu9K52p6gd_8lWs2qcgrehfg4ehAThC7ni32Ybr02iA">I wrote most of this paper in markdown</a> but had to go to word editing towards the end so I could get edits from my collaborator. Once you’ve progressed it in word, its hard to go back to markdown.</p>
+<p>Instructions below are high level. There are quite a few pieces of software you need to do this, so I’ve linked to tutorials for each below.</p>
+<section id="download-and-install-an-ide" class="level3">
+<h3 class="anchored" data-anchor-id="download-and-install-an-ide">1. Download and install an IDE</h3>
+<p>Download and install VScode.</p>
+<p><a href="https://www.seascapemodels.org/rstats/2025/06/12/setting-up-vscode-r-genAI.html">Instructions online e.g.&nbsp;here</a></p>
+<p>I’m using VScode because of its AI assistant integration. But you could also use positron if you have issues with VScode or want to use a Posit product rather than a Microsoft product.</p>
+</section>
+<section id="get-git-and-github" class="level3">
+<h3 class="anchored" data-anchor-id="get-git-and-github">2. Get git and github</h3>
+<p>Install git on your computer. Optionally, get a github account and connect to that. Git does version control. Github lets you share that online. If your collaborators are github users then you can also share edits on documents this way.</p>
+<p>Git is also essential if you are using AI assistants. Sometimes they majorly stuff up your documents. So keeping back ups with git is essential.</p>
+</section>
+<section id="vscode-extensions" class="level3">
+<h3 class="anchored" data-anchor-id="vscode-extensions">3. VScode extensions</h3>
+<p>Install these VScode extentions (or equivalents if you are using positron, note that many vscode extensions are also compatable with Positron)</p>
+<ul>
+<li>Quarto extension.</li>
+</ul>
+<p>Open VSCode and click the four boxes ‘extension’ icon on the LHS then search and install the Quarto extension.</p>
+<p>Optional extensions: - R language extension (<a href="https://www.seascapemodels.org/rstats/2025/06/12/setting-up-vscode-r-genAI.html">can be tricky to connect VScode to R, suggest you web search for advice</a>)</p>
+</section>
+<section id="optional-steps-for-ai-integration" class="level3">
+<h3 class="anchored" data-anchor-id="optional-steps-for-ai-integration">4. Optional steps for AI integration</h3>
+<p>This next step is optional. If you are using quarto or markdown its possible to get large-language models to help with many paper writing tasks (including the writing). This is a specialized area though and I’ve only given basic technical instructions here. Actually getting it to work well is another topic altogether and something I’m still developing…</p>
+<p>Get an API key with an LLM provider (e.g.&nbsp;<a href="https://openrouter.ai/sign-up">OpenRouter</a>, <a href="https://platform.openai.com/api-keys">OpenAI</a>, <a href="https://console.anthropic.com/login?returnTo=%2F%3F">Anthropic</a>). You’ll need a developer account to get an API key, rather than a regular account that you may already have (see links in last sentence). Buy some credits so you can use your API.</p>
+<p>Make sure you save your API key somewhere safe! You can usually only view them once on creation. You’ll need it for the workshop.</p>
+<p>Get the Roo Code extension for vscode/positron.</p>
+<p><a href="https://docs.roocode.com/">Read the documents/watch the tutorials and learn how to use Roo Code</a></p>
+<p>You can now <a href="https://docs.roocode.com/features/custom-modes">create a custom mode</a>, e.g.&nbsp;a ‘scientific writing mode’ in Roo code. As of writing this requires clicking the mode selection button at the bottom of the Roo Code Pane, then click the Cog, then the <code>+</code> button to make a new mode. Then you need to write a ‘Role Definition’ and ‘Custom instructions’. For tools I just use ‘Read Files’, ‘Edit Files’ and unclick the others (will save you money and tokens).</p>
+<p>This is the hard part that needs a lot of thought:</p>
+<p>In the custom instructions you should write detailed instructions on how to help an author with scientific writing. For instance, you might want to put some very strong instructions about not making up references. You might also put instructions about your particular writing style preferences. I’m working on a template, but am not yet ready to share it.</p>
+<p>See <a href="https://docs.roocode.com/features/custom-modes">Roo code documentation</a> for more advice on custom modes.</p>
+</section>
+<section id="using-quarto" class="level3">
+<h3 class="anchored" data-anchor-id="using-quarto">5. Using quarto</h3>
+<p>Take a tutorial and <a href="https://quarto.org/docs/get-started/hello/rstudio.html">learn how to use Quarto</a>.</p>
+<p>For academic paper writing the key things to understand from the Quarto tutorial are:</p>
+<ul>
+<li>How to knit as word or pdf (pdf requires extra software installations)</li>
+<li>Formatting, headings, bold etc…</li>
+<li>YAML frontmatter for styles, linking a bibliography and bibliography style</li>
+<li>How to insert images and/or code.</li>
+</ul>
+<p><strong>Note on AI integration</strong> once you are using quarto and Roo Code you can simply ask Roo Code to do things in your document (like outline a paper template) by referencing the file (e.g. <span class="citation" data-cites="myfile.qmd">@myfile.qmd</span>) in the prompt box.</p>
+<p>Whether this works well for you is another questions. Prompting well requires a lot of thought and practice. Its not simply going to write a paper for you. You have to give the AI assistant detailed, specific, instructions and lots of context.</p>
+</section>
+<section id="yaml-front-matter" class="level3">
+<h3 class="anchored" data-anchor-id="yaml-front-matter">6. YAML front matter</h3>
+<p>The <code>YAML</code> controls how your qmd document is rendered. Here’s an example of mine:</p>
+<pre><code>---
+title: "The paper's title"
+format: docx
+editor: visual
+bibliography: mybib.bib
+csl: myjournal.csl
+execute: 
+  echo: false
+  message: false
+  warning: false
+---</code></pre>
+<p>This goes at the top of your document. A few key points.</p>
+<p><code>format</code> controls document type to render this as, here a word doc.</p>
+<p><code>editor</code> controls how it is viewed in vscode. Options are <code>editor: visual</code> and <code>editor: source</code>. Visual looks more like a word doc, source looks more like markdown. You’ll have to save and re-open the document for this to change.</p>
+<p><code>bibliography</code> links to a bibtex file where your references are stored.</p>
+<p><code>csl</code> links to a style guide for the bibliography.</p>
+<p>More on styles and references below.</p>
+<p><code>execute</code> is controlling how R code is run and if the R code appears in the document.</p>
+</section>
+<section id="rendering-as-a-document" class="level3">
+<h3 class="anchored" data-anchor-id="rendering-as-a-document">7. Rendering as a document</h3>
+<p>Use the short-cut key ‘cmd-shift-K’/‘cntrl-shft-k’ (mac/windows) to preview your document. It will also create a rendered version in your current directory.</p>
+<p>Its helpful to set: <code>format: html</code> when you are writing the document, then you get a live preview in vscode. Use <code>format: docx</code> when you want a word document.</p>
+<p>Its worth also learning the short-cut `cmd-shft-p’/‘cntrl-shft-p’, this brings up searchable actions for all extensions in vscode. The one you want is ‘Quarto: preview’ which does the same as the shortcut above.</p>
+<p>I tend to have minimal R code in my quarto manuscript. Or none at all (just reference .png files for figures). This keeps rendering quick. Also your document can get unweildy if there is a lot of text mixed in with R code.</p>
+</section>
+<section id="word-counts" class="level3">
+<h3 class="anchored" data-anchor-id="word-counts">8. Word counts</h3>
+<p>There are various word count extensions for vscode qmd and md documents.</p>
+</section>
+<section id="document-styles" class="level3">
+<h3 class="anchored" data-anchor-id="document-styles">9. Document styles</h3>
+<p>Getting a word document to follow a particular style is a bit fiddly. You need to set-up a template word document with styles the include that as a reference in your YAML.</p>
+<p><a href="https://quarto.org/docs/output-formats/ms-word-templates.html">See instructions here.</a></p>
+</section>
+<section id="reference-manager-integration" class="level3">
+<h3 class="anchored" data-anchor-id="reference-manager-integration">10. Reference manager integration</h3>
+<p>Quarto integrates with many different reference managers. <a href="https://quarto.org/docs/authoring/citations.html">There’s a good guide here</a>.</p>
+<p>In brief you create a <code>.bib</code> file that has your references in it. This is then linked in the YAML. The manual way to manage this is just to create a <code>.bib</code> file and paste bibtext entries directly into it (available on most journal’s pages as a citation format, as well as google scholar).</p>
+<p>e.g.&nbsp;the bibtext for R looks like this:</p>
+<pre><code>@Manual{Rlanguage,
+    title = {R: A Language and Environment for Statistical Computing},
+    author = {{R Core Team}},
+    organization = {R Foundation for Statistical Computing},
+    address = {Vienna, Austria},
+    year = {2024},
+    url = {https://www.R-project.org/},
+  }</code></pre>
+<p>Then in quarto you just type <code>@</code> and a dropdown of all your references will appear. <code>@Manual{Rlanguage,</code> the Rlanguage bit is the CiteKey that will appear in the dropdown. So <code>@Rlanguage</code> will insert that reference into the bibliography and the citation at that place in the document.</p>
+<p>You can streamline the process of gathering and managing references with a reference manager.</p>
+<p>My workflow in Zotero is as follows:</p>
+<ul>
+<li>Open Zotero on my computer</li>
+<li>Go to journal webpage for paper</li>
+<li>Use zotero plugin to my browser to grab the citation and save it to a library</li>
+<li>Go to my quarto document in VScode</li>
+<li>type <code>@</code> and a drop down of all references in all libraries on zotero appears. Pick the one I want.</li>
+<li>Click the <code>OK</code> button which saves that reference into my local <code>.bib</code> file.</li>
+</ul>
+<p>For some reason (that does not seem to be documented in any quarto tutorials anywhere!) it will find any reference I have anywhere in zotero and then save that bibtex entry to my local <code>.bib</code> file, so it is now accessible for use in my quarto doc. This only works if I have zotero open and use <code>editor: visual</code> in the YAML.</p>
+<p>There are many other options however.</p>
+</section>
+<section id="optional-ai-integration-for-reference-management" class="level3">
+<h3 class="anchored" data-anchor-id="optional-ai-integration-for-reference-management">11. Optional AI integration for reference management</h3>
+<p>You can get AI assistants to help with referencing if you keep your notes on papers linked to your references. For instance, you could keep your notes on references in the bibtex field for <code>notes</code>. Alternatively you could create another quarto/markdown document that has a header for each citation tag along with its notes in a structured way:</p>
+<pre><code>## Rlanguage 
+
+### What it is
+
+The R software for scientific computing. 
+
+### Usage
+
+Citation for the R software. Use this at least once in every paper where i've used R for statistics
+
+## edgar2023continent
+
+### What is it
+
+Key paper that shows Australia is losing its marine biodiversity. 
+
+### Usage
+
+Cite this as evidence that Australia is losing coastal marine biodiversity and as evidence that climate change is causing marine biodiversity loss
+</code></pre>
+<p>It doesn’t matter how you do this, so long as you follow a consistent structure. I’ve used the CiteKey as the main header for each reference entry. Then I’ve put in markdown sections about each paper and why I might wnat to cite it. Then you can get Roo Code to help with inserting references.</p>
+<p>Note that if you are using the <code>.bib</code> directly just be careful not to plagiarise! Roo Code might insert excerpts from the abstracts/titles directly into your written document, which is a no-no for publishing.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2025-07-07-writing-papers-with-quarto/</guid>
+  <pubDate>Sun, 06 Jul 2025 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Prompting large language models for quality ecological statistics</title>
+  <link>https://www.seascapemodels.org/posts/2025-06-27-prompting-llms-quality-ecological-statistics/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Announcing a new <a href="https://ecoevorxiv.org/repository/view/9493/">pre-print on prompt engineering for ecological statistics.</a>. https://doi.org/10.32942/X2CS80</p>
+<p>The pre-print describes the challenges and opportunities of using large language models and agents to do ecological statistics. It then goes onto describe some prompt engineering strategies that can help you make the most of these tools, but still get reliable statistical advice and code.</p>
+<p>The pre-print accompanies <a href="https://www.seascapemodels.org/R-llm-workshop/index.html#summary">a one day course</a> I’ve published that teaches how to use LLM tools for R and statistics, as well as discussing the environmental and ethical challenges.</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-06-27-prompting-llms-quality-ecological-statistics/</guid>
+  <pubDate>Thu, 26 Jun 2025 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Why we are all naturally Bayesians not frequentists</title>
+  <link>https://www.seascapemodels.org/posts/2025-06-25-why-frequentist-statistics-makes-no-sense/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I don’t see why its a thing to say “I’m a Bayesian”. Being a Bayesian is normal for any rational person as we will prove in a couple of sentences. Being a frequentist is what is what is strange. It would make more sense to assume we are all Bayesians, and have frequentists have to declare “I’m a frequentist”.</p>
+<p>The statistical quantity of interest for frequentist is the likelihood, which is defined as the probability of your observations given your hypothesis. It can be written:</p>
+<p><code>Pr(D | H)</code></p>
+<p>(Equivalently probability of data given we assume a particular model). For a Bayesian the statistical quantity is the probability of the hypothesis given the observations or:</p>
+<p><code>Pr(H | D)</code></p>
+<p>(Equivalently probability of a model given the data).</p>
+<p>Say we’re out on a boat and we catch a glance of a human sized animal dive underwater with a flap of its tail. Was it a mermaid or a dugong? (A dugong is type of seagrass eating mammal).</p>
+<p>A frequentist would think in likelihoods and conclude, correctly, that both mermaid and dugong are equally likely: Both creatures, if assumed to exist, could result in a similar observation of us seeing a body and a tail diving underwater, i.e.</p>
+<p><code>Pr(seeing a tail | dugongs exist) ≈ Pr(seeing a tail | mermaid exist)</code></p>
+<p>A rational person would guess the observed tail was a dugong. That is because a rational person is thinking in terms of probabilities. The probability we observed a mermaid is vanishingly small, because all prior evidence leads us to believe that mermaids don’t exist (though I do know some less than rational people who believe in ‘merfolk’).</p>
+<p>In logic, Bayes theorem says we can calculate the probability of the hypothesis</p>
+<p><code>Pr(H | D) = Pr(D | H)*Pr(H) / Pr(D)</code></p>
+<p>So for the hypothesis “it’s a dugong”:</p>
+<p><code>Pr(dugong | seeing tail) = Pr(seeing tail | dugong)*Pr(dugong) / Pr(seeing tail)</code></p>
+<p>For our two models, dugong versus mermaid, we have similar values for the likelihoods and <code>pr(D)</code>, but the ‘prior probabilities’, the <code>Pr(H)</code>, are very different. <code>Pr(dugong)</code> is plausible (even though is rare to see them), whereas <code>Pr(mermaid)</code> is zero, because merfolk don’t exist.</p>
+<p>We multiply the likelihood by the prior in the Bayes equation, so the <code>Pr(mermaid | seeing tail)</code> becomes zero.</p>
+<p>(If you are new to Bayes theory, you might be wondering what does <code>Pr(D)</code> mean? How do we calculate the probability of the data? For the above example it doesn’t matter as <code>Pr(seeing a tail)</code> is the same for both hypotheses. One of the challenges of Bayes stats in practice is calculating this <code>Pr(D)</code>. A lot of statistical computing is devoted to figuring out how to do that. In brief though <code>Pr(D)</code> can be calculated as the sum of <code>Pr(seeing tail | dugong)*Pr(H)</code> for all discrete hypotheses or the integral if our hypotheses are continuous (like parameter values)).</p>
+<p>Does this philosophical distinction it matter in the practice of statistics?</p>
+<p>The Bayesian version of an analysis, such as a GLM, will often given similar or the same predictions as the frequentist version. Yet ecology, like many other disciplines, has a problem with repeatability and p-hacking.</p>
+<p>Part of the problem stems from the methods we use. For large sample sizes frequentist and Bayesian results often do converge.</p>
+<p>But small sample sizes are common in many fields, including ecology. A small sample size study that finds an extreme and significant result is attractive to publish. This issue has been particularly problematic in <a href="https://www.nature.com/articles/s41586-019-1903-y">behavioural ecology</a>. These false positives come to dominate the literature.</p>
+<p>Appropriate use of Bayesian priors would penalize these extreme effect sizes. This is equivalent to setting a low probability on mermaid sightings above. Some have <a href="https://xcelab.net/rm/">called for stronger priors to be the default choice</a></p>
+<p>So in every day life we think of probabilities Bayesians, not like frequentists. There are numerous Bayesian R packages now and they are increasingly easy to use. So it makes sense that we should apply the same logic to our statistical analyses as well.</p>
+<p>Thanks to Sober’s ‘Philosophy of Biology’ for this example (he uses gremlins in the roof rather than mermaids) and Coralina for telling me about the book!</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <category>research</category>
+  <guid>https://www.seascapemodels.org/posts/2025-06-25-why-frequentist-statistics-makes-no-sense/</guid>
+  <pubDate>Tue, 24 Jun 2025 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Setting up VScode for R and generative AI tools</title>
+  <link>https://www.seascapemodels.org/posts/2025-06-12-setting-up-vscode-r-genAI/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>VScode has many extensions that let you create and run entire workflows via using prompts to a large language model. Its not widely used in the R community yet, but I expect it will be soon. You can create your entire R project, interpret the results and write a draft of your findings without writing any R code.</p>
+<p>Most of these tools are not available (as of writing) in RStudio, or have only limited functionality. So you need to use a different IDE (Integrated Development Environment) to run your R code. Here I’ll explain how to set-up VSCode (a popular IDE) so you can use Cline.</p>
+<section id="software-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="software-requirements">Software requirements</h2>
+<p>To set up VScode for R and Cline, you’ll need:</p>
+<ul>
+<li>R programming language</li>
+<li>VScode text editor</li>
+<li>R extension for VScode</li>
+<li>Cline AI assistant extension for VScode</li>
+</ul>
+<p>Note that if you computer is controlled centrally by an IT department, you may need to request admin access to install software, or email IT and ask for them to come and help you.</p>
+</section>
+<section id="install-r" class="level2">
+<h2 class="anchored" data-anchor-id="install-r">Install R</h2>
+<ol type="1">
+<li>Go to the official R project website: https://www.r-project.org/</li>
+<li>Click the “download R” link in the Getting Started section</li>
+<li>Choose a CRAN mirror close to your location</li>
+<li>Download the appropriate R installer for your operating system</li>
+<li>Run the installer and follow the prompts to complete installation</li>
+</ol>
+</section>
+<section id="r-packages" class="level2">
+<h2 class="anchored" data-anchor-id="r-packages">R packages</h2>
+<ol type="1">
+<li>Open R or RStudio</li>
+<li>Install language server <code>install.packages("languageserver")</code></li>
+<li>Install httpgd <code>install.packages("httpgd")</code> (this helps improve plots in VScode). NOTE that httpgd seems to often be removed from CRAN, then come back again, I’m not sure why… If you are having trouble you can try install from a different repo, see instructions here: https://community.r-multiverse.org/httpgd</li>
+</ol>
+</section>
+<section id="install-vscode" class="level2">
+<h2 class="anchored" data-anchor-id="install-vscode">Install VScode</h2>
+<ol type="1">
+<li>Go to the official VScode website: https://code.visualstudio.com/</li>
+<li>Click the big blue “Download” button</li>
+<li>Download the appropriate VScode installer for your operating system</li>
+<li>Run the installer and follow the prompts</li>
+<li>Launch VScode once installation is complete</li>
+</ol>
+</section>
+<section id="install-r-extension" class="level2">
+<h2 class="anchored" data-anchor-id="install-r-extension">Install R extension</h2>
+<ol type="1">
+<li>Open VScode</li>
+<li>Open the Extensions view in VScode (click the boxes on left hand side)</li>
+<li>Search for “R” in the extensions marketplace</li>
+<li>Select the “R” extension published by REditorSupport</li>
+<li>Click the “Install” button</li>
+<li>Restart VScode after installation if prompted</li>
+</ol>
+<p><a href="https://code.visualstudio.com/docs/languages/r">More info on vscode and R here</a></p>
+</section>
+<section id="connect-r-and-vscode" class="level2">
+<h2 class="anchored" data-anchor-id="connect-r-and-vscode">Connect R and VScode</h2>
+<ol type="1">
+<li>Open a new terminal in VScode (Terminal &gt; New Terminal)</li>
+<li>Check that R is installed by running: <code>R --version</code></li>
+<li>Type <code>R</code> to open the R console in the terminal</li>
+<li>Now open any R script in VS code (File &gt; Open)</li>
+<li>Run some R code to check that VS code can connect to R in the terminal. Use the shortcut Ctrl+Enter/Cmd+Enter or press the play button in the top right of the script editor.</li>
+</ol>
+<p>If R is not found then open extensions (left hand side, boxes icon), filter by ‘enabled’ then click the R extension. Now click the cog icon in the R extension and select ‘settings’ from the dropdown. Search for ‘rpath’. Check that it has the correct path to R on your computer. You can find the path by opening a terminal and typing <code>which R</code> (on mac) or in a windows terminal <code>where R</code>.</p>
+<p>While you have the extension settings open search for ‘httgp’ and make sure <code>Plot: Use Httpgd</code> is enabled.</p>
+</section>
+<section id="install-gen-ai-extensions" class="level2">
+<h2 class="anchored" data-anchor-id="install-gen-ai-extensions">Install gen AI extensions</h2>
+<ol type="1">
+<li>Open the Extensions view in VScode (Ctrl+Shift+X)</li>
+<li>Search for the genAI assistant of your choice. I’m use Roo Code currently. Cline is another popular choice.</li>
+<li>Select the extension</li>
+<li>Click the “Install” button</li>
+<li>The extension icon (e.g.&nbsp;a Roo if using Roo Code) should appear in the VScode sidebar</li>
+</ol>
+</section>
+<section id="set-up-extension-in-vscode" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-extension-in-vscode">Set up extension in VScode</h2>
+<ol type="1">
+<li>Click on the extension icon (e.g.&nbsp;a roo for roo code or robot for cline) on the left hand side</li>
+<li>Click the cog (if the settings don’t open automatically)</li>
+<li>Select your API provider and cut and paste the API key into the box (see next step if you don’t have one).</li>
+</ol>
+</section>
+<section id="get-an-api-key" class="level2">
+<h2 class="anchored" data-anchor-id="get-an-api-key">Get an API key</h2>
+<p>An API key is like a password that allows the AI assistant (e.g.&nbsp;roo code) to send your prompt to a large language model. Your key should be kept private. Usually you’ll have to buy some credits. These allow you to send prompts to the LLM. You’ll be paying per prompt.</p>
+<p>Now you need to choose your large language model provider. I’m currently using OpenRouter and Anthropic, which have a diversity of models for generating text, code and reading images. Do some web searching to find out the latest info on providers and models.</p>
+<p>You choose depends on what you want to do and your budget. Some providers offer a free tier. You’ll need to web search for the latest info on this.</p>
+<p>You can get the links to any supported provider from your extension settings, just select the provider and then a link will appear to sign-up for that provider.</p>
+<p>Once you’ve chosen a provider, create an account and follow their instructions for creating an API key. You will probably also need to buy some credit to use the model.</p>
+<p>Note that if you already have a subscription account, e.g.&nbsp;for chatGPT, you will get need an API key to use Cline. This might be in a different section of your account settings. If you are using a subscription service you are probably paying monthly to use the provider’s web app. We need the API key to be able to use the model directly via code.</p>
+</section>
+<section id="youre-all-set" class="level2">
+<h2 class="anchored" data-anchor-id="youre-all-set">You’re all set</h2>
+<p>Now you’re set and ready to start using Cline to code and write text.</p>
+</section>
+<section id="issues-and-tips" class="level2">
+<h2 class="anchored" data-anchor-id="issues-and-tips">Issues and tips</h2>
+<p>This is just a list of issues I’ve had and how I’ve solved them.</p>
+<p><em>Plotting</em> If your R plots look weird (like tiny font), make sure httpgp is enabled. Go back to steps above and see how to do that.</p>
+<p><em>Viewing data</em> There are various extensions for viewing csv and excel files. It is worth looking into these so that when you do <code>View(dat)</code> in R you get a nice table. Some also allow editing.</p>
+<p><em>Getting help to install software</em> My computer is somewhat locked down by IT, so getting this set-up was a bit fiddly and required a few requests to IT to install software.</p>
+<p><em>R markdown</em> There are options in the R extension settings for how to knit markdown. You may need to configure these if you want to knit markdown docs from VScode. If you are having trouble knitting markdown it may mean that the path to pandoc is not set correctly. <a href="https://stackoverflow.com/questions/60766646/need-help-assigning-global-settings-for-rstudios-pandoc-in-vscode-to-knit-pdf-d">There is some helpful instructions here</a></p>
+<p><em>R terminal crashes</em> If I run too much R code at once (like selecting a big block then running) the terminal tends to crash. Initially I see a little highlighted box saying ‘PTY HOST’. Then I need to close all the terminals (with the bin icon) and start again. Try radian if this is a problem. You can also code run line-by-line or source whole scripts from the terminal (which works fine). I tried debugging this by increasing the buffer but to on avail.</p>
+<p><em>Shortcut keys</em> (on osx) cmd-/ to comment uncomment lines. cmd-shift-p to open the command palette, cmd-b to open the file explorer, cmd-enter to run lines or selection of R code, cmd-shift-c to open terminal in new window, cntrl-shift-` to open a new terminal in vs code.</p>
+</section>
+<section id="installing-radian-optional" class="level2">
+<h2 class="anchored" data-anchor-id="installing-radian-optional">Installing radian (optional)</h2>
+<p>Radian is a terminal editor that is a bit nicer than the base R one. It does autocomplete in the terminal (like Rstudio does in the console), colours code/brackets etc… and allows multi-line editing in the terminal.</p>
+<p>To set this up, install radian (you need python to do this). More <a href="https://github.com/randy3k/radian?tab=readme-ov-file">instructions here</a>.</p>
+<p>Then go to the terminal and find the path where radian is installed (e.g.&nbsp;<code>which radian</code> on mac or <code>where radian</code> on windows).</p>
+<p>Now open your settings in VScode (cmd-,) and search for ‘rterm’ (stands for ‘R Terminal’, don’t change the rpath which we set just before). Add the path to radian to the rterm setting. Also search for the setting ‘R: Bracketed Paste’ and make sure it is enabled.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>research-skills</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-06-12-setting-up-vscode-r-genAI/</guid>
+  <pubDate>Wed, 11 Jun 2025 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Open repo of ecological data for use in teaching</title>
+  <link>https://www.seascapemodels.org/posts/2025-06-10-open-access-data-for-teaching/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Just a quick announcement. I’ve organized and posted two ecological datasets that I find helpful for creating examples for teaching. The repo and instructions for use and attribution are on github:</p>
+<p>https://github.com/cbrown5/example-ecological-data</p>
+<p>There are two sets of data posted, each with multiple flat csv files.</p>
+<p>One is field survey data of benthic habitats and fish. Useful for data wrangling of site survey data, multivariate community analysis and GLMs with count data</p>
+<p>The second is experimental data of algal growth under multiple stressors. Useful for teaching missing data, plotting trends over time and analysing interacting effects with GLMs.</p>
+<p>All data can be downloaded directly into R like this:</p>
+<pre><code>benthic_cover_url &lt;- "https://raw.githubusercontent.com/cbrown5/example-ecological-data/refs/heads/main/data/benthic-reefs-and-fish/benthic_cover.csv"
+
+library(readr)
+dat &lt;- read_csv(benthic_cover_url)
+write_csv(dat, "benthic_cover.csv")</code></pre>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2025-06-10-open-access-data-for-teaching/</guid>
+  <pubDate>Mon, 09 Jun 2025 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Vibe coding with AI agents is not for scientists</title>
+  <link>https://www.seascapemodels.org/posts/2025-06-08-vibe-coding-not-for-scientists/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Vibe coding is the idea of creating software with large language models (e.g.&nbsp;chat GPT, Claude), using only prompting and no, or very little <a href="https://en.wikipedia.org/wiki/Vibe_coding">human written code</a>.</p>
+<p>Co-founder of openAI says of vibe coding: <a href="https://www.businessinsider.com/vibe-coding-ai-silicon-valley-andrej-karpathy-2025-2">“It’s not really coding - I just see things, say things, run things, and copy-paste things, and it mostly works.”</a>.</p>
+<p>The problem with vibe coding for scientists is modelling requires precision in coding and statistical logic. Small differences in data wrangling or model formulation can result in logically flawed results.</p>
+<p>My experience of vibe coding is that it tends to make code that runs, but has mistakes in the critical places. This is very problematic if you do not manually check all the logic.</p>
+<section id="what-is-vibe-coding" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-vibe-coding">What is vibe coding</h2>
+<p>Vibe coding has gained popularity with agentic AI systems, such as Github Copilot, Cline, Roo Code and Claude Code. These are systems that take your initial instructions and then iterate it through creating it and debugging it with minimal or no human intervention.</p>
+<p>Anthropic claims that their latest model can work for hours on software development without need for human intervention. The way it works is that the LLM returns the results of its code to itself, checks those results, then decides on the next action to take.</p>
+<p>As an ecological modeller I thought these tools could be useful for developing routine R code. Common tasks include data wrangling, building and running various versions of a regression model and then generating plots.</p>
+<p>So I’ve been experimenting with agentic AI, including with Cline, Roo Code and Github Copilot for ecological statistics.</p>
+</section>
+<section id="flawed-logic" class="level2">
+<h2 class="anchored" data-anchor-id="flawed-logic">Flawed logic</h2>
+<p>The clincher from the quote above is <strong>“…and it mostly works.”</strong></p>
+<p>I’ve found for statistics the bits that don’t work are the critical science parts. So vibe coding tends to produce code that runs and produces believable plots, but results that are logically flawed.</p>
+<p><strong>Here’s an example of how vibe coding can produce flawed science:</strong></p>
+<p>I’m analysing some turtle monitoring data to calculate mean number of nests per night. The problem is that zeros, nights with no nests, are implicit. Monitoring was done every night for three months, and the field team records nesting events the observe.</p>
+<p>I tried vibe coding to calculate mean number of nests per night. It just calculated the mean number out of the total number of unique dates in the dataset. What we actually need to do first is add zeros, nights without nesting, back into the data first. Otherwise, we get a mean that isn’t comparable across years or sites</p>
+</section>
+<section id="over-engineering" class="level2">
+<h2 class="anchored" data-anchor-id="over-engineering">Over-engineering</h2>
+<p>You might say - so just go back and fix the error. That’s exactly what I did. However, herein lies a problem.</p>
+<p>AI agents tend to totally over-engineer R code, producing scripts that are very robust to programmatic errors, but also very lengthy (see example below). There’s an overwhelming amount of code to go through to find these small but significant mistakes.</p>
+<p>AI has a great breadth of knowledge, so a lengthy vibe coding session will produce a diversity functions and coding logic. You need to be experienced to interpet a lot of what it produces.</p>
+<p>Your typical R user knows enough to analyse their data and make some plots. They are going to be overwhelmed trying to interpret 100s of lines of R code.</p>
+</section>
+<section id="how-to-use-ai-agents-safely" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-ai-agents-safely">How to use AI agents safely</h2>
+<p>AI agents are still very useful. But for scientific coding they need careful oversight. You can either:</p>
+<ol type="1">
+<li>Let it run autonomously, then carefully go back through what its created and review everything</li>
+<li>Check and review it step-by-step, and redirect it</li>
+</ol>
+<p>If you are getting out of your depth, then I suggest stopping and reviewing the code until you are sure what it does. You can also prompt the agent to add checks in (like checking number of samples matches your expectations).</p>
+<p>Remember that the commercial agents, like Claude code or github copilot, are designed for software engineers. So they write robust R code, but they are also not very good at statistics.</p>
+<section id="example-of-over-engineering" class="level3">
+<h3 class="anchored" data-anchor-id="example-of-over-engineering">Example of over engineering</h3>
+<p>AI Agents love to cover all the bases. This can be nice, and I’ve learnt some new tricks this way. However, its total overkill if you just want to create a few plots. Here’s one example where I was getting copilot to do an multivariate analysis. It started by creating this whole script, complete with custom functions, just to load a few packages:</p>
+<pre><code>
+# List of required packages
+required_packages &lt;- c(
+  "tidyverse",  # For data manipulation and visualization
+  "vegan",      # For community analysis
+  "ggplot2",    # For data visualization
+  "ggrepel",    # For non-overlapping text labels
+  "cluster",    # For cluster analysis
+  "knitr",      # For report generation
+  "kableExtra"  # For table formatting in reports
+)
+
+# Function to check and install packages
+install_if_missing &lt;- function(pkg) {
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    cat(paste0("Installing package: ", pkg, "\n"))
+    install.packages(pkg, dependencies = TRUE)
+  } else {
+    cat(paste0("Package already installed: ", pkg, "\n"))
+  }
+}
+
+# Install missing packages
+cat("Checking and installing required packages...\n")
+for (pkg in required_packages) {
+  install_if_missing(pkg)
+}
+
+# Load the packages to verify installation
+cat("\nLoading packages to verify installation...\n")
+for (pkg in required_packages) {
+  cat(paste0("Loading package: ", pkg, "\n"))
+  library(pkg, character.only = TRUE)
+}
+
+cat("\nAll required packages are installed and loaded.\n")
+cat("You can now proceed with running the analysis scripts.\n")
+</code></pre>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-06-08-vibe-coding-not-for-scientists/</guid>
+  <pubDate>Sat, 07 Jun 2025 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>How to get your LLM model to run and interpret R code</title>
+  <link>https://www.seascapemodels.org/posts/2025-03-17-LLMs-in-R-tool-use/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Tools let AI models run code and access other applications. This can be a tool on your computer (like an R function), or access and API.</p>
+<p>By creating tools you can give your LLM access to databases online (via their APIs) or let them run code on your computer, interpret the output and use it in their responses.</p>
+<p>There are many ways to use tools. So far many tool examples are for computer programmers. There are some generally useful tools out there (like creating files or searching the web). However, I wanted to see if I could make a tool that was specifically useful in my research field.</p>
+<p>In this tutorial I’ll look at using them to get ocean data from a public database that has an API.</p>
+<section id="how-tools-work" class="level2">
+<h2 class="anchored" data-anchor-id="how-tools-work">How tools work</h2>
+<p>The basic example of a tool is getting the current date and time. Then when you ask for the time, instead of hallucinating a time and date, the model can use a tool to get an accurate current time and date.</p>
+<p>Tools are defined using a Model Context Protocol, which is a standardized structure for connecting natural language models to programmatic tools (which have all the normal programming rules like being case-sensitive, syntax appropriate to the language etc).</p>
+<p>Its hard to find clear explanations of how they work, but here’s what I understand:</p>
+<p>The tool is ‘registered’ with the model. This registering is just a prompt to the model, but it is done with a specific structure that defines the tool, its parameters, outputs and use cases. This way the model knows how to write code to run the tool.</p>
+<p>Then when you chat with the model it might interpret that tool use would be helpful. Like if you ask the time and it ‘knows’ about a time-date tool, it might use it. It writes the appropriate code to use the tool, sends that back to your computer (or to the API), where the code is evaluated. The output is then sent back to the model. The model interprets this into the final response it will give you.</p>
+<p><a href="https://ellmer.tidyverse.org/articles/tool-calling.html">There’s a good example of how tools don’t work and do work in the ellmer documentation.</a></p>
+<p>Let’s try a more interesting tool than the usual example of getting date and time.</p>
+</section>
+<section id="use-case" class="level2">
+<h2 class="anchored" data-anchor-id="use-case">Use case</h2>
+<p><a href="https://imos-animaltracking.github.io/remora/index.html">The <code>remora</code> package lets you extract ocean data from the Integrated Marine Observing System (IMOS) and Bluelink Reanalysis (BRAN) model.</a>. We can give an LLM access to this data by creating a tool that uses <code>remora</code> to extract the data.</p>
+</section>
+<section id="remora" class="level2">
+<h2 class="anchored" data-anchor-id="remora">remora</h2>
+<p>We’ll start by making some data and testing out <code>remora</code>. <a href="https://imos-animaltracking.github.io/remora/index.html">Note that <code>remora</code> isn’t on cran, so you will need to install it from github.</a></p>
+<p>What we do below is download ocean temperatures for some made up data. We just need coordinates and dates.</p>
+<p><a href="https://imos-animaltracking.github.io/remora/articles/extractBlue.html">For a more detailed example see the remora documentation</a></p>
+<pre><code>library(remora)
+library(tidyverse)
+library(raster)
+
+# Create a dataframe of coordinates near Tasmania with different dates in 2021
+tas_dat &lt;- data.frame(
+  datetime = ymd_hms(paste(
+        c("2021-02-15", "2021-02-15", "2021-02-15", 
+                   "2021-02-15", "2021-02-15"),
+                   "10:00:00")),
+  X = c(147.2, 148.5, 146.8, 145.3, 144.7),  # Longitudes around Tasmania
+  Y = c(-42.5, -41.8, -43.2, -42.9, -41.5)
+)
+write.csv(tas_dat, "tas_dat.csv", row.names = FALSE)</code></pre>
+<p>Extracting the SST data at a given depth is simple:</p>
+<pre><code>tas_temp &lt;- 
+    extractBlue(df = tas_dat,
+                X = "X", 
+                Y = "Y", 
+                datetime = "datetime", 
+                env_var = "BRAN_temp",
+                extract_depth = 30,
+                verbose = TRUE,
+                full_timeperiod = FALSE)</code></pre>
+</section>
+<section id="defining-the-tool" class="level2">
+<h2 class="anchored" data-anchor-id="defining-the-tool">Defining the tool</h2>
+<p>Now we know how to use <code>remora</code> to get the data, we can define a tool so the LLM can do it.</p>
+<p>We’ll use the <code>ellmer</code> package to define the tool. First step is to make a function.</p>
+<p>The <code>ellmer</code> documentation recommends you keep the function inputs and outputs simple. First of all, LLMs can’t handle complex R data structures (like complex lists). Second, the LLM will be consuming the inputs and outputs. This means it uses tokens, which cost you $ and use up the model’s context window (capacity for prompts).</p>
+<p>So you don’t want to have gigabytes of data going into or out of the tool.</p>
+<p>To get around this I’ve defined a tool that takes a path and write a file. That way the LLM doesn’t ‘see’ the data, it only sees the input and output paths and my depth request.</p>
+<pre><code>#' Extracts SST data from the IMOS BlueLink database
+#'
+#' @param data_path A path to a csv dataframe
+#' @param depth The depth to extract the SST data from
+#' @return The current time in the given time zone.
+get_sst &lt;- function(data_path, depth) {
+  dat &lt;- read.csv(data_path)
+  datout &lt;- extractBlue(df = dat,
+                X = "X", 
+                Y = "Y", 
+                datetime = "datetime", 
+                env_var = "BRAN_temp",
+                extract_depth = depth,
+                verbose = FALSE,
+                full_timeperiod = FALSE)
+  write.csv(datout, "temp_data.csv", row.names = FALSE)
+  return("File written to sst_data.csv")
+}</code></pre>
+<p>Now just test the function works:</p>
+<pre><code>get_sst("tas_dat.csv", 30)</code></pre>
+<p>The <code>ellmer</code> package has a <code>create_tool_def</code> that semi-automates the next step based on the roxygen documentation I wrote above the function. However, this currently seems only to work if you have an openAI API key.</p>
+</section>
+<section id="register-the-tool-with-a-chat" class="level2">
+<h2 class="anchored" data-anchor-id="register-the-tool-with-a-chat">Register the tool with a chat</h2>
+<p>Start a new chat:</p>
+<pre><code>library(ellmer)
+chat &lt;- chat_claude(
+  model = "claude-3-5-haiku-20241022", 
+  max_tokens = 1000
+)</code></pre>
+<p>(You should probably use a strong logic model, like sonnet or GPT4.0 for tool use, but haiku worked fine for this simple one).</p>
+<p>Now we register the tool with the chat:</p>
+<pre><code>mytool &lt;- tool(
+  get_sst,
+  "Gets SST data from the IMOS BlueLink database",
+  data_path = type_string(
+    "Path to a csv dataframe that has columns datetime, X, Y",
+    required = TRUE
+  ),
+  depth = type_number(
+    "The depth to extract the SST data from",
+    required = TRUE
+  )
+)
+
+chat$register_tool(mytool)</code></pre>
+<p>Note the careful documentation of the tool. This is going to become prompts for the model, so use all your normal prompt strategies to help it figure out when to use the tool .</p>
+<p>We also use the <code>type_xxx</code> functions from <code>ellmer</code> to define the types of the inputs. This is important to ensure the model knows how to properly write the code for the tool use.</p>
+</section>
+<section id="using-the-tool" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-tool">Using the tool</h2>
+<p>This is the easy bit:</p>
+<pre><code>chat$chat("Can you get me SST data at 21m depth for the coordinates in tas_dat.csv?")</code></pre>
+<p>If that works for you (as it did for me) you should have a new csv file in your working directory with the SST data.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>With a little bit of code you can give your LLM prompts and responses new types of capabilities.</p>
+<p>My simple example could be improved by adding more parameters into the function and adding error checking and reports.</p>
+<p>If we wanted to keep going we could create an analysis tool that then analyses the data from file, makes the plots, and so on.</p>
+<p>Tool definitions are based on function documentation. This means you can take any existing R function and easily turn it into a tool.</p>
+<p>You do want to be careful about how much and the types of data that go into tools. There are obviously security concerns (what if the model created malicious code?) as well as privacy concerns if you are working with sensitive data.</p>
+<p>API costs could also blow up. <code>ellmer</code> provides a function <code>token_usage()</code>, to help you keep track of spending.</p>
+<p>Overall, I was excited at how easy it was to make a tool with interesting applications in my field of ocean sciences.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-03-17-LLMs-in-R-tool-use/</guid>
+  <pubDate>Sun, 16 Mar 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>The ellmer package for using LLMs with R is a game changer for scientists</title>
+  <link>https://www.seascapemodels.org/posts/2025-03-15-LMs-in-R-with-ellmer/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="why-is-ellmer-a-game-changer-for-scientists" class="level2">
+<h2 class="anchored" data-anchor-id="why-is-ellmer-a-game-changer-for-scientists">Why is ellmer a game changer for scientists?</h2>
+<p>In this tutorial we’ll look at how we can access LLM agents through API calls. We’ll use this skill for created structued data from documents.</p>
+<p>We’ll use the R <a href="https://ellmer.tidyverse.org/index.html"><code>ellmer</code> package</a> (launched 25th Feb 2025).</p>
+<p>There are a few package options <a href="https://www.seascapemodels.org/rstats/2025/02/12/LLMs-for-literature-reviews.html">(I was also using <code>tidychatmodels</code> before)</a>.</p>
+<p><code>ellmer</code> is a game changer for scientists using R: It supports tool use and has functions for structured data.</p>
+<p>Before <code>ellmer</code> you had to know other languages and data-structures, like JSON. Ellmer means that many powerful LLM uses are now easily accessible to R users.</p>
+<p>Tool use means the LLM can run commands on your computer to retrieve information. You know how LLMs can be bad at simple math like 2+2 or today’s date? Well, with a tool, the LLM would know to use R to calculate this to return the correct answer. Tools can also connect to web APIs, means they can also be used to retrieve information or databases from the web.</p>
+<p>The functions that assist you in creating structured data from text are also important.</p>
+<p>For instance, by combining tool use with structured data extraction, <code>ellmer</code> could be used to synthesize literature for a quantitative review. We’ll cover that here.</p>
+<p>Another application would be to interpret the meta-data from an online database, download the data, write and run the analysis and then write up the findings.</p>
+<p>Because you are running the LLM from R it means you can batch process prompts, such as asking it to summarize many documents.</p>
+<p>They are a couple of obvious uses. I’m sure people will soon come up with many more.</p>
+<p>Let’s see how to use ellmer to extract structured data from peer reviewed studies.</p>
+<section id="setup-authorisation" class="level3">
+<h3 class="anchored" data-anchor-id="setup-authorisation">Setup authorisation</h3>
+<p>First, you need to get an API key from the provider. Login to the provider’s website and follow the instructions.</p>
+<p>Then, you need to add the key to your <code>.Renviron</code> file:</p>
+<p><code>usethis::edit_r_environ()</code></p>
+<p>Then type in your key like this:</p>
+<p><code>ANTHROPIC_API_KEY="xxxxxx"</code></p>
+<p>Then restart R. <code>ellmer</code> will automatically find your key so long as you use the recommended envirment variable names. See <code>?ellmer::chat_claude</code> (or <code>chat_xxx</code> where xxx is whatever provider you are using).</p>
+</section>
+<section id="interactive-chat" class="level3">
+<h3 class="anchored" data-anchor-id="interactive-chat">Interactive chat</h3>
+<p>Posit recommends this is useful for experimenting with new prompts. It can also be better than the web interfaces you might be used to. This is because, unlike on the web interfaces, you can control the system message.</p>
+<p>Most models have three types of messages:</p>
+<p><strong>system</strong>, which sets the context, role and is given higher priority than the user message</p>
+<p><strong>user</strong>, which is your conversation or request</p>
+<p><strong>assistant</strong>, which is the model’s response</p>
+<p>Many prompt engineer pros have found better results if you put as much of your request in the system as possible. So I recommend you play around with this yourself.</p>
+<pre><code>library(ellmer)
+
+chat &lt;- chat_claude(
+  system_prompt = "You are a friendly but terse assistant.",
+  model = "claude-3-5-haiku-20241022", 
+  max_tokens = 1000
+)
+
+live_console(chat)
+live_browser(chat)</code></pre>
+<p>Try this but experiment with a new system prompts. Here’s an example, try your own.</p>
+<pre><code>chat &lt;- chat_claude(
+  system_prompt = "You are a mystic with expertise in R programming. You answer questions indirectly in riddles and rhymes.",
+  model = "claude-3-5-haiku-20241022", 
+  max_tokens = 1000
+)
+
+live_console(chat)</code></pre>
+<blockquote class="blockquote">
+<p>User: how can I do a glm in R?</p>
+</blockquote>
+<pre><code>*Swirling mystical orb glows with R code*
+
+Through statistics' mist, a model takes flight,
+glm() is the spell to cast in the night,
+With family bound, be it gaussian or more,
+And formula written as y ~ x4.
+...</code></pre>
+</section>
+<section id="programmatically-generate-content" class="level3">
+<h3 class="anchored" data-anchor-id="programmatically-generate-content">Programmatically generate content</h3>
+<p>So once you’ve tested your prompt you can run it like this:</p>
+<pre><code>chat &lt;- chat_claude(
+  system_prompt = "You are a surfy dude who likes waves, tubes and statistics.",
+  model = "claude-3-5-haiku-20241022", 
+  max_tokens = 1000
+)
+
+chat$chat("How can I do a glm in R?")</code></pre>
+<p>‘… Hang ten with your statistical surfboard! 🏄‍♂️📊’</p>
+<p>That was cheesy…</p>
+</section>
+</section>
+<section id="example-clean-pdfs-text-and-summarize" class="level2">
+<h2 class="anchored" data-anchor-id="example-clean-pdfs-text-and-summarize">Example: Clean pdfs text and summarize</h2>
+<p>Now let’s see if we can use <code>ellmer</code> to clean up some text from a pdf and summarize it. <code>ellmer</code> has some handy functions for processing pdfs to text, so they can then be fed into prompts.</p>
+<p>I’m going to attempt to summarize my <a href="https://conbio.onlinelibrary.wiley.com/doi/10.1111/conl.13056">recent paper on turtle fishing</a>.</p>
+<pre><code>x &lt;- content_pdf_url("https://conbio.onlinelibrary.wiley.com/doi/epdf/10.1111/conl.13056")</code></pre>
+<p>This fails with a 403 error. This means the server is blocking the request, it probably guesses (correctly) that I’m calling the pdf programmatically: it thinks I’m a bot (which this tutorial kind of is creating).</p>
+<p>We can also try with a file on our hard drive, we just have to manually download the pdf.</p>
+<pre><code>mypdf &lt;- content_pdf_file("pdf-examples/Brown_etal2024 national scale turtle mortality.pdf")</code></pre>
+<p>That works, now let’s use it within a chat. First set-up our chat:</p>
+<pre><code>chat &lt;- chat_claude(
+  system_prompt = "You are a research assistant who specializes in extracting structured data from scientific papers.",
+  model = "claude-3-5-haiku-20241022", 
+  max_tokens = 1000
+)
+</code></pre>
+<p>Now, we can use ellmer’s functions for specifying structured data. Many LLMs can be used to generate data in the JSON format (they were specifically trained with that in mind).</p>
+<p><code>ellmer</code> handles the conversion from JSON to R objects that are easier for us R users to understand.</p>
+<p>You use the <code>type_object</code> then <code>type_number</code>, <code>type_string</code> etc.. to specify the types of data. <a href="https://ellmer.tidyverse.org/articles/structured-data.html">Read more in the ellmer package vignettes</a></p>
+<pre><code>paper_stats &lt;- type_object(
+  sample_size = type_number("Sample size of the study"),
+  year_of_study = type_number("Year data was collected"),
+  method = type_string("Summary of statistical method, one paragraph max")
+)
+</code></pre>
+<p>Finally, we send the request for a summary to the provider:</p>
+<pre><code>turtle_study &lt;- chat$extract_data(mypdf, type = paper_stats)</code></pre>
+<p>The <code>turtle_study</code> object will contain the structured data from the pdf. I <em>think</em> (the ellmer documentation is a bit sparse on implementation details) ellmer is converting a JSON that comes from the LLM to a friendly R list.</p>
+<pre><code>class(turtle_study)
+#list</code></pre>
+<p>And:</p>
+<pre><code>turtle_study$sample_size
+#11935
+turtle_study$year_of_study
+#2018
+turtle_study$method
+#The study estimated national-scale turtle catches for two fisheries in the Solomon Islands 
+#- a small-scale reef fishery and a tuna longline fishery - using community surveys and 
+#electronic monitoring. The researchers used nonparametric bootstrapping to scale up 
+#catch data and calculate national-level estimates with confidence intervals.</code></pre>
+<p>It works, but like any structured lit review you need to be careful what questions you ask. Even more so with an LLM as you are not reading the paper and understanding the context.</p>
+<p>In this case the sample size its given us is the estimated number of turtles caught. This was a model output, not a sample size. In fact this paper has several methods with different sample sizes. So some work would be needed to fine-tune the prompt, especially if you are batch processing many papers.</p>
+<p>You should also experiment with models, I used Claude haiku because its cheap, but Claude sonnet would probably be more accurate.</p>
+</section>
+<section id="batch-processing-prompts" class="level2">
+<h2 class="anchored" data-anchor-id="batch-processing-prompts">Batch processing prompts</h2>
+<p>Let’s try this with a batch of papers (here I’ll just use two). For this example I’ll just use two abstracts, which I’ve obtained as plain text. The first is from <a href="https://zslpublications.onlinelibrary.wiley.com/doi/10.1111/j.1469-1795.2010.00413.x">another study on turtle catch in Madagascar</a>. The second is from my study above.</p>
+<p>What we’ll do is create a function that reads in the text, then passes it to the LLM, using the request for structured data from above.</p>
+<pre><code>  process_abstract &lt;- function(file_path, chat) {
+  # Read in the text file
+  abstract_text &lt;- readLines(file_path, warn = FALSE)
+  
+  # Extract data from the abstract
+  result &lt;- chat$extract_data(abstract_text, type = paper_stats)
+  
+  return(result)
+}</code></pre>
+<p>Now set-up our chat and data request</p>
+<pre><code># Create chat object if not already created
+chat &lt;- chat_claude(
+      system_prompt = "You are a research assistant who specializes in extracting structured data from scientific papers.",
+      model = "claude-3-5-haiku-20241022", 
+      max_tokens = 1000
+)</code></pre>
+<p>There’s a risk that the LLM will hallucinate data if it can’t find an answer. To try to prevent this we can set an option , required = FALSE. Then the LLM should return ‘NULL’ if it can’t find the data.</p>
+<pre><code># Define the structured data format
+paper_stats &lt;- type_object(
+    sample_size = type_number("Number of surveys conducted to estimate turtle catch", required = FALSE),
+    turtles_caught = type_number("Estimate for number of turtles caught", required = FALSE),
+    year_of_study = type_number("Year data was collected", required = FALSE),
+    region = type_string("Country or geographic region of the study", required = FALSE)
+  )</code></pre>
+<p>Now we can batch process the abstracts and get the structured data</p>
+<pre><code>
+abstract_files &lt;- list.files(path = "pdf-examples", pattern = "\\.txt$", full.names = TRUE)
+results &lt;- lapply(abstract_files, function(file) process_abstract(file, chat))
+names(results) &lt;- basename(abstract_files)
+
+# Display results
+print(results)</code></pre>
+<p>In my first take without the required = FALSE I got some fake results. It hallucinated that the Humber study was conducted in 2023 (it was published in 2010!) and that there were 2 villages surveyed in my study. The problem was that you can’t get that data from the abstracts. So the model is hallucinating a response.</p>
+<p>Unfortunately, with required = FALSE it still hallucinated answers. I then tried Claude sonnet (a more powerful reasoning model) and it correctly put NULL for my study’s sample size, but still got the year wrong for the Humber study.</p>
+<p>I think this could work, but some work on the prompts would be needed.</p>
+</section>
+<section id="reflections" class="level2">
+<h2 class="anchored" data-anchor-id="reflections">Reflections</h2>
+<p>The ellmer package solves some of the challenges <a href="https://www.seascapemodels.org/rstats/2025/02/12/LLMs-for-literature-reviews.html">I outlined in my last blog on LLM access</a> from R. But others are deeper conceptual challengs and remain. I’ll repeat those here</p>
+<section id="cost-uncertainty" class="level3">
+<h3 class="anchored" data-anchor-id="cost-uncertainty">Cost uncertainty</h3>
+<p>This should be cheap. It cost &lt;1c to make this post with all the testing. So in theory you could do 100s of methods sections for &lt;100USD. However, if you are testing back and forwards a lot or using full papers the cost could add up. It will be hard to estimate this until people get more experience.</p>
+</section>
+<section id="obtaining-the-papers-and-dealing-with-unstructued-text-in-pdfs-or-html" class="level3">
+<h3 class="anchored" data-anchor-id="obtaining-the-papers-and-dealing-with-unstructued-text-in-pdfs-or-html">Obtaining the papers and dealing with unstructued text in PDFs or HTML</h3>
+<p>A big challenge will be getting the text into a format that the LLM can use. Then there are issues like obtaining the text. Downloading pdfs is time consuming and data intensive. Trying to read text data from webpages can also be hard, due to paywalls and rate limits (you might get blocked for making reqeat requests).</p>
+<p>For instance, <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/brv.12344?casa_token=LVnFzoFBBU8AAAAA%3AcsyopYDWDBRZN7y2JL7eHYxzqayxu2GvKB-7gdEYkdeZSi5p5o1oXTwj49FqwBJz-IpPS6wxJ_SX0h2f">in a past study we did where we did simple ‘bag of words analysis’</a> we either downloaded the pdfs manually, or set timers to delay web hits and avoid getting blocked.</p>
+<p>HTML format would be ideal, because the tags mean the sections of the paper, and the figures already semi-structured.</p>
+<p>The ellmer pdf utility function seems to work ok for getting text from pdfs. I’m guessing it could be improved though, e.g.&nbsp;to remove wastefull (=$) text like page headers.</p>
+</section>
+<section id="prompting" class="level3">
+<h3 class="anchored" data-anchor-id="prompting">Prompting</h3>
+<p>Need to experiment with this to get it right. It might also be good to repeat prompt the same text to triangulate accurate results.</p>
+</section>
+<section id="validation" class="level3">
+<h3 class="anchored" data-anchor-id="validation">Validation</h3>
+<p>You’ll definitely want to manually check the output and report accuracy statistics in your study. So maybe your review has 1000 papers, you’ll want to manually check 100 of them to see how accurate the LLM was.</p>
+</section>
+<section id="youll-still-need-to-read-a-lot-of-papers-to-write-a-good-lit-review" class="level3">
+<h3 class="anchored" data-anchor-id="youll-still-need-to-read-a-lot-of-papers-to-write-a-good-lit-review">You’ll still need to read a lot of papers to write a good lit review</h3>
+<p>A lit review is more than the systematic data. I still believe you need to read a lot of papers in order to understand the literature and make a useful synthesis. If you just use AI you’re vulnerable to the <a href="https://www.nature.com/articles/s41586-024-07146-0">‘illusion of understanding’</a>.</p>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>This tool will be best for well defined tasks and consistently written papers. For instance, an ideal use case would be reviewing 500 ocean acidification papers that all used similar experimental designs and terminology. You’ll then be able to get consistent answers to prompts about sample size etc…</p>
+<p>Another good use case would be to extract model types from species distribution model papers.</p>
+<p>Harder tasks will be where the papers are from diverse disciplines, or use inconsistent terminology, or methods. My study was a good example of that, there were about 5 different sample sizes reported. So in this example we’d need first to think clearly about what sample size you wanted to extract before writing the prompt.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-03-15-LMs-in-R-with-ellmer/</guid>
+  <pubDate>Fri, 14 Mar 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>How to use large language models to assist in systematic literature reviews</title>
+  <link>https://www.seascapemodels.org/posts/2025-02-12-LLMs-for-literature-reviews/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>In the near future, we will all be doing systematic lit reviews by getting LLMs to gather data from papers. Below is an example of how to extract text data from a study. Once you can interact with LLM from R, you can then batch process many documents to turn text into structured data.</p>
+<p>TLDR; Developing a data extraction workflow is hard work. The development of prompts, data extraction and data cleaning is time consuming and requires thought. So it will still take work to do a systematic review. I’d also recommend you manually check results so that you still learn something yourself and to correct errors.</p>
+<p>I’ll also mention that papers are coming out now testing this idea, e.g.&nbsp;this one shows the <a href="https://www.nature.com/articles/s44185-024-00043-9">AI’s results can be accurate, but only for some types of requests</a>. The supplemental code for that paper also has helpful guidance.</p>
+<p>We’ll need a few R skills to extract data from papers for lit reviews:</p>
+<ol type="1">
+<li>How to interact with LLMs through APIs from R</li>
+<li>How to handle pdf docments and extract text from them</li>
+<li>How to clean up semi-structured text data and turn it into structured data.</li>
+<li>How to batch process.</li>
+</ol>
+<p>I’ll mainly focus on step 1 here. Step 2 is possible, by can be finniky and depend on how the pdf is formated. Step 3 is pretty straightforward with a package like <code>stringr</code>. Step 4 is just looping with whatever framework you prefer for that (e.g.&nbsp;for loops or purrr).</p>
+<p>This blog deals with only one type of application of LLMs to lit reviews, that is maybe the most straightforward and cheapest. There are other ways to use them to write syntheses or discover research trends, such as finetuning models on a large corpus of papers.</p>
+<section id="setting-up-your-api-access" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-your-api-access">Setting up your API access</h3>
+<p>API = application programming interface. This is a way to interact with a service (the LLM provider) via R.</p>
+<p>First you will need to go to your LLM provider of choice (here I’m using anthropic) and get an API key. This will require you to register and then buy some credits. You will per charged per token (fragment of a word) that you use.</p>
+<p>I’ve started out with 25USD which seems to be sufficient for testing. I’ve got no idea yet how much it will cost to do a full systematic lit review with 100s of papers.</p>
+<p>Now get your API key. Keep this secret its like a password. Also you can only view it once, so you’ll need to save it, e.g.&nbsp;in a password manager.</p>
+</section>
+<section id="using-the-api-key-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="using-the-api-key-in-r">Using the API key in R</h3>
+<p>I’m using the <code>dotenv</code> package to help manage API. First, make sure <code>.env</code> is in your <code>.gitignore</code> file. This way you can’t inadvertently share your key with the world.</p>
+<p>Now create a file in a text editor (e.g.&nbsp;Rstudio or VSCode) called <code>.env</code>. Put this is your project folder.</p>
+<p>The file will look like this:</p>
+<pre><code>ANTHROPIC_KEY="your_api_key_here"</code></pre>
+<p>Be sure to hit enter after the last line.</p>
+<p>Now you can use the <code>dotenv</code> package to load the key into your R session. <a href="https://www.r-bloggers.com/2018/08/structuring-r-projects/">This blog has good advice on managing secrets</a></p>
+<pre><code>dotenv::load_dot_env('.env')</code></pre>
+<p>Check it worked to load the key:</p>
+<pre><code>Sys.getenv("ANTHROPIC_KEY")</code></pre>
+<p>This should print your key.</p>
+</section>
+<section id="interacting-with-the-api-from-r" class="level2">
+<h2 class="anchored" data-anchor-id="interacting-with-the-api-from-r">Interacting with the API from R</h2>
+<p>Now you are ready to use the API. There are quite a few packages that can help you do this. I’m going to use the new <code>tidychatmodels</code> package, because I like its syntax (its like tidymodels).</p>
+<p><a href="https://albert-rapp.de/posts/20_tidychatmodels/20_tidychatmodels">Install instructions are here</a> (its not on cran as of writing) and <a href="https://albert-rapp.de/posts/21_pdf_extraction/21_pdf_extraction">here is a nice example of how to use LLMs with pdfs</a>, which helped me greatly with writing this blog.</p>
+<pre><code>library(tidyverse)
+library(tidychatmodels)</code></pre>
+<p>Now start building the instructions to send to the API. tidychatmodels does this step by step with pipes. So we are going to build up a sequence of commands. In the final step we’ll send it to the API.</p>
+<pre><code>newchat &lt;- create_chat("anthropic", 
+    api_key = Sys.getenv("ANTHROPIC_KEY"),
+    api_version = '2023-06-01')</code></pre>
+<p>Here I’m using ‘anthropic’, but there are others e.g.&nbsp;openai and mistral.</p>
+<p>Now add a model. I got the model name on the <a href="https://docs.anthropic.com/en/docs/about-claude/models">APIs webpage</a></p>
+<p>Model choice is dictated by speed, cost and the type of task you want to do. Do some research to optimise this.</p>
+<p>I’m also setting the temperature to control the level of creativitiy in the output, lower values = less creative. max_tokens controls the length of the output.</p>
+<pre><code>newchat &lt;- add_model(newchat, "claude-3-5-haiku-20241022") |&gt;
+      add_params('temperature' = 0.2, max_tokens = 800) </code></pre>
+</section>
+<section id="prompting-through-the-api" class="level2">
+<h2 class="anchored" data-anchor-id="prompting-through-the-api">Prompting through the API</h2>
+<p>Let’s do a test run. I’ll create some text</p>
+<pre><code>newchat &lt;- newchat |&gt;
+  add_message(
+    role = 'user',
+    message = 'You are a funky dude who loves writing online R lessons.
+    Write a paragraph about loading dataframes in R. '
+  ) </code></pre>
+<p>Now we’re ready to hit the dance floor. This is the bit where we actually ask the LLM to do something. It is also the bit that costs money….</p>
+<pre><code>newchat &lt;- newchat |&gt;
+    perform_chat()
+responses &lt;- newchat |&gt; extract_chat()</code></pre>
+<p>So the first time I ran this I got a ‘400’ error. Turns out the ‘max_tokens’ parameter was essential to set. This parameter controls the length of output. Longer outputs cost more (you’re charged per token).</p>
+<p>Error in <code>httr2::req_perform()</code>: ! HTTP 400 Bad Request. Backtrace: 1. tidychatmodels::perform_chat(newchat) 5. httr2::req_perform(prepared_engine)</p>
+</section>
+<section id="roles" class="level2">
+<h2 class="anchored" data-anchor-id="roles">Roles</h2>
+<p>Most LLMs have different roles, often a ‘user’ and a ‘system’ role. These give you more precise control over the LLM’s output. There is great advice from vendors on how to use these roles, e.g.&nbsp; with (anthropic)[<a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/system-prompts#legal-contract-analysis-with-role-prompting" class="uri">https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/system-prompts#legal-contract-analysis-with-role-prompting</a>]</p>
+<p>Setting a system role controls how the LLM behaves. People use these to make the AI act like a certain character, such as a research assistant. Let’s see it in action.</p>
+<p>Prompting is like programming, but less precise (annoyingly for me, who likes programming and things to be exact!). Good prompts will tend to get you better results. But of course, as with all deep learning, outcomes have an element of randomness, so can be inconsistent.</p>
+<pre><code>base_settings &lt;- create_chat("anthropic", 
+    api_key = Sys.getenv("ANTHROPIC_KEY"),
+    api_version = '2023-06-01') |&gt; 
+    add_model("claude-3-5-haiku-20241022") |&gt;
+    add_params('temperature' = 0.8, max_tokens = 100) 
+
+newchat &lt;- base_settings |&gt;
+  add_message(
+    role = 'system',
+    message = 'You are a funky dude who loves writing online R lessons.'
+  ) |&gt; 
+  add_message(
+    #defaults to 'user' role
+    message = 'Write a paragraph about loading dataframes in R. ') |&gt;
+    perform_chat() 
+
+extract_chat(newchat)</code></pre>
+<p>Ok, so the system role didn’t work very well in this case. To get the ‘funky dude’ output you need to put that into the user role.</p>
+<p>Now let’s look at doing this for a real paper.</p>
+</section>
+<section id="extracting-text-from-a-pdf" class="level2">
+<h2 class="anchored" data-anchor-id="extracting-text-from-a-pdf">Extracting text from a pdf</h2>
+<p>I’m going to use my <a href="https://doi.org/10.1111/conl.13056">recent paper on turtle mortality as an example, becuase I know it well</a> and the file size isn’t too large.</p>
+<p>Now we can use the pdftools package to read in the text from file. You could also try reading this directly from the web as HTML, which might allow you to identify particular sections, or data in tables, more effectively (by using html tags).</p>
+<p>Just note that making repeat requests for html pages might get you temporarily blocked from the publisher’s server.</p>
+<pre><code>library(pdftools)
+text &lt;- pdf_text("data/Brown_etal2024 national scale turtle mortality.pdf")</code></pre>
+<p>Now doing the above failed to work, I got that darn 400 error again when I sent it to the API. The issue seemed to be in the formatting of the text. So I can get on with the next step, I’ve just cut and paste the text into a text file. Clearly the cleaning up of pdfs/html for use will be a big part of this process. (like all modelling, data cleaning usually takes up most of the time).</p>
+<pre><code>methods_text &lt;- readLines("data/example-text.txt") |&gt;
+    paste(collapse = " ")</code></pre>
+</section>
+<section id="sending-text-to-the-llm" class="level2">
+<h2 class="anchored" data-anchor-id="sending-text-to-the-llm">Sending text to the LLM</h2>
+<p>Now we have our text we can send it to the LLM.</p>
+<pre><code>newchat &lt;- base_settings |&gt;
+    add_params('temperature' = 0.2, max_tokens = 600) |&gt; 
+    add_message(
+    role = 'system',
+    message = "You are a research assistant who has been asked to summarise the methods section of a paper on turtle mortality.
+    You will extract key statistics on:
+    Sample size: &lt;&lt; Insert sample size here&gt;&gt;
+    Year of the study: &lt;&lt; Insert year here&gt;&gt;
+    DONT EXTRACT ANY MORE INFORMATION BEYOND THIS POINT.
+    "
+  ) |&gt; 
+     add_message(
+         message = methods_text
+    ) |&gt;
+  perform_chat()
+
+extract_chat(newchat)</code></pre>
+<p>The prompt is key here. In the system role we’ve told it to extract the data in a structured way. I also included ‘DONT EXTRACT ANY MORE INFORMATION BEYOND THIS POINT.’ to prevent it from continuing to talk. Using caps emphasises the point to the AI.</p>
+<p>Here’s the output:</p>
+<blockquote class="blockquote">
+<p>Based on the methods section, here are the key statistics: Sample size: 357 sets (electronic monitoring) for large-scale longline fishery (LLF) Year of the study: 2018</p>
+</blockquote>
+<p>Here’s the output without the final part in caps:</p>
+<blockquote class="blockquote">
+<p>Assistant: Based on the methods section, here are the key statistics: Sample size: - For Small-Scale Fisheries (SSF): Monitored catches from 10 communities across 8 of 9 provinces - For Large-Longline Fisheries (LLF): 357 sets reviewed, spanning from 2018-01-24 to 2019-08-17 - Total catch events for LLF: 25,403 catch events - Electronic monitoring deployed on 7 vessels Year of the study: 2018 (primary year of data collection) Additional notable details: - Used non-parametric bootstrapping for scaling up and estimating confidence intervals - Monitoring methods involved trained community members and electronic monitoring systems - Video review of LLF data took 0.5 to 2 days per set - Used three different methods to scale up turtle catch for LLF to account for variability</p>
+</blockquote>
+<p>This is all very accurate, but includes too much ‘additional details’. However, it does get more of the methods details with regards to the various sample sizes for different parts of the study.</p>
+<p>Let’s get the output text:</p>
+<pre><code>chatout &lt;- extract_chat(newchat)
+output &lt;- chatout[chatout$role == 'assistant', 'message']</code></pre>
+<p>For repeatability just for the blog I’m hard coding that</p>
+<pre><code>output &lt;- data.frame(message = "Based on the methods section, here are the key statistics:\n\nSample size: 357 sets (electronic monitoring) for large-scale longline fishery (LLF)\nYear of the study: 2018")</code></pre>
+</section>
+<section id="turn-text-into-structured-data" class="level2">
+<h2 class="anchored" data-anchor-id="turn-text-into-structured-data">Turn text into structured data</h2>
+<p>Our data is semi structured by the way we did the prompt. Now we want to put the sample size and year into data fields.</p>
+<p>I’m using <code>separate_wider_delim</code> to first seperate out the first paragraph that had two breaks ’’, then again to split the sample size and year into columns (they were seperated by ’’).</p>
+<p>Finally, str_remove_all gets rid of the ‘Sample size:’ and ‘Year of the study:’ text.</p>
+<pre><code>library(stringr)
+
+cleaned_output &lt;- output |&gt; 
+  separate_wider_delim(
+    cols = message, 
+    delim = '\n\n',
+    names = c('response', 'stats')
+  ) |&gt; 
+separate_wider_delim(
+    cols = stats, 
+    delim = '\n',
+    names = c('sample_size', 'year')
+) |&gt; 
+  mutate(
+    across(
+      sample_size:year,
+      \(x) str_remove_all(
+        x, 
+        'Sample size: |Year of the study: '
+      )
+    ))</code></pre>
+<p>So now we can easily get our variables (sort of)</p>
+<pre><code>cleaned_output$sample_size
+cleaned_output$year</code></pre>
+</section>
+<section id="reflections-on-challenges-and-next-steps-for-automating-data-extraction" class="level2">
+<h2 class="anchored" data-anchor-id="reflections-on-challenges-and-next-steps-for-automating-data-extraction">Reflections on challenges and next steps for automating data extraction</h2>
+<section id="cost-uncertainty" class="level3">
+<h3 class="anchored" data-anchor-id="cost-uncertainty">Cost uncertainty</h3>
+<p>This should be cheap. It cost &lt;1c to make this post with all the testing. So in theory you could do 100s of methods sections for &lt;100USD. However, if you are testing back and forwards a lot or using full papers the cost could add up. It will be hard to estimate this until people get more experience.</p>
+</section>
+<section id="obtaining-the-papers-and-dealing-with-unstructued-text-in-pdfs-or-html" class="level3">
+<h3 class="anchored" data-anchor-id="obtaining-the-papers-and-dealing-with-unstructued-text-in-pdfs-or-html">Obtaining the papers and dealing with unstructued text in PDFs or HTML</h3>
+<p>A big challenge will be getting the text into a format that the LLM can use. Then there are issues like obtaining the text. Downloading pdfs is time consuming and data intensive. Trying to read text data from webpages can also be hard, due to paywalls and rate limits (you might get blocked for making reqeat requests).</p>
+<p>For instance, <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/brv.12344?casa_token=LVnFzoFBBU8AAAAA%3AcsyopYDWDBRZN7y2JL7eHYxzqayxu2GvKB-7gdEYkdeZSi5p5o1oXTwj49FqwBJz-IpPS6wxJ_SX0h2f">in a past study we did where we did simple ‘bag of words analysis’</a> we either downloaded the pdfs manually, or set timers to delay web hits and avoid getting blocked.</p>
+<p>HTML format would be ideal, because the tags mean the sections of the paper, and the figures already semi-structured.</p>
+</section>
+<section id="prompting" class="level3">
+<h3 class="anchored" data-anchor-id="prompting">Prompting</h3>
+<p>Need to experiment with this to get it right. It might also be good to repeat prompt the same text to triangulate accurate results.</p>
+</section>
+<section id="llm-text-output-cleaning" class="level3">
+<h3 class="anchored" data-anchor-id="llm-text-output-cleaning">LLM text output cleaning</h3>
+<p>In my simple example this was easy. However, with a large number of prompts and papers the LLM responses might have more variability that needs to be dealt with, e.g.&nbsp;will it always use one line break between my data questions? You can help control this issue by asking it to structure output in xml or JSON format, which is easier to then parse into data sheets.</p>
+</section>
+<section id="the-data-still-isnt-data-and-requires-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="the-data-still-isnt-data-and-requires-interpretation">The data still isn’t data and requires interpretation</h3>
+<p>You can see from my simple examples above that the output can’t be plotted direclty. In fact, it requires more interpretation. The sample size was given as ‘357 sets (electronic monitoring) for large-scale longline fishery (LLF)’. So is it 357? Are there other sample sizes that might be relevant?</p>
+</section>
+<section id="validation" class="level3">
+<h3 class="anchored" data-anchor-id="validation">Validation</h3>
+<p>You’ll definitely want to manually check the output and report accuracy statistics in your study. So maybe your review has 1000 papers, you’ll want to manually check 100 of them to see how accurate the LLM was.</p>
+</section>
+<section id="youll-still-need-to-read-a-lot-of-papers-to-write-a-good-lit-review" class="level3">
+<h3 class="anchored" data-anchor-id="youll-still-need-to-read-a-lot-of-papers-to-write-a-good-lit-review">You’ll still need to read a lot of papers to write a good lit review</h3>
+<p>A lit review is more than the systematic data. I still believe you need to read a lot of papers in order to understand the literature and make a useful synthesis. If you just use AI you’re vulnerable to the <a href="https://www.nature.com/articles/s41586-024-07146-0">‘illusion of understanding’</a>.</p>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>This tool will be best for well defined tasks and consistently written papers. For instance, an ideal use case would be reviewing 500 ocean acidification papers that all used similar experimental designs and terminology. You’ll then be able to get consistent answers to prompts about sample size etc…</p>
+<p>Another good use case would be to extract model types from species distribution model papers.</p>
+<p>Harder tasks will be where the papers are from diverse disciplines, or use inconsistent terminology, or methods. My study was a good example of that, there were about 5 different sample sizes reported. So in this example we’d need first to think clearly about what sample size you wanted to extract before writing the prompt.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2025-02-12-LLMs-for-literature-reviews/</guid>
+  <pubDate>Tue, 11 Feb 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Setting up VScode for R and Cline</title>
+  <link>https://www.seascapemodels.org/posts/2025-02-07-setting-up-vscode-r-cline/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Cline lets you create and run entire workflows via using prompts to a large language model. Its not widely used in the R community yet, but I expect it will be soon. You can create your entire R project, interpret the results and write a draft of your findings without writing any R code.</p>
+<p>Cline is not available (as of writing) in RStudio. So you need to use a different IDE (Integrated Development Environment) to run your R code. Here I’ll explain how to set-up VSCode (a popular IDE) so you can use Cline.</p>
+<section id="software-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="software-requirements">Software requirements</h2>
+<p>To set up VScode for R and Cline, you’ll need:</p>
+<ul>
+<li>R programming language</li>
+<li>VScode text editor</li>
+<li>R extension for VScode</li>
+<li>Cline AI assistant extension for VScode</li>
+</ul>
+<p>Note that if you computer is controlled centrally by an IT department, you may need to request admin access to install software, or email IT and ask for them to come and help you.</p>
+</section>
+<section id="install-r" class="level2">
+<h2 class="anchored" data-anchor-id="install-r">Install R</h2>
+<ol type="1">
+<li>Go to the official R project website: https://www.r-project.org/</li>
+<li>Click the “download R” link in the Getting Started section</li>
+<li>Choose a CRAN mirror close to your location</li>
+<li>Download the appropriate R installer for your operating system</li>
+<li>Run the installer and follow the prompts to complete installation</li>
+</ol>
+</section>
+<section id="r-packages" class="level2">
+<h2 class="anchored" data-anchor-id="r-packages">R packages</h2>
+<ol type="1">
+<li>Open R or RStudio</li>
+<li>Install language server <code>install.packages("languageserver")</code></li>
+<li>Install httpgd <code>install.packages("httpgd")</code> (this helps improve plots in VScode)</li>
+</ol>
+</section>
+<section id="install-vscode" class="level2">
+<h2 class="anchored" data-anchor-id="install-vscode">Install VScode</h2>
+<ol type="1">
+<li>Go to the official VScode website: https://code.visualstudio.com/</li>
+<li>Click the big blue “Download” button</li>
+<li>Download the appropriate VScode installer for your operating system</li>
+<li>Run the installer and follow the prompts</li>
+<li>Launch VScode once installation is complete</li>
+</ol>
+</section>
+<section id="install-r-extension" class="level2">
+<h2 class="anchored" data-anchor-id="install-r-extension">Install R extension</h2>
+<ol type="1">
+<li>Open VScode</li>
+<li>Open the Extensions view in VScode (click the boxes on left hand side)</li>
+<li>Search for “R” in the extensions marketplace</li>
+<li>Select the “R” extension published by REditorSupport</li>
+<li>Click the “Install” button</li>
+<li>Restart VScode after installation if prompted</li>
+</ol>
+<p><a href="https://code.visualstudio.com/docs/languages/r">More info on vscode and R here</a></p>
+</section>
+<section id="connect-r-and-vscode" class="level2">
+<h2 class="anchored" data-anchor-id="connect-r-and-vscode">Connect R and VScode</h2>
+<ol type="1">
+<li>Open a new terminal in VScode (Terminal &gt; New Terminal)</li>
+<li>Check that R is installed by running: <code>R --version</code></li>
+<li>Type <code>R</code> to open the R console in the terminal</li>
+<li>Now open any R script in VS code (File &gt; Open)</li>
+<li>Run some R code to check that VS code can connect to R in the terminal. Use the shortcut Ctrl+Enter/Cmd+Enter or press the play button in the top right of the script editor.</li>
+</ol>
+<p>If R is not found then open extensions (left hand side, boxes icon), filter by ‘enabled’ then click the R extension. Now click the cog icon in the R extension and select ‘settings’ from the dropdown. Search for ‘rpath’. Check that it has the correct path to R on your computer. You can find the path by opening a terminal and typing <code>which R</code> (on mac) or in a windows terminal <code>where R</code>.</p>
+<p>While you have the extension settings open search for ‘httgp’ and make sure <code>Plot: Use Httpgd</code> is enabled.</p>
+</section>
+<section id="install-cline" class="level2">
+<h2 class="anchored" data-anchor-id="install-cline">Install Cline</h2>
+<ol type="1">
+<li>Open the Extensions view in VScode (Ctrl+Shift+X)</li>
+<li>Search for “cline” in the extensions marketplace</li>
+<li>Select the “Cline” extension</li>
+<li>Click the “Install” button</li>
+<li>The Cline icon should appear in the VScode sidebar</li>
+</ol>
+</section>
+<section id="set-up-cline-in-vscode" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-cline-in-vscode">Set up Cline in VScode</h2>
+<ol type="1">
+<li>Click on the Cline robot icon on the left hand side</li>
+<li>Click the cog (if the settings don’t open automatically)</li>
+<li>Select your API provider and cut and paste the API key into the box (see next step if you don’t have one).</li>
+</ol>
+</section>
+<section id="get-an-api-key" class="level2">
+<h2 class="anchored" data-anchor-id="get-an-api-key">Get an API key</h2>
+<p>Now you need to choose your large language model provider. I’m currently using Anthropic, which has a diversity of models for generating text, code and reading images. Do some web searching to find out the latest info on providers and models.</p>
+<p>You choose depends on what you want to do and your budget. Some providers offer a free tier. You’ll need to web search for the latest info on this.</p>
+<p>You can get the links to any supported provider from the Cline extension settings, just select the provider and then a link will appear to sign-up for that provider.</p>
+<p>Once you’ve chosen a provider, create an account and follow their instructions for creating an API key. You will probably also need to buy some credit to use the model.</p>
+<p>Note that if you already have a subscription account, e.g.&nbsp;for chatGPT, you will get need an API key to use Cline. This might be in a different section of your account settings. If you are using a subscription service you are probably paying monthly to use the provider’s web app. We need the API key to be able to use the model directly via code.</p>
+</section>
+<section id="youre-all-set" class="level2">
+<h2 class="anchored" data-anchor-id="youre-all-set">You’re all set</h2>
+<p>Now you’re set and ready to start using Cline to code and write text.</p>
+</section>
+<section id="issues-and-tips" class="level2">
+<h2 class="anchored" data-anchor-id="issues-and-tips">Issues and tips</h2>
+<p>This is just a list of issues I’ve had and how I’ve solved them.</p>
+<p><em>Plotting</em> If your R plots look weird (like tiny font), make sure httpgp is enabled. Go back to steps above and see how to do that.</p>
+<p><em>Viewing data</em> There are various extensions for viewing csv and excel files. It is worth looking into these so that when you do <code>View(dat)</code> in R you get a nice table. Some also allow editing.</p>
+<p><em>Getting help to install software</em> My computer is somewhat locked down by IT, so getting this set-up was a bit fiddly and required a few requests to IT to install software.</p>
+<p><em>R markdown</em> There are options in the R extension settings for how to knit markdown. You may need to configure these if you want to knit markdown docs from VScode. If you are having trouble knitting markdown it may mean that the path to pandoc is not set correctly. <a href="https://stackoverflow.com/questions/60766646/need-help-assigning-global-settings-for-rstudios-pandoc-in-vscode-to-knit-pdf-d">There is some helpful instructions here</a></p>
+<p><em>R terminal crashes</em> If I run too much R code at once (like selecting a big block then running) the terminal tends to crash. Initially I see a little highlighted box saying ‘PTY HOST’. Then I need to close all the terminals (with the bin icon) and start again. Try radian if this is a problem. You can also code run line-by-line or source whole scripts from the terminal (which works fine). I tried debugging this by increasing the buffer but to on avail.</p>
+<p><em>Shortcut keys</em> (on osx) cmd-/ to comment uncomment lines. cmd-shift-p to open the command palette, cmd-b to open the file explorer, cmd-enter to run lines or selection of R code, cmd-shift-c to open terminal in new window, cntrl-shift-` to open a new terminal in vs code.</p>
+</section>
+<section id="installing-radian-optional" class="level2">
+<h2 class="anchored" data-anchor-id="installing-radian-optional">Installing radian (optional)</h2>
+<p>Radian is a terminal editor that is a bit nicer than the base R one. It does autocomplete in the terminal (like Rstudio does in the console), colours code/brackets etc… and allows multi-line editing in the terminal.</p>
+<p>To set this up, install radian (you need python to do this). More <a href="https://github.com/randy3k/radian?tab=readme-ov-file">instructions here</a>.</p>
+<p>Then go to the terminal and find the path where radian is installed (e.g.&nbsp;<code>which radian</code> on mac or <code>where radian</code> on windows).</p>
+<p>Now open your settings in VScode (cmd-,) and search for ‘rterm’ (stands for ‘R Terminal’, don’t change the rpath which we set just before). Add the path to radian to the rterm setting. Also search for the setting ‘R: Bracketed Paste’ and make sure it is enabled.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2025-02-07-setting-up-vscode-r-cline/</guid>
+  <pubDate>Thu, 06 Feb 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Probability intervals with GAMs</title>
+  <link>https://www.seascapemodels.org/posts/2024-01-05-credible-intervals-with-GAMs/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>A neat trick with GAMs (generalized additive models) fit using the <code>mgcv</code> package is that you can use simulation to get Bayesian credible intervals. This is handy because it means you can easily calculate probabilities for any arbitrary transformation of your parameters.</p>
+<p>For instance, we used this trick to calculate the probability that <a href="https://www.sciencedirect.com/science/article/pii/S004896972304490X">animal abundance was greater in an experimental treatment vs the control</a>. Using a GAM meant we could also account for non-linear temporal effects.</p>
+<p>The example I give below is for probability of exceeding a threshold.</p>
+<p>Simon Wood explains in his <a href="https://www.taylorfrancis.com/books/mono/10.1201/9781315370279/generalized-additive-models-simon-wood">book</a> that there is a theoretical equivalence between GAMs from his package and an empirical Bayesian analysis. In short, the GAM penalty parameters (the ones that control the wiggliness of the non-linear fits) are analogous to Bayesian priors.</p>
+<p>The reason we say ‘empirical’ Bayesian analysis is that the smoothing parameters are estimated from data, rather than having a prior.</p>
+<section id="getting-credible-intervals-from-a-gam" class="level3">
+<h3 class="anchored" data-anchor-id="getting-credible-intervals-from-a-gam">Getting credible intervals from a GAM</h3>
+<section id="set-up-data" class="level4">
+<h4 class="anchored" data-anchor-id="set-up-data">Set-up data</h4>
+<p>This is well documented in Wood’s book as well as in the <code>mgcv</code> help files, see examples in <code>?predict.gam</code>.</p>
+<p>I made myself a handy little function to implement the CIs, <a href="https://gist.github.com/cbrown5/484564c24383fd20fbe0ef76bd4fd97c">which we will use in this post</a>.</p>
+<p>Here’s the set-up, including sourcing in my function</p>
+<pre><code>library(mgcv)
+
+## Loading required package: nlme
+
+## This is mgcv 1.8-42. For overview type 'help("mgcv-package")'.
+
+library(ggplot2)
+source("gam-CIs.R")</code></pre>
+<p>Now let’s make up some data we can fit too. Let’s assume we are measuring biological responses (`y’) to a toxin:</p>
+<pre><code>set.seed(2024)
+n &lt;- 50
+toxin &lt;- sort(runif(n, 0, 1))
+dat &lt;- data.frame(toxin = toxin)
+dat &lt;- within(dat, {
+  ytrue = 6*toxin  - 7*toxin^2
+  yobs = ytrue + rnorm(n, sd = 0.2)
+})
+
+ggplot(dat) + 
+  aes(x = toxin, y= yobs) + 
+  geom_point() + 
+  geom_line(aes(y = ytrue))</code></pre>
+<p><img src="https://www.seascapemodels.org/posts/2024-01-05-credible-intervals-with-GAMs/gam-CIs_files/figure-markdown_strict/unnamed-chunk-2-1.png" class="img-fluid"></p>
+<p><code>ytrue</code> is the true values of the function, and <code>yobs</code> are our data on this variable.</p>
+</section>
+<section id="fit-a-gam" class="level4">
+<h4 class="anchored" data-anchor-id="fit-a-gam">Fit a GAM</h4>
+<p>Now fit a GAM and add its predictions to our dataframe:</p>
+<pre><code>m1 &lt;- gam(yobs ~ s(toxin), 
+          data = dat)
+dat$ypred &lt;- predict(m1)
+
+ggplot(dat) + 
+  aes(x = toxin, y= yobs) + 
+  geom_point() + 
+  geom_line(aes(y = ytrue)) + 
+  geom_line(aes(y = ypred), col = 'red')</code></pre>
+<p><img src="https://www.seascapemodels.org/posts/2024-01-05-credible-intervals-with-GAMs/gam-CIs_files/figure-markdown_strict/unnamed-chunk-3-1.png" class="img-fluid"></p>
+<p>The red line just shows the predictions from the fitted GAM, relative to the true curve (black line).</p>
+</section>
+<section id="plotting-predictions-with-cis" class="level4">
+<h4 class="anchored" data-anchor-id="plotting-predictions-with-cis">Plotting predictions with CIs</h4>
+<p>The first application of the empirical Bayes trick is to create a plot of predictions with credible intervals.</p>
+<p>I won’t go into the detail of the implementation, please see Wood’s book and <code>?predict.gam</code> for more info. But in short, you can sample predictions from the joint distribution of parameters and their covariances. We are assuming that parameters and their uncertainties are described by a multivariate normal distribution (methods like HMC and MCMC allow you to relax this assumption, such as when parameter values are skewed or multi-modal).</p>
+<p>We need to account for parameter covariances because a higher estimate of one parameter might imply a lower or higher estimate for another parameter. e.g.&nbsp;slope and intercept values for a linear fit are negatively correlated (a low slope high intercept fit will have similar sums of squares to a high slope low intercept fit).</p>
+<p>My function (<code>simulate_gam_CIs</code>) just implements the instructions given in <code>?predict.gam</code>. If you are using more complex models I recommend diving into the code yourself, as I can’t guarantee it works in all cases (e.g.&nbsp;doesn’t work for models with coefficients on the variance parameter like the <code>gaulss</code> family).</p>
+<pre><code>gamCIs &lt;- simulate_gam_CIs(m1,
+                 newdata = dat,
+                 forms = list(~x), 
+                 random_var = NULL,
+                 offset = 0,
+                 probs = c(0.025, 0.5, 0.975),
+                 nsims = 1000)</code></pre>
+<p>The function is drawing 1000 values from the posterior of the model. It then transforms the values according to the function given at <code>forms</code>. In this case we are not doing any transformation.</p>
+<p>Finally, it calculates the 2.5, 50 and 97.5% quantiles across those 1000 values, at each x value in the dataframe. It outputs a list of transformations, where each item corresponds to one of the formulas.</p>
+<p>So basically here we now have 95% credible intervals, and the median.</p>
+<p>Let’s plot that:</p>
+<pre><code>ggplot(dat) + 
+  aes(x = toxin, y= yobs) + 
+  geom_point() + 
+  geom_line(aes(y = ytrue)) + 
+  geom_line(data = gamCIs[[1]], aes(y = X50.), col = 'purple') + 
+  geom_ribbon(data = gamCIs[[1]], aes(ymin = X2.5., ymax = X97.5.),
+              color = NA, fill = "purple", alpha = 0.5)</code></pre>
+<p><img src="https://www.seascapemodels.org/posts/2024-01-05-credible-intervals-with-GAMs/gam-CIs_files/figure-markdown_strict/unnamed-chunk-5-1.png" class="img-fluid"></p>
+</section>
+<section id="probability-of-exceeding-a-threshold" class="level4">
+<h4 class="anchored" data-anchor-id="probability-of-exceeding-a-threshold">Probability of exceeding a threshold</h4>
+<p>A non-linear transform we might like to do is to find the probability of the mean exceeding a threshold, any arbitrary value of x. Let’s find that probability for exceeding a value of <code>1</code> all the observed values of x.</p>
+<p>In this case we don’t want quantiles over the posterior samples, we want to know what’s the probability of <code>x&gt;1</code>. Since the function <code>x&gt;1</code> returns a logical, we can simply <code>sum()</code> over the posterior samples and divide by the number of samples to get the probability. So below we specify <code>func_to_apply = "sum"</code>.</p>
+<pre><code>gam_prob_exceed1 &lt;- simulate_gam_CIs(m1,
+                 newdata = dat,
+                 forms = list(~x&gt;1), 
+                 random_var = NULL,
+                 offset = 0,
+                 probs = c(0.025, 0.5, 0.975),
+                 nsims = 1000, 
+                 func_to_apply = "sum")
+
+ggplot(gam_prob_exceed1[[1]]) + 
+  aes(x = toxin, y =prob) + 
+  geom_line() +
+  ylab("Probability of the mean of y exceeding a value of 1")</code></pre>
+<p><img src="https://www.seascapemodels.org/posts/2024-01-05-credible-intervals-with-GAMs/gam-CIs_files/figure-markdown_strict/unnamed-chunk-6-1.png" class="img-fluid"></p>
+<p>Couple of important points. When providing a formula <code>x</code> is the name I used in the function to refer to the linear predictor (ie predictions for mean of our response), its not the ‘x-variable’.</p>
+<p>We are predicting the probability the mean exceeds a threshold above, not the probability of data observations exceeding a threshold. That would be called a predictive interval and we would need to additionally sample from the observation distribution (in this case a normal).</p>
+</section>
+</section>
+<section id="applications" class="level3">
+<h3 class="anchored" data-anchor-id="applications">Applications</h3>
+<p>I find this empirical Bayesian interpretation of GAMs very handy. I use it when:</p>
+<ul>
+<li><p>Its impractical to fit a full Bayesian model, such as for large datasets or simulation applications where I need to repeat fitting 1000s of times. GAMs are generally much faster than numerical Bayesian methods like HMC or MCMC.</p></li>
+<li><p>I’m working with a collaborator that knows GAMs but not Bayesian models</p></li>
+<li><p>I want to get predictions on the natural scale for a GAM that is fitted with a link function (e.g.&nbsp;poisson with log-link).</p></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>modelling</category>
+  <guid>https://www.seascapemodels.org/posts/2024-01-05-credible-intervals-with-GAMs/</guid>
+  <pubDate>Thu, 04 Jan 2024 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Introduction to structural causal modelling</title>
+  <link>https://www.seascapemodels.org/posts/2023-08-19-structural-causal-modelling-workshop/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>A primary goal of science is to understand causes. Structural causal modelling is a framework for developing causal hypotheses to test with data.</p>
+<p>I taught a workshop at the Australian Marine Sciences Association conferences in 2023. I’ve now <a href="https://www.seascapemodels.org/structural-causal-models-tutorial/scm-tute.html">provided all the course notes online for free</a>.</p>
+<p>One if the advantages of causal modelling is that the tests can be done with any test you like.</p>
+<p>So all of the existing statistical inference engines (like generalized linear models) that we are used to using with the R language can be used in structural causal modelling.</p>
+<p>The workshop shows how to develop causal hypotheses, using R to visualise your hypotheses. It then steps through some examples of develping and testing causal tests with ecological data.</p>
+<p>The workshop covers packages <code>daggity</code> and <code>ggdag</code> for visualising causal models (directed acyclic graphs) and developing causal tests. We also look at making tests with <code>glm()</code> and how to simulate your own data to test models. Finally, we cover <code>visreg</code> for visualising model output.</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2023-08-19-structural-causal-modelling-workshop/</guid>
+  <pubDate>Fri, 18 Aug 2023 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Bayesian structural equation model tutorial</title>
+  <link>https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Structural equation modelling (SEM) is a tool for exploring relationships among multiple variables. <code>lavaan</code> and <code>piecewiseSEM</code> are two of the most widely used and accessible packages for latent variable modelling in R. Both use frequentist methods.</p>
+<p>It is also possible to develop SEMs in a Bayesian framework. There are advantages to using the Bayesian framework. So here I provide a brief tutorial on creating a simple Bayesian SEM with the stan program.</p>
+<p>The <a href="https://ecmerkle.github.io/blavaan/">blavaan</a> package creates and fits SEMs in a Bayesian framework, but using similar syntax to lavaan. But it can help your understanding to code your own models and give you greater flexibility (though blavaan can do a lot!).</p>
+<p>The tutorial is based on our <a href="https://www.sciencedirect.com/science/article/pii/S0048969723002851">recent study</a> that sought to understand relationships among indicators of catchment and fishery condition. If you find the SEM methods described here useful, please cite the paper.</p>
+<p>Code for that study, including a more complicated SEM, is available <a href="https://github.com/cbrown5/ecological-condition-latent-model">on the study’s github repo</a>.</p>
+<p>I won’t cover much SEM theory or background on Bayesian modelling. For more info on those topics:</p>
+<ul>
+<li><p>A introduction to SEM theory, check out <a href="https://jslefche.github.io/sem_book/">Jon Lefcheck’s online book</a></p></li>
+<li><p><a href="https://mc-stan.org/users/documentation/tutorials">rstan documentation and tutorials</a></p></li>
+<li><p>Learn Bayesian stats with the The Statistical Rethinking <a href="https://xcelab.net/rm/statistical-rethinking/">book</a> and <a href="https://www.youtube.com/watch?v=cclUd_HoRlo">Youtube series</a></p></li>
+</ul>
+<section id="advantages-of-bayesian-sem" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-of-bayesian-sem">Advantages of Bayesian SEM</h2>
+<p>The key advantage is the flexibility Bayesian methods give you. We used Bayesian methods because we wanted to combine a state-space model and a SEM. The state-space model was a timeseries model of fish population change through time.</p>
+<p>The population model was linked to a latent (unobserved) variable that represented cathcment condition. Other observed indicators of catchment condition were pasture biomass and vegetation greenness.</p>
+<p>Other applications of Bayesian SEM could be to model non-gaussian data, incorporating spatial and temporal models into a SEM, or modelling missing data.</p>
+<p>Now we’ll step through a broad overview of how to get started with Bayesian SEM. We’ll use the data from my paper as an example.</p>
+<p><a href="https://github.com/cbrown5/ecological-condition-latent-model/blob/main/Data%20for%20Barramundi%20model.csv">Download the data</a></p>
+</section>
+<section id="define-your-dag-directed-acyclical-graph" class="level2">
+<h2 class="anchored" data-anchor-id="define-your-dag-directed-acyclical-graph">Define your DAG (directed acyclical graph)</h2>
+<p>SEMs need to be directed acyclical graphs. The DAG defines the proposed relationships among variables. It is the starting point for writing the math that describes the model.</p>
+<p>We’ll define a simple DAG that aligns to a factor analysis. We’ll model relationships between streamflow, fish (barramundi) catch per unit effort (CPUE) and vegetation greenness (NDVI) for a catchment in Northern Australia:</p>
+<pre><code>library(dagitty)
+library(ggdag)
+dag1 &lt;- dagify(CPUE ~ LV, 
+               NDVI ~ LV,
+               SF ~ LV)
+ggdag(dag1)</code></pre>
+<p><img src="https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/2023-06-15-bayesian-sem-tute/unnamed-chunk-1-1.png" class="img-fluid"></p>
+<p>Our observed indicators are SF (streamflow), NDVI (veg greeness) and CPUE (catch per unit effort). LV is a latent variable that represents correlations among the observed variables.</p>
+<p>This system is strongly driven by rainfall and river flow, so we expect positive correlations among flow, fish and vegetation.</p>
+</section>
+<section id="define-the-stan-model" class="level2">
+<h2 class="anchored" data-anchor-id="define-the-stan-model">Define the stan model</h2>
+<p>Now we have a DAG, we need to write equations to represent the proposed relationships. We also need to specify the priors.</p>
+<p>Here I’m assuming normal distributions for each variable (logging for CPUE). Priors are weakly informative to encourage convergence.</p>
+<p>I won’t include the full stan model definition below, just the model component. <a href="https://github.com/cbrown5/ecological-condition-latent-model/blob/main/simple-model.stan">Click here to download the full model file you’ll need to run this</a>.</p>
+<p>Here’s the core of the model:</p>
+<pre><code>cfa_mod &lt;- "model{ 
+
+  //
+  //Ecological condition 
+  //
+  nu ~ std_normal(); 
+  //Note variance fixed to 1 by using standard normal here
+  
+  //Priors for indiator params 
+  a_NDVI ~ normal(0,10);
+  a_CPUE~ normal(0,10);
+  a_SF ~ normal(0,10);
+  
+  beta_NDVI ~ normal(0,1);
+  beta_CPUE ~ normal(0,1);
+  beta_SF ~ exponential(1.8);
+  //Note use of exponential() for streamflow to ensure positive
+  // only values. Helps convergence. 
+  
+  //Observation errors
+  sigma_CPUE ~  exponential(0.1);
+  sigma_NDVI ~  exponential(0.1);
+  sigma_SF ~  exponential(0.1);
+  
+  // Observations
+  lnCPUE ~ normal(lnCPUE_hat, sigma_CPUE);
+  NDVI ~ normal(NDVI_hat, sigma_NDVI);
+  SF ~ normal(SF_hat, sigma_SF);
+}"</code></pre>
+<p>Read in the full model file and compile it for stan:</p>
+<pre><code>library(rstan)
+
+mod &lt;- stan_model(file = "simple-model.stan", verbose = FALSE)</code></pre>
+<p>At this point there is usually a fair bit of debugging and fixing of typos until the model parses correctly.</p>
+</section>
+<section id="consider-identifiability" class="level2">
+<h2 class="anchored" data-anchor-id="consider-identifiability">Consider identifiability</h2>
+<p>Identifiability is a common issue in SEM. Roughly it means that some of the free parameters you are trying to estimate are interchangeable. Therefore, even with an infinite amount of data you would be unable to identify their values precisely (e.g.&nbsp;one could be high the other low or vice-versa).</p>
+<p>A basic example would be the model:</p>
+<p><code>y = a*x + b*x + c</code></p>
+<p>parameters <code>a</code> and <code>b</code> are interchangeable.</p>
+<p>Identifiability is a bit different in Bayesian models, because we have priors. For instance, in the model above, if we set a very strong priors on <code>a</code> and/or <code>b</code> (based on theory for instance) we may still be able to estimate their values precisely.</p>
+<p>In a complex SEM issues of identifiability can be much harder to distinguish than the example above, as we will see.</p>
+<p>Identifiability issues in a Bayesian will manifest as poor convergence of MCMC chains. You will see high Rhats. Digger deeper you may find some parameters have bimodal posterior distributions (e.g.&nbsp;if you do a histogram of all samples for a parameter). You will also find strong correlations in parameter estimates. For instance in the model above parameters <code>a</code> and <code>b</code> would be strongly correlated (near 1).</p>
+<p>You may be able to get convergence if you run your model for really long chains, however, it will be more efficient to try and fix the model. It will also mean your parameters are easier to interpret.</p>
+<p>If you have identifiability issues, parameters that have the property above are a good place to start to try to fix issues in your SEM formulation.</p>
+<p>In the stsan code above I’ve made two key decisions to facilitate convergence.</p>
+<p>First, I’ve fixed the latent standard deviation to 1 to ensure identifiability. You could also have the latent’s SD free, but then fix one of the regression slopes to 1.</p>
+<p>Second, I’ve set the prior for the streamflow beta (regression slope on the latent variable) to be an exponential. This ensures it has only positive values.</p>
+<p>For example, imagine that streamflow, NDVI and CPUE are all positively correlated with each other. Then their beta’s all need to be the same sign. However, they could equally well be all positive, or all negative. The meaning is the same, since the latent variable has not units.</p>
+<p>If we run the model where all betas are sampled from normal priors, then we would hit issues with parameter switching. We see strong bimodality in the posteriors for the betas, because they can equally well be all positive or all negative. This slows converngence significantly.</p>
+<p>So instead I’ve used an <code>exponential(1.8)</code> prior for the streamflow beta. This peg the sign to whatever streamflow is doing. So if streamflow is positive and the other covariates are positively associated with it, they will all have positive betas.</p>
+<p>I chose <code>1.8</code> so that my prior has similar 90th percentile as a normal distribution. e.g.&nbsp;compare <code>qnorm(0.9, 0,1)</code> to <code>qexp(0.9, 1.8)</code> both have 90th percentiles at about 1.28.</p>
+</section>
+<section id="do-some-data-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="do-some-data-cleaning">Do some data cleaning</h2>
+<p>Now let’s get the data and just clean it up a bit.</p>
+<pre><code>dat &lt;- read.csv("Data for Barramundi model.csv")</code></pre>
+<p>First calculate the log of the CPUE:</p>
+<pre><code>dat$lnCPUE &lt;- log(dat$Barramundicatch/dat$Effort)</code></pre>
+<p>Some variables are missing data. In our paper I modelled missing data, but here we will just use years with complete data for simplicity:</p>
+<pre><code>dat2 &lt;- subset(dat, Year %in% 1995:2015)</code></pre>
+<p>Now we will standardize and centre each variable, makes it easier to set priors and interpret the regression coefficients (AKA loadings). We’ll also define a list to use in the stan model</p>
+<pre><code>datstan &lt;- with(dat2, {
+  x = list(N = nrow(dat2),
+       SF = (Streamflow - mean(Streamflow))/sd(Streamflow), 
+       NDVI = (NDVI - mean(NDVI))/sd(NDVI), 
+       lnCPUE = (lnCPUE - mean(lnCPUE))/sd(lnCPUE)
+  )})</code></pre>
+</section>
+<section id="fit-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="fit-the-model">Fit the model</h2>
+<p>Now we are ready to fit the stan model:</p>
+<pre><code># options(mc.cores = 1) #parallel::detectCores())
+
+fitm1 &lt;- sampling(mod, data = datstan,
+               iter=8000, chains=3, thin = 10)</code></pre>
+</section>
+<section id="investigate-convergence" class="level2">
+<h2 class="anchored" data-anchor-id="investigate-convergence">Investigate convergence</h2>
+<p>For this task I recommend launching the shiny tool for exploring stan fits. Can be done like this:</p>
+<pre><code>shinystan::launch_shinystan(fitm1)</code></pre>
+<p>If convergence is poor (e.g.&nbsp;higher Rhat values or strong autocorrelation in the chains) a good place to start in a SEM is to check for parameter non-identifiability, as described above. This means some parameters are interchangeable (or nearly so).</p>
+<p>A handy way to explore for the above issues is to click the “Explore” tab in the shiny, then do bivariate plots of parameters against each other.</p>
+<p>The histograms for this model fit look like they’ve converged on a unimodal distribution:</p>
+<pre><code>samps &lt;- extract(fitm1)
+
+par(mfrow = c(1,3))
+hist(samps$beta_NDVI)
+hist(samps$beta_CPUE)
+hist(samps$beta_SF)</code></pre>
+<p><img src="https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/2023-06-15-bayesian-sem-tute/unnamed-chunk-11-1.png" class="img-fluid"></p>
+</section>
+<section id="explore-model-results" class="level2">
+<h2 class="anchored" data-anchor-id="explore-model-results">Explore model results</h2>
+<p>For this model the regression slopes (AKA factor loadings) are of primary interest. They tell us how the different indicators are related to each other.</p>
+<p>Make a dataframe of the samples of interest:</p>
+<pre><code>fit_dat &lt;- with(samps, data.frame(beta_SF, beta_NDVI, beta_CPUE))</code></pre>
+<p>Now use tidyr to reshape for easy plotting:</p>
+<pre><code>library(tidyr)
+library(dplyr)
+fittidy &lt;- fit_dat %&gt;% 
+  mutate(sample = 1:nrow(fit_dat)) %&gt;%
+  pivot_longer(-sample, names_to = "Parameter", values_to = "value")</code></pre>
+<p>Now use ggplot to plot posterior distributions</p>
+<pre><code>library(ggplot2)
+theme_set(theme_classic())
+ggplot(fittidy) + 
+  aes(x = value, y = Parameter, fill = Parameter) + 
+  geom_vline(xintercept = 0) + 
+  geom_violin()</code></pre>
+<p><img src="https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/2023-06-15-bayesian-sem-tute/unnamed-chunk-14-1.png" class="img-fluid"></p>
+<p>All have positive values, indicating all indicators are positively associated with each other.</p>
+</section>
+<section id="check-model-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="check-model-assumptions">Check model assumptions</h2>
+<p>We need to check assumptions like any regular model. This means checking distributions are appropriate to model the data, same as you would for any GLM.</p>
+<p>In a SEM we also have to think about d-separation. In short, this means checking for residual correlations between a our variables that aren’t explicitly part of the model.</p>
+<p><a href="https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/11-1899.1">There’s formal tests of d-separation for Bayesian models</a>, but <a href="https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/15-0833.1">many authors have just used visual checks of residual correlations</a>.</p>
+<p>There are many resources on d-separation, <a href="https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/08-1034.1">here’s one paper</a>. Books by Judea Pearl and Bill Shipley are also good ways to learn.</p>
+<p>Our data here also has the additional complexity of being time-series. Our model above assumes d-separation of a variable from itself through time, so this is also something we could check (by testing for autocorrelation in the residuals).</p>
+<p>I won’t show all these tests in this brief tute, but here’s a start on getting residuals. Just subtract the predictions from the observations, e.g.&nbsp;for NDVI:</p>
+<pre><code>med &lt;- apply(samps$NDVI_pred, 2, median)
+resids &lt;- datstan$NDVI - med</code></pre>
+<p>One way to check the normal distribution is appropriate for the NDVI data is to do a quantile-quantile plot of the residuals:</p>
+<pre><code>qqnorm(resids)
+qqline(resids)</code></pre>
+<p><img src="https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/2023-06-15-bayesian-sem-tute/unnamed-chunk-16-1.png" class="img-fluid"></p>
+<p>We want to see the points fall close to straight on the line, which in general they do.</p>
+<p>We can also check for non-linearities by plotting observations vs predictions:</p>
+<pre><code>plot(med, datstan$NDVI)</code></pre>
+<p><img src="https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/2023-06-15-bayesian-sem-tute/unnamed-chunk-17-1.png" class="img-fluid"></p>
+<p>Of course this is Bayesian analysis, so we could also create credible intervals for the residuals.</p>
+<p>If you do the above for CPUE you’ll see there is clearly strong autocorrelation. This is one reason I used a <a href="https://www.sciencedirect.com/science/article/pii/S0048969723002851">state-space model in the paper</a>.</p>
+</section>
+<section id="graph-model-results" class="level2">
+<h2 class="anchored" data-anchor-id="graph-model-results">Graph model results</h2>
+<p>Let’s make a plot of the result. First we’ll get median effect sizes (just the median of the chains for each parameter)</p>
+<pre><code>meds &lt;- round(apply(fit_dat, 2, median),2)</code></pre>
+<p>Now we can make the plot with labels on the arrows. Most of this code is just setting up the position of things:</p>
+<pre><code>dag1 &lt;- dagify(CPUE ~ LV, 
+               NDVI ~ LV,
+               SF ~ LV)
+coords &lt;- list(x = c(CPUE = -1, NDVI = 0, SF = 1, LV = 0),
+               y = c(CPUE = 1, NDVI = 1, SF = 1, LV = 0))
+coordinates(dag1) &lt;- coords
+ggdag(dag1) +
+  annotate("text", x = c(-0.6, 0.1, 0.6), y = c(0.5, 0.5, 0.5),
+           label = meds) +
+  lims(y = c(-0.5, 1.5))</code></pre>
+<p><img src="https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/2023-06-15-bayesian-sem-tute/unnamed-chunk-19-1.png" class="img-fluid"> As its a Bayesian analysis we could also add CIs or probability that an effect is &gt;0. They could be calculated like this.</p>
+<p>e.g.&nbsp;upper 95th quantile:</p>
+<pre><code>round(apply(fit_dat, 2, quantile, 0.975),2)
+
+##   beta_SF beta_NDVI beta_CPUE 
+##      1.27      1.21      1.13</code></pre>
+<p>Or probability effect is greater than zero:</p>
+<pre><code>nsamps &lt;- nrow(fit_dat)
+round(apply(fit_dat, 2, function(x){sum(x&gt;0)/nsamps}),2)
+
+##   beta_SF beta_NDVI beta_CPUE 
+##      1.00      1.00      0.98</code></pre>
+</section>
+<section id="model-predictions" class="level2">
+<h2 class="anchored" data-anchor-id="model-predictions">Model predictions</h2>
+<p>Our model also predicts the mean for each variable. Let’s just look at CPUE. In this matrix rows are samples are columns are years. So we can summarize each column to get the prediction with intervals for that year.</p>
+<p>Here is the median with 90th credible intervals and data shown as points:</p>
+<pre><code>ndvi_pred &lt;- data.frame(year = dat2$Year, 
+                        ndvi_obs = datstan$NDVI, 
+                        med = apply(samps$NDVI_pred, 2, median),
+                        lwr = apply(samps$NDVI_pred, 2, quantile, 0.05),
+                        upr = apply(samps$NDVI_pred, 2, quantile, 0.95))
+
+ggplot(ndvi_pred) + 
+  aes(x = year, y = med) +
+  geom_line() + 
+  geom_ribbon(aes(ymin = lwr, ymax =upr), color = NA, 
+                 fill = "black", alpha = 0.5) +
+  geom_point(aes(y = ndvi_obs)) +
+  labs(x = "Year", y = "NDVI (normalized)")</code></pre>
+<p><img src="https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/2023-06-15-bayesian-sem-tute/unnamed-chunk-22-1.png" class="img-fluid"></p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Bayesian modelling is a powerful framework for building SEMs. It gives you greater flexibility in developing models than the standard SEM R packages.</p>
+<p>You can use all types of non-gaussian distributions to model data, as well as build in other model types like non-linear or state-space models.</p>
+<p>The cost is an extra overhead to learn the theory of SEM and the methods for Bayesian modelling. But if you have a background in one or the other, and some programming ability, then it won’t be too hard.</p>
+<p>I learned Bayesian modelling well before I started on SEMs. When I came to SEM (through the lavaan package) I was overwhelmed and confused by jargon and interpretation of greek letters that have a special meaning to SEM specialists. I found it much easier to gain a high level understanding of SEM issues (like d-seperation) then work in the Bayesian framework to build models.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/</guid>
+  <pubDate>Wed, 14 Jun 2023 14:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>
