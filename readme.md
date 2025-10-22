@@ -17,8 +17,11 @@ In the terminal use `quarto render` to re-render the entire site, which updates 
 
 TODO
 
-Investigate making r blogs in other dir then just brining over the .md and figure files, might be simpler as then I should be able to just render preview? 
+sort out main vs master branch. Currently got docs on main? 
 Then push docs to github and change pages settings. 
 Then clear repo history
+
+
+Investigate making r blogs in other dir then just brining over the .md and figure files, might be simpler as then I should be able to just render preview? 
 
 test then UPdate Rbloggers link
