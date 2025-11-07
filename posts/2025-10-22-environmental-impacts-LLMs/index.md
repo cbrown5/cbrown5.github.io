@@ -1,7 +1,7 @@
 ---
 date: '10/22/2025'
 title: Environmental impacts of large language models
-categories: research
+categories: [rstats, genAI]
 published: true
 ---
 
