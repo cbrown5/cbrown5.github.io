@@ -10,10 +10,165 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Wed, 22 Oct 2025 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 04 Nov 2025 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>Keeping enthusiasm about learning R</title>
+  <link>https://www.seascapemodels.org/posts/2025-11-04-LLMs-coding-carbon-emissions/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Staying enthused about learning R is a challenge. You need progress from the initial motivation driven by ‘I need to learn this skill for my research career’ through a phase of tedium on your way to a competent R programmer.</p>
+<p>Here’s my story.</p>
+<section id="fitting-a-multinomial-peg-into-an-anova-hole" class="level2">
+<h2 class="anchored" data-anchor-id="fitting-a-multinomial-peg-into-an-anova-hole">Fitting a multinomial peg into an ANOVA hole</h2>
+<p>I first attempted to learn R while wintering at a remote field station in the Southern Ocean. I had one book, 2004 satellite internet and a lot of time to kill.</p>
+<p>Learning R was hard. Then you also have to learn statistics.</p>
+<p>I had chosen a hard statistical question to start with. My colleague asked for help analysing data. The aim was to predict which of three behaviours flocks of birds would show under different situations. I was trying to wrangle ANOVA to do this analysis, because that is the method my book described.</p>
+<p>I went around and around in circles. Were the behaviours factors or the response variable? If they were a response variable, how could the response have just three types of unordered outcomes? In hindsight I now see why I went in circles. The appropriate analysis would have been a multinomial model. Easy with <code>brms</code> (which didn’t exist then) or <code>mgcv</code>, but GLMs were not covered in standard text books in 2004, let alone multinomial GLMs.</p>
+<p>I did however manage to learn how to code an ANOVA, as well as learning a bit about R code.</p>
+<p>Coding requires us to be frustratingly precise in ways that human languages are not. This is hard for new programmers. And the learning curve for R is reknowned for being steeper than other coding languages.</p>
+<p>The first step to competence is comprehending the exactness of programming.</p>
+</section>
+<section id="like-a-spoken-language-but-pedantic" class="level2">
+<h2 class="anchored" data-anchor-id="like-a-spoken-language-but-pedantic">Like a spoken language, but pedantic</h2>
+<p>After my misadventure in the Southern Ocean I studied evolutionary modelling for my Honours thesis. I used Matlab, a commercial product developed by a single company. Matlab has the major benefit of its consistency. Its functions are used in consistent ways, the help files have a consistent style.</p>
+<p>R is open-source. ‘Learning R’ is an experience in trying to comprehend the thinking of scores of different open-source developers.</p>
+<p>The <code>R is an ecosystem</code> cliche comes to mind. R is like a real ecosystem. The software ecosystem’s solutions to problems are diverse.</p>
+<p>More often than someone has coded a solution to your problem in an R package. If only your could grasp how to use that solution the way its creator intended.</p>
+</section>
+<section id="data-structures" class="level2">
+<h2 class="anchored" data-anchor-id="data-structures">Data structures</h2>
+<p>Undersanding data structures was a key insight…</p>
+<p>Curiosity helps.</p>
+<p>R has been my main science tool for over 20 years now.</p>
+<p>As I gained more comprehension of R, stats in R became more like a puzzle. My own curiosity about what was possible kept me going. There is always something new to discover in a diverse software ecosystem.</p>
+<p>At times the imperitive quickly became procrastination. I’ve spent too many late nights trying a new spatial or Bayesian stats package, just out of curiosity.</p>
+<p>Twenty years on I often find it easier to code up with my own solutions to my research questions, rather than use someone else’s packaged solution. Its easier to comprehend a problem if you work through it yourself. Its easier to understand your own R style than someone else’s.</p>
+<p>Many people learn R because they have to. It is hard to work in many fields of science without some programming skills.</p>
+<p>Impact of genAI</p>
+<p>Other people’s innovations add</p>
+<p>Most data problems you come up with development statistical programmers</p>
+<p>Always someting new to discover</p>
+<p>There’s been turn-over too. Pipes and <code>tidyverse</code> changed everything. These packages made data wrangling and plotting so much easier.</p>
+<p>Teaching R got easier. I could see 95% of my students checking out whenever I had to explain a cracker nested operation like <code>mean(log(subset(dat, grp == 'a')$x))</code></p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-11-04-LLMs-coding-carbon-emissions/</guid>
+  <pubDate>Tue, 04 Nov 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Upcoming R workshops in Brisbane Feebruary 2026</title>
+  <link>https://www.seascapemodels.org/posts/2025-11-03-upcoming-R-workshop-brisbane/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>R workshops in Brisbane Australia, February 2026.</p>
+<p>For many years I had the pleasure of teaching with Ant Richardson and the team for these R workshops. I’m not there anymore, but recommend attending these if you can make the dates:</p>
+<p>Transform your research questions into robust statistical insights with our 2026 Summer R Workshops in an immersive exploration of R programming and statistical modelling. These workshops in February 2026 are designed for beginners and researchers who want to build a solid foundation in R programming and progress through to advanced statistical techniques. Whether you’re completely new to R or looking to strengthen your statistical modelling skills, join us to develop the analytical expertise essential for modern research!</p>
+<p>Registration is now open. For more information, see our website https://mathmarecol.github.io/RWorkshop/summer.html and the attached flyer. For any questions, email cbcs-workshops@uq.edu.au.</p>
+<p>Testimonials: “I truly enjoyed the whole workshop. Great teachers, really nice real data examples and good notes and background” “I am feeling a lot better about using stats now than I was previously” “I think it should be a compulsory course for all PhDs”</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2025-11-03-upcoming-R-workshop-brisbane/</guid>
+  <pubDate>Sun, 02 Nov 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Should we still teach R coding in this age of genAI?</title>
+  <link>https://www.seascapemodels.org/posts/2025-11-02-should-we-teach-coding/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I often get asked if we should still be teaching coding skills to students and researchers now that we have generative AI tools that can write code for us.</p>
+<p>The general consensus is yes, we should still teach coding. For an ecology specific <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14325">argument see here</a>.</p>
+<p>Teaching coding is teaching people how to think logically and structure problems. These skills are essential not only in coding, but also for good science and problem solving in general.</p>
+<p>So you need to learn to code to learn to think logically and structure problems.</p>
+<p>A more practical standpoint is that LLMs are good at generating code that they have seen a lot of examples of in their data. But they are not so good at creative work on novel topics or niche areas.</p>
+<p>For example, AI coding assistants struggle to make a simple <code>tmap</code> (the R mapping package) work well. <code>tmap</code> was updated recently, meaning the examples in the LLM’s training are out of date.</p>
+<p>The coding assistants also seem to default to code patterns they are most familiar with, like <code>ggplot2</code> syntax. Not all of this works with <code>tmap</code>.</p>
+<p>In general, I find they perform much better at statistical modelling in R than they do with complex geospatial analyses.</p>
+<p>This practical issue may increasingly become less relevant as LLMs get better and we create better resources to inform their actions (like a tmap specific guide for LLMs to read before advising you, or web searches of the tmap page).</p>
+<p>But it is still likely that frontier modelling will require deep human engagement with code. So learning to code is important for researchers.</p>
+<p>I’ll leave the final say to Andrej Karpathy, former head of AI at Tesla and founding member of OpenAI’s research group.</p>
+<p>In a <a href="https://www.dwarkesh.com/p/andrej-karpathy">recent podcast interview</a> he talks about a repo he made to help teach people how to work with LLMs. His advice to learners is literally to re-write his repo by hand, not even to cut and paste.</p>
+<p>He goes on to explain that AI agents are good for very standard code or code that is common on the internet. But they perform poorly for creating new code, or code that contradicts common patterns.</p>
+<p>For any research code he most commonly uses the code auto-complete features that AI assistants have, rather than AI agents.</p>
+<p>He suggests that to really learn something you should code it yourself, using examples only as references.</p>
+<p>Karpathy came up with the term ‘vibe-coding’ which means creating code by prompting, without reviewing the code. Usually an AI agent is used. So its saying a lot if he thinks that learning means doing it the old fashioned way of writing code yourself.</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-11-02-should-we-teach-coding/</guid>
+  <pubDate>Sat, 01 Nov 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Carbon emissions…</title>
+  <link>https://www.seascapemodels.org/posts/2025-11-05-R-collaborator-for-20-years/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Estimate carbon emissions from LLMs coding assitants</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-11-05-R-collaborator-for-20-years/</guid>
+  <pubDate>Sat, 01 Nov 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Does data from protected areas help to improve ecolgoical forecasts? New pre-print</title>
+  <link>https://www.seascapemodels.org/posts/2025-10-23-deer-harvest-reduction/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Sharing the <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5647239">research work of my Master’s student, Leigha Aitken, that is now available as a pre-print</a>. She sought to answer the question:</p>
+<p>Does data from protected areas help to improve ecological forecasts?</p>
+<p>As a pre-print it is not peer-reviewed, though it has been examined and reviewed by UTas staff in thesis form and we did address those concerns. Abstract below, <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5647239">full pdf on SSRN</a>.</p>
+<section id="title-transferability-of-models-to-novel-site-conditions-comparing-abundance-forecasts-between-different-exploitation-regimes" class="level3">
+<h3 class="anchored" data-anchor-id="title-transferability-of-models-to-novel-site-conditions-comparing-abundance-forecasts-between-different-exploitation-regimes">Title: Transferability of models to novel site conditions: comparing abundance forecasts between different exploitation regimes</h3>
+</section>
+<section id="abstract" class="level3">
+<h3 class="anchored" data-anchor-id="abstract">Abstract</h3>
+<p>Models are increasingly used to make forecasts to support fisheries management by translating ecological theory into quantitative predictions. However, forecasts for fisheries species are often constrained by limited data from unfished reference conditions. No-take marine reserves (NTMRs) can provide insight into unfished population dynamics, potentially improving models’ predictive performance. This study asked whether incorporating NTMR data improves the accuracy of annual abundance forecasts over eight years. We compared the predictive performance of first-order autoregressive models that were trained on abundance data from either NTMR sites, fished sites, or a mix of both site types. Each model was then tested by predicting to sites it was not trained on (‘transferred’). We tested the forecasts for both fished and unfished species with 23 years of time-series abundance data from the Maria Island (Tasmania) NTMR and nearby control sites. We found a general decrease in the performance of fished and NTMR models when forecasts were transferred to the opposite site type. Model transferability was species-specific, with the NTMR model reducing forecasting errors by approximately 10% at fished sites for one sustainably fished species. In contrast, for other species, the fished model reduced forecast errors by approximately 4% and 56% at NTMR sites. Additionally, we found that models trained on a mix of site types consistently underperformed. These findings highlight the importance of accounting for site- and species-specific dynamics. While NTMR data offers valuable insights into unfished conditions, further work is required to create models that transfer well to any exploitation regime.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>research</category>
+  <guid>https://www.seascapemodels.org/posts/2025-10-23-deer-harvest-reduction/</guid>
+  <pubDate>Wed, 22 Oct 2025 13:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Estimating harvest levels to reduce feral deer populations in Tasmania</title>
-  <link>https://www.seascapemodels.org/posts/2025-10-23-deer-harvest-reduction/</link>
+  <link>https://www.seascapemodels.org/posts/2025-10-23-deer-harvest-reduction copy/</link>
   <description><![CDATA[ 
 
 
@@ -317,7 +472,7 @@ font-style: inherit;">11</span>)</span>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://www.seascapemodels.org/posts/2025-10-23-deer-harvest-reduction/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://www.seascapemodels.org/posts/2025-10-23-deer-harvest-reduction copy/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -450,7 +605,7 @@ font-style: inherit;">11</span>)</span>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://www.seascapemodels.org/posts/2025-10-23-deer-harvest-reduction/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://www.seascapemodels.org/posts/2025-10-23-deer-harvest-reduction copy/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -854,7 +1009,7 @@ font-style: inherit;">"bottom"</span></span>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://www.seascapemodels.org/posts/2025-10-23-deer-harvest-reduction/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://www.seascapemodels.org/posts/2025-10-23-deer-harvest-reduction copy/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -869,7 +1024,7 @@ font-style: inherit;">"bottom"</span></span>
 
  ]]></description>
   <category>research</category>
-  <guid>https://www.seascapemodels.org/posts/2025-10-23-deer-harvest-reduction/</guid>
+  <guid>https://www.seascapemodels.org/posts/2025-10-23-deer-harvest-reduction copy/</guid>
   <pubDate>Wed, 22 Oct 2025 13:00:00 GMT</pubDate>
 </item>
 <item>
@@ -899,7 +1054,8 @@ font-style: inherit;">"bottom"</span></span>
 </section>
 
  ]]></description>
-  <category>research</category>
+  <category>rstats</category>
+  <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-10-22-environmental-impacts-LLMs/</guid>
   <pubDate>Tue, 21 Oct 2025 13:00:00 GMT</pubDate>
 </item>
@@ -2245,411 +2401,6 @@ print(summary(samples))</code></pre>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2025-09-02-AI-reports-with-openrouter-and-r/</guid>
   <pubDate>Mon, 01 Sep 2025 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Points to consider when framing a regional study for the international literature</title>
-  <link>https://www.seascapemodels.org/posts/2025-08-21-points-framing-regional-study-international-literature/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>At lab meeting today we discussed how to take your regional study and frame it for the global literature. This framing is essential for engaging international audiences and navigating editors and reviewers when publishing in international journals.</p>
-<p>Thanks to the Seascapemodels and Conservation Action Team labs at Utas and Griffith Uni for their contributions.</p>
-<section id="foundational-principles" class="level2">
-<h2 class="anchored" data-anchor-id="foundational-principles">Foundational Principles</h2>
-<p><strong>1. Consider your audience</strong></p>
-<p>If you’re targeting an international journal, your readers will be international scientists. They will be less interested in hearing about the specific organisms in your part of the ocean and more interested in understanding what your results mean for their own research contexts. Frame your findings in terms of broader ecological patterns, processes, or principles that transcend geographic boundaries.</p>
-<p><strong>2. Establish global context through strategic citations</strong></p>
-<p>Cite global studies and literature from multiple regions, not just your local area. Global studies are often well-cited because they provide the comparative framework that regional studies need. When citing studies from other regions, be strategic about which ones you include:</p>
-<ul>
-<li><strong>Choose contrasting systems</strong>: Select studies from regions with different environmental conditions (temperate vs.&nbsp;tropical, shallow vs.&nbsp;deep, pristine vs.&nbsp;degraded) to highlight what makes your system unique or generalizable.</li>
-<li><strong>Include similar systems for comparison</strong>: Find studies from ecologically similar regions to show whether your findings represent broader patterns or regional anomalies.</li>
-<li><strong>Reference methodological precedents</strong>: Cite studies that used similar approaches in other regions, even if the ecological focus differs, to establish the credibility of your methods.</li>
-<li><strong>Draw from different disciplines</strong>: Include studies from related fields (e.g., terrestrial ecology, freshwater systems) when they provide relevant theoretical context or methodological insights.</li>
-</ul>
-<p>Position your region within this broader context by explicitly comparing and contrasting your findings with patterns observed elsewhere. For example: “While coral bleaching in the Caribbean typically occurs at 29°C, our Pacific sites showed bleaching at 31°C, suggesting regional adaptation to higher baseline temperatures.” This demonstrates that you understand the global state of knowledge and can articulate where your work fits.</p>
-</section>
-<section id="specific-framing-strategies" class="level2">
-<h2 class="anchored" data-anchor-id="specific-framing-strategies">Specific Framing Strategies</h2>
-<p><strong>3. Connect to established theories and frameworks</strong></p>
-<p>Relate your case-study to general ecological theories or established analytical frameworks. For example, your work could be an application of the DPSIR (Drivers-Pressures-State-Impact-Response) framework to your region, or a test of the recruitment limitation hypothesis in a new system. This approach transforms your regional study from a descriptive account into a contribution to broader scientific understanding.</p>
-<p><strong>4. Demonstrate novelty without claiming “firsts”</strong></p>
-<p>State your contributions by explaining why your approach or findings matter, rather than simply claiming precedence. Avoid phrases like “this is the first time.” Instead, draw parallels to successful applications in other fields or regions. For example, rather than “This is the first time we’ve used machine learning for fisheries,” try “Machine learning has proven highly effective for predictions in agriculture and could provide similar benefits for fisheries management.”</p>
-<p><strong>5. Highlight unique perspectives and unexpected findings</strong></p>
-<p>Show how your case-study reveals new patterns or challenges existing assumptions compared to other regional studies. Focus on findings that offer fresh insights into well-studied processes. For example: “While marine heatwaves are known to cause widespread mortality, our study reveals that toxic plankton blooms can flourish during these events, creating compound ecological impacts.”</p>
-<p><strong>6. Present methodological innovations</strong></p>
-<p>Frame your work as developing or refining methodological approaches, with your regional study serving as a proof-of-concept. This strategy is particularly powerful when you’ve adapted techniques from other disciplines or combined existing methods in novel ways. Emphasize how the method could be applied in other regions or systems, making your local study a stepping stone to broader applications.</p>
-</section>
-<section id="practical-applications-and-impact" class="level2">
-<h2 class="anchored" data-anchor-id="practical-applications-and-impact">Practical Applications and Impact</h2>
-<p><strong>7. Demonstrate real-world applications</strong></p>
-<p>When conducting applied research, explicitly show how your science has been used for conservation or management decisions. One excellent example is Rick Hamilton’s <a href="https://www.sciencedirect.com/science/article/pii/S0006320721002925">turtle tracking paper</a>. While countless studies track turtles, Hamilton got his work published in an international conservation journal by demonstrating how the tracking data directly informed conservation actions. He also capitalized on a review highlighting that most tracking studies fail to influence conservation practice, establishing his work’s unique value.</p>
-<p><strong>8. Connect to global goals and initiatives</strong></p>
-<p>Link your research to internationally recognized objectives and frameworks. This connection is increasingly common and effective. For example: “SDG 14.4 aims to make fisheries sustainable by 2020. Achieving this goal requires better models of climate impacts on fish populations—precisely what our study provides.” Other relevant frameworks include the Convention on Biological Diversity targets, national biodiversity strategies, and organizational goals like those of the Global Mangrove Alliance. These connections help editors and reviewers understand your work’s broader significance.</p>
-
-
-</section>
-
- ]]></description>
-  <category>research-skills</category>
-  <guid>https://www.seascapemodels.org/posts/2025-08-21-points-framing-regional-study-international-literature/</guid>
-  <pubDate>Wed, 20 Aug 2025 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Quick tips for facilitating a good meeting</title>
-  <link>https://www.seascapemodels.org/posts/2025-08-21-quick-tips-for-faciltating-meetings/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>In roughly chronological order.</p>
-<p>This advice comes from perspective of trying to get contributions from diverse research groups, that often mix career stages and cultural backgrounds. But much of it is useful in any context (e.g.&nbsp;more formal contexts.)</p>
-<section id="before-the-meeting-starts" class="level2">
-<h2 class="anchored" data-anchor-id="before-the-meeting-starts">Before the meeting starts</h2>
-<p><strong>Be prepared.</strong></p>
-<ul>
-<li>Try to learn participants names and something about their background.</li>
-<li>Reflect on expectations participants might have for the meeting these might be in terms of outcomes, but also cultural expectations in terms of behaviour.</li>
-<li>Set a meeting agenda. Send it around to participants ahead of time.</li>
-<li>Send them any background reading ahead of time (but keep it short and assume that most haven’t read it)</li>
-<li>Designate a note-taker (if needed). You can’t facilitate well and take notes.</li>
-</ul>
-<p>Show up early, so you can familiarise yourself with the room set-up.</p>
-<p>If its online, familiarise yourself with the software features before the meeting (where chat box is, where Q&amp;A box is, what people see when you speak, is sharing enabled etc…)</p>
-<p>Prepare your introductory and closing notes.</p>
-<p>Check the agenda with someone more experienced if need be - people often try to cram too much into a meeting. One way to save meeting time for discussion is to pre-send reading for the group.</p>
-</section>
-<section id="starting-the-meeting" class="level2">
-<h2 class="anchored" data-anchor-id="starting-the-meeting">Starting the meeting</h2>
-<p>Come prepared with an opening that will set the scene and topic of the meeting. Remind people of the time slot for the meeting, and its goals. Remind them of expectations e.g.&nbsp;who is speaking, what to do if you disagree (if neccessary).</p>
-<p>As facilitator people will look to you for leadership on how the meeting goes. Your approach will affect:</p>
-<ul>
-<li>how fast people talk</li>
-<li>whether it is safe to pause between comments, or whether someone grabs that free air space and starts talking</li>
-<li>who overtalks who</li>
-<li>who talks; if its ok to talk if you are shy or less senior.</li>
-</ul>
-<p>If you don’t provide that leadership, then that role will default to the most senior person or the person who talks the most.</p>
-<p>So grab your facilitator role by the reins and show the group how its going to be.</p>
-</section>
-<section id="during-the-meeting" class="level2">
-<h2 class="anchored" data-anchor-id="during-the-meeting">During the meeting</h2>
-<p>Be present. Keep on your toes. By this I mean actually listen to what other people are saying, rather than thinking about what you will say when other people talk.</p>
-<section id="engaging-the-participants" class="level3">
-<h3 class="anchored" data-anchor-id="engaging-the-participants">Engaging the participants</h3>
-<p>Engaging everyone helps everyone feel heard and helps get contributions from all participants.</p>
-<p>Show other people you are listening: eye contact, nodding, hand gestures.</p>
-<p>Reflect back to people what they’ve just said. This is active listening. For instance, if Alice described how she was satisified with the progress on the project” you could respond “Thanks Alice, I see that you’re happy with how the project is going” (rather than just nodding).</p>
-<p>Draw in people, especially the quiet ones. For instance, if Selena describes an issue she is having with the data analysis on the project you could hand it over to Takuya: “Takuya, I know you’ve written about network modelling, do you have experiences from that work you could share to help Selena”</p>
-<p>If you don’t know their backgrounds that is ok to! You can just ask someone to reflect like: “Takuya, what do you think about what Selena just said” or “Takuya, can you describe the problem Selena is having in your own words?”</p>
-<p>This reflection opportunity can be helpful to engage people, but also see problems from different perspectives.</p>
-<p>If you start asking people to reflect on each other’s comments, everyone will pay more attention to what is being said.</p>
-</section>
-<section id="you-dont-need-to-have-all-the-answers" class="level3">
-<h3 class="anchored" data-anchor-id="you-dont-need-to-have-all-the-answers">You don’t need to have all the answers!</h3>
-<p>A common mistake as facilitator is to think you need to answer the questions that are posed. Then the facilitator ends up talking with their own answers. You don’t answer them.</p>
-<p><strong>You are there to help the group find a solution.</strong> So if a problem/question comes up, use your facilitator skills to kick it onto someone else like “Muhammad, what do you think about Maria’s question?”</p>
-<p>If the group solves a problem, even if you knew the answer, then you are doing successful facilitation.</p>
-</section>
-</section>
-<section id="dealing-with-problems" class="level2">
-<h2 class="anchored" data-anchor-id="dealing-with-problems">Dealing with problems</h2>
-<section id="people-who-talk-too-much" class="level3">
-<h3 class="anchored" data-anchor-id="people-who-talk-too-much">People who talk too much</h3>
-<p>The tactful way is to smoothly transition the conversation away from them, by taking over their sentences. Its hard to put this in text but here goes:</p>
-<p>Overtalker: “What I’m talking about is the absolute lack of data in…” Facilitator (finishes the sentence) “the models. That’s a really important insight John. I’d like to pass on to Eva for her perspective on this issue”.</p>
-<p>But this is partly highly cultural. e.g.&nbsp;in some cultures the senior members need to be let to speak as much as they want, in other cultures it might be more appropriate to let minority groups speak first. Some cultures this is fast and seamless. Others you would leave a long pause between sentences.</p>
-</section>
-<section id="people-who-talk-too-much-in-online-meetings" class="level3">
-<h3 class="anchored" data-anchor-id="people-who-talk-too-much-in-online-meetings">People who talk too much in online meetings</h3>
-<p>This is really difficult. And we all tend to overtalk in online meetings because we aren’t getting as much visual feedback from our participants! If you have advice let me know. A couple tips:</p>
-<ul>
-<li>Get cameras turned on so people get more visual feedback.</li>
-<li>Be engaged, overstate your body language (nodding etc…) so the speaker knows you are listening</li>
-<li>Use emoticons and reactions</li>
-</ul>
-<p>Sometimes I just talk over them like in the ‘people who talk too much’ example. The key thing is to show you’ve heard by reflecting their thoughts back to them in your own words. If you abruptly change topics it may seem rude.</p>
-</section>
-<section id="people-who-dont-engage-or-who-are-shy" class="level3">
-<h3 class="anchored" data-anchor-id="people-who-dont-engage-or-who-are-shy">People who don’t engage or who are shy</h3>
-<p>See notes above about engaging particpants. Just try to be aware of who they are and keep a mental checklist of who is doing the talking.</p>
-</section>
-<section id="transitioning-the-conversation" class="level3">
-<h3 class="anchored" data-anchor-id="transitioning-the-conversation">Transitioning the conversation</h3>
-<p>What to do if the conversation is going in the wrong direction, or you are running out of time?</p>
-<p>Follow above advice for people who talk too much to transition the conversation to where you want it to go.</p>
-<p>Just remember to acknowledge the person you are taking the platform from. A bad example</p>
-<p>“So we are running out of time, let’s move on”</p>
-<p>Good example:</p>
-<p>“Thanks for those important insights Anya. I think we need to follow-up to properly explore those ideas. Now I’d like to just take us back to the agenda…”</p>
-</section>
-<section id="strong-emotions-and-conflict" class="level3">
-<h3 class="anchored" data-anchor-id="strong-emotions-and-conflict">Strong emotions and conflict</h3>
-<p>Sometimes people express anger, frustration or deep sadness in meetings. Sometimes there is conflict that goes beyond healthy collegial debate. These situations can be difficult and need to be treated case-by-case, particularly if they involve ongoing issues in group dynamics.</p>
-<p>The only general point I can make is to acknowledge the feelings. For example, you could say, “Rachael, are you feeling angry about what was just said?”</p>
-<p>This helps the person feel heard. But also helps you take the floor back from the conflict.</p>
-<p>How you go from there depends on the situation. If its sadness (like a colleague drops the news that they lost a friend recently) and you are in a supportive group, you could offer condolences and reflections as a group, just generally show kindness.</p>
-<p>If its serious conflict yuo might like to ask the person to come outside for a private chat (and delegate facilitation to someone else while you are gone).</p>
-<p>I’ll leave that there, as I am no expert on conflict resolution.</p>
-</section>
-</section>
-<section id="save-time-to-wrap-up-and-finish-on-time" class="level2">
-<h2 class="anchored" data-anchor-id="save-time-to-wrap-up-and-finish-on-time">Save time to wrap up and finish on time</h2>
-<p>Its polite to finish on time. You should aim to finish early, to allow time to wrap up. Also people may have ‘last thoughts’ just when you were going to finish. For example for a 50 minute meeting start at 11am:</p>
-<p>11:35am - Start bringing the conversation back to the agenda 11:40am - Ask for any last thoughts 11:45am - Provide wrap-up, reflection, next steps and actions.</p>
-</section>
-<section id="wrapping-up" class="level2">
-<h2 class="anchored" data-anchor-id="wrapping-up">Wrapping up</h2>
-<p>Save time to wrap-up the meeting. This can include:</p>
-<ul>
-<li>Reflections on key things that were discussed or learned</li>
-<li>Acknowledging different people’s contributions</li>
-<li>Thanking people for contributions, especially if they put a lot of effort in (e.g.&nbsp;planning) or brought up something that was emotionally difficult (like sharing a failure that the group can learn from)</li>
-<li>Addressing the agenda items</li>
-</ul>
-<p>If it is an action orientated meeting, you should also finish by stating the next steps.</p>
-</section>
-<section id="online-meetings" class="level2">
-<h2 class="anchored" data-anchor-id="online-meetings">Online meetings</h2>
-<p>I much prefer in-person meetings. Online meetings are more less like conversations and more like he talks, she talks, he talks, she talks.</p>
-<p>Meetings that are simultaneously online and in person are the worst.</p>
-<p>A few tips:</p>
-<ul>
-<li>Delegate someone to be the ‘chat facilitator’. Their job is to keep an eye on the chat and bring any points to your attention. Some people won’t or can’t talk online and may type instead. So its still good for you as facilitator to raise their points like: “Ahhh, I see Caitie has asked a great question online, Alyssa she wants to know if…”</li>
-<li>If it is simultaneously online and in person you need an ‘online’ faciliator to help bring in those people (remind you, monitor chat, perhaps talk to online participants directly)</li>
-<li>Cameras on is better for engagement</li>
-<li>Resist the temptation to check your email when other people are talking (I once did this with screen sharing on, oops). You need to be engaged and staying present.</li>
-</ul>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Facilitation is a foundational skill for most careers. But few of us practice it or put much thought into it. It does take practice and commitment to do it well. But its also rewarding to see your team flourish and everyone get more out of meetings.</p>
-
-
-</section>
-
- ]]></description>
-  <category>research-skills</category>
-  <guid>https://www.seascapemodels.org/posts/2025-08-21-quick-tips-for-faciltating-meetings/</guid>
-  <pubDate>Wed, 20 Aug 2025 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>It’s getting harder to predict ecological change</title>
-  <link>https://www.seascapemodels.org/posts/2025-08-13-validating-predictive-models/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>The increasing pace of climate change and human impacts on ecosystems is pushing ecosystems beyond the envelope of past conditions. The pace of change makes predicting that change much harder. In a new study, <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.70105">Assessing predictive accuracy of species abundance models in dynamic systems</a>, we show how to test model forecasts in rapidly changing ecosystems.</p>
-<p>Good tests of model forecasts help us quantify uncertainty and are important for many management applications including fisheries stock forecasts, species extinction risk and climate-smart conservation planning.</p>
-<p>The pace of change is a problem for making predictions because our models are trained on historical data. Model’s predict best when they are predicting to conditions they’ve ‘seen’ in the training data. Unprecedented environmental change means our models need to extrapolate. This is much harder.</p>
-<p>One recent example is the deadly algal bloom across 500km of South Australia’s coast. No ones saw this coming. No-one yet knows if its likely to reoccur or not.</p>
-<p>We developed a way to test models with historical data to get an idea of how well they extrapolate. This gives us a better measurement of model uncertainty that we can use to calibrate risk, e.g.&nbsp;to see how much we might be under-estimating extinction risk or overestimating fish stock size.</p>
-<p>We illustrated our method with a 30 year timeseries of reef biota from Maria Island. We split this time-series into sections used for training and sections used for testing the model. The model is then fit to the training data and forecast to the testing data. The difference between its forecast and the test data is a measure of its errors.</p>
-<p>Our new method forces the model to fit to ‘out-of-date’ data. Whereas, the typical method keeps the models contemporary to the testing data. g We confirmed that for a species with a population collapse our new method gives a much more pessimistic (broader) estimate of uncertainty than the typical method would do.</p>
-<p>We suggest our method be used to better estimate risk measures when using models to forecast ecological change. Our method can also be used in meta-studies that are exploring how predictability varies across different species, places and times. This is a point we’ll pick up in our next study. Read more <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.70105">here</a>.</p>
-
-
-
- ]]></description>
-  <category>research</category>
-  <category>modelling</category>
-  <guid>https://www.seascapemodels.org/posts/2025-08-13-validating-predictive-models/</guid>
-  <pubDate>Tue, 12 Aug 2025 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Writing scientific papers with quarto and AI assistants</title>
-  <link>https://www.seascapemodels.org/posts/2025-07-07-writing-papers-with-quarto/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Below is my suggested workflow for using quarto to write scientific papers. I’m currently switching to doing as many projects as possible with quarto rather than word for a few reasons:</p>
-<ol type="1">
-<li>Easier to manage document style</li>
-<li>Easier to manage references</li>
-<li>Workflows that auto-update figures/tables when R code is re-run</li>
-<li>Generative AI integration that is customizable.</li>
-</ol>
-<p>Point 3 is great, no more cut and pasting figures into word documents!</p>
-<p>Point 4 is the big one. I’m developing my own ‘writing mentor’ scripts for large language models. Using quarto lets me implement writing advice specific to science direclty into my manuscripts.</p>
-<p>Quarto is ‘What You See is What you Make’, meaning that you write special syntax for formatting. Once you are used to it, this is way easier way to manage styles than word.</p>
-<p>The downside is getting your (non-coding) collaborators to edit files in quarto. This is the biggest bottleneck to my use of quarto/markdown. Currently I send them word documents then have to manually integrate the feedback. Or I work in quarto until the near final stages, accepting comments only, then get them to edit the final manuscript.</p>
-<p>For instance, <a href="https://conbio.onlinelibrary.wiley.com/doi/full/10.1111/cobi.13079?casa_token=zF8vihnFfcMAAAAA%3A9WlbXPCghdwS2WvyRqGjRqYPrng7q4_xPwZvu9K52p6gd_8lWs2qcgrehfg4ehAThC7ni32Ybr02iA">I wrote most of this paper in markdown</a> but had to go to word editing towards the end so I could get edits from my collaborator. Once you’ve progressed it in word, its hard to go back to markdown.</p>
-<p>Instructions below are high level. There are quite a few pieces of software you need to do this, so I’ve linked to tutorials for each below.</p>
-<section id="download-and-install-an-ide" class="level3">
-<h3 class="anchored" data-anchor-id="download-and-install-an-ide">1. Download and install an IDE</h3>
-<p>Download and install VScode.</p>
-<p><a href="https://www.seascapemodels.org/rstats/2025/06/12/setting-up-vscode-r-genAI.html">Instructions online e.g.&nbsp;here</a></p>
-<p>I’m using VScode because of its AI assistant integration. But you could also use positron if you have issues with VScode or want to use a Posit product rather than a Microsoft product.</p>
-</section>
-<section id="get-git-and-github" class="level3">
-<h3 class="anchored" data-anchor-id="get-git-and-github">2. Get git and github</h3>
-<p>Install git on your computer. Optionally, get a github account and connect to that. Git does version control. Github lets you share that online. If your collaborators are github users then you can also share edits on documents this way.</p>
-<p>Git is also essential if you are using AI assistants. Sometimes they majorly stuff up your documents. So keeping back ups with git is essential.</p>
-</section>
-<section id="vscode-extensions" class="level3">
-<h3 class="anchored" data-anchor-id="vscode-extensions">3. VScode extensions</h3>
-<p>Install these VScode extentions (or equivalents if you are using positron, note that many vscode extensions are also compatable with Positron)</p>
-<ul>
-<li>Quarto extension.</li>
-</ul>
-<p>Open VSCode and click the four boxes ‘extension’ icon on the LHS then search and install the Quarto extension.</p>
-<p>Optional extensions: - R language extension (<a href="https://www.seascapemodels.org/rstats/2025/06/12/setting-up-vscode-r-genAI.html">can be tricky to connect VScode to R, suggest you web search for advice</a>)</p>
-</section>
-<section id="optional-steps-for-ai-integration" class="level3">
-<h3 class="anchored" data-anchor-id="optional-steps-for-ai-integration">4. Optional steps for AI integration</h3>
-<p>This next step is optional. If you are using quarto or markdown its possible to get large-language models to help with many paper writing tasks (including the writing). This is a specialized area though and I’ve only given basic technical instructions here. Actually getting it to work well is another topic altogether and something I’m still developing…</p>
-<p>Get an API key with an LLM provider (e.g.&nbsp;<a href="https://openrouter.ai/sign-up">OpenRouter</a>, <a href="https://platform.openai.com/api-keys">OpenAI</a>, <a href="https://console.anthropic.com/login?returnTo=%2F%3F">Anthropic</a>). You’ll need a developer account to get an API key, rather than a regular account that you may already have (see links in last sentence). Buy some credits so you can use your API.</p>
-<p>Make sure you save your API key somewhere safe! You can usually only view them once on creation. You’ll need it for the workshop.</p>
-<p>Get the Roo Code extension for vscode/positron.</p>
-<p><a href="https://docs.roocode.com/">Read the documents/watch the tutorials and learn how to use Roo Code</a></p>
-<p>You can now <a href="https://docs.roocode.com/features/custom-modes">create a custom mode</a>, e.g.&nbsp;a ‘scientific writing mode’ in Roo code. As of writing this requires clicking the mode selection button at the bottom of the Roo Code Pane, then click the Cog, then the <code>+</code> button to make a new mode. Then you need to write a ‘Role Definition’ and ‘Custom instructions’. For tools I just use ‘Read Files’, ‘Edit Files’ and unclick the others (will save you money and tokens).</p>
-<p>This is the hard part that needs a lot of thought:</p>
-<p>In the custom instructions you should write detailed instructions on how to help an author with scientific writing. For instance, you might want to put some very strong instructions about not making up references. You might also put instructions about your particular writing style preferences. I’m working on a template, but am not yet ready to share it.</p>
-<p>See <a href="https://docs.roocode.com/features/custom-modes">Roo code documentation</a> for more advice on custom modes.</p>
-</section>
-<section id="using-quarto" class="level3">
-<h3 class="anchored" data-anchor-id="using-quarto">5. Using quarto</h3>
-<p>Take a tutorial and <a href="https://quarto.org/docs/get-started/hello/rstudio.html">learn how to use Quarto</a>.</p>
-<p>For academic paper writing the key things to understand from the Quarto tutorial are:</p>
-<ul>
-<li>How to knit as word or pdf (pdf requires extra software installations)</li>
-<li>Formatting, headings, bold etc…</li>
-<li>YAML frontmatter for styles, linking a bibliography and bibliography style</li>
-<li>How to insert images and/or code.</li>
-</ul>
-<p><strong>Note on AI integration</strong> once you are using quarto and Roo Code you can simply ask Roo Code to do things in your document (like outline a paper template) by referencing the file (e.g. <span class="citation" data-cites="myfile.qmd">@myfile.qmd</span>) in the prompt box.</p>
-<p>Whether this works well for you is another questions. Prompting well requires a lot of thought and practice. Its not simply going to write a paper for you. You have to give the AI assistant detailed, specific, instructions and lots of context.</p>
-</section>
-<section id="yaml-front-matter" class="level3">
-<h3 class="anchored" data-anchor-id="yaml-front-matter">6. YAML front matter</h3>
-<p>The <code>YAML</code> controls how your qmd document is rendered. Here’s an example of mine:</p>
-<pre><code>---
-title: "The paper's title"
-format: docx
-editor: visual
-bibliography: mybib.bib
-csl: myjournal.csl
-execute: 
-  echo: false
-  message: false
-  warning: false
----</code></pre>
-<p>This goes at the top of your document. A few key points.</p>
-<p><code>format</code> controls document type to render this as, here a word doc.</p>
-<p><code>editor</code> controls how it is viewed in vscode. Options are <code>editor: visual</code> and <code>editor: source</code>. Visual looks more like a word doc, source looks more like markdown. You’ll have to save and re-open the document for this to change.</p>
-<p><code>bibliography</code> links to a bibtex file where your references are stored.</p>
-<p><code>csl</code> links to a style guide for the bibliography.</p>
-<p>More on styles and references below.</p>
-<p><code>execute</code> is controlling how R code is run and if the R code appears in the document.</p>
-</section>
-<section id="rendering-as-a-document" class="level3">
-<h3 class="anchored" data-anchor-id="rendering-as-a-document">7. Rendering as a document</h3>
-<p>Use the short-cut key ‘cmd-shift-K’/‘cntrl-shft-k’ (mac/windows) to preview your document. It will also create a rendered version in your current directory.</p>
-<p>Its helpful to set: <code>format: html</code> when you are writing the document, then you get a live preview in vscode. Use <code>format: docx</code> when you want a word document.</p>
-<p>Its worth also learning the short-cut `cmd-shft-p’/‘cntrl-shft-p’, this brings up searchable actions for all extensions in vscode. The one you want is ‘Quarto: preview’ which does the same as the shortcut above.</p>
-<p>I tend to have minimal R code in my quarto manuscript. Or none at all (just reference .png files for figures). This keeps rendering quick. Also your document can get unweildy if there is a lot of text mixed in with R code.</p>
-</section>
-<section id="word-counts" class="level3">
-<h3 class="anchored" data-anchor-id="word-counts">8. Word counts</h3>
-<p>There are various word count extensions for vscode qmd and md documents.</p>
-</section>
-<section id="document-styles" class="level3">
-<h3 class="anchored" data-anchor-id="document-styles">9. Document styles</h3>
-<p>Getting a word document to follow a particular style is a bit fiddly. You need to set-up a template word document with styles the include that as a reference in your YAML.</p>
-<p><a href="https://quarto.org/docs/output-formats/ms-word-templates.html">See instructions here.</a></p>
-</section>
-<section id="reference-manager-integration" class="level3">
-<h3 class="anchored" data-anchor-id="reference-manager-integration">10. Reference manager integration</h3>
-<p>Quarto integrates with many different reference managers. <a href="https://quarto.org/docs/authoring/citations.html">There’s a good guide here</a>.</p>
-<p>In brief you create a <code>.bib</code> file that has your references in it. This is then linked in the YAML. The manual way to manage this is just to create a <code>.bib</code> file and paste bibtext entries directly into it (available on most journal’s pages as a citation format, as well as google scholar).</p>
-<p>e.g.&nbsp;the bibtext for R looks like this:</p>
-<pre><code>@Manual{Rlanguage,
-    title = {R: A Language and Environment for Statistical Computing},
-    author = {{R Core Team}},
-    organization = {R Foundation for Statistical Computing},
-    address = {Vienna, Austria},
-    year = {2024},
-    url = {https://www.R-project.org/},
-  }</code></pre>
-<p>Then in quarto you just type <code>@</code> and a dropdown of all your references will appear. <code>@Manual{Rlanguage,</code> the Rlanguage bit is the CiteKey that will appear in the dropdown. So <code>@Rlanguage</code> will insert that reference into the bibliography and the citation at that place in the document.</p>
-<p>You can streamline the process of gathering and managing references with a reference manager.</p>
-<p>My workflow in Zotero is as follows:</p>
-<ul>
-<li>Open Zotero on my computer</li>
-<li>Go to journal webpage for paper</li>
-<li>Use zotero plugin to my browser to grab the citation and save it to a library</li>
-<li>Go to my quarto document in VScode</li>
-<li>type <code>@</code> and a drop down of all references in all libraries on zotero appears. Pick the one I want.</li>
-<li>Click the <code>OK</code> button which saves that reference into my local <code>.bib</code> file.</li>
-</ul>
-<p>For some reason (that does not seem to be documented in any quarto tutorials anywhere!) it will find any reference I have anywhere in zotero and then save that bibtex entry to my local <code>.bib</code> file, so it is now accessible for use in my quarto doc. This only works if I have zotero open and use <code>editor: visual</code> in the YAML.</p>
-<p>There are many other options however.</p>
-</section>
-<section id="optional-ai-integration-for-reference-management" class="level3">
-<h3 class="anchored" data-anchor-id="optional-ai-integration-for-reference-management">11. Optional AI integration for reference management</h3>
-<p>You can get AI assistants to help with referencing if you keep your notes on papers linked to your references. For instance, you could keep your notes on references in the bibtex field for <code>notes</code>. Alternatively you could create another quarto/markdown document that has a header for each citation tag along with its notes in a structured way:</p>
-<pre><code>## Rlanguage 
-
-### What it is
-
-The R software for scientific computing. 
-
-### Usage
-
-Citation for the R software. Use this at least once in every paper where i've used R for statistics
-
-## edgar2023continent
-
-### What is it
-
-Key paper that shows Australia is losing its marine biodiversity. 
-
-### Usage
-
-Cite this as evidence that Australia is losing coastal marine biodiversity and as evidence that climate change is causing marine biodiversity loss
-</code></pre>
-<p>It doesn’t matter how you do this, so long as you follow a consistent structure. I’ve used the CiteKey as the main header for each reference entry. Then I’ve put in markdown sections about each paper and why I might wnat to cite it. Then you can get Roo Code to help with inserting references.</p>
-<p>Note that if you are using the <code>.bib</code> directly just be careful not to plagiarise! Roo Code might insert excerpts from the abstracts/titles directly into your written document, which is a no-no for publishing.</p>
-
-
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <category>research-skills</category>
-  <guid>https://www.seascapemodels.org/posts/2025-07-07-writing-papers-with-quarto/</guid>
-  <pubDate>Sun, 06 Jul 2025 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Prompting large language models for quality ecological statistics</title>
-  <link>https://www.seascapemodels.org/posts/2025-06-27-prompting-llms-quality-ecological-statistics/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Announcing a new <a href="https://ecoevorxiv.org/repository/view/9493/">pre-print on prompt engineering for ecological statistics.</a>. https://doi.org/10.32942/X2CS80</p>
-<p>The pre-print describes the challenges and opportunities of using large language models and agents to do ecological statistics. It then goes onto describe some prompt engineering strategies that can help you make the most of these tools, but still get reliable statistical advice and code.</p>
-<p>The pre-print accompanies <a href="https://www.seascapemodels.org/R-llm-workshop/index.html#summary">a one day course</a> I’ve published that teaches how to use LLM tools for R and statistics, as well as discussing the environmental and ethical challenges.</p>
-
-
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-06-27-prompting-llms-quality-ecological-statistics/</guid>
-  <pubDate>Thu, 26 Jun 2025 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

@@ -10,7 +10,167 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog-rstats.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Mon, 20 Oct 2025 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 04 Nov 2025 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>Keeping enthusiasm about learning R</title>
+  <link>https://www.seascapemodels.org/posts/2025-11-04-LLMs-coding-carbon-emissions/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Staying enthused about learning R is a challenge. You need progress from the initial motivation driven by ‘I need to learn this skill for my research career’ through a phase of tedium on your way to a competent R programmer.</p>
+<p>Here’s my story.</p>
+<section id="fitting-a-multinomial-peg-into-an-anova-hole" class="level2">
+<h2 class="anchored" data-anchor-id="fitting-a-multinomial-peg-into-an-anova-hole">Fitting a multinomial peg into an ANOVA hole</h2>
+<p>I first attempted to learn R while wintering at a remote field station in the Southern Ocean. I had one book, 2004 satellite internet and a lot of time to kill.</p>
+<p>Learning R was hard. Then you also have to learn statistics.</p>
+<p>I had chosen a hard statistical question to start with. My colleague asked for help analysing data. The aim was to predict which of three behaviours flocks of birds would show under different situations. I was trying to wrangle ANOVA to do this analysis, because that is the method my book described.</p>
+<p>I went around and around in circles. Were the behaviours factors or the response variable? If they were a response variable, how could the response have just three types of unordered outcomes? In hindsight I now see why I went in circles. The appropriate analysis would have been a multinomial model. Easy with <code>brms</code> (which didn’t exist then) or <code>mgcv</code>, but GLMs were not covered in standard text books in 2004, let alone multinomial GLMs.</p>
+<p>I did however manage to learn how to code an ANOVA, as well as learning a bit about R code.</p>
+<p>Coding requires us to be frustratingly precise in ways that human languages are not. This is hard for new programmers. And the learning curve for R is reknowned for being steeper than other coding languages.</p>
+<p>The first step to competence is comprehending the exactness of programming.</p>
+</section>
+<section id="like-a-spoken-language-but-pedantic" class="level2">
+<h2 class="anchored" data-anchor-id="like-a-spoken-language-but-pedantic">Like a spoken language, but pedantic</h2>
+<p>After my misadventure in the Southern Ocean I studied evolutionary modelling for my Honours thesis. I used Matlab, a commercial product developed by a single company. Matlab has the major benefit of its consistency. Its functions are used in consistent ways, the help files have a consistent style.</p>
+<p>R is open-source. ‘Learning R’ is an experience in trying to comprehend the thinking of scores of different open-source developers.</p>
+<p>The <code>R is an ecosystem</code> cliche comes to mind. R is like a real ecosystem. The software ecosystem’s solutions to problems are diverse.</p>
+<p>More often than someone has coded a solution to your problem in an R package. If only your could grasp how to use that solution the way its creator intended.</p>
+</section>
+<section id="data-structures" class="level2">
+<h2 class="anchored" data-anchor-id="data-structures">Data structures</h2>
+<p>Undersanding data structures was a key insight…</p>
+<p>Curiosity helps.</p>
+<p>R has been my main science tool for over 20 years now.</p>
+<p>As I gained more comprehension of R, stats in R became more like a puzzle. My own curiosity about what was possible kept me going. There is always something new to discover in a diverse software ecosystem.</p>
+<p>At times the imperitive quickly became procrastination. I’ve spent too many late nights trying a new spatial or Bayesian stats package, just out of curiosity.</p>
+<p>Twenty years on I often find it easier to code up with my own solutions to my research questions, rather than use someone else’s packaged solution. Its easier to comprehend a problem if you work through it yourself. Its easier to understand your own R style than someone else’s.</p>
+<p>Many people learn R because they have to. It is hard to work in many fields of science without some programming skills.</p>
+<p>Impact of genAI</p>
+<p>Other people’s innovations add</p>
+<p>Most data problems you come up with development statistical programmers</p>
+<p>Always someting new to discover</p>
+<p>There’s been turn-over too. Pipes and <code>tidyverse</code> changed everything. These packages made data wrangling and plotting so much easier.</p>
+<p>Teaching R got easier. I could see 95% of my students checking out whenever I had to explain a cracker nested operation like <code>mean(log(subset(dat, grp == 'a')$x))</code></p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-11-04-LLMs-coding-carbon-emissions/</guid>
+  <pubDate>Tue, 04 Nov 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Upcoming R workshops in Brisbane Feebruary 2026</title>
+  <link>https://www.seascapemodels.org/posts/2025-11-03-upcoming-R-workshop-brisbane/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>R workshops in Brisbane Australia, February 2026.</p>
+<p>For many years I had the pleasure of teaching with Ant Richardson and the team for these R workshops. I’m not there anymore, but recommend attending these if you can make the dates:</p>
+<p>Transform your research questions into robust statistical insights with our 2026 Summer R Workshops in an immersive exploration of R programming and statistical modelling. These workshops in February 2026 are designed for beginners and researchers who want to build a solid foundation in R programming and progress through to advanced statistical techniques. Whether you’re completely new to R or looking to strengthen your statistical modelling skills, join us to develop the analytical expertise essential for modern research!</p>
+<p>Registration is now open. For more information, see our website https://mathmarecol.github.io/RWorkshop/summer.html and the attached flyer. For any questions, email cbcs-workshops@uq.edu.au.</p>
+<p>Testimonials: “I truly enjoyed the whole workshop. Great teachers, really nice real data examples and good notes and background” “I am feeling a lot better about using stats now than I was previously” “I think it should be a compulsory course for all PhDs”</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2025-11-03-upcoming-R-workshop-brisbane/</guid>
+  <pubDate>Sun, 02 Nov 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Should we still teach R coding in this age of genAI?</title>
+  <link>https://www.seascapemodels.org/posts/2025-11-02-should-we-teach-coding/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I often get asked if we should still be teaching coding skills to students and researchers now that we have generative AI tools that can write code for us.</p>
+<p>The general consensus is yes, we should still teach coding. For an ecology specific <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14325">argument see here</a>.</p>
+<p>Teaching coding is teaching people how to think logically and structure problems. These skills are essential not only in coding, but also for good science and problem solving in general.</p>
+<p>So you need to learn to code to learn to think logically and structure problems.</p>
+<p>A more practical standpoint is that LLMs are good at generating code that they have seen a lot of examples of in their data. But they are not so good at creative work on novel topics or niche areas.</p>
+<p>For example, AI coding assistants struggle to make a simple <code>tmap</code> (the R mapping package) work well. <code>tmap</code> was updated recently, meaning the examples in the LLM’s training are out of date.</p>
+<p>The coding assistants also seem to default to code patterns they are most familiar with, like <code>ggplot2</code> syntax. Not all of this works with <code>tmap</code>.</p>
+<p>In general, I find they perform much better at statistical modelling in R than they do with complex geospatial analyses.</p>
+<p>This practical issue may increasingly become less relevant as LLMs get better and we create better resources to inform their actions (like a tmap specific guide for LLMs to read before advising you, or web searches of the tmap page).</p>
+<p>But it is still likely that frontier modelling will require deep human engagement with code. So learning to code is important for researchers.</p>
+<p>I’ll leave the final say to Andrej Karpathy, former head of AI at Tesla and founding member of OpenAI’s research group.</p>
+<p>In a <a href="https://www.dwarkesh.com/p/andrej-karpathy">recent podcast interview</a> he talks about a repo he made to help teach people how to work with LLMs. His advice to learners is literally to re-write his repo by hand, not even to cut and paste.</p>
+<p>He goes on to explain that AI agents are good for very standard code or code that is common on the internet. But they perform poorly for creating new code, or code that contradicts common patterns.</p>
+<p>For any research code he most commonly uses the code auto-complete features that AI assistants have, rather than AI agents.</p>
+<p>He suggests that to really learn something you should code it yourself, using examples only as references.</p>
+<p>Karpathy came up with the term ‘vibe-coding’ which means creating code by prompting, without reviewing the code. Usually an AI agent is used. So its saying a lot if he thinks that learning means doing it the old fashioned way of writing code yourself.</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-11-02-should-we-teach-coding/</guid>
+  <pubDate>Sat, 01 Nov 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Carbon emissions…</title>
+  <link>https://www.seascapemodels.org/posts/2025-11-05-R-collaborator-for-20-years/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Estimate carbon emissions from LLMs coding assitants</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-11-05-R-collaborator-for-20-years/</guid>
+  <pubDate>Sat, 01 Nov 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Environmental impacts of large language models</title>
+  <link>https://www.seascapemodels.org/posts/2025-10-22-environmental-impacts-LLMs/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Just want to quickly highlight a few investigative blogs on the environmental impacts of LLMs.</p>
+<p>There are two main issues: water use (for cooling servers) and carbon emissions generated by creating the hardware, training the models and then using the models to get responses (‘inference’).</p>
+<p>This blog does a deep dive on the <a href="https://andymasley.substack.com/p/the-ai-water-issue-is-fake">water issues</a>. The key finding is that the water issues seem to be overstated (he says ‘fake’ but I don’t agree with that word choice, water issues are real, just overstated).</p>
+<p>Then academic Hannah Ritchies and author of ‘Sustainability by Numbers’ page sums up the <a href="https://www.sustainabilitybynumbers.com/p/carbon-footprint-chatgpt">carbon cost of chatGPT</a>. She draws heavily on <a href="https://andymasley.substack.com/p/a-few-meta-points-on-my-posts-on">Andy Masley</a> detailed work.</p>
+<p>In particular, blog author (<a href="https://www.andymasley.com/">Andy Masley</a>) argues that the public has limited attention span for environmental issues and AI isn’t the biggest priority. He sums it up nicely:</p>
+<p>“AI water use is mostly fake, personal prompt costs are mostly fake, but AI as a whole is going to put a huge strain on our electrical grid going forward that’s going to matter a lot for the green energy transition, local electricity prices, and air pollution”</p>
+<p>By fake, he means your personal usage is trivially small. He highlights golf courses and streaming videos as much larger uses of water and emissions respectively.</p>
+<p>What also matters is the counterfactual - ie what would you be doing if you weren’t using chatGPT? If you would be online shopping, using a microwave or streaming videos instead, then your personal emissions are probably slightly lower if you switch your time to chatGPT.</p>
+<p>If you are concerned about the impacts of your AI use you can easily do a personal offset by commiting to some simple behaviour changes. <a href="https://www.it.ox.ac.uk/article/reducing-energy-consumption-pcs">e.g.&nbsp;turn you computer off at night and turn it off at the power plug</a>.</p>
+<section id="what-about-coders" class="level2">
+<h2 class="anchored" data-anchor-id="what-about-coders">What about coders?</h2>
+<p>One unaddressed question in these posts is the personal impacts of genAI power users (like me). By that I mean people using it for coding. The blogs above deal with people who are doing the occaisonal short chatGPT prompt. Coders might be leaning on AI hundreds of times a day for prompts that range from short to very long (and more energy intensive).</p>
+<p>That’s something I’d like to do the numbers for later on.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-10-22-environmental-impacts-LLMs/</guid>
+  <pubDate>Tue, 21 Oct 2025 13:00:00 GMT</pubDate>
+</item>
 <item>
   <title>modelbased package for plotting interactions</title>
   <link>https://www.seascapemodels.org/posts/2025-10-21-modelbased/</link>
@@ -1945,755 +2105,6 @@ print(results)</code></pre>
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-03-15-LMs-in-R-with-ellmer/</guid>
   <pubDate>Fri, 14 Mar 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>How to use large language models to assist in systematic literature reviews</title>
-  <link>https://www.seascapemodels.org/posts/2025-02-12-LLMs-for-literature-reviews/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>In the near future, we will all be doing systematic lit reviews by getting LLMs to gather data from papers. Below is an example of how to extract text data from a study. Once you can interact with LLM from R, you can then batch process many documents to turn text into structured data.</p>
-<p>TLDR; Developing a data extraction workflow is hard work. The development of prompts, data extraction and data cleaning is time consuming and requires thought. So it will still take work to do a systematic review. I’d also recommend you manually check results so that you still learn something yourself and to correct errors.</p>
-<p>I’ll also mention that papers are coming out now testing this idea, e.g.&nbsp;this one shows the <a href="https://www.nature.com/articles/s44185-024-00043-9">AI’s results can be accurate, but only for some types of requests</a>. The supplemental code for that paper also has helpful guidance.</p>
-<p>We’ll need a few R skills to extract data from papers for lit reviews:</p>
-<ol type="1">
-<li>How to interact with LLMs through APIs from R</li>
-<li>How to handle pdf docments and extract text from them</li>
-<li>How to clean up semi-structured text data and turn it into structured data.</li>
-<li>How to batch process.</li>
-</ol>
-<p>I’ll mainly focus on step 1 here. Step 2 is possible, by can be finniky and depend on how the pdf is formated. Step 3 is pretty straightforward with a package like <code>stringr</code>. Step 4 is just looping with whatever framework you prefer for that (e.g.&nbsp;for loops or purrr).</p>
-<p>This blog deals with only one type of application of LLMs to lit reviews, that is maybe the most straightforward and cheapest. There are other ways to use them to write syntheses or discover research trends, such as finetuning models on a large corpus of papers.</p>
-<section id="setting-up-your-api-access" class="level3">
-<h3 class="anchored" data-anchor-id="setting-up-your-api-access">Setting up your API access</h3>
-<p>API = application programming interface. This is a way to interact with a service (the LLM provider) via R.</p>
-<p>First you will need to go to your LLM provider of choice (here I’m using anthropic) and get an API key. This will require you to register and then buy some credits. You will per charged per token (fragment of a word) that you use.</p>
-<p>I’ve started out with 25USD which seems to be sufficient for testing. I’ve got no idea yet how much it will cost to do a full systematic lit review with 100s of papers.</p>
-<p>Now get your API key. Keep this secret its like a password. Also you can only view it once, so you’ll need to save it, e.g.&nbsp;in a password manager.</p>
-</section>
-<section id="using-the-api-key-in-r" class="level3">
-<h3 class="anchored" data-anchor-id="using-the-api-key-in-r">Using the API key in R</h3>
-<p>I’m using the <code>dotenv</code> package to help manage API. First, make sure <code>.env</code> is in your <code>.gitignore</code> file. This way you can’t inadvertently share your key with the world.</p>
-<p>Now create a file in a text editor (e.g.&nbsp;Rstudio or VSCode) called <code>.env</code>. Put this is your project folder.</p>
-<p>The file will look like this:</p>
-<pre><code>ANTHROPIC_KEY="your_api_key_here"</code></pre>
-<p>Be sure to hit enter after the last line.</p>
-<p>Now you can use the <code>dotenv</code> package to load the key into your R session. <a href="https://www.r-bloggers.com/2018/08/structuring-r-projects/">This blog has good advice on managing secrets</a></p>
-<pre><code>dotenv::load_dot_env('.env')</code></pre>
-<p>Check it worked to load the key:</p>
-<pre><code>Sys.getenv("ANTHROPIC_KEY")</code></pre>
-<p>This should print your key.</p>
-</section>
-<section id="interacting-with-the-api-from-r" class="level2">
-<h2 class="anchored" data-anchor-id="interacting-with-the-api-from-r">Interacting with the API from R</h2>
-<p>Now you are ready to use the API. There are quite a few packages that can help you do this. I’m going to use the new <code>tidychatmodels</code> package, because I like its syntax (its like tidymodels).</p>
-<p><a href="https://albert-rapp.de/posts/20_tidychatmodels/20_tidychatmodels">Install instructions are here</a> (its not on cran as of writing) and <a href="https://albert-rapp.de/posts/21_pdf_extraction/21_pdf_extraction">here is a nice example of how to use LLMs with pdfs</a>, which helped me greatly with writing this blog.</p>
-<pre><code>library(tidyverse)
-library(tidychatmodels)</code></pre>
-<p>Now start building the instructions to send to the API. tidychatmodels does this step by step with pipes. So we are going to build up a sequence of commands. In the final step we’ll send it to the API.</p>
-<pre><code>newchat &lt;- create_chat("anthropic", 
-    api_key = Sys.getenv("ANTHROPIC_KEY"),
-    api_version = '2023-06-01')</code></pre>
-<p>Here I’m using ‘anthropic’, but there are others e.g.&nbsp;openai and mistral.</p>
-<p>Now add a model. I got the model name on the <a href="https://docs.anthropic.com/en/docs/about-claude/models">APIs webpage</a></p>
-<p>Model choice is dictated by speed, cost and the type of task you want to do. Do some research to optimise this.</p>
-<p>I’m also setting the temperature to control the level of creativitiy in the output, lower values = less creative. max_tokens controls the length of the output.</p>
-<pre><code>newchat &lt;- add_model(newchat, "claude-3-5-haiku-20241022") |&gt;
-      add_params('temperature' = 0.2, max_tokens = 800) </code></pre>
-</section>
-<section id="prompting-through-the-api" class="level2">
-<h2 class="anchored" data-anchor-id="prompting-through-the-api">Prompting through the API</h2>
-<p>Let’s do a test run. I’ll create some text</p>
-<pre><code>newchat &lt;- newchat |&gt;
-  add_message(
-    role = 'user',
-    message = 'You are a funky dude who loves writing online R lessons.
-    Write a paragraph about loading dataframes in R. '
-  ) </code></pre>
-<p>Now we’re ready to hit the dance floor. This is the bit where we actually ask the LLM to do something. It is also the bit that costs money….</p>
-<pre><code>newchat &lt;- newchat |&gt;
-    perform_chat()
-responses &lt;- newchat |&gt; extract_chat()</code></pre>
-<p>So the first time I ran this I got a ‘400’ error. Turns out the ‘max_tokens’ parameter was essential to set. This parameter controls the length of output. Longer outputs cost more (you’re charged per token).</p>
-<p>Error in <code>httr2::req_perform()</code>: ! HTTP 400 Bad Request. Backtrace: 1. tidychatmodels::perform_chat(newchat) 5. httr2::req_perform(prepared_engine)</p>
-</section>
-<section id="roles" class="level2">
-<h2 class="anchored" data-anchor-id="roles">Roles</h2>
-<p>Most LLMs have different roles, often a ‘user’ and a ‘system’ role. These give you more precise control over the LLM’s output. There is great advice from vendors on how to use these roles, e.g.&nbsp; with (anthropic)[<a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/system-prompts#legal-contract-analysis-with-role-prompting" class="uri">https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/system-prompts#legal-contract-analysis-with-role-prompting</a>]</p>
-<p>Setting a system role controls how the LLM behaves. People use these to make the AI act like a certain character, such as a research assistant. Let’s see it in action.</p>
-<p>Prompting is like programming, but less precise (annoyingly for me, who likes programming and things to be exact!). Good prompts will tend to get you better results. But of course, as with all deep learning, outcomes have an element of randomness, so can be inconsistent.</p>
-<pre><code>base_settings &lt;- create_chat("anthropic", 
-    api_key = Sys.getenv("ANTHROPIC_KEY"),
-    api_version = '2023-06-01') |&gt; 
-    add_model("claude-3-5-haiku-20241022") |&gt;
-    add_params('temperature' = 0.8, max_tokens = 100) 
-
-newchat &lt;- base_settings |&gt;
-  add_message(
-    role = 'system',
-    message = 'You are a funky dude who loves writing online R lessons.'
-  ) |&gt; 
-  add_message(
-    #defaults to 'user' role
-    message = 'Write a paragraph about loading dataframes in R. ') |&gt;
-    perform_chat() 
-
-extract_chat(newchat)</code></pre>
-<p>Ok, so the system role didn’t work very well in this case. To get the ‘funky dude’ output you need to put that into the user role.</p>
-<p>Now let’s look at doing this for a real paper.</p>
-</section>
-<section id="extracting-text-from-a-pdf" class="level2">
-<h2 class="anchored" data-anchor-id="extracting-text-from-a-pdf">Extracting text from a pdf</h2>
-<p>I’m going to use my <a href="https://doi.org/10.1111/conl.13056">recent paper on turtle mortality as an example, becuase I know it well</a> and the file size isn’t too large.</p>
-<p>Now we can use the pdftools package to read in the text from file. You could also try reading this directly from the web as HTML, which might allow you to identify particular sections, or data in tables, more effectively (by using html tags).</p>
-<p>Just note that making repeat requests for html pages might get you temporarily blocked from the publisher’s server.</p>
-<pre><code>library(pdftools)
-text &lt;- pdf_text("data/Brown_etal2024 national scale turtle mortality.pdf")</code></pre>
-<p>Now doing the above failed to work, I got that darn 400 error again when I sent it to the API. The issue seemed to be in the formatting of the text. So I can get on with the next step, I’ve just cut and paste the text into a text file. Clearly the cleaning up of pdfs/html for use will be a big part of this process. (like all modelling, data cleaning usually takes up most of the time).</p>
-<pre><code>methods_text &lt;- readLines("data/example-text.txt") |&gt;
-    paste(collapse = " ")</code></pre>
-</section>
-<section id="sending-text-to-the-llm" class="level2">
-<h2 class="anchored" data-anchor-id="sending-text-to-the-llm">Sending text to the LLM</h2>
-<p>Now we have our text we can send it to the LLM.</p>
-<pre><code>newchat &lt;- base_settings |&gt;
-    add_params('temperature' = 0.2, max_tokens = 600) |&gt; 
-    add_message(
-    role = 'system',
-    message = "You are a research assistant who has been asked to summarise the methods section of a paper on turtle mortality.
-    You will extract key statistics on:
-    Sample size: &lt;&lt; Insert sample size here&gt;&gt;
-    Year of the study: &lt;&lt; Insert year here&gt;&gt;
-    DONT EXTRACT ANY MORE INFORMATION BEYOND THIS POINT.
-    "
-  ) |&gt; 
-     add_message(
-         message = methods_text
-    ) |&gt;
-  perform_chat()
-
-extract_chat(newchat)</code></pre>
-<p>The prompt is key here. In the system role we’ve told it to extract the data in a structured way. I also included ‘DONT EXTRACT ANY MORE INFORMATION BEYOND THIS POINT.’ to prevent it from continuing to talk. Using caps emphasises the point to the AI.</p>
-<p>Here’s the output:</p>
-<blockquote class="blockquote">
-<p>Based on the methods section, here are the key statistics: Sample size: 357 sets (electronic monitoring) for large-scale longline fishery (LLF) Year of the study: 2018</p>
-</blockquote>
-<p>Here’s the output without the final part in caps:</p>
-<blockquote class="blockquote">
-<p>Assistant: Based on the methods section, here are the key statistics: Sample size: - For Small-Scale Fisheries (SSF): Monitored catches from 10 communities across 8 of 9 provinces - For Large-Longline Fisheries (LLF): 357 sets reviewed, spanning from 2018-01-24 to 2019-08-17 - Total catch events for LLF: 25,403 catch events - Electronic monitoring deployed on 7 vessels Year of the study: 2018 (primary year of data collection) Additional notable details: - Used non-parametric bootstrapping for scaling up and estimating confidence intervals - Monitoring methods involved trained community members and electronic monitoring systems - Video review of LLF data took 0.5 to 2 days per set - Used three different methods to scale up turtle catch for LLF to account for variability</p>
-</blockquote>
-<p>This is all very accurate, but includes too much ‘additional details’. However, it does get more of the methods details with regards to the various sample sizes for different parts of the study.</p>
-<p>Let’s get the output text:</p>
-<pre><code>chatout &lt;- extract_chat(newchat)
-output &lt;- chatout[chatout$role == 'assistant', 'message']</code></pre>
-<p>For repeatability just for the blog I’m hard coding that</p>
-<pre><code>output &lt;- data.frame(message = "Based on the methods section, here are the key statistics:\n\nSample size: 357 sets (electronic monitoring) for large-scale longline fishery (LLF)\nYear of the study: 2018")</code></pre>
-</section>
-<section id="turn-text-into-structured-data" class="level2">
-<h2 class="anchored" data-anchor-id="turn-text-into-structured-data">Turn text into structured data</h2>
-<p>Our data is semi structured by the way we did the prompt. Now we want to put the sample size and year into data fields.</p>
-<p>I’m using <code>separate_wider_delim</code> to first seperate out the first paragraph that had two breaks ’’, then again to split the sample size and year into columns (they were seperated by ’’).</p>
-<p>Finally, str_remove_all gets rid of the ‘Sample size:’ and ‘Year of the study:’ text.</p>
-<pre><code>library(stringr)
-
-cleaned_output &lt;- output |&gt; 
-  separate_wider_delim(
-    cols = message, 
-    delim = '\n\n',
-    names = c('response', 'stats')
-  ) |&gt; 
-separate_wider_delim(
-    cols = stats, 
-    delim = '\n',
-    names = c('sample_size', 'year')
-) |&gt; 
-  mutate(
-    across(
-      sample_size:year,
-      \(x) str_remove_all(
-        x, 
-        'Sample size: |Year of the study: '
-      )
-    ))</code></pre>
-<p>So now we can easily get our variables (sort of)</p>
-<pre><code>cleaned_output$sample_size
-cleaned_output$year</code></pre>
-</section>
-<section id="reflections-on-challenges-and-next-steps-for-automating-data-extraction" class="level2">
-<h2 class="anchored" data-anchor-id="reflections-on-challenges-and-next-steps-for-automating-data-extraction">Reflections on challenges and next steps for automating data extraction</h2>
-<section id="cost-uncertainty" class="level3">
-<h3 class="anchored" data-anchor-id="cost-uncertainty">Cost uncertainty</h3>
-<p>This should be cheap. It cost &lt;1c to make this post with all the testing. So in theory you could do 100s of methods sections for &lt;100USD. However, if you are testing back and forwards a lot or using full papers the cost could add up. It will be hard to estimate this until people get more experience.</p>
-</section>
-<section id="obtaining-the-papers-and-dealing-with-unstructued-text-in-pdfs-or-html" class="level3">
-<h3 class="anchored" data-anchor-id="obtaining-the-papers-and-dealing-with-unstructued-text-in-pdfs-or-html">Obtaining the papers and dealing with unstructued text in PDFs or HTML</h3>
-<p>A big challenge will be getting the text into a format that the LLM can use. Then there are issues like obtaining the text. Downloading pdfs is time consuming and data intensive. Trying to read text data from webpages can also be hard, due to paywalls and rate limits (you might get blocked for making reqeat requests).</p>
-<p>For instance, <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/brv.12344?casa_token=LVnFzoFBBU8AAAAA%3AcsyopYDWDBRZN7y2JL7eHYxzqayxu2GvKB-7gdEYkdeZSi5p5o1oXTwj49FqwBJz-IpPS6wxJ_SX0h2f">in a past study we did where we did simple ‘bag of words analysis’</a> we either downloaded the pdfs manually, or set timers to delay web hits and avoid getting blocked.</p>
-<p>HTML format would be ideal, because the tags mean the sections of the paper, and the figures already semi-structured.</p>
-</section>
-<section id="prompting" class="level3">
-<h3 class="anchored" data-anchor-id="prompting">Prompting</h3>
-<p>Need to experiment with this to get it right. It might also be good to repeat prompt the same text to triangulate accurate results.</p>
-</section>
-<section id="llm-text-output-cleaning" class="level3">
-<h3 class="anchored" data-anchor-id="llm-text-output-cleaning">LLM text output cleaning</h3>
-<p>In my simple example this was easy. However, with a large number of prompts and papers the LLM responses might have more variability that needs to be dealt with, e.g.&nbsp;will it always use one line break between my data questions? You can help control this issue by asking it to structure output in xml or JSON format, which is easier to then parse into data sheets.</p>
-</section>
-<section id="the-data-still-isnt-data-and-requires-interpretation" class="level3">
-<h3 class="anchored" data-anchor-id="the-data-still-isnt-data-and-requires-interpretation">The data still isn’t data and requires interpretation</h3>
-<p>You can see from my simple examples above that the output can’t be plotted direclty. In fact, it requires more interpretation. The sample size was given as ‘357 sets (electronic monitoring) for large-scale longline fishery (LLF)’. So is it 357? Are there other sample sizes that might be relevant?</p>
-</section>
-<section id="validation" class="level3">
-<h3 class="anchored" data-anchor-id="validation">Validation</h3>
-<p>You’ll definitely want to manually check the output and report accuracy statistics in your study. So maybe your review has 1000 papers, you’ll want to manually check 100 of them to see how accurate the LLM was.</p>
-</section>
-<section id="youll-still-need-to-read-a-lot-of-papers-to-write-a-good-lit-review" class="level3">
-<h3 class="anchored" data-anchor-id="youll-still-need-to-read-a-lot-of-papers-to-write-a-good-lit-review">You’ll still need to read a lot of papers to write a good lit review</h3>
-<p>A lit review is more than the systematic data. I still believe you need to read a lot of papers in order to understand the literature and make a useful synthesis. If you just use AI you’re vulnerable to the <a href="https://www.nature.com/articles/s41586-024-07146-0">‘illusion of understanding’</a>.</p>
-</section>
-<section id="conclusion" class="level3">
-<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
-<p>This tool will be best for well defined tasks and consistently written papers. For instance, an ideal use case would be reviewing 500 ocean acidification papers that all used similar experimental designs and terminology. You’ll then be able to get consistent answers to prompts about sample size etc…</p>
-<p>Another good use case would be to extract model types from species distribution model papers.</p>
-<p>Harder tasks will be where the papers are from diverse disciplines, or use inconsistent terminology, or methods. My study was a good example of that, there were about 5 different sample sizes reported. So in this example we’d need first to think clearly about what sample size you wanted to extract before writing the prompt.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <category>research-skills</category>
-  <guid>https://www.seascapemodels.org/posts/2025-02-12-LLMs-for-literature-reviews/</guid>
-  <pubDate>Tue, 11 Feb 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Setting up VScode for R and Cline</title>
-  <link>https://www.seascapemodels.org/posts/2025-02-07-setting-up-vscode-r-cline/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Cline lets you create and run entire workflows via using prompts to a large language model. Its not widely used in the R community yet, but I expect it will be soon. You can create your entire R project, interpret the results and write a draft of your findings without writing any R code.</p>
-<p>Cline is not available (as of writing) in RStudio. So you need to use a different IDE (Integrated Development Environment) to run your R code. Here I’ll explain how to set-up VSCode (a popular IDE) so you can use Cline.</p>
-<section id="software-requirements" class="level2">
-<h2 class="anchored" data-anchor-id="software-requirements">Software requirements</h2>
-<p>To set up VScode for R and Cline, you’ll need:</p>
-<ul>
-<li>R programming language</li>
-<li>VScode text editor</li>
-<li>R extension for VScode</li>
-<li>Cline AI assistant extension for VScode</li>
-</ul>
-<p>Note that if you computer is controlled centrally by an IT department, you may need to request admin access to install software, or email IT and ask for them to come and help you.</p>
-</section>
-<section id="install-r" class="level2">
-<h2 class="anchored" data-anchor-id="install-r">Install R</h2>
-<ol type="1">
-<li>Go to the official R project website: https://www.r-project.org/</li>
-<li>Click the “download R” link in the Getting Started section</li>
-<li>Choose a CRAN mirror close to your location</li>
-<li>Download the appropriate R installer for your operating system</li>
-<li>Run the installer and follow the prompts to complete installation</li>
-</ol>
-</section>
-<section id="r-packages" class="level2">
-<h2 class="anchored" data-anchor-id="r-packages">R packages</h2>
-<ol type="1">
-<li>Open R or RStudio</li>
-<li>Install language server <code>install.packages("languageserver")</code></li>
-<li>Install httpgd <code>install.packages("httpgd")</code> (this helps improve plots in VScode)</li>
-</ol>
-</section>
-<section id="install-vscode" class="level2">
-<h2 class="anchored" data-anchor-id="install-vscode">Install VScode</h2>
-<ol type="1">
-<li>Go to the official VScode website: https://code.visualstudio.com/</li>
-<li>Click the big blue “Download” button</li>
-<li>Download the appropriate VScode installer for your operating system</li>
-<li>Run the installer and follow the prompts</li>
-<li>Launch VScode once installation is complete</li>
-</ol>
-</section>
-<section id="install-r-extension" class="level2">
-<h2 class="anchored" data-anchor-id="install-r-extension">Install R extension</h2>
-<ol type="1">
-<li>Open VScode</li>
-<li>Open the Extensions view in VScode (click the boxes on left hand side)</li>
-<li>Search for “R” in the extensions marketplace</li>
-<li>Select the “R” extension published by REditorSupport</li>
-<li>Click the “Install” button</li>
-<li>Restart VScode after installation if prompted</li>
-</ol>
-<p><a href="https://code.visualstudio.com/docs/languages/r">More info on vscode and R here</a></p>
-</section>
-<section id="connect-r-and-vscode" class="level2">
-<h2 class="anchored" data-anchor-id="connect-r-and-vscode">Connect R and VScode</h2>
-<ol type="1">
-<li>Open a new terminal in VScode (Terminal &gt; New Terminal)</li>
-<li>Check that R is installed by running: <code>R --version</code></li>
-<li>Type <code>R</code> to open the R console in the terminal</li>
-<li>Now open any R script in VS code (File &gt; Open)</li>
-<li>Run some R code to check that VS code can connect to R in the terminal. Use the shortcut Ctrl+Enter/Cmd+Enter or press the play button in the top right of the script editor.</li>
-</ol>
-<p>If R is not found then open extensions (left hand side, boxes icon), filter by ‘enabled’ then click the R extension. Now click the cog icon in the R extension and select ‘settings’ from the dropdown. Search for ‘rpath’. Check that it has the correct path to R on your computer. You can find the path by opening a terminal and typing <code>which R</code> (on mac) or in a windows terminal <code>where R</code>.</p>
-<p>While you have the extension settings open search for ‘httgp’ and make sure <code>Plot: Use Httpgd</code> is enabled.</p>
-</section>
-<section id="install-cline" class="level2">
-<h2 class="anchored" data-anchor-id="install-cline">Install Cline</h2>
-<ol type="1">
-<li>Open the Extensions view in VScode (Ctrl+Shift+X)</li>
-<li>Search for “cline” in the extensions marketplace</li>
-<li>Select the “Cline” extension</li>
-<li>Click the “Install” button</li>
-<li>The Cline icon should appear in the VScode sidebar</li>
-</ol>
-</section>
-<section id="set-up-cline-in-vscode" class="level2">
-<h2 class="anchored" data-anchor-id="set-up-cline-in-vscode">Set up Cline in VScode</h2>
-<ol type="1">
-<li>Click on the Cline robot icon on the left hand side</li>
-<li>Click the cog (if the settings don’t open automatically)</li>
-<li>Select your API provider and cut and paste the API key into the box (see next step if you don’t have one).</li>
-</ol>
-</section>
-<section id="get-an-api-key" class="level2">
-<h2 class="anchored" data-anchor-id="get-an-api-key">Get an API key</h2>
-<p>Now you need to choose your large language model provider. I’m currently using Anthropic, which has a diversity of models for generating text, code and reading images. Do some web searching to find out the latest info on providers and models.</p>
-<p>You choose depends on what you want to do and your budget. Some providers offer a free tier. You’ll need to web search for the latest info on this.</p>
-<p>You can get the links to any supported provider from the Cline extension settings, just select the provider and then a link will appear to sign-up for that provider.</p>
-<p>Once you’ve chosen a provider, create an account and follow their instructions for creating an API key. You will probably also need to buy some credit to use the model.</p>
-<p>Note that if you already have a subscription account, e.g.&nbsp;for chatGPT, you will get need an API key to use Cline. This might be in a different section of your account settings. If you are using a subscription service you are probably paying monthly to use the provider’s web app. We need the API key to be able to use the model directly via code.</p>
-</section>
-<section id="youre-all-set" class="level2">
-<h2 class="anchored" data-anchor-id="youre-all-set">You’re all set</h2>
-<p>Now you’re set and ready to start using Cline to code and write text.</p>
-</section>
-<section id="issues-and-tips" class="level2">
-<h2 class="anchored" data-anchor-id="issues-and-tips">Issues and tips</h2>
-<p>This is just a list of issues I’ve had and how I’ve solved them.</p>
-<p><em>Plotting</em> If your R plots look weird (like tiny font), make sure httpgp is enabled. Go back to steps above and see how to do that.</p>
-<p><em>Viewing data</em> There are various extensions for viewing csv and excel files. It is worth looking into these so that when you do <code>View(dat)</code> in R you get a nice table. Some also allow editing.</p>
-<p><em>Getting help to install software</em> My computer is somewhat locked down by IT, so getting this set-up was a bit fiddly and required a few requests to IT to install software.</p>
-<p><em>R markdown</em> There are options in the R extension settings for how to knit markdown. You may need to configure these if you want to knit markdown docs from VScode. If you are having trouble knitting markdown it may mean that the path to pandoc is not set correctly. <a href="https://stackoverflow.com/questions/60766646/need-help-assigning-global-settings-for-rstudios-pandoc-in-vscode-to-knit-pdf-d">There is some helpful instructions here</a></p>
-<p><em>R terminal crashes</em> If I run too much R code at once (like selecting a big block then running) the terminal tends to crash. Initially I see a little highlighted box saying ‘PTY HOST’. Then I need to close all the terminals (with the bin icon) and start again. Try radian if this is a problem. You can also code run line-by-line or source whole scripts from the terminal (which works fine). I tried debugging this by increasing the buffer but to on avail.</p>
-<p><em>Shortcut keys</em> (on osx) cmd-/ to comment uncomment lines. cmd-shift-p to open the command palette, cmd-b to open the file explorer, cmd-enter to run lines or selection of R code, cmd-shift-c to open terminal in new window, cntrl-shift-` to open a new terminal in vs code.</p>
-</section>
-<section id="installing-radian-optional" class="level2">
-<h2 class="anchored" data-anchor-id="installing-radian-optional">Installing radian (optional)</h2>
-<p>Radian is a terminal editor that is a bit nicer than the base R one. It does autocomplete in the terminal (like Rstudio does in the console), colours code/brackets etc… and allows multi-line editing in the terminal.</p>
-<p>To set this up, install radian (you need python to do this). More <a href="https://github.com/randy3k/radian?tab=readme-ov-file">instructions here</a>.</p>
-<p>Then go to the terminal and find the path where radian is installed (e.g.&nbsp;<code>which radian</code> on mac or <code>where radian</code> on windows).</p>
-<p>Now open your settings in VScode (cmd-,) and search for ‘rterm’ (stands for ‘R Terminal’, don’t change the rpath which we set just before). Add the path to radian to the rterm setting. Also search for the setting ‘R: Bracketed Paste’ and make sure it is enabled.</p>
-
-
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <guid>https://www.seascapemodels.org/posts/2025-02-07-setting-up-vscode-r-cline/</guid>
-  <pubDate>Thu, 06 Feb 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Probability intervals with GAMs</title>
-  <link>https://www.seascapemodels.org/posts/2024-01-05-credible-intervals-with-GAMs/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>A neat trick with GAMs (generalized additive models) fit using the <code>mgcv</code> package is that you can use simulation to get Bayesian credible intervals. This is handy because it means you can easily calculate probabilities for any arbitrary transformation of your parameters.</p>
-<p>For instance, we used this trick to calculate the probability that <a href="https://www.sciencedirect.com/science/article/pii/S004896972304490X">animal abundance was greater in an experimental treatment vs the control</a>. Using a GAM meant we could also account for non-linear temporal effects.</p>
-<p>The example I give below is for probability of exceeding a threshold.</p>
-<p>Simon Wood explains in his <a href="https://www.taylorfrancis.com/books/mono/10.1201/9781315370279/generalized-additive-models-simon-wood">book</a> that there is a theoretical equivalence between GAMs from his package and an empirical Bayesian analysis. In short, the GAM penalty parameters (the ones that control the wiggliness of the non-linear fits) are analogous to Bayesian priors.</p>
-<p>The reason we say ‘empirical’ Bayesian analysis is that the smoothing parameters are estimated from data, rather than having a prior.</p>
-<section id="getting-credible-intervals-from-a-gam" class="level3">
-<h3 class="anchored" data-anchor-id="getting-credible-intervals-from-a-gam">Getting credible intervals from a GAM</h3>
-<section id="set-up-data" class="level4">
-<h4 class="anchored" data-anchor-id="set-up-data">Set-up data</h4>
-<p>This is well documented in Wood’s book as well as in the <code>mgcv</code> help files, see examples in <code>?predict.gam</code>.</p>
-<p>I made myself a handy little function to implement the CIs, <a href="https://gist.github.com/cbrown5/484564c24383fd20fbe0ef76bd4fd97c">which we will use in this post</a>.</p>
-<p>Here’s the set-up, including sourcing in my function</p>
-<pre><code>library(mgcv)
-
-## Loading required package: nlme
-
-## This is mgcv 1.8-42. For overview type 'help("mgcv-package")'.
-
-library(ggplot2)
-source("gam-CIs.R")</code></pre>
-<p>Now let’s make up some data we can fit too. Let’s assume we are measuring biological responses (`y’) to a toxin:</p>
-<pre><code>set.seed(2024)
-n &lt;- 50
-toxin &lt;- sort(runif(n, 0, 1))
-dat &lt;- data.frame(toxin = toxin)
-dat &lt;- within(dat, {
-  ytrue = 6*toxin  - 7*toxin^2
-  yobs = ytrue + rnorm(n, sd = 0.2)
-})
-
-ggplot(dat) + 
-  aes(x = toxin, y= yobs) + 
-  geom_point() + 
-  geom_line(aes(y = ytrue))</code></pre>
-<p><img src="https://www.seascapemodels.org/posts/2024-01-05-credible-intervals-with-GAMs/gam-CIs_files/figure-markdown_strict/unnamed-chunk-2-1.png" class="img-fluid"></p>
-<p><code>ytrue</code> is the true values of the function, and <code>yobs</code> are our data on this variable.</p>
-</section>
-<section id="fit-a-gam" class="level4">
-<h4 class="anchored" data-anchor-id="fit-a-gam">Fit a GAM</h4>
-<p>Now fit a GAM and add its predictions to our dataframe:</p>
-<pre><code>m1 &lt;- gam(yobs ~ s(toxin), 
-          data = dat)
-dat$ypred &lt;- predict(m1)
-
-ggplot(dat) + 
-  aes(x = toxin, y= yobs) + 
-  geom_point() + 
-  geom_line(aes(y = ytrue)) + 
-  geom_line(aes(y = ypred), col = 'red')</code></pre>
-<p><img src="https://www.seascapemodels.org/posts/2024-01-05-credible-intervals-with-GAMs/gam-CIs_files/figure-markdown_strict/unnamed-chunk-3-1.png" class="img-fluid"></p>
-<p>The red line just shows the predictions from the fitted GAM, relative to the true curve (black line).</p>
-</section>
-<section id="plotting-predictions-with-cis" class="level4">
-<h4 class="anchored" data-anchor-id="plotting-predictions-with-cis">Plotting predictions with CIs</h4>
-<p>The first application of the empirical Bayes trick is to create a plot of predictions with credible intervals.</p>
-<p>I won’t go into the detail of the implementation, please see Wood’s book and <code>?predict.gam</code> for more info. But in short, you can sample predictions from the joint distribution of parameters and their covariances. We are assuming that parameters and their uncertainties are described by a multivariate normal distribution (methods like HMC and MCMC allow you to relax this assumption, such as when parameter values are skewed or multi-modal).</p>
-<p>We need to account for parameter covariances because a higher estimate of one parameter might imply a lower or higher estimate for another parameter. e.g.&nbsp;slope and intercept values for a linear fit are negatively correlated (a low slope high intercept fit will have similar sums of squares to a high slope low intercept fit).</p>
-<p>My function (<code>simulate_gam_CIs</code>) just implements the instructions given in <code>?predict.gam</code>. If you are using more complex models I recommend diving into the code yourself, as I can’t guarantee it works in all cases (e.g.&nbsp;doesn’t work for models with coefficients on the variance parameter like the <code>gaulss</code> family).</p>
-<pre><code>gamCIs &lt;- simulate_gam_CIs(m1,
-                 newdata = dat,
-                 forms = list(~x), 
-                 random_var = NULL,
-                 offset = 0,
-                 probs = c(0.025, 0.5, 0.975),
-                 nsims = 1000)</code></pre>
-<p>The function is drawing 1000 values from the posterior of the model. It then transforms the values according to the function given at <code>forms</code>. In this case we are not doing any transformation.</p>
-<p>Finally, it calculates the 2.5, 50 and 97.5% quantiles across those 1000 values, at each x value in the dataframe. It outputs a list of transformations, where each item corresponds to one of the formulas.</p>
-<p>So basically here we now have 95% credible intervals, and the median.</p>
-<p>Let’s plot that:</p>
-<pre><code>ggplot(dat) + 
-  aes(x = toxin, y= yobs) + 
-  geom_point() + 
-  geom_line(aes(y = ytrue)) + 
-  geom_line(data = gamCIs[[1]], aes(y = X50.), col = 'purple') + 
-  geom_ribbon(data = gamCIs[[1]], aes(ymin = X2.5., ymax = X97.5.),
-              color = NA, fill = "purple", alpha = 0.5)</code></pre>
-<p><img src="https://www.seascapemodels.org/posts/2024-01-05-credible-intervals-with-GAMs/gam-CIs_files/figure-markdown_strict/unnamed-chunk-5-1.png" class="img-fluid"></p>
-</section>
-<section id="probability-of-exceeding-a-threshold" class="level4">
-<h4 class="anchored" data-anchor-id="probability-of-exceeding-a-threshold">Probability of exceeding a threshold</h4>
-<p>A non-linear transform we might like to do is to find the probability of the mean exceeding a threshold, any arbitrary value of x. Let’s find that probability for exceeding a value of <code>1</code> all the observed values of x.</p>
-<p>In this case we don’t want quantiles over the posterior samples, we want to know what’s the probability of <code>x&gt;1</code>. Since the function <code>x&gt;1</code> returns a logical, we can simply <code>sum()</code> over the posterior samples and divide by the number of samples to get the probability. So below we specify <code>func_to_apply = "sum"</code>.</p>
-<pre><code>gam_prob_exceed1 &lt;- simulate_gam_CIs(m1,
-                 newdata = dat,
-                 forms = list(~x&gt;1), 
-                 random_var = NULL,
-                 offset = 0,
-                 probs = c(0.025, 0.5, 0.975),
-                 nsims = 1000, 
-                 func_to_apply = "sum")
-
-ggplot(gam_prob_exceed1[[1]]) + 
-  aes(x = toxin, y =prob) + 
-  geom_line() +
-  ylab("Probability of the mean of y exceeding a value of 1")</code></pre>
-<p><img src="https://www.seascapemodels.org/posts/2024-01-05-credible-intervals-with-GAMs/gam-CIs_files/figure-markdown_strict/unnamed-chunk-6-1.png" class="img-fluid"></p>
-<p>Couple of important points. When providing a formula <code>x</code> is the name I used in the function to refer to the linear predictor (ie predictions for mean of our response), its not the ‘x-variable’.</p>
-<p>We are predicting the probability the mean exceeds a threshold above, not the probability of data observations exceeding a threshold. That would be called a predictive interval and we would need to additionally sample from the observation distribution (in this case a normal).</p>
-</section>
-</section>
-<section id="applications" class="level3">
-<h3 class="anchored" data-anchor-id="applications">Applications</h3>
-<p>I find this empirical Bayesian interpretation of GAMs very handy. I use it when:</p>
-<ul>
-<li><p>Its impractical to fit a full Bayesian model, such as for large datasets or simulation applications where I need to repeat fitting 1000s of times. GAMs are generally much faster than numerical Bayesian methods like HMC or MCMC.</p></li>
-<li><p>I’m working with a collaborator that knows GAMs but not Bayesian models</p></li>
-<li><p>I want to get predictions on the natural scale for a GAM that is fitted with a link function (e.g.&nbsp;poisson with log-link).</p></li>
-</ul>
-
-
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <category>modelling</category>
-  <guid>https://www.seascapemodels.org/posts/2024-01-05-credible-intervals-with-GAMs/</guid>
-  <pubDate>Thu, 04 Jan 2024 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Introduction to structural causal modelling</title>
-  <link>https://www.seascapemodels.org/posts/2023-08-19-structural-causal-modelling-workshop/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>A primary goal of science is to understand causes. Structural causal modelling is a framework for developing causal hypotheses to test with data.</p>
-<p>I taught a workshop at the Australian Marine Sciences Association conferences in 2023. I’ve now <a href="https://www.seascapemodels.org/structural-causal-models-tutorial/scm-tute.html">provided all the course notes online for free</a>.</p>
-<p>One if the advantages of causal modelling is that the tests can be done with any test you like.</p>
-<p>So all of the existing statistical inference engines (like generalized linear models) that we are used to using with the R language can be used in structural causal modelling.</p>
-<p>The workshop shows how to develop causal hypotheses, using R to visualise your hypotheses. It then steps through some examples of develping and testing causal tests with ecological data.</p>
-<p>The workshop covers packages <code>daggity</code> and <code>ggdag</code> for visualising causal models (directed acyclic graphs) and developing causal tests. We also look at making tests with <code>glm()</code> and how to simulate your own data to test models. Finally, we cover <code>visreg</code> for visualising model output.</p>
-
-
-
- ]]></description>
-  <category>rstats</category>
-  <guid>https://www.seascapemodels.org/posts/2023-08-19-structural-causal-modelling-workshop/</guid>
-  <pubDate>Fri, 18 Aug 2023 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Bayesian structural equation model tutorial</title>
-  <link>https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Structural equation modelling (SEM) is a tool for exploring relationships among multiple variables. <code>lavaan</code> and <code>piecewiseSEM</code> are two of the most widely used and accessible packages for latent variable modelling in R. Both use frequentist methods.</p>
-<p>It is also possible to develop SEMs in a Bayesian framework. There are advantages to using the Bayesian framework. So here I provide a brief tutorial on creating a simple Bayesian SEM with the stan program.</p>
-<p>The <a href="https://ecmerkle.github.io/blavaan/">blavaan</a> package creates and fits SEMs in a Bayesian framework, but using similar syntax to lavaan. But it can help your understanding to code your own models and give you greater flexibility (though blavaan can do a lot!).</p>
-<p>The tutorial is based on our <a href="https://www.sciencedirect.com/science/article/pii/S0048969723002851">recent study</a> that sought to understand relationships among indicators of catchment and fishery condition. If you find the SEM methods described here useful, please cite the paper.</p>
-<p>Code for that study, including a more complicated SEM, is available <a href="https://github.com/cbrown5/ecological-condition-latent-model">on the study’s github repo</a>.</p>
-<p>I won’t cover much SEM theory or background on Bayesian modelling. For more info on those topics:</p>
-<ul>
-<li><p>A introduction to SEM theory, check out <a href="https://jslefche.github.io/sem_book/">Jon Lefcheck’s online book</a></p></li>
-<li><p><a href="https://mc-stan.org/users/documentation/tutorials">rstan documentation and tutorials</a></p></li>
-<li><p>Learn Bayesian stats with the The Statistical Rethinking <a href="https://xcelab.net/rm/statistical-rethinking/">book</a> and <a href="https://www.youtube.com/watch?v=cclUd_HoRlo">Youtube series</a></p></li>
-</ul>
-<section id="advantages-of-bayesian-sem" class="level2">
-<h2 class="anchored" data-anchor-id="advantages-of-bayesian-sem">Advantages of Bayesian SEM</h2>
-<p>The key advantage is the flexibility Bayesian methods give you. We used Bayesian methods because we wanted to combine a state-space model and a SEM. The state-space model was a timeseries model of fish population change through time.</p>
-<p>The population model was linked to a latent (unobserved) variable that represented cathcment condition. Other observed indicators of catchment condition were pasture biomass and vegetation greenness.</p>
-<p>Other applications of Bayesian SEM could be to model non-gaussian data, incorporating spatial and temporal models into a SEM, or modelling missing data.</p>
-<p>Now we’ll step through a broad overview of how to get started with Bayesian SEM. We’ll use the data from my paper as an example.</p>
-<p><a href="https://github.com/cbrown5/ecological-condition-latent-model/blob/main/Data%20for%20Barramundi%20model.csv">Download the data</a></p>
-</section>
-<section id="define-your-dag-directed-acyclical-graph" class="level2">
-<h2 class="anchored" data-anchor-id="define-your-dag-directed-acyclical-graph">Define your DAG (directed acyclical graph)</h2>
-<p>SEMs need to be directed acyclical graphs. The DAG defines the proposed relationships among variables. It is the starting point for writing the math that describes the model.</p>
-<p>We’ll define a simple DAG that aligns to a factor analysis. We’ll model relationships between streamflow, fish (barramundi) catch per unit effort (CPUE) and vegetation greenness (NDVI) for a catchment in Northern Australia:</p>
-<pre><code>library(dagitty)
-library(ggdag)
-dag1 &lt;- dagify(CPUE ~ LV, 
-               NDVI ~ LV,
-               SF ~ LV)
-ggdag(dag1)</code></pre>
-<p><img src="https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/2023-06-15-bayesian-sem-tute/unnamed-chunk-1-1.png" class="img-fluid"></p>
-<p>Our observed indicators are SF (streamflow), NDVI (veg greeness) and CPUE (catch per unit effort). LV is a latent variable that represents correlations among the observed variables.</p>
-<p>This system is strongly driven by rainfall and river flow, so we expect positive correlations among flow, fish and vegetation.</p>
-</section>
-<section id="define-the-stan-model" class="level2">
-<h2 class="anchored" data-anchor-id="define-the-stan-model">Define the stan model</h2>
-<p>Now we have a DAG, we need to write equations to represent the proposed relationships. We also need to specify the priors.</p>
-<p>Here I’m assuming normal distributions for each variable (logging for CPUE). Priors are weakly informative to encourage convergence.</p>
-<p>I won’t include the full stan model definition below, just the model component. <a href="https://github.com/cbrown5/ecological-condition-latent-model/blob/main/simple-model.stan">Click here to download the full model file you’ll need to run this</a>.</p>
-<p>Here’s the core of the model:</p>
-<pre><code>cfa_mod &lt;- "model{ 
-
-  //
-  //Ecological condition 
-  //
-  nu ~ std_normal(); 
-  //Note variance fixed to 1 by using standard normal here
-  
-  //Priors for indiator params 
-  a_NDVI ~ normal(0,10);
-  a_CPUE~ normal(0,10);
-  a_SF ~ normal(0,10);
-  
-  beta_NDVI ~ normal(0,1);
-  beta_CPUE ~ normal(0,1);
-  beta_SF ~ exponential(1.8);
-  //Note use of exponential() for streamflow to ensure positive
-  // only values. Helps convergence. 
-  
-  //Observation errors
-  sigma_CPUE ~  exponential(0.1);
-  sigma_NDVI ~  exponential(0.1);
-  sigma_SF ~  exponential(0.1);
-  
-  // Observations
-  lnCPUE ~ normal(lnCPUE_hat, sigma_CPUE);
-  NDVI ~ normal(NDVI_hat, sigma_NDVI);
-  SF ~ normal(SF_hat, sigma_SF);
-}"</code></pre>
-<p>Read in the full model file and compile it for stan:</p>
-<pre><code>library(rstan)
-
-mod &lt;- stan_model(file = "simple-model.stan", verbose = FALSE)</code></pre>
-<p>At this point there is usually a fair bit of debugging and fixing of typos until the model parses correctly.</p>
-</section>
-<section id="consider-identifiability" class="level2">
-<h2 class="anchored" data-anchor-id="consider-identifiability">Consider identifiability</h2>
-<p>Identifiability is a common issue in SEM. Roughly it means that some of the free parameters you are trying to estimate are interchangeable. Therefore, even with an infinite amount of data you would be unable to identify their values precisely (e.g.&nbsp;one could be high the other low or vice-versa).</p>
-<p>A basic example would be the model:</p>
-<p><code>y = a*x + b*x + c</code></p>
-<p>parameters <code>a</code> and <code>b</code> are interchangeable.</p>
-<p>Identifiability is a bit different in Bayesian models, because we have priors. For instance, in the model above, if we set a very strong priors on <code>a</code> and/or <code>b</code> (based on theory for instance) we may still be able to estimate their values precisely.</p>
-<p>In a complex SEM issues of identifiability can be much harder to distinguish than the example above, as we will see.</p>
-<p>Identifiability issues in a Bayesian will manifest as poor convergence of MCMC chains. You will see high Rhats. Digger deeper you may find some parameters have bimodal posterior distributions (e.g.&nbsp;if you do a histogram of all samples for a parameter). You will also find strong correlations in parameter estimates. For instance in the model above parameters <code>a</code> and <code>b</code> would be strongly correlated (near 1).</p>
-<p>You may be able to get convergence if you run your model for really long chains, however, it will be more efficient to try and fix the model. It will also mean your parameters are easier to interpret.</p>
-<p>If you have identifiability issues, parameters that have the property above are a good place to start to try to fix issues in your SEM formulation.</p>
-<p>In the stsan code above I’ve made two key decisions to facilitate convergence.</p>
-<p>First, I’ve fixed the latent standard deviation to 1 to ensure identifiability. You could also have the latent’s SD free, but then fix one of the regression slopes to 1.</p>
-<p>Second, I’ve set the prior for the streamflow beta (regression slope on the latent variable) to be an exponential. This ensures it has only positive values.</p>
-<p>For example, imagine that streamflow, NDVI and CPUE are all positively correlated with each other. Then their beta’s all need to be the same sign. However, they could equally well be all positive, or all negative. The meaning is the same, since the latent variable has not units.</p>
-<p>If we run the model where all betas are sampled from normal priors, then we would hit issues with parameter switching. We see strong bimodality in the posteriors for the betas, because they can equally well be all positive or all negative. This slows converngence significantly.</p>
-<p>So instead I’ve used an <code>exponential(1.8)</code> prior for the streamflow beta. This peg the sign to whatever streamflow is doing. So if streamflow is positive and the other covariates are positively associated with it, they will all have positive betas.</p>
-<p>I chose <code>1.8</code> so that my prior has similar 90th percentile as a normal distribution. e.g.&nbsp;compare <code>qnorm(0.9, 0,1)</code> to <code>qexp(0.9, 1.8)</code> both have 90th percentiles at about 1.28.</p>
-</section>
-<section id="do-some-data-cleaning" class="level2">
-<h2 class="anchored" data-anchor-id="do-some-data-cleaning">Do some data cleaning</h2>
-<p>Now let’s get the data and just clean it up a bit.</p>
-<pre><code>dat &lt;- read.csv("Data for Barramundi model.csv")</code></pre>
-<p>First calculate the log of the CPUE:</p>
-<pre><code>dat$lnCPUE &lt;- log(dat$Barramundicatch/dat$Effort)</code></pre>
-<p>Some variables are missing data. In our paper I modelled missing data, but here we will just use years with complete data for simplicity:</p>
-<pre><code>dat2 &lt;- subset(dat, Year %in% 1995:2015)</code></pre>
-<p>Now we will standardize and centre each variable, makes it easier to set priors and interpret the regression coefficients (AKA loadings). We’ll also define a list to use in the stan model</p>
-<pre><code>datstan &lt;- with(dat2, {
-  x = list(N = nrow(dat2),
-       SF = (Streamflow - mean(Streamflow))/sd(Streamflow), 
-       NDVI = (NDVI - mean(NDVI))/sd(NDVI), 
-       lnCPUE = (lnCPUE - mean(lnCPUE))/sd(lnCPUE)
-  )})</code></pre>
-</section>
-<section id="fit-the-model" class="level2">
-<h2 class="anchored" data-anchor-id="fit-the-model">Fit the model</h2>
-<p>Now we are ready to fit the stan model:</p>
-<pre><code># options(mc.cores = 1) #parallel::detectCores())
-
-fitm1 &lt;- sampling(mod, data = datstan,
-               iter=8000, chains=3, thin = 10)</code></pre>
-</section>
-<section id="investigate-convergence" class="level2">
-<h2 class="anchored" data-anchor-id="investigate-convergence">Investigate convergence</h2>
-<p>For this task I recommend launching the shiny tool for exploring stan fits. Can be done like this:</p>
-<pre><code>shinystan::launch_shinystan(fitm1)</code></pre>
-<p>If convergence is poor (e.g.&nbsp;higher Rhat values or strong autocorrelation in the chains) a good place to start in a SEM is to check for parameter non-identifiability, as described above. This means some parameters are interchangeable (or nearly so).</p>
-<p>A handy way to explore for the above issues is to click the “Explore” tab in the shiny, then do bivariate plots of parameters against each other.</p>
-<p>The histograms for this model fit look like they’ve converged on a unimodal distribution:</p>
-<pre><code>samps &lt;- extract(fitm1)
-
-par(mfrow = c(1,3))
-hist(samps$beta_NDVI)
-hist(samps$beta_CPUE)
-hist(samps$beta_SF)</code></pre>
-<p><img src="https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/2023-06-15-bayesian-sem-tute/unnamed-chunk-11-1.png" class="img-fluid"></p>
-</section>
-<section id="explore-model-results" class="level2">
-<h2 class="anchored" data-anchor-id="explore-model-results">Explore model results</h2>
-<p>For this model the regression slopes (AKA factor loadings) are of primary interest. They tell us how the different indicators are related to each other.</p>
-<p>Make a dataframe of the samples of interest:</p>
-<pre><code>fit_dat &lt;- with(samps, data.frame(beta_SF, beta_NDVI, beta_CPUE))</code></pre>
-<p>Now use tidyr to reshape for easy plotting:</p>
-<pre><code>library(tidyr)
-library(dplyr)
-fittidy &lt;- fit_dat %&gt;% 
-  mutate(sample = 1:nrow(fit_dat)) %&gt;%
-  pivot_longer(-sample, names_to = "Parameter", values_to = "value")</code></pre>
-<p>Now use ggplot to plot posterior distributions</p>
-<pre><code>library(ggplot2)
-theme_set(theme_classic())
-ggplot(fittidy) + 
-  aes(x = value, y = Parameter, fill = Parameter) + 
-  geom_vline(xintercept = 0) + 
-  geom_violin()</code></pre>
-<p><img src="https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/2023-06-15-bayesian-sem-tute/unnamed-chunk-14-1.png" class="img-fluid"></p>
-<p>All have positive values, indicating all indicators are positively associated with each other.</p>
-</section>
-<section id="check-model-assumptions" class="level2">
-<h2 class="anchored" data-anchor-id="check-model-assumptions">Check model assumptions</h2>
-<p>We need to check assumptions like any regular model. This means checking distributions are appropriate to model the data, same as you would for any GLM.</p>
-<p>In a SEM we also have to think about d-separation. In short, this means checking for residual correlations between a our variables that aren’t explicitly part of the model.</p>
-<p><a href="https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/11-1899.1">There’s formal tests of d-separation for Bayesian models</a>, but <a href="https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/15-0833.1">many authors have just used visual checks of residual correlations</a>.</p>
-<p>There are many resources on d-separation, <a href="https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/08-1034.1">here’s one paper</a>. Books by Judea Pearl and Bill Shipley are also good ways to learn.</p>
-<p>Our data here also has the additional complexity of being time-series. Our model above assumes d-separation of a variable from itself through time, so this is also something we could check (by testing for autocorrelation in the residuals).</p>
-<p>I won’t show all these tests in this brief tute, but here’s a start on getting residuals. Just subtract the predictions from the observations, e.g.&nbsp;for NDVI:</p>
-<pre><code>med &lt;- apply(samps$NDVI_pred, 2, median)
-resids &lt;- datstan$NDVI - med</code></pre>
-<p>One way to check the normal distribution is appropriate for the NDVI data is to do a quantile-quantile plot of the residuals:</p>
-<pre><code>qqnorm(resids)
-qqline(resids)</code></pre>
-<p><img src="https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/2023-06-15-bayesian-sem-tute/unnamed-chunk-16-1.png" class="img-fluid"></p>
-<p>We want to see the points fall close to straight on the line, which in general they do.</p>
-<p>We can also check for non-linearities by plotting observations vs predictions:</p>
-<pre><code>plot(med, datstan$NDVI)</code></pre>
-<p><img src="https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/2023-06-15-bayesian-sem-tute/unnamed-chunk-17-1.png" class="img-fluid"></p>
-<p>Of course this is Bayesian analysis, so we could also create credible intervals for the residuals.</p>
-<p>If you do the above for CPUE you’ll see there is clearly strong autocorrelation. This is one reason I used a <a href="https://www.sciencedirect.com/science/article/pii/S0048969723002851">state-space model in the paper</a>.</p>
-</section>
-<section id="graph-model-results" class="level2">
-<h2 class="anchored" data-anchor-id="graph-model-results">Graph model results</h2>
-<p>Let’s make a plot of the result. First we’ll get median effect sizes (just the median of the chains for each parameter)</p>
-<pre><code>meds &lt;- round(apply(fit_dat, 2, median),2)</code></pre>
-<p>Now we can make the plot with labels on the arrows. Most of this code is just setting up the position of things:</p>
-<pre><code>dag1 &lt;- dagify(CPUE ~ LV, 
-               NDVI ~ LV,
-               SF ~ LV)
-coords &lt;- list(x = c(CPUE = -1, NDVI = 0, SF = 1, LV = 0),
-               y = c(CPUE = 1, NDVI = 1, SF = 1, LV = 0))
-coordinates(dag1) &lt;- coords
-ggdag(dag1) +
-  annotate("text", x = c(-0.6, 0.1, 0.6), y = c(0.5, 0.5, 0.5),
-           label = meds) +
-  lims(y = c(-0.5, 1.5))</code></pre>
-<p><img src="https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/2023-06-15-bayesian-sem-tute/unnamed-chunk-19-1.png" class="img-fluid"> As its a Bayesian analysis we could also add CIs or probability that an effect is &gt;0. They could be calculated like this.</p>
-<p>e.g.&nbsp;upper 95th quantile:</p>
-<pre><code>round(apply(fit_dat, 2, quantile, 0.975),2)
-
-##   beta_SF beta_NDVI beta_CPUE 
-##      1.27      1.21      1.13</code></pre>
-<p>Or probability effect is greater than zero:</p>
-<pre><code>nsamps &lt;- nrow(fit_dat)
-round(apply(fit_dat, 2, function(x){sum(x&gt;0)/nsamps}),2)
-
-##   beta_SF beta_NDVI beta_CPUE 
-##      1.00      1.00      0.98</code></pre>
-</section>
-<section id="model-predictions" class="level2">
-<h2 class="anchored" data-anchor-id="model-predictions">Model predictions</h2>
-<p>Our model also predicts the mean for each variable. Let’s just look at CPUE. In this matrix rows are samples are columns are years. So we can summarize each column to get the prediction with intervals for that year.</p>
-<p>Here is the median with 90th credible intervals and data shown as points:</p>
-<pre><code>ndvi_pred &lt;- data.frame(year = dat2$Year, 
-                        ndvi_obs = datstan$NDVI, 
-                        med = apply(samps$NDVI_pred, 2, median),
-                        lwr = apply(samps$NDVI_pred, 2, quantile, 0.05),
-                        upr = apply(samps$NDVI_pred, 2, quantile, 0.95))
-
-ggplot(ndvi_pred) + 
-  aes(x = year, y = med) +
-  geom_line() + 
-  geom_ribbon(aes(ymin = lwr, ymax =upr), color = NA, 
-                 fill = "black", alpha = 0.5) +
-  geom_point(aes(y = ndvi_obs)) +
-  labs(x = "Year", y = "NDVI (normalized)")</code></pre>
-<p><img src="https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/2023-06-15-bayesian-sem-tute/unnamed-chunk-22-1.png" class="img-fluid"></p>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Bayesian modelling is a powerful framework for building SEMs. It gives you greater flexibility in developing models than the standard SEM R packages.</p>
-<p>You can use all types of non-gaussian distributions to model data, as well as build in other model types like non-linear or state-space models.</p>
-<p>The cost is an extra overhead to learn the theory of SEM and the methods for Bayesian modelling. But if you have a background in one or the other, and some programming ability, then it won’t be too hard.</p>
-<p>I learned Bayesian modelling well before I started on SEMs. When I came to SEM (through the lavaan package) I was overwhelmed and confused by jargon and interpretation of greek letters that have a special meaning to SEM specialists. I found it much easier to gain a high level understanding of SEM issues (like d-seperation) then work in the Bayesian framework to build models.</p>
-
-
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <guid>https://www.seascapemodels.org/posts/2023-06-15-bayesian-sem-tute/</guid>
-  <pubDate>Wed, 14 Jun 2023 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
