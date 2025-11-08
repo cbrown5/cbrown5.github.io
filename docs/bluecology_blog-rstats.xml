@@ -10,50 +10,553 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog-rstats.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Tue, 04 Nov 2025 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 09 Nov 2025 13:00:00 GMT</lastBuildDate>
 <item>
-  <title>Keeping enthusiasm about learning R</title>
-  <link>https://www.seascapemodels.org/posts/2025-11-04-LLMs-coding-carbon-emissions/</link>
+  <title>Its easy to make your own AI agent in R</title>
+  <link>https://www.seascapemodels.org/posts/2025-11-10-make-an-ai-agent-in-r/</link>
   <description><![CDATA[ 
 
 
 
 
 
-<p>Staying enthused about learning R is a challenge. You need progress from the initial motivation driven by ‘I need to learn this skill for my research career’ through a phase of tedium on your way to a competent R programmer.</p>
-<p>Here’s my story.</p>
-<section id="fitting-a-multinomial-peg-into-an-anova-hole" class="level2">
-<h2 class="anchored" data-anchor-id="fitting-a-multinomial-peg-into-an-anova-hole">Fitting a multinomial peg into an ANOVA hole</h2>
-<p>I first attempted to learn R while wintering at a remote field station in the Southern Ocean. I had one book, 2004 satellite internet and a lot of time to kill.</p>
-<p>Learning R was hard. Then you also have to learn statistics.</p>
-<p>I had chosen a hard statistical question to start with. My colleague asked for help analysing data. The aim was to predict which of three behaviours flocks of birds would show under different situations. I was trying to wrangle ANOVA to do this analysis, because that is the method my book described.</p>
-<p>I went around and around in circles. Were the behaviours factors or the response variable? If they were a response variable, how could the response have just three types of unordered outcomes? In hindsight I now see why I went in circles. The appropriate analysis would have been a multinomial model. Easy with <code>brms</code> (which didn’t exist then) or <code>mgcv</code>, but GLMs were not covered in standard text books in 2004, let alone multinomial GLMs.</p>
-<p>I did however manage to learn how to code an ANOVA, as well as learning a bit about R code.</p>
-<p>Coding requires us to be frustratingly precise in ways that human languages are not. This is hard for new programmers. And the learning curve for R is reknowned for being steeper than other coding languages.</p>
-<p>The first step to competence is comprehending the exactness of programming.</p>
+<p>There’s a lot of hype about AI agents, but buried under the hype there is a really simple architecture. I got inspired by <a href="https://fly.io/blog/everyone-write-an-agent/">this post that points out how easy it is to make an AI agent</a>.</p>
+<p>In this post I’ll show how to make an agent in R with the <a href="https://ellmer.tidyverse.org/"><code>ellmer</code> package</a>.</p>
+<p>A large language model agent is a <a href="https://simonwillison.net/2025/Sep/18/agents/">large language models that can run tools in a loop</a>.</p>
+<p>Tools give the agent powers to take actions like read data, create files, access the internet. Anything software task you can think of really.</p>
+<p>Here’s the cool thing, the ‘run tools in a loop’ architecture is simple. Building an AI (the LLM) is really complex and super expensive (like cost of $100 millions). But you can easily get access to 100s of these LLMs cheaply via API calls. Then its easy to plug them into DIY agents.</p>
+<p>The simplicity means you can create just about anything you can dream up.</p>
+<p>Let’s make an agent that reads R help files. A chat agent could give better advice if it read the up-to-date R help files first.</p>
+<section id="chatting-with-llms-from-rs" class="level2">
+<h2 class="anchored" data-anchor-id="chatting-with-llms-from-rs">Chatting with LLMs from Rs</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ellmer)</span></code></pre></div></div>
+<p>Set up an <a href="https://www.seascapemodels.org/AI-assistants-for-scientific-coding/03-set-up.html#sec-apikeys">API key with the provider</a> you choose and you can easily talk to a large language model with ellmer:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">chat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat_anthropic</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">model =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"claude-haiku-4-5"</span>)</span>
+<span id="cb2-2">chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"How do I do a regression in R?"</span>)</span></code></pre></div></div>
+<p>We can then string together a chat:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">chat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat_anthropic</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">model =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"claude-haiku-4-5"</span>)</span>
+<span id="cb3-2">turn1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"How do I do a regression in R?"</span>)</span>
+<span id="cb3-3">turn2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Show how to verify the model."</span>)</span></code></pre></div></div>
+<p>The way a multi-turn conversation works is that on the second turn the entire conversation thread (system message, user message, assistant message, new user message) is sent back to the LLM at each turn.</p>
+<p>Repeated calls to <code>chat</code> just manage that for us.</p>
+<p>The LLM talking to itself isn’t very useful, we can use tools to inject new information into the conversation.</p>
 </section>
-<section id="like-a-spoken-language-but-pedantic" class="level2">
-<h2 class="anchored" data-anchor-id="like-a-spoken-language-but-pedantic">Like a spoken language, but pedantic</h2>
-<p>After my misadventure in the Southern Ocean I studied evolutionary modelling for my Honours thesis. I used Matlab, a commercial product developed by a single company. Matlab has the major benefit of its consistency. Its functions are used in consistent ways, the help files have a consistent style.</p>
-<p>R is open-source. ‘Learning R’ is an experience in trying to comprehend the thinking of scores of different open-source developers.</p>
-<p>The <code>R is an ecosystem</code> cliche comes to mind. R is like a real ecosystem. The software ecosystem’s solutions to problems are diverse.</p>
-<p>More often than someone has coded a solution to your problem in an R package. If only your could grasp how to use that solution the way its creator intended.</p>
+<section id="create-a-tool-to-read-a-help-file" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-tool-to-read-a-help-file">Create a tool to read a help file</h2>
+<p>The tool has two parts: (1) An R script that does something; (2) a specification that tells the LLM how to use the tool.</p>
+<section id="r-function" class="level3">
+<h3 class="anchored" data-anchor-id="r-function">R function</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">read_help_as_text <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(topic, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pkg =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>) {</span>
+<span id="cb4-2">    h <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> utils<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">help</span>(topic, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">package =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">eval</span>(pkg))</span>
+<span id="cb4-3">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(h) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stop</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Help topic not found"</span>)</span>
+<span id="cb4-4">    rd <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> utils<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">.getHelpFile</span>(h)             </span>
+<span id="cb4-5">    txt <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">capture.output</span>(tools<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Rd2txt</span>(rd)), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">collapse =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb4-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(txt)</span>
+<span id="cb4-7">}</span></code></pre></div></div>
+<p>This R function takes a topic and optionally a package name. It then returns the relevant help file as a string</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">help_txt <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_help_as_text</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lm"</span>)</span>
+<span id="cb5-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">substr</span>(help_txt, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span>), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>) </span></code></pre></div></div>
 </section>
-<section id="data-structures" class="level2">
-<h2 class="anchored" data-anchor-id="data-structures">Data structures</h2>
-<p>Undersanding data structures was a key insight…</p>
-<p>Curiosity helps.</p>
-<p>R has been my main science tool for over 20 years now.</p>
-<p>As I gained more comprehension of R, stats in R became more like a puzzle. My own curiosity about what was possible kept me going. There is always something new to discover in a diverse software ecosystem.</p>
-<p>At times the imperitive quickly became procrastination. I’ve spent too many late nights trying a new spatial or Bayesian stats package, just out of curiosity.</p>
-<p>Twenty years on I often find it easier to code up with my own solutions to my research questions, rather than use someone else’s packaged solution. Its easier to comprehend a problem if you work through it yourself. Its easier to understand your own R style than someone else’s.</p>
-<p>Many people learn R because they have to. It is hard to work in many fields of science without some programming skills.</p>
-<p>Impact of genAI</p>
-<p>Other people’s innovations add</p>
-<p>Most data problems you come up with development statistical programmers</p>
-<p>Always someting new to discover</p>
-<p>There’s been turn-over too. Pipes and <code>tidyverse</code> changed everything. These packages made data wrangling and plotting so much easier.</p>
-<p>Teaching R got easier. I could see 95% of my students checking out whenever I had to explain a cracker nested operation like <code>mean(log(subset(dat, grp == 'a')$x))</code></p>
+<section id="tool-definition" class="level3">
+<h3 class="anchored" data-anchor-id="tool-definition">Tool definition</h3>
+<p>The tool definition tells the LLM how to use the read_help_as_text tool.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">read_help_as_text <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tool</span>(</span>
+<span id="cb6-2">  read_help_as_text,</span>
+<span id="cb6-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.description =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Returns an R help file as a string"</span>,</span>
+<span id="cb6-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">topic =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">type_string</span>(</span>
+<span id="cb6-5">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"R function or topic"</span>,</span>
+<span id="cb6-6">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">required =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb6-7">    ),</span>
+<span id="cb6-8">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pkg =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">type_string</span>(</span>
+<span id="cb6-9">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"R package to get help file from"</span>,</span>
+<span id="cb6-10">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">required =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span></span>
+<span id="cb6-11">    )</span>
+<span id="cb6-12">)</span></code></pre></div></div>
+</section>
+<section id="using-the-tool" class="level3">
+<h3 class="anchored" data-anchor-id="using-the-tool">Using the tool</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">chat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat_anthropic</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">model =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"claude-haiku-4-5"</span>)</span>
+<span id="cb7-2">chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">register_tool</span>(read_help_as_text)</span>
+<span id="cb7-3"></span>
+<span id="cb7-4">chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Quote the definition of residuals from the lm() function, don't provide any other explanation or code"</span>)</span></code></pre></div></div>
+<pre><code>"residuals: the residuals, that is response minus fitted values."</code></pre>
+<p>That’s a pointless use case, but it demonstrates the tool is working. You can check the chat log to see when the tool was called:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">chat</span></code></pre></div></div>
+<pre><code>&lt;Chat Anthropic/claude-haiku-4-5 turns=4 tokens=4529/77&gt;
+── user [626] ──────────────────────────────────────────────────────────────────
+Quote the definition of residuals from the lm() function, don't provide any other explanation or code
+── assistant [59] ──────────────────────────────────────────────────────────────
+[tool request (toolu_)]: read_help_as_text(topic = "lm")
+── user [3218] ─────────────────────────────────────────────────────────────────
+[tool result  (toolu_)]:
+...
+     
+── assistant [18] ──────────────────────────────────────────────────────────────
+"residuals: the residuals, that is response minus fitted values."</code></pre>
+</section>
+</section>
+<section id="getting-advice-on-recent-packages" class="level2">
+<h2 class="anchored" data-anchor-id="getting-advice-on-recent-packages">Getting advice on recent packages</h2>
+<p>LLMs often get tripped up if you ask them for code for niche or very recent packages. The <a href="https://zobaer09.github.io/FakeDataR/"><code>FakeDataR</code> package</a> is a recently released package that helps you make synthetic data to use with LLMs (if you are concerned about privacy of your real data).</p>
+<p>If you ask an LLM to use this package, it will tend to hallucinate a response, that won’t work. With our tool however, it can create accurate code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">chat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat_anthropic</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">model =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"claude-haiku-4-5"</span>)</span>
+<span id="cb11-2">chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">register_tool</span>(read_help_as_text)</span>
+<span id="cb11-3"></span>
+<span id="cb11-4">chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"How to use the generate_fake_data function from the R package FakeDataR to make a synthetic copy of mtcars"</span>)</span></code></pre></div></div>
+<pre><code>I'll help you find information about the `generate_fake_data` function from the
+FakeDataR package.
+
+◯ [tool call] read_help_as_text(pkg = "FakeDataR", topic =
+"generate_fake_data")
+...
+
+Great! Now I can show you how to use `generate_fake_data` to create a synthetic
+copy of the `mtcars` dataset. Here's how to do it:
+
+## Basic Usage
+
+```r
+# Install FakeDataR if you haven't already
+# install.packages("FakeDataR")
+
+library(FakeDataR)
+
+# Generate synthetic data from mtcars
+synthetic_mtcars &lt;- generate_fake_data(
+  data = mtcars,
+  n = 32  # Create same number of rows as original mtcars
+)
+
+# View the result
+head(synthetic_mtcars)
+```
+
+## More Detailed Examples
+...
+The resulting synthetic dataset preserves the structure and statistical 
+properties of the original while being completely artificial!</code></pre>
+</section>
+<section id="creating-an-agentic-loop" class="level2">
+<h2 class="anchored" data-anchor-id="creating-an-agentic-loop">Creating an agentic loop</h2>
+<p>Let’s add one more tool to show how they can be chained together to build the beginnings of an agentic loop.</p>
+<p>This tool will grab the R code from the markdown code blocks in the LLMs response, then write it to a file.</p>
+<p>First the function definition:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">write_r_code <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(rcode){</span>
+<span id="cb13-2">    code_blocks <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> stringr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_extract_all</span>(rcode, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"```r</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">s*([</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">s</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">S]*?)```"</span>)[[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]]</span>
+<span id="cb13-3">    code <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(stringr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_replace_all</span>(code_blocks, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"```r</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">s*|```"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">collapse =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb13-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">writeLines</span>(code, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">con =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"temp_code.R"</span>)</span>
+<span id="cb13-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"R code written to temp_code.R"</span>)</span>
+<span id="cb13-6">}</span></code></pre></div></div>
+<p>Now the tool definition:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">write_r_code <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tool</span>(</span>
+<span id="cb14-2">  write_r_code,</span>
+<span id="cb14-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.description =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Writes R code contained in markdown code blocks to a file."</span>,</span>
+<span id="cb14-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">rcode =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">type_string</span>(</span>
+<span id="cb14-5">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Character string containing R code in markdown code blocks"</span>,</span>
+<span id="cb14-6">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">required =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb14-7">    )</span>
+<span id="cb14-8">)</span></code></pre></div></div>
+<p>Now we just register both tools and start our chat.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">chat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat_anthropic</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">model =</span>  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"claude-haiku-4-5"</span>)</span>
+<span id="cb15-2">chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">register_tool</span>(read_help_as_text)</span>
+<span id="cb15-3">chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">register_tool</span>(write_r_code)</span>
+<span id="cb15-4"></span>
+<span id="cb15-5">chat_out <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Use generate_fake_data function from the R package FakeDataR to make a single synthetic version of mtcars. "</span>)</span></code></pre></div></div>
+<p><code>ellmer</code> will pass the results of the tool call back to the LLM, which can decide to call more tools if needed. Inspecting the chat log shows the sequence of tool calls, with no user intervention required.</p>
+</section>
+<section id="tuning-agents" class="level2">
+<h2 class="anchored" data-anchor-id="tuning-agents">Tuning agents</h2>
+<p>The write R code tool worked, some of the time… Other times it wrote a blank file. There’s a lot of niggly details to making agents work reliably, including choosing a powerful enough LLM, writing a system prompt that guides tool use, and writing powerful but secure tools.</p>
+<p>If I was going to take this example further I could add a function to run the Rscript that was created, that might require some extra security considerations (see below for one example).</p>
+<p>Going further I would also work on system prompt that provided guidance to the LLM on its role and how to approach problems. There’s many open source system prompts out there that I could draw on to create this.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Its an exciting time to be working on AI agents. The field is so new you can easily make new discoveries and be ahead of even world leading AI labs.</p>
+<p>An example. Scott Spillias, a postdoc at CSIRO, developed an agent framework that uses an evolutionary algorithm to write math to <a href="https://www.biorxiv.org/content/10.1101/2025.07.14.664628v1.abstract">create ecosystem models</a>. He showed the agent could create models that are great at predicting out-of-sample data, and that have biologically meaningful parameters.</p>
+<p>A month or so after he published his pre-print, the Google DeepMind team published a similar idea of using LLM evolutionary algorithms to generate scientific models.</p>
+<p>I look forwards to seeing what the R community creates with agents.</p>
+</section>
+<section id="example-of-using-tool_reject-for-user-permission" class="level2">
+<h2 class="anchored" data-anchor-id="example-of-using-tool_reject-for-user-permission">Example of using tool_reject for user permission</h2>
+<p>Check out <code>?tool_reject</code> for a way to require user permission before tools are used. Here’s how to implement that in our <code>write_r_code</code> function.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">write_r_code <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(rcode){</span>
+<span id="cb16-2">  allow_read <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> utils<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">askYesNo</span>(</span>
+<span id="cb16-3">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Would you like to allow access to write files?"</span></span>
+<span id="cb16-4">  )</span>
+<span id="cb16-5">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">isTRUE</span>(allow_read)) {</span>
+<span id="cb16-6">    code_blocks <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> stringr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_extract_all</span>(rcode, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"```r</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">s*([</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">s</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">S]*?)```"</span>)[[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]]</span>
+<span id="cb16-7">    code <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(stringr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_replace_all</span>(code_blocks, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"```r</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">s*|```"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">collapse =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb16-8">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">writeLines</span>(code, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">con =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"temp_code.R"</span>)</span>
+<span id="cb16-9">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"R code written to temp_code.R"</span>)</span>
+<span id="cb16-10">  } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> {</span>
+<span id="cb16-11">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tool_reject</span>()</span>
+<span id="cb16-12">  } </span>
+<span id="cb16-13">}</span></code></pre></div></div>
 
 
 </section>
@@ -61,11 +564,11 @@
  ]]></description>
   <category>rstats</category>
   <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-11-04-LLMs-coding-carbon-emissions/</guid>
-  <pubDate>Tue, 04 Nov 2025 13:00:00 GMT</pubDate>
+  <guid>https://www.seascapemodels.org/posts/2025-11-10-make-an-ai-agent-in-r/</guid>
+  <pubDate>Sun, 09 Nov 2025 13:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>Upcoming R workshops in Brisbane Feebruary 2026</title>
+  <title>Upcoming R workshops in Brisbane February 2026</title>
   <link>https://www.seascapemodels.org/posts/2025-11-03-upcoming-R-workshop-brisbane/</link>
   <description><![CDATA[ 
 
@@ -118,25 +621,6 @@
   <category>rstats</category>
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-11-02-should-we-teach-coding/</guid>
-  <pubDate>Sat, 01 Nov 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Carbon emissions…</title>
-  <link>https://www.seascapemodels.org/posts/2025-11-05-R-collaborator-for-20-years/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Estimate carbon emissions from LLMs coding assitants</p>
-
-
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-11-05-R-collaborator-for-20-years/</guid>
   <pubDate>Sat, 01 Nov 2025 13:00:00 GMT</pubDate>
 </item>
 <item>
@@ -2105,6 +2589,231 @@ print(results)</code></pre>
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-03-15-LMs-in-R-with-ellmer/</guid>
   <pubDate>Fri, 14 Mar 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>How to use large language models to assist in systematic literature reviews</title>
+  <link>https://www.seascapemodels.org/posts/2025-02-12-LLMs-for-literature-reviews/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>In the near future, we will all be doing systematic lit reviews by getting LLMs to gather data from papers. Below is an example of how to extract text data from a study. Once you can interact with LLM from R, you can then batch process many documents to turn text into structured data.</p>
+<p>TLDR; Developing a data extraction workflow is hard work. The development of prompts, data extraction and data cleaning is time consuming and requires thought. So it will still take work to do a systematic review. I’d also recommend you manually check results so that you still learn something yourself and to correct errors.</p>
+<p>I’ll also mention that papers are coming out now testing this idea, e.g.&nbsp;this one shows the <a href="https://www.nature.com/articles/s44185-024-00043-9">AI’s results can be accurate, but only for some types of requests</a>. The supplemental code for that paper also has helpful guidance.</p>
+<p>We’ll need a few R skills to extract data from papers for lit reviews:</p>
+<ol type="1">
+<li>How to interact with LLMs through APIs from R</li>
+<li>How to handle pdf docments and extract text from them</li>
+<li>How to clean up semi-structured text data and turn it into structured data.</li>
+<li>How to batch process.</li>
+</ol>
+<p>I’ll mainly focus on step 1 here. Step 2 is possible, by can be finniky and depend on how the pdf is formated. Step 3 is pretty straightforward with a package like <code>stringr</code>. Step 4 is just looping with whatever framework you prefer for that (e.g.&nbsp;for loops or purrr).</p>
+<p>This blog deals with only one type of application of LLMs to lit reviews, that is maybe the most straightforward and cheapest. There are other ways to use them to write syntheses or discover research trends, such as finetuning models on a large corpus of papers.</p>
+<section id="setting-up-your-api-access" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-your-api-access">Setting up your API access</h3>
+<p>API = application programming interface. This is a way to interact with a service (the LLM provider) via R.</p>
+<p>First you will need to go to your LLM provider of choice (here I’m using anthropic) and get an API key. This will require you to register and then buy some credits. You will per charged per token (fragment of a word) that you use.</p>
+<p>I’ve started out with 25USD which seems to be sufficient for testing. I’ve got no idea yet how much it will cost to do a full systematic lit review with 100s of papers.</p>
+<p>Now get your API key. Keep this secret its like a password. Also you can only view it once, so you’ll need to save it, e.g.&nbsp;in a password manager.</p>
+</section>
+<section id="using-the-api-key-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="using-the-api-key-in-r">Using the API key in R</h3>
+<p>I’m using the <code>dotenv</code> package to help manage API. First, make sure <code>.env</code> is in your <code>.gitignore</code> file. This way you can’t inadvertently share your key with the world.</p>
+<p>Now create a file in a text editor (e.g.&nbsp;Rstudio or VSCode) called <code>.env</code>. Put this is your project folder.</p>
+<p>The file will look like this:</p>
+<pre><code>ANTHROPIC_KEY="your_api_key_here"</code></pre>
+<p>Be sure to hit enter after the last line.</p>
+<p>Now you can use the <code>dotenv</code> package to load the key into your R session. <a href="https://www.r-bloggers.com/2018/08/structuring-r-projects/">This blog has good advice on managing secrets</a></p>
+<pre><code>dotenv::load_dot_env('.env')</code></pre>
+<p>Check it worked to load the key:</p>
+<pre><code>Sys.getenv("ANTHROPIC_KEY")</code></pre>
+<p>This should print your key.</p>
+</section>
+<section id="interacting-with-the-api-from-r" class="level2">
+<h2 class="anchored" data-anchor-id="interacting-with-the-api-from-r">Interacting with the API from R</h2>
+<p>Now you are ready to use the API. There are quite a few packages that can help you do this. I’m going to use the new <code>tidychatmodels</code> package, because I like its syntax (its like tidymodels).</p>
+<p><a href="https://albert-rapp.de/posts/20_tidychatmodels/20_tidychatmodels">Install instructions are here</a> (its not on cran as of writing) and <a href="https://albert-rapp.de/posts/21_pdf_extraction/21_pdf_extraction">here is a nice example of how to use LLMs with pdfs</a>, which helped me greatly with writing this blog.</p>
+<pre><code>library(tidyverse)
+library(tidychatmodels)</code></pre>
+<p>Now start building the instructions to send to the API. tidychatmodels does this step by step with pipes. So we are going to build up a sequence of commands. In the final step we’ll send it to the API.</p>
+<pre><code>newchat &lt;- create_chat("anthropic", 
+    api_key = Sys.getenv("ANTHROPIC_KEY"),
+    api_version = '2023-06-01')</code></pre>
+<p>Here I’m using ‘anthropic’, but there are others e.g.&nbsp;openai and mistral.</p>
+<p>Now add a model. I got the model name on the <a href="https://docs.anthropic.com/en/docs/about-claude/models">APIs webpage</a></p>
+<p>Model choice is dictated by speed, cost and the type of task you want to do. Do some research to optimise this.</p>
+<p>I’m also setting the temperature to control the level of creativitiy in the output, lower values = less creative. max_tokens controls the length of the output.</p>
+<pre><code>newchat &lt;- add_model(newchat, "claude-3-5-haiku-20241022") |&gt;
+      add_params('temperature' = 0.2, max_tokens = 800) </code></pre>
+</section>
+<section id="prompting-through-the-api" class="level2">
+<h2 class="anchored" data-anchor-id="prompting-through-the-api">Prompting through the API</h2>
+<p>Let’s do a test run. I’ll create some text</p>
+<pre><code>newchat &lt;- newchat |&gt;
+  add_message(
+    role = 'user',
+    message = 'You are a funky dude who loves writing online R lessons.
+    Write a paragraph about loading dataframes in R. '
+  ) </code></pre>
+<p>Now we’re ready to hit the dance floor. This is the bit where we actually ask the LLM to do something. It is also the bit that costs money….</p>
+<pre><code>newchat &lt;- newchat |&gt;
+    perform_chat()
+responses &lt;- newchat |&gt; extract_chat()</code></pre>
+<p>So the first time I ran this I got a ‘400’ error. Turns out the ‘max_tokens’ parameter was essential to set. This parameter controls the length of output. Longer outputs cost more (you’re charged per token).</p>
+<p>Error in <code>httr2::req_perform()</code>: ! HTTP 400 Bad Request. Backtrace: 1. tidychatmodels::perform_chat(newchat) 5. httr2::req_perform(prepared_engine)</p>
+</section>
+<section id="roles" class="level2">
+<h2 class="anchored" data-anchor-id="roles">Roles</h2>
+<p>Most LLMs have different roles, often a ‘user’ and a ‘system’ role. These give you more precise control over the LLM’s output. There is great advice from vendors on how to use these roles, e.g.&nbsp; with (anthropic)[<a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/system-prompts#legal-contract-analysis-with-role-prompting" class="uri">https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/system-prompts#legal-contract-analysis-with-role-prompting</a>]</p>
+<p>Setting a system role controls how the LLM behaves. People use these to make the AI act like a certain character, such as a research assistant. Let’s see it in action.</p>
+<p>Prompting is like programming, but less precise (annoyingly for me, who likes programming and things to be exact!). Good prompts will tend to get you better results. But of course, as with all deep learning, outcomes have an element of randomness, so can be inconsistent.</p>
+<pre><code>base_settings &lt;- create_chat("anthropic", 
+    api_key = Sys.getenv("ANTHROPIC_KEY"),
+    api_version = '2023-06-01') |&gt; 
+    add_model("claude-3-5-haiku-20241022") |&gt;
+    add_params('temperature' = 0.8, max_tokens = 100) 
+
+newchat &lt;- base_settings |&gt;
+  add_message(
+    role = 'system',
+    message = 'You are a funky dude who loves writing online R lessons.'
+  ) |&gt; 
+  add_message(
+    #defaults to 'user' role
+    message = 'Write a paragraph about loading dataframes in R. ') |&gt;
+    perform_chat() 
+
+extract_chat(newchat)</code></pre>
+<p>Ok, so the system role didn’t work very well in this case. To get the ‘funky dude’ output you need to put that into the user role.</p>
+<p>Now let’s look at doing this for a real paper.</p>
+</section>
+<section id="extracting-text-from-a-pdf" class="level2">
+<h2 class="anchored" data-anchor-id="extracting-text-from-a-pdf">Extracting text from a pdf</h2>
+<p>I’m going to use my <a href="https://doi.org/10.1111/conl.13056">recent paper on turtle mortality as an example, becuase I know it well</a> and the file size isn’t too large.</p>
+<p>Now we can use the pdftools package to read in the text from file. You could also try reading this directly from the web as HTML, which might allow you to identify particular sections, or data in tables, more effectively (by using html tags).</p>
+<p>Just note that making repeat requests for html pages might get you temporarily blocked from the publisher’s server.</p>
+<pre><code>library(pdftools)
+text &lt;- pdf_text("data/Brown_etal2024 national scale turtle mortality.pdf")</code></pre>
+<p>Now doing the above failed to work, I got that darn 400 error again when I sent it to the API. The issue seemed to be in the formatting of the text. So I can get on with the next step, I’ve just cut and paste the text into a text file. Clearly the cleaning up of pdfs/html for use will be a big part of this process. (like all modelling, data cleaning usually takes up most of the time).</p>
+<pre><code>methods_text &lt;- readLines("data/example-text.txt") |&gt;
+    paste(collapse = " ")</code></pre>
+</section>
+<section id="sending-text-to-the-llm" class="level2">
+<h2 class="anchored" data-anchor-id="sending-text-to-the-llm">Sending text to the LLM</h2>
+<p>Now we have our text we can send it to the LLM.</p>
+<pre><code>newchat &lt;- base_settings |&gt;
+    add_params('temperature' = 0.2, max_tokens = 600) |&gt; 
+    add_message(
+    role = 'system',
+    message = "You are a research assistant who has been asked to summarise the methods section of a paper on turtle mortality.
+    You will extract key statistics on:
+    Sample size: &lt;&lt; Insert sample size here&gt;&gt;
+    Year of the study: &lt;&lt; Insert year here&gt;&gt;
+    DONT EXTRACT ANY MORE INFORMATION BEYOND THIS POINT.
+    "
+  ) |&gt; 
+     add_message(
+         message = methods_text
+    ) |&gt;
+  perform_chat()
+
+extract_chat(newchat)</code></pre>
+<p>The prompt is key here. In the system role we’ve told it to extract the data in a structured way. I also included ‘DONT EXTRACT ANY MORE INFORMATION BEYOND THIS POINT.’ to prevent it from continuing to talk. Using caps emphasises the point to the AI.</p>
+<p>Here’s the output:</p>
+<blockquote class="blockquote">
+<p>Based on the methods section, here are the key statistics: Sample size: 357 sets (electronic monitoring) for large-scale longline fishery (LLF) Year of the study: 2018</p>
+</blockquote>
+<p>Here’s the output without the final part in caps:</p>
+<blockquote class="blockquote">
+<p>Assistant: Based on the methods section, here are the key statistics: Sample size: - For Small-Scale Fisheries (SSF): Monitored catches from 10 communities across 8 of 9 provinces - For Large-Longline Fisheries (LLF): 357 sets reviewed, spanning from 2018-01-24 to 2019-08-17 - Total catch events for LLF: 25,403 catch events - Electronic monitoring deployed on 7 vessels Year of the study: 2018 (primary year of data collection) Additional notable details: - Used non-parametric bootstrapping for scaling up and estimating confidence intervals - Monitoring methods involved trained community members and electronic monitoring systems - Video review of LLF data took 0.5 to 2 days per set - Used three different methods to scale up turtle catch for LLF to account for variability</p>
+</blockquote>
+<p>This is all very accurate, but includes too much ‘additional details’. However, it does get more of the methods details with regards to the various sample sizes for different parts of the study.</p>
+<p>Let’s get the output text:</p>
+<pre><code>chatout &lt;- extract_chat(newchat)
+output &lt;- chatout[chatout$role == 'assistant', 'message']</code></pre>
+<p>For repeatability just for the blog I’m hard coding that</p>
+<pre><code>output &lt;- data.frame(message = "Based on the methods section, here are the key statistics:\n\nSample size: 357 sets (electronic monitoring) for large-scale longline fishery (LLF)\nYear of the study: 2018")</code></pre>
+</section>
+<section id="turn-text-into-structured-data" class="level2">
+<h2 class="anchored" data-anchor-id="turn-text-into-structured-data">Turn text into structured data</h2>
+<p>Our data is semi structured by the way we did the prompt. Now we want to put the sample size and year into data fields.</p>
+<p>I’m using <code>separate_wider_delim</code> to first seperate out the first paragraph that had two breaks ’’, then again to split the sample size and year into columns (they were seperated by ’’).</p>
+<p>Finally, str_remove_all gets rid of the ‘Sample size:’ and ‘Year of the study:’ text.</p>
+<pre><code>library(stringr)
+
+cleaned_output &lt;- output |&gt; 
+  separate_wider_delim(
+    cols = message, 
+    delim = '\n\n',
+    names = c('response', 'stats')
+  ) |&gt; 
+separate_wider_delim(
+    cols = stats, 
+    delim = '\n',
+    names = c('sample_size', 'year')
+) |&gt; 
+  mutate(
+    across(
+      sample_size:year,
+      \(x) str_remove_all(
+        x, 
+        'Sample size: |Year of the study: '
+      )
+    ))</code></pre>
+<p>So now we can easily get our variables (sort of)</p>
+<pre><code>cleaned_output$sample_size
+cleaned_output$year</code></pre>
+</section>
+<section id="reflections-on-challenges-and-next-steps-for-automating-data-extraction" class="level2">
+<h2 class="anchored" data-anchor-id="reflections-on-challenges-and-next-steps-for-automating-data-extraction">Reflections on challenges and next steps for automating data extraction</h2>
+<section id="cost-uncertainty" class="level3">
+<h3 class="anchored" data-anchor-id="cost-uncertainty">Cost uncertainty</h3>
+<p>This should be cheap. It cost &lt;1c to make this post with all the testing. So in theory you could do 100s of methods sections for &lt;100USD. However, if you are testing back and forwards a lot or using full papers the cost could add up. It will be hard to estimate this until people get more experience.</p>
+</section>
+<section id="obtaining-the-papers-and-dealing-with-unstructued-text-in-pdfs-or-html" class="level3">
+<h3 class="anchored" data-anchor-id="obtaining-the-papers-and-dealing-with-unstructued-text-in-pdfs-or-html">Obtaining the papers and dealing with unstructued text in PDFs or HTML</h3>
+<p>A big challenge will be getting the text into a format that the LLM can use. Then there are issues like obtaining the text. Downloading pdfs is time consuming and data intensive. Trying to read text data from webpages can also be hard, due to paywalls and rate limits (you might get blocked for making reqeat requests).</p>
+<p>For instance, <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/brv.12344?casa_token=LVnFzoFBBU8AAAAA%3AcsyopYDWDBRZN7y2JL7eHYxzqayxu2GvKB-7gdEYkdeZSi5p5o1oXTwj49FqwBJz-IpPS6wxJ_SX0h2f">in a past study we did where we did simple ‘bag of words analysis’</a> we either downloaded the pdfs manually, or set timers to delay web hits and avoid getting blocked.</p>
+<p>HTML format would be ideal, because the tags mean the sections of the paper, and the figures already semi-structured.</p>
+</section>
+<section id="prompting" class="level3">
+<h3 class="anchored" data-anchor-id="prompting">Prompting</h3>
+<p>Need to experiment with this to get it right. It might also be good to repeat prompt the same text to triangulate accurate results.</p>
+</section>
+<section id="llm-text-output-cleaning" class="level3">
+<h3 class="anchored" data-anchor-id="llm-text-output-cleaning">LLM text output cleaning</h3>
+<p>In my simple example this was easy. However, with a large number of prompts and papers the LLM responses might have more variability that needs to be dealt with, e.g.&nbsp;will it always use one line break between my data questions? You can help control this issue by asking it to structure output in xml or JSON format, which is easier to then parse into data sheets.</p>
+</section>
+<section id="the-data-still-isnt-data-and-requires-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="the-data-still-isnt-data-and-requires-interpretation">The data still isn’t data and requires interpretation</h3>
+<p>You can see from my simple examples above that the output can’t be plotted direclty. In fact, it requires more interpretation. The sample size was given as ‘357 sets (electronic monitoring) for large-scale longline fishery (LLF)’. So is it 357? Are there other sample sizes that might be relevant?</p>
+</section>
+<section id="validation" class="level3">
+<h3 class="anchored" data-anchor-id="validation">Validation</h3>
+<p>You’ll definitely want to manually check the output and report accuracy statistics in your study. So maybe your review has 1000 papers, you’ll want to manually check 100 of them to see how accurate the LLM was.</p>
+</section>
+<section id="youll-still-need-to-read-a-lot-of-papers-to-write-a-good-lit-review" class="level3">
+<h3 class="anchored" data-anchor-id="youll-still-need-to-read-a-lot-of-papers-to-write-a-good-lit-review">You’ll still need to read a lot of papers to write a good lit review</h3>
+<p>A lit review is more than the systematic data. I still believe you need to read a lot of papers in order to understand the literature and make a useful synthesis. If you just use AI you’re vulnerable to the <a href="https://www.nature.com/articles/s41586-024-07146-0">‘illusion of understanding’</a>.</p>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>This tool will be best for well defined tasks and consistently written papers. For instance, an ideal use case would be reviewing 500 ocean acidification papers that all used similar experimental designs and terminology. You’ll then be able to get consistent answers to prompts about sample size etc…</p>
+<p>Another good use case would be to extract model types from species distribution model papers.</p>
+<p>Harder tasks will be where the papers are from diverse disciplines, or use inconsistent terminology, or methods. My study was a good example of that, there were about 5 different sample sizes reported. So in this example we’d need first to think clearly about what sample size you wanted to extract before writing the prompt.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2025-02-12-LLMs-for-literature-reviews/</guid>
+  <pubDate>Tue, 11 Feb 2025 13:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

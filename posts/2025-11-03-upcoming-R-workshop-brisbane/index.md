@@ -1,6 +1,6 @@
 ---
 date: '11/03/2025'
-title: Upcoming R workshops in Brisbane Feebruary 2026
+title: Upcoming R workshops in Brisbane February 2026
 categories: rstats
 published: true
 ---
