@@ -1,0 +1,18 @@
+---
+date: '10/23/2025'
+title: Does data from protected areas help to improve ecological forecasts? New pre-print 
+categories: research
+published: true
+---
+
+Sharing the [research work of my Master's student, Leigha Aitken, that is now available as a pre-print](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5647239). She sought to answer the question: 
+
+Does data from protected areas help to improve ecological forecasts? 
+
+As a pre-print it is not peer-reviewed, though it has been examined and reviewed by UTas staff in thesis form and we did address those concerns. Abstract below, [full pdf on SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5647239). 
+
+### Title: Transferability of models to novel site conditions: comparing abundance forecasts between different exploitation regimes
+
+### Abstract 
+
+Models are increasingly used to make forecasts to support fisheries management by translating ecological theory into quantitative predictions. However, forecasts for fisheries species are often constrained by limited data from unfished reference conditions. No-take marine reserves (NTMRs) can provide insight into unfished population dynamics, potentially improving models’ predictive performance. This study asked whether incorporating NTMR data improves the accuracy of annual abundance forecasts over eight years. We compared the predictive performance of first-order autoregressive models that were trained on abundance data from either NTMR sites, fished sites, or a mix of both site types. Each model was then tested by predicting to sites it was not trained on (‘transferred’). We tested the forecasts for both fished and unfished species with 23 years of time-series abundance data from the Maria Island (Tasmania) NTMR and nearby control sites. We found a general decrease in the performance of fished and NTMR models when forecasts were transferred to the opposite site type. Model transferability was species-specific, with the NTMR model reducing forecasting errors by approximately 10% at fished sites for one sustainably fished species. In contrast, for other species, the fished model reduced forecast errors by approximately 4% and 56% at NTMR sites. Additionally, we found that models trained on a mix of site types consistently underperformed. These findings highlight the importance of accounting for site- and species-specific dynamics. While NTMR data offers valuable insights into unfished conditions, further work is required to create models that transfer well to any exploitation regime. 
