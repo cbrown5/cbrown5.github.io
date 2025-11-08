@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-10-23">
 
-<title>Does data from protected areas help to improve ecolgoical forecasts? New pre-print – Seascapemodels</title>
+<title>Estimating harvest levels to reduce feral deer populations in Tasmania – Seascapemodels</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -72,6 +107,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -144,7 +208,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Does data from protected areas help to improve ecolgoical forecasts? New pre-print</h1>
+      <h1 class="title">Estimating harvest levels to reduce feral deer populations in Tasmania</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">research</div>
               </div>
@@ -177,15 +241,303 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Sharing the <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5647239">research work of my Master’s student, Leigha Aitken, that is now available as a pre-print</a>. She sought to answer the question:</p>
-<p>Does data from protected areas help to improve ecological forecasts?</p>
-<p>As a pre-print it is not peer-reviewed, though it has been examined and reviewed by UTas staff in thesis form and we did address those concerns. Abstract below, <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5647239">full pdf on SSRN</a>.</p>
-<section id="title-transferability-of-models-to-novel-site-conditions-comparing-abundance-forecasts-between-different-exploitation-regimes" class="level3">
-<h3 class="anchored" data-anchor-id="title-transferability-of-models-to-novel-site-conditions-comparing-abundance-forecasts-between-different-exploitation-regimes">Title: Transferability of models to novel site conditions: comparing abundance forecasts between different exploitation regimes</h3>
+<p>Feral deer were introduced to Tasmania for hunting, but are becoming an increasing environmental, agricultural and road safety issue. They damage sensitive vegetation and even <a href="https://www.abc.net.au/news/2025-04-10/seymour-wetland-tas-project-battles-deer/105156466">disrupt attempts to restore coastal wetlands</a>. A <a href="https://nre.tas.gov.au/Documents/The%202024%20aerial%20survey%20of%20fallow%20deer%20in%20Tasmania%20-%20summary%20report.pdf">recent report</a> shows results from a new survey indicating that the deer population is booming.</p>
+<p>(Here’s a <a href="https://www.abc.net.au/news/2025-10-02/tas-new-feral-deer-survey-shows-population-boom/105843366">news article summarizing the report</a>).</p>
+<p>I’m interested in the question how much harvesting is required to reduce deer populations. As a fisheries scientists, I’m usually asking the reverse question, of how much harvesting is too much. In this case, we want to overharest to reduce populations.</p>
+<p>One suggestion from recreational hunting groups is to allow more hunting to control deer populations. But how much hunting would have to happen and is it feasible for recreational hunters to take that much?</p>
+<p>The management problem is that deer in Tasmania are managed in zones, including sustainable hunting zones and no-go zones. The no-go zones are there to protect sennsitive enviroments, whereas the hunting zones are there to manage deer populations to allow ongoing recreational hunting.</p>
+<p>But deer don’t obey jurisdictional boundaries and the new survey clearly shows the deer population is spreading. There are similar issues <a href="https://www.abc.net.au/news/2025-09-17/sa-deer-eradication-program-aerial-culling-reduces-population/105763068">on the mainland with different states having different management approaches</a>.</p>
+<p>This problem is an interesting exercise in population modelling, and I cover the details below. But there are also scientific studies on the harvest rates required to stabilize deer populations. A study done in Tasmania estimated a rate of <a href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/1365-2664.14546">25% of the population per year would be needed just to stabilise populations</a>.</p>
+<p>Given the estimate of 71,655 deer in 2024, that would equate to about 17,900 deer needing to be harvested each year just to stabilise the population. We’d need to harvest significantly more than that to reduce the population.</p>
+<p>I did some research but unfortunately couldn’t find any data on how many deer recreational hunters hunt or how many hunting licenses there are in Tasmania. But we can make some educated guesses. <a href="https://onlinelibrary.wiley.com/doi/epdf/10.1111/emr.70001">This study</a> found that 28 hunters killed 128 deer over 3 years on one private reserve in Tasmania.</p>
+<p>That amounts to about 1.5 deer per hunter per year. Thus, to harvest 17,900 deer per year would require about 11,933 hunters. That of course assumes the same success and participation rate. To get a substantial population decrease we’d need a much higher harvest rate, perhaps double that number of deer, meaning over 20,000 hunters would be needed.</p>
+<p><a href="https://onlinelibrary.wiley.com/doi/epdf/10.1111/emr.70001">This study sums it up nicely</a>:</p>
+<p>” Wild deer populations in Australia and New Zealand <strong>are increasing and require active management</strong> to reduce their impacts on agriculture, natural values and human safety. It is sometimes suggested that recreational hunting, a popular activity in both countries, could be an effective tool for managing wild deer populations, but its effectiveness has seldom been demonstrated (Bengsen and Sparkes 2016). <strong>Our study showed that recreational hunting of fallow deer on a private reserve in Tasmania sustained a population density of 4–5 deer per km 2, higher than the average deer density in Tasmania</strong>. To effectively act as a control tool to reduce deer density, as proposed in the Tasmanian Wild Fallow Deer Management Plan 2022–27, recreational hunters would need to increase the number of deer killed annually well above 35% of the population, while targeting females primarily. <strong>This could be achieved by removing the ‘Partly Protected Wildlife’ status of fallow deer in Tasmania</strong> and its consequent restrictions on hunting seasons, quotas and shooting equipment (The Tasmanian Government 2023). Landholders can apply for special purposes wildlife property protection or crop protection permits to control deer on their properties, but completely removing that restriction, as was done in NSW (Bengsen and Forsyth 2019), would facilitate deer management on private land and most likely increase the annual deer harvest ”</p>
+<p>Source: https://doi.org/10.1111/emr.70001</p>
+<p>It seems unlikely that Tasmania has that many active deer hunters that could be enabled by further removing restrictions. But more data on hunting participation is required to confirm or deny that claim.</p>
+<p>Other approaches such as professional culling and eradication by landholders will likely be required to achieve meaningful population reductions.</p>
+<section id="population-growth-calculations" class="level2">
+<h2 class="anchored" data-anchor-id="population-growth-calculations">Population growth calculations</h2>
+<p>We can do our own simple calculations to estimate the harvest rate required to reduce deer populations. Note I provide below as an educational example only. I recommend using the studies cited above for real advice on rates (as you’ll see I get quite different numbers).</p>
+<p>Tasmania’s deer population has grown from about 53,660 to 71,655 individuals over 5 years (note there is errors around those numbers that we won’t consider here).</p>
+<p>Population growth is rarely linear. For the deer a reasonable approximation would be that deer are increasingly exponentially, meaning non-linearly at an increasing numbers of new animals each year. I make this assertion based the fact that their distribution is also growing, suggesting a growing population that is currently unhindered by environmental limits (e.g.&nbsp;food).</p>
+<p>For growing populations its convenient to work with instantaneous rates of increase (<code>r</code>). <code>r</code> is a the rate of increase on a multiplicative (or ‘log’) scale. Let’s see how to do that.</p>
+<section id="finite-rate-of-increase-λ" class="level3">
+<h3 class="anchored" data-anchor-id="finite-rate-of-increase-λ">Finite rate of increase (λ)</h3>
+<p>The finite rate of increase over a time period is given by:</p>
+<p><span class="math display">\[ \lambda = \left(\frac{N_t}{N_0}\right)^{1/t} \]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(N_0 = 53,660\)</span> (initial population)</li>
+<li><span class="math inline">\(N_t = 71,655\)</span> (population after 5 years)</li>
+<li><span class="math inline">\(t = 5\)</span> years</li>
+</ul>
+<p>Let’s calculate this in R:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial parameters</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>N0 <span class="ot">&lt;-</span> <span class="dv">53660</span>  <span class="co"># Initial population</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Nt <span class="ot">&lt;-</span> <span class="dv">71655</span>  <span class="co"># Population after 5 years</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="dv">5</span>       <span class="co"># Time period in years</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate finite rate of increase</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> (Nt <span class="sc">/</span> N0)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span>t)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>lambda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.059544</code></pre>
+</div>
+</div>
 </section>
-<section id="abstract" class="level3">
-<h3 class="anchored" data-anchor-id="abstract">Abstract</h3>
-<p>Models are increasingly used to make forecasts to support fisheries management by translating ecological theory into quantitative predictions. However, forecasts for fisheries species are often constrained by limited data from unfished reference conditions. No-take marine reserves (NTMRs) can provide insight into unfished population dynamics, potentially improving models’ predictive performance. This study asked whether incorporating NTMR data improves the accuracy of annual abundance forecasts over eight years. We compared the predictive performance of first-order autoregressive models that were trained on abundance data from either NTMR sites, fished sites, or a mix of both site types. Each model was then tested by predicting to sites it was not trained on (‘transferred’). We tested the forecasts for both fished and unfished species with 23 years of time-series abundance data from the Maria Island (Tasmania) NTMR and nearby control sites. We found a general decrease in the performance of fished and NTMR models when forecasts were transferred to the opposite site type. Model transferability was species-specific, with the NTMR model reducing forecasting errors by approximately 10% at fished sites for one sustainably fished species. In contrast, for other species, the fished model reduced forecast errors by approximately 4% and 56% at NTMR sites. Additionally, we found that models trained on a mix of site types consistently underperformed. These findings highlight the importance of accounting for site- and species-specific dynamics. While NTMR data offers valuable insights into unfished conditions, further work is required to create models that transfer well to any exploitation regime.</p>
+<section id="instantaneous-rate-of-increase-r" class="level3">
+<h3 class="anchored" data-anchor-id="instantaneous-rate-of-increase-r">Instantaneous rate of increase (r)</h3>
+<p>We can convert λ to the instantaneous rate of increase using:</p>
+<p><span class="math display">\[ r = \ln(\lambda) \]</span></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate instantaneous rate of increase</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">log</span>(lambda)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.05783902</code></pre>
+</div>
+</div>
+<p>To convince ourselves we’ve done the math right we can check the answer to see if we recover the original 5 year growth:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">53660</span> <span class="sc">*</span> <span class="fu">exp</span>(r<span class="sc">*</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 71655</code></pre>
+</div>
+</div>
+<p>which equals the number of deer in 2024.</p>
+</section>
+</section>
+<section id="what-does-this-growth-rate-look-like" class="level2">
+<h2 class="anchored" data-anchor-id="what-does-this-growth-rate-look-like">What does this growth rate look like?</h2>
+<p>Let’s visualize what this exponential growth rate means by projecting a small population forward in time. We’ll start with 5,000 individuals and see how it grows over 20 years:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate exponential growth from a small population</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>years_proj <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">20</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>N_initial <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>pop_projection <span class="ot">&lt;-</span> N_initial <span class="sc">*</span> <span class="fu">exp</span>(r <span class="sc">*</span> years_proj)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>proj_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Year =</span> years_proj,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Population =</span> pop_projection</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot on natural scale</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(proj_df, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Population)) <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>, <span class="at">color =</span> <span class="st">"darkblue"</span>) <span class="sc">+</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"darkblue"</span>) <span class="sc">+</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Exponential Population Growth (Natural Scale)"</span>,</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"Starting population: 5,000 | Growth rate: "</span>, </span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">round</span>(r <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>), <span class="st">"% per year"</span>),</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Population Size"</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note the upwards curve.</p>
+<p>The same data on a multiplicative scale (like a scale that goes 1, 10, 100, 1000) shows the exponential growth as a straight line, which is characteristic of constant proportional growth:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot on log10 scale</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(proj_df, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Population)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>, <span class="at">color =</span> <span class="st">"darkred"</span>) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"darkred"</span>) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Exponential Population Growth (Log10 Scale)"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"Starting population: 5,000 | Growth rate: "</span>, </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">round</span>(r <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>), <span class="st">"% per year"</span>),</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Population Size (log10 scale)"</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The log scale visualization reveals that exponential growth maintains a constant rate - the population increases by the same <em>proportion</em> each year, even though the absolute numbers get larger and larger.</p>
+</section>
+<section id="required-harvest-rate" class="level2">
+<h2 class="anchored" data-anchor-id="required-harvest-rate">Required harvest rate</h2>
+<p>Let’s say we want to reduce the deer population from 71,655 back to 53,660 over 5 years.</p>
+<p>To do this we need to calculate what harvest rate would achieve this while accounting for natural population growth.</p>
+<p>The target is to have the net rate of change (growth minus harvest) result in the desired decline. We can set up the equation:</p>
+<p><span class="math display">\[ N_t = N_0 \times e^{(r - h) \times t} \]</span></p>
+<p>Where <span class="math inline">\(h\)</span> is the harvest rate we want to solve for. Rearranging:</p>
+<p><span class="math display">\[ h = r - \frac{\ln(N_t / N_0)}{t} \]</span></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Starting population for harvest scenario</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>N_start <span class="ot">&lt;-</span> <span class="dv">71655</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>N_target <span class="ot">&lt;-</span> <span class="dv">53660</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>t_harvest <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate required harvest rate</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>target_rate <span class="ot">&lt;-</span> <span class="fu">log</span>(N_target <span class="sc">/</span> N_start) <span class="sc">/</span> t_harvest</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>harvest_rate <span class="ot">&lt;-</span> r <span class="sc">-</span> target_rate</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>harvest_rate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.115678</code></pre>
+</div>
+</div>
+<p>The required annual harvest rate is 12%. This harvest rate offsets both the population growth and achieves the desired decline.</p>
+</section>
+<section id="annual-deer-harvest-numbers" class="level2">
+<h2 class="anchored" data-anchor-id="annual-deer-harvest-numbers">Annual deer harvest numbers</h2>
+<p>Let’s simulate how many deer need to be harvested each year to achieve this reduction:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulation parameters</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>pop_size <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(years))</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>harvest_numbers <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">length</span>(years))</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial conditions</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>pop_size[<span class="dv">1</span>] <span class="ot">&lt;-</span> N_start</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate population with harvest</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(years)) {</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Population grows</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  pop_after_growth <span class="ot">&lt;-</span> pop_size[i<span class="dv">-1</span>] <span class="sc">*</span> <span class="fu">exp</span>(r)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate harvest number (proportion of post-growth population)</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  harvest_numbers[i] <span class="ot">&lt;-</span> pop_after_growth <span class="sc">*</span> harvest_rate</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Population after harvest</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  pop_size[i] <span class="ot">&lt;-</span> pop_after_growth <span class="sc">-</span> harvest_numbers[i]</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Create data frame for results</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>harvest_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">Year =</span> years[<span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(years)],</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">Deer_Harvested =</span> <span class="fu">round</span>(harvest_numbers[<span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(years)])</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>harvest_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Year Deer_Harvested
+1    1           8782
+2    2           8229
+3    3           7710
+4    4           7224
+5    5           6769</code></pre>
+</div>
+</div>
+<p>As we can see, the number of deer that need to be harvested decreases each year as the population declines.</p>
+<p>Note we assumed harvest after population growth (breeding) each year.</p>
+</section>
+<section id="visualizing-the-population-trajectory" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-the-population-trajectory">Visualizing the population trajectory</h2>
+<p>Let’s create a visualization showing a projection for how the population changes over time with and without harvest:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate population without harvest</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>pop_no_harvest <span class="ot">&lt;-</span> N_start <span class="sc">*</span> <span class="fu">exp</span>(r <span class="sc">*</span> years)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create data frame for plotting</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>pop_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Year =</span> <span class="fu">rep</span>(years, <span class="dv">2</span>),</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Population =</span> <span class="fu">c</span>(pop_size, pop_no_harvest),</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Scenario =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"With Harvest"</span>, <span class="st">"Without Harvest"</span>), </span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">each =</span> <span class="fu">length</span>(years))</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plot</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pop_df, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Population, </span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>                   <span class="at">color =</span> Scenario)) <span class="sc">+</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma, </span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>                    <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">40000</span>, <span class="dv">100000</span>)) <span class="sc">+</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Deer Population Trajectory Over 5 Years"</span>,</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Comparing growth scenarios with and without harvest management"</span>,</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Population Size"</span>,</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Scenario"</span>,</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">linetype =</span> <span class="st">"Scenario"</span></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>),</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Ignoring unknown labels:
+• linetype : "Scenario"</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The plot clearly shows the diverging trajectories.</p>
+<p>So why is my number of 12% per year so much lower than the 25% per year cited in the Tasmanian study?</p>
+<p>For one, my calculation doesn’t account for the spatial dynamics and increasing range. Deer moving into new areas with fresh vegetation can sustain higher growth rates. For another my calculation assumes a stable age structure. This means that the proportion of juveniles to adults remains constant, which may not be the case in a rapidly growing population.</p>
+<p>More sophisticated models, <a href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/1365-2664.14546">like the one used in this study</a>, would be needed to capture these dynamics accurately.</p>
 
 
 </section>
