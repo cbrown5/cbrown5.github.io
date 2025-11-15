@@ -1,5 +1,5 @@
 ---
-date: '11/03/2025'
+date: '11/14/2025'
 title: Upcoming R workshops in Brisbane February 2026
 categories: rstats
 published: true
@@ -8,6 +8,9 @@ published: true
 R workshops in Brisbane Australia, February 2026. 
 
 For many years I had the pleasure of teaching with Ant Richardson and the team for these R workshops. I'm not there anymore, but recommend attending these if you can make the dates:
+
+![](/posts/2025-11-14-upcoming-R-workshop-brisbane/r-workshop-uq.jpg)
+
 
 Transform your research questions into robust statistical insights with our 2026 Summer R Workshops in an immersive exploration of R programming and statistical modelling. These workshops in February 2026 are designed for beginners and researchers who want to build a solid foundation in R programming and progress through to advanced statistical techniques. Whether you’re completely new to R or looking to strengthen your statistical modelling skills, join us to develop the analytical expertise essential for modern research! 
 

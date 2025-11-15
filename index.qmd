@@ -1,5 +1,5 @@
 ---
-title: "Seascape Models Research Group"
+title: "Seascape Models"
 listing: 
   - id: Research
     contents: "research"
