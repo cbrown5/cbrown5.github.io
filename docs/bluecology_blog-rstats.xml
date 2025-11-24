@@ -10,33 +10,10 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog-rstats.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Thu, 13 Nov 2025 13:00:00 GMT</lastBuildDate>
-<item>
-  <title>Upcoming R workshops in Brisbane February 2026</title>
-  <link>https://www.seascapemodels.org/posts/2025-11-14-upcoming-R-workshop-brisbane/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>R workshops in Brisbane Australia, February 2026.</p>
-<p>For many years I had the pleasure of teaching with Ant Richardson and the team for these R workshops. I’m not there anymore, but recommend attending these if you can make the dates:</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-14-upcoming-R-workshop-brisbane/r-workshop-uq.jpg" class="img-fluid"></p>
-<p>Transform your research questions into robust statistical insights with our 2026 Summer R Workshops in an immersive exploration of R programming and statistical modelling. These workshops in February 2026 are designed for beginners and researchers who want to build a solid foundation in R programming and progress through to advanced statistical techniques. Whether you’re completely new to R or looking to strengthen your statistical modelling skills, join us to develop the analytical expertise essential for modern research!</p>
-<p>Registration is now open. For more information, see our website https://mathmarecol.github.io/RWorkshop/summer.html and the attached flyer. For any questions, email cbcs-workshops@uq.edu.au.</p>
-<p>Testimonials: “I truly enjoyed the whole workshop. Great teachers, really nice real data examples and good notes and background” “I am feeling a lot better about using stats now than I was previously” “I think it should be a compulsory course for all PhDs”</p>
-
-
-
- ]]></description>
-  <category>rstats</category>
-  <guid>https://www.seascapemodels.org/posts/2025-11-14-upcoming-R-workshop-brisbane/</guid>
-  <pubDate>Thu, 13 Nov 2025 13:00:00 GMT</pubDate>
-</item>
+<lastBuildDate>Sat, 22 Nov 2025 13:00:00 GMT</lastBuildDate>
 <item>
   <title>Reasoning and infographics with Nano Banana</title>
-  <link>https://www.seascapemodels.org/posts/2025-11-24-exploring-gemini-3-image-generation/</link>
+  <link>https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/</link>
   <description><![CDATA[ 
 
 
@@ -114,7 +91,30 @@ for part in response.parts:
  ]]></description>
   <category>rstats</category>
   <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-11-24-exploring-gemini-3-image-generation/</guid>
+  <guid>https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/</guid>
+  <pubDate>Sat, 22 Nov 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Upcoming R workshops in Brisbane February 2026</title>
+  <link>https://www.seascapemodels.org/posts/2025-11-14-upcoming-R-workshop-brisbane/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>R workshops in Brisbane Australia, February 2026.</p>
+<p>For many years I had the pleasure of teaching with Ant Richardson and the team for these R workshops. I’m not there anymore, but recommend attending these if you can make the dates:</p>
+<p><img src="https://www.seascapemodels.org/posts/2025-11-14-upcoming-R-workshop-brisbane/r-workshop-uq.jpg" class="img-fluid"></p>
+<p>Transform your research questions into robust statistical insights with our 2026 Summer R Workshops in an immersive exploration of R programming and statistical modelling. These workshops in February 2026 are designed for beginners and researchers who want to build a solid foundation in R programming and progress through to advanced statistical techniques. Whether you’re completely new to R or looking to strengthen your statistical modelling skills, join us to develop the analytical expertise essential for modern research!</p>
+<p>Registration is now open. For more information, see our website https://mathmarecol.github.io/RWorkshop/summer.html and the attached flyer. For any questions, email cbcs-workshops@uq.edu.au.</p>
+<p>Testimonials: “I truly enjoyed the whole workshop. Great teachers, really nice real data examples and good notes and background” “I am feeling a lot better about using stats now than I was previously” “I think it should be a compulsory course for all PhDs”</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2025-11-14-upcoming-R-workshop-brisbane/</guid>
   <pubDate>Thu, 13 Nov 2025 13:00:00 GMT</pubDate>
 </item>
 <item>

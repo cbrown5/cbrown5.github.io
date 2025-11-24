@@ -10,7 +10,90 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Thu, 20 Nov 2025 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 22 Nov 2025 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>Reasoning and infographics with Nano Banana</title>
+  <link>https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>The new Google Gemini Pro 3 (AKA Nano Banana) has some <a href="https://minimaxir.com/2025/11/nano-banana-prompts/">pretty impressive image generation capabilities</a>. It is very accurate to what you ask in the prompt, can ‘ground’ image generation with web searches and accurately renders text (most of the time). This increases its usefulness for scientific visualisation purposes over previous models.</p>
+<p>Read more about <a href="https://ai.google.dev/gemini-api/docs/gemini-3?thinking=high">how to use it here</a>.</p>
+<p>I wanted to try it out for scientific applications.</p>
+<section id="infographics-with-grounding" class="level2">
+<h2 class="anchored" data-anchor-id="infographics-with-grounding">Infographics with grounding</h2>
+<p>I ran this prompt that asks for an infographic for <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.70105">my recent study</a>. This study was published after the model’s cutoff data for inclusion of training data, so it is a useful test of the search grounding capabilities:</p>
+<pre><code>Make an infographic explaining the new research study 'Assessing predictive accuracy of species abundance models in dynamic systems' published in Methods in Ecology and Evolution </code></pre>
+<p>Here’s the result</p>
+<p><img src="https://www.seascapemodels.org/posts/2025-11-24-exploring-gemini-3-image-generation/study-infographic.jpeg" style="max-height: 600px; width: auto;"></p>
+<p>Which is 100% accurate. The only thing I’d change would be to add the study’s DOI to the infographic.</p>
+</section>
+<section id="r-code" class="level2">
+<h2 class="anchored" data-anchor-id="r-code">R code</h2>
+<p>Here’s an example of visual reasoning. Here we ask the model to generate an image of R code with resulting plot:</p>
+<pre><code>Generate an image of R code and a graph in an IDE. The code will show how to fit a linear regression to data. The graph will show temperature on the x-axis and # people of the y-axis. Title the graph Swimming in Tasmania</code></pre>
+<p>The results show the model is capable of correctly interpreting the R code it wrote:</p>
+<p><img src="https://www.seascapemodels.org/posts/2025-11-24-exploring-gemini-3-image-generation/rcode.jpg" style="max-height: 300px; width: auto;"></p>
+<p>This is not a screen shot of an IDE (note the errors in the names of panels) but an image generated to represent a screenshot.</p>
+</section>
+<section id="visual-reasoning" class="level2">
+<h2 class="anchored" data-anchor-id="visual-reasoning">Visual reasoning</h2>
+<p>To further test the visual reasoning I set a more complex task of plotting some data that I specified, showing a GAM fit to that data and plotting the residuals.</p>
+<pre><code>Generate a two panel plot created with the R program. Here is the data to use for the plots: `x &lt;- 1:10; y &lt;- c(5, 10, 11, 9, 15, 12, 13, 6, 3, 2)`. The first panel will show an x-y plot of the data, as well as a the fitted curve from a gam spline with 3 dimension basis function. The second panel will show the residuals of the model with a horizontal line at y=0. Show the plots as a single image with two panels side by side.</code></pre>
+<p><img src="https://www.seascapemodels.org/posts/2025-11-24-exploring-gemini-3-image-generation/rcode-gam.jpeg" style="max-height: 500px; width: auto;"></p>
+<p>This one got the data points approximately correct (blue points), but was off with the GAM fit and residuals. For example, according to its fitted curve (red) the first, second and third residuals (green points) should be at zero. Likewise the two final points should be at zero. For comparison, here’s the answer if I generate that with actual R code:</p>
+<p><img src="https://www.seascapemodels.org/posts/2025-11-24-exploring-gemini-3-image-generation/gam_plot.jpg" style="max-height: 400px; width: auto;"></p>
+<p>You can see the AI generated residual plot was well off the mark, both in terms of the residuals</p>
+</section>
+<section id="code-for-api-access" class="level2">
+<h2 class="anchored" data-anchor-id="code-for-api-access">Code for API access</h2>
+<p>At the moment the easiest way to use this model is via the Gemini chat platform, or via direct API calls.</p>
+<p>Here’s an example of the Python code to use the Gemini API.</p>
+<pre><code>from google import genai
+from google.genai import types
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+api_key = os.getenv("GEMINI_API_KEY")
+
+# The client gets the API key from the environment variable `GEMINI_API_KEY`.
+client = genai.Client(api_key=api_key)
+
+prompt = "Generate a two panel plot created with the R program. Here is the data to use for the plots: `x &lt;- 1:10; y &lt;- c(5, 10, 11, 9, 15, 12, 13, 6, 3, 2)`. The first panel will show an x-y plot of the data, as well as a the fitted curve from a gam spline with 3 dimension basis function. The second panel will show the residuals of the model with a horizontal line at y=0. Show the plots as a single image with two panels side by side. "
+aspect_ratio = "3:4" # "1:1","2:3","3:2","3:4","4:3","4:5","5:4","9:16","16:9","21:9"
+
+response = client.models.generate_content(
+    model="gemini-3-pro-image-preview",
+    contents=prompt,
+    config=types.GenerateContentConfig(
+        response_modalities=['Text', 'Image'],
+        image_config=types.ImageConfig(
+            aspect_ratio=aspect_ratio,
+        )#,
+        #tools=[{"google_search": {}}]
+    )
+)
+
+for part in response.parts:
+    if part.text is not None:
+        print(part.text)
+    elif image:= part.as_image():
+        image.save("temp/rcode.png")</code></pre>
+<p>I’ve commented out the web search grounding. Uncomment that if you want to ground your search.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/</guid>
+  <pubDate>Sat, 22 Nov 2025 13:00:00 GMT</pubDate>
+</item>
 <item>
   <title>When a species’ fate hangs on survey design</title>
   <link>https://www.seascapemodels.org/posts/2025-11-21-survey-design-endangered-species/</link>
@@ -63,31 +146,6 @@
   <category>research</category>
   <guid>https://www.seascapemodels.org/posts/2025-11-21-survey-design-endangered-species/</guid>
   <pubDate>Thu, 20 Nov 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Australia needs an environmental resources reserve</title>
-  <link>https://www.seascapemodels.org/posts/2025-11-18-environmental-resources-reserve/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>We need this for resilience to shocks. Climate events threaten our resource security, including food wood and other basic supplies. War could cut us off from supplies. THere is a tangible risk of global nuclear war, a nuclear winter would have a massive impact on food production.</p>
-<p>We need to keep more environmental resources in the bank. This applies to water, soil, fisheries, forestry and more.</p>
-<p>This would also be great for our biodiversity problems.</p>
-<p>I’ll give examples from two areas I know: fisheries and aquaculture.</p>
-<p>Fishesries fished down to 20%, which we are calling sustainable. But that’s not much in the bank Need to get it higher, particularly coastal fisheries that are easily accessible Would be great for production now, as well as biodiversity benefits, e.g.&nbsp;lobster.</p>
-<p>Ground water is also being drawn down continuously. We need to recharge that stuff. .</p>
-<p>relate to NDIS, national critical minerals reserve</p>
-<p>Environmental accounts, system already available to do this.</p>
-
-
-
- ]]></description>
-  <category>research</category>
-  <guid>https://www.seascapemodels.org/posts/2025-11-18-environmental-resources-reserve/</guid>
-  <pubDate>Mon, 17 Nov 2025 13:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Should I post my manuscript to a pre-print server?</title>
@@ -191,89 +249,6 @@
  ]]></description>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2025-11-14-upcoming-R-workshop-brisbane/</guid>
-  <pubDate>Thu, 13 Nov 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Reasoning and infographics with Nano Banana</title>
-  <link>https://www.seascapemodels.org/posts/2025-11-24-exploring-gemini-3-image-generation/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>The new Google Gemini Pro 3 (AKA Nano Banana) has some <a href="https://minimaxir.com/2025/11/nano-banana-prompts/">pretty impressive image generation capabilities</a>. It is very accurate to what you ask in the prompt, can ‘ground’ image generation with web searches and accurately renders text (most of the time). This increases its usefulness for scientific visualisation purposes over previous models.</p>
-<p>Read more about <a href="https://ai.google.dev/gemini-api/docs/gemini-3?thinking=high">how to use it here</a>.</p>
-<p>I wanted to try it out for scientific applications.</p>
-<section id="infographics-with-grounding" class="level2">
-<h2 class="anchored" data-anchor-id="infographics-with-grounding">Infographics with grounding</h2>
-<p>I ran this prompt that asks for an infographic for <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.70105">my recent study</a>. This study was published after the model’s cutoff data for inclusion of training data, so it is a useful test of the search grounding capabilities:</p>
-<pre><code>Make an infographic explaining the new research study 'Assessing predictive accuracy of species abundance models in dynamic systems' published in Methods in Ecology and Evolution </code></pre>
-<p>Here’s the result</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-24-exploring-gemini-3-image-generation/study-infographic.jpeg" style="max-height: 600px; width: auto;"></p>
-<p>Which is 100% accurate. The only thing I’d change would be to add the study’s DOI to the infographic.</p>
-</section>
-<section id="r-code" class="level2">
-<h2 class="anchored" data-anchor-id="r-code">R code</h2>
-<p>Here’s an example of visual reasoning. Here we ask the model to generate an image of R code with resulting plot:</p>
-<pre><code>Generate an image of R code and a graph in an IDE. The code will show how to fit a linear regression to data. The graph will show temperature on the x-axis and # people of the y-axis. Title the graph Swimming in Tasmania</code></pre>
-<p>The results show the model is capable of correctly interpreting the R code it wrote:</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-24-exploring-gemini-3-image-generation/rcode.jpg" style="max-height: 300px; width: auto;"></p>
-<p>This is not a screen shot of an IDE (note the errors in the names of panels) but an image generated to represent a screenshot.</p>
-</section>
-<section id="visual-reasoning" class="level2">
-<h2 class="anchored" data-anchor-id="visual-reasoning">Visual reasoning</h2>
-<p>To further test the visual reasoning I set a more complex task of plotting some data that I specified, showing a GAM fit to that data and plotting the residuals.</p>
-<pre><code>Generate a two panel plot created with the R program. Here is the data to use for the plots: `x &lt;- 1:10; y &lt;- c(5, 10, 11, 9, 15, 12, 13, 6, 3, 2)`. The first panel will show an x-y plot of the data, as well as a the fitted curve from a gam spline with 3 dimension basis function. The second panel will show the residuals of the model with a horizontal line at y=0. Show the plots as a single image with two panels side by side.</code></pre>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-24-exploring-gemini-3-image-generation/rcode-gam.jpeg" style="max-height: 500px; width: auto;"></p>
-<p>This one got the data points approximately correct (blue points), but was off with the GAM fit and residuals. For example, according to its fitted curve (red) the first, second and third residuals (green points) should be at zero. Likewise the two final points should be at zero. For comparison, here’s the answer if I generate that with actual R code:</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-24-exploring-gemini-3-image-generation/gam_plot.jpg" style="max-height: 400px; width: auto;"></p>
-<p>You can see the AI generated residual plot was well off the mark, both in terms of the residuals</p>
-</section>
-<section id="code-for-api-access" class="level2">
-<h2 class="anchored" data-anchor-id="code-for-api-access">Code for API access</h2>
-<p>At the moment the easiest way to use this model is via the Gemini chat platform, or via direct API calls.</p>
-<p>Here’s an example of the Python code to use the Gemini API.</p>
-<pre><code>from google import genai
-from google.genai import types
-import os
-from dotenv import load_dotenv
-load_dotenv()
-
-api_key = os.getenv("GEMINI_API_KEY")
-
-# The client gets the API key from the environment variable `GEMINI_API_KEY`.
-client = genai.Client(api_key=api_key)
-
-prompt = "Generate a two panel plot created with the R program. Here is the data to use for the plots: `x &lt;- 1:10; y &lt;- c(5, 10, 11, 9, 15, 12, 13, 6, 3, 2)`. The first panel will show an x-y plot of the data, as well as a the fitted curve from a gam spline with 3 dimension basis function. The second panel will show the residuals of the model with a horizontal line at y=0. Show the plots as a single image with two panels side by side. "
-aspect_ratio = "3:4" # "1:1","2:3","3:2","3:4","4:3","4:5","5:4","9:16","16:9","21:9"
-
-response = client.models.generate_content(
-    model="gemini-3-pro-image-preview",
-    contents=prompt,
-    config=types.GenerateContentConfig(
-        response_modalities=['Text', 'Image'],
-        image_config=types.ImageConfig(
-            aspect_ratio=aspect_ratio,
-        )#,
-        #tools=[{"google_search": {}}]
-    )
-)
-
-for part in response.parts:
-    if part.text is not None:
-        print(part.text)
-    elif image:= part.as_image():
-        image.save("temp/rcode.png")</code></pre>
-<p>I’ve commented out the web search grounding. Uncomment that if you want to ground your search.</p>
-
-
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-11-24-exploring-gemini-3-image-generation/</guid>
   <pubDate>Thu, 13 Nov 2025 13:00:00 GMT</pubDate>
 </item>
 <item>
@@ -2825,6 +2800,36 @@ system(copilot_cmd)
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-09-12-creating-a-first-draft-in-one-prompt/</guid>
   <pubDate>Thu, 11 Sep 2025 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>AI aided note taking</title>
+  <link>https://www.seascapemodels.org/posts/2025-09-05-AI-aided-note-taking/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This is my favourite workflow for note taking at the moment:</p>
+<ol type="1">
+<li><p>Voice record my thoughts to iphone with the recording app. I don’t take much care to speak clearly or in a structured way. I just blurt all my thoughts out into the recorder.</p></li>
+<li><p>Press the transcript button and copy the text</p></li>
+</ol>
+<p>Then I either do:</p>
+<p>3a. Paste into Copilot for Teams and prompt <code>Clean up this voice recording and organize it into notes that are arranged in a logical order. Use markdown format</code></p>
+<p>Or</p>
+<p>3b. Paste into Teams chat to myself for later. Later on my laptop paste the text into a markdown document and use Roo Code or Github Copilot with <code>Clean up this voice recording and organize it into notes that are arranged in a logical order. Use markdown format</code></p>
+<p>In general I’m not a fan of AI note taking. The problem is if you take a document you didn’t write and then get AI to summarize it for you there is no mental energy. The mental energy is when you learn and synthesize ideas.</p>
+<p>However, I feel differently about voice recordings, because the ideas are still going via my brain before they get to the AI. It also allows me to capture complex ideas that I may not get time to write down.</p>
+<p>For example, I’ve used it while cleaning the house to get a blog idea down and then into a first draft. I used it while walking to an appointment to ‘write’ a first draft of the methods for a paper.</p>
+
+
+
+ ]]></description>
+  <category>research-skills</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-09-05-AI-aided-note-taking/</guid>
+  <pubDate>Thu, 04 Sep 2025 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
