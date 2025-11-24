@@ -5989,14 +5989,14 @@
     "href": "posts/2025-11-23-exploring-gemini-3-image-generation/index.html",
     "title": "Reasoning and infographics with Nano Banana",
     "section": "",
-    "text": "The new Google Gemini Pro 3 (AKA Nano Banana) has some pretty impressive image generation capabilities. It is very accurate to what you ask in the prompt, can ‘ground’ image generation with web searches and accurately renders text (most of the time). This increases its usefulness for scientific visualisation purposes over previous models.\nRead more about how to use it here.\nI wanted to try it out for scientific applications."
+    "text": "The new Google Gemini Pro 3 (AKA Nano Banana) has some pretty impressive image generation capabilities. It is very accurate to what you ask in the prompt, it can ‘ground’ image generation with web searches and it accurately renders text (most of the time). This increases its usefulness for scientific visualisation purposes over previous models.\nRead more about how to use it here.\nI wanted to try it out for scientific applications."
   },
   {
     "objectID": "posts/2025-11-23-exploring-gemini-3-image-generation/index.html#infographics-with-grounding",
     "href": "posts/2025-11-23-exploring-gemini-3-image-generation/index.html#infographics-with-grounding",
     "title": "Reasoning and infographics with Nano Banana",
     "section": "Infographics with grounding",
-    "text": "Infographics with grounding\nI ran this prompt that asks for an infographic for my recent study. This study was published after the model’s cutoff data for inclusion of training data, so it is a useful test of the search grounding capabilities:\nMake an infographic explaining the new research study 'Assessing predictive accuracy of species abundance models in dynamic systems' published in Methods in Ecology and Evolution \nHere’s the result\n\nWhich is 100% accurate. The only thing I’d change would be to add the study’s DOI to the infographic."
+    "text": "Infographics with grounding\nI ran this prompt that asks for an infographic for my recent study.\nMake an infographic explaining the new research study 'Assessing predictive accuracy of species abundance models in dynamic systems' published in Methods in Ecology and Evolution \nHere’s the result\n\nWhich is 100% accurate. The only thing I’d change would be to add the study’s DOI to the infographic."
   },
   {
     "objectID": "posts/2025-11-23-exploring-gemini-3-image-generation/index.html#r-code",
@@ -6025,5 +6025,19 @@
     "title": "Australia needs an environmental resources reserve",
     "section": "",
     "text": "We need this for resilience to shocks. Climate events threaten our resource security, including food wood and other basic supplies. War could cut us off from supplies. THere is a tangible risk of global nuclear war, a nuclear winter would have a massive impact on food production.\nWe need to keep more environmental resources in the bank. This applies to water, soil, fisheries, forestry and more.\nThis would also be great for our biodiversity problems.\nI’ll give examples from two areas I know: fisheries and aquaculture.\nFishesries fished down to 20%, which we are calling sustainable. But that’s not much in the bank Need to get it higher, particularly coastal fisheries that are easily accessible Would be great for production now, as well as biodiversity benefits, e.g. lobster.\nGround water is also being drawn down continuously. We need to recharge that stuff. .\nrelate to NDIS, national critical minerals reserve\nEnvironmental accounts, system already available to do this."
+  },
+  {
+    "objectID": "posts/2025-11-23-exploring-gemini-3-image-generation/index.html#science-cartoon",
+    "href": "posts/2025-11-23-exploring-gemini-3-image-generation/index.html#science-cartoon",
+    "title": "Reasoning and infographics with Nano Banana",
+    "section": "Science cartoon",
+    "text": "Science cartoon\nI ran this prompt for a very recent study that was only just published, so well beyond the cut-off data for inclusion in the model’s training data:\nMake a comic strip explaining key findings of the study: 'Predicting the impact of giant kelp restoration on food webs and fisheries production'. Use a cartoon style similar to spongebob squarepants, but dont use any spongebob characters that violate copyright. Instead make the characters a fish, a rock lobster and an abalone.\n\nMy original attempt didn’t include the statement about copyright and it made an image that included Spongebob and his friends - some work for Google to do here if they are going to avoid copyright violations.\nMake a comic strip explaining key findings of the study: 'Predicting the impact of giant kelp restoration on food webs and fisheries production'. Use a cartoon style similar to spongebob squarepants."
+  },
+  {
+    "objectID": "posts/2025-11-23-exploring-gemini-3-image-generation/index.html#science-cartoon-with-web-search-grounding",
+    "href": "posts/2025-11-23-exploring-gemini-3-image-generation/index.html#science-cartoon-with-web-search-grounding",
+    "title": "Reasoning and infographics with Nano Banana",
+    "section": "Science cartoon with web search grounding",
+    "text": "Science cartoon with web search grounding\nI ran this prompt for a very recent study that was only just published, so well beyond the cut-off data for inclusion in the model’s training data:\nMake a comic strip explaining key findings of the study: 'Predicting the impact of giant kelp restoration on food webs and fisheries production'. Use a cartoon style similar to spongebob squarepants, but dont use any spongebob characters that violate copyright. Instead make the characters a fish, a rock lobster and an abalone.\n\nThis study was published after the model’s cutoff data for inclusion of training data, so it is a useful test of the search grounding capabilities. It gets the details right, though urchin barrens aren’t the main cause of the giant kelp decline and kelp normally grows on rocks, not sand.\nMy original attempt didn’t include the statement about copyright and it made an image that included Spongebob and his friends - some work for Google to do here if they are going to avoid copyright violations.\nMake a comic strip explaining key findings of the study: 'Predicting the impact of giant kelp restoration on food webs and fisheries production'. Use a cartoon style similar to spongebob squarepants."
   }
 ]

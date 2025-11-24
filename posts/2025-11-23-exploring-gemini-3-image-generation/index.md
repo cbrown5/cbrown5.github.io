@@ -5,15 +5,33 @@ categories: [rstats, genAI]
 published: TRUE
 ---
 
-The new Google Gemini Pro 3 (AKA Nano Banana) has some [pretty impressive image generation capabilities](https://minimaxir.com/2025/11/nano-banana-prompts/). It is very accurate to what you ask in the prompt, can 'ground' image generation with web searches and accurately renders text (most of the time). This increases its usefulness for scientific visualisation purposes over previous models. 
+The new Google Gemini Pro 3 (AKA Nano Banana) has some [pretty impressive image generation capabilities](https://minimaxir.com/2025/11/nano-banana-prompts/). It is very accurate to what you ask in the prompt, it can 'ground' image generation with web searches and it accurately renders text (most of the time). This increases its usefulness for scientific visualisation purposes over previous models. 
 
 Read more about [how to use it here](https://ai.google.dev/gemini-api/docs/gemini-3?thinking=high). 
 
 I wanted to try it out for scientific applications. 
 
+## Science cartoon with web search grounding
+
+I ran this prompt for [a very recent study](https://onlinelibrary.wiley.com/doi/10.1002/aqc.70242) that was only just published, so well beyond the cut-off data for inclusion in the model's training data: 
+
+```
+Make a comic strip explaining key findings of the study: 'Predicting the impact of giant kelp restoration on food webs and fisheries production'. Use a cartoon style similar to spongebob squarepants, but dont use any spongebob characters that violate copyright. Instead make the characters a fish, a rock lobster and an abalone.
+```
+
+<img src="/posts/2025-11-23-exploring-gemini-3-image-generation/study-cartoon2.jpeg" style="max-height: 600px; width: auto;" />
+
+This study was published after the model's cutoff data for inclusion of training data, so it is a useful test of the search grounding capabilities. It gets the details right, though urchin barrens aren't the main cause of the giant kelp decline and kelp normally grows on rocks, not sand. 
+
+My original attempt didn't include the statement about copyright and it made an image that included Spongebob and his friends - some work for Google to do here if they are going to avoid copyright violations. 
+
+```
+Make a comic strip explaining key findings of the study: 'Predicting the impact of giant kelp restoration on food webs and fisheries production'. Use a cartoon style similar to spongebob squarepants.
+```
+
 ## Infographics with grounding 
 
-I ran this prompt that asks for an infographic for [my recent study](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.70105). This study was published after the model's cutoff data for inclusion of training data, so it is a useful test of the search grounding capabilities: 
+I ran this prompt that asks for an infographic for [my recent study](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.70105). 
 
 ```
 Make an infographic explaining the new research study 'Assessing predictive accuracy of species abundance models in dynamic systems' published in Methods in Ecology and Evolution 
