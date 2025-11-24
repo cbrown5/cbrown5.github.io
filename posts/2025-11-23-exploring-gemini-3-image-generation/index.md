@@ -35,7 +35,7 @@ Generate an image of R code and a graph in an IDE. The code will show how to fit
 
 The results show the model is capable of correctly interpreting the R code it wrote:
 
-<img src="/posts/2025-11-23-exploring-gemini-3-image-generation/rcode.jpg" style="max-height: 300px; width: auto;" />
+<img src="/posts/2025-11-23-exploring-gemini-3-image-generation/rcode.jpg" style="max-height: 600px; width: auto;" />
 
 This is not a screen shot of an IDE (note the errors in the names of panels) but an image generated to represent a screenshot. 
 
