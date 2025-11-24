@@ -1,0 +1,115 @@
+---
+date: '11/21/2025'
+title: When a species' fate hangs on survey design
+categories: research
+published: TRUE
+---
+
+Survey design can be one of those dry academic topics that students shy away from. So I wanted to highlight the sad case of the Greater Glider, a gliding possum. 
+
+The [greater glider is on its way to extinction](https://theconversation.com/new-logging-rules-in-nsw-put-the-greater-glider-closer-to-extinction-when-will-we-start-protecting-these-amazing-animals-223182) thanks in part due to insufficient survey designs. 
+
+As a protected species there are buffer zones for logging around _known_ greater glider habitat. The buffers are bigger still if a glider den (tree hollow) is confirmed.  The "known" part is where survey design comes in. 
+
+The problem is, current survey designs are [not sufficient to reliably detect greater gliders](https://www.abc.net.au/news/2025-11-21/environment-groups-decry-greater-glider-survey-results/106017274). 
+
+Gliders emerge from their dens around sunset then go out to forage. 
+
+Official surveys are limited to roads and to a short period around sunset. But this means they will miss glider dens that aren't near roads. That's also a very limited amount of time to spot a cryptic species. 
+
+The quality of the official survey design is indicated by the fact that citizen scientists found 918 gliders in an area where the official survey only found 42. 
+
+From a statistical viewpoint the official survey design potentially suffers from two issues: 
+
+1. Bias, in that only habitats near roads are surveyed
+2. Low detection rates, in that the time surveyed is too limited. 
+
+Below I want to illustrate the detectability aspect, as its obvious how you deal with the bias aspect (do more complete surveys of the area). 
+
+![](/posts/2025-11-21-survey-design-endangered-species/possum.jpg)
+Brushtail possum considering its detectability model (AI generated image). 
+
+## Detectability
+
+In ecology we use repeat surveys to estimate a species' detectability. 
+
+Detectability is a key parameter to estimate and then to account for when designing surveys. 
+
+Let me show you with a simple simulation how repeat surveys dramatically improve your chances of detecting a species that's actually present.
+
+```{r}
+#| label: detection-simulation
+#| echo: false
+#| warning: false
+
+# Plot the results
+library(ggplot2)
+library(dplyr)
+# Simulation: Effect of repeat surveys on species detection
+set.seed(123)
+
+# Assume a species is present at a site
+# Each survey has only a 20% chance of detecting it (typical for cryptic species)
+detection_prob <- 0.2
+
+# Function to simulate detection across multiple surveys
+simulate_detection <- function(n_surveys, detection_prob) {
+  # For each survey, randomly determine if species is detected
+  detections <- rbinom(n_surveys, 1, detection_prob)
+  # Return TRUE if detected in ANY survey
+  any(detections == 1)
+}
+
+# Simulate different numbers of repeat surveys
+survey_numbers <- 1:10
+n_simulations <- 1000
+
+results <- data.frame(
+  n_surveys = rep(survey_numbers, each = n_simulations),
+  detected = NA
+)
+
+# Run simulations
+for (i in 1:nrow(results)) {
+  results$detected[i] <- simulate_detection(
+    results$n_surveys[i], 
+    detection_prob
+  )
+}
+
+# Calculate detection probability for each number of surveys
+detection_summary <- results %>%
+  group_by(n_surveys) %>%
+  summarise(
+    detection_rate = mean(detected),
+    .groups = "drop"
+  )
+
+
+ggplot(detection_summary, aes(x = n_surveys, y = detection_rate)) +
+  geom_line(size = 1.2, color = "steelblue") +
+  geom_point(size = 2, color = "steelblue") +
+  scale_y_continuous(labels = scales::percent, limits = c(0, 1)) +
+  labs(
+    x = "Number of repeat surveys",
+    y = "Probability of detecting species\n(when present)",
+    title = "How repeat surveys improve detection of cryptic species",
+    subtitle = "Simulation assumes 20% detection probability per survey"
+  ) +
+  scale_x_continuous(breaks = survey_numbers) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12)
+  )
+```
+
+The simulation shows a dramatic improvement in detection probability with repeat surveys. 
+
+Estimating the detectability parameter can be complicated with real world survey designs. But the good news is that it is a well researched area of ecology and many frameworks (with handy R packages) exist to help you. Using these methods is a must for cryptic species. 
+
+## Survey design matters
+
+Issues of survey design often come up in environmental controversies. Its an important area for conservation biologists to study and to learn well. They need to know the principles so they can make a strong case for survey designs that are sufficient to protect endangered species. 
+
+Let's hope that the survey design for gliders can be turned around, as conservationists are advocating for, so we can save this unique Australian mammal. 

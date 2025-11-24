@@ -1,0 +1,17 @@
+{
+  "hash": "0f50126afb566fc35a54ffaddf6e9e7e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ndate: '11/21/2025'\ntitle: When a species' fate hangs on survey design\ncategories: research\npublished: TRUE\n---\n\nSurvey design can be one of those dry academic topics that students shy away from. So I wanted to highlight the sad case of the Greater Glider, a gliding possum. \n\nThe [greater glider is on its way to extinction](https://theconversation.com/new-logging-rules-in-nsw-put-the-greater-glider-closer-to-extinction-when-will-we-start-protecting-these-amazing-animals-223182) thanks in part due to insufficient survey designs. \n\nAs a protected species there are buffer zones for logging around _known_ greater glider habitat. The buffers are bigger still if a glider den (tree hollow) is confirmed.  The \"known\" part is where survey design comes in. \n\nThe problem is, current survey designs are [not sufficient to reliably detect greater gliders](https://www.abc.net.au/news/2025-11-21/environment-groups-decry-greater-glider-survey-results/106017274). \n\nGliders emerge from their dens around sunset then go out to forage. \n\nOfficial surveys are limited to roads and to a short period around sunset. But this means they will miss glider dens that aren't near roads. That's also a very limited amount of time to spot a cryptic species. \n\nThe quality of the official survey design is indicated by the fact that citizen scientists found 918 gliders in an area where the official survey only found 42. \n\nFrom a statistical viewpoint the official survey design potentially suffers from two issues: \n\n1. Bias, in that only habitats near roads are surveyed\n2. Low detection rates, in that the time surveyed is too limited. \n\nBelow I want to illustrate the detectability aspect, as its obvious how you deal with the bias aspect (do more complete surveys of the area). \n\n![](/posts/2025-11-21-survey-design-endangered-species/possum.jpg)\nBrushtail possum considering its detectability model (AI generated image). \n\n## Detectability\n\nIn ecology we use repeat surveys to estimate a species' detectability. \n\nDetectability is a key parameter to estimate and then to account for when designing surveys. \n\nLet me show you with a simple simulation how repeat surveys dramatically improve your chances of detecting a species that's actually present.\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](index_files/figure-html/detection-simulation-1.png){width=672}\n:::\n:::\n\n\nThe simulation shows a dramatic improvement in detection probability with repeat surveys. \n\nEstimating the detectability parameter can be complicated with real world survey designs. But the good news is that it is a well researched area of ecology and many frameworks (with handy R packages) exist to help you. Using these methods is a must for cryptic species. \n\n## Survey design matters\n\nIssues of survey design often come up in environmental controversies. Its an important area for conservation biologists to study and to learn well. They need to know the principles so they can make a strong case for survey designs that are sufficient to protect endangered species. \n\nLet's hope that the survey design for gliders can be turned around, as conservationists are advocating for, so we can save this unique Australian mammal. \n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
