@@ -1,9 +1,9 @@
 ---
-date: '11/14/2025'
+date: '11/23/2025'
 title: Reasoning and infographics with Nano Banana
 categories: [rstats, genAI]
-published: true
----new post
+published: TRUE
+---
 
 The new Google Gemini Pro 3 (AKA Nano Banana) has some [pretty impressive image generation capabilities](https://minimaxir.com/2025/11/nano-banana-prompts/). It is very accurate to what you ask in the prompt, can 'ground' image generation with web searches and accurately renders text (most of the time). This increases its usefulness for scientific visualisation purposes over previous models. 
 
