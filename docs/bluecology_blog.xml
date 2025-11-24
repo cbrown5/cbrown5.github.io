@@ -28,7 +28,7 @@
 <p>I ran this prompt that asks for an infographic for <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.70105">my recent study</a>. This study was published after the model’s cutoff data for inclusion of training data, so it is a useful test of the search grounding capabilities:</p>
 <pre><code>Make an infographic explaining the new research study 'Assessing predictive accuracy of species abundance models in dynamic systems' published in Methods in Ecology and Evolution </code></pre>
 <p>Here’s the result</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-24-exploring-gemini-3-image-generation/study-infographic.jpeg" style="max-height: 600px; width: auto;"></p>
+<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/study-infographic.jpeg" style="max-height: 600px; width: auto;"></p>
 <p>Which is 100% accurate. The only thing I’d change would be to add the study’s DOI to the infographic.</p>
 </section>
 <section id="r-code" class="level2">
@@ -36,16 +36,16 @@
 <p>Here’s an example of visual reasoning. Here we ask the model to generate an image of R code with resulting plot:</p>
 <pre><code>Generate an image of R code and a graph in an IDE. The code will show how to fit a linear regression to data. The graph will show temperature on the x-axis and # people of the y-axis. Title the graph Swimming in Tasmania</code></pre>
 <p>The results show the model is capable of correctly interpreting the R code it wrote:</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-24-exploring-gemini-3-image-generation/rcode.jpg" style="max-height: 300px; width: auto;"></p>
+<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/rcode.jpg" style="max-height: 300px; width: auto;"></p>
 <p>This is not a screen shot of an IDE (note the errors in the names of panels) but an image generated to represent a screenshot.</p>
 </section>
 <section id="visual-reasoning" class="level2">
 <h2 class="anchored" data-anchor-id="visual-reasoning">Visual reasoning</h2>
 <p>To further test the visual reasoning I set a more complex task of plotting some data that I specified, showing a GAM fit to that data and plotting the residuals.</p>
 <pre><code>Generate a two panel plot created with the R program. Here is the data to use for the plots: `x &lt;- 1:10; y &lt;- c(5, 10, 11, 9, 15, 12, 13, 6, 3, 2)`. The first panel will show an x-y plot of the data, as well as a the fitted curve from a gam spline with 3 dimension basis function. The second panel will show the residuals of the model with a horizontal line at y=0. Show the plots as a single image with two panels side by side.</code></pre>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-24-exploring-gemini-3-image-generation/rcode-gam.jpeg" style="max-height: 500px; width: auto;"></p>
+<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/rcode-gam.jpeg" style="max-height: 500px; width: auto;"></p>
 <p>This one got the data points approximately correct (blue points), but was off with the GAM fit and residuals. For example, according to its fitted curve (red) the first, second and third residuals (green points) should be at zero. Likewise the two final points should be at zero. For comparison, here’s the answer if I generate that with actual R code:</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-24-exploring-gemini-3-image-generation/gam_plot.jpg" style="max-height: 400px; width: auto;"></p>
+<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/gam_plot.jpg" style="max-height: 400px; width: auto;"></p>
 <p>You can see the AI generated residual plot was well off the mark, both in terms of the residuals</p>
 </section>
 <section id="code-for-api-access" class="level2">

@@ -21,7 +21,7 @@ Make an infographic explaining the new research study 'Assessing predictive accu
 
 Here's the result
 
-<img src="/posts/2025-11-24-exploring-gemini-3-image-generation/study-infographic.jpeg" style="max-height: 600px; width: auto;" />
+<img src="/posts/2025-11-23-exploring-gemini-3-image-generation/study-infographic.jpeg" style="max-height: 600px; width: auto;" />
 
 Which is 100% accurate. The only thing I'd change would be to add the study's DOI to the infographic. 
 
@@ -35,7 +35,7 @@ Generate an image of R code and a graph in an IDE. The code will show how to fit
 
 The results show the model is capable of correctly interpreting the R code it wrote:
 
-<img src="/posts/2025-11-24-exploring-gemini-3-image-generation/rcode.jpg" style="max-height: 300px; width: auto;" />
+<img src="/posts/2025-11-23-exploring-gemini-3-image-generation/rcode.jpg" style="max-height: 300px; width: auto;" />
 
 This is not a screen shot of an IDE (note the errors in the names of panels) but an image generated to represent a screenshot. 
 
@@ -47,11 +47,11 @@ To further test the visual reasoning I set a more complex task of plotting some 
 Generate a two panel plot created with the R program. Here is the data to use for the plots: `x <- 1:10; y <- c(5, 10, 11, 9, 15, 12, 13, 6, 3, 2)`. The first panel will show an x-y plot of the data, as well as a the fitted curve from a gam spline with 3 dimension basis function. The second panel will show the residuals of the model with a horizontal line at y=0. Show the plots as a single image with two panels side by side.
 ```
 
-<img src="/posts/2025-11-24-exploring-gemini-3-image-generation/rcode-gam.jpeg" style="max-height: 500px; width: auto;" />
+<img src="/posts/2025-11-23-exploring-gemini-3-image-generation/rcode-gam.jpeg" style="max-height: 500px; width: auto;" />
 
 This one got the data points approximately correct (blue points), but was off with the GAM fit and residuals. For example, according to its fitted curve (red) the first, second and third residuals (green points) should be at zero. Likewise the two final points should be at zero. For comparison, here's the answer if I generate that with actual R code: 
 
-<img src="/posts/2025-11-24-exploring-gemini-3-image-generation/gam_plot.jpg" style="max-height: 400px; width: auto;" />
+<img src="/posts/2025-11-23-exploring-gemini-3-image-generation/gam_plot.jpg" style="max-height: 400px; width: auto;" />
 
 You can see the AI generated residual plot was well off the mark, both in terms of the residuals 
 
