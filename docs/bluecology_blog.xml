@@ -22,6 +22,7 @@
 
 <p>I’ve been playing around with <a href="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/">Google Gemini Pro 3 (AKA Nano Banana)</a> as a way to make science infographics. Here are the key lessons from my attempts.</p>
 <p>I’m accessing the model via API calls with Python, example code is at the end. However, you could also do this via the chat interface.</p>
+<p>For the record I’d still prefer to work with a human to create great infographics. A good designed will give you much more than just create the image, they will help you think through the key points and how most accurately to represent those. You’ll see below that I had some issues with scientific accuracy of the AI generated images. But I don’t have the budget for a designer on every project. AI images are good if you are clear on the key points you want to communicate.</p>
 <section id="be-clear-on-the-key-points-of-your-study" class="level2">
 <h2 class="anchored" data-anchor-id="be-clear-on-the-key-points-of-your-study">Be clear on the key points of your study</h2>
 <p>Like any science communication its important to be clear on the key points that you want to communicate from the outset. Then tell the those key points in your prompt.</p>

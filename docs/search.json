@@ -6045,7 +6045,7 @@
     "href": "posts/2025-11-28-tips-making-infographics-with-ai/index.html",
     "title": "Tips on making science infographics with AI and nano banana",
     "section": "",
-    "text": "I’ve been playing around with Google Gemini Pro 3 (AKA Nano Banana) as a way to make science infographics. Here are the key lessons from my attempts.\nI’m accessing the model via API calls with Python, example code is at the end. However, you could also do this via the chat interface."
+    "text": "I’ve been playing around with Google Gemini Pro 3 (AKA Nano Banana) as a way to make science infographics. Here are the key lessons from my attempts.\nI’m accessing the model via API calls with Python, example code is at the end. However, you could also do this via the chat interface.\nFor the record I’d still prefer to work with a human to create great infographics. A good designed will give you much more than just create the image, they will help you think through the key points and how most accurately to represent those. You’ll see below that I had some issues with scientific accuracy of the AI generated images. But I don’t have the budget for a designer on every project. AI images are good if you are clear on the key points you want to communicate."
   },
   {
     "objectID": "posts/2025-11-28-tips-making-infographics-with-ai/index.html#be-clear-on-the-key-points-of-your-study",
