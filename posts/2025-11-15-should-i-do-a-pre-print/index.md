@@ -7,7 +7,7 @@ published: TRUE
 
 In our recent lab meeting we [revisited the topic of pre-prints and pre-print servers](https://www.seascapemodels.org/posts/2018-08-20-biorxiv-pre-print-posting-guide/index.html) to answer the question - should I post a pre-print of my manuscript?
 
-Thanks to Jordan Holdorf for helping me write this post. 
+Thanks to Jordan Holdorf for helping me write this post and Matt Holden for contributions via linkedin. 
 
 In a recent lab meeting, we revisited the question: Should I post a preprint of my manuscript? A few years ago, [I wrote about this topic after posting my fourth preprint to bioRxiv](https://www.seascapemodels.org/posts/2018-08-20-biorxiv-pre-print-posting-guide/index.html). Since then, the landscape has shifted, and our discussion—thanks to Jordan Holdorf for the notes—highlighted new considerations worth sharing.
 
@@ -39,6 +39,7 @@ The concept isn’t new, arXiv launched in physics back in 1991, but preprints s
 - Journal policies: Most journals now allow preprints, but check first.
 - Double-blind issues: Reviewers can find your preprint and identify authors.
 - Time cost: Uploading and revising adds extra steps.
+- Google Scholar may not list your published article for up to 6 months after publication (rather than the normal few days delay after publishing). This is a known issue with pre-prints on SSRN and bioRxiv, apparently fixed for arxiv pre-prints. 
 
 Overall, the benefits usually outweigh the drawbacks—if you manage the process carefully. 
 
