@@ -1,5 +1,5 @@
 ---
-date: '12/01/2025'
+date: '12/1/2025'
 title: AI has raised the bar for literature reviews
 categories: [research-skills, genAI]
 published: TRUE
