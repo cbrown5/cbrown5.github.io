@@ -10,7 +10,30 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Sun, 30 Nov 2025 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 01 Dec 2025 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>New report looks at how we allocate monitoring of fishing activities</title>
+  <link>https://www.seascapemodels.org/posts/2025-12-02-how-to-allocate-fisheries-monitoring/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>How do we monitor fisheries to know if seafood is sustainable? It turns out WHERE we monitor is just as important as HOW MUCH we monitor. The “where” needs to be codified in fisheries policies if we want a reliable picture of what is caught.</p>
+<p><a href="https://www.nature.org/content/dam/tnc/nature/en/documents/t/n/TNC-Utas-2025-estimatingCatch.pdf">In this new report with The Nature Conservancy</a> we explore the implications of different ways of monitoring a fishery, especially with modern electronic monitoring (video) tech. The problem is that current policies might say “Monitor 30% of fishing activity”, but they are not specific about how that 30% is allocated.</p>
+<p><img src="https://www.seascapemodels.org/posts/2025-12-02-how-to-allocate-fisheries-monitoring/Figure1conceptual.jpg" class="img-fluid"> <strong>Figure</strong> Different monitoring protocols, we recommend monitoring all vessels and then sub-sampling your 30% randomly, to get an unbiased estimate of catch and bycatch.</p>
+<p>The most reliable data is provided when you have cameras on every vessel, then sample those videos at random. But ‘monitor 30%’ could also be interpreted as 30% of vessels or 30% of fishing trips. The 30% you see might be the best 30% and you miss high bycatch of threatened species in the other 70%, for instance.</p>
+<p><a href="https://www.nature.org/content/dam/tnc/nature/en/documents/t/n/TNC-Utas-2025-estimatingCatch.pdf">Read the report</a> to learn more.</p>
+<p>It was great to work with Vienna Saccomanno and Ben Gilmer from TNC on this question, which comes down to using ecological statistics to solve a real policy issue.</p>
+
+
+
+ ]]></description>
+  <category>research</category>
+  <guid>https://www.seascapemodels.org/posts/2025-12-02-how-to-allocate-fisheries-monitoring/</guid>
+  <pubDate>Mon, 01 Dec 2025 13:00:00 GMT</pubDate>
+</item>
 <item>
   <title>AI has raised the bar for literature reviews</title>
   <link>https://www.seascapemodels.org/posts/2025-12-01-ai-raises-bar-literature-reviews/</link>
@@ -2896,37 +2919,6 @@ system(copilot_cmd)
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2025-09-17-ai-generated-scicomm-games/</guid>
   <pubDate>Tue, 16 Sep 2025 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Projecting Uncertainty in Ecosystem Persistence Under Climate Change</title>
-  <link>https://www.seascapemodels.org/posts/2025-09-13-projecting-uncertainty-ecosystem-persistence/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Rising seas and coastal development are pushing mangrove forests beyond their historical limits. Predicting how these critical ecosystems will respond is much harder when environmental change is unprecedented. In a new study, <a href="https://doi.org/10.1111/gcb.70468">Projecting Uncertainty in Ecosystem Persistence Under Climate Change</a>, we show how to estimate the probability that mangrove forests will persist or decline worldwide.</p>
-<p>Good predictions of ecosystem persistence are essential for coastal protection, fisheries management and climate-smart conservation planning.</p>
-<p>The problem is that traditional models require detailed data that doesn’t exist at global scales. Models predict best when conditions match their training data. Climate change means mangroves face conditions they’ve never experienced before.</p>
-<p>We developed a method to estimate probabilities of mangrove persistence using global datasets. This gives us a way to measure uncertainty that we can use to guide conservation decisions, e.g.&nbsp;to identify where management actions are most likely to succeed.</p>
-<p>We used network models to analyze how mangroves respond at both their seaward and landward edges. Mangroves are unique because they can potentially expand in both directions as seas rise - landward into newly flooded areas, or seaward by trapping sediment.</p>
-<p>Here’s the projections for persistence of mangroves as they are currently (ie without any loss) from one of our scenarios:</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-09-13-projecting-uncertainty-ecosystem-persistence/Buelow_etal2025-graphical-abstract.png" class="img-fluid"></p>
-<p>Our models reveal a stark contrast. 77% of mangrove units worldwide are likely to lose area at their seaward edge by 2040-2060. Rising seas, storms and reduced sediment from dammed rivers create multiple pressures. In contrast, about 30% of units could gain area landward, but coastal development often blocks this migration.</p>
-<p>Perhaps most importantly, uncertainty is high. In more than half the mangrove units studied, we couldn’t predict whether forests would persist or decline - the probability was essentially random. This isn’t a model failure. It tells us where better data and management actions could tip the balance.</p>
-<p>Geographic patterns emerged clearly. Mangroves in areas with small tidal ranges face greater risks. Sediment-rich coastlines offer better prospects for seaward expansion. Areas with dense coastal populations face the greatest landward migration challenges.</p>
-<p>We tested conservation scenarios and found encouraging results. With targeted management - sediment addition, barrier removal, and assisted migration - the number of units likely to persist could nearly double.</p>
-<p>This research shows a new way to handle ecosystem predictions under climate change. Instead of false precision, we quantify what we know and don’t know. For mangroves, significant seaward losses are likely, but landward gains and conservation success remain possible with strategic action. Read more <a href="https://doi.org/10.1111/gcb.70468">here</a>.</p>
-
-
-
- ]]></description>
-  <category>research</category>
-  <category>modelling</category>
-  <category>coastal-wetlands</category>
-  <guid>https://www.seascapemodels.org/posts/2025-09-13-projecting-uncertainty-ecosystem-persistence/</guid>
-  <pubDate>Fri, 12 Sep 2025 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
