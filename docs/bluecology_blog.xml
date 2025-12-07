@@ -46,6 +46,53 @@
   <pubDate>Tue, 09 Dec 2025 13:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Giant kelp restoration could boost fisheries productivity in Tasmania</title>
+  <link>https://www.seascapemodels.org/posts/2025-12-08-kelp-restoration-fisheries/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Kelp restoration is gaining <a href="https://kelpforestalliance.com/">global momentum</a> with recognition that we are losing kelp forests and the values they provide as habitat for biodiversity and supporting fisheries.</p>
+<p>But questions remain. We wanted to know if restoring giant kelp forests boost productivity for commercially important species like abalone and rock lobster. We <a href="https://doi.org/10.1002/aqc.70242">explore this question in our new study</a>. (Free access version <a href="https://www.biorxiv.org/content/biorxiv/early/2024/12/20/2024.12.16.628810.full.pdf">here</a> or <a href="mailto:c.j.brown@utas.edu.au">email me</a> for a copy)</p>
+<p>We took measurements of kelp growth from Tasmania’s East Coast and used them in models of ecosystems to study how gain kelp restoration could impact fisheries.</p>
+<p>We found the productivity gains could be substantial.</p>
+<p><img src="https://www.seascapemodels.org/posts/2025-12-08-kelp-restoration-fisheries/kelp-productvity-foodwebs.jpg" class="img-fluid"> <strong>Figure</strong> Key findings</p>
+<section id="why-giant-kelp-matters" class="level2">
+<h2 class="anchored" data-anchor-id="why-giant-kelp-matters">Why giant kelp matters</h2>
+<p>Giant kelp <em>Macrocystis pyrifera</em> has largely disappeared from Tasmania’s east coast, replaced by the less productive <em>Ecklonia radiata</em>. The productivity difference between these two species is striking - giant kelp is approximately 40 times more productive than Ecklonia.</p>
+<p>That extra productivity has to go somewhere. While we still need more research to fully understand the fate of giant kelp biomass, the evidence suggests it flows through the food web to support a wide range of species, including those important for fisheries.</p>
+</section>
+<section id="modelling-food-web-effects" class="level2">
+<h2 class="anchored" data-anchor-id="modelling-food-web-effects">Modelling food web effects</h2>
+<p>We used ecosystem models to trace how increased macroalgae productivity from giant kelp restoration moves through the food web. The model shows productivity flowing from the restored kelp to herbivores like abalone, then up through different predator-prey interactions to boost productivity across many species in the ecosystem.</p>
+<p>The most confident results come from the productivity measurements themselves - based on extensive, long-term datasets comparing giant kelp and Ecklonia across different areas and seasons.</p>
+<p>Then we use those data in the model to predict the effects of meeting Australia’s restoration targets for giant kelp (restore 30% of degraded habitats).</p>
+<p>The model predicted improvements of fishery catch of 1-7%, depending on the species. This is a substantial improvement given the scale of the model is the entirety of Tasmania and the area of kelp restoration is relatively small compared to that total area.</p>
+<p><img src="https://www.seascapemodels.org/posts/2025-12-08-kelp-restoration-fisheries/2023-11-13_kelp-forest.jpg" class="img-fluid"></p>
+<p><strong>Figure</strong> Giant kelp breaking up in later summer - its death and decomposition provides food to microbes that feeds energy into the local foodweb.</p>
+</section>
+<section id="what-the-models-dont-capture" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-models-dont-capture">What the models don’t capture</h2>
+<p>Our model looked across all of Tasmania’s waters. Future improvements could study local changes in fishery productivity near to kelp forests. These are likely to be more substantial and could benefit fishers the most in those areas.</p>
+<p>The models focused on overall ecosystem productivity gains, but giant kelp provides additional benefits not captured in these predictions. Restoring dense surface canopies creates more habitat and refuge for juvenile fish, which could lead to even higher increases in fish productivity than the models predict.</p>
+</section>
+<section id="from-global-goals-to-local-action" class="level2">
+<h2 class="anchored" data-anchor-id="from-global-goals-to-local-action">From global goals to local action</h2>
+<p>Our study demonstrates how global restoration targets can be translated into specific, outcome-based goals relevant to local communities. In Tasmania, the positive impacts of giant kelp restoration on kelp forest health and fisheries productivity align well with local values and needs.</p>
+<p>Models are particularly valuable at this stage of kelp restoration because we’re still in the early phases of upscaling. In the absence of previous large-scale examples to learn from, models help set realistic expectations and make the case for restoration investments. Models like this help show how restoration has relevance to communities. Community groups are more likely to support restoration when expected outcomes are clear and relevant to their specific needs.</p>
+<p>Giant kelp is worth restoring not just because it’s something we’ve lost, but because of the ecosystem-wide benefits it provides.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>research</category>
+  <guid>https://www.seascapemodels.org/posts/2025-12-08-kelp-restoration-fisheries/</guid>
+  <pubDate>Sun, 07 Dec 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
   <title>New report looks at how we allocate monitoring of fishing activities</title>
   <link>https://www.seascapemodels.org/posts/2025-12-02-how-to-allocate-fisheries-monitoring/</link>
   <description><![CDATA[ 
@@ -2879,46 +2926,6 @@ system(copilot_cmd)
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-09-18-ai-r-workshops/</guid>
   <pubDate>Wed, 17 Sep 2025 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>AI generated scicomm games</title>
-  <link>https://www.seascapemodels.org/posts/2025-09-17-ai-generated-scicomm-games/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>This week I ran a talk and workshop for the Tasmanian Student Science Communicators Network.</p>
-<p>The workshop was about creating gamifying learning. So I thought it would be fun to design some games then create them live as web apps using an AI agent.</p>
-<p>The particpants designed games on a piece of paper. The aim was to communicate different concepts about sustainable management of fisheries through a game.</p>
-<p>I then took the images and a simple description of game play and plugged it into the Roo Code AI agent.</p>
-<p>Here’s the results, they are simple html and javascript based games.</p>
-<p>Thanks to the workshop participants for generously contributing their ideas.</p>
-<p>Here’s the links to the games and the game rules (which incidentally are also the prompts I used)</p>
-<section id="fish-in-a-pond" class="level2">
-<h2 class="anchored" data-anchor-id="fish-in-a-pond"><a href="https://www.seascapemodels.org/data/tassie-scicomm-games/fish-in-a-pond/">Fish in a pond</a></h2>
-<p>In this game the player is working to replenish the fish population and racing a truck that is taking fish out of the ocean.</p>
-<p>The ocean is the top bucket.</p>
-<p>The bottom bucket is like candy candy crush. The player is trying to match four symbols. Every time they match a symbol new fish are born and top-up the fish in the ocean.</p>
-<p>The game ends if the the ocean runs out of fish. If the player gets the fish over 80% full then the truck speeds up.</p>
-</section>
-<section id="fish-crush" class="level2">
-<h2 class="anchored" data-anchor-id="fish-crush"><a href="https://www.seascapemodels.org/data/tassie-scicomm-games/fish-crush/">Fish crush</a></h2>
-<p>In this game the player is to make a large amount of money. They are working to look after fish in a pond, then they catch the fish to make money.</p>
-<p>They are aiming to keep the pond at about 50% full and have a profitable fishery.</p>
-<p>They have to look after the environment around the pond so the fish are healthy. This means preventing pollution and making sure the water is good.</p>
-<p>They can catch fish to make money. If they catch too many fish the population collapses.</p>
-<p>Winning the game should require looking after the environment around the pond. It should also require catching fish at a slow steady rate, not too much, not too litte.</p>
-
-
-</section>
-
- ]]></description>
-  <category>genAI</category>
-  <category>research-skills</category>
-  <guid>https://www.seascapemodels.org/posts/2025-09-17-ai-generated-scicomm-games/</guid>
-  <pubDate>Tue, 16 Sep 2025 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
