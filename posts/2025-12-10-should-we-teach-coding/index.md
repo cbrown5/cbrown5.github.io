@@ -1,5 +1,5 @@
 ---
-date: '11/02/2025'
+date: '12/10/2025'
 title: Should we still teach R coding in this age of genAI?
 categories: [rstats, genAI]
 published: true
