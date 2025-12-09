@@ -46,6 +46,42 @@
   <pubDate>Tue, 09 Dec 2025 13:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>How AI coding assistants can bias your coding and analysis</title>
+  <link>https://www.seascapemodels.org/posts/2025-12-09-biasing-when-using-AI-coding-assistants/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I’m a frequent user of AI coding assistants to speed up my coding. I’m mostly using Github Copilot and the Roo Code agentic extension for VSCode, with various large language models (LLMs).</p>
+<p>We hear a lot about biases and LLMs, which got me wondering, what biases might the use of coding assistants induce in my coding and data analysis?</p>
+<p>Biases are a concern in other areas of applications of LLMs to the workplace. For instance, LLMs are known to be sexist, biased towards recommending science articles from certain parts of the world and even biased towards <a href="https://futurism.com/grok-looks-up-what-elon-musk-thinks">Elon Musk’s opinions</a>.</p>
+<p>I had thought that using LLMs mainly to assist with R code would mean that I’m reasonably immune to issues with biases in LLMs.</p>
+<p>But after a recent experience in Python I realized there are subtle types of biases in LLMs that could have a big impact on the quality of an analysis.</p>
+<p>I had considered that LLMs might recommend certain types of statistical tests more frequently than others, perhaps biasing me to the dominant statistical methodologies (like they seem to more commonly recommend frequentist over Bayesian generalized linear models).</p>
+<p>But I wasn’t concerned about that. I have a pretty broad view of stats in my field, and I usually don’t use LLMs for recommending new methods. I look to the scientific literature for that advice.</p>
+<p>LLMs might have their own particular ways of implementing code, but the end result of a given statistical test, is the same, it doesn’t matter much how you get there.</p>
+<p>Using Python changed my view on this. I’m a lifelong R coder, not a Python coder. However, I wanted to learn some deep learning analyses, for which I needed Python. So I set about using my coding assistant to write me a tutorial on learn deep learning in Python.</p>
+<p>The way LLM coding assistants can bias your code is that most are set-up to be sycophantic. So they amplify your own biases by affirming that whatever you have is good.</p>
+<p>This became apparent when me, the R coder, was bringing my R informed ideas for writing code to Python. The LLM led me down paths for implementing code that make sense in R land, but which are not best practice for implementation in Python.</p>
+<p>I realized this once I started referring to real Python tutorials.</p>
+<p>More generally, LLMs tend to be affirmative of your requests. For a data analysis workflow this means they will tend to amplify whatever biases you start out with.</p>
+<p>Errors that cause code to fail are ok, because they are easy to detect. What is more concerning is if the LLM amplify subtle mistakes in choice of statistics.</p>
+<p>I have a <a href="https://ecoevorxiv.org/repository/view/9493/">pre-print on using LLMs and AI coding assistants for ecological data analysis</a>. One of our recommendations is to split your workflow into parts.</p>
+<p>In particular, it helps to choose the analysis before you plan how the code will be written (and what software or packages you will use). If you conflate these two different decisions you are more likely to make mistakes that are amplified. Best to choose your analysis using AI but also by reading the literature. Then get the AI to help you implement that.</p>
+<p>The other problem is that you finish your analysis and the LLM has led you to think it is excellent. You submit that analysis for peer-review and the reviewers think differently.</p>
+<p>So its a good idea to check your work against the discipline norms, and ideally get expert colleagues to take a look too. Take everything an LLM says with a grain of salt, especially if it agrees with you.</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-12-09-biasing-when-using-AI-coding-assistants/</guid>
+  <pubDate>Mon, 08 Dec 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Giant kelp restoration could boost fisheries productivity in Tasmania</title>
   <link>https://www.seascapemodels.org/posts/2025-12-08-kelp-restoration-fisheries/</link>
   <description><![CDATA[ 
@@ -70,8 +106,7 @@
 <p>The most confident results come from the productivity measurements themselves - based on extensive, long-term datasets comparing giant kelp and Ecklonia across different areas and seasons.</p>
 <p>Then we use those data in the model to predict the effects of meeting Australia’s restoration targets for giant kelp (restore 30% of degraded habitats).</p>
 <p>The model predicted improvements of fishery catch of 1-7%, depending on the species. This is a substantial improvement given the scale of the model is the entirety of Tasmania and the area of kelp restoration is relatively small compared to that total area.</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-12-08-kelp-restoration-fisheries/2023-11-13_kelp-forest.jpg" class="img-fluid"></p>
-<p><strong>Figure</strong> Giant kelp breaking up in later summer - its death and decomposition provides food to microbes that feeds energy into the local foodweb.</p>
+<p><img src="https://www.seascapemodels.org/posts/2025-12-08-kelp-restoration-fisheries/2023-11-13_kelp-forest.jpg" class="img-fluid"> <strong>Figure</strong> Giant kelp breaking up in later summer - its death and decomposition provides food to microbes that feeds energy into the local foodweb.</p>
 </section>
 <section id="what-the-models-dont-capture" class="level2">
 <h2 class="anchored" data-anchor-id="what-the-models-dont-capture">What the models don’t capture</h2>
@@ -2888,44 +2923,6 @@ system(copilot_cmd)
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2025-10-02-running-an-effective-workshop/</guid>
   <pubDate>Wed, 01 Oct 2025 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Generative AI and R workshops in Hobart Australia</title>
-  <link>https://www.seascapemodels.org/posts/2025-09-18-ai-r-workshops/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>In person Hobart Australia 11th and 12th November 2025</p>
-<p><a href="https://www.seascapemodels.org/CMS-R-workshop/">Course page and further details</a></p>
-<section id="registration" class="level2">
-<h2 class="anchored" data-anchor-id="registration"><a href="https://payments.utas.edu.au/Register/booking?UDS_ACTION=S1I&amp;UDS_ACTION_DATA=bFAgA0dNWAFOKFdyNEJDBShXQg1KKE0bKUcyXAE1VDR7NVtc">Registration</a></h2>
-<p>The R program is a powerful tool for data analysis, but has a steep learning curve. Join us for a 2-day workshop that will accelerate your R skills. Our modern approach to teaching leverages AI to help you create analyses with natural language, and code with fewer errors, but higher accuracy.</p>
-<p>Presenter: A/Prof Chris J Brown c.j.brown@utas.edu.au Guest presenter: Professor Anthony Richardson, The University of Queensland and CSIRO Environment</p>
-<p>Cost per day: $200 students, $300 professionals. Waiver available for indigenous scholars. Register for 1 or 2 days.</p>
-</section>
-<section id="day-1-11th-nov-quality-data-analysis-with-ai-coding-assistants" class="level2">
-<h2 class="anchored" data-anchor-id="day-1-11th-nov-quality-data-analysis-with-ai-coding-assistants">Day 1 (11th Nov): Quality data analysis with AI coding assistants</h2>
-<p>Suitable for R or Python users**. We’ll show you how to use large language models (like chatGPT) directly in your R or Python coding environment. You can accelerate your coding and get personalised help on your research. But there are risks, AI makes mistakes. We’ve developed guidelines to help you get the most out of AI for coding. We’ll also discuss the ethical implications of using AI to assist with research and whether ‘vibe coding’ is appropriate for scientists. This workshop is suitable for people with limited coding experience (e.g.&nbsp;can read data into Rstudio and make plots) as well as experts who want to know more about AI assistants.</p>
-</section>
-<section id="day-2-12th-nov-generalized-linear-models-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="day-2-12th-nov-generalized-linear-models-in-r">Day 2 (12th Nov): Generalized linear models (in R**)</h2>
-<p>GLMs are a powerful tool for statistical analysis and prediction. We’ll teach the basics of the linear model and how it can be extended to all sorts of data in the generalized linear model. We’ll cover model verification, estimating effect size and significance and making predictions. The beauty of GLMs is that you only need some basic principles and you are ready to tackle many types of data, not like the old days when you had to know a different test for each new type of data.</p>
-<ul>
-<li>There may be additional subscription costs for AI software of up to USD20. Students can get free licenses. I will email instructions for getting software licenses prior to the workshops.</li>
-</ul>
-<p>**Note these workshops are not suitable for coding beginners. If you’ve never used R or Python before we suggest you take an introductory workshop. IMAS runs one, feel free to contact us for more info on that. As a rule of thumb, if you have Rstudio, know how to read data into R and make some plots you are ready for these workshops.</p>
-
-
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-09-18-ai-r-workshops/</guid>
-  <pubDate>Wed, 17 Sep 2025 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

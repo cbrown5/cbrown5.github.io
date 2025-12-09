@@ -46,6 +46,42 @@
   <pubDate>Tue, 09 Dec 2025 13:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>How AI coding assistants can bias your coding and analysis</title>
+  <link>https://www.seascapemodels.org/posts/2025-12-09-biasing-when-using-AI-coding-assistants/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I’m a frequent user of AI coding assistants to speed up my coding. I’m mostly using Github Copilot and the Roo Code agentic extension for VSCode, with various large language models (LLMs).</p>
+<p>We hear a lot about biases and LLMs, which got me wondering, what biases might the use of coding assistants induce in my coding and data analysis?</p>
+<p>Biases are a concern in other areas of applications of LLMs to the workplace. For instance, LLMs are known to be sexist, biased towards recommending science articles from certain parts of the world and even biased towards <a href="https://futurism.com/grok-looks-up-what-elon-musk-thinks">Elon Musk’s opinions</a>.</p>
+<p>I had thought that using LLMs mainly to assist with R code would mean that I’m reasonably immune to issues with biases in LLMs.</p>
+<p>But after a recent experience in Python I realized there are subtle types of biases in LLMs that could have a big impact on the quality of an analysis.</p>
+<p>I had considered that LLMs might recommend certain types of statistical tests more frequently than others, perhaps biasing me to the dominant statistical methodologies (like they seem to more commonly recommend frequentist over Bayesian generalized linear models).</p>
+<p>But I wasn’t concerned about that. I have a pretty broad view of stats in my field, and I usually don’t use LLMs for recommending new methods. I look to the scientific literature for that advice.</p>
+<p>LLMs might have their own particular ways of implementing code, but the end result of a given statistical test, is the same, it doesn’t matter much how you get there.</p>
+<p>Using Python changed my view on this. I’m a lifelong R coder, not a Python coder. However, I wanted to learn some deep learning analyses, for which I needed Python. So I set about using my coding assistant to write me a tutorial on learn deep learning in Python.</p>
+<p>The way LLM coding assistants can bias your code is that most are set-up to be sycophantic. So they amplify your own biases by affirming that whatever you have is good.</p>
+<p>This became apparent when me, the R coder, was bringing my R informed ideas for writing code to Python. The LLM led me down paths for implementing code that make sense in R land, but which are not best practice for implementation in Python.</p>
+<p>I realized this once I started referring to real Python tutorials.</p>
+<p>More generally, LLMs tend to be affirmative of your requests. For a data analysis workflow this means they will tend to amplify whatever biases you start out with.</p>
+<p>Errors that cause code to fail are ok, because they are easy to detect. What is more concerning is if the LLM amplify subtle mistakes in choice of statistics.</p>
+<p>I have a <a href="https://ecoevorxiv.org/repository/view/9493/">pre-print on using LLMs and AI coding assistants for ecological data analysis</a>. One of our recommendations is to split your workflow into parts.</p>
+<p>In particular, it helps to choose the analysis before you plan how the code will be written (and what software or packages you will use). If you conflate these two different decisions you are more likely to make mistakes that are amplified. Best to choose your analysis using AI but also by reading the literature. Then get the AI to help you implement that.</p>
+<p>The other problem is that you finish your analysis and the LLM has led you to think it is excellent. You submit that analysis for peer-review and the reviewers think differently.</p>
+<p>So its a good idea to check your work against the discipline norms, and ideally get expert colleagues to take a look too. Take everything an LLM says with a grain of salt, especially if it agrees with you.</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-12-09-biasing-when-using-AI-coding-assistants/</guid>
+  <pubDate>Mon, 08 Dec 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Reasoning and infographics with Nano Banana</title>
   <link>https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/</link>
   <description><![CDATA[ 
@@ -2474,214 +2510,6 @@ chat$register_tool(mytool)</code></pre>
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-03-17-LLMs-in-R-tool-use/</guid>
   <pubDate>Sun, 16 Mar 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>The ellmer package for using LLMs with R is a game changer for scientists</title>
-  <link>https://www.seascapemodels.org/posts/2025-03-15-LMs-in-R-with-ellmer/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="why-is-ellmer-a-game-changer-for-scientists" class="level2">
-<h2 class="anchored" data-anchor-id="why-is-ellmer-a-game-changer-for-scientists">Why is ellmer a game changer for scientists?</h2>
-<p>In this tutorial we’ll look at how we can access LLM agents through API calls. We’ll use this skill for created structued data from documents.</p>
-<p>We’ll use the R <a href="https://ellmer.tidyverse.org/index.html"><code>ellmer</code> package</a> (launched 25th Feb 2025).</p>
-<p>There are a few package options <a href="https://www.seascapemodels.org/rstats/2025/02/12/LLMs-for-literature-reviews.html">(I was also using <code>tidychatmodels</code> before)</a>.</p>
-<p><code>ellmer</code> is a game changer for scientists using R: It supports tool use and has functions for structured data.</p>
-<p>Before <code>ellmer</code> you had to know other languages and data-structures, like JSON. Ellmer means that many powerful LLM uses are now easily accessible to R users.</p>
-<p>Tool use means the LLM can run commands on your computer to retrieve information. You know how LLMs can be bad at simple math like 2+2 or today’s date? Well, with a tool, the LLM would know to use R to calculate this to return the correct answer. Tools can also connect to web APIs, means they can also be used to retrieve information or databases from the web.</p>
-<p>The functions that assist you in creating structured data from text are also important.</p>
-<p>For instance, by combining tool use with structured data extraction, <code>ellmer</code> could be used to synthesize literature for a quantitative review. We’ll cover that here.</p>
-<p>Another application would be to interpret the meta-data from an online database, download the data, write and run the analysis and then write up the findings.</p>
-<p>Because you are running the LLM from R it means you can batch process prompts, such as asking it to summarize many documents.</p>
-<p>They are a couple of obvious uses. I’m sure people will soon come up with many more.</p>
-<p>Let’s see how to use ellmer to extract structured data from peer reviewed studies.</p>
-<section id="setup-authorisation" class="level3">
-<h3 class="anchored" data-anchor-id="setup-authorisation">Setup authorisation</h3>
-<p>First, you need to get an API key from the provider. Login to the provider’s website and follow the instructions.</p>
-<p>Then, you need to add the key to your <code>.Renviron</code> file:</p>
-<p><code>usethis::edit_r_environ()</code></p>
-<p>Then type in your key like this:</p>
-<p><code>ANTHROPIC_API_KEY="xxxxxx"</code></p>
-<p>Then restart R. <code>ellmer</code> will automatically find your key so long as you use the recommended envirment variable names. See <code>?ellmer::chat_claude</code> (or <code>chat_xxx</code> where xxx is whatever provider you are using).</p>
-</section>
-<section id="interactive-chat" class="level3">
-<h3 class="anchored" data-anchor-id="interactive-chat">Interactive chat</h3>
-<p>Posit recommends this is useful for experimenting with new prompts. It can also be better than the web interfaces you might be used to. This is because, unlike on the web interfaces, you can control the system message.</p>
-<p>Most models have three types of messages:</p>
-<p><strong>system</strong>, which sets the context, role and is given higher priority than the user message</p>
-<p><strong>user</strong>, which is your conversation or request</p>
-<p><strong>assistant</strong>, which is the model’s response</p>
-<p>Many prompt engineer pros have found better results if you put as much of your request in the system as possible. So I recommend you play around with this yourself.</p>
-<pre><code>library(ellmer)
-
-chat &lt;- chat_claude(
-  system_prompt = "You are a friendly but terse assistant.",
-  model = "claude-3-5-haiku-20241022", 
-  max_tokens = 1000
-)
-
-live_console(chat)
-live_browser(chat)</code></pre>
-<p>Try this but experiment with a new system prompts. Here’s an example, try your own.</p>
-<pre><code>chat &lt;- chat_claude(
-  system_prompt = "You are a mystic with expertise in R programming. You answer questions indirectly in riddles and rhymes.",
-  model = "claude-3-5-haiku-20241022", 
-  max_tokens = 1000
-)
-
-live_console(chat)</code></pre>
-<blockquote class="blockquote">
-<p>User: how can I do a glm in R?</p>
-</blockquote>
-<pre><code>*Swirling mystical orb glows with R code*
-
-Through statistics' mist, a model takes flight,
-glm() is the spell to cast in the night,
-With family bound, be it gaussian or more,
-And formula written as y ~ x4.
-...</code></pre>
-</section>
-<section id="programmatically-generate-content" class="level3">
-<h3 class="anchored" data-anchor-id="programmatically-generate-content">Programmatically generate content</h3>
-<p>So once you’ve tested your prompt you can run it like this:</p>
-<pre><code>chat &lt;- chat_claude(
-  system_prompt = "You are a surfy dude who likes waves, tubes and statistics.",
-  model = "claude-3-5-haiku-20241022", 
-  max_tokens = 1000
-)
-
-chat$chat("How can I do a glm in R?")</code></pre>
-<p>‘… Hang ten with your statistical surfboard! 🏄‍♂️📊’</p>
-<p>That was cheesy…</p>
-</section>
-</section>
-<section id="example-clean-pdfs-text-and-summarize" class="level2">
-<h2 class="anchored" data-anchor-id="example-clean-pdfs-text-and-summarize">Example: Clean pdfs text and summarize</h2>
-<p>Now let’s see if we can use <code>ellmer</code> to clean up some text from a pdf and summarize it. <code>ellmer</code> has some handy functions for processing pdfs to text, so they can then be fed into prompts.</p>
-<p>I’m going to attempt to summarize my <a href="https://conbio.onlinelibrary.wiley.com/doi/10.1111/conl.13056">recent paper on turtle fishing</a>.</p>
-<pre><code>x &lt;- content_pdf_url("https://conbio.onlinelibrary.wiley.com/doi/epdf/10.1111/conl.13056")</code></pre>
-<p>This fails with a 403 error. This means the server is blocking the request, it probably guesses (correctly) that I’m calling the pdf programmatically: it thinks I’m a bot (which this tutorial kind of is creating).</p>
-<p>We can also try with a file on our hard drive, we just have to manually download the pdf.</p>
-<pre><code>mypdf &lt;- content_pdf_file("pdf-examples/Brown_etal2024 national scale turtle mortality.pdf")</code></pre>
-<p>That works, now let’s use it within a chat. First set-up our chat:</p>
-<pre><code>chat &lt;- chat_claude(
-  system_prompt = "You are a research assistant who specializes in extracting structured data from scientific papers.",
-  model = "claude-3-5-haiku-20241022", 
-  max_tokens = 1000
-)
-</code></pre>
-<p>Now, we can use ellmer’s functions for specifying structured data. Many LLMs can be used to generate data in the JSON format (they were specifically trained with that in mind).</p>
-<p><code>ellmer</code> handles the conversion from JSON to R objects that are easier for us R users to understand.</p>
-<p>You use the <code>type_object</code> then <code>type_number</code>, <code>type_string</code> etc.. to specify the types of data. <a href="https://ellmer.tidyverse.org/articles/structured-data.html">Read more in the ellmer package vignettes</a></p>
-<pre><code>paper_stats &lt;- type_object(
-  sample_size = type_number("Sample size of the study"),
-  year_of_study = type_number("Year data was collected"),
-  method = type_string("Summary of statistical method, one paragraph max")
-)
-</code></pre>
-<p>Finally, we send the request for a summary to the provider:</p>
-<pre><code>turtle_study &lt;- chat$extract_data(mypdf, type = paper_stats)</code></pre>
-<p>The <code>turtle_study</code> object will contain the structured data from the pdf. I <em>think</em> (the ellmer documentation is a bit sparse on implementation details) ellmer is converting a JSON that comes from the LLM to a friendly R list.</p>
-<pre><code>class(turtle_study)
-#list</code></pre>
-<p>And:</p>
-<pre><code>turtle_study$sample_size
-#11935
-turtle_study$year_of_study
-#2018
-turtle_study$method
-#The study estimated national-scale turtle catches for two fisheries in the Solomon Islands 
-#- a small-scale reef fishery and a tuna longline fishery - using community surveys and 
-#electronic monitoring. The researchers used nonparametric bootstrapping to scale up 
-#catch data and calculate national-level estimates with confidence intervals.</code></pre>
-<p>It works, but like any structured lit review you need to be careful what questions you ask. Even more so with an LLM as you are not reading the paper and understanding the context.</p>
-<p>In this case the sample size its given us is the estimated number of turtles caught. This was a model output, not a sample size. In fact this paper has several methods with different sample sizes. So some work would be needed to fine-tune the prompt, especially if you are batch processing many papers.</p>
-<p>You should also experiment with models, I used Claude haiku because its cheap, but Claude sonnet would probably be more accurate.</p>
-</section>
-<section id="batch-processing-prompts" class="level2">
-<h2 class="anchored" data-anchor-id="batch-processing-prompts">Batch processing prompts</h2>
-<p>Let’s try this with a batch of papers (here I’ll just use two). For this example I’ll just use two abstracts, which I’ve obtained as plain text. The first is from <a href="https://zslpublications.onlinelibrary.wiley.com/doi/10.1111/j.1469-1795.2010.00413.x">another study on turtle catch in Madagascar</a>. The second is from my study above.</p>
-<p>What we’ll do is create a function that reads in the text, then passes it to the LLM, using the request for structured data from above.</p>
-<pre><code>  process_abstract &lt;- function(file_path, chat) {
-  # Read in the text file
-  abstract_text &lt;- readLines(file_path, warn = FALSE)
-  
-  # Extract data from the abstract
-  result &lt;- chat$extract_data(abstract_text, type = paper_stats)
-  
-  return(result)
-}</code></pre>
-<p>Now set-up our chat and data request</p>
-<pre><code># Create chat object if not already created
-chat &lt;- chat_claude(
-      system_prompt = "You are a research assistant who specializes in extracting structured data from scientific papers.",
-      model = "claude-3-5-haiku-20241022", 
-      max_tokens = 1000
-)</code></pre>
-<p>There’s a risk that the LLM will hallucinate data if it can’t find an answer. To try to prevent this we can set an option , required = FALSE. Then the LLM should return ‘NULL’ if it can’t find the data.</p>
-<pre><code># Define the structured data format
-paper_stats &lt;- type_object(
-    sample_size = type_number("Number of surveys conducted to estimate turtle catch", required = FALSE),
-    turtles_caught = type_number("Estimate for number of turtles caught", required = FALSE),
-    year_of_study = type_number("Year data was collected", required = FALSE),
-    region = type_string("Country or geographic region of the study", required = FALSE)
-  )</code></pre>
-<p>Now we can batch process the abstracts and get the structured data</p>
-<pre><code>
-abstract_files &lt;- list.files(path = "pdf-examples", pattern = "\\.txt$", full.names = TRUE)
-results &lt;- lapply(abstract_files, function(file) process_abstract(file, chat))
-names(results) &lt;- basename(abstract_files)
-
-# Display results
-print(results)</code></pre>
-<p>In my first take without the required = FALSE I got some fake results. It hallucinated that the Humber study was conducted in 2023 (it was published in 2010!) and that there were 2 villages surveyed in my study. The problem was that you can’t get that data from the abstracts. So the model is hallucinating a response.</p>
-<p>Unfortunately, with required = FALSE it still hallucinated answers. I then tried Claude sonnet (a more powerful reasoning model) and it correctly put NULL for my study’s sample size, but still got the year wrong for the Humber study.</p>
-<p>I think this could work, but some work on the prompts would be needed.</p>
-</section>
-<section id="reflections" class="level2">
-<h2 class="anchored" data-anchor-id="reflections">Reflections</h2>
-<p>The ellmer package solves some of the challenges <a href="https://www.seascapemodels.org/rstats/2025/02/12/LLMs-for-literature-reviews.html">I outlined in my last blog on LLM access</a> from R. But others are deeper conceptual challengs and remain. I’ll repeat those here</p>
-<section id="cost-uncertainty" class="level3">
-<h3 class="anchored" data-anchor-id="cost-uncertainty">Cost uncertainty</h3>
-<p>This should be cheap. It cost &lt;1c to make this post with all the testing. So in theory you could do 100s of methods sections for &lt;100USD. However, if you are testing back and forwards a lot or using full papers the cost could add up. It will be hard to estimate this until people get more experience.</p>
-</section>
-<section id="obtaining-the-papers-and-dealing-with-unstructued-text-in-pdfs-or-html" class="level3">
-<h3 class="anchored" data-anchor-id="obtaining-the-papers-and-dealing-with-unstructued-text-in-pdfs-or-html">Obtaining the papers and dealing with unstructued text in PDFs or HTML</h3>
-<p>A big challenge will be getting the text into a format that the LLM can use. Then there are issues like obtaining the text. Downloading pdfs is time consuming and data intensive. Trying to read text data from webpages can also be hard, due to paywalls and rate limits (you might get blocked for making reqeat requests).</p>
-<p>For instance, <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/brv.12344?casa_token=LVnFzoFBBU8AAAAA%3AcsyopYDWDBRZN7y2JL7eHYxzqayxu2GvKB-7gdEYkdeZSi5p5o1oXTwj49FqwBJz-IpPS6wxJ_SX0h2f">in a past study we did where we did simple ‘bag of words analysis’</a> we either downloaded the pdfs manually, or set timers to delay web hits and avoid getting blocked.</p>
-<p>HTML format would be ideal, because the tags mean the sections of the paper, and the figures already semi-structured.</p>
-<p>The ellmer pdf utility function seems to work ok for getting text from pdfs. I’m guessing it could be improved though, e.g.&nbsp;to remove wastefull (=$) text like page headers.</p>
-</section>
-<section id="prompting" class="level3">
-<h3 class="anchored" data-anchor-id="prompting">Prompting</h3>
-<p>Need to experiment with this to get it right. It might also be good to repeat prompt the same text to triangulate accurate results.</p>
-</section>
-<section id="validation" class="level3">
-<h3 class="anchored" data-anchor-id="validation">Validation</h3>
-<p>You’ll definitely want to manually check the output and report accuracy statistics in your study. So maybe your review has 1000 papers, you’ll want to manually check 100 of them to see how accurate the LLM was.</p>
-</section>
-<section id="youll-still-need-to-read-a-lot-of-papers-to-write-a-good-lit-review" class="level3">
-<h3 class="anchored" data-anchor-id="youll-still-need-to-read-a-lot-of-papers-to-write-a-good-lit-review">You’ll still need to read a lot of papers to write a good lit review</h3>
-<p>A lit review is more than the systematic data. I still believe you need to read a lot of papers in order to understand the literature and make a useful synthesis. If you just use AI you’re vulnerable to the <a href="https://www.nature.com/articles/s41586-024-07146-0">‘illusion of understanding’</a>.</p>
-</section>
-<section id="conclusion" class="level3">
-<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
-<p>This tool will be best for well defined tasks and consistently written papers. For instance, an ideal use case would be reviewing 500 ocean acidification papers that all used similar experimental designs and terminology. You’ll then be able to get consistent answers to prompts about sample size etc…</p>
-<p>Another good use case would be to extract model types from species distribution model papers.</p>
-<p>Harder tasks will be where the papers are from diverse disciplines, or use inconsistent terminology, or methods. My study was a good example of that, there were about 5 different sample sizes reported. So in this example we’d need first to think clearly about what sample size you wanted to extract before writing the prompt.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-03-15-LMs-in-R-with-ellmer/</guid>
-  <pubDate>Fri, 14 Mar 2025 13:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
