@@ -67,6 +67,8 @@ A mangrove that is healthy traps sediment in its root structures. This sediment 
 
 ![](mangrove-feedback-loop.jpeg)
 
+Image: Chris Brown with Gemini Pro 3. 
+
 But if sediment supplies are cut-off, such as by building a dam upstream, the mangrove can no longer capture sediment to keep up with sea-level-rise. Eventually, the mangrove will be drowned and disappear. 
 
 ```{mermaid}
