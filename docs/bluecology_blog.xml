@@ -10,7 +10,111 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Tue, 09 Dec 2025 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 15 Dec 2025 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>Rethinking ecological predictions and uncertainty</title>
+  <link>https://www.seascapemodels.org/posts/2025-12-16-rethinking-ecological-predictions-and-uncertainty/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Ecological modelling is a science geared towards predicting change in ecosystems. But I think for many ecosystems we’ve been going about making predictions the wrong way. We are overlooking how slight changes in feedbacks within ecosystems can lead to runaway outcomes far beyond what we anticipated.</p>
+<p>Consequently, we have too much confidence in our ability to build models that predict well.</p>
+<p>An alternative way to predict change is to acknowledge and then try to represent high levels of uncertainty in ecological feedback processes. <a href="https://doi.org/10.1111/gcb.70468">Qualitative models are one way to do this</a>.</p>
+<section id="types-of-ecological-models" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-ecological-models">Types of ecological models</h2>
+<p>Increasingly sophisticated models of ecological mechanisms are being used to make predictions ecological change and support challenging management problems like climate change.</p>
+<p>One example are the global forest models that are used to predict carbon sequestration from the atmosphere by the world’s forests for the next 50-100 years. Predicting carbon sequestration is essential as it is one part of estimating future atmospheric carbon dioxide, an essential component of the global climate models that predict how much our world will warm.</p>
+<p>Statistical models and machine learning are also key areas of innovation. These models tend to focus on describing patterns, over mechanistic detail of the model formulation (though there are exceptions of course). Much effort is invested in developing models that make use of data to capture multiple sources of uncertainty and describe non-linear relationships.</p>
+<p>A leading example are the species distribution models that predict where species occur in space. This information is essential for a range of applications, including protected area design, threatened species management and managing species responses to climate change.</p>
+<p>What the statistical models that focus on patterns and the mechanistic models share in common is a focus on quantitative predictions. That is, making precise predictions of how much - how much forest, how much carbon, probability of species occurrence and how many species.</p>
+</section>
+<section id="what-were-missing" class="level2">
+<h2 class="anchored" data-anchor-id="what-were-missing">What we’re missing</h2>
+<p>The focus on quantitative predictions puts a lot of faith in our ability to build useful models. For mechanistic models the faith is that we have enough knowledge to know which equations are important. For the statistical and machine learning models the faith is that the data can reveal the important insights.</p>
+<p>But what if uncertainty about ecological futures is much greater than we ecologists typically acknowledge?</p>
+<p>One example is that marine scientists were totally blindsided by <a href="https://theconversation.com/like-an-underwater-bushfire-sas-marine-algal-bloom-is-still-killing-almost-everything-in-its-path-257885">this unprecedented algal bloom</a> that caused people to get sick and killed wildlife along 100s kilometres of coastline. Scientists still don’t know what triggered it.</p>
+</section>
+<section id="the-importance-of-feedback-processes" class="level2">
+<h2 class="anchored" data-anchor-id="the-importance-of-feedback-processes">The importance of feedback processes</h2>
+<p>Run-away feedback processes often feature in unanticapted ecological change. The algal bloom initiated a run-away feedback process kind of like a zombie plague. It was killing animals and plant life, the decomposition then created more nutrients that further fueled the bloom.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A[Algal bloom] --&gt; B[Death of animals and plants]
+  B --&gt; C[Decomposition]
+  C --&gt; D[Increased nutrients]
+  D --&gt; A
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Slight changes in these types of feedbacks can result in drastically divergent futures. Representing different plausible feedbacks and different weights for those feedbacks therefore is one way to get at estimating the range of outcomes for the future.</p>
+</section>
+<section id="qualitative-loop-models" class="level2">
+<h2 class="anchored" data-anchor-id="qualitative-loop-models">Qualitative loop models</h2>
+<p>Loop models are models of feedbacks interconnected systems. They have also been called network models.</p>
+<p>Loop models have nodes, which can represent physical or ecological entities such as nutrient concentration, species population size or forest area, and connections, which represent the feedbacks among nodes. Critically, they <em>qualitative</em> predictions of change in the nodes in response to change in other nodes. That is, if one node was to increase will the other nodes increase, stay the same or decrease?</p>
+<p>Qualitative models can be <a href="https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/12-0207.1?casa_token=nr7e7AeLDawAAAAA%3AAoJqWz-qsoV8ywDuzvVWl_hhbooGJJtHdF0YWTHxNboQnW4yFYQCrjQ7UhppD1Hf5Ts2ICvaRfHdipNa">extended to model the probability of a positive or negative change</a>. They do this by simulating different weights for the feedback loops, across a distribution of plausible weights.</p>
+<p>This creates the possibility of exploring how different feedback processes affect the probability of future increases or decreases in an ecosystem.</p>
+</section>
+<section id="application-of-qualitative-models-to-a-high-uncertainty-situation" class="level2">
+<h2 class="anchored" data-anchor-id="application-of-qualitative-models-to-a-high-uncertainty-situation">Application of qualitative models to a high uncertainty situation</h2>
+<p>Rising seas and coastal development are pushing mangrove forests beyond their historical limits. Predicting how mangroves will respond is much harder when environmental change is unprecedented. In our study, <a href="https://doi.org/10.1111/gcb.70468">Projecting Uncertainty in Ecosystem Persistence Under Climate Change</a>, we aimed to estimate the probability that mangrove forests will persist or decline worldwide.</p>
+<p>Previous global studies predicting mangrove change have used mechanistic models that make precise quantitative predictions. But I think these models are not honest to the amount of uncertainty we have about mangrove forest dynamics. And the mechanistic models have been criticised for not representing important feedbacks between mangroves and the soils and sediment they grow on.</p>
+<p>We used qualitative models to represent feedback processes in mangrove forests.</p>
+<p>A mangrove that is healthy traps sediment in its root structures. This sediment helps it rise-up out of the water slowly over time, which is key to persistence if sea levels are rising.</p>
+<p><img src="https://www.seascapemodels.org/posts/2025-12-16-rethinking-ecological-predictions-and-uncertainty/mangrove-feedback-loop.jpeg" class="img-fluid"></p>
+<p>But if sediment supplies are cut-off, such as by building a dam upstream, the mangrove can no longer capture sediment to keep up with sea-level-rise. Eventually, the mangrove will be drowned and disappear.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A[Healthy mangrove] --&gt; B[Sediment trapping]
+  B --&gt; C[Elevation gain]
+  C --&gt; D[Persistence with sea-level rise]
+  D --&gt; A
+  E[Reduced sediment supply] -.-&gt; |Breaks feedback| B
+  E --&gt; F[Drowning]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>We mapped the loop models to global data on the distribution of mangroves and their threats to make predictions across the world’s mangroves. Those predictions were made under climate scenario modelling so we could account for multiple climate threats.</p>
+<p>Here’s the projections for persistence of mangroves from one of our scenarios:</p>
+<p><img src="https://www.seascapemodels.org/posts/2025-12-16-rethinking-ecological-predictions-and-uncertainty/Buelow_etal2025-graphical-abstract.png" class="img-fluid"></p>
+<p>We didn’t stop at predicting the future, we also made hindcasts. This let us validate the model against observations, to get an idea of how certain the model was.</p>
+<p>For the future predictions, rising seas, storms and reduced sediment from dammed rivers create multiple pressures that led to predicted mangrove loss. In contrast, about 30% of forests were predicted to gain area landward, as they move inland with sea-level rise. However, coastal development often blocks this migration.</p>
+<p>Perhaps most importantly, uncertainty is high. In more than half the mangrove units studied, we couldn’t predict whether forests would persist or decline - the probability was essentially random.</p>
+</section>
+<section id="applications-to-management-and-conservation-of-ecosystems" class="level2">
+<h2 class="anchored" data-anchor-id="applications-to-management-and-conservation-of-ecosystems">Applications to management and conservation of ecosystems</h2>
+<p>Useful predictions don’t have to be accurate. It can be more helpful to know what you don’t know. This means acknowledging the uncertainty in the system you are trying to model.</p>
+<p>We tested conservation scenarios and found encouraging results. With targeted management - sediment addition, barrier removal, and assisted migration - the number of units likely to persist could nearly double.</p>
+<p>Learning where we don’t know enough to make useful predictions is also useful. This isn’t a model failure. It tells us where better data could tip the balance.</p>
+<p>Embracing modelling of feedbacks means embracing uncertainty in ecological futures. Doing so will make our predictions more honest and ultimately more useful for management.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>research</category>
+  <category>modelling</category>
+  <category>coastal-wetlands</category>
+  <guid>https://www.seascapemodels.org/posts/2025-12-16-rethinking-ecological-predictions-and-uncertainty/</guid>
+  <pubDate>Mon, 15 Dec 2025 13:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Should we still teach R coding in this age of genAI?</title>
   <link>https://www.seascapemodels.org/posts/2025-12-10-should-we-teach-coding/</link>
@@ -2875,54 +2979,6 @@ system(copilot_cmd)
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-10-04-running-github-copilot-CLI-agents-from-R/</guid>
   <pubDate>Fri, 03 Oct 2025 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Planning an effective workshop</title>
-  <link>https://www.seascapemodels.org/posts/2025-10-02-running-an-effective-workshop/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>This week in lab meeting we discussed planning a workshop. Here are a few notes of pointers that came up in the discussion.</p>
-<p>Be clear on your goals for the workshop. And communicate those goals to the participants.</p>
-<p>Invite the right people.</p>
-<p>Think about what’s in it for them and communicate that in your invitation but also in follow-up communication. - Interesting places - Networking - Opportunity to collaborate - Opportunity to promote their own work</p>
-<p>Think about what knowledge workshops participants need that they don’t currently have. This is particularly important if your workshop participants come from different disciplines.</p>
-<p>You’ll need to plan to balance the delivery of essential information and the discussion to develop new ideas and obtain information from the group. For instance, what background info that is needed to participate effectively? What can individuals contribute? What synergies do you hope to get out of group discussions? (and making sure those people have the opportunity to talk together in the workshop).</p>
-<section id="roles" class="level2">
-<h2 class="anchored" data-anchor-id="roles">Roles</h2>
-<p>For each workshop you should designate a facilitator and a note keeper. These should be different people. See also <a href="https://www.seascapemodels.org/research/2025/08/21/quick-tips-for-faciltating-meetings.html">our blog on facilitating meetings</a></p>
-<p>Facilitation takes practice and its good to have someone experienced in this role.</p>
-<p>You also need a plan to capture information from the workshop. So make sure you have a note taking system (e.g.&nbsp;online docs, charts on butcher’s paper) and someone who is going to chase those up from the group. Break-out groups are great, but make sure you have a way to capture their ideas.</p>
-</section>
-<section id="icebreakers-and-team-bonding" class="level2">
-<h2 class="anchored" data-anchor-id="icebreakers-and-team-bonding">Icebreakers and team bonding</h2>
-<p>You can send a form in advance asking a few questions about people’s backgrounds, as well as 1 or 2 questions about them as a person. Here’s some ideas - What is your area of research? - What paper or research product are you most proud of? - What are you hoping to get out of this workshop? - What is your favourite sport or hobby?</p>
-<p>Plan an activity or activities to help people bond. One example is showing people a picture of a cloud. Then asking them to draw what they see in the cloud and share that with people nearby. Helps get people engaged in the workshop as well as understand that everyone has a different perspective. There are many different examples of these types of group bonding activities.</p>
-<p>Another is ‘four corners’ or ‘two-sides’. Ask people to sort themselves in the room based on their preferences (keeping it non-political and light hearted). e.g.&nbsp;“Do you like mushrooms?”, “Do you like pineapple on pizza?”, “Are you an experimental, field or modelling scientist?”, …</p>
-</section>
-<section id="workshop-activities" class="level2">
-<h2 class="anchored" data-anchor-id="workshop-activities">Workshop activities</h2>
-<p>Strongly recommend using break-out groups, especially if you have more than 6 people at your workshop. This maximises engagement with the whole group and gives quieter voices a chance to speak up.</p>
-<p>Think about the balance of plenary time (everyone together) and break out groups. A typical structure would be:</p>
-<p>Opening presentation (plenary) Icebreaker (breakouts) Presentation on essential background (plenary) Set a task (plenary) Do the task (breakouts) Report back to the group on task (plenary) ….</p>
-<p>Try to include a mix of different modes of activities to keep people energized and engaged. This can include discussion, working on charts/flow diagrams on butchers paper, online tools, other types of activities that require people to move around like ‘four corners’.</p>
-</section>
-<section id="planning-for-after-the-workshop" class="level2">
-<h2 class="anchored" data-anchor-id="planning-for-after-the-workshop">Planning for after the workshop</h2>
-<p>Make sure you communicate a plan for next steps at the end of the workshop, as well as in follow-up email.</p>
-<p>Being clear on what is happening next, having a plan for next steps. When can participants expect to hear from the organizers? What are the outcomes (a manuscript perhaps)?</p>
-<p>If you are writing a manuscript, then being clear on who will be included as a coauthor and what the requirements for coauthorship will be.</p>
-
-
-</section>
-
- ]]></description>
-  <category>research-skills</category>
-  <guid>https://www.seascapemodels.org/posts/2025-10-02-running-an-effective-workshop/</guid>
-  <pubDate>Wed, 01 Oct 2025 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
