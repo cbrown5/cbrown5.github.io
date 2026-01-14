@@ -1,13 +1,13 @@
 ---
 date: '01/14/2026'
-title: LLMs can't be trusted, but neither can humans
+title: LLMs can't be trusted to do scientific coding accurately, but humans make mistakes too
 categories: [rstats, genAI]
 published: true
 ---
 
 I often hear the comment that LLMs/generative AI (large language models) can't be trusted for research tasks. 
 
-But this is the wrong way to think about LLMs. **Humans also can't be trusted** to do scientific research accurately. That's why we have systems for review. 
+But this is the wrong way to think about LLMs. **Humans also can't be trusted** to do scientific research accurately. They make mistakes. That's why we have systems for review. 
 
 The more important question is: Are LLMs more accurate than humans at completing a given task? 
 

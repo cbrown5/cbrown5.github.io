@@ -12,7 +12,7 @@
 <generator>quarto-1.8.25</generator>
 <lastBuildDate>Tue, 13 Jan 2026 13:00:00 GMT</lastBuildDate>
 <item>
-  <title>LLMs can’t be trusted, but neither can humans</title>
+  <title>LLMs can’t be trusted to do scientific coding accurately, but humans make mistakes too</title>
   <link>https://www.seascapemodels.org/posts/2026-01-14-LLMs-cant-be-trusted-but-neither-can-humans/</link>
   <description><![CDATA[ 
 
@@ -21,7 +21,7 @@
 
 
 <p>I often hear the comment that LLMs/generative AI (large language models) can’t be trusted for research tasks.</p>
-<p>But this is the wrong way to think about LLMs. <strong>Humans also can’t be trusted</strong> to do scientific research accurately. That’s why we have systems for review.</p>
+<p>But this is the wrong way to think about LLMs. <strong>Humans also can’t be trusted</strong> to do scientific research accurately. They make mistakes. That’s why we have systems for review.</p>
 <p>The more important question is: Are LLMs more accurate than humans at completing a given task?</p>
 <p>I actually think LLMs might lead to better scientific coding and statistical analysis.</p>
 <p>A common example of what LLMs get criticised for is writing code or performing statistical analyses. The LLM might hallucinate non-truths, or at least mislead you into thinking the analysis you have done is scientifically accurate.</p>
