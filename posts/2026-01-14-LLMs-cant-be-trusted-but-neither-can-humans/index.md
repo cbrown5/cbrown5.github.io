@@ -7,6 +7,9 @@ published: true
 
 I often hear the comment that LLMs/generative AI (large language models) can't be trusted for research tasks. 
 
+![](aislop.jpeg)
+**Image** Google's Nano Banana tasked with "Generate an image of a male African researcher holding a balloon that is pulling them up above a tidal wave of AI generated slop that is full of errors. The balloon has a research paper inside of it. Generate the image in the style of a Simpsons cartoon."
+
 But this is the wrong way to think about LLMs. **Humans also can't be trusted** to do scientific research accurately. They make mistakes. That's why we have systems for review. 
 
 The more important question is: Are LLMs more accurate than humans at completing a given task? 
