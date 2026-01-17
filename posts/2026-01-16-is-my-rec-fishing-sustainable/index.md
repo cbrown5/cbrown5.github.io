@@ -12,6 +12,8 @@ Fishing selectively and at a small-scale does not guarantee that fishing will be
 
 Let me explain why and what you can do about it. 
 
+![](people-fishing-of-a-dock.jpeg)
+
 ## What does 'sustainable fishing' actually mean?
 
 When we talk about sustainable fishing, we need to consider at least two different perspectives. First, there's the species-level view: can the fish population you're targeting persist through time at the current level of fishing pressure? If you're removing fish faster than they can reproduce, the population will decline until it eventually collapses. This might happen slowly over decades or quickly within a few years, but the end result is the same.
