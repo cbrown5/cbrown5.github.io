@@ -10,7 +10,54 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Thu, 15 Jan 2026 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 16 Jan 2026 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>An ecologist’s reading list for Tasmanian reefs</title>
+  <link>https://www.seascapemodels.org/posts/2026-01-17-ecologists-reading-list-tassie-reefs/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>A new research student at my institution recently asked me “what should I read to learn about the ecology of Tasmania’s reef ecosystems?”</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-01-17-ecologists-reading-list-tassie-reefs/trumpeter-in-kelp.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Image: Bastard Trumpeter (fish) in a giant kelp forest in Tasmania</figcaption>
+</figure>
+</div>
+<p>By reefs I’m thinking of the shallow reefs that are within diveable depth, so &lt;40 metres. Basically, what you might see if you go diving or snorkeling down here.</p>
+<p>There’s so much natural history to tell, but I can’t think of a single great source to recommend for an introduction. Writing that guide would be a great project for someone (and let me know if you know of one already).</p>
+<p>The palawa are the first inhabitants of Tasmania and their claim to the land and seas was never ceded. If you know of good resources for Tasmanian Aboriginal relationship to the oceans, please let me know. In the meantime, I recommend you visit the Tasmanian Museum and Art Gallery and tour their exhibition on palawa culture.</p>
+<p>Here’s a list of studies that cover some background on ecology in their content. Most are related to climate change, because that has been a big issue here in Tasmania, and therefore a big research theme. Feel free to comment or write me if you have other studies you think I should add here.</p>
+<p>Many of these are scientific articles (again, we really need someone to pull this together into an accessible book or web resource). Some of the articles are paywalled, so if you can’t get them, I recommend emailing the lead author (you will find their emails on the paper webpages).</p>
+<p>Graham Edgar has written a number of books on marine life. Most are ID guides, but they are also have some information on general ecology. Here are two I recommend:</p>
+<p><a href="https://www.amazon.com/Australian-Marine-Habitats-Temperate-Waters/dp/1876334533">Australian marine habitats in temperate waters</a>. Graham Edgar</p>
+<p><a href="https://underwater.com.au/shop/australian-marine-life.html">Australian Marine Life.</a> Graham Edgar</p>
+<p>Many years ago Edgar also wrote a general paper for the Royal Society of Tasmania on reef ecology:</p>
+<p><a href="https://doi.org/10.26749/rstpp.118.173">Edgar, GJ (1984). General features of the ecology and biogeography of Tasmanian subtidal rocky shore communities. University Of Tasmania. Journal contribution. https://doi.org/10.26749/rstpp.118.173</a></p>
+<p>Its old, but the basic ecology is still relevant.</p>
+<p>A big feature of the reefs are the interactions among rock lobster, sea urchins and kelp forests. This study describes that interaction:</p>
+<p><a href="https://www.pnas.org/doi/abs/10.1073/pnas.0907529106">Ling SD, Johnson CR, Frusher SD, Ridgway K. Overfishing reduces resilience of kelp beds to climate-driven catastrophic phase shift. Proceedings of the National Academy of Sciences. 2009 Dec 29;106(52):22341-5.</a></p>
+<p>And a more recent update:</p>
+<p><a href="https://www.nature.com/articles/s41467-023-44543-x">Ling SD, Keane JP. Climate-driven invasion and incipient warnings of kelp ecosystem collapse. Nature communications. 2024 Jan 9;15(1):400.</a></p>
+<p>Reading modelling studies, rather than directly empirical studies, is actually a great way to get an overview of what’s understood about ecology. Modellers need to synthesize a large number of concepts into a simple representation. This modelling study is a good place to start:</p>
+<p><a href="https://onlinelibrary.wiley.com/doi/full/10.1111/gcb.13285?casa_token=zZ1l8FwzoKkAAAAA%3AVMa8gfRmQdNKDnUlbACDvhUewwz-xBHlhfrDj7uchz-xJeY-RBB67RyRJHmpPpzRu2hGeQ94MVQ00lHZ">Marzloff et al.&nbsp;2016 Modelling marine community responses to climate-driven species redistribution to guide monitoring and adaptive ecosystem-based management</a>Global Change Biology</p>
+<p>Species changing their ranges due to warming ocean temperatures have been big driver of change over the past two decades. Here’s a few key studies on that topic:</p>
+<p><a href="https://royalsocietypublishing.org/rspb/article/284/1856/20170484/78501/Biological-interactions-both-facilitate-and-resist">Bates et al.&nbsp;2017 Biological interactions both facilitate and resist climate-related functional change in temperate reef communities Proc B</a></p>
+<p><a href="https://doi.org/10.1016/j.jembe.2011.02.032">Johnson et al.&nbsp;2011 Climate change cascades: Shifts in oceanography, species’ ranges and subtidal marine community dynamics in eastern Tasmania JEMBE</a></p>
+<p><a href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1466-8238.2010.00575.x?casa_token=P5yeDk_vNLkAAAAA%3AyFqHNL3y6eOPpnI5tga8lvVYxKmlFts2xg6hGDgTVrmQV4d3htsh18ZVbU_NWvMrh0sxS-lXv_-H1Jo4">Last et al.&nbsp;2010 Long-term shifts in abundance and distribution of a temperate fish fauna: a response to climate change and fishing practices GEB</a></p>
+<p><a href="https://connectsci.au/mf/article-abstract/61/9/963/59057/Climate-driven-range-changes-in-Tasmanian?redirectedFrom=fulltext">Pitt NR, Poloczanska ES, Hobday AJ. Climate-driven range changes in Tasmanian intertidal fauna. Marine and Freshwater Research. 2010 Sep 23;61(9):963-70.</a></p>
+<p>That’s all for now, but I’ll keep updating the list as a find new sources. Feel free to comment and add to this list also.</p>
+
+
+
+ ]]></description>
+  <category>research</category>
+  <guid>https://www.seascapemodels.org/posts/2026-01-17-ecologists-reading-list-tassie-reefs/</guid>
+  <pubDate>Fri, 16 Jan 2026 13:00:00 GMT</pubDate>
+</item>
 <item>
   <title>I catch my own fish so my seafood is sustainable</title>
   <link>https://www.seascapemodels.org/posts/2026-01-16-is-my-rec-fishing-sustainable/</link>
@@ -3022,36 +3069,6 @@ font-style: inherit;">theme_classic</span>()</span></code></pre></div></div>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2025-10-21-modelbased/</guid>
   <pubDate>Mon, 20 Oct 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Forage fish fisheries and marine predators</title>
-  <link>https://www.seascapemodels.org/posts/2025-10-14-forage-fish-seabirds/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Below are some links for my class on this topic</p>
-<p><a href="https://www.seascapemodels.org/connections-game/forage-fish">Word match game quiz</a></p>
-<ul>
-<li>Match sets of four words.</li>
-<li>When you’ve picked four words hit ‘submit’ to see if you are correct.</li>
-<li>You get four guesses</li>
-<li>Refresh your browser to start again</li>
-<li>When you’ve completed each quiz, click ‘next level’ for the next quiz.</li>
-</ul>
-<p><a href="https://www.seascapemodels.org/seabird-block-game/">Seabird block game</a></p>
-<ul>
-<li>Move your seabird around to catch enough fish to lay an egg, then raise the chick to fledging.</li>
-</ul>
-
-
-
- ]]></description>
-  <category>research</category>
-  <guid>https://www.seascapemodels.org/posts/2025-10-14-forage-fish-seabirds/</guid>
-  <pubDate>Mon, 13 Oct 2025 13:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
