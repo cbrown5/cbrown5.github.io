@@ -1,11 +1,13 @@
 ---
-date: '2/18/2020'
+date: '1/22/2026'
 title: Reading for new quantitative ecology PhD students
 categories: research-skills
 published: TRUE
 ---
 
 Here is my recommended reading list for students just starting a PhD in some aspect of quantitative ecology. I've written this reading list to keep in mind that many new PhDs may not have a lot of math or stats from their earlier degrees.
+
+Refreshing this from 2020 to 2026! 
 
 ## The role of statistics in science
 
@@ -18,6 +20,10 @@ Chapters 3 onwards are more focused on the methods of structural equation modell
 [Hilborn and Mangel, The Ecological Detective](https://press.princeton.edu/books/paperback/9780691034973/the-ecological-detective)
 
 The first few chapters are worth reading for an excellent introduction to the philosophy of science. Later chapters focus on theory and application of Bayesian statistical methods.
+
+[Gelman Hennig, Beyond Subjective and Objective in Statistics](https://academic.oup.com/jrsssa/article/180/4/967/7068392?login=false)
+
+Great paper that explores the role of subjective decision making statistics (hint, its much more than you might think!) and suggests improved language and ways of thinking about objectivity. 
 
 ## Bayesian Statistics
 
