@@ -10,7 +10,33 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Wed, 04 Feb 2026 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 09 Feb 2026 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>Signalling credible publications to editors</title>
+  <link>https://www.seascapemodels.org/posts/2026-02-10-signalling-credible-publications/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Generative AI is removing the writing barrier to publication. Quality writing was one of the signals that editors and reviewers used to differentiate high quality from low quality work. But now its easy to produce low quality work that is well written.</p>
+<p>As AI slop becomes more ubiquitous the publication system will need to look for new signals for quality research. The quality of the data may be one signal.</p>
+<p>Author names and status may be another.</p>
+<p>News from the cybersecurity world provides an interesting hint as to how the future of publication may look.</p>
+<p>Many widely open source software packages allow for anyone to flag security flaws. Sometimes they offer bounties or rewards for identifying flaws. But genAI coding agents have flooded these projects with submissions, most of them AI slop. <a href="https://www.theregister.com/2026/01/21/curl_ends_bug_bounty/">This creates a huge burden on the software maintainers to manage and filter through those submissions</a>.</p>
+<p><a href="https://simonwillison.net/2026/Feb/7/vouch/">A recently proposed system for ‘vouching’</a> allows the software maintainers to create a list of verified contributors. It effectively creates a list of allowed contributors to an open software project. If you aren’t ‘vouched’ you are blocked from contributing.</p>
+<p>The issue with submissions on software security is much like the trends we are hearing about at peer-reviewed journals of increasing numbers of well-written but vacuous studies.</p>
+<p>So maybe in the near future we’ll have to get our names on a white list before we can submit to reputable journals.</p>
+
+
+
+ ]]></description>
+  <category>research</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2026-02-10-signalling-credible-publications/</guid>
+  <pubDate>Mon, 09 Feb 2026 13:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Benefits of doing community and academic service as a researcher</title>
   <link>https://www.seascapemodels.org/posts/2026-02-05-benefits-of-doing-a-service-role/</link>
@@ -2438,33 +2464,6 @@ font-style: inherit;">"bottom"</span></span>
  ]]></description>
   <category>research</category>
   <guid>https://www.seascapemodels.org/posts/2025-10-23-deer-harvest-reduction/</guid>
-  <pubDate>Wed, 22 Oct 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Does data from protected areas help to improve ecological forecasts? New pre-print</title>
-  <link>https://www.seascapemodels.org/posts/2025-10-23-ecological-forecasts-MPAs/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Sharing the <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5647239">research work of my Master’s student, Leigha Aitken, that is now available as a pre-print</a>. She sought to answer the question:</p>
-<p>Does data from protected areas help to improve ecological forecasts?</p>
-<p>As a pre-print it is not peer-reviewed, though it has been examined and reviewed by UTas staff in thesis form and we did address those concerns. Abstract below, <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5647239">full pdf on SSRN</a>.</p>
-<section id="title-transferability-of-models-to-novel-site-conditions-comparing-abundance-forecasts-between-different-exploitation-regimes" class="level3">
-<h3 class="anchored" data-anchor-id="title-transferability-of-models-to-novel-site-conditions-comparing-abundance-forecasts-between-different-exploitation-regimes">Title: Transferability of models to novel site conditions: comparing abundance forecasts between different exploitation regimes</h3>
-</section>
-<section id="abstract" class="level3">
-<h3 class="anchored" data-anchor-id="abstract">Abstract</h3>
-<p>Models are increasingly used to make forecasts to support fisheries management by translating ecological theory into quantitative predictions. However, forecasts for fisheries species are often constrained by limited data from unfished reference conditions. No-take marine reserves (NTMRs) can provide insight into unfished population dynamics, potentially improving models’ predictive performance. This study asked whether incorporating NTMR data improves the accuracy of annual abundance forecasts over eight years. We compared the predictive performance of first-order autoregressive models that were trained on abundance data from either NTMR sites, fished sites, or a mix of both site types. Each model was then tested by predicting to sites it was not trained on (‘transferred’). We tested the forecasts for both fished and unfished species with 23 years of time-series abundance data from the Maria Island (Tasmania) NTMR and nearby control sites. We found a general decrease in the performance of fished and NTMR models when forecasts were transferred to the opposite site type. Model transferability was species-specific, with the NTMR model reducing forecasting errors by approximately 10% at fished sites for one sustainably fished species. In contrast, for other species, the fished model reduced forecast errors by approximately 4% and 56% at NTMR sites. Additionally, we found that models trained on a mix of site types consistently underperformed. These findings highlight the importance of accounting for site- and species-specific dynamics. While NTMR data offers valuable insights into unfished conditions, further work is required to create models that transfer well to any exploitation regime.</p>
-
-
-</section>
-
- ]]></description>
-  <category>research</category>
-  <guid>https://www.seascapemodels.org/posts/2025-10-23-ecological-forecasts-MPAs/</guid>
   <pubDate>Wed, 22 Oct 2025 13:00:00 GMT</pubDate>
 </item>
 </channel>
