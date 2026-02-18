@@ -10,7 +10,37 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog-rstats.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Tue, 13 Jan 2026 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 18 Feb 2026 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>Keeping files organised for publication</title>
+  <link>https://www.seascapemodels.org/posts/2026-02-19-keeping-organised-for-publication/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Getting files ready for publication can be frustrating when you can’t find the right file, or you realize your figures look like 2000s jpeg.</p>
+<p>Here’s a list of things I wished I’d done (or my students had done) properly earlier in the paper prep process. Save this list somewhere to refer back to it, it will save you time and frustration.</p>
+<ul>
+<li><p>Keep folders organized. Save figures for the pub to a single folder. Likewise have a folder for tables. Towards submission label these files as per the paper e.g.&nbsp;fig1_concepts.png ….</p></li>
+<li><p>You R scripts should save plots directly to that folder like ggsave(“plots/fig1-lineplot.png…)</p></li>
+<li><p>If assembling figures in powerpoint, save original powerpoint in this folder also</p></li>
+<li><p>Always save figures in high res .png format, ready for publication. e.g.&nbsp;ggsave(“plots/bias_sensitivity_analysis.png”, final_plot, width = 12, height = 6, dpi = 300)</p></li>
+<li><p>Have separate R scripts that make pub ready figures (e.g.&nbsp;load final model fits and make figures). This way you can quickly go back into and edit them. Obviously make the scripts easy to find with clear names and project folder structure.</p></li>
+<li><p>Even better save both .png and .pdf versions. Never use .jpg (.jpg is for photos)</p></li>
+<li><p>When revising your ms to respond to reviews turn on track changes the entire time. You should resubmit the track changed version as one of the files.</p></li>
+<li><p>Double check how coauthors spell their names/institutions against their previous papers, before you submit</p></li>
+</ul>
+
+
+
+ ]]></description>
+  <category>research</category>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-02-19-keeping-organised-for-publication/</guid>
+  <pubDate>Wed, 18 Feb 2026 13:00:00 GMT</pubDate>
+</item>
 <item>
   <title>LLMs can’t be trusted to do scientific coding accurately, but humans make mistakes too</title>
   <link>https://www.seascapemodels.org/posts/2026-01-14-LLMs-cant-be-trusted-but-neither-can-humans/</link>
@@ -2316,102 +2346,6 @@ write_csv(dat, "benthic_cover.csv")</code></pre>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2025-06-10-open-access-data-for-teaching/</guid>
   <pubDate>Mon, 09 Jun 2025 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Vibe coding with AI agents is not for scientists</title>
-  <link>https://www.seascapemodels.org/posts/2025-06-08-vibe-coding-not-for-scientists/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Vibe coding is the idea of creating software with large language models (e.g.&nbsp;chat GPT, Claude), using only prompting and no, or very little <a href="https://en.wikipedia.org/wiki/Vibe_coding">human written code</a>.</p>
-<p>Co-founder of openAI says of vibe coding: <a href="https://www.businessinsider.com/vibe-coding-ai-silicon-valley-andrej-karpathy-2025-2">“It’s not really coding - I just see things, say things, run things, and copy-paste things, and it mostly works.”</a>.</p>
-<p>The problem with vibe coding for scientists is modelling requires precision in coding and statistical logic. Small differences in data wrangling or model formulation can result in logically flawed results.</p>
-<p>My experience of vibe coding is that it tends to make code that runs, but has mistakes in the critical places. This is very problematic if you do not manually check all the logic.</p>
-<section id="what-is-vibe-coding" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-vibe-coding">What is vibe coding</h2>
-<p>Vibe coding has gained popularity with agentic AI systems, such as Github Copilot, Cline, Roo Code and Claude Code. These are systems that take your initial instructions and then iterate it through creating it and debugging it with minimal or no human intervention.</p>
-<p>Anthropic claims that their latest model can work for hours on software development without need for human intervention. The way it works is that the LLM returns the results of its code to itself, checks those results, then decides on the next action to take.</p>
-<p>As an ecological modeller I thought these tools could be useful for developing routine R code. Common tasks include data wrangling, building and running various versions of a regression model and then generating plots.</p>
-<p>So I’ve been experimenting with agentic AI, including with Cline, Roo Code and Github Copilot for ecological statistics.</p>
-</section>
-<section id="flawed-logic" class="level2">
-<h2 class="anchored" data-anchor-id="flawed-logic">Flawed logic</h2>
-<p>The clincher from the quote above is <strong>“…and it mostly works.”</strong></p>
-<p>I’ve found for statistics the bits that don’t work are the critical science parts. So vibe coding tends to produce code that runs and produces believable plots, but results that are logically flawed.</p>
-<p><strong>Here’s an example of how vibe coding can produce flawed science:</strong></p>
-<p>I’m analysing some turtle monitoring data to calculate mean number of nests per night. The problem is that zeros, nights with no nests, are implicit. Monitoring was done every night for three months, and the field team records nesting events the observe.</p>
-<p>I tried vibe coding to calculate mean number of nests per night. It just calculated the mean number out of the total number of unique dates in the dataset. What we actually need to do first is add zeros, nights without nesting, back into the data first. Otherwise, we get a mean that isn’t comparable across years or sites</p>
-</section>
-<section id="over-engineering" class="level2">
-<h2 class="anchored" data-anchor-id="over-engineering">Over-engineering</h2>
-<p>You might say - so just go back and fix the error. That’s exactly what I did. However, herein lies a problem.</p>
-<p>AI agents tend to totally over-engineer R code, producing scripts that are very robust to programmatic errors, but also very lengthy (see example below). There’s an overwhelming amount of code to go through to find these small but significant mistakes.</p>
-<p>AI has a great breadth of knowledge, so a lengthy vibe coding session will produce a diversity functions and coding logic. You need to be experienced to interpet a lot of what it produces.</p>
-<p>Your typical R user knows enough to analyse their data and make some plots. They are going to be overwhelmed trying to interpret 100s of lines of R code.</p>
-</section>
-<section id="how-to-use-ai-agents-safely" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-use-ai-agents-safely">How to use AI agents safely</h2>
-<p>AI agents are still very useful. But for scientific coding they need careful oversight. You can either:</p>
-<ol type="1">
-<li>Let it run autonomously, then carefully go back through what its created and review everything</li>
-<li>Check and review it step-by-step, and redirect it</li>
-</ol>
-<p>If you are getting out of your depth, then I suggest stopping and reviewing the code until you are sure what it does. You can also prompt the agent to add checks in (like checking number of samples matches your expectations).</p>
-<p>Remember that the commercial agents, like Claude code or github copilot, are designed for software engineers. So they write robust R code, but they are also not very good at statistics.</p>
-<section id="example-of-over-engineering" class="level3">
-<h3 class="anchored" data-anchor-id="example-of-over-engineering">Example of over engineering</h3>
-<p>AI Agents love to cover all the bases. This can be nice, and I’ve learnt some new tricks this way. However, its total overkill if you just want to create a few plots. Here’s one example where I was getting copilot to do an multivariate analysis. It started by creating this whole script, complete with custom functions, just to load a few packages:</p>
-<pre><code>
-# List of required packages
-required_packages &lt;- c(
-  "tidyverse",  # For data manipulation and visualization
-  "vegan",      # For community analysis
-  "ggplot2",    # For data visualization
-  "ggrepel",    # For non-overlapping text labels
-  "cluster",    # For cluster analysis
-  "knitr",      # For report generation
-  "kableExtra"  # For table formatting in reports
-)
-
-# Function to check and install packages
-install_if_missing &lt;- function(pkg) {
-  if (!requireNamespace(pkg, quietly = TRUE)) {
-    cat(paste0("Installing package: ", pkg, "\n"))
-    install.packages(pkg, dependencies = TRUE)
-  } else {
-    cat(paste0("Package already installed: ", pkg, "\n"))
-  }
-}
-
-# Install missing packages
-cat("Checking and installing required packages...\n")
-for (pkg in required_packages) {
-  install_if_missing(pkg)
-}
-
-# Load the packages to verify installation
-cat("\nLoading packages to verify installation...\n")
-for (pkg in required_packages) {
-  cat(paste0("Loading package: ", pkg, "\n"))
-  library(pkg, character.only = TRUE)
-}
-
-cat("\nAll required packages are installed and loaded.\n")
-cat("You can now proceed with running the analysis scripts.\n")
-</code></pre>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-06-08-vibe-coding-not-for-scientists/</guid>
-  <pubDate>Sat, 07 Jun 2025 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
