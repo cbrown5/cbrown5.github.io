@@ -13,6 +13,8 @@ Here's a list of things I wished I'd done (or my students had done) properly ear
 
 - You R scripts should save plots directly to that folder like ggsave("plots/fig1-lineplot.png...)
 
+- Make a final results script that reads in the final outputs and calculates any stats/metrics you quote in the results in the order they are written in the results. This helps with updating this section if you have to re-run or change something during review and for cross checking with the MS.
+
 - If assembling figures in powerpoint, save original powerpoint in this folder also
 
 - Always save figures in high res .png format, ready for publication. e.g. ggsave("plots/bias_sensitivity_analysis.png", final_plot, width = 12, height = 6, dpi = 300)

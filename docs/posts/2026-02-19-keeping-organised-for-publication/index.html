@@ -183,6 +183,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><p>Keep folders organized. Save figures for the pub to a single folder. Likewise have a folder for tables. Towards submission label these files as per the paper e.g.&nbsp;fig1_concepts.png ….</p></li>
 <li><p>You R scripts should save plots directly to that folder like ggsave(“plots/fig1-lineplot.png…)</p></li>
+<li><p>Make a final results script that reads in the final outputs and calculates any stats/metrics you quote in the results in the order they are written in the results. This helps with updating this section if you have to re-run or change something during review and for cross checking with the MS.</p></li>
 <li><p>If assembling figures in powerpoint, save original powerpoint in this folder also</p></li>
 <li><p>Always save figures in high res .png format, ready for publication. e.g.&nbsp;ggsave(“plots/bias_sensitivity_analysis.png”, final_plot, width = 12, height = 6, dpi = 300)</p></li>
 <li><p>Have separate R scripts that make pub ready figures (e.g.&nbsp;load final model fits and make figures). This way you can quickly go back into and edit them. Obviously make the scripts easy to find with clear names and project folder structure.</p></li>
