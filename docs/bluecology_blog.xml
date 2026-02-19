@@ -43,6 +43,67 @@
   <pubDate>Wed, 18 Feb 2026 13:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Running a meeting with collaborators</title>
+  <link>https://www.seascapemodels.org/posts/2026-02-19-running-a-meeting-with-collaborators/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We had a Seascape Lab discussion recently about running meetings with collaborators. The conversation covered everything from preparation to managing conflict to how to actually end a meeting properly (something we all agreed we’re not always great at). Here’s what we learned.</p>
+<section id="preparation-matters" class="level2">
+<h2 class="anchored" data-anchor-id="preparation-matters">Preparation matters</h2>
+<p>Before anyone enters the room, you’re already shaping how the meeting will go. Know what you want to discuss. Share background materials or presentations ahead of time. Give people context so everyone starts on the same page—this is especially important for external collaborators who haven’t been immersed in the work recently.</p>
+<p>Set an agenda and get agreement on it. This gives you natural authority to keep the meeting on track later.</p>
+</section>
+<section id="opening-the-meeting" class="level2">
+<h2 class="anchored" data-anchor-id="opening-the-meeting">Opening the meeting</h2>
+<p>Teams vary in how they like to begin. Some people want a few minutes of personal conversation. Others prefer to jump straight into business. Either works—just set expectations and move naturally into the agenda.</p>
+<p>Context is important at the start. A quick recap of why everyone is there and what you’re trying to achieve helps align attention.</p>
+</section>
+<section id="keeping-people-engaged" class="level2">
+<h2 class="anchored" data-anchor-id="keeping-people-engaged">Keeping people engaged</h2>
+<p>Engagement takes work to maintain. Here are some practical strategies we discussed:</p>
+<p><strong>Ask questions.</strong> A simple but powerful—actively involving people keeps attention high and signals that contributions matter.</p>
+<p><strong>Give people a break.</strong> Not all disengagement comes from disinterest. Sometimes people are just tired. “Brain breaks” aren’t just for school kids. A quick stretch, a moment to summarise what’s been decided so far, or even a light joke or fun slide can be enough for a break. Humour can help, but use it thoughtfully to avoid misfires.</p>
+<p><strong>Pitch content at the right level.</strong> If the discussion is too technical or too basic, you’ll lose people. This takes planning.</p>
+</section>
+<section id="managing-people-who-talk-too-much" class="level2">
+<h2 class="anchored" data-anchor-id="managing-people-who-talk-too-much">Managing people who talk too much</h2>
+<p>Someone dominating the discussion is a common challenge. The approach we discussed emphasised balance and respect:</p>
+<p>Let them contribute—don’t shut them down. Acknowledge their point (“affirm and follow on”). Then gently reclaim the floor by pointing back to the agenda or reminding the group of time constraints.</p>
+<p>A clear agenda gives you natural authority to move the conversation forward.</p>
+</section>
+<section id="navigating-conflict" class="level2">
+<h2 class="anchored" data-anchor-id="navigating-conflict">Navigating conflict</h2>
+<p>Conflict isn’t always bad—it’s often a sign of engagement. But it needs managing. Here are several approaches:</p>
+<p><strong>If no decision-maker is in the room:</strong> Park the issue and escalate it to the decision maker. Don’t force a false resolution.</p>
+<p><strong>If a decision-maker is present:</strong> Ensure all voices are heard, affirm that everyone’s input will be considered, then let the decision-maker guide the group forward.</p>
+<p><strong>If participants feel historically unheard:</strong> You may need to explicitly demonstrate that a new, fairer process is in place. People participate more openly when they trust the structure.</p>
+</section>
+<section id="ending-the-meeting-well" class="level2">
+<h2 class="anchored" data-anchor-id="ending-the-meeting-well">Ending the meeting well</h2>
+<p>Meetings often drift to a close with no clear outcome—something we all recognised. A strong ending includes two things:</p>
+<p><strong>A clear summary.</strong> Briefly restate what was discussed and what decisions were made.</p>
+<p><strong>Next steps with responsibilities.</strong> Spell out the actions, who is responsible for each, and ideally the timeline.</p>
+<p>For formal committees, we noted the value of an action register—a structured list that is revisited at the start of the next meeting. For less formal collaborations, a lighter version still helps ensure actions don’t disappear.</p>
+</section>
+<section id="the-underlying-theme" class="level2">
+<h2 class="anchored" data-anchor-id="the-underlying-theme">The underlying theme</h2>
+<p>A lot of a good meeting is just about getting agreement. Agreement on what the meeting will cover. Agreement on the decisions made. Agreement on the actions and who owns them.</p>
+<p>Meetings may involve sharing information, but their power lies in aligning people and creating clarity about the path forward.</p>
+<p>Thanks to the Seascape Lab for the discussion that informed this post.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2026-02-19-running-a-meeting-with-collaborators/</guid>
+  <pubDate>Wed, 18 Feb 2026 13:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Signalling credible publications to editors</title>
   <link>https://www.seascapemodels.org/posts/2026-02-10-signalling-credible-publications/</link>
   <description><![CDATA[ 
@@ -1079,562 +1140,6 @@ for part in response.parts:
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2025-11-14-upcoming-R-workshop-brisbane/</guid>
   <pubDate>Thu, 13 Nov 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Its easy to make your own AI agent in R</title>
-  <link>https://www.seascapemodels.org/posts/2025-11-10-make-an-ai-agent-in-r/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>There’s a lot of hype about AI agents, but buried under the hype there is a really simple architecture. I got inspired by <a href="https://fly.io/blog/everyone-write-an-agent/">this post that points out how easy it is to make an AI agent</a>.</p>
-<p>In this post I’ll show how to make an agent in R with the <a href="https://ellmer.tidyverse.org/"><code>ellmer</code> package</a>.</p>
-<p>A large language model agent is a <a href="https://simonwillison.net/2025/Sep/18/agents/">large language models that can run tools in a loop</a>.</p>
-<p>Tools give the agent powers to take actions like read data, create files, access the internet. Anything software task you can think of really.</p>
-<p>Here’s the cool thing, the ‘run tools in a loop’ architecture is simple. Building an AI (the LLM) is really complex and super expensive (like cost of $100 millions). But you can easily get access to 100s of these LLMs cheaply via API calls. Then its easy to plug them into DIY agents.</p>
-<p>The simplicity means you can create just about anything you can dream up.</p>
-<p>Let’s make an agent that reads R help files. A chat agent could give better advice if it read the up-to-date R help files first.</p>
-<section id="chatting-with-llms-from-rs" class="level2">
-<h2 class="anchored" data-anchor-id="chatting-with-llms-from-rs">Chatting with LLMs from Rs</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(ellmer)</span></code></pre></div></div>
-<p>Set up an <a href="https://www.seascapemodels.org/AI-assistants-for-scientific-coding/03-set-up.html#sec-apikeys">API key with the provider</a> you choose and you can easily talk to a large language model with ellmer:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">chat <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">chat_anthropic</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">model =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"claude-haiku-4-5"</span>)</span>
-<span id="cb2-2">chat<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"How do I do a regression in R?"</span>)</span></code></pre></div></div>
-<p>We can then string together a chat:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">chat <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">chat_anthropic</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">model =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"claude-haiku-4-5"</span>)</span>
-<span id="cb3-2">turn1 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> chat<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"How do I do a regression in R?"</span>)</span>
-<span id="cb3-3">turn2 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> chat<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Show how to verify the model."</span>)</span></code></pre></div></div>
-<p>The way a multi-turn conversation works is that on the second turn the entire conversation thread (system message, user message, assistant message, new user message) is sent back to the LLM at each turn.</p>
-<p>Repeated calls to <code>chat</code> just manage that for us.</p>
-<p>The LLM talking to itself isn’t very useful, we can use tools to inject new information into the conversation.</p>
-</section>
-<section id="create-a-tool-to-read-a-help-file" class="level2">
-<h2 class="anchored" data-anchor-id="create-a-tool-to-read-a-help-file">Create a tool to read a help file</h2>
-<p>The tool has two parts: (1) An R script that does something; (2) a specification that tells the LLM how to use the tool.</p>
-<section id="r-function" class="level3">
-<h3 class="anchored" data-anchor-id="r-function">R function</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">read_help_as_text <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span>(topic, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">pkg =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">NULL</span>) {</span>
-<span id="cb4-2">    h <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> utils<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">help</span>(topic, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">package =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">eval</span>(pkg))</span>
-<span id="cb4-3">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">length</span>(h) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>) <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">stop</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Help topic not found"</span>)</span>
-<span id="cb4-4">    rd <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> utils<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">.getHelpFile</span>(h)             </span>
-<span id="cb4-5">    txt <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">paste</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">capture.output</span>(tools<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">Rd2txt</span>(rd)), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">collapse =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span>)</span>
-<span id="cb4-6">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">return</span>(txt)</span>
-<span id="cb4-7">}</span></code></pre></div></div>
-<p>This R function takes a topic and optionally a package name. It then returns the relevant help file as a string</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">help_txt <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read_help_as_text</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"lm"</span>)</span>
-<span id="cb5-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cat</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">substr</span>(help_txt, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1000</span>), <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span>) </span></code></pre></div></div>
-</section>
-<section id="tool-definition" class="level3">
-<h3 class="anchored" data-anchor-id="tool-definition">Tool definition</h3>
-<p>The tool definition tells the LLM how to use the read_help_as_text tool.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">read_help_as_text <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tool</span>(</span>
-<span id="cb6-2">  read_help_as_text,</span>
-<span id="cb6-3">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">.description =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Returns an R help file as a string"</span>,</span>
-<span id="cb6-4">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">topic =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">type_string</span>(</span>
-<span id="cb6-5">      <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"R function or topic"</span>,</span>
-<span id="cb6-6">      <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">required =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span></span>
-<span id="cb6-7">    ),</span>
-<span id="cb6-8">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">pkg =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">type_string</span>(</span>
-<span id="cb6-9">      <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"R package to get help file from"</span>,</span>
-<span id="cb6-10">      <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">required =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span></span>
-<span id="cb6-11">    )</span>
-<span id="cb6-12">)</span></code></pre></div></div>
-</section>
-<section id="using-the-tool" class="level3">
-<h3 class="anchored" data-anchor-id="using-the-tool">Using the tool</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">chat <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">chat_anthropic</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">model =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"claude-haiku-4-5"</span>)</span>
-<span id="cb7-2">chat<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">register_tool</span>(read_help_as_text)</span>
-<span id="cb7-3"></span>
-<span id="cb7-4">chat<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Quote the definition of residuals from the lm() function, don't provide any other explanation or code"</span>)</span></code></pre></div></div>
-<pre><code>"residuals: the residuals, that is response minus fitted values."</code></pre>
-<p>That’s a pointless use case, but it demonstrates the tool is working. You can check the chat log to see when the tool was called:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">chat</span></code></pre></div></div>
-<pre><code>&lt;Chat Anthropic/claude-haiku-4-5 turns=4 tokens=4529/77&gt;
-── user [626] ──────────────────────────────────────────────────────────────────
-Quote the definition of residuals from the lm() function, don't provide any other explanation or code
-── assistant [59] ──────────────────────────────────────────────────────────────
-[tool request (toolu_)]: read_help_as_text(topic = "lm")
-── user [3218] ─────────────────────────────────────────────────────────────────
-[tool result  (toolu_)]:
-...
-     
-── assistant [18] ──────────────────────────────────────────────────────────────
-"residuals: the residuals, that is response minus fitted values."</code></pre>
-</section>
-</section>
-<section id="getting-advice-on-recent-packages" class="level2">
-<h2 class="anchored" data-anchor-id="getting-advice-on-recent-packages">Getting advice on recent packages</h2>
-<p>LLMs often get tripped up if you ask them for code for niche or very recent packages. The <a href="https://zobaer09.github.io/FakeDataR/"><code>FakeDataR</code> package</a> is a recently released package that helps you make synthetic data to use with LLMs (if you are concerned about privacy of your real data).</p>
-<p>If you ask an LLM to use this package, it will tend to hallucinate a response, that won’t work. With our tool however, it can create accurate code:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">chat <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">chat_anthropic</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">model =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"claude-haiku-4-5"</span>)</span>
-<span id="cb11-2">chat<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">register_tool</span>(read_help_as_text)</span>
-<span id="cb11-3"></span>
-<span id="cb11-4">chat<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"How to use the generate_fake_data function from the R package FakeDataR to make a synthetic copy of mtcars"</span>)</span></code></pre></div></div>
-<pre><code>I'll help you find information about the `generate_fake_data` function from the
-FakeDataR package.
-
-◯ [tool call] read_help_as_text(pkg = "FakeDataR", topic =
-"generate_fake_data")
-...
-
-Great! Now I can show you how to use `generate_fake_data` to create a synthetic
-copy of the `mtcars` dataset. Here's how to do it:
-
-## Basic Usage
-
-```r
-# Install FakeDataR if you haven't already
-# install.packages("FakeDataR")
-
-library(FakeDataR)
-
-# Generate synthetic data from mtcars
-synthetic_mtcars &lt;- generate_fake_data(
-  data = mtcars,
-  n = 32  # Create same number of rows as original mtcars
-)
-
-# View the result
-head(synthetic_mtcars)
-```
-
-## More Detailed Examples
-...
-The resulting synthetic dataset preserves the structure and statistical 
-properties of the original while being completely artificial!</code></pre>
-</section>
-<section id="creating-an-agentic-loop" class="level2">
-<h2 class="anchored" data-anchor-id="creating-an-agentic-loop">Creating an agentic loop</h2>
-<p>Let’s add one more tool to show how they can be chained together to build the beginnings of an agentic loop.</p>
-<p>This tool will grab the R code from the markdown code blocks in the LLMs response, then write it to a file.</p>
-<p>First the function definition:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">write_r_code <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span>(rcode){</span>
-<span id="cb13-2">    code_blocks <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> stringr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">str_extract_all</span>(rcode, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"```r</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">s*([</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">s</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">S]*?)```"</span>)[[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>]]</span>
-<span id="cb13-3">    code <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">paste</span>(stringr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">str_replace_all</span>(code_blocks, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"```r</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">s*|```"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span>), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">collapse =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span>)</span>
-<span id="cb13-4">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">writeLines</span>(code, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">con =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"temp_code.R"</span>)</span>
-<span id="cb13-5">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">return</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"R code written to temp_code.R"</span>)</span>
-<span id="cb13-6">}</span></code></pre></div></div>
-<p>Now the tool definition:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">write_r_code <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tool</span>(</span>
-<span id="cb14-2">  write_r_code,</span>
-<span id="cb14-3">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">.description =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Writes R code contained in markdown code blocks to a file."</span>,</span>
-<span id="cb14-4">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">rcode =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">type_string</span>(</span>
-<span id="cb14-5">      <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Character string containing R code in markdown code blocks"</span>,</span>
-<span id="cb14-6">      <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">required =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span></span>
-<span id="cb14-7">    )</span>
-<span id="cb14-8">)</span></code></pre></div></div>
-<p>Now we just register both tools and start our chat.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">chat <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">chat_anthropic</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">model =</span>  <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"claude-haiku-4-5"</span>)</span>
-<span id="cb15-2">chat<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">register_tool</span>(read_help_as_text)</span>
-<span id="cb15-3">chat<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">register_tool</span>(write_r_code)</span>
-<span id="cb15-4"></span>
-<span id="cb15-5">chat_out <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> chat<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Use generate_fake_data function from the R package FakeDataR to make a single synthetic version of mtcars. "</span>)</span></code></pre></div></div>
-<p><code>ellmer</code> will pass the results of the tool call back to the LLM, which can decide to call more tools if needed. Inspecting the chat log shows the sequence of tool calls, with no user intervention required.</p>
-</section>
-<section id="tuning-agents" class="level2">
-<h2 class="anchored" data-anchor-id="tuning-agents">Tuning agents</h2>
-<p>The write R code tool worked, some of the time… Other times it wrote a blank file. There’s a lot of niggly details to making agents work reliably, including choosing a powerful enough LLM, writing a system prompt that guides tool use, and writing powerful but secure tools.</p>
-<p>If I was going to take this example further I could add a function to run the Rscript that was created, that might require some extra security considerations (see below for one example).</p>
-<p>Going further I would also work on system prompt that provided guidance to the LLM on its role and how to approach problems. There’s many open source system prompts out there that I could draw on to create this.</p>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Its an exciting time to be working on AI agents. The field is so new you can easily make new discoveries and be ahead of even world leading AI labs.</p>
-<p>An example. Scott Spillias, a postdoc at CSIRO, developed an agent framework that uses an evolutionary algorithm to write math to <a href="https://www.biorxiv.org/content/10.1101/2025.07.14.664628v1.abstract">create ecosystem models</a>. He showed the agent could create models that are great at predicting out-of-sample data, and that have biologically meaningful parameters.</p>
-<p>A month or so after he published his pre-print, the Google DeepMind team published a similar idea of using LLM evolutionary algorithms to generate scientific models.</p>
-<p>I look forwards to seeing what the R community creates with agents.</p>
-</section>
-<section id="example-of-using-tool_reject-for-user-permission" class="level2">
-<h2 class="anchored" data-anchor-id="example-of-using-tool_reject-for-user-permission">Example of using tool_reject for user permission</h2>
-<p>Check out <code>?tool_reject</code> for a way to require user permission before tools are used. Here’s how to implement that in our <code>write_r_code</code> function.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">write_r_code <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span>(rcode){</span>
-<span id="cb16-2">  allow_read <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> utils<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">askYesNo</span>(</span>
-<span id="cb16-3">    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Would you like to allow access to write files?"</span></span>
-<span id="cb16-4">  )</span>
-<span id="cb16-5">  <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">isTRUE</span>(allow_read)) {</span>
-<span id="cb16-6">    code_blocks <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> stringr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">str_extract_all</span>(rcode, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"```r</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">s*([</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">s</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">S]*?)```"</span>)[[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>]]</span>
-<span id="cb16-7">    code <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">paste</span>(stringr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">str_replace_all</span>(code_blocks, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"```r</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">s*|```"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span>), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">collapse =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span>)</span>
-<span id="cb16-8">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">writeLines</span>(code, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">con =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"temp_code.R"</span>)</span>
-<span id="cb16-9">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">return</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"R code written to temp_code.R"</span>)</span>
-<span id="cb16-10">  } <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">else</span> {</span>
-<span id="cb16-11">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tool_reject</span>()</span>
-<span id="cb16-12">  } </span>
-<span id="cb16-13">}</span></code></pre></div></div>
-
-
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-11-10-make-an-ai-agent-in-r/</guid>
-  <pubDate>Sun, 09 Nov 2025 13:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
