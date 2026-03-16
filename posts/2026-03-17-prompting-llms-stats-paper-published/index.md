@@ -5,7 +5,7 @@ categories: [rstats, genAI, research-skills]
 published: true
 ---
 
-Like it or not, everyone is using large language models to help do their statistics. 
+Like it or not, everyone is using large languageden models to help do their statistics. 
 
 There's a lot of claims made about whether LLMs can or can't do useful ecological statistics. In our new paper  ["Prompting large language models for quality ecological statistics"](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210x.70267?af=R) (in Methods in Ecology and Evolution) we wanted to test those claims quantitatively. 
 

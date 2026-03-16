@@ -10,7 +10,128 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Sun, 01 Mar 2026 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 16 Mar 2026 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>Prompting large language models for quality ecological statistics</title>
+  <link>https://www.seascapemodels.org/posts/2026-03-17-prompting-llms-stats-paper-published/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Like it or not, everyone is using large languageden models to help do their statistics.</p>
+<p>There’s a lot of claims made about whether LLMs can or can’t do useful ecological statistics. In our new paper <a href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210x.70267?af=R">“Prompting large language models for quality ecological statistics”</a> (in Methods in Ecology and Evolution) we wanted to test those claims quantitatively.</p>
+<p>We provide guidelines for how to use LLMs to produce scientifically valid statistical analyses. The short version: LLMs can help you do better statistics, but only if you ask well. And “asking well” is a learnable skill.</p>
+<p>The paper is co-authored with agentic AI expert Scott Spillias and grew out of our experiences teaching LLMs for statistical analysis.</p>
+<section id="why-we-wrote-it" class="level2">
+<h2 class="anchored" data-anchor-id="why-we-wrote-it">Why we wrote it</h2>
+<p>I’ve been teaching researchers how to use LLMs for coding and statistics for a few years now. Two things kept coming up. First, most people underestimate how much the prompt matters — they treat LLMs like a search engine and get search-engine quality advice. Second, some people trust LLM-generated code and statistics uncritically, which is risky.</p>
+<p>Late 2024 studies found LLMs recommended the correct statistical test less than 40% of the time with generic prompts. But accuracy improves substantially with more specific prompts, which is a key skill we focus on in the article.</p>
+</section>
+<section id="what-we-found" class="level2">
+<h2 class="anchored" data-anchor-id="what-we-found">What we found</h2>
+<p>We ran repeatable evaluations in R, replicating each prompt 10 times across multiple LLMs. A few results stood out.</p>
+<p><strong>Specificity matters enormously for test selection.</strong> We compared four prompts for choosing a statistical test for an ecological dataset, ranging from “How do I test the relationship between two continuous variables?” to a detailed prompt specifying variable types, sample size, and study design. The generic prompt never suggested count models (the appropriate family for fish abundance data). The detailed prompt guaranteed them, regardless of which LLM we used.</p>
+<p><strong>Detailed prompts make agent-generated code more consistent.</strong> We asked the Github Copilot agent to write an entire analysis workflow from two different prompts — one brief, one detailed. We then ran multivariate ordination on the resulting code to measure how similar the 10 replicates were to each other. The detailed prompt produced much tighter clusters — the agent kept using the same functions, variable names, and structure. Inconsistent code is harder to review, which matters if you’re trying to catch statistical errors.</p>
+<p><strong>Being specific overcomes weaker models.</strong> When we tasked LLMs with writing R code to calculate a distance matrix, the detailed prompt got the right answer 90–100% of the time across all models. The brief prompt mostly failed — except for GPT-5 Codex, which guessed correctly 9/10 times. Good prompts effectively compensated for using a smaller, cheaper model.</p>
+</section>
+<section id="the-workflow-we-recommend" class="level2">
+<h2 class="anchored" data-anchor-id="the-workflow-we-recommend">The workflow we recommend</h2>
+<p>We suggest breaking LLM-assisted analysis into three stages, and writing separate prompts for each. This helps you control the workflow and avoid LLM mistakes.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-03-17-prompting-llms-stats-paper-published/figure1-v2-highres.jpg" class="img-fluid figure-img"></p>
+<figcaption>Recommended workflow for using LLMs to complement traditional approaches to statistical analysis</figcaption>
+</figure>
+</div>
+<ol type="1">
+<li><p><strong>Choose the statistical approach</strong> — describe your variables, sample size, and study design in detail. Attach the data or a summary. Point the LLM to reference material you trust.</p></li>
+<li><p><strong>Plan the implementation</strong> — before writing any code, get the LLM to help you structure the project directory and scripts. We use a <code>readme.md</code> that includes research context, analysis steps, package preferences, and directory layout. This file then gets attached to every subsequent prompt, giving the LLM a consistent memory across sessions.</p></li>
+<li><p><strong>Write the code</strong> — with a detailed readme and explicit instructions, agents can complete analyses with minimal supervision. Without that structure, even strong models produce code that’s hard to review and inconsistent across runs.</p></li>
+</ol>
+</section>
+<section id="general-prompting-tips" class="level2">
+<h2 class="anchored" data-anchor-id="general-prompting-tips">General prompting tips</h2>
+<p>These apply regardless of which stage of analysis you’re at:</p>
+<ul>
+<li><strong>Declare a role upfront</strong> — start with “You are an expert in ecological statistics and R.” This orients the LLM and nudges it toward discipline-appropriate methods.</li>
+<li><strong>Avoid multi-turn conversation where possible</strong> — each turn adds context that can’t be removed. If the conversation goes wrong, start fresh with a better prompt rather than trying to correct course.</li>
+<li><strong>Use prompt bootstrapping</strong> — ask the LLM what information it would need to answer your question better, then start a new session with that improved prompt.</li>
+<li><strong>Attach your own references</strong> — rather than letting the LLM search the web, point it to tutorials and vignettes you’ve already vetted. You control the quality of the context.</li>
+<li><strong>Break problems into steps</strong> — don’t ask for everything at once. Separate choosing a method, planning the code structure, and writing the code into distinct prompts.</li>
+</ul>
+</section>
+<section id="the-important-role-for-the-scientist" class="level2">
+<h2 class="anchored" data-anchor-id="the-important-role-for-the-scientist">The important role for the scientist</h2>
+<p>Statistical expertise is still required. You need to know enough to evaluate whether the LLM’s suggestions are appropriate, check that code is scientifically valid (not just syntactically correct), and understand what the results mean. Novices who lack that background are more likely to write poor prompts and less likely to catch bad advice.</p>
+<p>We think LLM literacy should be part of statistical training programs, alongside the fundamentals. In our own training we start novices off on R fundamentals and stats first, with no AI other than bug fixes or asking for explanation of unknown code. Once they grasp core concepts we then move onto more advanced forms of AI integration. This needs to introduced done stepwise.</p>
+<p>We’re also only beginning to understand LLM biases for ecological data. Spatial dependencies, nested designs, and zero-inflated count data are common in ecology but probably underrepresented in LLM training data. There’s a lot of evaluation work still to do.</p>
+<p>The paper and all the code for the evaluations is at <a href="https://doi.org/10.5281/zenodo.18463012">Zenodo</a>. If you want the full workflow in practice, there’s also a <a href="https://www.seascapemodels.org/R-llm-workshop/">one-day course</a> and an <a href="https://www.seascapemodels.org/AI-assistants-for-scientific-coding/">online book</a>.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2026-03-17-prompting-llms-stats-paper-published/</guid>
+  <pubDate>Mon, 16 Mar 2026 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Do we really need to teach students to code?</title>
+  <link>https://www.seascapemodels.org/posts/2026-03-02-teaching-students-to-code/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Since chatGPT, stats academics have been saying that we need to teach coding, but I no longer think we do</p>
+<p>I’m just about to publish a paper on using large language models to write code for ecological modelling. In the paper we argue for retaining the teaching of coding in undergraduate programs. Teaching coding is teaching undergraduates to reason quantitatively.</p>
+<p>But I wonder what opportunities we are missing with this strong view that coding is central to statistical training?</p>
+<p>Coding is certainly not the only way to teach reasoning. People were reasoning effectively well before computer coding was invented.</p>
+<p>As an example of alternative possibilities, I vibe coded a webpage that takes mermaid syntax (a flow chart syntax) and turns it into a Bayesian model (specifically written in the Stan language). <a href="https://www.seascapemodels.org/mermaid-to-stan/">Try a prototype of ‘mermaid to stan’ here</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-03-02-teaching-students-to-code/mermaid-to-stan.png" class="img-fluid figure-img"></p>
+<figcaption>Screenshot of the app prototype, vibe coded in 15 minutes</figcaption>
+</figure>
+</div>
+<p>Directed Acyclical Graphs (ie flow charts) are a great way to reason when you are building Bayesian models. Arguably much easier to see problems than with code in fact.</p>
+<p>So make your DAG, you get code that you can copy and paste into R. In principle if you understand the DAG you don’t need to read the R code. (though I should say this is a protoype, so you should read the R code in this case).</p>
+<p>Many students struggle to learn coding and may never need to use it beyond their degree. Of course some will use it extensively.</p>
+<p>We may be better off streaming then so that:</p>
+<ol type="1">
+<li><p>Every gets trained in logical reasoning and stats theory (essential in sciences and I think general life)</p></li>
+<li><p>Students that want to can learn the code</p></li>
+</ol>
+<section id="what-about-code-qaqc" class="level2">
+<h2 class="anchored" data-anchor-id="what-about-code-qaqc">What about code QA/QC?</h2>
+<p>Detractors will argue you ‘need to understand the code to be able to check it’.</p>
+<p>That’s true of genAI written code (though maybe not for much longer).</p>
+<p>But if we can create tools like my prototype that have all the necessary quality checks built it. That’s not a new innovation, its just that generative AI makes this super easy.</p>
+<p>I can now built an app for my students in about 15 minutes. With that capability I could potentially bypass the code altogether.</p>
+<p>What’s important with AI generated applications is extensive tests. So building tests into the development process is key</p>
+<p>Likewise for students using these tools, they need tests to self-check what they are doing. This could include graphs or simulated data so students can check the model works as intended.</p>
+</section>
+<section id="interactive-tools-for-students" class="level2">
+<h2 class="anchored" data-anchor-id="interactive-tools-for-students">Interactive tools for students</h2>
+<p>Coding can be such a huge barrier to teaching new students stats and quantitative methods. They get stuck on details and frustrated by tiny bugs they haven’t learned to spot.</p>
+<p>I’d rather teach them statistics and reasoning first, coding second, if they think they’ll go into a quant heavy career.</p>
+<p>GenAI opens new possibilities for creating apps where we can reason about an analysis in alternative ways to coding, but still translate that reasoning into code that works.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2026-03-02-teaching-students-to-code/</guid>
+  <pubDate>Sun, 01 Mar 2026 13:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Declaring generative AI use in research and university studies</title>
   <link>https://www.seascapemodels.org/posts/2026-03-02-genAI-use-in-uni-assignments/</link>
@@ -1081,141 +1202,6 @@ for part in response.parts:
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/</guid>
   <pubDate>Sat, 22 Nov 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>When a species’ fate hangs on survey design</title>
-  <link>https://www.seascapemodels.org/posts/2025-11-21-survey-design-endangered-species/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Survey design can be one of those dry academic topics that students shy away from. So I wanted to highlight the sad case of the Greater Glider, a gliding possum.</p>
-<p>The <a href="https://theconversation.com/new-logging-rules-in-nsw-put-the-greater-glider-closer-to-extinction-when-will-we-start-protecting-these-amazing-animals-223182">greater glider is on its way to extinction</a> thanks in part due to insufficient survey designs.</p>
-<p>As a protected species there are buffer zones for logging around <em>known</em> greater glider habitat. The buffers are bigger still if a glider den (tree hollow) is confirmed. The “known” part is where survey design comes in.</p>
-<p>The problem is, current survey designs are <a href="https://www.abc.net.au/news/2025-11-21/environment-groups-decry-greater-glider-survey-results/106017274">not sufficient to reliably detect greater gliders</a>.</p>
-<p>Gliders emerge from their dens around sunset then go out to forage.</p>
-<p>Official surveys are limited to roads and to a short period around sunset. But this means they will miss glider dens that aren’t near roads. That’s also a very limited amount of time to spot a cryptic species.</p>
-<p>The quality of the official survey design is indicated by the fact that citizen scientists found 918 gliders in an area where the official survey only found 42.</p>
-<p>From a statistical viewpoint the official survey design potentially suffers from two issues:</p>
-<ol type="1">
-<li>Bias, in that only habitats near roads are surveyed</li>
-<li>Low detection rates, in that the time surveyed is too limited.</li>
-</ol>
-<p>Below I want to illustrate the detectability aspect, as its obvious how you deal with the bias aspect (do more complete surveys of the area).</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-21-survey-design-endangered-species/possum.jpg" class="img-fluid"> Brushtail possum considering its detectability model (AI generated image).</p>
-<section id="detectability" class="level2">
-<h2 class="anchored" data-anchor-id="detectability">Detectability</h2>
-<p>In ecology we use repeat surveys to estimate a species’ detectability.</p>
-<p>Detectability is a key parameter to estimate and then to account for when designing surveys.</p>
-<p>Let me show you with a simple simulation how repeat surveys dramatically improve your chances of detecting a species that’s actually present.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://www.seascapemodels.org/posts/2025-11-21-survey-design-endangered-species/index_files/figure-html/detection-simulation-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The simulation shows a dramatic improvement in detection probability with repeat surveys.</p>
-<p>Estimating the detectability parameter can be complicated with real world survey designs. But the good news is that it is a well researched area of ecology and many frameworks (with handy R packages) exist to help you. Using these methods is a must for cryptic species.</p>
-</section>
-<section id="survey-design-matters" class="level2">
-<h2 class="anchored" data-anchor-id="survey-design-matters">Survey design matters</h2>
-<p>Issues of survey design often come up in environmental controversies. Its an important area for conservation biologists to study and to learn well. They need to know the principles so they can make a strong case for survey designs that are sufficient to protect endangered species.</p>
-<p>Let’s hope that the survey design for gliders can be turned around, as conservationists are advocating for, so we can save this unique Australian mammal.</p>
-
-
-</section>
-
- ]]></description>
-  <category>research</category>
-  <guid>https://www.seascapemodels.org/posts/2025-11-21-survey-design-endangered-species/</guid>
-  <pubDate>Thu, 20 Nov 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Should I post my manuscript to a pre-print server?</title>
-  <link>https://www.seascapemodels.org/posts/2025-11-15-should-i-do-a-pre-print/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>In our recent lab meeting we <a href="https://www.seascapemodels.org/posts/2018-08-20-biorxiv-pre-print-posting-guide/index.html">revisited the topic of pre-prints and pre-print servers</a> to answer the question - should I post a pre-print of my manuscript?</p>
-<p>Thanks to Jordan Holdorf for helping me write this post and Matt Holden for contributions via linkedin.</p>
-<p>In a recent lab meeting, we revisited the question: Should I post a preprint of my manuscript? A few years ago, <a href="https://www.seascapemodels.org/posts/2018-08-20-biorxiv-pre-print-posting-guide/index.html">I wrote about this topic after posting my fourth preprint to bioRxiv</a>. Since then, the landscape has shifted, and our discussion—thanks to Jordan Holdorf for the notes—highlighted new considerations worth sharing.</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-15-should-i-do-a-pre-print/pre-print-illustration.jpg" class="img-fluid"></p>
-<p>*Generated by Google Gemini.</p>
-<section id="what-are-preprints" class="level2">
-<h2 class="anchored" data-anchor-id="what-are-preprints">What Are Preprints?</h2>
-<p>Preprints are manuscripts shared publicly before formal peer review. They’re free to post, free to read, and usually come with a DOI, making them citable. Popular servers include arXiv, bioRxiv, EcoEvoRxiv, medRxiv, and SSRN.</p>
-<p>The concept isn’t new, arXiv launched in physics back in 1991, but preprints surged during COVID-19 as scientists raced to share findings quickly. Conservation science and ecology have increasingly embraced preprints as well.</p>
-</section>
-<section id="why-bother-pros-and-cons" class="level2">
-<h2 class="anchored" data-anchor-id="why-bother-pros-and-cons">Why Bother? Pros and Cons</h2>
-<section id="pros" class="level3">
-<h3 class="anchored" data-anchor-id="pros">Pros</h3>
-<ul>
-<li>Visibility and speed: Your work is accessible immediately, not months later.</li>
-<li>Feedback: Pre-review comments can strengthen your paper.</li>
-<li>Citations: Preprints can be cited, even if the journal version is paywalled.</li>
-<li>Priority: Posting establishes your claim to an idea.</li>
-<li>Flexibility: You can build on work that’s still under review.</li>
-</ul>
-</section>
-<section id="cons" class="level3">
-<h3 class="anchored" data-anchor-id="cons">Cons</h3>
-<ul>
-<li>Quality concerns: Preprints aren’t peer-reviewed, so errors can spread.</li>
-<li>Misinformation risk: Especially if high-profile topics get picked up by the press.</li>
-<li>Version confusion: If titles change, citations may split across versions.</li>
-<li>Journal policies: Most journals now allow preprints, but check first.</li>
-<li>Double-blind issues: Reviewers can find your preprint and identify authors.</li>
-<li>Time cost: Uploading and revising adds extra steps.</li>
-<li>Google Scholar may not list your published article for up to 6 months after publication (rather than the normal few days delay after publishing). This is a known issue with pre-prints on SSRN and bioRxiv, apparently fixed for arxiv pre-prints.</li>
-</ul>
-<p>Overall, the benefits usually outweigh the drawbacks—if you manage the process carefully.</p>
-</section>
-</section>
-<section id="key-considerations" class="level2">
-<h2 class="anchored" data-anchor-id="key-considerations">Key considerations</h2>
-<p>Some lab members expressed concern that their work could get stolen from a pre-print and published by an other author. I would think this is rare, however, with AI making it increasingly easy to paraphrase other people’s work, the risk is probably higher than it used to be.</p>
-<p>We decided that if you are concerned about plagiarism, it is best not to link your open code repository in the preprint. That could make it too easy for a bad actor to create a new version of your work.</p>
-<p>Media is another factor. Journalists generally prefer to cover peer-reviewed work, though during COVID, preprints made headlines. For most fields, you can expect little media attention until formal publication. This is good, as peer review is crucial for credibility.</p>
-<p>Finally, think strategically. Preprints make sense for urgent topics, methods papers, or when you want community feedback. They’re less practical if you’re under time pressure or working on a niche topic.</p>
-</section>
-<section id="how-to-post-a-preprint" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-post-a-preprint">How to Post a Preprint</h2>
-<p>Here’s a streamlined guide based on experience and Jordan’s notes:</p>
-<ul>
-<li>Finish the manuscript and get coauthor approval. Check your target journal’s preprint policy.</li>
-<li>Format carefully. Upload a polished PDF with clear figures, tables, and your contact info.</li>
-<li>Sign up for a server and ORCID. ORCID helps link your work across platforms.</li>
-<li>Choose a license. Think about reuse—Creative Commons options vary.</li>
-<li>Upload and wait. Most servers take ~24 hours to post.</li>
-<li>Share strategically. Share on social media (to other scientists, not for general public), email colleagues, or post on Google Scholar if you want feedback.</li>
-<li>Revise before acceptance. Once your paper is accepted, most servers block updates. Link the final version. Matching titles help merge citations; otherwise, see the server’s instructions for how to fix the connection.</li>
-</ul>
-</section>
-<section id="my-experience" class="level2">
-<h2 class="anchored" data-anchor-id="my-experience">My Experience</h2>
-<p>I’ve had mixed results. One preprint was redundant because the journal review was lightning-fast. Another has been cited multiple times while stuck in review purgatory—proof that preprints can keep your work alive. The biggest headache? Title changes. If your published title differs, make sure the preprint links correctly.</p>
-</section>
-<section id="final-thoughts" class="level2">
-<h2 class="anchored" data-anchor-id="final-thoughts">Final Thoughts</h2>
-<p>Preprints aren’t a magic bullet, but they’re a powerful tool when used thoughtfully. They accelerate science, increase visibility, and invite collaboration—but they also demand care around version control, anonymity, and journal policies.</p>
-<p>On the balance of it I use them selectively. For work that is time-sensitive, methodologically important, or where I want feedback, then I do a pre-print. If I’m busy or there is little to gain, then I skip it.</p>
-
-
-</section>
-
- ]]></description>
-  <category>research-skills</category>
-  <guid>https://www.seascapemodels.org/posts/2025-11-15-should-i-do-a-pre-print/</guid>
-  <pubDate>Fri, 14 Nov 2025 13:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

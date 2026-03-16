@@ -10,7 +10,128 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog-rstats.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Sun, 01 Mar 2026 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 16 Mar 2026 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>Prompting large language models for quality ecological statistics</title>
+  <link>https://www.seascapemodels.org/posts/2026-03-17-prompting-llms-stats-paper-published/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Like it or not, everyone is using large languageden models to help do their statistics.</p>
+<p>There’s a lot of claims made about whether LLMs can or can’t do useful ecological statistics. In our new paper <a href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210x.70267?af=R">“Prompting large language models for quality ecological statistics”</a> (in Methods in Ecology and Evolution) we wanted to test those claims quantitatively.</p>
+<p>We provide guidelines for how to use LLMs to produce scientifically valid statistical analyses. The short version: LLMs can help you do better statistics, but only if you ask well. And “asking well” is a learnable skill.</p>
+<p>The paper is co-authored with agentic AI expert Scott Spillias and grew out of our experiences teaching LLMs for statistical analysis.</p>
+<section id="why-we-wrote-it" class="level2">
+<h2 class="anchored" data-anchor-id="why-we-wrote-it">Why we wrote it</h2>
+<p>I’ve been teaching researchers how to use LLMs for coding and statistics for a few years now. Two things kept coming up. First, most people underestimate how much the prompt matters — they treat LLMs like a search engine and get search-engine quality advice. Second, some people trust LLM-generated code and statistics uncritically, which is risky.</p>
+<p>Late 2024 studies found LLMs recommended the correct statistical test less than 40% of the time with generic prompts. But accuracy improves substantially with more specific prompts, which is a key skill we focus on in the article.</p>
+</section>
+<section id="what-we-found" class="level2">
+<h2 class="anchored" data-anchor-id="what-we-found">What we found</h2>
+<p>We ran repeatable evaluations in R, replicating each prompt 10 times across multiple LLMs. A few results stood out.</p>
+<p><strong>Specificity matters enormously for test selection.</strong> We compared four prompts for choosing a statistical test for an ecological dataset, ranging from “How do I test the relationship between two continuous variables?” to a detailed prompt specifying variable types, sample size, and study design. The generic prompt never suggested count models (the appropriate family for fish abundance data). The detailed prompt guaranteed them, regardless of which LLM we used.</p>
+<p><strong>Detailed prompts make agent-generated code more consistent.</strong> We asked the Github Copilot agent to write an entire analysis workflow from two different prompts — one brief, one detailed. We then ran multivariate ordination on the resulting code to measure how similar the 10 replicates were to each other. The detailed prompt produced much tighter clusters — the agent kept using the same functions, variable names, and structure. Inconsistent code is harder to review, which matters if you’re trying to catch statistical errors.</p>
+<p><strong>Being specific overcomes weaker models.</strong> When we tasked LLMs with writing R code to calculate a distance matrix, the detailed prompt got the right answer 90–100% of the time across all models. The brief prompt mostly failed — except for GPT-5 Codex, which guessed correctly 9/10 times. Good prompts effectively compensated for using a smaller, cheaper model.</p>
+</section>
+<section id="the-workflow-we-recommend" class="level2">
+<h2 class="anchored" data-anchor-id="the-workflow-we-recommend">The workflow we recommend</h2>
+<p>We suggest breaking LLM-assisted analysis into three stages, and writing separate prompts for each. This helps you control the workflow and avoid LLM mistakes.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-03-17-prompting-llms-stats-paper-published/figure1-v2-highres.jpg" class="img-fluid figure-img"></p>
+<figcaption>Recommended workflow for using LLMs to complement traditional approaches to statistical analysis</figcaption>
+</figure>
+</div>
+<ol type="1">
+<li><p><strong>Choose the statistical approach</strong> — describe your variables, sample size, and study design in detail. Attach the data or a summary. Point the LLM to reference material you trust.</p></li>
+<li><p><strong>Plan the implementation</strong> — before writing any code, get the LLM to help you structure the project directory and scripts. We use a <code>readme.md</code> that includes research context, analysis steps, package preferences, and directory layout. This file then gets attached to every subsequent prompt, giving the LLM a consistent memory across sessions.</p></li>
+<li><p><strong>Write the code</strong> — with a detailed readme and explicit instructions, agents can complete analyses with minimal supervision. Without that structure, even strong models produce code that’s hard to review and inconsistent across runs.</p></li>
+</ol>
+</section>
+<section id="general-prompting-tips" class="level2">
+<h2 class="anchored" data-anchor-id="general-prompting-tips">General prompting tips</h2>
+<p>These apply regardless of which stage of analysis you’re at:</p>
+<ul>
+<li><strong>Declare a role upfront</strong> — start with “You are an expert in ecological statistics and R.” This orients the LLM and nudges it toward discipline-appropriate methods.</li>
+<li><strong>Avoid multi-turn conversation where possible</strong> — each turn adds context that can’t be removed. If the conversation goes wrong, start fresh with a better prompt rather than trying to correct course.</li>
+<li><strong>Use prompt bootstrapping</strong> — ask the LLM what information it would need to answer your question better, then start a new session with that improved prompt.</li>
+<li><strong>Attach your own references</strong> — rather than letting the LLM search the web, point it to tutorials and vignettes you’ve already vetted. You control the quality of the context.</li>
+<li><strong>Break problems into steps</strong> — don’t ask for everything at once. Separate choosing a method, planning the code structure, and writing the code into distinct prompts.</li>
+</ul>
+</section>
+<section id="the-important-role-for-the-scientist" class="level2">
+<h2 class="anchored" data-anchor-id="the-important-role-for-the-scientist">The important role for the scientist</h2>
+<p>Statistical expertise is still required. You need to know enough to evaluate whether the LLM’s suggestions are appropriate, check that code is scientifically valid (not just syntactically correct), and understand what the results mean. Novices who lack that background are more likely to write poor prompts and less likely to catch bad advice.</p>
+<p>We think LLM literacy should be part of statistical training programs, alongside the fundamentals. In our own training we start novices off on R fundamentals and stats first, with no AI other than bug fixes or asking for explanation of unknown code. Once they grasp core concepts we then move onto more advanced forms of AI integration. This needs to introduced done stepwise.</p>
+<p>We’re also only beginning to understand LLM biases for ecological data. Spatial dependencies, nested designs, and zero-inflated count data are common in ecology but probably underrepresented in LLM training data. There’s a lot of evaluation work still to do.</p>
+<p>The paper and all the code for the evaluations is at <a href="https://doi.org/10.5281/zenodo.18463012">Zenodo</a>. If you want the full workflow in practice, there’s also a <a href="https://www.seascapemodels.org/R-llm-workshop/">one-day course</a> and an <a href="https://www.seascapemodels.org/AI-assistants-for-scientific-coding/">online book</a>.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2026-03-17-prompting-llms-stats-paper-published/</guid>
+  <pubDate>Mon, 16 Mar 2026 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Do we really need to teach students to code?</title>
+  <link>https://www.seascapemodels.org/posts/2026-03-02-teaching-students-to-code/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Since chatGPT, stats academics have been saying that we need to teach coding, but I no longer think we do</p>
+<p>I’m just about to publish a paper on using large language models to write code for ecological modelling. In the paper we argue for retaining the teaching of coding in undergraduate programs. Teaching coding is teaching undergraduates to reason quantitatively.</p>
+<p>But I wonder what opportunities we are missing with this strong view that coding is central to statistical training?</p>
+<p>Coding is certainly not the only way to teach reasoning. People were reasoning effectively well before computer coding was invented.</p>
+<p>As an example of alternative possibilities, I vibe coded a webpage that takes mermaid syntax (a flow chart syntax) and turns it into a Bayesian model (specifically written in the Stan language). <a href="https://www.seascapemodels.org/mermaid-to-stan/">Try a prototype of ‘mermaid to stan’ here</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-03-02-teaching-students-to-code/mermaid-to-stan.png" class="img-fluid figure-img"></p>
+<figcaption>Screenshot of the app prototype, vibe coded in 15 minutes</figcaption>
+</figure>
+</div>
+<p>Directed Acyclical Graphs (ie flow charts) are a great way to reason when you are building Bayesian models. Arguably much easier to see problems than with code in fact.</p>
+<p>So make your DAG, you get code that you can copy and paste into R. In principle if you understand the DAG you don’t need to read the R code. (though I should say this is a protoype, so you should read the R code in this case).</p>
+<p>Many students struggle to learn coding and may never need to use it beyond their degree. Of course some will use it extensively.</p>
+<p>We may be better off streaming then so that:</p>
+<ol type="1">
+<li><p>Every gets trained in logical reasoning and stats theory (essential in sciences and I think general life)</p></li>
+<li><p>Students that want to can learn the code</p></li>
+</ol>
+<section id="what-about-code-qaqc" class="level2">
+<h2 class="anchored" data-anchor-id="what-about-code-qaqc">What about code QA/QC?</h2>
+<p>Detractors will argue you ‘need to understand the code to be able to check it’.</p>
+<p>That’s true of genAI written code (though maybe not for much longer).</p>
+<p>But if we can create tools like my prototype that have all the necessary quality checks built it. That’s not a new innovation, its just that generative AI makes this super easy.</p>
+<p>I can now built an app for my students in about 15 minutes. With that capability I could potentially bypass the code altogether.</p>
+<p>What’s important with AI generated applications is extensive tests. So building tests into the development process is key</p>
+<p>Likewise for students using these tools, they need tests to self-check what they are doing. This could include graphs or simulated data so students can check the model works as intended.</p>
+</section>
+<section id="interactive-tools-for-students" class="level2">
+<h2 class="anchored" data-anchor-id="interactive-tools-for-students">Interactive tools for students</h2>
+<p>Coding can be such a huge barrier to teaching new students stats and quantitative methods. They get stuck on details and frustrated by tiny bugs they haven’t learned to spot.</p>
+<p>I’d rather teach them statistics and reasoning first, coding second, if they think they’ll go into a quant heavy career.</p>
+<p>GenAI opens new possibilities for creating apps where we can reason about an analysis in alternative ways to coding, but still translate that reasoning into code that works.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2026-03-02-teaching-students-to-code/</guid>
+  <pubDate>Sun, 01 Mar 2026 13:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Declaring generative AI use in research and university studies</title>
   <link>https://www.seascapemodels.org/posts/2026-03-02-genAI-use-in-uni-assignments/</link>
@@ -2244,180 +2365,6 @@ Cite this as evidence that Australia is losing coastal marine biodiversity and a
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-06-27-prompting-llms-quality-ecological-statistics/</guid>
   <pubDate>Thu, 26 Jun 2025 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Why we are all naturally Bayesians not frequentists</title>
-  <link>https://www.seascapemodels.org/posts/2025-06-25-why-frequentist-statistics-makes-no-sense/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>I don’t see why its a thing to say “I’m a Bayesian”. Being a Bayesian is normal for any rational person as we will prove in a couple of sentences. Being a frequentist is what is what is strange. It would make more sense to assume we are all Bayesians, and have frequentists have to declare “I’m a frequentist”.</p>
-<p>The statistical quantity of interest for frequentist is the likelihood, which is defined as the probability of your observations given your hypothesis. It can be written:</p>
-<p><code>Pr(D | H)</code></p>
-<p>(Equivalently probability of data given we assume a particular model). For a Bayesian the statistical quantity is the probability of the hypothesis given the observations or:</p>
-<p><code>Pr(H | D)</code></p>
-<p>(Equivalently probability of a model given the data).</p>
-<p>Say we’re out on a boat and we catch a glance of a human sized animal dive underwater with a flap of its tail. Was it a mermaid or a dugong? (A dugong is type of seagrass eating mammal).</p>
-<p>A frequentist would think in likelihoods and conclude, correctly, that both mermaid and dugong are equally likely: Both creatures, if assumed to exist, could result in a similar observation of us seeing a body and a tail diving underwater, i.e.</p>
-<p><code>Pr(seeing a tail | dugongs exist) ≈ Pr(seeing a tail | mermaid exist)</code></p>
-<p>A rational person would guess the observed tail was a dugong. That is because a rational person is thinking in terms of probabilities. The probability we observed a mermaid is vanishingly small, because all prior evidence leads us to believe that mermaids don’t exist (though I do know some less than rational people who believe in ‘merfolk’).</p>
-<p>In logic, Bayes theorem says we can calculate the probability of the hypothesis</p>
-<p><code>Pr(H | D) = Pr(D | H)*Pr(H) / Pr(D)</code></p>
-<p>So for the hypothesis “it’s a dugong”:</p>
-<p><code>Pr(dugong | seeing tail) = Pr(seeing tail | dugong)*Pr(dugong) / Pr(seeing tail)</code></p>
-<p>For our two models, dugong versus mermaid, we have similar values for the likelihoods and <code>pr(D)</code>, but the ‘prior probabilities’, the <code>Pr(H)</code>, are very different. <code>Pr(dugong)</code> is plausible (even though is rare to see them), whereas <code>Pr(mermaid)</code> is zero, because merfolk don’t exist.</p>
-<p>We multiply the likelihood by the prior in the Bayes equation, so the <code>Pr(mermaid | seeing tail)</code> becomes zero.</p>
-<p>(If you are new to Bayes theory, you might be wondering what does <code>Pr(D)</code> mean? How do we calculate the probability of the data? For the above example it doesn’t matter as <code>Pr(seeing a tail)</code> is the same for both hypotheses. One of the challenges of Bayes stats in practice is calculating this <code>Pr(D)</code>. A lot of statistical computing is devoted to figuring out how to do that. In brief though <code>Pr(D)</code> can be calculated as the sum of <code>Pr(seeing tail | dugong)*Pr(H)</code> for all discrete hypotheses or the integral if our hypotheses are continuous (like parameter values)).</p>
-<p>Does this philosophical distinction it matter in the practice of statistics?</p>
-<p>The Bayesian version of an analysis, such as a GLM, will often given similar or the same predictions as the frequentist version. Yet ecology, like many other disciplines, has a problem with repeatability and p-hacking.</p>
-<p>Part of the problem stems from the methods we use. For large sample sizes frequentist and Bayesian results often do converge.</p>
-<p>But small sample sizes are common in many fields, including ecology. A small sample size study that finds an extreme and significant result is attractive to publish. This issue has been particularly problematic in <a href="https://www.nature.com/articles/s41586-019-1903-y">behavioural ecology</a>. These false positives come to dominate the literature.</p>
-<p>Appropriate use of Bayesian priors would penalize these extreme effect sizes. This is equivalent to setting a low probability on mermaid sightings above. Some have <a href="https://xcelab.net/rm/">called for stronger priors to be the default choice</a></p>
-<p>So in every day life we think of probabilities Bayesians, not like frequentists. There are numerous Bayesian R packages now and they are increasingly easy to use. So it makes sense that we should apply the same logic to our statistical analyses as well.</p>
-<p>Thanks to Sober’s ‘Philosophy of Biology’ for this example (he uses gremlins in the roof rather than mermaids) and Coralina for telling me about the book!</p>
-
-
-
- ]]></description>
-  <category>rstats</category>
-  <category>research</category>
-  <guid>https://www.seascapemodels.org/posts/2025-06-25-why-frequentist-statistics-makes-no-sense/</guid>
-  <pubDate>Tue, 24 Jun 2025 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Setting up VScode for R and generative AI tools</title>
-  <link>https://www.seascapemodels.org/posts/2025-06-12-setting-up-vscode-r-genAI/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>VScode has many extensions that let you create and run entire workflows via using prompts to a large language model. Its not widely used in the R community yet, but I expect it will be soon. You can create your entire R project, interpret the results and write a draft of your findings without writing any R code.</p>
-<p>Most of these tools are not available (as of writing) in RStudio, or have only limited functionality. So you need to use a different IDE (Integrated Development Environment) to run your R code. Here I’ll explain how to set-up VSCode (a popular IDE) so you can use Cline.</p>
-<section id="software-requirements" class="level2">
-<h2 class="anchored" data-anchor-id="software-requirements">Software requirements</h2>
-<p>To set up VScode for R and Cline, you’ll need:</p>
-<ul>
-<li>R programming language</li>
-<li>VScode text editor</li>
-<li>R extension for VScode</li>
-<li>Cline AI assistant extension for VScode</li>
-</ul>
-<p>Note that if you computer is controlled centrally by an IT department, you may need to request admin access to install software, or email IT and ask for them to come and help you.</p>
-</section>
-<section id="install-r" class="level2">
-<h2 class="anchored" data-anchor-id="install-r">Install R</h2>
-<ol type="1">
-<li>Go to the official R project website: https://www.r-project.org/</li>
-<li>Click the “download R” link in the Getting Started section</li>
-<li>Choose a CRAN mirror close to your location</li>
-<li>Download the appropriate R installer for your operating system</li>
-<li>Run the installer and follow the prompts to complete installation</li>
-</ol>
-</section>
-<section id="r-packages" class="level2">
-<h2 class="anchored" data-anchor-id="r-packages">R packages</h2>
-<ol type="1">
-<li>Open R or RStudio</li>
-<li>Install language server <code>install.packages("languageserver")</code></li>
-<li>Install httpgd <code>install.packages("httpgd")</code> (this helps improve plots in VScode). NOTE that httpgd seems to often be removed from CRAN, then come back again, I’m not sure why… If you are having trouble you can try install from a different repo, see instructions here: https://community.r-multiverse.org/httpgd</li>
-</ol>
-</section>
-<section id="install-vscode" class="level2">
-<h2 class="anchored" data-anchor-id="install-vscode">Install VScode</h2>
-<ol type="1">
-<li>Go to the official VScode website: https://code.visualstudio.com/</li>
-<li>Click the big blue “Download” button</li>
-<li>Download the appropriate VScode installer for your operating system</li>
-<li>Run the installer and follow the prompts</li>
-<li>Launch VScode once installation is complete</li>
-</ol>
-</section>
-<section id="install-r-extension" class="level2">
-<h2 class="anchored" data-anchor-id="install-r-extension">Install R extension</h2>
-<ol type="1">
-<li>Open VScode</li>
-<li>Open the Extensions view in VScode (click the boxes on left hand side)</li>
-<li>Search for “R” in the extensions marketplace</li>
-<li>Select the “R” extension published by REditorSupport</li>
-<li>Click the “Install” button</li>
-<li>Restart VScode after installation if prompted</li>
-</ol>
-<p><a href="https://code.visualstudio.com/docs/languages/r">More info on vscode and R here</a></p>
-</section>
-<section id="connect-r-and-vscode" class="level2">
-<h2 class="anchored" data-anchor-id="connect-r-and-vscode">Connect R and VScode</h2>
-<ol type="1">
-<li>Open a new terminal in VScode (Terminal &gt; New Terminal)</li>
-<li>Check that R is installed by running: <code>R --version</code></li>
-<li>Type <code>R</code> to open the R console in the terminal</li>
-<li>Now open any R script in VS code (File &gt; Open)</li>
-<li>Run some R code to check that VS code can connect to R in the terminal. Use the shortcut Ctrl+Enter/Cmd+Enter or press the play button in the top right of the script editor.</li>
-</ol>
-<p>If R is not found then open extensions (left hand side, boxes icon), filter by ‘enabled’ then click the R extension. Now click the cog icon in the R extension and select ‘settings’ from the dropdown. Search for ‘rpath’. Check that it has the correct path to R on your computer. You can find the path by opening a terminal and typing <code>which R</code> (on mac) or in a windows terminal <code>where R</code>.</p>
-<p>While you have the extension settings open search for ‘httgp’ and make sure <code>Plot: Use Httpgd</code> is enabled.</p>
-</section>
-<section id="install-gen-ai-extensions" class="level2">
-<h2 class="anchored" data-anchor-id="install-gen-ai-extensions">Install gen AI extensions</h2>
-<ol type="1">
-<li>Open the Extensions view in VScode (Ctrl+Shift+X)</li>
-<li>Search for the genAI assistant of your choice. I’m use Roo Code currently. Cline is another popular choice.</li>
-<li>Select the extension</li>
-<li>Click the “Install” button</li>
-<li>The extension icon (e.g.&nbsp;a Roo if using Roo Code) should appear in the VScode sidebar</li>
-</ol>
-</section>
-<section id="set-up-extension-in-vscode" class="level2">
-<h2 class="anchored" data-anchor-id="set-up-extension-in-vscode">Set up extension in VScode</h2>
-<ol type="1">
-<li>Click on the extension icon (e.g.&nbsp;a roo for roo code or robot for cline) on the left hand side</li>
-<li>Click the cog (if the settings don’t open automatically)</li>
-<li>Select your API provider and cut and paste the API key into the box (see next step if you don’t have one).</li>
-</ol>
-</section>
-<section id="get-an-api-key" class="level2">
-<h2 class="anchored" data-anchor-id="get-an-api-key">Get an API key</h2>
-<p>An API key is like a password that allows the AI assistant (e.g.&nbsp;roo code) to send your prompt to a large language model. Your key should be kept private. Usually you’ll have to buy some credits. These allow you to send prompts to the LLM. You’ll be paying per prompt.</p>
-<p>Now you need to choose your large language model provider. I’m currently using OpenRouter and Anthropic, which have a diversity of models for generating text, code and reading images. Do some web searching to find out the latest info on providers and models.</p>
-<p>You choose depends on what you want to do and your budget. Some providers offer a free tier. You’ll need to web search for the latest info on this.</p>
-<p>You can get the links to any supported provider from your extension settings, just select the provider and then a link will appear to sign-up for that provider.</p>
-<p>Once you’ve chosen a provider, create an account and follow their instructions for creating an API key. You will probably also need to buy some credit to use the model.</p>
-<p>Note that if you already have a subscription account, e.g.&nbsp;for chatGPT, you will get need an API key to use Cline. This might be in a different section of your account settings. If you are using a subscription service you are probably paying monthly to use the provider’s web app. We need the API key to be able to use the model directly via code.</p>
-</section>
-<section id="youre-all-set" class="level2">
-<h2 class="anchored" data-anchor-id="youre-all-set">You’re all set</h2>
-<p>Now you’re set and ready to start using Cline to code and write text.</p>
-</section>
-<section id="issues-and-tips" class="level2">
-<h2 class="anchored" data-anchor-id="issues-and-tips">Issues and tips</h2>
-<p>This is just a list of issues I’ve had and how I’ve solved them.</p>
-<p><em>Plotting</em> If your R plots look weird (like tiny font), make sure httpgp is enabled. Go back to steps above and see how to do that.</p>
-<p><em>Viewing data</em> There are various extensions for viewing csv and excel files. It is worth looking into these so that when you do <code>View(dat)</code> in R you get a nice table. Some also allow editing.</p>
-<p><em>Getting help to install software</em> My computer is somewhat locked down by IT, so getting this set-up was a bit fiddly and required a few requests to IT to install software.</p>
-<p><em>R markdown</em> There are options in the R extension settings for how to knit markdown. You may need to configure these if you want to knit markdown docs from VScode. If you are having trouble knitting markdown it may mean that the path to pandoc is not set correctly. <a href="https://stackoverflow.com/questions/60766646/need-help-assigning-global-settings-for-rstudios-pandoc-in-vscode-to-knit-pdf-d">There is some helpful instructions here</a></p>
-<p><em>R terminal crashes</em> If I run too much R code at once (like selecting a big block then running) the terminal tends to crash. Initially I see a little highlighted box saying ‘PTY HOST’. Then I need to close all the terminals (with the bin icon) and start again. Try radian if this is a problem. You can also code run line-by-line or source whole scripts from the terminal (which works fine). I tried debugging this by increasing the buffer but to on avail.</p>
-<p><em>Shortcut keys</em> (on osx) cmd-/ to comment uncomment lines. cmd-shift-p to open the command palette, cmd-b to open the file explorer, cmd-enter to run lines or selection of R code, cmd-shift-c to open terminal in new window, cntrl-shift-` to open a new terminal in vs code.</p>
-</section>
-<section id="installing-radian-optional" class="level2">
-<h2 class="anchored" data-anchor-id="installing-radian-optional">Installing radian (optional)</h2>
-<p>Radian is a terminal editor that is a bit nicer than the base R one. It does autocomplete in the terminal (like Rstudio does in the console), colours code/brackets etc… and allows multi-line editing in the terminal.</p>
-<p>To set this up, install radian (you need python to do this). More <a href="https://github.com/randy3k/radian?tab=readme-ov-file">instructions here</a>.</p>
-<p>Then go to the terminal and find the path where radian is installed (e.g.&nbsp;<code>which radian</code> on mac or <code>where radian</code> on windows).</p>
-<p>Now open your settings in VScode (cmd-,) and search for ‘rterm’ (stands for ‘R Terminal’, don’t change the rpath which we set just before). Add the path to radian to the rterm setting. Also search for the setting ‘R: Bracketed Paste’ and make sure it is enabled.</p>
-
-
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <category>research-skills</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-06-12-setting-up-vscode-r-genAI/</guid>
-  <pubDate>Wed, 11 Jun 2025 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
