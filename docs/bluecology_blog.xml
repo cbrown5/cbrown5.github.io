@@ -20,7 +20,7 @@
 
 
 
-<p>Like it or not, everyone is using large languageden models to help do their statistics.</p>
+<p>Like it or not, everyone is using large language models to help do their statistics.</p>
 <p>There’s a lot of claims made about whether LLMs can or can’t do useful ecological statistics. In our new paper <a href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210x.70267?af=R">“Prompting large language models for quality ecological statistics”</a> (in Methods in Ecology and Evolution) we wanted to test those claims quantitatively.</p>
 <p>We provide guidelines for how to use LLMs to produce scientifically valid statistical analyses. The short version: LLMs can help you do better statistics, but only if you ask well. And “asking well” is a learnable skill.</p>
 <p>The paper is co-authored with agentic AI expert Scott Spillias and grew out of our experiences teaching LLMs for statistical analysis.</p>

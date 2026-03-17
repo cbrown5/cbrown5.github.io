@@ -7326,7 +7326,7 @@
     "href": "posts/2026-03-17-prompting-llms-stats-paper-published/index.html",
     "title": "Prompting large language models for quality ecological statistics",
     "section": "",
-    "text": "Like it or not, everyone is using large languageden models to help do their statistics.\nThere’s a lot of claims made about whether LLMs can or can’t do useful ecological statistics. In our new paper “Prompting large language models for quality ecological statistics” (in Methods in Ecology and Evolution) we wanted to test those claims quantitatively.\nWe provide guidelines for how to use LLMs to produce scientifically valid statistical analyses. The short version: LLMs can help you do better statistics, but only if you ask well. And “asking well” is a learnable skill.\nThe paper is co-authored with agentic AI expert Scott Spillias and grew out of our experiences teaching LLMs for statistical analysis."
+    "text": "Like it or not, everyone is using large language models to help do their statistics.\nThere’s a lot of claims made about whether LLMs can or can’t do useful ecological statistics. In our new paper “Prompting large language models for quality ecological statistics” (in Methods in Ecology and Evolution) we wanted to test those claims quantitatively.\nWe provide guidelines for how to use LLMs to produce scientifically valid statistical analyses. The short version: LLMs can help you do better statistics, but only if you ask well. And “asking well” is a learnable skill.\nThe paper is co-authored with agentic AI expert Scott Spillias and grew out of our experiences teaching LLMs for statistical analysis."
   },
   {
     "objectID": "posts/2026-03-17-prompting-llms-stats-paper-published/index.html#why-we-wrote-it",
