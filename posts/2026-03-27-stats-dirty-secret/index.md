@@ -21,13 +21,13 @@ But Darwin's discovery of evolution by natural selection revealed an awkward rea
 
 The solution of course was to show that white Europeans had evolved a superior intellect. That way it could be justified why they deserved to rule the rest of the world. 
 
-This colonial racism carries through the 19th centry to set the scene for statistical methods that were pioneered in the first half of the 20th centre. 
+This colonial racism carries through the 19th century to set the scene for statistical methods that were pioneered in the first half of the 20th century. 
 
-These are methods like p-values, t-tests, anovas and maximum likelihood that are still commonly used today. All of these methods are framed under the viewpoint of probabilities as frequencies of events - the frequentist perspective. 
+These are methods like p-values, t-tests, ANOVAs and maximum likelihood that are still commonly used today. All of these methods are framed under the viewpoint of probabilities as frequencies of events - the frequentist perspective. 
 
-Until recently these methods underpinned almost all scientific inferences. Everything from drug approvals to pschyological studies of human behaviour to climate change studies. 
+Until recently these methods underpinned almost all scientific inferences. Everything from drug approvals to psychological studies of human behaviour to climate change studies. 
 
-Frequentist methods and their application in the scientific method were pioneered and advocated for by three English mathemeticians and biologists, Galton, Pearson and Fisher. All were active in the eugenics movement. For example Fisher was chairman of a prominent eugenics society. The eugenics movement aimed to improve the genetic quality of the human race, usually through advocating for breeding or sterilisation of parts of society on racial or class grounds. 
+Frequentist methods and their application in the scientific method were pioneered and advocated for by three English mathematicians and biologists, Galton, Pearson and Fisher. All were active in the eugenics movement. For example Fisher was chairman of a prominent eugenics society. The eugenics movement aimed to improve the genetic quality of the human race, usually through advocating for breeding or sterilisation of parts of society on racial or class grounds. 
 
 Fisher for example wrote that the oncoming collapse of civilization was the fault of increased birth rates in lower classes who he thought were of lesser intellectual character. What the empire needed to do was slow those birth rates and promote procreation in the intellectually superior elite classes. 
 
@@ -53,7 +53,7 @@ Even a hint of subjectivity would weaken their arguments for eugenics. They want
 
 This strong motivation for objectivity also motivated the oppression of alternative statistical methods, particularly the Bayesian viewpoint. So while these statisticians gave us so much in terms of methods, they also held us back in other areas such as Bayesian statistics. 
 
-The culture of aggresively promoting the frequentist viewpoint at the cost of alternative methods was still strong when I was a young research in the 2000s (well after Fisher's death). It persists today in some places. 
+The culture of aggressively promoting the frequentist viewpoint at the cost of alternative methods was still strong when I was a young research in the 2000s (well after Fisher's death). It persists today in some places. 
 
 Right into the 2000s you were risking academic ridicule if you dared to mention Bayesian statistics in a conference presentation. Scientific dialogue still carried the scars of a toxic culture that arose in the 20th century to support a racist ideology, even though the new perpetrators of this statistical cause did not agree with that ideology (we hope). 
 
@@ -63,7 +63,7 @@ There are many cases of misinterpreting a non-significant p-value to mean 'no im
 
 We also have the repeatability crises in psychology and biology, which comes about from over-emphasis of the publication system on significant p-values. 
 
-Bayesian statistics have risen to prominance only in the last 20 years. They should be much more widely used, exactly because they deal with subjectivity and make the views of the analyst transparent to others. 
+Bayesian statistics have risen to prominence only in the last 20 years. They should be much more widely used, exactly because they deal with subjectivity and make the views of the analyst transparent to others. 
 
 Frequentist methods are not more objective, they just hide the subjectivity underneath a show of statistical rigour and jargon. 
 
@@ -71,7 +71,7 @@ I've been doing stats for about 20 years now, but only recently learned about th
 
 Leading statisticians are also making this reckoning only recently. [Andrew Gelman, prominent Bayesian statistician and educator has said](https://statmodeling.stat.columbia.edu/2020/08/01/ra-fisher-and-the-science-of-hatred/) "Fisher’s personal racist attitudes do not make him special [in the context of his era], but in retrospect I think it was a mistake for us in statistics for many years to not fully recognize the centrality of racism to statistics, not just a side hustle but the main gig."
 
-If you want to know more about this statistical history I recommend you read [Bernoulli's Fallacy by Aubrey Clayton](https://aubreyclayton.com/bernoulli). And for a broader understanding of the British empire and its ongoing impact, the podcast []'Stuff the British Stole'](https://www.abc.net.au/listen/programs/stuff-the-british-stole) is a great listen (I find the episodes with British experts insisting that the stuff in question was 'given' to them particular informative about the ongoing legacy of empire). 
+If you want to know more about this statistical history I recommend you read [Bernoulli's Fallacy by Aubrey Clayton](https://aubreyclayton.com/bernoulli). And for a broader understanding of the British empire and its ongoing impact, the podcast ['Stuff the British Stole'](https://www.abc.net.au/listen/programs/stuff-the-british-stole) is a great listen (I find the episodes with British experts insisting that the stuff in question was 'given' to them particular informative about the ongoing legacy of empire). 
 
 Walking in Darwin's footprints reminds me of the importance of science in our society. But also how science facts can be portrayed in different ways to suit political means. 
 
