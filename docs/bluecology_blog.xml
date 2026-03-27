@@ -10,7 +10,66 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Mon, 16 Mar 2026 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 25 Mar 2026 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>The dirty secret about stats you were never taught</title>
+  <link>https://www.seascapemodels.org/posts/2026-03-27-stats-dirty-secret/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Walk along this shore in Hobart and you are walking in the footsteps of Charles Darwin. Darwin came here 190 years ago on the final leg of his voyage on the Beagle. Darwin of course then went home to England and became famous for creating the theory of evolution by natural selection.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-03-27-stats-dirty-secret/hobart-foreshore.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Darwin visited Blinking Billy Point near Hobart in 1836</figcaption>
+</figure>
+</div>
+<p>Of course the muwinina people walked here for thousands of years before Darwin did. The muwinina are now sadly extinct, a victim of colonialisation.</p>
+<p>There’s a surprising historical connection between the way we do modern statistics and these events - the discovery of evolution and the atrocities committed by colonial powers.</p>
+<p>Its the dirty secret about stats you’ve probably never been taught.</p>
+<p>The European nations came to power in time of growing awareness about scientific reasoning. That scientific reasoning gave them technologies that enabled their conquests. It also gave them an excuse for exploration and conquest, that it was in the pursuit of scientific knowledge.</p>
+<p>But Darwin’s discovery of evolution by natural selection revealed an awkward reality for the European powers. If all people were descended from the same ape-like ancestors, how could they claim European superiority over other races? The empire struggled to deny the truth in Darwin’s theory. Darwin’s theory came from the same scientific reasoning tools that had given us so many other obvious impressive technological developments.</p>
+<p>The solution of course was to show that white Europeans had evolved a superior intellect. That way it could be justified why they deserved to rule the rest of the world.</p>
+<p>This colonial racism carries through the 19th centry to set the scene for statistical methods that were pioneered in the first half of the 20th centre.</p>
+<p>These are methods like p-values, t-tests, anovas and maximum likelihood that are still commonly used today. All of these methods are framed under the viewpoint of probabilities as frequencies of events - the frequentist perspective.</p>
+<p>Until recently these methods underpinned almost all scientific inferences. Everything from drug approvals to pschyological studies of human behaviour to climate change studies.</p>
+<p>Frequentist methods and their application in the scientific method were pioneered and advocated for by three English mathemeticians and biologists, Galton, Pearson and Fisher. All were active in the eugenics movement. For example Fisher was chairman of a prominent eugenics society. The eugenics movement aimed to improve the genetic quality of the human race, usually through advocating for breeding or sterilisation of parts of society on racial or class grounds.</p>
+<p>Fisher for example wrote that the oncoming collapse of civilization was the fault of increased birth rates in lower classes who he thought were of lesser intellectual character. What the empire needed to do was slow those birth rates and promote procreation in the intellectually superior elite classes.</p>
+<p>These were contentious ideas. And contentious ideas needed to be supported by a robust scientific logic that was unassailable by critics. These statisticians and biologists needed a theory that above all appeared to be objective. It is hard to argue with a method that claims to objectively show that elites and white people were superior than other people.</p>
+<p>These three scientists developed that statistical theory. A theory based on the frequentist viewpoint of probability.</p>
+<p>The frequenist viewpoint looks purely objective on the face of it. Probabilities are frequencies of events, what could be more objective that that?</p>
+<p>Frequentist methods are very useful, but they have their limits. They are great for analysing well replicated experiments for instance.</p>
+<p>But the frequenist logic starts to break down when you want to make decisions from your science. Frequentist methods can misinform you about the best actions to take when presented with surprising new data.</p>
+<p>They are also not very useful for phenomena that can’t be easily studied in controlled experiments, such as the link between smoking and lung cancer. Fisher himself was a prominent denier that smoking causes lung cancer.</p>
+<p>Rare events are also hard to study, as are events in nature that are not replicated. For instance, climate change. Its hard to use frequentist methods to establish the role of greenhouse gas emissions in climate change. We only have one earth, we can’t do repeated experiments on it.</p>
+<p>A solution to these types of problems is to use Bayesian statistical theory. However, the Bayesian viewpoint of probability is that probability represents degrees of belief for something happening. This view makes the subjectivity of data analysis obvious. That is, different people can have different degrees of belief about the probability of the same event happening.</p>
+<p>The brilliant statistical minds of the early 20th century needed statistics to look objective above all else.</p>
+<p>Even a hint of subjectivity would weaken their arguments for eugenics. They wanted to show for instance that Jewish immigrants had weaker immune systems than the general population, so therefore should not be allowed to immigrate to England. They claimed these were facts in the data, so objective that arguing against this view impossible.</p>
+<p>This strong motivation for objectivity also motivated the oppression of alternative statistical methods, particularly the Bayesian viewpoint. So while these statisticians gave us so much in terms of methods, they also held us back in other areas such as Bayesian statistics.</p>
+<p>The culture of aggresively promoting the frequentist viewpoint at the cost of alternative methods was still strong when I was a young research in the 2000s (well after Fisher’s death). It persists today in some places.</p>
+<p>Right into the 2000s you were risking academic ridicule if you dared to mention Bayesian statistics in a conference presentation. Scientific dialogue still carried the scars of a toxic culture that arose in the 20th century to support a racist ideology, even though the new perpetrators of this statistical cause did not agree with that ideology (we hope).</p>
+<p>I think this has been a net loss to many important areas of science. In the environmental sciences we struggle with sample sizes and studying natural phenomena that are hard to manipulate experimentally.</p>
+<p>There are many cases of misinterpreting a non-significant p-value to mean ‘no impact of humans of environment’, whereas a Bayesian viewpoint that builds on the accumulation of prior knowledge can detect these effects in small samples.</p>
+<p>We also have the repeatability crises in psychology and biology, which comes about from over-emphasis of the publication system on significant p-values.</p>
+<p>Bayesian statistics have risen to prominance only in the last 20 years. They should be much more widely used, exactly because they deal with subjectivity and make the views of the analyst transparent to others.</p>
+<p>Frequentist methods are not more objective, they just hide the subjectivity underneath a show of statistical rigour and jargon.</p>
+<p>I’ve been doing stats for about 20 years now, but only recently learned about this history. Its made me rethink the role of the quantitative sciences in science and society.</p>
+<p>Leading statisticians are also making this reckoning only recently. <a href="https://statmodeling.stat.columbia.edu/2020/08/01/ra-fisher-and-the-science-of-hatred/">Andrew Gelman, prominent Bayesian statistician and educator has said</a> “Fisher’s personal racist attitudes do not make him special [in the context of his era], but in retrospect I think it was a mistake for us in statistics for many years to not fully recognize the centrality of racism to statistics, not just a side hustle but the main gig.”</p>
+<p>If you want to know more about this statistical history I recommend you read <a href="https://aubreyclayton.com/bernoulli">Bernoulli’s Fallacy by Aubrey Clayton</a>. And for a broader understanding of the British empire and its ongoing impact, the podcast []‘Stuff the British Stole’](https://www.abc.net.au/listen/programs/stuff-the-british-stole) is a great listen (I find the episodes with British experts insisting that the stuff in question was ‘given’ to them particular informative about the ongoing legacy of empire).</p>
+<p>Walking in Darwin’s footprints reminds me of the importance of science in our society. But also how science facts can be portrayed in different ways to suit political means.</p>
+<p>As a quantitative scientist its important to acknowledge our work will always have subjective elements. We should be transparent about those, not try to hide those under complex methodology.</p>
+<p>That’s why I’ve grown to favour Bayesian statistics. I want my assumptions to be transparent.</p>
+
+
+
+ ]]></description>
+  <category>research</category>
+  <guid>https://www.seascapemodels.org/posts/2026-03-27-stats-dirty-secret/</guid>
+  <pubDate>Wed, 25 Mar 2026 13:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Prompting large language models for quality ecological statistics</title>
   <link>https://www.seascapemodels.org/posts/2026-03-17-prompting-llms-stats-paper-published/</link>
@@ -1110,98 +1169,6 @@ for part in response.parts:
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-11-28-tips-making-infographics-with-ai/</guid>
   <pubDate>Thu, 27 Nov 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Reasoning and infographics with Nano Banana</title>
-  <link>https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>The new Google Gemini Pro 3 (AKA Nano Banana) has some <a href="https://minimaxir.com/2025/11/nano-banana-prompts/">pretty impressive image generation capabilities</a>. It is very accurate to what you ask in the prompt, it can ‘ground’ image generation with web searches and it accurately renders text (most of the time). This increases its usefulness for scientific visualisation purposes over previous models.</p>
-<p>Read more about <a href="https://ai.google.dev/gemini-api/docs/gemini-3?thinking=high">how to use it here</a>.</p>
-<p>I wanted to try it out for scientific applications.</p>
-<section id="science-cartoon-with-web-search-grounding" class="level2">
-<h2 class="anchored" data-anchor-id="science-cartoon-with-web-search-grounding">Science cartoon with web search grounding</h2>
-<p>I ran this prompt for <a href="https://onlinelibrary.wiley.com/doi/10.1002/aqc.70242">a very recent study</a> that was only just published, so well beyond the cut-off data for inclusion in the model’s training data:</p>
-<pre><code>Make a comic strip explaining key findings of the study: 'Predicting the impact of giant kelp restoration on food webs and fisheries production'. Use a cartoon style similar to spongebob squarepants, but dont use any spongebob characters that violate copyright. Instead make the characters a fish, a rock lobster and an abalone.</code></pre>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/study-cartoon2.jpeg" style="max-height: 600px; width: auto;"></p>
-<p>This study was published after the model’s cutoff data for inclusion of training data, so it is a useful test of the search grounding capabilities. It gets the details right, though urchin barrens aren’t the main cause of the giant kelp decline and kelp normally grows on rocks, not sand.</p>
-<p>My original attempt didn’t include the statement about copyright and it made an image that included Spongebob and his friends - some work for Google to do here if they are going to avoid copyright violations.</p>
-<pre><code>Make a comic strip explaining key findings of the study: 'Predicting the impact of giant kelp restoration on food webs and fisheries production'. Use a cartoon style similar to spongebob squarepants.</code></pre>
-</section>
-<section id="infographics-with-grounding" class="level2">
-<h2 class="anchored" data-anchor-id="infographics-with-grounding">Infographics with grounding</h2>
-<p>I ran this prompt that asks for an infographic for <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.70105">my recent study</a>.</p>
-<pre><code>Make an infographic explaining the new research study 'Assessing predictive accuracy of species abundance models in dynamic systems' published in Methods in Ecology and Evolution </code></pre>
-<p>Here’s the result</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/study-infographic.jpeg" style="max-height: 600px; width: auto;"></p>
-<p>Which is 100% accurate. The only thing I’d change would be to add the study’s DOI to the infographic.</p>
-</section>
-<section id="r-code" class="level2">
-<h2 class="anchored" data-anchor-id="r-code">R code</h2>
-<p>Here’s an example of visual reasoning. Here we ask the model to generate an image of R code with resulting plot:</p>
-<pre><code>Generate an image of R code and a graph in an IDE. The code will show how to fit a linear regression to data. The graph will show temperature on the x-axis and # people of the y-axis. Title the graph Swimming in Tasmania</code></pre>
-<p>The results show the model is capable of correctly interpreting the R code it wrote:</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/rcode.jpg" style="max-height: 600px; width: auto;"></p>
-<p>This is not a screen shot of an IDE (note the errors in the names of panels) but an image generated to represent a screenshot.</p>
-</section>
-<section id="visual-reasoning" class="level2">
-<h2 class="anchored" data-anchor-id="visual-reasoning">Visual reasoning</h2>
-<p>To further test the visual reasoning I set a more complex task of plotting some data that I specified, showing a GAM fit to that data and plotting the residuals.</p>
-<pre><code>Generate a two panel plot created with the R program. Here is the data to use for the plots: `x &lt;- 1:10; y &lt;- c(5, 10, 11, 9, 15, 12, 13, 6, 3, 2)`. The first panel will show an x-y plot of the data, as well as a the fitted curve from a gam spline with 3 dimension basis function. The second panel will show the residuals of the model with a horizontal line at y=0. Show the plots as a single image with two panels side by side.</code></pre>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/rcode-gam.jpeg" style="max-height: 500px; width: auto;"></p>
-<p>This one got the data points approximately correct (blue points), but was off with the GAM fit and residuals. For example, according to its fitted curve (red) the first, second and third residuals (green points) should be at zero. Likewise the two final points should be at zero. For comparison, here’s the answer if I generate that with actual R code:</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/gam_plot.jpg" style="max-height: 400px; width: auto;"></p>
-<p>You can see the AI generated residual plot was well off the mark, both in terms of the residuals</p>
-</section>
-<section id="code-for-api-access" class="level2">
-<h2 class="anchored" data-anchor-id="code-for-api-access">Code for API access</h2>
-<p>At the moment the easiest way to use this model is via the Gemini chat platform, or via direct API calls.</p>
-<p>Here’s an example of the Python code to use the Gemini API.</p>
-<pre><code>from google import genai
-from google.genai import types
-import os
-from dotenv import load_dotenv
-load_dotenv()
-
-api_key = os.getenv("GEMINI_API_KEY")
-
-# The client gets the API key from the environment variable `GEMINI_API_KEY`.
-client = genai.Client(api_key=api_key)
-
-prompt = "Generate a two panel plot created with the R program. Here is the data to use for the plots: `x &lt;- 1:10; y &lt;- c(5, 10, 11, 9, 15, 12, 13, 6, 3, 2)`. The first panel will show an x-y plot of the data, as well as a the fitted curve from a gam spline with 3 dimension basis function. The second panel will show the residuals of the model with a horizontal line at y=0. Show the plots as a single image with two panels side by side. "
-aspect_ratio = "3:4" # "1:1","2:3","3:2","3:4","4:3","4:5","5:4","9:16","16:9","21:9"
-
-response = client.models.generate_content(
-    model="gemini-3-pro-image-preview",
-    contents=prompt,
-    config=types.GenerateContentConfig(
-        response_modalities=['Text', 'Image'],
-        image_config=types.ImageConfig(
-            aspect_ratio=aspect_ratio,
-        )#,
-        #tools=[{"google_search": {}}]
-    )
-)
-
-for part in response.parts:
-    if part.text is not None:
-        print(part.text)
-    elif image:= part.as_image():
-        image.save("temp/rcode.png")</code></pre>
-<p>I’ve commented out the web search grounding. Uncomment that if you want to ground your search.</p>
-
-
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/</guid>
-  <pubDate>Sat, 22 Nov 2025 13:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
