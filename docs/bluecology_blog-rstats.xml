@@ -10,7 +10,60 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog-rstats.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Mon, 16 Mar 2026 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 02 Apr 2026 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>AI agents can create convincing ecological models, but you still need to know what you’re doing</title>
+  <link>https://www.seascapemodels.org/posts/2026-03-28-agentic-AI-ecological-modelling/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Agentic AI tools like Claude Code can write and run code, fix its own errors, and produce a formatted report with figures. I wanted to know whether that translates into reliable ecological modelling, so we ran a test: three fisheries tasks, four AI models, ten independent runs each, scored against a rubric. The results are published in <a href="https://doi.org/10.1111/faf.70079">Fish and Fisheries</a>.</p>
+<p>We found agents can be genuinely useful, but only if you know how to use them well and only if you know enough about the analysis to catch what they miss.</p>
+<section id="how-we-did-our-tests" class="level2">
+<h2 class="anchored" data-anchor-id="how-we-did-our-tests">How we did our tests</h2>
+<p>We used <a href="https://roo.cline.bot/">Roo Code</a>, an agentic AI that runs inside VS Code. Unlike a chatbot, it can write code, execute it, read error messages, and iterate autonomously. There are many popular software’s for agentic AI, Claude Code is the most popular right now. We chose Roo Code because it is open source and fully customisable.</p>
+<p>We gave it detailed specification sheets and asked it to complete three tasks. One was a common ecological modelling task: fitting a generalized linear model (GLM) of fish abundance and coral habitat. The other two were tasks specialised to fisheries modelling: fitting a von Bertalanffy growth curve and running a yield per recruit analysis. We chose these because they are common in ecological sciences, but specalised enough that LLMs probably haven’t seen many examples in their training data.</p>
+<p>We ran each task 10 times. LLM responses have some randomness, and this multiplies when doing long-running tasks. So consistency is as important to measure as their best performance. We scored every output against a rubric covering accuracy, code quality, and report quality.</p>
+<p>We used four versions of LLMs. Two proprietary models: Claude Sonnet 4.0, Sonnet 4.5 (which came out during review so we added later). One open weight model: Kimi K2 and its ‘exacto’ variant.</p>
+<p>During review, Kimi K2 ‘exacto’ became available on the <a href="https://openrouter.ai/">OpenRouter</a> platform, so we added that. The exacto routes requests to providers with the best performance. Some providers run it cheaply. Long story-short, exacto performed much better than just requesting any provider’s version of K2, this highlights the importance of running open weight models on quality hardware.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-03-28-agentic-AI-ecological-modelling/AI-agent-workflows.png" class="img-fluid figure-img"></p>
+<figcaption>Agentic workflows vs AI assisted coding</figcaption>
+</figure>
+</div>
+</section>
+<section id="how-to-use-agentic-ai-for-ecological-modelling" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-agentic-ai-for-ecological-modelling">How to use agentic AI for ecological modelling</h2>
+<p>We learned several key lessons about how to get the best out of agentic AI for ecological modelling.</p>
+<p><strong>Write a detailed specification sheet.</strong> Our sheets ran to multiple pages covering analysis aims, data structure, recommended R functions and packages, expected outputs, and file naming conventions. This takes time, but writing a specification forces you to think carefully about what you actually want. <a href="https://github.com/cbrown5/agentic-ai-fisheries/blob/main/Scripts/glm-test-case/glm-readme.md">Here’s an example</a>.</p>
+<p><strong>Specify the algorithms explicitly.</strong> Agents default to the most common method in their training data, which may not be appropriate for your question. If you want bootstrapped confidence intervals via the <code>boot</code> package, say so.</p>
+<p>Even then, they may not comply: both Claude models in our study repeatedly applied natural mortality to the first age class in the yield per recruit model despite explicit instructions not to. That’s a subtle error that affected catch estimates—the numbers that would inform fishery management. These quirks of agent behaviour highlight why expert supervision is essential.</p>
+<p><strong>Run replicates and compare outputs.</strong> Accuracy scores varied substantially between runs. sometimes the agent nailed every parameter; sometimes it got some parts correct but made systematic errors in other parts of the analysis. Running multiple agents and comparing outputs is one way to identify the best solutions.</p>
+<p><strong>Check the things the agent doesn’t know to check.</strong> None of our agents checked for collinearity between predictors in the GLM, even though it’s standard practice. We deliberately left it out of the specification to see if they’d do that. The GLMs ran fine, the results looked coherent, but there was in fact strong colinearity between the predictors. The lesson here is that the agents are good at coding, but their conceptual implementation may be misleading, incomplete or logically flawed.</p>
+</section>
+<section id="the-biggest-problem-with-agentic-ai-is-that-it-can-produce-professionally-formatted-output-that-contains-logical-errors" class="level2">
+<h2 class="anchored" data-anchor-id="the-biggest-problem-with-agentic-ai-is-that-it-can-produce-professionally-formatted-output-that-contains-logical-errors">The biggest problem with agentic AI is that it can produce professionally formatted output that contains logical errors</h2>
+<p>The error type that concerns me most is professionally formatted output containing logical errors.</p>
+<p>In our results we saw growth curves that plotted beautifully but used the wrong confidence interval method, or a yield analysis that applies mortality in the wrong sequence. A coding syntax error is immediately obvious. A methodological shortcut embedded in otherwise clean output may be invisible unless you already know what the answer should look like.</p>
+<p>There is a genuine risk that inexperienced researchers will use these tools to produce analyses they cannot evaluate. Experienced researchers may also get overconfident and not check results thoroughly enough. These flaws can then leak through to the applications, as we’ve seen where human errors in <a href="https://pnas.org/doi/10.1073/pnas.2426166122">ecological modelling impacts decisions on invasive species</a>.</p>
+<p>For scientists with strong quantitative foundations, agents offer a real efficiency gain. The specification sheets and rubrics from our study are in the supplemental materials if you want to adapt them. All our code is available on github if you want to run your own tests (<a href="https://github.com/cbrown5/agentic-ai-fisheries/tree/main/Scripts">Check this folder, each modelling ‘test-case’ has the specification sheet and other files</a>)</p>
+<p>The paper is open access: <a href="https://doi.org/10.1111/faf.70079">Brown et al.&nbsp;2026, Fish and Fisheries</a>.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>research</category>
+  <category>genAI</category>
+  <category>fisheries</category>
+  <guid>https://www.seascapemodels.org/posts/2026-03-28-agentic-AI-ecological-modelling/</guid>
+  <pubDate>Thu, 02 Apr 2026 13:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Prompting large language models for quality ecological statistics</title>
   <link>https://www.seascapemodels.org/posts/2026-03-17-prompting-llms-stats-paper-published/</link>
@@ -2344,27 +2397,6 @@ Cite this as evidence that Australia is losing coastal marine biodiversity and a
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2025-07-07-writing-papers-with-quarto/</guid>
   <pubDate>Sun, 06 Jul 2025 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Prompting large language models for quality ecological statistics</title>
-  <link>https://www.seascapemodels.org/posts/2025-06-27-prompting-llms-quality-ecological-statistics/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Announcing a new <a href="https://ecoevorxiv.org/repository/view/9493/">pre-print on prompt engineering for ecological statistics.</a>. https://doi.org/10.32942/X2CS80</p>
-<p>The pre-print describes the challenges and opportunities of using large language models and agents to do ecological statistics. It then goes onto describe some prompt engineering strategies that can help you make the most of these tools, but still get reliable statistical advice and code.</p>
-<p>The pre-print accompanies <a href="https://www.seascapemodels.org/R-llm-workshop/index.html#summary">a one day course</a> I’ve published that teaches how to use LLM tools for R and statistics, as well as discussing the environmental and ethical challenges.</p>
-
-
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-06-27-prompting-llms-quality-ecological-statistics/</guid>
-  <pubDate>Thu, 26 Jun 2025 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

@@ -1,11 +1,12 @@
 ---
 title: "AI agents can create convincing ecological models, but you still need to know what you're doing"
 layout: default
-category: Research
+categories: [rstats, research, genAI, fisheries]
 published: true
-date: 2026-04-03
+date: '04/03/2026'
 excerpt: "We ran an AI agent on three ecological and fisheries modelling tasks they were amazingly capable but human expertise is still critical."
 ---
+
 
 Agentic AI tools like Claude Code can write and run code, fix its own errors, and produce a formatted report with figures. I wanted to know whether that translates into reliable ecological modelling, so we ran a test: three fisheries tasks, four AI models, ten independent runs each, scored against a rubric. The results are published in [Fish and Fisheries](https://doi.org/10.1111/faf.70079).
 
