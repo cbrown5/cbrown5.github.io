@@ -82,7 +82,7 @@
   </url>
   <url>
     <loc>https://www.seascapemodels.org/index.html</loc>
-    <lastmod>2025-11-09T22:59:37.767Z</lastmod>
+    <lastmod>2026-04-04T19:39:01.141Z</lastmod>
   </url>
   <url>
     <loc>https://www.seascapemodels.org/drafts/2025-11-04-LLMs-coding-carbon-emissions/index.html</loc>
@@ -1235,5 +1235,9 @@
   <url>
     <loc>https://www.seascapemodels.org/drafts/2026-04-10-new-bayesian-modelling-web-tool/index.html</loc>
     <lastmod>2026-04-03T03:22:41.800Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.seascapemodels.org/drafts/2026-04-12-agentic-engineering-for-researchers/index.html</loc>
+    <lastmod>2026-04-03T03:37:48.680Z</lastmod>
   </url>
 </urlset>
