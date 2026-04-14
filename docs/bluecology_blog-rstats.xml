@@ -10,7 +10,47 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog-rstats.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Thu, 02 Apr 2026 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 13 Apr 2026 14:00:00 GMT</lastBuildDate>
+<item>
+  <title>Do AI coding agents save scientists time?</title>
+  <link>https://www.seascapemodels.org/posts/2026-04-14-does-agentic-AI-save-time/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I’m often asked if using AI coding agents saves time. Yes they write code very quickly and can <a href="https://onlinelibrary.wiley.com/doi/10.1111/faf.70079">complete entire ecological data analyses</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-04-14-does-agentic-AI-save-time/coding-time.png" class="img-fluid figure-img"></p>
+<figcaption>Do agents really help when the deadlines are approaching?</figcaption>
+</figure>
+</div>
+<p>Do agents really help when the deadlines are approaching?</p>
+<p>But the code also requires careful checking for logical errors. Our recent analysis shows this. The best LLMs can complete entire analyses and all the code works well. But there was a decent chance of subtle logical errors. These logical errors would require pretty deep human understanding of the code to correct.</p>
+<p>There’s another issue and that is using code you don’t understand. I often find the agents produce so much code, but I’m not comfortable using it until I understand the logic line-by-line.</p>
+<p>In those cases I find its faster to use an autocomplete AI assistant so I’m going line-by-line, rather than an agentic loop that completes the entire piece of work.</p>
+<p>I think the jury is still out on this question of whether there is a net time benefit to using agents. The only way to really answer is a randomised control trial where you time how long it takes scientists to fully complete a task.</p>
+<p>The only study I’m aware of is quite limited and looked at software developers. They found the <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">developers often projected they would be faster with the AI tools, but were actually slower at tasks by the end of the project.</a></p>
+<p>Its true that using AI is fun because it makes so much progress, but that fun feeling might be a trap for us.</p>
+<p>Its likely that the answer is context dependent.</p>
+<p>I suspect for scientists most of the coding we do (like writing models that represent ecosystems) actually requires the human to understand what it does. In these cases agents don’t make sense, because you need to go back and review the code carefully to understand it anyway.</p>
+<p>On the other hand, if you are making software tools that are easy to verify then agents are great. For instance, I often use them to write code for non-standard figures. I don’t need to know the code in that case because I can check the output is correct visually.</p>
+<p>Likewise interactive shiny apps are another example of time saving. The agent can take some (good) code you already have and turn it into an app. Its easy to test and check because you just use the app.</p>
+<p>People often point to advances in LLMs and say that soon they will be good enough to do all the coding for us. I’m not so sure that applies to science. <a href="https://onlinelibrary.wiley.com/doi/10.1111/faf.70079">In fact, we found the later version of Claude Sonnet performed about the same as an earlier version on scientific logic, it just made different types of errors.</a></p>
+<p>I think the advances need to come in the ways we interact and use the LLMs.</p>
+<p>The ultimately goal should be efficient but also high quality work. That’s something I want to look at in my next agentic AI study.</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <category>research</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2026-04-14-does-agentic-AI-save-time/</guid>
+  <pubDate>Mon, 13 Apr 2026 14:00:00 GMT</pubDate>
+</item>
 <item>
   <title>AI agents can create convincing ecological models, but you still need to know what you’re doing</title>
   <link>https://www.seascapemodels.org/posts/2026-03-28-agentic-AI-ecological-modelling/</link>
@@ -2230,173 +2270,6 @@ print(summary(samples))</code></pre>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2025-09-02-AI-reports-with-openrouter-and-r/</guid>
   <pubDate>Mon, 01 Sep 2025 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Writing scientific papers with quarto and AI assistants</title>
-  <link>https://www.seascapemodels.org/posts/2025-07-07-writing-papers-with-quarto/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Below is my suggested workflow for using quarto to write scientific papers. I’m currently switching to doing as many projects as possible with quarto rather than word for a few reasons:</p>
-<ol type="1">
-<li>Easier to manage document style</li>
-<li>Easier to manage references</li>
-<li>Workflows that auto-update figures/tables when R code is re-run</li>
-<li>Generative AI integration that is customizable.</li>
-</ol>
-<p>Point 3 is great, no more cut and pasting figures into word documents!</p>
-<p>Point 4 is the big one. I’m developing my own ‘writing mentor’ scripts for large language models. Using quarto lets me implement writing advice specific to science direclty into my manuscripts.</p>
-<p>Quarto is ‘What You See is What you Make’, meaning that you write special syntax for formatting. Once you are used to it, this is way easier way to manage styles than word.</p>
-<p>The downside is getting your (non-coding) collaborators to edit files in quarto. This is the biggest bottleneck to my use of quarto/markdown. Currently I send them word documents then have to manually integrate the feedback. Or I work in quarto until the near final stages, accepting comments only, then get them to edit the final manuscript.</p>
-<p>For instance, <a href="https://conbio.onlinelibrary.wiley.com/doi/full/10.1111/cobi.13079?casa_token=zF8vihnFfcMAAAAA%3A9WlbXPCghdwS2WvyRqGjRqYPrng7q4_xPwZvu9K52p6gd_8lWs2qcgrehfg4ehAThC7ni32Ybr02iA">I wrote most of this paper in markdown</a> but had to go to word editing towards the end so I could get edits from my collaborator. Once you’ve progressed it in word, its hard to go back to markdown.</p>
-<p>Instructions below are high level. There are quite a few pieces of software you need to do this, so I’ve linked to tutorials for each below.</p>
-<section id="download-and-install-an-ide" class="level3">
-<h3 class="anchored" data-anchor-id="download-and-install-an-ide">1. Download and install an IDE</h3>
-<p>Download and install VScode.</p>
-<p><a href="https://www.seascapemodels.org/rstats/2025/06/12/setting-up-vscode-r-genAI.html">Instructions online e.g.&nbsp;here</a></p>
-<p>I’m using VScode because of its AI assistant integration. But you could also use positron if you have issues with VScode or want to use a Posit product rather than a Microsoft product.</p>
-</section>
-<section id="get-git-and-github" class="level3">
-<h3 class="anchored" data-anchor-id="get-git-and-github">2. Get git and github</h3>
-<p>Install git on your computer. Optionally, get a github account and connect to that. Git does version control. Github lets you share that online. If your collaborators are github users then you can also share edits on documents this way.</p>
-<p>Git is also essential if you are using AI assistants. Sometimes they majorly stuff up your documents. So keeping back ups with git is essential.</p>
-</section>
-<section id="vscode-extensions" class="level3">
-<h3 class="anchored" data-anchor-id="vscode-extensions">3. VScode extensions</h3>
-<p>Install these VScode extentions (or equivalents if you are using positron, note that many vscode extensions are also compatable with Positron)</p>
-<ul>
-<li>Quarto extension.</li>
-</ul>
-<p>Open VSCode and click the four boxes ‘extension’ icon on the LHS then search and install the Quarto extension.</p>
-<p>Optional extensions: - R language extension (<a href="https://www.seascapemodels.org/rstats/2025/06/12/setting-up-vscode-r-genAI.html">can be tricky to connect VScode to R, suggest you web search for advice</a>)</p>
-</section>
-<section id="optional-steps-for-ai-integration" class="level3">
-<h3 class="anchored" data-anchor-id="optional-steps-for-ai-integration">4. Optional steps for AI integration</h3>
-<p>This next step is optional. If you are using quarto or markdown its possible to get large-language models to help with many paper writing tasks (including the writing). This is a specialized area though and I’ve only given basic technical instructions here. Actually getting it to work well is another topic altogether and something I’m still developing…</p>
-<p>Get an API key with an LLM provider (e.g.&nbsp;<a href="https://openrouter.ai/sign-up">OpenRouter</a>, <a href="https://platform.openai.com/api-keys">OpenAI</a>, <a href="https://console.anthropic.com/login?returnTo=%2F%3F">Anthropic</a>). You’ll need a developer account to get an API key, rather than a regular account that you may already have (see links in last sentence). Buy some credits so you can use your API.</p>
-<p>Make sure you save your API key somewhere safe! You can usually only view them once on creation. You’ll need it for the workshop.</p>
-<p>Get the Roo Code extension for vscode/positron.</p>
-<p><a href="https://docs.roocode.com/">Read the documents/watch the tutorials and learn how to use Roo Code</a></p>
-<p>You can now <a href="https://docs.roocode.com/features/custom-modes">create a custom mode</a>, e.g.&nbsp;a ‘scientific writing mode’ in Roo code. As of writing this requires clicking the mode selection button at the bottom of the Roo Code Pane, then click the Cog, then the <code>+</code> button to make a new mode. Then you need to write a ‘Role Definition’ and ‘Custom instructions’. For tools I just use ‘Read Files’, ‘Edit Files’ and unclick the others (will save you money and tokens).</p>
-<p>This is the hard part that needs a lot of thought:</p>
-<p>In the custom instructions you should write detailed instructions on how to help an author with scientific writing. For instance, you might want to put some very strong instructions about not making up references. You might also put instructions about your particular writing style preferences. I’m working on a template, but am not yet ready to share it.</p>
-<p>See <a href="https://docs.roocode.com/features/custom-modes">Roo code documentation</a> for more advice on custom modes.</p>
-</section>
-<section id="using-quarto" class="level3">
-<h3 class="anchored" data-anchor-id="using-quarto">5. Using quarto</h3>
-<p>Take a tutorial and <a href="https://quarto.org/docs/get-started/hello/rstudio.html">learn how to use Quarto</a>.</p>
-<p>For academic paper writing the key things to understand from the Quarto tutorial are:</p>
-<ul>
-<li>How to knit as word or pdf (pdf requires extra software installations)</li>
-<li>Formatting, headings, bold etc…</li>
-<li>YAML frontmatter for styles, linking a bibliography and bibliography style</li>
-<li>How to insert images and/or code.</li>
-</ul>
-<p><strong>Note on AI integration</strong> once you are using quarto and Roo Code you can simply ask Roo Code to do things in your document (like outline a paper template) by referencing the file (e.g. <span class="citation" data-cites="myfile.qmd">@myfile.qmd</span>) in the prompt box.</p>
-<p>Whether this works well for you is another questions. Prompting well requires a lot of thought and practice. Its not simply going to write a paper for you. You have to give the AI assistant detailed, specific, instructions and lots of context.</p>
-</section>
-<section id="yaml-front-matter" class="level3">
-<h3 class="anchored" data-anchor-id="yaml-front-matter">6. YAML front matter</h3>
-<p>The <code>YAML</code> controls how your qmd document is rendered. Here’s an example of mine:</p>
-<pre><code>---
-title: "The paper's title"
-format: docx
-editor: visual
-bibliography: mybib.bib
-csl: myjournal.csl
-execute: 
-  echo: false
-  message: false
-  warning: false
----</code></pre>
-<p>This goes at the top of your document. A few key points.</p>
-<p><code>format</code> controls document type to render this as, here a word doc.</p>
-<p><code>editor</code> controls how it is viewed in vscode. Options are <code>editor: visual</code> and <code>editor: source</code>. Visual looks more like a word doc, source looks more like markdown. You’ll have to save and re-open the document for this to change.</p>
-<p><code>bibliography</code> links to a bibtex file where your references are stored.</p>
-<p><code>csl</code> links to a style guide for the bibliography.</p>
-<p>More on styles and references below.</p>
-<p><code>execute</code> is controlling how R code is run and if the R code appears in the document.</p>
-</section>
-<section id="rendering-as-a-document" class="level3">
-<h3 class="anchored" data-anchor-id="rendering-as-a-document">7. Rendering as a document</h3>
-<p>Use the short-cut key ‘cmd-shift-K’/‘cntrl-shft-k’ (mac/windows) to preview your document. It will also create a rendered version in your current directory.</p>
-<p>Its helpful to set: <code>format: html</code> when you are writing the document, then you get a live preview in vscode. Use <code>format: docx</code> when you want a word document.</p>
-<p>Its worth also learning the short-cut `cmd-shft-p’/‘cntrl-shft-p’, this brings up searchable actions for all extensions in vscode. The one you want is ‘Quarto: preview’ which does the same as the shortcut above.</p>
-<p>I tend to have minimal R code in my quarto manuscript. Or none at all (just reference .png files for figures). This keeps rendering quick. Also your document can get unweildy if there is a lot of text mixed in with R code.</p>
-</section>
-<section id="word-counts" class="level3">
-<h3 class="anchored" data-anchor-id="word-counts">8. Word counts</h3>
-<p>There are various word count extensions for vscode qmd and md documents.</p>
-</section>
-<section id="document-styles" class="level3">
-<h3 class="anchored" data-anchor-id="document-styles">9. Document styles</h3>
-<p>Getting a word document to follow a particular style is a bit fiddly. You need to set-up a template word document with styles the include that as a reference in your YAML.</p>
-<p><a href="https://quarto.org/docs/output-formats/ms-word-templates.html">See instructions here.</a></p>
-</section>
-<section id="reference-manager-integration" class="level3">
-<h3 class="anchored" data-anchor-id="reference-manager-integration">10. Reference manager integration</h3>
-<p>Quarto integrates with many different reference managers. <a href="https://quarto.org/docs/authoring/citations.html">There’s a good guide here</a>.</p>
-<p>In brief you create a <code>.bib</code> file that has your references in it. This is then linked in the YAML. The manual way to manage this is just to create a <code>.bib</code> file and paste bibtext entries directly into it (available on most journal’s pages as a citation format, as well as google scholar).</p>
-<p>e.g.&nbsp;the bibtext for R looks like this:</p>
-<pre><code>@Manual{Rlanguage,
-    title = {R: A Language and Environment for Statistical Computing},
-    author = {{R Core Team}},
-    organization = {R Foundation for Statistical Computing},
-    address = {Vienna, Austria},
-    year = {2024},
-    url = {https://www.R-project.org/},
-  }</code></pre>
-<p>Then in quarto you just type <code>@</code> and a dropdown of all your references will appear. <code>@Manual{Rlanguage,</code> the Rlanguage bit is the CiteKey that will appear in the dropdown. So <code>@Rlanguage</code> will insert that reference into the bibliography and the citation at that place in the document.</p>
-<p>You can streamline the process of gathering and managing references with a reference manager.</p>
-<p>My workflow in Zotero is as follows:</p>
-<ul>
-<li>Open Zotero on my computer</li>
-<li>Go to journal webpage for paper</li>
-<li>Use zotero plugin to my browser to grab the citation and save it to a library</li>
-<li>Go to my quarto document in VScode</li>
-<li>type <code>@</code> and a drop down of all references in all libraries on zotero appears. Pick the one I want.</li>
-<li>Click the <code>OK</code> button which saves that reference into my local <code>.bib</code> file.</li>
-</ul>
-<p>For some reason (that does not seem to be documented in any quarto tutorials anywhere!) it will find any reference I have anywhere in zotero and then save that bibtex entry to my local <code>.bib</code> file, so it is now accessible for use in my quarto doc. This only works if I have zotero open and use <code>editor: visual</code> in the YAML.</p>
-<p>There are many other options however.</p>
-</section>
-<section id="optional-ai-integration-for-reference-management" class="level3">
-<h3 class="anchored" data-anchor-id="optional-ai-integration-for-reference-management">11. Optional AI integration for reference management</h3>
-<p>You can get AI assistants to help with referencing if you keep your notes on papers linked to your references. For instance, you could keep your notes on references in the bibtex field for <code>notes</code>. Alternatively you could create another quarto/markdown document that has a header for each citation tag along with its notes in a structured way:</p>
-<pre><code>## Rlanguage 
-
-### What it is
-
-The R software for scientific computing. 
-
-### Usage
-
-Citation for the R software. Use this at least once in every paper where i've used R for statistics
-
-## edgar2023continent
-
-### What is it
-
-Key paper that shows Australia is losing its marine biodiversity. 
-
-### Usage
-
-Cite this as evidence that Australia is losing coastal marine biodiversity and as evidence that climate change is causing marine biodiversity loss
-</code></pre>
-<p>It doesn’t matter how you do this, so long as you follow a consistent structure. I’ve used the CiteKey as the main header for each reference entry. Then I’ve put in markdown sections about each paper and why I might wnat to cite it. Then you can get Roo Code to help with inserting references.</p>
-<p>Note that if you are using the <code>.bib</code> directly just be careful not to plagiarise! Roo Code might insert excerpts from the abstracts/titles directly into your written document, which is a no-no for publishing.</p>
-
-
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <category>research-skills</category>
-  <guid>https://www.seascapemodels.org/posts/2025-07-07-writing-papers-with-quarto/</guid>
-  <pubDate>Sun, 06 Jul 2025 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
