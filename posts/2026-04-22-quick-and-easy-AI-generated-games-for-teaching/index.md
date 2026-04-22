@@ -1,5 +1,5 @@
 ---
-title: "Quick and easy AI generated gams for teaching"
+title: "Quick and easy AI generated games for teaching"
 layout: default
 categories: [research, genAI]
 published: true
