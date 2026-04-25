@@ -10,7 +10,340 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog-rstats.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Mon, 13 Apr 2026 14:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 25 Apr 2026 14:00:00 GMT</lastBuildDate>
+<item>
+  <title>Design your plots (ggplot) for mobile</title>
+  <link>https://www.seascapemodels.org/posts/2026-04-23-clear-plots-ggplot-for-mobile/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>The default for styling plots should be for easy viewing on mobile devices.</p>
+<p>Most digital interactions are via mobile these days. Even if you plan on viewing your plots on a desktop, a mobile friendly layout will make them more readable.</p>
+<p>I recommend defaulting to a mobile friendly view from day 1 of data exploration. This means using larger font, line and label sizes than standard plotting package defaults. I’ll show how below.</p>
+<p>You can then alter the styling as your finalize the plots of publication, where desktop viewing might be more common (I saw ‘might be’ because I frequently papers on my phone these days).</p>
+<p>Styling plots for visual clarity is key from the start, because clarity of presentation influences how you interpret the research. So it has a tangible impact on the way your research will develop and how you engage with your collaborators.</p>
+<p>I often communicate with collaborators and students via instant messages (e.g.&nbsp;Teams), which allows for quick feedback cycles. The default ggplot settings can be hard to view however.</p>
+<p>There are many good books on making graphs, e.g.&nbsp;check out the Functional Art by Alberto Cairo.</p>
+<p>Below I just want to show a few tips for improving ggplot2 settings to get better visuals for mobile.</p>
+<p>We’ll use one of my <a href="https://github.com/cbrown5/example-ecological-data">example datasets</a> from an <a href="https://doi.org/10.1098/rspb.2022.0348">algal growth experiment</a>.</p>
+<p>You can load it directly from the url.</p>
+<p>The biggest tip is to change the base size in your base theme. If you do this with <code>theme_set</code> it then applies to all plots in this R session.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Read raw data</span></span>
+<span id="cb2-2">dat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://raw.githubusercontent.com/cbrown5/example-ecological-data/main/data/algal-stressors/diuron_data.csv"</span>)</span>
+<span id="cb2-3"></span>
+<span id="cb2-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_set</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_bw</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">base_size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">28</span>))</span>
+<span id="cb2-5"></span>
+<span id="cb2-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(dat) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb2-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> hours, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> celld) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb2-8">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-9">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hours"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cell density"</span>)</span></code></pre></div></div>
+<pre><code>Warning: Removed 75 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+<p><img src="https://www.seascapemodels.org/posts/2026-04-23-clear-plots-ggplot-for-mobile/index.markdown_strict_files/figure-markdown_strict/unnamed-chunk-1-1.png" class="img-fluid"></p>
+<p>Second tip is to keep facts to 3 or so panels.</p>
+<p>Before:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(dat) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb4-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> hours, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> celld) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb4-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb4-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_grid</span>(Diuron_num<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>Light_num) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hours"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cell density"</span>)</span></code></pre></div></div>
+<p><img src="https://www.seascapemodels.org/posts/2026-04-23-clear-plots-ggplot-for-mobile/index.markdown_strict_files/figure-markdown_strict/unnamed-chunk-2-1.png" class="img-fluid"></p>
+<p>Better:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">dat <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb5-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(Diuron_num <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb5-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> hours, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> celld) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb5-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb5-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_wrap</span>(.<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>Light_num) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb5-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hours"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cell density"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Diuron = 1"</span>)</span></code></pre></div></div>
+<p><img src="https://www.seascapemodels.org/posts/2026-04-23-clear-plots-ggplot-for-mobile/index.markdown_strict_files/figure-markdown_strict/unnamed-chunk-3-1.png" class="img-fluid"></p>
+<p>Best: for mobile ,use a vertical arrangement</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">dat <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb6-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(Diuron_num <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb6-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> hours, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> celld) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb6-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb6-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_grid</span>(Light_num<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>.) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb6-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hours"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cell density"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Diuron = 1"</span>)</span></code></pre></div></div>
+<p><img src="https://www.seascapemodels.org/posts/2026-04-23-clear-plots-ggplot-for-mobile/index.markdown_strict_files/figure-markdown_strict/unnamed-chunk-4-1.png" class="img-fluid"></p>
+<p>In general, don’t put too much information on a single plot. If you are using colours avoid lengthy legends (&lt;7 items is ideal, &lt;3 is excellent).</p>
+<p>If its getting too complex, think about what you are trying to communicate, then split your plot into several plots, one for each point.</p>
+<p>Finally, you might as well set-up to save publication quality pngs from the get go:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">g1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> dat <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb7-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(Diuron_num <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb7-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> hours, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> celld) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb7-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb7-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_grid</span>(Light_num<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>.) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb7-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hours"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cell density"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Diuron = 1"</span>)</span>
+<span id="cb7-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggsave</span>(g1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">filename =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"figure1.png"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">height =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">12</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dpi =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">600</span>)</span></code></pre></div></div>
+<p>Play around with width and height to get the viewing ratio and size good for clear visualisation. A high dpi is needed for publication quality images.</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-04-23-clear-plots-ggplot-for-mobile/</guid>
+  <pubDate>Sat, 25 Apr 2026 14:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Do AI coding agents save scientists time?</title>
   <link>https://www.seascapemodels.org/posts/2026-04-14-does-agentic-AI-save-time/</link>
@@ -2058,218 +2391,6 @@ system(copilot_cmd)
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-09-12-creating-a-first-draft-in-one-prompt/</guid>
   <pubDate>Thu, 11 Sep 2025 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Create reports and tutorials with generative AI from R</title>
-  <link>https://www.seascapemodels.org/posts/2025-09-02-AI-reports-with-openrouter-and-r/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Several AI model providers have integrated web search capabilities into their large language models. I was attempting to use these features via the R <code>ellmer</code> package. However, changes to LLMs are so frequent that <code>ellmer</code> isn’t keeping up.</p>
-<p>I did get <code>ellmer</code> to run Perplexity’s Sonar web search model, however it didn’t provide me with the references, which are essential.</p>
-<p>If you haven’t seen these AI generated reports, check out the example at the end. Its a useful way to get a quick literature summary or create bespoke R tutorials.</p>
-<p>Here <a href="https://github.com/cbrown5/web-search-ai/blob/main/README.md">I’m just announcing a couple of simple R scripts that you can use to do web search powered AI reports with the Openrouter service.</a></p>
-<p>I just created two functions (with the help of copilot of course), one that makes a call to the Openrouter API to send a question to a model. The second function processes the output (which is in JSON format) to make a nice qmd, with the references hyper-linked (be sure to check the url before clicking them, who knows what the AI will turn up!). From there you can render the qmd to get a pdf/word/html report.</p>
-<p>The functions are easy to use. First <a href="https://github.com/cbrown5/web-search-ai/blob/main/perplexity-search-functions.R">download or copy these functions from my github</a>.</p>
-<p>Note never trust any code from someone else that sends requests to LLMs! It could potentially include harmful prompts. I recommend reading all code that is sending prompts to LLMs just to be sure you know what it does.</p>
-<section id="using-the-code-to-do-a-search-and-create-a-report" class="level2">
-<h2 class="anchored" data-anchor-id="using-the-code-to-do-a-search-and-create-a-report">Using the code to do a search and create a report</h2>
-<p>Once you have my two functions, you will need to <a href="https://www.seascapemodels.org/AI-assistants-for-scientific-coding/03-set-up.html#sec-apikeys">set-up your Openrouter API key</a> and save the key somewhere (e.g.&nbsp;you can use <code>usethis::edit_r_environ()</code> and save it in there like OPENROUTER_API_KEY=“MY-KEY-HERE”)</p>
-<p>Here’s an example of using the function:</p>
-<pre><code>library(httr)
-library(jsonlite)
-
-source("perplexity-search-functions.R")
-
-openrouter_api_key &lt;- Sys.getenv("OPENROUTER_API_KEY")
-
-user_message &lt;- "I want to learn how to use the NIMBLE package to fit autoregressive time-series models"
-
-system_message &lt;- "You are a helpful AI agent who creates statistical analysis tutorials in R. 
-        Rules: 
-        1. Include text and examples of code in your responses. 
-        2. Produce reports that are less than 10000 words."
-
-#Send response to openrouter 
-response &lt;- call_openrouter_api(
-  openrouter_api_key,
-  model = "perplexity/sonar-deep-research",
-  system_message = system_message,
-  user_message,
-  search_context_size = "medium"
-  #Options "low"  "medium", "high"
-)
-
-#Save the response as a qmd
-save_response_as_qmd(response, "results/AR-models-in-NIMBLE.qmd")</code></pre>
-</section>
-<section id="inputs-for-the-llm" class="level2">
-<h2 class="anchored" data-anchor-id="inputs-for-the-llm">Inputs for the LLM</h2>
-<p>The user message is your prompt for searching. The system message sets the scope of how the report is created. Note that anything for the web search goes in the user message, not the system message <a href="https://docs.perplexity.ai/guides/prompt-guide">see the Perplexity guidelines for more info on prompting advice, its different than for regular LLMs</a>.</p>
-<p>For example, another idea for a system prompt could be:</p>
-<pre><code>system_message &lt;- "You are a helpful AI agent who creates summary reports of the scientific literature. 
-        Rules: 
-        1. Produce reports that are less than 2000 words.
-        2. Include a Summary section that summarizes key research trends. "
-
-user_message &lt;- "What are the impacts of climate warming on fish physiology documented in the peer-reviewed academic literature"
-</code></pre>
-<p><code>search_context_size</code> is meant to control how much effort it puts in, its hard to tell if that impacts results or not, see <a href="https://openrouter.ai/docs/features/web-search">openrouter’s docs for more information.</a>.</p>
-</section>
-<section id="model-choices" class="level2">
-<h2 class="anchored" data-anchor-id="model-choices">Model choices</h2>
-<p>Other models to try are:</p>
-<ul>
-<li><p><code>perplexity/sonar</code> for a simpler, cheaper searches, including citations.</p></li>
-<li><p><code>perplexity/sonar-deep-research</code> For deeper, more expensive searches with citations and reasoning.</p></li>
-<li><p><code>openai/o4-mini</code> Is another option, but doesn’t return citations.</p></li>
-</ul>
-<p>Explore the openrouter site for other web search enabled LLMs.</p>
-</section>
-<section id="customization" class="level2">
-<h2 class="anchored" data-anchor-id="customization">Customization</h2>
-<p>The <code>call_openrouter_api.R</code> function is a template for customizing, not a comprehensive framework for using the openrouter API. Its actually very easy to connect to LLMs from R (even though most examples online are in python or typscript). Here’s a basic template:</p>
-<pre><code>library(httr)
-library(jsonlite)
-response &lt;- POST(
-    url = "https://openrouter.ai/api/v1/chat/completions",
-    add_headers(
-      "Content-Type" = "application/json",
-      "Authorization" = paste("Bearer", openrouter_api_key)
-    ),
-    body = toJSON(list(
-      model = model,
-      messages = list(
-        list(
-          role = "system",
-          content = system_message
-        ),  
-        list(
-          role = "user",
-          content = user_message
-        )
-      )
-    ), auto_unbox = TRUE),
-    encode = "raw"
-  )
-</code></pre>
-<p>The trick then is formatting the output, which is what my other function does (focussing on perplexities models).</p>
-</section>
-<section id="report-example" class="level2">
-<h2 class="anchored" data-anchor-id="report-example">Report example</h2>
-<p>Below is an example, I asked used the system prompt above and asked about fitting surplus production models (for fisheries science) with the NIMBLE package. Note one minor bug with my function converting qmd references to hyperlinks, it potential does R sub-scripts as well. Something to work on later. Here’s the AI report:</p>
-<p>You can fit a <strong>surplus production model (SPM)</strong> with the NIMBLE package in R by writing the model in BUGS language, which NIMBLE extends, specifying your likelihood (e.g., production dynamics with catch data) and priors for the parameters, and then using NIMBLE’s MCMC capabilities to estimate the posterior distributions of parameters. Here is a stepwise approach with example code snippets:</p>
-<ol type="1">
-<li><strong>Specify the surplus production model in BUGS code</strong>:<br>
-This typically models biomass ( B_t ) evolving over time according to a logistic growth or Gompertz model minus catches ( C_t ). For example, the Schaefer model can be expressed as:<br>
-[ B_{t+1} = B_t + r B_t (1 - ) - C_t + _t ]<br>
-where (r) is intrinsic growth rate, (K) is carrying capacity, and (_t) models process noise.</li>
-</ol>
-<pre><code>library(nimble)
-
-# Define the model in BUGS syntax
-spm_code &lt;- nimbleCode({
-  # Priors for parameters
-  r ~ dunif(0, 2)           # growth rate
-  K ~ dunif(maxCatch, 10 * maxCatch)  # carrying capacity (expand as appropriate)
-  sigma ~ dunif(0, 5)       # process noise SD
-
-  B&lt;a href="https://oliviergimenez.github.io/banana-book/intronimble.html" target="_blank"&gt;[1]&lt;/a&gt; ~ dunif(0, K)       # initial biomass
-  
-  for(t in 1:(nYears - 1)) {
-    mu[t] &lt;- B[t] + r * B[t] * (1 - B[t]/K) - catch[t]
-    B[t + 1] ~ dnorm(mu[t], sd = sigma)
-  }
-})</code></pre>
-<ol start="2" type="1">
-<li><strong>Prepare the data and constants</strong> (e.g., catch time series, number of years):</li>
-</ol>
-<pre><code>data &lt;- list(catch = catch_vector)  # your observed catches
-constants &lt;- list(nYears = length(catch_vector), maxCatch = max(catch_vector))
-inits &lt;- list(r = 0.5, K = max(catch_vector)*5, sigma = 0.1, B = rep(NA, length(catch_vector)))</code></pre>
-<ol start="3" type="1">
-<li><strong>Build, compile, and run the model with NIMBLE</strong>:</li>
-</ol>
-<pre><code># Create model object
-spm_model &lt;- nimbleModel(spm_code, data = data, inits = inits, constants = constants)
-
-# Compile model
-c_spm_model &lt;- compileNimble(spm_model)
-
-# Configure MCMC; default samplers are usually fine
-mcmc_conf &lt;- configureMCMC(spm_model)
-mcmc &lt;- buildMCMC(mcmc_conf)
-c_mcmc &lt;- compileNimble(mcmc, project = spm_model)
-
-# Run MCMC sampling
-samples &lt;- runMCMC(c_mcmc, niter = 10000, nburnin = 2000, thin = 5)
-
-# Check results
-summary(samples)</code></pre>
-<p>This workflow follows NIMBLE’s general approach of specifying hierarchical Bayesian models in an extended BUGS language, compiling fast C++ versions of the model and samplers, and running MCMC algorithms<a href="https://oliviergimenez.github.io/banana-book/intronimble.html" target="_blank">[1]</a><a href="https://www.rdocumentation.org/packages/nimble/versions/1.3.0/topics/nimble-package" target="_blank">[2]</a><a href="https://github.com/nimble-dev/nimble" target="_blank">[4]</a><a href="https://r-nimble.org" target="_blank">[7]</a>. The key is coding the surplus production dynamics explicitly as state-transition equations with observation or process error as needed.</p>
-<p>For clarity, here is a <strong>minimal example with dummy catch data</strong>:</p>
-<pre><code>library(nimble)
-
-catch_vector &lt;- c(100, 120, 90, 80, 110) # example catches
-
-spm_code &lt;- nimbleCode({
-  r ~ dunif(0, 2)
-  K ~ dunif(maxCatch, 10 * maxCatch)
-  sigma ~ dunif(0, 5)
-
-  B&lt;a href="https://oliviergimenez.github.io/banana-book/intronimble.html" target="_blank"&gt;[1]&lt;/a&gt; ~ dunif(0, K)
-  for(t in 1:(nYears - 1)) {
-    mu[t] &lt;- B[t] + r * B[t] * (1 - B[t]/K) - catch[t]
-    B[t+1] ~ dnorm(mu[t], sd = sigma)
-  }
-})
-
-data &lt;- list(catch = catch_vector)
-constants &lt;- list(nYears = length(catch_vector), maxCatch = max(catch_vector))
-inits &lt;- list(r = 0.5, K = max(catch_vector)*5, sigma = 0.1, B = rep(NA, length(catch_vector)))
-
-spm_model &lt;- nimbleModel(spm_code, data = data, inits = inits, constants = constants)
-c_spm_model &lt;- compileNimble(spm_model)
-
-mcmc_conf &lt;- configureMCMC(spm_model)
-mcmc &lt;- buildMCMC(mcmc_conf)
-c_mcmc &lt;- compileNimble(mcmc, project = spm_model)
-
-samples &lt;- runMCMC(c_mcmc, niter = 5000, nburnin = 1000, thin = 2)
-print(summary(samples))</code></pre>
-<p>This example models biomass dynamics probabilistically and fits parameters (r), (K), and noise level () given known catches using Bayesian inference.</p>
-<p>If you want to implement maximum likelihood fitting instead, NIMBLE lets you compile the model and evaluate likelihoods for optimization, as demonstrated in tutorials<a href="https://oliviergimenez.github.io/banana-book/intronimble.html" target="_blank">[1]</a>.</p>
-<p>In summary: - <strong>Write your surplus production model in NIMBLE’s BUGS language</strong>, defining biomass dynamics, catch, and priors for parameters<br>
-- <strong>Compile and run MCMC</strong> sampling in NIMBLE to fit the model<br>
-- <strong>Extract posterior samples</strong> for growth rate, carrying capacity, biomass, and uncertainty<br>
-- Optionally, use <strong>likelihood-based methods</strong> by compiling the model and defining your own optimizer function in R<a href="https://oliviergimenez.github.io/banana-book/intronimble.html" target="_blank">[1]</a><a href="https://r-nimble.org" target="_blank">[7]</a>.</p>
-<p>This approach leverages NIMBLE’s power for hierarchical, Bayesian time-series stock assessment models including surplus production models.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ol type="1">
-<li><a href="https://oliviergimenez.github.io/banana-book/intronimble.html" target="_blank">oliviergimenez.github.io/banana-book/intronimble.html</a></li>
-<li><a href="https://www.rdocumentation.org/packages/nimble/versions/1.3.0/topics/nimble-package" target="_blank">www.rdocumentation.org/packages/nimble/versions/1.3.0/topics/nimble-package</a></li>
-<li><a href="https://www.youtube.com/watch?v=DE4Q82QgSBs" target="_blank">www.youtube.com/watch</a></li>
-<li><a href="https://github.com/nimble-dev/nimble" target="_blank">github.com/nimble-dev/nimble</a></li>
-<li><a href="https://r-nimble.org/documentation-2" target="_blank">r-nimble.org/documentation-2</a></li>
-<li><a href="https://cran.r-project.org/web/packages/nimbleCarbon/vignettes/nimble_carbon_vignette.html" target="_blank">cran.r-project.org/web/packages/nimbleCarbon/vignettes/nimble_carbon_vignette.html</a></li>
-<li><a href="https://r-nimble.org" target="_blank">r-nimble.org/</a></li>
-<li><a href="https://www.rdocumentation.org/packages/nimble/versions/1.3.0" target="_blank">www.rdocumentation.org/packages/nimble/versions/1.3.0</a></li>
-</ol>
-
-
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <category>research-skills</category>
-  <guid>https://www.seascapemodels.org/posts/2025-09-02-AI-reports-with-openrouter-and-r/</guid>
-  <pubDate>Mon, 01 Sep 2025 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
