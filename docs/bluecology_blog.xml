@@ -10,7 +10,79 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Wed, 06 May 2026 14:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 07 May 2026 14:00:00 GMT</lastBuildDate>
+<item>
+  <title>Mitigating the risks of AI coding tools with judicious use for research tasks</title>
+  <link>https://www.seascapemodels.org/posts/2026-05-09-judicious-AI-use/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I was recently invited to talk to an environmental science coding club (<a href="https://www.seascapemodels.org/posts/2026-05-07-genAI-for-coding-FAQ-slides/#/title-slide">slides here</a>).</p>
+<p>My mind is constantly buzzing with ideas on generative AI and different ways for how this new technology fits into the research process. So I often struggle to find the focus needed for a sub hour presentation. Needless to say, it wasn’t my best presentation. But like many presentations, I had a clearer picture of what I wanted to say after I presented it.</p>
+<p>What I realized is that being judicious with AI coding tools like Claude Code or Github Copilot mitigates many of the risks that concern researchers:</p>
+<p>* Will it save me time or will I waste time later fixing up slop?</p>
+<p>* How much electricity does it use and what are the carbon emissions?</p>
+<p>* Is it safe to use on my computer in a cybersecurity sense?</p>
+<p>* Will foreign companies steal my personal data and use it against me?</p>
+<p>By judicious I mean using AI tools in a targeted way for specific tasks where you know it works well. I also mean carefully preparing the context and prompts for the AI.</p>
+<p>Lots of the problems arise with careless use of AI tools.</p>
+<p>There’s a fair bit of “let’s just throw AI at this problem and see what it does” in the workforce at the moment. I think this happens either out of awe for its abilities, naivety or just frustration with lack of progress on something.</p>
+<p>Throwing an immense AI machine like Claude Opus at a poorly defined problem is not judicious use.</p>
+<p>The now famous <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">Metr</a> study found software developers thought they would spend less time but actually spent more time on a task using AI.</p>
+<p>Researchers aren’t software developers and we have different workflows. AI coding agents seem to be delivering some truly useful software improvements now. But my guess is that this time wasting problem is actually worse for researchers than for software developers.</p>
+<p>Researchers care more about the ‘how its done’ than software developers do, software developers put more emphasis on a good end product. Software developers also have the advantage of a clear goal that is easy to verify for accuracy (e.g.&nbsp;an app that works). Its harder to verify that a research output is accurate, because novel research by definition has never been done before. In fact, it takes some fields decades to verify new results.</p>
+<p>I think the AI time wasting happens (and I’ve see it happen in my own work) because we have lazy primate brains and its tempting to just see what AI can do. But then you end up burning time correcting mistakes, correcting slop or fixing things to your own style (anyone else tired of Claude’s ubiquitous contrastive logic popping up on social media, blogs and papers everywhere?).</p>
+<p>The trick is to experiment just enough to know at what points in a research workflow AI can truly be useful. Then put hard mental work in up front to plan your prompts and context. This gives the coding agent (or whatever AI tool) the best chance of creating a useful answer that meets your standards and style of writing/coding/visualization.</p>
+<p>Scott and I tested the benefits of more detailed and specific prompts in our test of <a href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210x.70267">how coding agents do ecological analyses</a>. They make more statistically defensible recommendations, write more accurate code and write code in a more consistent style if you use carefully prepared prompts, detailed plans and give more relevant context.</p>
+<p>That’s one reason we recommended breaking research workflows into steps for AI tools. For data analysis, plan the methods first, then plan how the code will be structured, finally get the AI to write the code. That gives you more control and more understanding, which is what you need if you are putting your reputation on the study at the end of the day.</p>
+<p>An unexpected result was that a clear workflow with carefully prepared prompts meant that cheaper LLMs could perform as well as the best LLMs (at the time).</p>
+<p>Which brings me back to the list at the start.</p>
+<p>Cheaper LLMs have fewer parameters and use less energy. So a judicious approach uses less electricity. In fact, long running AI agents use <a href="https://hannahritchie.substack.com/p/ai-electricity-2025">many times more electricity than the equivalent task done in several smalls steps with human intervention</a>. So fewer more careful prompts that are part of your plan will save energy.</p>
+<p>A judicious approach is more surgical about where on your computer you use AI and what context you provide. Access to fewer files creates fewer security risks (but be warned, AI agents like Claude Code can use the terminal and can do just about anything on your computer, like steal data or delete all your files. They just rarely do these bad things).</p>
+<p>Getting good results out of smaller cheaper LLMs pushes you into the realm of open-weight models being useful. These are models that are free to download and run locally, avoiding issues with data and prompts leaving your computer.</p>
+<p>Generative AI isn’t the tool for every job you need to do on the computer. Take a bit of time now to figure out what works and what is actually wasting your time. It will save you time later.</p>
+
+
+
+ ]]></description>
+  <category>genAI; research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2026-05-09-judicious-AI-use/</guid>
+  <pubDate>Thu, 07 May 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>AI business growth prioritized over clean air</title>
+  <link>https://www.seascapemodels.org/posts/2026-05-08-AI-growth-over-clean-air/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>The energy demands from current AI data centres are relatively minor on a global scale, but energy production for AI can have significant local impacts.</p>
+<p>xAI’s Colossus Data Center in Memphis has one of the worst <a href="https://www.politico.com/news/2025/05/06/elon-musk-xai-memphis-gas-turbines-air-pollution-permits-00317582">environmental records</a>. It operates on gas turbines, reportedly without the protections against air pollution, causing high emissions of gases that are harmful to human health.</p>
+<p>So its perhaps surprising that Anthropic has signed up to use this particular data centre. Multiple AI commentators have questioned the necessity of this move (<a href="https://simonwillison.net/2026/May/7/xai-anthropic/">here</a> and <a href="https://x.com/andymasley/status/2052070252930826384">here</a>).</p>
+<p>Anthropic creates and serves some of the highest performing AI models and also markets itself as the (more?) ethical choice for language language models.</p>
+<p>Growing use of Anthropic’s leading AI platform Claude saw the company reduce usage limits last week. Their current data centres couldn’t cope with the demand for services. (Full disclosure, Claude is one of my favourite tools).</p>
+<p>The new deal with xAI for access to the Colossus Data Center has allowed them to again increase usage limits for their subscribers.</p>
+<p>Colossus itself seems to have been developed without normal environmental regulations. It doesn’t have to be this way, <a href="https://vitaexmachina.substack.com/p/should-researchers-feel-guilty-about">other countries are taking a more cautious approach to data centres and regulating their environmental impacts</a>.</p>
+<p>It is important to get good environmental standards in at the ground level, so we don’t end up with expanding issues in coming years as <a href="https://hannahritchie.substack.com/p/ai-electricity-2025">AI electricity and resource demand grows</a>.</p>
+<p>You can see Anthropic’s business reasoning. Their business is rapidly growing and they need new data centres to match supply with demand.</p>
+<p>But the move goes against the ethos of Anthropic who announce on their webpage “AI <a href="https://www.anthropic.com/research">research</a> and <a href="https://claude.com/product/overview">products</a> that put safety at the frontier”. Their pages also talk about benefits to humanity and so on.</p>
+<p>To date they have shown themselves to be leaders in pushing for better cybersecurity outcomes from AI tools. For instance, releasing new models to cybersecurity researchers before making them available to everyone. And they have pushed back against applications of their products to the military.</p>
+<p>These new actions show that Anthropic’s definition of safety does not extend to the environmental and human health implications of their products.</p>
+<p>It is increasingly difficult to make informed choices as a consumer in the tech space. As consumers, we need to watch how AI companies act, rather than read who they say they are.</p>
+<p>Actions speak louder than words.</p>
+
+
+
+ ]]></description>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2026-05-08-AI-growth-over-clean-air/</guid>
+  <pubDate>Thu, 07 May 2026 14:00:00 GMT</pubDate>
+</item>
 <item>
   <title></title>
   <dc:creator>A/Prof Chris Brown, University of Tasmania</dc:creator>
@@ -1290,145 +1362,6 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>research</category>
   <guid>https://www.seascapemodels.org/posts/2026-01-04-marine-seascape-restoration/</guid>
   <pubDate>Sat, 03 Jan 2026 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Rethinking ecological predictions and uncertainty</title>
-  <link>https://www.seascapemodels.org/posts/2025-12-16-rethinking-ecological-predictions-and-uncertainty/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Ecological modelling is a science geared towards predicting change in ecosystems. But I think for many ecosystems we’ve been going about making predictions the wrong way. We are overlooking how slight changes in feedbacks within ecosystems can lead to runaway outcomes far beyond what we anticipated.</p>
-<p>Consequently, we have too much confidence in our ability to build models that predict well.</p>
-<p>An alternative way to predict change is to acknowledge and then try to represent high levels of uncertainty in ecological feedback processes. <a href="https://doi.org/10.1111/gcb.70468">Qualitative models are one way to do this</a>.</p>
-<section id="types-of-ecological-models" class="level2">
-<h2 class="anchored" data-anchor-id="types-of-ecological-models">Types of ecological models</h2>
-<p>Increasingly sophisticated models of ecological mechanisms are being used to make predictions ecological change and support challenging management problems like climate change.</p>
-<p>One example are the global forest models that are used to predict carbon sequestration from the atmosphere by the world’s forests for the next 50-100 years. Predicting carbon sequestration is essential as it is one part of estimating future atmospheric carbon dioxide, an essential component of the global climate models that predict how much our world will warm.</p>
-<p>Statistical models and machine learning are also key areas of innovation. These models tend to focus on describing patterns, over mechanistic detail of the model formulation (though there are exceptions of course). Much effort is invested in developing models that make use of data to capture multiple sources of uncertainty and describe non-linear relationships.</p>
-<p>A leading example are the species distribution models that predict where species occur in space. This information is essential for a range of applications, including protected area design, threatened species management and managing species responses to climate change.</p>
-<p>What the statistical models that focus on patterns and the mechanistic models share in common is a focus on quantitative predictions. That is, making precise predictions of how much - how much forest, how much carbon, probability of species occurrence and how many species.</p>
-</section>
-<section id="what-were-missing" class="level2">
-<h2 class="anchored" data-anchor-id="what-were-missing">What we’re missing</h2>
-<p>The focus on quantitative predictions puts a lot of faith in our ability to build useful models. For mechanistic models the faith is that we have enough knowledge to know which equations are important. For the statistical and machine learning models the faith is that the data can reveal the important insights.</p>
-<p>But what if uncertainty about ecological futures is much greater than we ecologists typically acknowledge?</p>
-<p>One example is that marine scientists were totally blindsided by <a href="https://theconversation.com/like-an-underwater-bushfire-sas-marine-algal-bloom-is-still-killing-almost-everything-in-its-path-257885">this unprecedented algal bloom</a> that caused people to get sick and killed wildlife along 100s kilometres of coastline. Scientists still don’t know what triggered it.</p>
-</section>
-<section id="the-importance-of-feedback-processes" class="level2">
-<h2 class="anchored" data-anchor-id="the-importance-of-feedback-processes">The importance of feedback processes</h2>
-<p>Run-away feedback processes often feature in unanticapted ecological change. The algal bloom initiated a run-away feedback process kind of like a zombie plague. It was killing animals and plant life, the decomposition then created more nutrients that further fueled the bloom.</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-  A[Algal bloom] --&gt; B[Death of animals and plants]
-  B --&gt; C[Decomposition]
-  C --&gt; D[Increased nutrients]
-  D --&gt; A
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>Slight changes in these types of feedbacks can result in drastically divergent futures. Representing different plausible feedbacks and different weights for those feedbacks therefore is one way to get at estimating the range of outcomes for the future.</p>
-</section>
-<section id="qualitative-loop-models" class="level2">
-<h2 class="anchored" data-anchor-id="qualitative-loop-models">Qualitative loop models</h2>
-<p>Loop models are models of feedbacks interconnected systems. They have also been called network models.</p>
-<p>Loop models have nodes, which can represent physical or ecological entities such as nutrient concentration, species population size or forest area, and connections, which represent the feedbacks among nodes. Critically, they <em>qualitative</em> predictions of change in the nodes in response to change in other nodes. That is, if one node was to increase will the other nodes increase, stay the same or decrease?</p>
-<p>Qualitative models can be <a href="https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/12-0207.1?casa_token=nr7e7AeLDawAAAAA%3AAoJqWz-qsoV8ywDuzvVWl_hhbooGJJtHdF0YWTHxNboQnW4yFYQCrjQ7UhppD1Hf5Ts2ICvaRfHdipNa">extended to model the probability of a positive or negative change</a>. They do this by simulating different weights for the feedback loops, across a distribution of plausible weights.</p>
-<p>This creates the possibility of exploring how different feedback processes affect the probability of future increases or decreases in an ecosystem.</p>
-</section>
-<section id="application-of-qualitative-models-to-a-high-uncertainty-situation" class="level2">
-<h2 class="anchored" data-anchor-id="application-of-qualitative-models-to-a-high-uncertainty-situation">Application of qualitative models to a high uncertainty situation</h2>
-<p>Rising seas and coastal development are pushing mangrove forests beyond their historical limits. Predicting how mangroves will respond is much harder when environmental change is unprecedented. In our study, <a href="https://doi.org/10.1111/gcb.70468">Projecting Uncertainty in Ecosystem Persistence Under Climate Change</a>, we aimed to estimate the probability that mangrove forests will persist or decline worldwide.</p>
-<p>Previous global studies predicting mangrove change have used mechanistic models that make precise quantitative predictions. But I think these models are not honest to the amount of uncertainty we have about mangrove forest dynamics. And the mechanistic models have been criticised for not representing important feedbacks between mangroves and the soils and sediment they grow on.</p>
-<p>We used qualitative models to represent feedback processes in mangrove forests.</p>
-<p>A mangrove that is healthy traps sediment in its root structures. This sediment helps it rise-up out of the water slowly over time, which is key to persistence if sea levels are rising.</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-12-16-rethinking-ecological-predictions-and-uncertainty/mangrove-feedback-loop.jpeg" class="img-fluid"></p>
-<p>Image: Chris Brown with Gemini Pro 3.</p>
-<p>But if sediment supplies are cut-off, such as by building a dam upstream, the mangrove can no longer capture sediment to keep up with sea-level-rise. Eventually, the mangrove will be drowned and disappear.</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-  A[Healthy mangrove] --&gt; B[Sediment trapping]
-  B --&gt; C[Elevation gain]
-  C --&gt; D[Persistence with sea-level rise]
-  D --&gt; A
-  E[Reduced sediment supply] -.-&gt; |Breaks feedback| B
-  E --&gt; F[Drowning]
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>We mapped the loop models to global data on the distribution of mangroves and their threats to make predictions across the world’s mangroves. Those predictions were made under climate scenario modelling so we could account for multiple climate threats.</p>
-<p>Here’s the projections for persistence of mangroves from one of our scenarios:</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-12-16-rethinking-ecological-predictions-and-uncertainty/Buelow_etal2025-graphical-abstract.png" class="img-fluid"></p>
-<p>We didn’t stop at predicting the future, we also made hindcasts. This let us validate the model against observations, to get an idea of how certain the model was.</p>
-<p>For the future predictions, rising seas, storms and reduced sediment from dammed rivers create multiple pressures that led to predicted mangrove loss. In contrast, about 30% of forests were predicted to gain area landward, as they move inland with sea-level rise. However, coastal development often blocks this migration.</p>
-<p>Perhaps most importantly, uncertainty is high. In more than half the mangrove units studied, we couldn’t predict whether forests would persist or decline - the probability was essentially random.</p>
-</section>
-<section id="applications-to-management-and-conservation-of-ecosystems" class="level2">
-<h2 class="anchored" data-anchor-id="applications-to-management-and-conservation-of-ecosystems">Applications to management and conservation of ecosystems</h2>
-<p>Useful predictions don’t have to be accurate. It can be more helpful to know what you don’t know. This means acknowledging the uncertainty in the system you are trying to model.</p>
-<p>We tested conservation scenarios and found encouraging results. With targeted management - sediment addition, barrier removal, and assisted migration - the number of units likely to persist could nearly double.</p>
-<p>Learning where we don’t know enough to make useful predictions is also useful. This isn’t a model failure. It tells us where better data could tip the balance.</p>
-<p>Embracing modelling of feedbacks means embracing uncertainty in ecological futures. Doing so will make our predictions more honest and ultimately more useful for management.</p>
-
-
-</section>
-
- ]]></description>
-  <category>research</category>
-  <category>modelling</category>
-  <category>coastal-wetlands</category>
-  <guid>https://www.seascapemodels.org/posts/2025-12-16-rethinking-ecological-predictions-and-uncertainty/</guid>
-  <pubDate>Mon, 15 Dec 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Should we still teach R coding in this age of genAI?</title>
-  <link>https://www.seascapemodels.org/posts/2025-12-10-should-we-teach-coding/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>I often get asked if we should still be teaching coding skills to students and researchers now that we have generative AI tools that can write code for us.</p>
-<p>The general consensus is yes, we should still teach coding. For an ecology specific <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14325">argument see here</a>.</p>
-<p>Teaching coding is teaching people how to think logically and structure problems. These skills are essential not only in coding, but also for good science and problem solving in general.</p>
-<p>So you need to learn to code to learn to think logically and structure problems.</p>
-<p>A more practical standpoint is that LLMs are good at generating code that they have seen a lot of examples of in their data. But they are not so good at creative work on novel topics or niche areas.</p>
-<p>For example, AI coding assistants struggle to make a simple <code>tmap</code> (the R mapping package) work well. <code>tmap</code> was updated recently, meaning the examples in the LLM’s training are out of date.</p>
-<p>The coding assistants also seem to default to code patterns they are most familiar with, like <code>ggplot2</code> syntax. Not all of this works with <code>tmap</code>.</p>
-<p>In general, I find they perform much better at statistical modelling in R than they do with complex geospatial analyses.</p>
-<p>This practical issue may increasingly become less relevant as LLMs get better and we create better resources to inform their actions (like a tmap specific guide for LLMs to read before advising you, or web searches of the tmap page).</p>
-<p>But it is still likely that frontier modelling will require deep human engagement with code. So learning to code is important for researchers.</p>
-<p>I’ll leave the final say to Andrej Karpathy, former head of AI at Tesla and founding member of OpenAI’s research group.</p>
-<p>In a <a href="https://www.dwarkesh.com/p/andrej-karpathy">recent podcast interview</a> he talks about a repo he made to help teach people how to work with LLMs. His advice to learners is literally to re-write his repo by hand, not even to cut and paste.</p>
-<p>He goes on to explain that AI agents are good for very standard code or code that is common on the internet. But they perform poorly for creating new code, or code that contradicts common patterns.</p>
-<p>For any research code he most commonly uses the code auto-complete features that AI assistants have, rather than AI agents.</p>
-<p>He suggests that to really learn something you should code it yourself, using examples only as references.</p>
-<p>Karpathy came up with the term ‘vibe-coding’ which means creating code by prompting, without reviewing the code. Usually an AI agent is used. So its saying a lot if he thinks that learning means doing it the old fashioned way of writing code yourself.</p>
-
-
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-12-10-should-we-teach-coding/</guid>
-  <pubDate>Tue, 09 Dec 2025 13:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
