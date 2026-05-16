@@ -47,3 +47,5 @@ But I wouldn't treat AI output like its human data and assign it sample sizes as
 The other issue with these 'focus groups' is that they are almost impossible to validate, without engaging a real human focus group. If you do that, then why bother with the AI? 
 
 I suspect I'm stuck with my colleague's enthusiasm for the AI 'focus groups'. I'll tell them the results are no good. They will say but look it says 'X', and 'X' makes sense. Neither of us can ever prove who is right without a real human study. 
+
+For me, the 'focus-groups' are another example of people misunderstanding the strengths and limitations of generative AI. Its one reason we started our blog [vita ex machina](https://vitaexmachina.substack.com/), to better educate colleagues and peers when these tools will help and when they hold us back. 
