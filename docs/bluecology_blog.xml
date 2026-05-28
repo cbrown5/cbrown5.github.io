@@ -13,6 +13,40 @@
 <lastBuildDate>Wed, 27 May 2026 14:00:00 GMT</lastBuildDate>
 <item>
   <title>Linking the introduction and discussion sections of a paper</title>
+  <link>https://www.seascapemodels.org/posts/2026-05-28-connecting-discussion-introduction/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>One trick to use to help write your discussion is to mirror (like a reflection) most of the structure you use in the introduction.</p>
+<p>This was the topic of our lab discussion today. Here’s one example, given as a re-write in blog format of lab member <a href="https://www.sciencedirect.com/science/article/pii/S0165783626001256">Richard Takyi’s recent paper on climate change and its impact on fisheries</a></p>
+<section id="introduction---common-structure" class="level2">
+<h2 class="anchored" data-anchor-id="introduction---common-structure">Introduction - common structure</h2>
+<p>Context for the study - Fisheries are impacted by climate change</p>
+<p>Problem that you will address on the study - If its not accounted for climate change can bias the assessments we use to inform management decisions, misleading management and contributing to unsustainable decisions.</p>
+<p>What has been said about this problem before (1-2 paragraphs) - Data intensive assessments can be biased in counter-intuitive ways - Assessment methods that use fish length are popular for small scale and data poor fisheries, but we don’t know how climate change will impact their reliability.</p>
+<p>What you will do and aims - Study how climate warming impacts on fish growth could bias length based assessments of fish stocks.</p>
+</section>
+<section id="discussion---as-a-mirror-of-the-introduction" class="level2">
+<h2 class="anchored" data-anchor-id="discussion---as-a-mirror-of-the-introduction">Discussion - as a mirror of the introduction</h2>
+<p>What we found for the aims - Warming tended to make assessments less conservative (the assessment said there was more bigger fish than there was) - Accounting for the effects of warming on growth is neccessary to prevent assessments from making biased findings about the health of fish stocks</p>
+<p>How our findings advance earlier studies on this problem - Show how models of fish growth under temperature can be used in data poor assessments - Show that data poor assessment methods can be biased by climate warming</p>
+<p>How our findings advance the problem - We show how warming can be accounted for in data poor assessments</p>
+<p>Caveats/future research needs - Future research could consider other types of climate impacts, like changes in population recruitment or foodwebs</p>
+<p>Link back to broad context of the study - Management needs assessment methods that are robust to climate change - We show how to account for warming in a data poor assessment method - The method could be used to improve the management of fish stocks in climate hotspots</p>
+
+
+</section>
+
+ ]]></description>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2026-05-28-connecting-discussion-introduction/</guid>
+  <pubDate>Wed, 27 May 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>AI enabled focus groups</title>
   <link>https://www.seascapemodels.org/posts/2026-05-14-AI-enabled-focus-groups/</link>
   <description><![CDATA[ 
 
@@ -20,38 +54,35 @@
 
 
 
-<section id="introduction---common-structure" class="level2">
-<h2 class="anchored" data-anchor-id="introduction---common-structure">Introduction - common structure</h2>
-<p>Context of the study area - Overfishing is a problem that impacts small scale fisheries</p>
-<p>Problem that you will address on the study - Small scale fisheries are hard to monitor, making them hard to manage</p>
-<p>What has been said about this problem before (1-2 paragraphs) - Small scale fisheries can be monitored through surveys - Emerging technologies like satellites could be used to remote obs</p>
-<p>What you will do and aims - Map small-scale fisheries in the red sea with new satellite technology</p>
-</section>
-<section id="discussion---as-a-mirror-of-the-introduction" class="level2">
-<h2 class="anchored" data-anchor-id="discussion---as-a-mirror-of-the-introduction">Discussion - as a mirror of the introduction</h2>
-<p>What we found for the aims - We found seasonal patterns in small scale fisheries that match expectations - Small scale fisheries were concentrated near coral reefs</p>
-<p>How our findings advance earlier studies on this problem</p>
-<ul>
-<li>Previous studies in the Red sea found overfishing</li>
-<li>North sound gradient. We also observed, but added higher resoluation findings</li>
-</ul>
-<p>How our findings advance the problem - New monitoring data could be used to support mgmt</p>
-<p>Link back to broad context of the study</p>
-<ul>
-<li>Need to monitor fisheries to manage them</li>
-<li>Satellite tech could contribute to halting overfishing</li>
-</ul>
-</section>
-<section id="missing---caveats" class="level2">
-<h2 class="anchored" data-anchor-id="missing---caveats">Missing - caveats…</h2>
+<p>I had my first encounter with an ‘AI-enabled focus group’ this week.</p>
+<p>Focus groups are traditionally used to get the opinions of a cross-section of society on a new product, policy or advertising campaign. ‘AI-enabled’ focus groups are simulations of human participants in a focus groups.</p>
+<p>The ‘AI-enabled’ is a bit misleading, they are 100% AI participants.</p>
+<p>The selling point is they are much cheaper, faster and than human focus groups, and you can easily go back and ask them more questions. The downsides are obvious: do they really represent what a focus group would tell you?</p>
+<p>The marketing of the tools is also excellent. The results are presented as if they are from real focus groups, with sample sizes for different groups of people. Ours had ‘n=5’ for each group.</p>
+<p>I was curious as to the results, but also skeptical that AI could make a fair representation of our user group. We know generative AI has many biases in the text it writes, and in my experience no amount of declaring personas or writing explicit system prompts guarantees overcoming those biases.</p>
+<p>For example, most large language models perform better at coding and reasoning tasks with one off instructions rather than engaging in conversation.</p>
+<p>As I understand it, you set up the ‘focus group’ (I’m refusing to call it a real focus group) with relevant context such as notes from meetings or comments from existing users.</p>
+<p>Other than the potential for biases, there is the well known behaviour of needing to please the user (large language models tend to be sycophantic by design).</p>
+<p>The ‘focus group’ basically just regurgitated what was in our meeting notes. It told us exactly what we wanted to hear. And those suggestions don’t check out with my lived experience talking to end-users. What we are doing currently (and what AI told us to keep doing) is not working and what we need is a new perspective on the issue.</p>
+<p>The AI focus group was just trying to please us.</p>
+<p>The recent drug overdose <a href="https://arstechnica.com/tech-policy/2026/05/will-i-be-ok-teen-died-after-chatgpt-pushed-deadly-mix-of-drugs-lawsuit-says/">lawsuit against OpenAI</a> is a particularly horrifying example of sycophantic behaviour.</p>
+<p>The chat logs have been made public as part of that case and include conflicting advice to seek medical help, but also advice like “here’s how to optimize your trip for comfort, introspection and enjoyment.” (and doesn’t the “here’s how to optimize…” sound just like chatGPT speak!)</p>
+<p>Now my use case isn’t life or death. I would just classify it as another example of one colleague’s enthusiasm for AI slop wasting another colleague’s time.</p>
+<p>I’m confident these AI ‘focus groups’ will become more prevalent, given their convenience. But I worry that they won’t ever encourage us to ask hard questions about what we are doing.</p>
+<p>You can imagine the disastrous results they could lead to in public policy, for instance. The AI-enabled focus groups are an echo chamber for making hard decisions.</p>
+<p>AI tools can be helpful brainstorming partners. But I wouldn’t reach for those as my first choice. There are many people in our group with extensive experience of the issue we are addressing. A good starting point would be to just ask those people.</p>
+<p>Its not clear to me that you would then need an AI ‘focus group’. Why not just write down your ideas, what you think, then get any old reasoning AI to work through possible perspectives of different personas. That would give you a nice list of potential perspectives to explore with real thinking in your human brain.</p>
+<p>But I wouldn’t treat AI output like its human data and assign it sample sizes as if its representative of a human population. Sample size is also not much of a limitation with AI. Asking an AI something 50 times versus 5 would cost at most $1-$2 extra.</p>
+<p>The other issue with these ‘focus groups’ is that they are almost impossible to validate, without engaging a real human focus group. If you do that, then why bother with the AI?</p>
+<p>I suspect I’m stuck with my colleague’s enthusiasm for the AI ‘focus groups’. I’ll tell them the results are no good. They will say but look it says ‘X’, and ‘X’ makes sense. Neither of us can ever prove who is right without a real human study.</p>
+<p>For me, the ‘focus-groups’ are another example of people misunderstanding the strengths and limitations of generative AI. Its one reason we started our blog <a href="https://vitaexmachina.substack.com/">vita ex machina</a>, to better educate colleagues and peers when these tools will help and when they hold us back.</p>
 
 
-</section>
 
  ]]></description>
-  <category>research-skills</category>
+  <category>genAI; research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-05-14-AI-enabled-focus-groups/</guid>
-  <pubDate>Wed, 27 May 2026 14:00:00 GMT</pubDate>
+  <pubDate>Wed, 13 May 2026 14:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Mitigating the risks of AI coding tools with judicious use for research tasks</title>
@@ -1298,46 +1329,6 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>research</category>
   <guid>https://www.seascapemodels.org/posts/2026-01-16-is-my-rec-fishing-sustainable/</guid>
   <pubDate>Thu, 15 Jan 2026 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>LLMs can’t be trusted to do scientific coding accurately, but humans make mistakes too</title>
-  <link>https://www.seascapemodels.org/posts/2026-01-14-LLMs-cant-be-trusted-but-neither-can-humans/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>I often hear the comment that LLMs/generative AI (large language models) can’t be trusted for research tasks.</p>
-<p><img src="https://www.seascapemodels.org/posts/2026-01-14-LLMs-cant-be-trusted-but-neither-can-humans/aislop.jpeg" class="img-fluid"> <strong>Image</strong> Google’s Nano Banana tasked with “Generate an image of a male African researcher holding a balloon that is pulling them up above a tidal wave of AI generated slop that is full of errors. The balloon has a research paper inside of it. Generate the image in the style of a Simpsons cartoon.”</p>
-<p>But this is the wrong way to think about LLMs. <strong>Humans also can’t be trusted</strong> to do scientific research accurately. They make mistakes. That’s why we have systems for review.</p>
-<p>The more important question is: Are LLMs more accurate than humans at completing a given task?</p>
-<p>I actually think LLMs might lead to better scientific coding and statistical analysis.</p>
-<p>A common example of what LLMs get criticised for is writing code or performing statistical analyses. The LLM might hallucinate non-truths, or at least mislead you into thinking the analysis you have done is scientifically accurate.</p>
-<p>The implication is that we should not be using them for particular tasks, like designing statistical models.</p>
-<p>Its right to be skeptical of AI produced output. However, we also need to be skeptical of human produced output. Humans make mistakes as well.</p>
-<p>As scientists peer-review is baked into our culture. But code review is much rarer. We also don’t have many systematic reviews of scientific coding that have quantified the rate of mistakes.</p>
-<p>I suspect that mistakes in scientific coding are more common than we’d like to believe.</p>
-<p>In one (rare) example, <a href="https://www.sciencedirect.com/science/article/pii/S0304380019301085">researchers reviewed population modelling analyses and found mathematical errors were common</a>. One type of error occured in 62% of studies!</p>
-<p>Now I haven’t set an LLM agent the task of doing the equivalent population models to see what its error rate is. However, my tests (which are under review) of agents at quite complicated stats and ecological modelling are showing 80-90% performance at accurately completing the tasks.</p>
-<p>So the LLM agents are potentially doing better than the humans and making fewer mistakes.</p>
-<p>Why I think LLMs might lead to better research is that they give us more time for code review.</p>
-<p>As an ecological modeller I invest a ton of time into writing code, then checking that code works the way I want (and in a mathematically accurate way).</p>
-<p>LLMs are now doing more of the code writing for me. Used effectively, this gives me more time to review the code for accuracy, as well as checking the code is an accurate representation of the scientific theory.</p>
-<p>A human with an LLM partner could choose to: (1) produce crap work faster than pre-LLM, OR (2) produce higher quality work in a similar amount of time to what it took them pre-LLM.</p>
-<p>I’m arguing that we should be aiming to produce the higher quality work. We can do this if we use LLMs to speed up code, then use the extra time for more quality assurance.</p>
-<p>More generally, don’t get fooled by the argument that “genAI makes mistakes, so it can’t be trusted”.</p>
-<p>Its the wrong way to think about the problem, and I think will lead us to being blind-sided by the oncoming flood of research slop created with genAI.</p>
-<p>A better way to think about it is: “genAI and humans both make mistakes, how can we design workflows so that their strengths complement each other and we produce higher quality work”.</p>
-<p>This will give us outcomes that are of higher quality than the pre-LLM world, and hopefully will rise above the huge quantity of AI generated slop that is currently happening.</p>
-
-
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2026-01-14-LLMs-cant-be-trusted-but-neither-can-humans/</guid>
-  <pubDate>Tue, 13 Jan 2026 13:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

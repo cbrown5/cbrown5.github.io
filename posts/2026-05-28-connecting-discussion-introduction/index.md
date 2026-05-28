@@ -8,7 +8,7 @@ date: '05/28/2026'
 
 One trick to use to help write your discussion is to mirror (like a reflection) most of the structure you use in the introduction.
 
-This was the topic of our lab discussion today. Here's one example, given as a re-write in blog format of lab member [Richard Takyi's recent paper on climate change and its impact on fisheries](https://www.sciencedirect.com/science/article/pii/S0165783626001256?via%3Dihub)
+This was the topic of our lab discussion today. Here's one example, given as a re-write in blog format of lab member [Richard Takyi's recent paper on climate change and its impact on fisheries](https://www.sciencedirect.com/science/article/pii/S0165783626001256)
 
 ## Introduction - common structure
 
