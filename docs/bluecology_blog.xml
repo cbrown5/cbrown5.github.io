@@ -10,7 +10,84 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Mon, 08 Jun 2026 14:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 11 Jun 2026 14:00:00 GMT</lastBuildDate>
+<item>
+  <title>Popular books that will help you learn about statistics</title>
+  <link>https://www.seascapemodels.org/posts/2026-06-12-favourite-stats-books/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<blockquote class="blockquote">
+<p>You don’t have to read text books to learn about statistics</p>
+</blockquote>
+<p>Statistics sits at the intersection of applied maths and philosophy. We often learn statistics through tutorials and textbooks. But reading analytical textbooks is not the only way to deepen your understanding of statistics. In fact, I would go further and say that students of science must read more broadly into the philosophical side of statistics.</p>
+<p>To that end, here’s my list of a the most informative and engaging popular science books on statistics.</p>
+<section id="the-signal-and-the-noise---nate-silver" class="level2">
+<h2 class="anchored" data-anchor-id="the-signal-and-the-noise---nate-silver">The Signal and the Noise - Nate Silver</h2>
+<p><a href="https://www.penguinrandomhouse.com/books/305826/the-signal-and-the-noise-by-nate-silver/">“Why so many predictions fail - but some don’t”</a></p>
+<p>Prediction lies at the heart of scientific progress. It is how we test new theories to know they are an improvement on older theories. Silver look at both the analytical and psychological sides of prediction. He explains why political pundits are so bad at predicting election outcomes and how we’ve got so good at forecasting the weather, but only at time horizons of up to about 10 days.</p>
+<p>In brief, its easier to get good at predicting if you can: make predictions frequently, test your predictions against independent data frequently and update your models for prediction.</p>
+<p>Weather is a great example, we have lots of data and an ensemble of mathematical models with which to make predictions. We then get to test those predictions on new data every day.</p>
+<p>Societal change is a leading example of where predictions often fail. We observe changes relatively slowly and there is limited data on which to test our models. Further, our models tend to be biased by our own agendas and cultural perceptions.</p>
+<p>This book changed my view on my own field of ecology. I realized so many of the studies we read are making implicit predictions, which are likely to fail. And its not likely to get any better, because we don’t get many opportunities test our predictions with novel data.</p>
+</section>
+<section id="bernoullis-fallacy---aubrey-clayton" class="level2">
+<h2 class="anchored" data-anchor-id="bernoullis-fallacy---aubrey-clayton">Bernoulli’s Fallacy - Aubrey Clayton</h2>
+<p><a href="https://aubreyclayton.com/bernoulli">“Statistical Illogic and the Crisis of Modern Science”</a></p>
+<p>Bernoulli’s Fallacy looks at the history statistics and describes how that history has led to many of the problems we face in modern science.</p>
+<p>The book focuses on the rivalry between frequentist and Bayesian statistical paradigms. Many of most influential statisticians of the late 19th and 20th century were frequentists and also progressing racist ideologies of eugenics. Clayton shows how frequentist statistical philosophy was a good fit for these ideological goals, and thus became the prominent statistical paradigm of the time, which continues today.</p>
+<p>The book delves into the two different philosophies and the author makes no excuses for being an ardent supporter of the Bayesian philosophy.</p>
+<p>There are many lessons that students of science can learn from this book. It is a historical tale, an accessible introduction to statistical theories, an overview of contemporary statistical problems and an argument for the application Bayesian statistics to overcome these problems.</p>
+<p>Clayton’s brilliance is making the connection from centuries old political debates to modern science. He shows how the historical focus on frequentist statistics (and suppression of Bayesian ideas) has led us to the repeatability crisis we face in modern science.</p>
+<p>For me there is a bigger lesson in this tale: that toxic political ideas can infiltrate the development of scientific methods and that this has repercussions for the quality of science decades or even centuries later.</p>
+<p><a href="https://aubreyclayton.com/teaching">Aubrey Clayton also has a YouTube series probability theory, found on this page</a></p>
+</section>
+<section id="the-book-of-why---judea-pearl" class="level2">
+<h2 class="anchored" data-anchor-id="the-book-of-why---judea-pearl">The Book of Why - Judea Pearl</h2>
+<p><a href="https://www.penguin.com.au/books/the-book-of-why-9780141982410">“The new science of cause and effect”</a></p>
+<p>Statistical analysis is often about inferring causes from observations. But correlations are often misleading, as the saying goes “correlation doesn’t mean causation”.</p>
+<p>The Book of Why describes the theory of structural causal modelling, which allows us to infer causation from correlation. Of course, underpinning this theory are some strong assumptions.</p>
+<p>The Book of Why introduces the challenge of inferring causation through compelling policy and health examples. It describes the logic of structural causal modelling and how that logic can be applied to infer causes in observational studies.</p>
+<p>Statistical orthodoxy holds that you need a randomized controlled experiment to infer a cause. However, many problems are not amenable to randomized experiments, take climate change for instance.</p>
+<p>Central to causal reasoning is the construction of ‘counterfactuals’ from models - what could have happened if we had done something else, or if the world was different. Counterfactuals come to the fore in policy analysis, for instance, where we want to know if things would have been different if we did (or did not) have a new policy.</p>
+<p>The Book of Why builds an excellent foundational understanding of causal reasoning and counterfactuals, whether you intend to use structural causal modelling or not. Counterfactuals are essential in many other areas of statistical analysis where we are making predictions from models and comparing outcomes of different interventions.</p>
+</section>
+<section id="thinking-fast-and-slow---daniel-kahneman" class="level2">
+<h2 class="anchored" data-anchor-id="thinking-fast-and-slow---daniel-kahneman">Thinking Fast and Slow - Daniel Kahneman</h2>
+<p><a href="https://www.penguin.com.au/books/thinking-fast-and-slow-9780141033570">“Thinking fast and slow”</a> looks at how humans make decisions. Its not a statistical book per-se, but I’m including it here because all good scientists should understand their own biases.</p>
+<p>Kahneman won the Nobel Prize for his work in behavioural economics, showing why people often make seemingly irrational choices. The book is based on the idea of two decision processes, quick decision making that is instinctive and often apparently irrational, and slow rational decision making.</p>
+<p>The book describes many of the types of cognitive biases humans have when they make decisions, and ways to combat those biases. Much statistical logical is unintuitive to human minds (take the famous Monte Hall problem for instance). Kahneman explains why.</p>
+<p>The case of the Apgar score is one leading example. The Apgar is a rapid assessment that neonatal nurses and doctors use to assess the health of newborn babies. Before the Apgar score nurses and doctors would make decisions about a new born baby based on experience. This was resulting in poor outcomes for babies, because of the cognitive load of making life critical decisions under time pressure.</p>
+<p>The Apgar score takes away some of that pressure and inconsistency in outcomes. Doctors and nurses work through the checklist and score the baby based on its current state (colour, noise, pulse etc…). The score determines what happens to babies that aren’t breathing strongly, and determines whether they go on a resuscitator or not.</p>
+<p>The broader lesson I took from Thinking Fast and Slow is how we can use reasoning and quantitative methods to overcome our own human biases that result in poor decision making.</p>
+</section>
+<section id="statistical-rethinking---richard-mcelreath" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-rethinking---richard-mcelreath">Statistical Rethinking - Richard McElreath</h2>
+<p><a href="https://www.routledge.com/Statistical-Rethinking-A-Bayesian-Course-with-Examples-in-R-and-STAN/McElreath/p/book/9780367139919">“A Bayesian Course with Examples in R and STAN”</a></p>
+<p>Ok so this one is a textbook and yes it does have R code in it. But it makes my list of ‘popular science’ books because I’ve never read a text book this engaging and frankly, fun.</p>
+<p>McElreath has a way with stories and analogies, and he weaves these in among the R code and data analysis.</p>
+<p>The book introduces Bayesian statistical analysis with R and Stan programs, but along the way we learn about many other fundamentals of statistics, including cause and correlation, covariances, prediction and the Bayesian paradigm.</p>
+<p>Bayesian statistics has traditionally been seen as a topic for more advanced students who have already mastered frequentist methods. However, McElreath shows that Bayesian statistics absolutely deserves pride of place in introductory courses. McElreath starts simple and guides us through increasingly complex of statistical models in a way that is incremental and intuitive.</p>
+<p>This book is for students who want to learn practical skills in statistical programming. But its also a great read for anyone who wants to understand more deeply how stats works.</p>
+<p><a href="https://www.youtube.com/@rmcelreath">McElreath also has a popular YouTube channel</a> where he posts the book as a course, if you prefer video format.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>There’s a theme that connects all of the books I’ve listed here. Bernoulli’s Fallacy describes how the history of statistics was shaped by its creators’ political biases. These biases have contributed many of the shortcomings science faces today, such as slow uptake on the science of climate change and the reproducibility crisis.</p>
+<p>The Signal and the Noise, The Book of Why and Statistical Rethinking are all slightly different answers to these problems. Thinking Fast and Slow is warning to beware our own psychology and ho;w that biases our decisions: We need to be careful especially when we <em>think</em> we are being objective.</p>
+<p>I’d be interested to hear your favourite books. You can <a href="https://bluecology.substack.com/">comment on my substack</a> or <a href="mailto:c.j.brown@utas.edu.au">email me</a>. My book list is dominated by white guy authors. A key lesson in Bernoulli’s Fallacy is the danger of monopolies in scientific ideas. So I’m keen to hear suggestions on books from a broader range of cultural and scientific backgrounds.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2026-06-12-favourite-stats-books/</guid>
+  <pubDate>Thu, 11 Jun 2026 14:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Improved cybersecurity for AI agents</title>
   <link>https://www.seascapemodels.org/posts/2026-06-09-improving-AI-agent-security/</link>
@@ -28,7 +105,7 @@
 <p>Unfortunately these sandboxes are in early stages of development.</p>
 <p>I spent some time trying the new <a href="https://github.com/anthropic-experimental/sandbox-runtime">Anthropic Sandbox Runtime</a>, but…. totally failed to get it working. It seems it is still very beta stage and there are many issues open currently on its github page describing the problems I was having.</p>
 <p>Anthropic and Github Copilot also have bash sandboxes (e.g.&nbsp;<a href="https://code.claude.com/docs/en/sandboxing">Anthropic’s docs</a>). Both worked fine for me.</p>
-<p>However, the documentation is difficult to interpret (if you aren’t a software developer), and I spent a lot of time trying to get the settings properly configured.</p>
+<p>However, the documentation is difficult to interpret (if you aren’t a software developer), and I spent a lot of time trying to ge</p>
 <p>The bash sandboxes allow you to put restraints on what bash commands are run. For instance, you can limit the ability of the agent to read files outside of a project’s directory.</p>
 <p>This system has its limitations though. For instance, an agent could still access private files through Python code.</p>
 <p>I also looked into the Github Copilot sandbox, which was only released this month (June 2026). It is not very well documented but seems to also be a bash sandbox.</p>
@@ -1229,66 +1306,6 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>research</category>
   <guid>https://www.seascapemodels.org/posts/2026-02-05-benefits-of-doing-a-service-role/</guid>
   <pubDate>Wed, 04 Feb 2026 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Reading for new quantitative ecology PhD students</title>
-  <link>https://www.seascapemodels.org/posts/2020-02-18-new-phd-reading-quant-ecol/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Here is my recommended reading list for students just starting a PhD in some aspect of quantitative ecology. I’ve written this reading list to keep in mind that many new PhDs may not have a lot of math or stats from their earlier degrees.</p>
-<p>Refreshing this from 2020 to 2026!</p>
-<section id="the-role-of-statistics-in-science" class="level2">
-<h2 class="anchored" data-anchor-id="the-role-of-statistics-in-science">The role of statistics in science</h2>
-<p><a href="https://www.cambridge.org/core/books/cause-and-correlation-in-biology/247799189B31939D24BC0F61FD59E9BB">Shipley, Cause and Correlation in Biology</a></p>
-<p>Chapters 1 and 2 give a general introduction to the modern philosophy of science, with a focus on statistics, cause and correlation. This is a great introduction to how we use correlation to infer causation in modern science, and how science often progresses by building evidence for or against multiple competing hypotheses.</p>
-<p>Chapters 3 onwards are more focused on the methods of structural equation modelling and will be of most interest to students who will be using statistical models such as GLMs.</p>
-<p><a href="https://press.princeton.edu/books/paperback/9780691034973/the-ecological-detective">Hilborn and Mangel, The Ecological Detective</a></p>
-<p>The first few chapters are worth reading for an excellent introduction to the philosophy of science. Later chapters focus on theory and application of Bayesian statistical methods.</p>
-<p><a href="https://academic.oup.com/jrsssa/article/180/4/967/7068392?login=false">Gelman Hennig, Beyond Subjective and Objective in Statistics</a></p>
-<p>Great paper that explores the role of subjective decision making statistics (hint, its much more than you might think!) and suggests improved language and ways of thinking about objectivity.</p>
-</section>
-<section id="bayesian-statistics" class="level2">
-<h2 class="anchored" data-anchor-id="bayesian-statistics">Bayesian Statistics</h2>
-<p><a href="https://xcelab.net/rm/statistical-rethinking/">McElreath, Statistical Rethinking</a></p>
-<p>If you are going to be doing anything with Bayesian methods, then this book is gold. McElreath uses easily understood analogies to break down the jargon and complexity of Bayesian models and make them accessible to a general science audience.</p>
-<p>You can even <a href="https://www.youtube.com/watch?v=4WVelCswXo4">watch this whole book</a> in his lecture series on YouTube.</p>
-</section>
-<section id="ecological-modelling" class="level2">
-<h2 class="anchored" data-anchor-id="ecological-modelling">Ecological modelling</h2>
-<p><a href="https://press.princeton.edu/books/hardcover/9780691123448/a-biologists-guide-to-mathematical-modeling-in-ecology-and-evolution">Otto and Day, A biologists guide to mathematical modelling in Ecology and Evolution</a>.</p>
-<p>I’d recommend the first few chapters for everyone again, because they will give you a good overview of what modelling is about. Later chapters will be good for students who will be specifically using process models (e.g.&nbsp;with differential equations) in their PhD.</p>
-</section>
-<section id="data-visualisation" class="level2">
-<h2 class="anchored" data-anchor-id="data-visualisation">Data visualisation</h2>
-<p>There are lots of great books on this topic, but one of my favourites is <a href="http://www.thefunctionalart.com/p/the-truthful-art-book.html">Cairo, The Truthful Art</a>.</p>
-<p>Cairo uses really compelling examples to show how we can use data visualisation and simple statistics to accurately communicate scientific knowledge.</p>
-</section>
-<section id="skills-for-a-successful-phd" class="level2">
-<h2 class="anchored" data-anchor-id="skills-for-a-successful-phd">Skills for a successful PhD</h2>
-<p>You can’t go past <a href="https://www.ithinkwell.com.au/bookshop/phd-book-set">Gardiner and Kearn’s books</a>. There’s a whole bunch to recommend here, but the Seven Secrets is probably a good place to start.</p>
-</section>
-<section id="your-field-of-study" class="level2">
-<h2 class="anchored" data-anchor-id="your-field-of-study">Your field of study</h2>
-<p>You should of course be also reading papers in your specific field of study. A few tips for finding these are:</p>
-<ol type="1">
-<li><p>Look in the top review journals, like Trends in Ecology and Evolution and Biological Reviews, for recent articles in your general area of interest. These journals in particular have high communication standards and articles are pitched at a more general audience than in specialist journals.</p></li>
-<li><p>Search (e.g.&nbsp;with web of science) for review articles on your topic in discipline specific journals. For instance, if its conservation planning, then look in Conservation Letters, Conservation Biology and Biological Conservation.</p></li>
-<li><p>Make sure you read the new and old literature. One way to identify very influential older papers is to sort results of a lit search by citation count. When you start your PhD you have your chance to read some of the classics. You probably won’t feel you have time to read this sort of thing later on (though don’t let me hold you back if you want to!).</p></li>
-<li><p>Ask your peers for their favourite papers to read.</p></li>
-<li><p>Follow up on citations. For instance, if you see an article that is repeatedly cited</p></li>
-</ol>
-
-
-</section>
-
- ]]></description>
-  <category>research-skills</category>
-  <guid>https://www.seascapemodels.org/posts/2020-02-18-new-phd-reading-quant-ecol/</guid>
-  <pubDate>Wed, 21 Jan 2026 13:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
