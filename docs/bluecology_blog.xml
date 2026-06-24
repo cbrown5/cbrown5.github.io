@@ -12,6 +12,33 @@
 <generator>quarto-1.8.25</generator>
 <lastBuildDate>Wed, 24 Jun 2026 14:00:00 GMT</lastBuildDate>
 <item>
+  <title>Winter R workshops at University of Queensland, Brisbane</title>
+  <link>https://www.seascapemodels.org/posts/2026-06-25-R-workshops-in-brisbane/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>My colleagues run some highly regarded R workshops for well over a decade in Brisbane (Australia) every year.</p>
+<p><a href="https://mathmarecol.github.io/RWorkshop/winter.html">Details here and info below</a></p>
+<p>Are you ready to take your R skills to the next level and conquer the challenges of messy data? Transform raw data into actionable insights with the Centre for Biodiversity and Conservation Science (CBCS) 2026 Winter R Workshops @ UQ.</p>
+<p>These intensive, hands-on workshops are designed for individuals with a foundational understanding of R who are eager to master the essential skills for effective data wrangling, code organisation, advanced visualisation, spatial analysis, and building interactive Shiny apps. Join us to elevate your R proficiency and become a data manipulation and presentation expert!</p>
+<p>Each day is self-contained so you can attend the workshops you want to.</p>
+<p>Day 1 (Monday 6th July) Data Wrangling 1 Day 2 (Tuesday 7th July) Data Wrangling 2 Day 3 (Wednesday 8th July) Visual Storytelling Day 4 (Thursday 9th July) Mapping our World Day 5 (Friday 10th July) Building Interactive Web Apps with Shiny</p>
+<p>Registration for the 2026 Winter R Workshops @ UQ in July is OPEN.</p>
+<p>We are passionate users of R and want to share our experience. Our workshops are accessible, interactive, informative and fun. They are run in-person only (no online option) to provide a tailored student experience and we provide all the code and learning materials. For more information on the topics covered and to view testimonials, see our website https://mathmarecol.github.io/RWorkshop/winter.html and the attached flyer.</p>
+<p>These workshops are brought to you by the Centre for Biodiversity and Conservation Science (CBCS). For any questions about registration, email cbcs-workshops@uq.edu.au.</p>
+<p>We look forward to seeing you there. The R Workshops @ UQ team (Anthony, Dave, Jason, Claire and Tin)</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-06-25-R-workshops-in-brisbane/</guid>
+  <pubDate>Wed, 24 Jun 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
   <title>You have my trust, but need to work hard to regain it</title>
   <link>https://www.seascapemodels.org/posts/2026-06-25-you-have-my-trust/</link>
   <description><![CDATA[ 
@@ -1216,37 +1243,6 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-03-02-genAI-use-in-uni-assignments/</guid>
   <pubDate>Sun, 01 Mar 2026 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Keeping files organised for publication</title>
-  <link>https://www.seascapemodels.org/posts/2026-02-19-keeping-organised-for-publication/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Getting files ready for publication can be frustrating when you can’t find the right file, or you realize your figures look like 2000s jpeg.</p>
-<p>Here’s a list of things I wished I’d done (or my students had done) properly earlier in the paper prep process. Save this list somewhere to refer back to it, it will save you time and frustration.</p>
-<ul>
-<li><p>Keep folders organized. Save figures for the pub to a single folder. Likewise have a folder for tables. Towards submission label these files as per the paper e.g.&nbsp;fig1_concepts.png ….</p></li>
-<li><p>You R scripts should save plots directly to that folder like ggsave(“plots/fig1-lineplot.png…)</p></li>
-<li><p>Make a final results script that reads in the final outputs and calculates any stats/metrics you quote in the results in the order they are written in the results. This helps with updating this section if you have to re-run or change something during review and for cross checking with the MS.</p></li>
-<li><p>If assembling figures in powerpoint, save original powerpoint in this folder also</p></li>
-<li><p>Always save figures in high res .png format, ready for publication. e.g.&nbsp;ggsave(“plots/bias_sensitivity_analysis.png”, final_plot, width = 12, height = 6, dpi = 300)</p></li>
-<li><p>Have separate R scripts that make pub ready figures (e.g.&nbsp;load final model fits and make figures). This way you can quickly go back into and edit them. Obviously make the scripts easy to find with clear names and project folder structure.</p></li>
-<li><p>Even better save both .png and .pdf versions. Never use .jpg (.jpg is for photos)</p></li>
-<li><p>When revising your ms to respond to reviews turn on track changes the entire time. You should resubmit the track changed version as one of the files.</p></li>
-<li><p>Double check how coauthors spell their names/institutions against their previous papers, before you submit</p></li>
-</ul>
-
-
-
- ]]></description>
-  <category>research</category>
-  <category>rstats</category>
-  <guid>https://www.seascapemodels.org/posts/2026-02-19-keeping-organised-for-publication/</guid>
-  <pubDate>Wed, 18 Feb 2026 13:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
