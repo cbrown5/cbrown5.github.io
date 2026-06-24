@@ -10,7 +10,107 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Thu, 11 Jun 2026 14:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 24 Jun 2026 14:00:00 GMT</lastBuildDate>
+<item>
+  <title>You have my trust, but need to work hard to regain it</title>
+  <link>https://www.seascapemodels.org/posts/2026-06-25-you-have-my-trust/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>A mentor once told me “you have my trust, but break it and you will need to prove yourself six times over to win it back”.</p>
+<p>Its a good guide to live by, at least at work. Life is difficult and not very much fun if you don’t trust anyone.</p>
+<p>Most often in a work context I would have to apply this rule when people let you down. Ask for help on something time critical and they don’t deliver.</p>
+<p>These days the rule is seeing new light in the fight against AI slop.</p>
+<p>I hate editing AI slop. It usually goes like this:</p>
+<p>Someone sends you a draft of a manuscript, meeting notes or other internal doc to edit. You start editing it. Partway through you realise your editing a lost cause, vapid, AI written sentences that look polished by say nothing.</p>
+<p>I start deleting whole chunks of text. Then I give up. I’ve just wasted 30 minutes or more of your precious time fixing someone else’s slop.</p>
+<p>Every time that happens I feel like a little piece of my soul dies.</p>
+<p>If you don’t think its possible to separate AI from human writing, check out this <a href="https://arxiv.org/abs/2604.03136">recent pre-print</a>. This analysis of over 60,000 human and AI written stories shows quantitatively that AI stories inhabit a unique set of narrative and style choices. They show you can pick AI written fiction with about 90% accuracy.</p>
+<p>I’m not against AI augmented writing. But there’s a fine line between having AI improve your writing versus letting it do too much and deviating into slop.</p>
+<p>I see too many cases of people being too rushed, or busy or just lazy and overusing AI to do their hard work. Then passing that off to collaborators to fix.</p>
+<p>So all new collaborators, colleagues and students get my trust. I’ll edit their work. If the trust is broken though, I’ll need to read six new revisions before I’ll engage with editing again.</p>
+
+
+
+ ]]></description>
+  <category>research-skills; genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2026-06-25-you-have-my-trust/</guid>
+  <pubDate>Wed, 24 Jun 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Data for fitting models versus data for predicting from models</title>
+  <link>https://www.seascapemodels.org/posts/2026-06-25-prediction-vs-fitting/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Answering a question that came up from a student recently.</p>
+<p>Say you have 20 surveys of reef fish biomass at different locations. Then you also have gridded data with environmental covariates. The gridded data is for all reefs everywhere.</p>
+<p>The goal is to predict fish biomass at all reefs everywhere. <a href="https://www.seascapemodels.org/posts/2020-02-19-spatial-gam-predictions/index.html">Here’s an older post that walks through the steps in R with older packages</a> (you will want to update <code>raster</code> to <code>terra</code>, everything else should work).</p>
+<p>The statistically correct workflow would look like this:</p>
+<p><strong>1. Extract environmental covariates at your 20 reef sites</strong></p>
+<p>For example, you might have sites as x-y coordinates and the gridded data as <code>terra</code> rasters. You can use the <code>extract</code> function to get the values of the environmental data at your reef sites. Let’s call this new dataframe you will make <code>fish_data</code>.</p>
+<p><strong>2. Fit a model</strong></p>
+<p>Fit a model predicting fish biomass at the 20 sites from the environmental covariates. for example:</p>
+<pre><code>model1 &lt;- gam(biomass ~ SST + depth, data = `fish_data`)</code></pre>
+<p>Your sample size for this model will be 20, ie the number of reef sites where you measured fish.</p>
+<p>Do all the usual steps to verify your model, model selection etc…</p>
+<p><strong>3. Turn the grids into a dataframe of environmental covariates</strong></p>
+<p>There’s lots of ways to do this data wrangling step. I like to use the function to get coordinates of centre points of the grids (<code>xyFromCell</code>), then convert that to a spatial points, then use <code>extract</code>, the convert back to a plain dataframe (keeping the X-Y as columns).</p>
+<p>Now we have a new dataframe of environmental covariates at every grid cell location. Let’s call it <code>pred_data</code> for ‘prediction data’. It will have as many rows as there are grids in your raster, probably 1000s.</p>
+<p>You might like to do a filtering step to remove grids that aren’t on reefs (or your target habitat, no point predicting reef fish biomass for places that are sand or land).</p>
+<p><strong>4. Predict with your model</strong></p>
+<p>Now use your model to predict to all the grid locations, e.g.&nbsp;</p>
+<pre><code>pred_data$mean &lt;- predict(model1, newdata = pred_data)</code></pre>
+<p>Then you can convert <code>pred_data</code> back into a spatial object for mapping the predictions.</p>
+<section id="common-mistakes" class="level2">
+<h2 class="anchored" data-anchor-id="common-mistakes">Common mistakes</h2>
+<p>So students sometimes get the sequence of steps wrong. For example, you could turn the grids into a dataframe, interpolate fish biomass to unmeasured grids BEFORE you fit your model. That would be statistically inappropriate as you are inflating the sample size by replicating survey data across unmeasured grids.</p>
+<p>Another common mistake is using locally measured covariates but then predicting to gridded covariates that were measured differently. We should use the gridded covariates, rather than locally measured covariates for our fitting and prediction.</p>
+<p>For instance, you may have temperature gridded measured by a satellite as well as temperature measured locally during the surveys. You want to use gridded covariates for our goal of predicting, because that is the temperature data you have everywhere.</p>
+<p>So now you are ready to go forth and make some cool map predictions. <a href="https://www.nature.com/articles/s41559-022-01778-z">Don’t forget to map the uncertainty too (e.g.&nbsp;standard errors)</a>.</p>
+<p>Last word, <a href="https://r-tmap.github.io/tmap/"><code>tmap</code></a> is still my fave tool for mapping in R and it keeps getting better.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-06-25-prediction-vs-fitting/</guid>
+  <pubDate>Wed, 24 Jun 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Making new norms for AI in the workplace</title>
+  <link>https://www.seascapemodels.org/posts/2026-06-25-AI-workplace-norms/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I recently wrote to a colleague to point out a mistake in an image on an infographic. It wasn’t their mistake, but they had posted the infographic via their science communication site. I also suggested the image was AI generated. My colleague checked with the creator of the infographic and wrote back confirming my suspicions. They asked for advice on how to better manage image content that may or may not be AI generated. Here is my response:</p>
+<p>My approach to AI mistakes or mis-use is to point it out wherever I see it. I think we are living through a cultural shift and the norms for how we do work are changing and not yet settled. As an educator about AI use I see it is my role to try and shape those norms towards appropriate uses.</p>
+<p>So to your question. For the experts you probably want to set some AI use standards, but also it need to be brief (because they are busy).</p>
+<p>One idea might be to include a statement with requests along the lines of “We acknowledge that AI use is part of everyday work now, please ensure accuracy of all facts, images and diagrams.”</p>
+<p>Or ask them to declare AI use to you before sending content.</p>
+<p>Part of the challenge is differentiating inappropriate from appropriate uses. In fact we have no analogue for this, so currently one person’s opinion about that will be very different from another’s.</p>
+<p>I’m fine with making cartoons using AI to communicate science, <a href="https://vitaexmachina.substack.com/p/dont-use-ai-generated-photos-in-scientific">whereas I’d never make a photo</a>. But I’ve have been derided on social media for that, as some people find all AI use insulting.</p>
+<p>For images specifically, if they look factual (e.g.&nbsp;photos or scientific illustrations) then they absolutely need to be verified carefully. Otherwise it might impact scientific credibility. Whereas for a cartoon its less important because they are obviously ’not real’, so long as facts presented in the cartoon are accurate (e.g.&nbsp;numbers, names, locations, directions of arrows).</p>
+<p>So a challenge for you is its quite context dependent when an AI mistake might be ok vs not.</p>
+<p>I’m reminded of former canadian prime minister Steven Harper. He visited the west coast (Pacific coast of Canada) to make a new announcement about salmon conservation. <a href="https://www.cbc.ca/news/politics/salmon-photo-conservatives-harper-atlantic-pacific-1.3201726">But the picture used in his press release was of an Atlantic salmon</a>. The announcement ended up being widely reported for its inaccurate picture that hinted at how people felt about Ottawa’s disengagement with local issues.</p>
+
+
+
+ ]]></description>
+  <category>research-skills; genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2026-06-25-AI-workplace-norms/</guid>
+  <pubDate>Wed, 24 Jun 2026 14:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Popular books that will help you learn about statistics</title>
   <link>https://www.seascapemodels.org/posts/2026-06-12-favourite-stats-books/</link>
@@ -1147,165 +1247,6 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-02-19-keeping-organised-for-publication/</guid>
   <pubDate>Wed, 18 Feb 2026 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Running a meeting with collaborators</title>
-  <link>https://www.seascapemodels.org/posts/2026-02-19-running-a-meeting-with-collaborators/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>We had a Seascape Lab discussion recently about running meetings with collaborators. The conversation covered everything from preparation to managing conflict to how to actually end a meeting properly (something we all agreed we’re not always great at). Here’s what we learned.</p>
-<section id="preparation-matters" class="level2">
-<h2 class="anchored" data-anchor-id="preparation-matters">Preparation matters</h2>
-<p>Before anyone enters the room, you’re already shaping how the meeting will go. Know what you want to discuss. Share background materials or presentations ahead of time. Give people context so everyone starts on the same page—this is especially important for external collaborators who haven’t been immersed in the work recently.</p>
-<p>Set an agenda and get agreement on it. This gives you natural authority to keep the meeting on track later.</p>
-</section>
-<section id="opening-the-meeting" class="level2">
-<h2 class="anchored" data-anchor-id="opening-the-meeting">Opening the meeting</h2>
-<p>Teams vary in how they like to begin. Some people want a few minutes of personal conversation. Others prefer to jump straight into business. Either works—just set expectations and move naturally into the agenda.</p>
-<p>Context is important at the start. A quick recap of why everyone is there and what you’re trying to achieve helps align attention.</p>
-</section>
-<section id="keeping-people-engaged" class="level2">
-<h2 class="anchored" data-anchor-id="keeping-people-engaged">Keeping people engaged</h2>
-<p>Engagement takes work to maintain. Here are some practical strategies we discussed:</p>
-<p><strong>Ask questions.</strong> A simple but powerful—actively involving people keeps attention high and signals that contributions matter.</p>
-<p><strong>Give people a break.</strong> Not all disengagement comes from disinterest. Sometimes people are just tired. “Brain breaks” aren’t just for school kids. A quick stretch, a moment to summarise what’s been decided so far, or even a light joke or fun slide can be enough for a break. Humour can help, but use it thoughtfully to avoid misfires.</p>
-<p><strong>Pitch content at the right level.</strong> If the discussion is too technical or too basic, you’ll lose people. This takes planning.</p>
-</section>
-<section id="managing-people-who-talk-too-much" class="level2">
-<h2 class="anchored" data-anchor-id="managing-people-who-talk-too-much">Managing people who talk too much</h2>
-<p>Someone dominating the discussion is a common challenge. The approach we discussed emphasised balance and respect:</p>
-<p>Let them contribute—don’t shut them down. Acknowledge their point (“affirm and follow on”). Then gently reclaim the floor by pointing back to the agenda or reminding the group of time constraints.</p>
-<p>A clear agenda gives you natural authority to move the conversation forward.</p>
-</section>
-<section id="navigating-conflict" class="level2">
-<h2 class="anchored" data-anchor-id="navigating-conflict">Navigating conflict</h2>
-<p>Conflict isn’t always bad—it’s often a sign of engagement. But it needs managing. Here are several approaches:</p>
-<p><strong>If no decision-maker is in the room:</strong> Park the issue and escalate it to the decision maker. Don’t force a false resolution.</p>
-<p><strong>If a decision-maker is present:</strong> Ensure all voices are heard, affirm that everyone’s input will be considered, then let the decision-maker guide the group forward.</p>
-<p><strong>If participants feel historically unheard:</strong> You may need to explicitly demonstrate that a new, fairer process is in place. People participate more openly when they trust the structure.</p>
-</section>
-<section id="ending-the-meeting-well" class="level2">
-<h2 class="anchored" data-anchor-id="ending-the-meeting-well">Ending the meeting well</h2>
-<p>Meetings often drift to a close with no clear outcome—something we all recognised. A strong ending includes two things:</p>
-<p><strong>A clear summary.</strong> Briefly restate what was discussed and what decisions were made.</p>
-<p><strong>Next steps with responsibilities.</strong> Spell out the actions, who is responsible for each, and ideally the timeline.</p>
-<p>For formal committees, we noted the value of an action register—a structured list that is revisited at the start of the next meeting. For less formal collaborations, a lighter version still helps ensure actions don’t disappear.</p>
-</section>
-<section id="the-underlying-theme" class="level2">
-<h2 class="anchored" data-anchor-id="the-underlying-theme">The underlying theme</h2>
-<p>A lot of a good meeting is just about getting agreement. Agreement on what the meeting will cover. Agreement on the decisions made. Agreement on the actions and who owns them.</p>
-<p>Meetings may involve sharing information, but their power lies in aligning people and creating clarity about the path forward.</p>
-<p>Thanks to the Seascape Lab for the discussion that informed this post.</p>
-
-
-</section>
-
- ]]></description>
-  <category>research-skills</category>
-  <guid>https://www.seascapemodels.org/posts/2026-02-19-running-a-meeting-with-collaborators/</guid>
-  <pubDate>Wed, 18 Feb 2026 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Signalling credible publications to editors</title>
-  <link>https://www.seascapemodels.org/posts/2026-02-10-signalling-credible-publications/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Generative AI is removing the writing barrier to publication. Quality writing was one of the signals that editors and reviewers used to differentiate high quality from low quality work. But now its easy to produce low quality work that is well written.</p>
-<p>As AI slop becomes more ubiquitous the publication system will need to look for new signals for quality research. The quality of the data may be one signal.</p>
-<p>Author names and status may be another.</p>
-<p>News from the cybersecurity world provides an interesting hint as to how the future of publication may look.</p>
-<p>Many widely open source software packages allow for anyone to flag security flaws. Sometimes they offer bounties or rewards for identifying flaws. But genAI coding agents have flooded these projects with submissions, most of them AI slop. <a href="https://www.theregister.com/2026/01/21/curl_ends_bug_bounty/">This creates a huge burden on the software maintainers to manage and filter through those submissions</a>.</p>
-<p><a href="https://simonwillison.net/2026/Feb/7/vouch/">A recently proposed system for ‘vouching’</a> allows the software maintainers to create a list of verified contributors. It effectively creates a list of allowed contributors to an open software project. If you aren’t ‘vouched’ you are blocked from contributing.</p>
-<p>The issue with submissions on software security is much like the trends we are hearing about at peer-reviewed journals of increasing numbers of well-written but vacuous studies.</p>
-<p>So maybe in the near future we’ll have to get our names on a white list before we can submit to reputable journals.</p>
-
-
-
- ]]></description>
-  <category>research</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2026-02-10-signalling-credible-publications/</guid>
-  <pubDate>Mon, 09 Feb 2026 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Benefits of doing community and academic service as a researcher</title>
-  <link>https://www.seascapemodels.org/posts/2026-02-05-benefits-of-doing-a-service-role/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Service can take many forms. You might serve on a student representative committee, an ethics or occupational health and safety committee, or teaching review panels. You could join advisory committees for marine protected areas or other conservation initiatives. You might give presentations and webinars to educate practitioners or other researchers about new methods.</p>
-<p>In our lab meeting recently we discussed the types and benefits of service. Here’s some of the insights from that conversation.</p>
-<section id="ideas-for-service-roles" class="level2">
-<h2 class="anchored" data-anchor-id="ideas-for-service-roles">Ideas for service roles</h2>
-<p>Here’s a list of some of the suggestions the lab had</p>
-<ul>
-<li>Academic committees e.g.&nbsp;health and safety, ethics</li>
-<li>Conference organising committees</li>
-<li>Committee of professional societies</li>
-<li>Student representative to the department or university executive</li>
-<li>Advisory roles, like marine parks advisor or fishery advisor</li>
-<li>Peer-review of non-academic material, e.g.&nbsp;government analyses or reports</li>
-<li>Community outreach and education for your institution</li>
-<li>Science communication, e.g.&nbsp;via YouTube</li>
-</ul>
-</section>
-<section id="meeting-people-and-building-community" class="level2">
-<h2 class="anchored" data-anchor-id="meeting-people-and-building-community">Meeting people and building community</h2>
-<p>Service roles put you in rooms with people you wouldn’t normally work with. We’ve met conservation practitioners, government scientists, industry representatives, and researchers from completely different fields through service work. These connections have enriched my understanding of how research fits into broader contexts.</p>
-<p>Building community also helps to create a support system. The people you meet through service can become collaborators, mentors, or simply colleagues who understand the challenges you face.</p>
-</section>
-<section id="learning-about-funding-opportunities" class="level2">
-<h2 class="anchored" data-anchor-id="learning-about-funding-opportunities">Learning about funding opportunities</h2>
-<p>Being on advisory committees gives you insider knowledge about funding. You learn what funders are looking for, what makes a strong application, and sometimes you hear about opportunities before they’re widely advertised. This context is invaluable when you’re preparing your own grant applications.</p>
-</section>
-<section id="having-real-world-impact" class="level2">
-<h2 class="anchored" data-anchor-id="having-real-world-impact">Having real-world impact</h2>
-<p>Some service roles let you see direct outcomes from your work. Team members have been involved in advising on marine protected areas that were subsequently designated. That’s a tangible conservation outcome that came from service work, not from publishing papers. These experiences remind us why we got into research in the first place.</p>
-</section>
-<section id="developing-organizational-skills" class="level2">
-<h2 class="anchored" data-anchor-id="developing-organizational-skills">Developing organizational skills</h2>
-<p>Service roles teach you how organizations actually work. You learn how decisions get made, how to navigate bureaucracy, and how to work with diverse stakeholders. These are skills that don’t come from lab work or data analysis, but they’re essential for being an effective researcher.</p>
-</section>
-<section id="strengthening-your-cv" class="level2">
-<h2 class="anchored" data-anchor-id="strengthening-your-cv">Strengthening your CV</h2>
-<p>Service roles differentiate you from other applicants when you’re applying for jobs or promotions. They show you’re a good community citizen who contributes beyond your own research program. Selection panels notice this.</p>
-</section>
-<section id="strategic-alignment-with-your-research" class="level2">
-<h2 class="anchored" data-anchor-id="strategic-alignment-with-your-research">Strategic alignment with your research</h2>
-<p>You can be strategic about which service roles you take on. Choose committees or advisory roles that align with your research interests. The synergies can help you you get new ideas, opportunities, and perspectives that feed directly back into your research. You also build networks with people working on similar problems.</p>
-</section>
-<section id="taking-a-break-from-research" class="level2">
-<h2 class="anchored" data-anchor-id="taking-a-break-from-research">Taking a break from research</h2>
-<p>That being said, sometimes it’s valuable to take on service that’s completely different from your day-to-day research. It can be refreshing to do work that’s well outside your research area, like volunteering for a local community group. These roles give you a mental break while still being productive.</p>
-</section>
-<section id="a-few-caveats" class="level2">
-<h2 class="anchored" data-anchor-id="a-few-caveats">A few caveats</h2>
-<p>Not all service roles are equally valuable. Some committees meet endlessly without accomplishing much. Try to choose roles where you can see clear outcomes and where your contribution will matter.</p>
-<p>Service work often goes unrecognized in academic promotion systems that prioritize publications and grants. Make sure you’re documenting your service contributions and that they’re visible in your CV and promotion applications.</p>
-<p>Consider the time commitments. Some service roles can be time consuming. But many others can be impactful and require relatively little investment of time. Committees often meet once a month or fortnight for instance, which is a small contribution in the scheme of other research tasks.</p>
-</section>
-<section id="final-thoughts" class="level2">
-<h2 class="anchored" data-anchor-id="final-thoughts">Final thoughts</h2>
-<p>Service roles have connected me with practitioners, exposed me to new ideas, and given me opportunities to have real-world impact. They’ve made me a better researcher and a more engaged member of the scientific community. If you’re considering a service role, I’d encourage you to give it a try. Just be strategic about what you take on and make sure it aligns with your career goals and available time.</p>
-
-
-</section>
-
- ]]></description>
-  <category>research</category>
-  <guid>https://www.seascapemodels.org/posts/2026-02-05-benefits-of-doing-a-service-role/</guid>
-  <pubDate>Wed, 04 Feb 2026 13:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

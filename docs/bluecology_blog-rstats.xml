@@ -10,7 +10,51 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog-rstats.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Sat, 25 Apr 2026 14:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 24 Jun 2026 14:00:00 GMT</lastBuildDate>
+<item>
+  <title>Data for fitting models versus data for predicting from models</title>
+  <link>https://www.seascapemodels.org/posts/2026-06-25-prediction-vs-fitting/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Answering a question that came up from a student recently.</p>
+<p>Say you have 20 surveys of reef fish biomass at different locations. Then you also have gridded data with environmental covariates. The gridded data is for all reefs everywhere.</p>
+<p>The goal is to predict fish biomass at all reefs everywhere. <a href="https://www.seascapemodels.org/posts/2020-02-19-spatial-gam-predictions/index.html">Here’s an older post that walks through the steps in R with older packages</a> (you will want to update <code>raster</code> to <code>terra</code>, everything else should work).</p>
+<p>The statistically correct workflow would look like this:</p>
+<p><strong>1. Extract environmental covariates at your 20 reef sites</strong></p>
+<p>For example, you might have sites as x-y coordinates and the gridded data as <code>terra</code> rasters. You can use the <code>extract</code> function to get the values of the environmental data at your reef sites. Let’s call this new dataframe you will make <code>fish_data</code>.</p>
+<p><strong>2. Fit a model</strong></p>
+<p>Fit a model predicting fish biomass at the 20 sites from the environmental covariates. for example:</p>
+<pre><code>model1 &lt;- gam(biomass ~ SST + depth, data = `fish_data`)</code></pre>
+<p>Your sample size for this model will be 20, ie the number of reef sites where you measured fish.</p>
+<p>Do all the usual steps to verify your model, model selection etc…</p>
+<p><strong>3. Turn the grids into a dataframe of environmental covariates</strong></p>
+<p>There’s lots of ways to do this data wrangling step. I like to use the function to get coordinates of centre points of the grids (<code>xyFromCell</code>), then convert that to a spatial points, then use <code>extract</code>, the convert back to a plain dataframe (keeping the X-Y as columns).</p>
+<p>Now we have a new dataframe of environmental covariates at every grid cell location. Let’s call it <code>pred_data</code> for ‘prediction data’. It will have as many rows as there are grids in your raster, probably 1000s.</p>
+<p>You might like to do a filtering step to remove grids that aren’t on reefs (or your target habitat, no point predicting reef fish biomass for places that are sand or land).</p>
+<p><strong>4. Predict with your model</strong></p>
+<p>Now use your model to predict to all the grid locations, e.g.&nbsp;</p>
+<pre><code>pred_data$mean &lt;- predict(model1, newdata = pred_data)</code></pre>
+<p>Then you can convert <code>pred_data</code> back into a spatial object for mapping the predictions.</p>
+<section id="common-mistakes" class="level2">
+<h2 class="anchored" data-anchor-id="common-mistakes">Common mistakes</h2>
+<p>So students sometimes get the sequence of steps wrong. For example, you could turn the grids into a dataframe, interpolate fish biomass to unmeasured grids BEFORE you fit your model. That would be statistically inappropriate as you are inflating the sample size by replicating survey data across unmeasured grids.</p>
+<p>Another common mistake is using locally measured covariates but then predicting to gridded covariates that were measured differently. We should use the gridded covariates, rather than locally measured covariates for our fitting and prediction.</p>
+<p>For instance, you may have temperature gridded measured by a satellite as well as temperature measured locally during the surveys. You want to use gridded covariates for our goal of predicting, because that is the temperature data you have everywhere.</p>
+<p>So now you are ready to go forth and make some cool map predictions. <a href="https://www.nature.com/articles/s41559-022-01778-z">Don’t forget to map the uncertainty too (e.g.&nbsp;standard errors)</a>.</p>
+<p>Last word, <a href="https://r-tmap.github.io/tmap/"><code>tmap</code></a> is still my fave tool for mapping in R and it keeps getting better.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-06-25-prediction-vs-fitting/</guid>
+  <pubDate>Wed, 24 Jun 2026 14:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Design your plots (ggplot) for mobile</title>
   <link>https://www.seascapemodels.org/posts/2026-04-23-clear-plots-ggplot-for-mobile/</link>
@@ -2351,46 +2395,6 @@ system(copilot_cmd)
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-09-18-ai-r-workshops/</guid>
   <pubDate>Wed, 17 Sep 2025 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Paper in a prompt creating a first draft in one prompt</title>
-  <link>https://www.seascapemodels.org/posts/2025-09-12-creating-a-first-draft-in-one-prompt/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>*It was a rather long prompt</p>
-<p>I wanted to see if I could get an AI agent to complete a first draft of a paper, including data analysis, searching for references on the web and writing a complete draft.</p>
-<p>I used the Roo Code agent software with the Claude Sonnet 4.0 large language model.</p>
-<p><a href="https://www.seascapemodels.org/data/ai-generated-manuscript">I’ve shared the results from replicate 1 here</a>.</p>
-<p>I’ve also pasted the abstracts from the two replicates below. Both used identical prompts and settings in Roo Code. Its interesting how they are different. For instance the first one frames the study in terms of estimating the scale of human impacts. The second frames the study as being about studying an under-studied mechanism.</p>
-<p>The experiment started with a project folder with data and detailed instructions for the research question, the data and the analyses I wanted. The instructions included details of R packages and specific statistics, for instance I told the model to use Bray-Curtis distances for the multivariate analysis.</p>
-<p>I also provided basic instructions for how to write the paper. The agent had web search capabilities, allowing it to access , and read real references, and then incorporate insights from those into the paper.</p>
-<p>It is important to note that this draft has not been edited by a human. Parts of it are not scientifically accurate. It should not be read as anything other than an experiment. It contains errors and some of the references are false.</p>
-<p>For instance, it made up the following reference, but oddly linked it to a real reference (that is different) using a real DOI:</p>
-<p>Hamilton, Richard J et al.&nbsp;2025. “Modeling Sediment Impacts on Juvenile Reef Fish.” Frontiers in Marine Science. https://doi.org/10.3389/fmars.2025.1513498.</p>
-<p>It didn’t make much of an effort to create good instructions for writing a paper. I’m sure you could do a lot better than this with more careful prompting.</p>
-<p>AI generated papers should never replace human oversight. If you rely solely on AI, you miss the chance to truly understand your subject. Science is about learning, not just producing content.</p>
-<p>What this sort of thing could be useful for is as a way to iterate and quickly explore alternative options for how to write a paper, or explore alternative interpretations.</p>
-<p>It can also help you get over ‘the fear of the white page’ (writers block), by giving you something to start editing.</p>
-<section id="abstract-from-replicate-1" class="level2">
-<h2 class="anchored" data-anchor-id="abstract-from-replicate-1">Abstract from replicate 1</h2>
-<p>Terrestrial logging threatens coral reef ecosystems through increased sedimentation, yet the spatial patterns of impact remain poorly understood. We examined benthic community composition at 49 coral reef sites across a gradient of logging impacts in Kia Province, Solomon Islands, spanning distances from 0.20 to 22.4 km from logging operations. Using multidimensional scaling ordination and permutational multivariate analysis of variance, we tested for differences in community structure between logged and not logged sites and across distance categories. Benthic communities differed significantly between logged and not logged sites (PERMANOVA p = 0.027), with logged sites showing 14.2% lower coral cover (48.0% vs 62.2%). Distance-dependent effects were highly significant (p = 0.002), explaining 11.9% of community variance. Sites within 1 km of logging showed severely degraded conditions (31.2% coral cover, 33.3% sand cover), while sites beyond 10 km maintained high coral cover (62.9%). Recovery followed a clear gradient: moderate distance sites (1-3 km) had 55.3% coral cover, far sites (3-10 km) had 60.4% coral cover. Categorical distance analysis proved more informative than continuous distance relationships, indicating threshold effects rather than linear gradients. These findings demonstrate that logging impacts extend further than previously documented, with measurable effects at sites 1-3 km from operations. Our results provide quantitative evidence for establishing buffer zones around coral reefs and highlight the need for watershed-scale conservation planning that integrates terrestrial forest management with marine protected area design.</p>
-</section>
-<section id="abstract-from-replicate-2" class="level2">
-<h2 class="anchored" data-anchor-id="abstract-from-replicate-2">Abstract from replicate 2</h2>
-<p>Coral reef ecosystems face increasing threats from terrestrial activities, with logging-induced sedimentation representing a significant but understudied impact mechanism. This study examined benthic community structure across 49 coral reef sites in the Solomon Islands using multidimensional scaling (MDS) ordination to test the hypothesis that logging activities influence reef community composition through sedimentation. We applied non-metric multidimensional scaling to benthic cover data using both Euclidean and Bray-Curtis distance metrics, with environmental vector fitting to identify ecological gradients. The analysis revealed strong community gradients primarily associated with coral branching cover (r² = 0.82) and soft coral cover (r² = 0.62), while water clarity showed moderate correlation (r² = 0.24) with community structure. Contrary to expectations, distance to logging showed weak correlation with community patterns (r² = 0.056, p = 0.101), suggesting that logging impacts operate through pathways not captured by simple proximity measures. The results demonstrate MDS ordination effectiveness for revealing coral community structure patterns while highlighting the complexity of logging-reef relationships in tropical marine systems.</p>
-
-
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-09-12-creating-a-first-draft-in-one-prompt/</guid>
-  <pubDate>Thu, 11 Sep 2025 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
