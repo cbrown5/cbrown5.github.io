@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-07-28">
 
-<title>Richard Takyi – Seascapemodels</title>
+<title>Using ghost text and next edit suggestions to learn agentic coding – Seascapemodels</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -78,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
 <body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -140,41 +176,122 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Using ghost text and next edit suggestions to learn agentic coding</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">genAI</div>
+                <div class="quarto-category">rstats</div>
+                <div class="quarto-category">research-skills</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 28, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Richard Takyi</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">student</div>
-  </div>
-  </div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
+<p>I’m a big fan of Github Copilots ghost text and next edit suggestions. As a data analyst they give you much more control over the pace and direction of analysis code than a full AI agent. They also let you practice the core skill an agent needs from you: writing a clear specification.</p>
+<p>I’ll walk through it in R, but the same ideas apply in any language. I’m assuming you’re on VScode with the Copilot extension installed. This should work with the free or paid plans (though I haven’t checked free myself).</p>
+<section id="start-with-ghost-text" class="level2">
+<h2 class="anchored" data-anchor-id="start-with-ghost-text">Start with ghost text</h2>
+<p>Ghost text is the greyed-out completion that appears as you type. Say you have a long-format dataset with timeseries for three species:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">time =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">3</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="at">each =</span> <span class="dv">10</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">value =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">5</span>), <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">10</span>), <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">15</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You want to filter to one species, fit a linear model to its timeseries, pull out the slope, and make a labelled plot. Start typing the code for a single species and ghost text fills in the rest of the line. Here I’ve typed <code>m1 &lt;- lm(value ~</code> and Copilot offers the completion in transparent text (note change in image after the <code>~</code>):</p>
+<p><img src="1_ghost-text-example.png" class="img-fluid"></p>
+<p>Press tab to accept. Working one line at a time, you end up with the code for species A:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>datA <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"A"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(value <span class="sc">~</span> time, <span class="at">data =</span> datA)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(m1)[<span class="st">"time"</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datA, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> value)) <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"Species A Time Series"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">"Time"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">"Value"</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Notice we’re not trying to be general yet. We’re developing our ideas for a single case, species A. We know we’ll want to generalise later, but we’re not worrying about it now. This is the same discipline that makes agents work well: get one concrete case right first, then automate it.</p>
+</section>
+<section id="turn-on-next-edit-suggestions" class="level2">
+<h2 class="anchored" data-anchor-id="turn-on-next-edit-suggestions">Turn on next edit suggestions</h2>
+<p>Next edit suggestions go a step further than ghost text. Instead of completing the line you’re on, Copilot predicts the <em>next change you’ll want to make elsewhere</em> and points you to it.</p>
+<p>Click the octocat icon in the bottom right of the VScode window and turn on <strong>Next Edit Suggestions</strong>. I recommend leaving this off most of the time — it’s distracting when it suggests edits you don’t want — and switching it on for jobs like this one.</p>
+<p>Now click above the species A code and start typing the name of a function to wrap it in. As soon as I write the <code>fit_fun &lt;- function(species_name)</code> header, Copilot spots that the hardcoded <code>"A"</code> needs to change, and flags it with an arrow in the gutter:</p>
+<p><img src="2_next-edit-suggestion-part1.png" class="img-fluid"></p>
+<p>Press tab and it walks you through the edits needed to generalise. It replaces <code>species == "A"</code> with <code>species == species_name</code>, and further down it rewrites the plot title from the literal <code>"Species A Time Series"</code> to a <code>paste()</code> call that builds the title from <code>species_name</code>:</p>
+<p><img src="3_next-edit-suggestion-part2.png" class="img-fluid"></p>
+<p>Tab through each suggestion and you land on a working, generalised function:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fit_fun <span class="ot">&lt;-</span> <span class="cf">function</span>(species_name) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    datA <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> <span class="fu">filter</span>(species <span class="sc">==</span> species_name)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(value <span class="sc">~</span> time, <span class="at">data =</span> datA)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coef</span>(m1)[<span class="st">"time"</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(datA, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> value)) <span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Species"</span>, species_name, <span class="st">"Time Series"</span>),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> <span class="st">"Time"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> <span class="st">"Value"</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">fit_fun</span>(<span class="st">"A"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The single-species code was the specification and then Copilot did the mechanical work of generalising it. This is a good scaffold for thinking about agentic programming, where you write a clear spec and the agent does the automation.</p>
+<p>The big difference from a true agent is that ghost text and next edit don’t run your R code and iterate to fix errors. They just predict edits. But that makes them a safe place to build the skills.</p>
+</section>
+<section id="drive-it-with-comments" class="level2">
+<h2 class="anchored" data-anchor-id="drive-it-with-comments">Drive it with comments</h2>
+<p>You can run the same next-edit approach with text only. Write out a recipe for what you want as comments, then start typing under the first step. Ghost text and next edit take over and help you write the rest.</p>
+<p>Here’s a simple recipe:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate a new dataset of abundance at x-y coordinates</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a 2D map</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># fit a model with interaction between x and y</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>With just the comments in place and the cursor after the simulation, Copilot reads the recipe ahead of it:</p>
+<p><img src="4.png" class="img-fluid"></p>
+<p>Then suggests a next edit suggestion after the following comment:</p>
+<p><img src="5.png" class="img-fluid"></p>
+<p>Keep going and it writes the model for the final step, picking up the interaction from the comment <code># fit a model with interaction between x and y</code>:</p>
+<p><img src="6.png" class="img-fluid"></p>
+<p>The finished block writes itself from the recipe:</p>
+<p>A few tips. I set Copilot’s eagerness to <strong>High</strong> so suggestions come up quickly. Sometimes you need to type the first few characters of a line to kickstart the ghost text.</p>
+<p>The clearer and more specific your comments, the closer the suggestions will be to what you actually wanted.</p>
 
 
-<p><img src="../../people/images/richard-takyi.jpg" class="img-fluid"></p>
-<p>Richard is studying the impacts of climate change on fisheries. He plans to develop new fisheries assessment tools that address the effects of climate change and can be used in data poor fisheries. He started in 2024. He is supervised by Dr Brown, with cosupervision from Dr Beth Fulton and Dr Joel Williams.</p>
-<p>Richard has a background in fisheries science and management, and has worked in the fisheries sector in Ghana. He is an experienced policy analyst and has published <a href="https://scholar.google.com.au/citations?user=KCpyuzoAAAAJ&amp;hl=en&amp;oi=ao">numerous studies on fisheries and coastal policy.</a>.</p>
-<p>He has shown there is a critical need for management of <a href="https://www.sciencedirect.com/science/article/pii/S0048969722033319">West Africa’s coastal lagoons</a> with current management activities largely not working.</p>
-
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-07-28">
 
-<title>Richard Takyi – Seascapemodels</title>
+<title>What agentic misalignment could mean for science – Seascapemodels</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
 <body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -140,41 +141,60 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">What agentic misalignment could mean for science</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">genAI</div>
+                <div class="quarto-category">research-skills</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 28, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Richard Takyi</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">student</div>
-  </div>
-  </div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
+<p>Earlier this month OpenAI made the international news for a serious cybersecurity incident. They were testing a new model on a set of security puzzles. The model was meant to solve them inside a walled-off sandbox. Instead it broke out, got onto the internet, hacked into another company’s systems, and stole the answers. Simon Willison’s <a href="https://simonwillison.net/2026/Jul/22/openai-cyberattack/">write-up</a> is worth reading in full.</p>
+<p>Two things stand out. The first is the misalignment. The model was given a goal — solve the problems — and it went after that goal by whatever route worked, including routes nobody intended or authorised. The second is what Willison calls “relentless proactivity”: give this generation of models a goal and any possible pathway, and they will figure it out. It didn’t stumble into the answer. It chained together stolen credentials and a cyber security vulnerabilities to get there.</p>
+<p>There’s an importance less in this story for the use of generative AI in science.</p>
+<section id="what-it-means-for-using-genai-in-science" class="level2">
+<h2 class="anchored" data-anchor-id="what-it-means-for-using-genai-in-science">What it means for using genAI in science</h2>
+<p>When I use an AI agent to help with data analysis, I’m doing the same thing OpenAI did, just with lower stakes and friendlier goals. I give it an objective like “figure out whether temperature is driving this decline” or “get this model to fit”. Then I let it work.</p>
+<p>The misalignment problem means the agent can find an answer that looks good but is wrong. It may will drop the inconvenient data points, pick the model structure that produces the cleanest result, or quietly reframe the question until the numbers cooperate.</p>
+<p>The relentless proactivity makes it worse. It will try transformation after transformation, subset after subset, until something turns up — and with enough attempts, something always turns up. This is p-hacking, except the agent does it in seconds and doesn’t get bored.</p>
+</section>
+<section id="it-doesnt-have-to-hallucinate-to-mislead-you" class="level2">
+<h2 class="anchored" data-anchor-id="it-doesnt-have-to-hallucinate-to-mislead-you">It doesn’t have to hallucinate to mislead you</h2>
+<p>We’ve spent a couple of years worrying about hallucination — the model making up a citation or stating a fact that’s wrong.</p>
+<p>Agentic misalignment is different. The agent doesn’t need to hallucinate to mislead you. The problem is when the agent steers toward “a good paper that gets published” rather than “what’s actually true”.</p>
+<p>So the guardrail can’t just be “check the AI’s facts”. You have to check its goal. The prompts “help me understand this data” and “help me get this published” may send you and your agent down very different paths. Only one of these paths results in good science.</p>
 
 
-<p><img src="../../people/images/richard-takyi.jpg" class="img-fluid"></p>
-<p>Richard is studying the impacts of climate change on fisheries. He plans to develop new fisheries assessment tools that address the effects of climate change and can be used in data poor fisheries. He started in 2024. He is supervised by Dr Brown, with cosupervision from Dr Beth Fulton and Dr Joel Williams.</p>
-<p>Richard has a background in fisheries science and management, and has worked in the fisheries sector in Ghana. He is an experienced policy analyst and has published <a href="https://scholar.google.com.au/citations?user=KCpyuzoAAAAJ&amp;hl=en&amp;oi=ao">numerous studies on fisheries and coastal policy.</a>.</p>
-<p>He has shown there is a critical need for management of <a href="https://www.sciencedirect.com/science/article/pii/S0048969722033319">West Africa’s coastal lagoons</a> with current management activities largely not working.</p>
-
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

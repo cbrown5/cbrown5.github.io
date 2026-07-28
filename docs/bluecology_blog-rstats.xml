@@ -10,7 +10,307 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog-rstats.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Wed, 24 Jun 2026 14:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 27 Jul 2026 14:00:00 GMT</lastBuildDate>
+<item>
+  <title>Using ghost text and next edit suggestions to learn agentic coding</title>
+  <link>https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I’m a big fan of Github Copilots ghost text and next edit suggestions. As a data analyst they give you much more control over the pace and direction of analysis code than a full AI agent. They also let you practice the core skill an agent needs from you: writing a clear specification.</p>
+<p>I’ll walk through it in R, but the same ideas apply in any language. I’m assuming you’re on VScode with the Copilot extension installed. This should work with the free or paid plans (though I haven’t checked free myself).</p>
+<section id="start-with-ghost-text" class="level2">
+<h2 class="anchored" data-anchor-id="start-with-ghost-text">Start with ghost text</h2>
+<p>Ghost text is the greyed-out completion that appears as you type. Say you have a long-format dataset with timeseries for three species:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb1-3">dat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(</span>
+<span id="cb1-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">time =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rep</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>),</span>
+<span id="cb1-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">species =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rep</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"A"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"B"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"C"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">each =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>),</span>
+<span id="cb1-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">value =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnorm</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mean =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnorm</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mean =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnorm</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mean =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>))</span>
+<span id="cb1-7">)</span></code></pre></div></div>
+<p>You want to filter to one species, fit a linear model to its timeseries, pull out the slope, and make a labelled plot. Start typing the code for a single species and ghost text fills in the rest of the line. Here I’ve typed <code>m1 &lt;- lm(value ~</code> and Copilot offers the completion in transparent text (note change in image after the <code>~</code>):</p>
+<p><img src="https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/1_ghost-text-example.png" class="img-fluid"></p>
+<p>Press tab to accept. Working one line at a time, you end up with the code for species A:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">datA <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> dat <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(species <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"A"</span>)</span>
+<span id="cb2-2">m1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lm</span>(value <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> time, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> datA)</span>
+<span id="cb2-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coef</span>(m1)[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"time"</span>]</span>
+<span id="cb2-4"></span>
+<span id="cb2-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(datA, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> time, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> value)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_smooth</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lm"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">se =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-8">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb2-9">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Species A Time Series"</span>,</span>
+<span id="cb2-10">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Time"</span>,</span>
+<span id="cb2-11">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Value"</span></span>
+<span id="cb2-12">    )</span></code></pre></div></div>
+<p>Notice we’re not trying to be general yet. We’re developing our ideas for a single case, species A. We know we’ll want to generalise later, but we’re not worrying about it now. This is the same discipline that makes agents work well: get one concrete case right first, then automate it.</p>
+</section>
+<section id="turn-on-next-edit-suggestions" class="level2">
+<h2 class="anchored" data-anchor-id="turn-on-next-edit-suggestions">Turn on next edit suggestions</h2>
+<p>Next edit suggestions go a step further than ghost text. Instead of completing the line you’re on, Copilot predicts the <em>next change you’ll want to make elsewhere</em> and points you to it.</p>
+<p>Click the octocat icon in the bottom right of the VScode window and turn on <strong>Next Edit Suggestions</strong>. I recommend leaving this off most of the time — it’s distracting when it suggests edits you don’t want — and switching it on for jobs like this one.</p>
+<p>Now click above the species A code and start typing the name of a function to wrap it in. As soon as I write the <code>fit_fun &lt;- function(species_name)</code> header, Copilot spots that the hardcoded <code>"A"</code> needs to change, and flags it with an arrow in the gutter:</p>
+<p><img src="https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/2_next-edit-suggestion-part1.png" class="img-fluid"></p>
+<p>Press tab and it walks you through the edits needed to generalise. It replaces <code>species == "A"</code> with <code>species == species_name</code>, and further down it rewrites the plot title from the literal <code>"Species A Time Series"</code> to a <code>paste()</code> call that builds the title from <code>species_name</code>:</p>
+<p><img src="https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/3_next-edit-suggestion-part2.png" class="img-fluid"></p>
+<p>Tab through each suggestion and you land on a working, generalised function:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">fit_fun <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(species_name) {</span>
+<span id="cb3-2">    datA <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> dat <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(species <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> species_name)</span>
+<span id="cb3-3">    m1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lm</span>(value <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> time, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> datA)</span>
+<span id="cb3-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coef</span>(m1)[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"time"</span>]</span>
+<span id="cb3-5"></span>
+<span id="cb3-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(datA, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> time, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> value)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-7">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-8">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_smooth</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lm"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">se =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-9">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb3-10">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Species"</span>, species_name, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Time Series"</span>),</span>
+<span id="cb3-11">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Time"</span>,</span>
+<span id="cb3-12">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Value"</span></span>
+<span id="cb3-13">        )</span>
+<span id="cb3-14">}</span>
+<span id="cb3-15"></span>
+<span id="cb3-16"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fit_fun</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"A"</span>)</span></code></pre></div></div>
+<p>The single-species code was the specification and then Copilot did the mechanical work of generalising it. This is a good scaffold for thinking about agentic programming, where you write a clear spec and the agent does the automation.</p>
+<p>The big difference from a true agent is that ghost text and next edit don’t run your R code and iterate to fix errors. They just predict edits. But that makes them a safe place to build the skills.</p>
+</section>
+<section id="drive-it-with-comments" class="level2">
+<h2 class="anchored" data-anchor-id="drive-it-with-comments">Drive it with comments</h2>
+<p>You can run the same next-edit approach with text only. Write out a recipe for what you want as comments, then start typing under the first step. Ghost text and next edit take over and help you write the rest.</p>
+<p>Here’s a simple recipe:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Simulate a new dataset of abundance at x-y coordinates</span></span>
+<span id="cb4-2"></span>
+<span id="cb4-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># plot a 2D map</span></span>
+<span id="cb4-4"></span>
+<span id="cb4-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># fit a model with interaction between x and y</span></span></code></pre></div></div>
+<p>With just the comments in place and the cursor after the simulation, Copilot reads the recipe ahead of it:</p>
+<p><img src="https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/4.png" class="img-fluid"></p>
+<p>Then suggests a next edit suggestion after the following comment:</p>
+<p><img src="https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/5.png" class="img-fluid"></p>
+<p>Keep going and it writes the model for the final step, picking up the interaction from the comment <code># fit a model with interaction between x and y</code>:</p>
+<p><img src="https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/6.png" class="img-fluid"></p>
+<p>The finished block writes itself from the recipe:</p>
+<p>A few tips. I set Copilot’s eagerness to <strong>High</strong> so suggestions come up quickly. Sometimes you need to type the first few characters of a line to kickstart the ghost text.</p>
+<p>The clearer and more specific your comments, the closer the suggestions will be to what you actually wanted.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>genAI</category>
+  <category>rstats</category>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/</guid>
+  <pubDate>Mon, 27 Jul 2026 14:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Winter R workshops at University of Queensland, Brisbane</title>
   <link>https://www.seascapemodels.org/posts/2026-06-25-R-workshops-in-brisbane/</link>
@@ -2326,64 +2626,6 @@ font-style: inherit;">theme_classic</span>()</span></code></pre></div></div>
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-10-05-AI-assistants-for-scientific-coding/</guid>
   <pubDate>Sat, 04 Oct 2025 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Automating the Github Copilot Agent from the command line with Copilot CLI</title>
-  <link>https://www.seascapemodels.org/posts/2025-10-04-running-github-copilot-CLI-agents-from-R/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p><a href="https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli">Github Copilot CLI (Command Line Interface)</a> recently became available. It is an AI agent, meaning it can use tools autonomously in a loop. It has two modes:</p>
-<ol type="1">
-<li><p>An interactive mode that is like a terminal version of the Copilot agent that runs in the chat window</p></li>
-<li><p>A programmatic mode that can be run with shell scripts.</p></li>
-</ol>
-<p>The Copilot CLI is available with paid versions of github copilot.</p>
-<p>The programmatic mode interested me, because it allows you to write scripts that call github copilot agents. This means you could run replicate agents on the same problem, then gather there results for analysis.</p>
-<p>I, of course, want to do everything from the R program, because I’m not great with unix code or Python. <a href="https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli">Once you’ve setup the copilot CLI</a>, its very easy to run it from R:</p>
-<pre><code>
-copilot_cmd &lt;- "copilot -p 'Set-up this project directory with a readme.md file, and directories for outputs, scripts, plots.' --allow-all-tools"
-
-system(copilot_cmd)
-</code></pre>
-<p>This will run the agent autonomously in the current working directory of your R session.</p>
-<p>Now I wouldn’t recommend using <code>--allow-all-tools</code> like this however. <a href="https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli#security-considerations">There are important security considerations</a>. Like prompt injection attacks where an Agent goes on the web and gets tricked into doing something bad to your computer when it reads some malicious content. Likewise, agents can just stuff up and just delete or overwrite a bunch of files you wanted to keep.</p>
-<p>You do need to allow some tools however, otherwise you might as well run the agent in interactive mode (because you’ll have to manually approve every tool use). This defeats the time-saving goal of running agents in a loop.</p>
-<p>Here’s my current set-up:</p>
-<p><code>copilot -p 'A prompt here' --allow-all-tools --deny-tool 'shell(cd)' --deny-tool 'shell(git)' --deny-tool 'shell(pwd)' --deny-tool 'fetch' --deny-tool 'extensions' --deny-tool 'websearch' --deny-tool 'githubRepo'"</code></p>
-<p>I allow all tools, then prevent tools related to changing working directory, accessing the web or viewing directory context.</p>
-<p>There is still some risk here. e.g., if you want it to run Rscripts you might want to include in your prompt something like ‘Use <code>Rscript my-script.R</code> to run R scripts from the terminal.’ The R scripts could include anything (including connecting to the web).</p>
-<p>Here’s an example in action. I use sprintf to format the terminal command with the prompt, tools and sub-directory path.</p>
-<pre><code>copilot_prompt &lt;- "Set-up this project directory with a readme.md file, and directories for outputs, scripts, plots. Then create example data to illustrate a poisson GLM. Make prediction plots. Use `Rscript 'my-script.R'` to run R files. "
-
-copilot_tools &lt;- "--allow-all-tools --deny-tool 'shell(cd)' --deny-tool 'shell(git)' --deny-tool 'shell(pwd)' --deny-tool 'fetch' --deny-tool 'extensions' --deny-tool 'websearch' --deny-tool 'githubRepo'"
-
-subdir_path &lt;- "dir1"
-
- copilot_cmd &lt;- sprintf(
-    "cd '%s' &amp;&amp; copilot -p '%s' %s",
-    subdir_path,
-    copilot_prompt,
-    copilot_tools
-  )
-
-system(copilot_cmd)
-</code></pre>
-<p>From here it would be easy to create a loop over different subdirectory paths, and run a separate agent in each one. The advantage of <code>cd</code>ing into each path before the agent opens is that the agent can’t then see context from other sub-directories. So you get independent agent runs.</p>
-<p>You could use this to see how different prompts perform, or do complex prompt strategies like ‘tree of thought’. In tree of thought you ask an agent to create the same thing many times, it will do it slightly differently each time. Then you aggregate the results and pick the most common or most accurate one.</p>
-<p>My one gripe is that Github have provided us with woeful documentation of what the tool names are. I’m guessing the tools are what you can see if you open the chat window, click ‘Agent’ mode, then click the tool symbol.</p>
-<p>I’d love to have some default tool sets that simplify the tool permissions. For instance a tool set that locks down all web access.</p>
-
-
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-10-04-running-github-copilot-CLI-agents-from-R/</guid>
-  <pubDate>Fri, 03 Oct 2025 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
