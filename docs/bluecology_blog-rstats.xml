@@ -10,7 +10,56 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog-rstats.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Mon, 27 Jul 2026 14:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 02 Aug 2026 14:00:00 GMT</lastBuildDate>
+<item>
+  <title>How Do I Build a Model? A Starting Guide for New Modellers</title>
+  <link>https://www.seascapemodels.org/posts/2026-08-03-how-do-i-build-a-model/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I’ve put together a short guide: <em>How Do I Build a Model? A starting guide for new modellers</em>. It’s free, online, and aimed squarely at the graduate student who has a research question and is staring at a blank script wondering where to even begin.</p>
+<p>You can read it online at <a href="https://www.seascapemodels.org/building-ecological-models/">How Do I Build a Model?</a>, or <a href="https://github.com/cbrown5/building-ecological-models/blob/main/docs/How-Do-I-Build-a-Model-.pdf">download a pdf</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-08-03-how-do-i-build-a-model/flowchart-loop.png" class="img-fluid figure-img"></p>
+<figcaption>First sketch, one of the steps on the way to buliding a working model</figcaption>
+</figure>
+</div>
+<p>I’ve never settled into one corner of ecological modelling. I’m not the Bayesian guy, or the foodweb model guy, or the machine learning guy, though I’ve dabbled in all three. That haphazard career has given me a broad view across a lot of different modelling traditions, and I keep noticing the same meta-principles showing up regardless of the discipline. This guide is my attempt to write those down.</p>
+<p>It’s not a textbook on any particular method. Once you know what type of model you’re building, go read a book by a discipline expert (I’ve listed some favourites in the final chapter). This guide is for the step before that: turning a question into a model in the first place.</p>
+<section id="whats-in-it" class="level2">
+<h2 class="anchored" data-anchor-id="whats-in-it">What’s in it</h2>
+<ol type="1">
+<li><strong>Start with the question.</strong> How you actually grow into a research question, through reading, writing, and talking it through with people whose work you admire (and some whose work you don’t).</li>
+<li><strong>From a question to a type of model.</strong> Once you know your question, how to read papers differently, paying attention to the <em>how</em> and the <em>why</em>.</li>
+<li><strong>Terminology: variables, parameters, and the rest.</strong> A clean-up of vocabulary that gets used loosely and causes confusion.</li>
+<li><strong>Know why you’re building a model.</strong> Causal inference, prediction, or something else. Knowing your purpose is what narrows down the type of model you need.</li>
+<li><strong>Sketching your model.</strong> Why you should start at a whiteboard with boxes and arrows before you touch an equation, and how to read those arrows as equations later.</li>
+<li><strong>The different types of uncertainty.</strong> Why “how uncertain am I?” is really several different questions, and why that distinction matters for what you do next.</li>
+<li><strong>Writing your model’s equations.</strong> Turning the diagram into notation, with a nod to Edwards &amp; Auger-Méthé’s guidance for ecologists, which I’d recommend reading in full regardless.</li>
+<li><strong>Understand your constraints.</strong> Computational, data, and time constraints, and how they shape what model you can realistically build.</li>
+<li><strong>The modelling workflow.</strong> Feedback loops of writing code, debugging, running, plotting, interpreting.</li>
+<li><strong>Tools and software.</strong> The endless R-versus-Python debate, and why your own familiarity with a tool is a constraint.</li>
+<li><strong>Tips for finding novel insights.</strong> Some of my favourite tricks, including hunting for analogues in other fields and pushing them to their extreme.</li>
+</ol>
+<p>There’s also a short further-reading list at the end, covering the books I’d point you to once you’ve picked your modelling approach.</p>
+</section>
+<section id="how-it-came-together" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-came-together">How it came together</h2>
+<p>I dictated the original version on a long drive, Claude Code cleaned up the transcript into a first written draft and set up the Quarto book site, and I edited it from there.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2026-08-03-how-do-i-build-a-model/</guid>
+  <pubDate>Sun, 02 Aug 2026 14:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Using ghost text and next edit suggestions to learn agentic coding</title>
   <link>https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/</link>
@@ -2597,35 +2646,6 @@ font-style: inherit;">theme_classic</span>()</span></code></pre></div></div>
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-10-06-llm-tools-for-r-book/</guid>
   <pubDate>Sun, 05 Oct 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>New online book AI Assistants for Scientific Coding</title>
-  <link>https://www.seascapemodels.org/posts/2025-10-05-AI-assistants-for-scientific-coding/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>I’ve released a new online book, <a href="https://www.seascapemodels.org/AI-assistants-for-scientific-coding/">AI Assistants for Scientific Coding</a>. It’s a practical guide to using language models to support scientific computing and analysis.</p>
-<p>The book focuses on helping people who already use R or Python for data analysis. It’s not an introduction to programming; instead, it shows how to work with AI tools effectively and responsibly once you know the basics.</p>
-<p>What you’ll find inside:</p>
-<ul>
-<li>Choosing and using AI coding assistants, from simple chat tools to agents that can run and test code</li>
-<li>Prompting strategies that improve reliability for real analysis tasks</li>
-<li>Examples from environmental science (GLMs, multivariate stats), with methods general to other fields</li>
-<li>Notes on ethics, copyright, costs, and environmental impacts</li>
-</ul>
-<p>Read it here: https://www.seascapemodels.org/AI-assistants-for-scientific-coding/</p>
-<p>The material also serves as reference notes for a one‑day workshop and will evolve as the field changes. If you’re interested in the prompting side of statistical workflows, there’s an accompanying preprint: https://doi.org/10.32942/X2CS80</p>
-
-
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-10-05-AI-assistants-for-scientific-coding/</guid>
-  <pubDate>Sat, 04 Oct 2025 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

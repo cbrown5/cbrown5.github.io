@@ -10,7 +10,56 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Mon, 27 Jul 2026 14:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 02 Aug 2026 14:00:00 GMT</lastBuildDate>
+<item>
+  <title>How Do I Build a Model? A Starting Guide for New Modellers</title>
+  <link>https://www.seascapemodels.org/posts/2026-08-03-how-do-i-build-a-model/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I’ve put together a short guide: <em>How Do I Build a Model? A starting guide for new modellers</em>. It’s free, online, and aimed squarely at the graduate student who has a research question and is staring at a blank script wondering where to even begin.</p>
+<p>You can read it online at <a href="https://www.seascapemodels.org/building-ecological-models/">How Do I Build a Model?</a>, or <a href="https://github.com/cbrown5/building-ecological-models/blob/main/docs/How-Do-I-Build-a-Model-.pdf">download a pdf</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-08-03-how-do-i-build-a-model/flowchart-loop.png" class="img-fluid figure-img"></p>
+<figcaption>First sketch, one of the steps on the way to buliding a working model</figcaption>
+</figure>
+</div>
+<p>I’ve never settled into one corner of ecological modelling. I’m not the Bayesian guy, or the foodweb model guy, or the machine learning guy, though I’ve dabbled in all three. That haphazard career has given me a broad view across a lot of different modelling traditions, and I keep noticing the same meta-principles showing up regardless of the discipline. This guide is my attempt to write those down.</p>
+<p>It’s not a textbook on any particular method. Once you know what type of model you’re building, go read a book by a discipline expert (I’ve listed some favourites in the final chapter). This guide is for the step before that: turning a question into a model in the first place.</p>
+<section id="whats-in-it" class="level2">
+<h2 class="anchored" data-anchor-id="whats-in-it">What’s in it</h2>
+<ol type="1">
+<li><strong>Start with the question.</strong> How you actually grow into a research question, through reading, writing, and talking it through with people whose work you admire (and some whose work you don’t).</li>
+<li><strong>From a question to a type of model.</strong> Once you know your question, how to read papers differently, paying attention to the <em>how</em> and the <em>why</em>.</li>
+<li><strong>Terminology: variables, parameters, and the rest.</strong> A clean-up of vocabulary that gets used loosely and causes confusion.</li>
+<li><strong>Know why you’re building a model.</strong> Causal inference, prediction, or something else. Knowing your purpose is what narrows down the type of model you need.</li>
+<li><strong>Sketching your model.</strong> Why you should start at a whiteboard with boxes and arrows before you touch an equation, and how to read those arrows as equations later.</li>
+<li><strong>The different types of uncertainty.</strong> Why “how uncertain am I?” is really several different questions, and why that distinction matters for what you do next.</li>
+<li><strong>Writing your model’s equations.</strong> Turning the diagram into notation, with a nod to Edwards &amp; Auger-Méthé’s guidance for ecologists, which I’d recommend reading in full regardless.</li>
+<li><strong>Understand your constraints.</strong> Computational, data, and time constraints, and how they shape what model you can realistically build.</li>
+<li><strong>The modelling workflow.</strong> Feedback loops of writing code, debugging, running, plotting, interpreting.</li>
+<li><strong>Tools and software.</strong> The endless R-versus-Python debate, and why your own familiarity with a tool is a constraint.</li>
+<li><strong>Tips for finding novel insights.</strong> Some of my favourite tricks, including hunting for analogues in other fields and pushing them to their extreme.</li>
+</ol>
+<p>There’s also a short further-reading list at the end, covering the books I’d point you to once you’ve picked your modelling approach.</p>
+</section>
+<section id="how-it-came-together" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-came-together">How it came together</h2>
+<p>I dictated the original version on a long drive, Claude Code cleaned up the transcript into a first written draft and set up the Quarto book site, and I edited it from there.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2026-08-03-how-do-i-build-a-model/</guid>
+  <pubDate>Sun, 02 Aug 2026 14:00:00 GMT</pubDate>
+</item>
 <item>
   <title>What agentic misalignment could mean for science</title>
   <link>https://www.seascapemodels.org/posts/2026-07-28-agentic-misalignment-and-science/</link>
@@ -1356,74 +1405,6 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>research</category>
   <guid>https://www.seascapemodels.org/posts/2026-03-27-stats-dirty-secret/</guid>
   <pubDate>Wed, 25 Mar 2026 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Prompting large language models for quality ecological statistics</title>
-  <link>https://www.seascapemodels.org/posts/2026-03-17-prompting-llms-stats-paper-published/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Like it or not, everyone is using large language models to help do their statistics.</p>
-<p>There’s a lot of claims made about whether LLMs can or can’t do useful ecological statistics. In our new paper <a href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210x.70267?af=R">“Prompting large language models for quality ecological statistics”</a> (in Methods in Ecology and Evolution) we wanted to test those claims quantitatively.</p>
-<p>We provide guidelines for how to use LLMs to produce scientifically valid statistical analyses. The short version: LLMs can help you do better statistics, but only if you ask well. And “asking well” is a learnable skill.</p>
-<p>The paper is co-authored with agentic AI expert Scott Spillias and grew out of our experiences teaching LLMs for statistical analysis.</p>
-<section id="why-we-wrote-it" class="level2">
-<h2 class="anchored" data-anchor-id="why-we-wrote-it">Why we wrote it</h2>
-<p>I’ve been teaching researchers how to use LLMs for coding and statistics for a few years now. Two things kept coming up. First, most people underestimate how much the prompt matters — they treat LLMs like a search engine and get search-engine quality advice. Second, some people trust LLM-generated code and statistics uncritically, which is risky.</p>
-<p>Late 2024 studies found LLMs recommended the correct statistical test less than 40% of the time with generic prompts. But accuracy improves substantially with more specific prompts, which is a key skill we focus on in the article.</p>
-</section>
-<section id="what-we-found" class="level2">
-<h2 class="anchored" data-anchor-id="what-we-found">What we found</h2>
-<p>We ran repeatable evaluations in R, replicating each prompt 10 times across multiple LLMs. A few results stood out.</p>
-<p><strong>Specificity matters enormously for test selection.</strong> We compared four prompts for choosing a statistical test for an ecological dataset, ranging from “How do I test the relationship between two continuous variables?” to a detailed prompt specifying variable types, sample size, and study design. The generic prompt never suggested count models (the appropriate family for fish abundance data). The detailed prompt guaranteed them, regardless of which LLM we used.</p>
-<p><strong>Detailed prompts make agent-generated code more consistent.</strong> We asked the Github Copilot agent to write an entire analysis workflow from two different prompts — one brief, one detailed. We then ran multivariate ordination on the resulting code to measure how similar the 10 replicates were to each other. The detailed prompt produced much tighter clusters — the agent kept using the same functions, variable names, and structure. Inconsistent code is harder to review, which matters if you’re trying to catch statistical errors.</p>
-<p><strong>Being specific overcomes weaker models.</strong> When we tasked LLMs with writing R code to calculate a distance matrix, the detailed prompt got the right answer 90–100% of the time across all models. The brief prompt mostly failed — except for GPT-5 Codex, which guessed correctly 9/10 times. Good prompts effectively compensated for using a smaller, cheaper model.</p>
-</section>
-<section id="the-workflow-we-recommend" class="level2">
-<h2 class="anchored" data-anchor-id="the-workflow-we-recommend">The workflow we recommend</h2>
-<p>We suggest breaking LLM-assisted analysis into three stages, and writing separate prompts for each. This helps you control the workflow and avoid LLM mistakes.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.seascapemodels.org/posts/2026-03-17-prompting-llms-stats-paper-published/figure1-v2-highres.jpg" class="img-fluid figure-img"></p>
-<figcaption>Recommended workflow for using LLMs to complement traditional approaches to statistical analysis</figcaption>
-</figure>
-</div>
-<ol type="1">
-<li><p><strong>Choose the statistical approach</strong> — describe your variables, sample size, and study design in detail. Attach the data or a summary. Point the LLM to reference material you trust.</p></li>
-<li><p><strong>Plan the implementation</strong> — before writing any code, get the LLM to help you structure the project directory and scripts. We use a <code>readme.md</code> that includes research context, analysis steps, package preferences, and directory layout. This file then gets attached to every subsequent prompt, giving the LLM a consistent memory across sessions.</p></li>
-<li><p><strong>Write the code</strong> — with a detailed readme and explicit instructions, agents can complete analyses with minimal supervision. Without that structure, even strong models produce code that’s hard to review and inconsistent across runs.</p></li>
-</ol>
-</section>
-<section id="general-prompting-tips" class="level2">
-<h2 class="anchored" data-anchor-id="general-prompting-tips">General prompting tips</h2>
-<p>These apply regardless of which stage of analysis you’re at:</p>
-<ul>
-<li><strong>Declare a role upfront</strong> — start with “You are an expert in ecological statistics and R.” This orients the LLM and nudges it toward discipline-appropriate methods.</li>
-<li><strong>Avoid multi-turn conversation where possible</strong> — each turn adds context that can’t be removed. If the conversation goes wrong, start fresh with a better prompt rather than trying to correct course.</li>
-<li><strong>Use prompt bootstrapping</strong> — ask the LLM what information it would need to answer your question better, then start a new session with that improved prompt.</li>
-<li><strong>Attach your own references</strong> — rather than letting the LLM search the web, point it to tutorials and vignettes you’ve already vetted. You control the quality of the context.</li>
-<li><strong>Break problems into steps</strong> — don’t ask for everything at once. Separate choosing a method, planning the code structure, and writing the code into distinct prompts.</li>
-</ul>
-</section>
-<section id="the-important-role-for-the-scientist" class="level2">
-<h2 class="anchored" data-anchor-id="the-important-role-for-the-scientist">The important role for the scientist</h2>
-<p>Statistical expertise is still required. You need to know enough to evaluate whether the LLM’s suggestions are appropriate, check that code is scientifically valid (not just syntactically correct), and understand what the results mean. Novices who lack that background are more likely to write poor prompts and less likely to catch bad advice.</p>
-<p>We think LLM literacy should be part of statistical training programs, alongside the fundamentals. In our own training we start novices off on R fundamentals and stats first, with no AI other than bug fixes or asking for explanation of unknown code. Once they grasp core concepts we then move onto more advanced forms of AI integration. This needs to introduced done stepwise.</p>
-<p>We’re also only beginning to understand LLM biases for ecological data. Spatial dependencies, nested designs, and zero-inflated count data are common in ecology but probably underrepresented in LLM training data. There’s a lot of evaluation work still to do.</p>
-<p>The paper and all the code for the evaluations is at <a href="https://doi.org/10.5281/zenodo.18463012">Zenodo</a>. If you want the full workflow in practice, there’s also a <a href="https://www.seascapemodels.org/R-llm-workshop/">one-day course</a> and an <a href="https://www.seascapemodels.org/AI-assistants-for-scientific-coding/">online book</a>.</p>
-
-
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <category>research-skills</category>
-  <guid>https://www.seascapemodels.org/posts/2026-03-17-prompting-llms-stats-paper-published/</guid>
-  <pubDate>Mon, 16 Mar 2026 13:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
