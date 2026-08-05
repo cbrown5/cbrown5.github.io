@@ -8,7 +8,13 @@ listing:
       title: "AI Assistants for Scientific Coding"
       description: "How to use generative AI coding assistants for data analysis and statistics"
       date: "2025-10-19"
-      categories: [rstats, lllms]
+      categories: [rstats, genAI]
+    - path: https://www.seascapemodels.org/building-ecological-models/
+      image: images/flowchart-loop.png
+      title: "How Do I Build a Model?"
+      description: "A starting guide for new modellers"
+      date: "2026-08-03"
+      categories: [rstats, research-skills]
     - path: https://www.seascapemodels.org/predictive-ecological-models/
       image: images/bolbo-predictions.png
       title: "Predictive Ecological Models"

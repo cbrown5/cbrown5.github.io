@@ -100,23 +100,23 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./bluecology_blog.html"> 
-<span class="menu-text"><i class="fa-regular fa-newspaper" aria-label="newspaper"></i> Blog</span></a>
+<span class="menu-text">{{&lt;fa regular newspaper&gt;}}  Blog</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./people.html"> 
-<span class="menu-text"><i class="fa-regular fa-user" aria-label="user"></i> People</span></a>
+<span class="menu-text">{{&lt;fa regular user&gt;}} People</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./code.html"> 
-<span class="menu-text"><i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> R tutorials</span></a>
+<span class="menu-text">{{&lt;fa solid laptop-code&gt;}} R tutorials</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://scholar.google.com.au/citations?hl=en&amp;user=1qG6yFMAAAAJ&amp;view_op=list_works&amp;sortby=pubdate"> 
-<span class="menu-text"><i class="fa-brands fa-google-scholar" aria-label="google-scholar"></i></span></a>
+<span class="menu-text">{{&lt; fa brands google-scholar&gt;}}</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://discover.utas.edu.au/C.J.Brown"> 
-<span class="menu-text"><i class="fa-solid fa-building-columns" aria-label="building-columns"></i></span></a>
+<span class="menu-text">{{&lt; fa solid building-columns&gt;}}</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/cbrown5"> <i class="bi bi-github" role="img">
@@ -125,7 +125,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://bsky.app/profile/bluecology.bsky.social"> 
-<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+<span class="menu-text">{{&lt; fa brands bluesky&gt;}}</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/christopher-brown-32466785/"> <i class="bi bi-linkedin" role="img">
@@ -167,13 +167,25 @@ ul.task-list li input[type="checkbox"] {
 <p>clear repo history</p>
 <p>Investigate making r blogs in other dir then just brining over the .md and figure files, might be simpler as then I should be able to just render preview?</p>
 <p>test then update Rbloggers link</p>
-
-
+<p>Improve readership:</p>
+Add Plausible or GoatCounter (privacy-friendly, no cookie banner needed, trivial to add via a
+<script>
+<p>include in _quarto.yml’s include-in-header) to both the main site and both book repos. Skip Google Analytics — it’s heavier than needed here and the privacy-friendly options are a one-line embed.</p>
+<ol start="3" type="1">
+<li>Make the RSS feed visible and promote it directly The feed already exists but isn’t advertised. Add a visible RSS icon/link on the blog listing page (bluecology_blog.qmd) so returning readers can subscribe instead of relying on remembering to check back.</li>
+</ol>
+<p>Where blog posts already relate to book content (e.g. the 2025-10-05-AI-assistants-for-scientific-coding post that appears to be the seed of the AI assistants book), add an explicit link from the post to the book and vice versa. This costs a couple of minutes but turns blog traffic into book traffic and gives blog readers a next-step “read more.”</p>
+<div id="quarto-navigation-envelope" class="hidden">
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">Seascapemodels</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">Seascapemodels</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6SG9tZQ==">Home</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L2luZGV4Lmh0bWw=">/index.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6e3s8ZmEgcmVndWxhciBuZXdzcGFwZXI+fX0gIEJsb2c="><i class="fa-regular fa-newspaper" aria-label="newspaper"></i> Blog</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L2JsdWVjb2xvZ3lfYmxvZy5odG1s">/bluecology_blog.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6e3s8ZmEgcmVndWxhciB1c2VyPn19IFBlb3BsZQ=="><i class="fa-regular fa-user" aria-label="user"></i> People</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3Blb3BsZS5odG1s">/people.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6e3s8ZmEgc29saWQgbGFwdG9wLWNvZGU+fX0gUiB0dXRvcmlhbHM="><i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> R tutorials</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L2NvZGUuaHRtbA==">/code.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6e3s8IGZhIGJyYW5kcyBnb29nbGUtc2Nob2xhcj59fQ=="><i class="fa-brands fa-google-scholar" aria-label="google-scholar"></i></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9zY2hvbGFyLmdvb2dsZS5jb20uYXUvY2l0YXRpb25zP2hsPWVuJnVzZXI9MXFHNnlGTUFBQUFKJnZpZXdfb3A9bGlzdF93b3JrcyZzb3J0Ynk9cHViZGF0ZQ==">https://scholar.google.com.au/citations?hl=en&amp;user=1qG6yFMAAAAJ&amp;view_op=list_works&amp;sortby=pubdate</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6e3s8IGZhIHNvbGlkIGJ1aWxkaW5nLWNvbHVtbnM+fX0="><i class="fa-solid fa-building-columns" aria-label="building-columns"></i></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9kaXNjb3Zlci51dGFzLmVkdS5hdS9DLkouQnJvd24=">https://discover.utas.edu.au/C.J.Brown</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9naXRodWIuY29tL2Nicm93bjU=">https://github.com/cbrown5</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6e3s8IGZhIGJyYW5kcyBibHVlc2t5Pn19"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9ic2t5LmFwcC9wcm9maWxlL2JsdWVjb2xvZ3kuYnNreS5zb2NpYWw=">https://bsky.app/profile/bluecology.bsky.social</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2NocmlzdG9waGVyLWJyb3duLTMyNDY2Nzg1Lw==">https://www.linkedin.com/in/christopher-brown-32466785/</span></p>
+</div>
+<div id="quarto-meta-markdown" class="hidden">
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ==">Seascapemodels</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU=">Seascapemodels</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl">Seascapemodels</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">Seascapemodels</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw=="></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj"></span></p>
+</div>
 </section>
 </section>
 
 </main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+<script id = "quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -573,7 +585,7 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-</div> <!-- /content -->
+</section></section></main></div> <!-- /content -->
 
 
 

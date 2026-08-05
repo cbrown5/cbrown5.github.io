@@ -5,15 +5,15 @@ categories: [rstats, research-skills]
 published: true
 ---
 
-I've put together a short guide: *How Do I Build a Model? A starting guide for new modellers*. It's free, online, and aimed squarely at the graduate student who has a research question and is staring at a blank script wondering where to even begin.
+I've put together a short guide: *How Do I Build a Model? A starting guide for new modellers*. It's free, online, and written for the graduate student who has a research question and is wondering where to even begin their modelling.
 
 You can read it online at [How Do I Build a Model?](https://www.seascapemodels.org/building-ecological-models/), or [download a pdf](https://github.com/cbrown5/building-ecological-models/blob/main/docs/How-Do-I-Build-a-Model-.pdf). 
 
-![First sketch, one of the steps on the way to buliding a working model](flowchart-loop.png)
+![First sketch, one of the steps on the way to building a working model](flowchart-loop.png)
 
-I've never settled into one corner of ecological modelling. I'm not the Bayesian guy, or the foodweb model guy, or the machine learning guy, though I've dabbled in all three. That haphazard career has given me a broad view across a lot of different modelling traditions, and I keep noticing the same meta-principles showing up regardless of the discipline. This guide is my attempt to write those down.
+I've never had a singular focus on a type of ecological modelling. I'm not the Bayesian guy, or the foodweb model guy, or the machine learning guy, though I've dabbled in all three. That haphazard career has given me a broad view across a lot of different modelling traditions, and I keep noticing the same meta-principles showing up regardless of the discipline. This guide is my attempt to write those down.
 
-It's not a textbook on any particular method. Once you know what type of model you're building, go read a book by a discipline expert (I've listed some favourites in the final chapter). This guide is for the step before that: turning a question into a model in the first place.
+It's not a textbook on any particular method. Once you know what type of model you're building, go read a book by a discipline expert (I've listed some favourites in the final chapter). This guide is for getting started and principles that apply to any type of modelling. 
 
 ## What's in it
 
