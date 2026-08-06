@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-08-07">
 
-<title>GIS-has-changed-forever – Seascapemodels</title>
+<title>The GIS Research Assistant Job Has Transformed – Seascapemodels</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -144,14 +144,8 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">GIS-has-changed-forever</h1>
+      <h1 class="title">The GIS Research Assistant Job Has Transformed</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">coastal-wetlands</div>
-                <div class="quarto-category">fisheries</div>
-                <div class="quarto-category">genAI</div>
-                <div class="quarto-category">modelling</div>
-                <div class="quarto-category">phd-projects</div>
-                <div class="quarto-category">research</div>
                 <div class="quarto-category">research-skills</div>
                 <div class="quarto-category">rstats</div>
               </div>
@@ -184,8 +178,40 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<p>I realized this week that I won’t be hiring a GIS focused research assistant the same way as I used to.</p>
+<p>Claude Code is just too good at GIS in R now. I guess this happened around the release of Opus 4.7. I just hadn’t really pushed the coding agent until now.</p>
+<p>This week I downloaded a global dataset of a coastal habitat of several gigabytes, expecting to spend my free time this week poking around getting a feel for how to do my intended analysis.</p>
+<p>30 minutes later the analysis was done.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="global_wetland_map_combined.png" class="img-fluid figure-img"></p>
+<figcaption>Draft map where Claude intersected multiple coastal wetland distributions, complete with cool looking hex shaped spatial units</figcaption>
+</figure>
+</div>
+<p>Claude solved what used to be significant and time consuming GIS issues with no help from me. All I gave it was the end goal and reference to a previous workflow for a similar project.</p>
+<p>It smoothly addressed complex challenges like geometry self intersections and spatial intersections of raster to vector data. It even ran small-scale tests to identify processing bottlenecks and find the fastest solution for intersecting two large layers.</p>
+<section id="headstarats" class="level2">
+<h2 class="anchored" data-anchor-id="headstarats">Headstarats</h2>
+<p>Now to be fair I should also acknowledge a couple of headstarts Claude had on this project.</p>
+<p>The first was my previous workflow for a similar problem (building a predictive model from spatial data). That gave it a rough set of steps to follow. But, my previous workflow was built entirely on vector (polygon) data, whereas the new analysis required working with rasters. So it successfully solved raster to vector issues with no help from me.</p>
+<p>I suspect a second big change in the R GIS ecosystem in last 5-10 years has enabled this coding agent success. Credit is due to the developers of core R spatial packages, especially <code>sf</code>, <code>tmap</code> and <code>terra</code>.</p>
+<p>These have significantly streamlined spatial processing and mapping in R, making it easier to deal with complex area and distance calculations on the earth’s curved surface and the ubiquitous self-intersection errors that used to cause major traffic jams in GIS work.</p>
+<p>Back around 2020 we were compiling global data on coastal wetlands and aligning that for an <a href="https://www.sciencedirect.com/science/article/pii/S1470160X21008062">analysis of coastal wetland health</a>. It took a GIS research assistant and part of the time of a supervising post-doc months just to do the spatial processing.</p>
+</section>
+<section id="do-i-still-need-a-human-gis-assistant-for-spatial-analyses" class="level2">
+<h2 class="anchored" data-anchor-id="do-i-still-need-a-human-gis-assistant-for-spatial-analyses">Do I still need a (human) GIS assistant for spatial analyses?</h2>
+<p>One of my research students has taught me that perhaps the answer is yes, but the requirements of the role are different.</p>
+<p>You see, my student enthusiastically launched his spatial analysis project with a heap of vibe coding in R. I quickly realized he understood very little of what his coding agent had done, and there was no way we could be sure the results were accurate.</p>
+<p>Even in my 30 minute success story told above there were AI mistakes I had to check and fix. A big one was a silly duplicate correction for fraction -&gt; percentage that Claude made. So it had overestimated everything by a factor of 100.</p>
+<p>My student turned his story around as well. His enthusiasm for the result and for learning, meant he started again. This time, working (slightly) more slowly. He did the reading, learnt the GIS theory and then used the AI agent to redevelop his analysis step-by-step. That way his understanding could keep pace with the code.</p>
+<p>Now in a few short months he’s a competent GIS user and map maker. Credit to his attention to detail too, he won’t trust any exciting result without first running thorough checks.</p>
+<p>So what I would want now in an RA is someone who is enthusiastic to learn and who excels at rapid self-paced learning.</p>
+<p>In the past meetings with the assistant would often be about how to solve the next processing challenge. Meetings with my GIS, R and AI enabled student are very different. They come with 5+ graphs and maps every week and we discuss patterns. He’ll show me a beautifully prepared graph and ask me ‘what do you notice here…’ waiting to see if I spot the anomalies he’s noticed. Then we discuss.</p>
+<p>Attention to detail is more important than ever. We can’t rely on failures in the code or workflow as a red flag for errors anymore. The agents are too good at ‘making it work’. We need analysts who don’t cross the finish line of declaring success when they get the first good result, but who are happy to go back and thoroughly explore every alternative interpretation.</p>
+<p>So yes, I’ll still hire a GIS research assistant. But the position description has changed. Less “must know <code>sf</code> and <code>terra</code>”, more “must be sceptical of a beautiful map.” The coding is the easy part now. The judgement was always the hard part - it’s just that the coding used to take so much time that good judgement was required less often.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

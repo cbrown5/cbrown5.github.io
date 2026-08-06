@@ -17,6 +17,8 @@ A few highlights for me.
 
 Only 55% of people are using AI currently (up to Feb 2026) for their conservation and management work. Another 33% plan to use it. I would have thought current use would be higher. 
 
+![Current and desired uses, from the OCTO snapshop](octo-report.png)
+
 The report raises issues around equitable access to the technology and education, so perhaps they are two of the barriers to greater uptake. Another barrier was institutional restrictions on using AI. 
 
 Education is a topic I'm passionate about. Hence all the blog posts. 
