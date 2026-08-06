@@ -19,7 +19,7 @@ Claude solved what used to be significant and time consuming GIS issues with no 
 
 It smoothly addressed complex challenges like geometry self intersections and spatial intersections of raster to vector data. It even ran small-scale tests to identify processing bottlenecks and find the fastest solution for intersecting two large layers. 
 
-## Headstarats
+## Headstarts
 
 Now to be fair I should also acknowledge a couple of headstarts Claude had on this project. 
 

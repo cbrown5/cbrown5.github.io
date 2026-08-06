@@ -32,8 +32,8 @@
 </div>
 <p>Claude solved what used to be significant and time consuming GIS issues with no help from me. All I gave it was the end goal and reference to a previous workflow for a similar project.</p>
 <p>It smoothly addressed complex challenges like geometry self intersections and spatial intersections of raster to vector data. It even ran small-scale tests to identify processing bottlenecks and find the fastest solution for intersecting two large layers.</p>
-<section id="headstarats" class="level2">
-<h2 class="anchored" data-anchor-id="headstarats">Headstarats</h2>
+<section id="headstarts" class="level2">
+<h2 class="anchored" data-anchor-id="headstarts">Headstarts</h2>
 <p>Now to be fair I should also acknowledge a couple of headstarts Claude had on this project.</p>
 <p>The first was my previous workflow for a similar problem (building a predictive model from spatial data). That gave it a rough set of steps to follow. But, my previous workflow was built entirely on vector (polygon) data, whereas the new analysis required working with rasters. So it successfully solved raster to vector issues with no help from me.</p>
 <p>I suspect a second big change in the R GIS ecosystem in last 5-10 years has enabled this coding agent success. Credit is due to the developers of core R spatial packages, especially <code>sf</code>, <code>tmap</code> and <code>terra</code>.</p>
@@ -77,12 +77,7 @@
 <section id="unmet-demand-for-ai" class="level2">
 <h2 class="anchored" data-anchor-id="unmet-demand-for-ai">Unmet demand for AI</h2>
 <p>Only 55% of people are using AI currently (up to Feb 2026) for their conservation and management work. Another 33% plan to use it. I would have thought current use would be higher.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.seascapemodels.org/posts/2026-08-07-octo-ai-ocean-conservation-survey/octo-report.png" class="img-fluid figure-img"></p>
-<figcaption>Current and desired uses, from the OCTO snapshop</figcaption>
-</figure>
-</div>
+<p><a href="octo-report.png">Current and desired uses, from the OCTO snapshop</a></p>
 <p>The report raises issues around equitable access to the technology and education, so perhaps they are two of the barriers to greater uptake. Another barrier was institutional restrictions on using AI.</p>
 <p>Education is a topic I’m passionate about. Hence all the blog posts.</p>
 <p>One respondent said “AI workshops and trainings for scientists from developing countries could be a game-changer if we want to transform to a sustainable world.”</p>

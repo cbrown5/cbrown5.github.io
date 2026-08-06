@@ -32,8 +32,8 @@
 </div>
 <p>Claude solved what used to be significant and time consuming GIS issues with no help from me. All I gave it was the end goal and reference to a previous workflow for a similar project.</p>
 <p>It smoothly addressed complex challenges like geometry self intersections and spatial intersections of raster to vector data. It even ran small-scale tests to identify processing bottlenecks and find the fastest solution for intersecting two large layers.</p>
-<section id="headstarats" class="level2">
-<h2 class="anchored" data-anchor-id="headstarats">Headstarats</h2>
+<section id="headstarts" class="level2">
+<h2 class="anchored" data-anchor-id="headstarts">Headstarts</h2>
 <p>Now to be fair I should also acknowledge a couple of headstarts Claude had on this project.</p>
 <p>The first was my previous workflow for a similar problem (building a predictive model from spatial data). That gave it a rough set of steps to follow. But, my previous workflow was built entirely on vector (polygon) data, whereas the new analysis required working with rasters. So it successfully solved raster to vector issues with no help from me.</p>
 <p>I suspect a second big change in the R GIS ecosystem in last 5-10 years has enabled this coding agent success. Credit is due to the developers of core R spatial packages, especially <code>sf</code>, <code>tmap</code> and <code>terra</code>.</p>
