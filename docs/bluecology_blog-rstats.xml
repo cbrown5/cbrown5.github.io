@@ -10,7 +10,31 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog-rstats.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Sun, 02 Aug 2026 14:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 06 Aug 2026 14:00:00 GMT</lastBuildDate>
+<item>
+  <title>GIS-has-changed-forever</title>
+  <link>https://www.seascapemodels.org/posts/2026-08-07-gis-has-changed-forever/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+
+
+ ]]></description>
+  <category>coastal-wetlands</category>
+  <category>fisheries</category>
+  <category>genAI</category>
+  <category>modelling</category>
+  <category>phd-projects</category>
+  <category>research</category>
+  <category>research-skills</category>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-08-07-gis-has-changed-forever/</guid>
+  <pubDate>Thu, 06 Aug 2026 14:00:00 GMT</pubDate>
+</item>
 <item>
   <title>How Do I Build a Model? A Starting Guide for New Modellers</title>
   <link>https://www.seascapemodels.org/posts/2026-08-03-how-do-i-build-a-model/</link>
@@ -2623,29 +2647,6 @@ font-style: inherit;">theme_classic</span>()</span></code></pre></div></div>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2025-10-21-modelbased/</guid>
   <pubDate>Mon, 20 Oct 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Resource for using Large Language Model tools in R</title>
-  <link>https://www.seascapemodels.org/posts/2025-10-06-llm-tools-for-r-book/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>If you’re interested in using Large Language Models (LLMs) with R, you should check out Luis D. Verde Arregoitia’s new online resource: <a href="https://luisdva.github.io/llmsr-book/index.html">Large Language Model tools for R</a>. Its available in English and Spanish.</p>
-<p>The resouce provides a comprehensive guide to working with LLMs in R, covering packages, techniques, and practical applications.</p>
-<p>This is a great complement to my <a href="https://www.seascapemodels.org/AI-assistants-for-scientific-coding/">workshop and book</a> that guides you through some of the options and prompt engineering for high quality R analyses.</p>
-<p>If you’re looking to integrate AI capabilities into your R workflows, this book is definitely worth exploring.</p>
-<p>Check it out: <a href="https://luisdva.github.io/llmsr-book/index.html">https://luisdva.github.io/llmsr-book/index.html</a></p>
-
-
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-10-06-llm-tools-for-r-book/</guid>
-  <pubDate>Sun, 05 Oct 2025 13:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

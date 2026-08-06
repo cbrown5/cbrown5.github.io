@@ -14,6 +14,9 @@ Made with [quarto](https://quarto.org/docs/websites/)
 
 In the terminal use `quarto render` to re-render the entire site, which updates links etc... 
 
+Or just run the bash script:
+`scripts/new-post.sh "My Post Title"`
+
 
 TODO
 

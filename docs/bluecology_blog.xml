@@ -10,7 +10,77 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Sun, 02 Aug 2026 14:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 06 Aug 2026 14:00:00 GMT</lastBuildDate>
+<item>
+  <title>GIS-has-changed-forever</title>
+  <link>https://www.seascapemodels.org/posts/2026-08-07-gis-has-changed-forever/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+
+
+ ]]></description>
+  <category>coastal-wetlands</category>
+  <category>fisheries</category>
+  <category>genAI</category>
+  <category>modelling</category>
+  <category>phd-projects</category>
+  <category>research</category>
+  <category>research-skills</category>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-08-07-gis-has-changed-forever/</guid>
+  <pubDate>Thu, 06 Aug 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>How Is AI Being Used In Ocean Conservation? A New Survey</title>
+  <link>https://www.seascapemodels.org/posts/2026-08-07-octo-ai-ocean-conservation-survey/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Shout out to OCTO group who just produced this Snapshop report: <a href="https://octogroup.org/programs/ai-snapshot-report-2026/">“The Use Of Artificial Intelligence In Ocean Conservation and Management”</a>.</p>
+<p>They surveyed 190 ocean conservation professionals across their extensive mailing lists.</p>
+<p>I recommend reading the report, its not very long and has some useful insights. There’s a lot of data presented, which means you can find the bits that interest you.</p>
+<p>A few highlights for me.</p>
+<section id="unmet-demand-for-ai" class="level2">
+<h2 class="anchored" data-anchor-id="unmet-demand-for-ai">Unmet demand for AI</h2>
+<p>Only 55% of people are using AI currently (up to Feb 2026) for their conservation and management work. Another 33% plan to use it. I would have thought current use would be higher.</p>
+<p>The report raises issues around equitable access to the technology and education, so perhaps they are two of the barriers to greater uptake. Another barrier was institutional restrictions on using AI.</p>
+<p>Education is a topic I’m passionate about. Hence all the blog posts.</p>
+<p>One respondent said “AI workshops and trainings for scientists from developing countries could be a game-changer if we want to transform to a sustainable world.”</p>
+<p>The report concludes there is an urgent need for more training on tools and literacy in AI to address understanding of capabilities and risks. I couldn’t agree more.</p>
+<p>I’ve been running around these past two years teaching workshops on generative AI for data analysis, so get in touch!</p>
+</section>
+<section id="how-are-we-defining-ai" class="level2">
+<h2 class="anchored" data-anchor-id="how-are-we-defining-ai">How are we defining ‘AI’</h2>
+<p>The Snapshot doesn’t define ‘Artificial Intelligence’. That’s a common shortcoming in AI discussions. I think its helpful to differentiate among different uses. Two of the most common in marine science are generative AI for text/code/image creation and applying AI to image classification for ecological monitoring.</p>
+<p>Generative AI applications tend to rely on commercial tools that are general use, whereas the image classification applications rely on bespoke tools trained specifically on ecological images. So the two dominant applications of AI are very different in terms of scope of use (genAI: just about anything digital, image classification: just for monitoring), resource requirements (cheap to access via paid/free account vs requires specialist software and expensive compute), training needs (many easy to use tools vs training in specialist image software) etc…</p>
+<p>The quoted responses suggest most people answering this report are thinking of generative AI. Though a few are also talking about image classification.</p>
+<p>The main AI uses seem to be the things done by generative AI like admin/text generation, whereas the biggest wants were for AI for image classification and monitoring. That fits with the ease of access of each technology.</p>
+</section>
+<section id="data-privacy" class="level2">
+<h2 class="anchored" data-anchor-id="data-privacy">Data privacy</h2>
+<p>Several respondents cite data privacy as a major concern:</p>
+<p>“I’m concerned about data security and how my own work feeds into these models without my knowledge and consent.”</p>
+<p>Also a growing area of interest for me. Good to see I’m not the only one worried about this.</p>
+<p>There’s much more to the report than my brief highlights here. I recommend you check out the report for more insights:</p>
+<p>OCTO. (2026). Snapshot 2026: The Use of Artificial Intelligence in Ocean Conservation and Management. DOI: 10.5281/zenodo.21510562. https://octogroup.org/programs/ai-snapshot-report-2026/</p>
+
+
+</section>
+
+ ]]></description>
+  <category>genAI</category>
+  <category>research</category>
+  <guid>https://www.seascapemodels.org/posts/2026-08-07-octo-ai-ocean-conservation-survey/</guid>
+  <pubDate>Thu, 06 Aug 2026 14:00:00 GMT</pubDate>
+</item>
 <item>
   <title>How Do I Build a Model? A Starting Guide for New Modellers</title>
   <link>https://www.seascapemodels.org/posts/2026-08-03-how-do-i-build-a-model/</link>
@@ -1293,118 +1363,6 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2026-04-14-does-agentic-AI-save-time/</guid>
   <pubDate>Mon, 13 Apr 2026 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>AI agents can create convincing ecological models, but you still need to know what you’re doing</title>
-  <link>https://www.seascapemodels.org/posts/2026-03-28-agentic-AI-ecological-modelling/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Agentic AI tools like Claude Code can write and run code, fix its own errors, and produce a formatted report with figures. I wanted to know whether that translates into reliable ecological modelling, so we ran a test: three fisheries tasks, four AI models, ten independent runs each, scored against a rubric. The results are published in <a href="https://doi.org/10.1111/faf.70079">Fish and Fisheries</a>.</p>
-<p>We found agents can be genuinely useful, but only if you know how to use them well and only if you know enough about the analysis to catch what they miss.</p>
-<section id="how-we-did-our-tests" class="level2">
-<h2 class="anchored" data-anchor-id="how-we-did-our-tests">How we did our tests</h2>
-<p>We used <a href="https://roo.cline.bot/">Roo Code</a>, an agentic AI that runs inside VS Code. Unlike a chatbot, it can write code, execute it, read error messages, and iterate autonomously. There are many popular software’s for agentic AI, Claude Code is the most popular right now. We chose Roo Code because it is open source and fully customisable.</p>
-<p>We gave it detailed specification sheets and asked it to complete three tasks. One was a common ecological modelling task: fitting a generalized linear model (GLM) of fish abundance and coral habitat. The other two were tasks specialised to fisheries modelling: fitting a von Bertalanffy growth curve and running a yield per recruit analysis. We chose these because they are common in ecological sciences, but specalised enough that LLMs probably haven’t seen many examples in their training data.</p>
-<p>We ran each task 10 times. LLM responses have some randomness, and this multiplies when doing long-running tasks. So consistency is as important to measure as their best performance. We scored every output against a rubric covering accuracy, code quality, and report quality.</p>
-<p>We used four versions of LLMs. Two proprietary models: Claude Sonnet 4.0, Sonnet 4.5 (which came out during review so we added later). One open weight model: Kimi K2 and its ‘exacto’ variant.</p>
-<p>During review, Kimi K2 ‘exacto’ became available on the <a href="https://openrouter.ai/">OpenRouter</a> platform, so we added that. The exacto routes requests to providers with the best performance. Some providers run it cheaply. Long story-short, exacto performed much better than just requesting any provider’s version of K2, this highlights the importance of running open weight models on quality hardware.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.seascapemodels.org/posts/2026-03-28-agentic-AI-ecological-modelling/AI-agent-workflows.png" class="img-fluid figure-img"></p>
-<figcaption>Agentic workflows vs AI assisted coding</figcaption>
-</figure>
-</div>
-</section>
-<section id="how-to-use-agentic-ai-for-ecological-modelling" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-use-agentic-ai-for-ecological-modelling">How to use agentic AI for ecological modelling</h2>
-<p>We learned several key lessons about how to get the best out of agentic AI for ecological modelling.</p>
-<p><strong>Write a detailed specification sheet.</strong> Our sheets ran to multiple pages covering analysis aims, data structure, recommended R functions and packages, expected outputs, and file naming conventions. This takes time, but writing a specification forces you to think carefully about what you actually want. <a href="https://github.com/cbrown5/agentic-ai-fisheries/blob/main/Scripts/glm-test-case/glm-readme.md">Here’s an example</a>.</p>
-<p><strong>Specify the algorithms explicitly.</strong> Agents default to the most common method in their training data, which may not be appropriate for your question. If you want bootstrapped confidence intervals via the <code>boot</code> package, say so.</p>
-<p>Even then, they may not comply: both Claude models in our study repeatedly applied natural mortality to the first age class in the yield per recruit model despite explicit instructions not to. That’s a subtle error that affected catch estimates—the numbers that would inform fishery management. These quirks of agent behaviour highlight why expert supervision is essential.</p>
-<p><strong>Run replicates and compare outputs.</strong> Accuracy scores varied substantially between runs. sometimes the agent nailed every parameter; sometimes it got some parts correct but made systematic errors in other parts of the analysis. Running multiple agents and comparing outputs is one way to identify the best solutions.</p>
-<p><strong>Check the things the agent doesn’t know to check.</strong> None of our agents checked for collinearity between predictors in the GLM, even though it’s standard practice. We deliberately left it out of the specification to see if they’d do that. The GLMs ran fine, the results looked coherent, but there was in fact strong colinearity between the predictors. The lesson here is that the agents are good at coding, but their conceptual implementation may be misleading, incomplete or logically flawed.</p>
-</section>
-<section id="the-biggest-problem-with-agentic-ai-is-that-it-can-produce-professionally-formatted-output-that-contains-logical-errors" class="level2">
-<h2 class="anchored" data-anchor-id="the-biggest-problem-with-agentic-ai-is-that-it-can-produce-professionally-formatted-output-that-contains-logical-errors">The biggest problem with agentic AI is that it can produce professionally formatted output that contains logical errors</h2>
-<p>The error type that concerns me most is professionally formatted output containing logical errors.</p>
-<p>In our results we saw growth curves that plotted beautifully but used the wrong confidence interval method, or a yield analysis that applies mortality in the wrong sequence. A coding syntax error is immediately obvious. A methodological shortcut embedded in otherwise clean output may be invisible unless you already know what the answer should look like.</p>
-<p>There is a genuine risk that inexperienced researchers will use these tools to produce analyses they cannot evaluate. Experienced researchers may also get overconfident and not check results thoroughly enough. These flaws can then leak through to the applications, as we’ve seen where human errors in <a href="https://pnas.org/doi/10.1073/pnas.2426166122">ecological modelling impacts decisions on invasive species</a>.</p>
-<p>For scientists with strong quantitative foundations, agents offer a real efficiency gain. The specification sheets and rubrics from our study are in the supplemental materials if you want to adapt them. All our code is available on github if you want to run your own tests (<a href="https://github.com/cbrown5/agentic-ai-fisheries/tree/main/Scripts">Check this folder, each modelling ‘test-case’ has the specification sheet and other files</a>)</p>
-<p>The paper is open access: <a href="https://doi.org/10.1111/faf.70079">Brown et al.&nbsp;2026, Fish and Fisheries</a>.</p>
-
-
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <category>research</category>
-  <category>genAI</category>
-  <category>fisheries</category>
-  <guid>https://www.seascapemodels.org/posts/2026-03-28-agentic-AI-ecological-modelling/</guid>
-  <pubDate>Thu, 02 Apr 2026 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>The dirty secret about stats you were never taught</title>
-  <link>https://www.seascapemodels.org/posts/2026-03-27-stats-dirty-secret/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Walk along this shore in Hobart and you are walking in the footsteps of Charles Darwin. Darwin came here 190 years ago on the final leg of his voyage on the Beagle. Darwin of course then went home to England and became famous for creating the theory of evolution by natural selection.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.seascapemodels.org/posts/2026-03-27-stats-dirty-secret/hobart-foreshore.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Darwin visited Blinking Billy Point near Hobart in 1836</figcaption>
-</figure>
-</div>
-<p>Of course the muwinina people walked here for thousands of years before Darwin did. The muwinina are now sadly extinct, a victim of colonialisation.</p>
-<p>There’s a surprising historical connection between the way we do modern statistics and these events - the discovery of evolution and the atrocities committed by colonial powers.</p>
-<p>Its the dirty secret about stats you’ve probably never been taught.</p>
-<p>The European nations came to power in time of growing awareness about scientific reasoning. That scientific reasoning gave them technologies that enabled their conquests. It also gave them an excuse for exploration and conquest, that it was in the pursuit of scientific knowledge.</p>
-<p>But Darwin’s discovery of evolution by natural selection revealed an awkward reality for the European powers. If all people were descended from the same ape-like ancestors, how could they claim European superiority over other races? The empire struggled to deny the truth in Darwin’s theory. Darwin’s theory came from the same scientific reasoning tools that had given us so many other obvious impressive technological developments.</p>
-<p>The solution of course was to show that white Europeans had evolved a superior intellect. That way it could be justified why they deserved to rule the rest of the world.</p>
-<p>This colonial racism carries through the 19th century to set the scene for statistical methods that were pioneered in the first half of the 20th century.</p>
-<p>These are methods like p-values, t-tests, ANOVAs and maximum likelihood that are still commonly used today. All of these methods are framed under the viewpoint of probabilities as frequencies of events - the frequentist perspective.</p>
-<p>Until recently these methods underpinned almost all scientific inferences. Everything from drug approvals to psychological studies of human behaviour to climate change studies.</p>
-<p>Frequentist methods and their application in the scientific method were pioneered and advocated for by three English mathematicians and biologists, Galton, Pearson and Fisher. All were active in the eugenics movement. For example Fisher was chairman of a prominent eugenics society. The eugenics movement aimed to improve the genetic quality of the human race, usually through advocating for breeding or sterilisation of parts of society on racial or class grounds.</p>
-<p>Fisher for example wrote that the oncoming collapse of civilization was the fault of increased birth rates in lower classes who he thought were of lesser intellectual character. What the empire needed to do was slow those birth rates and promote procreation in the intellectually superior elite classes.</p>
-<p>These were contentious ideas. And contentious ideas needed to be supported by a robust scientific logic that was unassailable by critics. These statisticians and biologists needed a theory that above all appeared to be objective. It is hard to argue with a method that claims to objectively show that elites and white people were superior than other people.</p>
-<p>These three scientists developed that statistical theory. A theory based on the frequentist viewpoint of probability.</p>
-<p>The frequenist viewpoint looks purely objective on the face of it. Probabilities are frequencies of events, what could be more objective that that?</p>
-<p>Frequentist methods are very useful, but they have their limits. They are great for analysing well replicated experiments for instance.</p>
-<p>But the frequenist logic starts to break down when you want to make decisions from your science. Frequentist methods can misinform you about the best actions to take when presented with surprising new data.</p>
-<p>They are also not very useful for phenomena that can’t be easily studied in controlled experiments, such as the link between smoking and lung cancer. Fisher himself was a prominent denier that smoking causes lung cancer.</p>
-<p>Rare events are also hard to study, as are events in nature that are not replicated. For instance, climate change. Its hard to use frequentist methods to establish the role of greenhouse gas emissions in climate change. We only have one earth, we can’t do repeated experiments on it.</p>
-<p>A solution to these types of problems is to use Bayesian statistical theory. However, the Bayesian viewpoint of probability is that probability represents degrees of belief for something happening. This view makes the subjectivity of data analysis obvious. That is, different people can have different degrees of belief about the probability of the same event happening.</p>
-<p>The brilliant statistical minds of the early 20th century needed statistics to look objective above all else.</p>
-<p>Even a hint of subjectivity would weaken their arguments for eugenics. They wanted to show for instance that Jewish immigrants had weaker immune systems than the general population, so therefore should not be allowed to immigrate to England. They claimed these were facts in the data, so objective that arguing against this view impossible.</p>
-<p>This strong motivation for objectivity also motivated the oppression of alternative statistical methods, particularly the Bayesian viewpoint. So while these statisticians gave us so much in terms of methods, they also held us back in other areas such as Bayesian statistics.</p>
-<p>The culture of aggressively promoting the frequentist viewpoint at the cost of alternative methods was still strong when I was a young research in the 2000s (well after Fisher’s death). It persists today in some places.</p>
-<p>Right into the 2000s you were risking academic ridicule if you dared to mention Bayesian statistics in a conference presentation. Scientific dialogue still carried the scars of a toxic culture that arose in the 20th century to support a racist ideology, even though the new perpetrators of this statistical cause did not agree with that ideology (we hope).</p>
-<p>I think this has been a net loss to many important areas of science. In the environmental sciences we struggle with sample sizes and studying natural phenomena that are hard to manipulate experimentally.</p>
-<p>There are many cases of misinterpreting a non-significant p-value to mean ‘no impact of humans of environment’, whereas a Bayesian viewpoint that builds on the accumulation of prior knowledge can detect these effects in small samples.</p>
-<p>We also have the repeatability crises in psychology and biology, which comes about from over-emphasis of the publication system on significant p-values.</p>
-<p>Bayesian statistics have risen to prominence only in the last 20 years. They should be much more widely used, exactly because they deal with subjectivity and make the views of the analyst transparent to others.</p>
-<p>Frequentist methods are not more objective, they just hide the subjectivity underneath a show of statistical rigour and jargon.</p>
-<p>I’ve been doing stats for about 20 years now, but only recently learned about this history. Its made me rethink the role of the quantitative sciences in science and society.</p>
-<p>Leading statisticians are also making this reckoning only recently. <a href="https://statmodeling.stat.columbia.edu/2020/08/01/ra-fisher-and-the-science-of-hatred/">Andrew Gelman, prominent Bayesian statistician and educator has said</a> “Fisher’s personal racist attitudes do not make him special [in the context of his era], but in retrospect I think it was a mistake for us in statistics for many years to not fully recognize the centrality of racism to statistics, not just a side hustle but the main gig.”</p>
-<p>If you want to know more about this statistical history I recommend you read <a href="https://aubreyclayton.com/bernoulli">Bernoulli’s Fallacy by Aubrey Clayton</a>. And for a broader understanding of the British empire and its ongoing impact, the podcast <a href="https://www.abc.net.au/listen/programs/stuff-the-british-stole">‘Stuff the British Stole’</a> is a great listen (I find the episodes with British experts insisting that the stuff in question was ‘given’ to them particular informative about the ongoing legacy of empire).</p>
-<p>Walking in Darwin’s footprints reminds me of the importance of science in our society. But also how science facts can be portrayed in different ways to suit political means.</p>
-<p>As a quantitative scientist its important to acknowledge our work will always have subjective elements. We should be transparent about those, not try to hide those under complex methodology.</p>
-<p>That’s why I’ve grown to favour Bayesian statistics. I want my assumptions to be transparent.</p>
-
-
-
- ]]></description>
-  <category>research</category>
-  <guid>https://www.seascapemodels.org/posts/2026-03-27-stats-dirty-secret/</guid>
-  <pubDate>Wed, 25 Mar 2026 13:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
