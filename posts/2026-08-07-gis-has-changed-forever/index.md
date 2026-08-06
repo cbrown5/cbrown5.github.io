@@ -1,7 +1,7 @@
 ---
 date: '08/07/2026'
 title: The GIS Research Assistant Job Has Transformed
-categories: [research-skills, rstats]
+categories: [research-skills; rstats]
 published: true
 ---
 

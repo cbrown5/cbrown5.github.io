@@ -1,7 +1,7 @@
 ---
 date: '08/07/2026'
 title: How Is AI Being Used In Ocean Conservation? A New Survey
-categories: [genAI, research]
+categories: [genAI; research]
 published: true
 ---
 
