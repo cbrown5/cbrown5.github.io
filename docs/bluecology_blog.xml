@@ -12,6 +12,44 @@
 <generator>quarto-1.8.25</generator>
 <lastBuildDate>Thu, 06 Aug 2026 14:00:00 GMT</lastBuildDate>
 <item>
+  <title>When AI coding assistance waste rather than save time</title>
+  <link>https://www.seascapemodels.org/posts/2026-08-14-when-ai-wastes-time/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><em>The time savings are often offset by dead end pursuits</em></p>
+<p>There’s a lot of skill in using AI coding assistance in ways that are effective and actually save your time. I find in many cases, if you jump onto these tools too soon in a project, you end up wasting time that you should have been spending on clear thinking and planning.</p>
+<p>In one example of this pattern recently, my student and I were looking to use a new type of model. So, we were reading a wonderful paper about <a href="https://www.nature.com/articles/s41559-024-02425-5">state changes in a marine ecosystem</a>, which had applied hidden markov models to detect state changes. And my student had started to try to apply that package to his data set.</p>
+<p>He used an AI coding assistant to help him scaffold the code, which was fairly complex, requiring detailed parameter specifications. And then he came to show me the results. It was clear to me that the model wasn’t fitting very well, and was likely over-specified. So more parameters than could be supported by the data.</p>
+<p>We then considered alternative R packages for this problem. There’s many other packages for doing hidden markov models in R that turn out to be better suited tothe data structures that we have.</p>
+<p>So we could have saved some time if we’d done one of two things. Firstly, if we’d started by asking an AI assistant, describing our data structure, and asked: “search for us, the most appropriate types of hidden markov model packages in R for modelling state changes in this data structure”. That would have given us a head start to then research different packages and try to understand which is most appropriate.</p>
+<p>Or if we could have just done our own research on different package options at the outset. Then once we’d settled on a package that was most appropriate to our data structure, we could ask an AI assistant to scaffold the code for that particular package.</p>
+<p>So, there’s a lot of skill in using R for statistics, and having a powerful coding assistant doesn’t take away the need for understanding how coding works. In particular, I don’t advise jumping straight into asking AI, <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210x.70267">clear planning of software and stats options is needed first</a>.</p>
+<p><em>If you’d like email updates on AI posts, follow us on substack</em></p>
+<div class="substack-post-embed">
+<p lang="en">
+When AI coding assistance waste rather than save time by Chris Brown
+</p>
+<p>
+The time savings are often offset by dead end pursuits
+</p>
+<a data-post-link="" href="https://vitaexmachina.substack.com/p/when-ai-coding-assistance-waste-rather">Read on Substack</a>
+</div>
+<script async="" src="https://substack.com/embedjs/embed.js" charset="utf-8"></script>
+
+
+
+ ]]></description>
+  <category>genAI</category>
+  <category>research</category>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-08-14-when-ai-wastes-time/</guid>
+  <pubDate>Thu, 06 Aug 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
   <title>The GIS Research Assistant Job Has Transformed</title>
   <link>https://www.seascapemodels.org/posts/2026-08-07-gis-has-changed-forever/</link>
   <description><![CDATA[ 
@@ -1355,46 +1393,6 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2026-04-22-quick-and-easy-AI-generated-games-for-teaching/</guid>
   <pubDate>Tue, 21 Apr 2026 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Do AI coding agents save scientists time?</title>
-  <link>https://www.seascapemodels.org/posts/2026-04-14-does-agentic-AI-save-time/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>I’m often asked if using AI coding agents saves time. Yes they write code very quickly and can <a href="https://onlinelibrary.wiley.com/doi/10.1111/faf.70079">complete entire ecological data analyses</a>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.seascapemodels.org/posts/2026-04-14-does-agentic-AI-save-time/coding-time.png" class="img-fluid figure-img"></p>
-<figcaption>Do agents really help when the deadlines are approaching?</figcaption>
-</figure>
-</div>
-<p>Do agents really help when the deadlines are approaching?</p>
-<p>But the code also requires careful checking for logical errors. Our recent analysis shows this. The best LLMs can complete entire analyses and all the code works well. But there was a decent chance of subtle logical errors. These logical errors would require pretty deep human understanding of the code to correct.</p>
-<p>There’s another issue and that is using code you don’t understand. I often find the agents produce so much code, but I’m not comfortable using it until I understand the logic line-by-line.</p>
-<p>In those cases I find its faster to use an autocomplete AI assistant so I’m going line-by-line, rather than an agentic loop that completes the entire piece of work.</p>
-<p>I think the jury is still out on this question of whether there is a net time benefit to using agents. The only way to really answer is a randomised control trial where you time how long it takes scientists to fully complete a task.</p>
-<p>The only study I’m aware of is quite limited and looked at software developers. They found the <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">developers often projected they would be faster with the AI tools, but were actually slower at tasks by the end of the project.</a></p>
-<p>Its true that using AI is fun because it makes so much progress, but that fun feeling might be a trap for us.</p>
-<p>Its likely that the answer is context dependent.</p>
-<p>I suspect for scientists most of the coding we do (like writing models that represent ecosystems) actually requires the human to understand what it does. In these cases agents don’t make sense, because you need to go back and review the code carefully to understand it anyway.</p>
-<p>On the other hand, if you are making software tools that are easy to verify then agents are great. For instance, I often use them to write code for non-standard figures. I don’t need to know the code in that case because I can check the output is correct visually.</p>
-<p>Likewise interactive shiny apps are another example of time saving. The agent can take some (good) code you already have and turn it into an app. Its easy to test and check because you just use the app.</p>
-<p>People often point to advances in LLMs and say that soon they will be good enough to do all the coding for us. I’m not so sure that applies to science. <a href="https://onlinelibrary.wiley.com/doi/10.1111/faf.70079">In fact, we found the later version of Claude Sonnet performed about the same as an earlier version on scientific logic, it just made different types of errors.</a></p>
-<p>I think the advances need to come in the ways we interact and use the LLMs.</p>
-<p>The ultimately goal should be efficient but also high quality work. That’s something I want to look at in my next agentic AI study.</p>
-
-
-
- ]]></description>
-  <category>rstats</category>
-  <category>research</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2026-04-14-does-agentic-AI-save-time/</guid>
-  <pubDate>Mon, 13 Apr 2026 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
