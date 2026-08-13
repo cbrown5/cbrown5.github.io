@@ -1,6 +1,6 @@
 ---
 date: '08/07/2026'
-title: When AI coding assistance waste rather than save time
+title: When AI coding assistants waste rather than save time
 categories: [genAI, research, rstats]
 published: true
 ---
