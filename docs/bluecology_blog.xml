@@ -10,7 +10,108 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Thu, 06 Aug 2026 14:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 21 Aug 2026 14:00:00 GMT</lastBuildDate>
+<item>
+  <title>Running local large language models not as difficult as you might think</title>
+  <link>https://www.seascapemodels.org/posts/2026-08-22-running-local-LLMs/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This post was <a href="https://vitaexmachina.substack.com/p/running-local-large-language-models">originally published on our collaborative substack site</a>. Visit the site to follow us and read more similar posts.</p>
+<p><em>Jointly authored by Chris Brown, Scott Spillias, Carla Sbrocchi and Luis D. Verde Arregoitia.</em></p>
+<p>Chris had putting off trying local models as the setup seemed too complex for him, but Scott convinced him to try it out. Chris did and says it was easier than he had thought. This tutorial walks through the setup.</p>
+<section id="what-youll-need" class="level2">
+<h2 class="anchored" data-anchor-id="what-youll-need">What you’ll need</h2>
+<ul>
+<li><p>A desktop or laptop computer, more on hardware below.</p></li>
+<li><p><strong>Download the <a href="https://ollama.com/">Ollama</a></strong> software</p></li>
+<li><p><strong>A large language model</strong>, it’s simple to use Ollama to download one.</p></li>
+<li><p><strong>Ideally, another piece of software that interacts with Ollama</strong> — this can either be, say, <a href="https://ellmer.tidyverse.org/">ellmer</a>, the R package, which can make calls to Ollama, or it can be an extension like <a href="https://www.continue.dev/">Continue</a>, which lets you do agentic coding and autocomplete.</p></li>
+</ul>
+</section>
+<section id="ollama" class="level2">
+<h2 class="anchored" data-anchor-id="ollama">Ollama</h2>
+<p>The main software you need to get is Ollama. Go to <a href="https://ollama.com/">ollama.com</a> and download and install Ollama (you may need to seek IT approval if you are doing this on a work computer). Then you have several choices for <a href="https://ollama.com/library">models</a> to download directly from Ollama These are open source models, and we recommend researching their webpage for which model would be best for the particular application you want to use Ollama for. More on this below.</p>
+<p>The way Ollama works is it sets up a localhost server. This is like a web server, where you would access a service from the internet, except the server runs locally on your computer. It just sits there waiting until you make a request of the LLM. Then what it’s going to do is load a large language model into memory and pass that request to a locally run large language model.</p>
+</section>
+<section id="the-commands-you-need" class="level2">
+<h2 class="anchored" data-anchor-id="the-commands-you-need">The commands you need</h2>
+<p>Ollama comes with a clickable interface, but we find it more convenient to use the terminal. Here are some of the key commands.</p>
+<pre><code>ollama serve                  # start the server (the desktop app does this for you)
+ollama pull qwen2.5-coder     # download a model
+ollama run qwen2.5-coder      # chat with a model (downloads it first if you don't have it)
+ollama list                   # see which models you've already downloaded
+ollama ps                     # see which models are currently loaded in memory
+ollama stop qwen2.5-coder     # unload a model from memory now
+ollama rm qwen2.5-coder       # delete a downloaded model from disk</code></pre>
+<p>Full list: <a href="https://docs.ollama.com/cli">CLI reference</a>.</p>
+<p>Before starting on these, let’s look at model choice.</p>
+</section>
+<section id="performance-and-hardware" class="level2">
+<h2 class="anchored" data-anchor-id="performance-and-hardware">Performance and hardware</h2>
+<p>Now its important to understand the difference between hard-disk memory, RAM, GPUs and CPUs.</p>
+<p>Hard-disk memory is where data is stored long term. You need enough of this just to download the model file. This is unlikely to be a constraint for downloading a model, unless your computers memory is really chockers.</p>
+<p>Common LLM choices range from about 8GB up to terabytes. You will need at least 10GB of free hard-disk memory to download a basic coding assistant model.</p>
+<p>RAM is the accessible memory where Ollama (and other programs) hold data so its ready for quick access. The local LLM needs to fit in your RAM for Ollama to do inference with it. If the LLM is using most of your RAM it may still work, but not you will find other software on your computer slows down or breaks while the model is in use, because it can’t use that RAM.</p>
+<p>For a basic 7 billion parameter model (‘7B’) you will need 8GB RAM minimum. But practically you will want 16GB+ for responses to be fast enough and to allow you to use other software simultaneously.</p>
+<p>Ollama only holds an LLM in RAM while it’s in use. By default Ollama unloads it after five minutes of inactivity, or use the <code>stop</code> command to get it out of RAM sooner.</p>
+<p>GPUs and CPUs are what do the inference. They take your prompt and process it to produce text/images/audio. Hopefully you have a computer with a decent GPU, this is much faster. Read more on <a href="https://docs.ollama.com/gpu">Hardware support</a> if you are not sure.</p>
+<p>GPU setups differ with different brands of computers. For instance, a mid-range Macbook will be sufficient to run basic models. For windows machines, you will want to have a performance NVidia GPU. Developers are aggressively compressing and quantizing local models to help us run decent local models on memory’-constrained machines, and hopefully good coding assistants will soon perform similarly to cloud-hosted frontier models on the consumer grade laptops most of us use.</p>
+</section>
+<section id="choosing-a-model" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-a-model">Choosing a model</h2>
+<p>Some of these models are very large (use a lot of memory), and there’s a fair bit of choice that needs to go into selecting the right model. Memory size roughly correlates with the number of parameters an LLM has (e.g.&nbsp;7B, 14B). LLMs with more parameters are in general smarter, but you’re going to need more RAM and a more powerful GPU to use them.</p>
+<p>When he tried Ollama, Chris was surprised that there are lots of quite good, relatively small models these days that will run on most modern laptops.</p>
+<p>Useful references for picking one:</p>
+<ul>
+<li><p><a href="https://ollama.com/search">Browse models</a> — filter by chat, coding, vision, embeddings and reasoning</p></li>
+<li><p><a href="https://docs.ollama.com/context-length">Context length</a> — how much text the model can take in at once</p></li>
+<li><p><a href="https://docs.ollama.com/quickstart">Ollama quickstart</a></p></li>
+</ul>
+<p>Now let’s look at a couple of applications of Ollama.</p>
+</section>
+<section id="autocomplete-and-agentic-coding" class="level2">
+<h2 class="anchored" data-anchor-id="autocomplete-and-agentic-coding">Autocomplete and agentic coding</h2>
+<p>Chris started with the <a href="https://ollama.com/library/qwen2.5-coder">Qwen 2.5 Coder base</a>, because he wanted to try using Ollama for autocomplete suggestions while coding.</p>
+<p>To get the model he just ran <code>ollama pull qwen2.5-coder:7b-base</code>. Then it downloaded from the internet. This took a while as the file is several gigabytes.</p>
+<p>He used the ‘base’ version as it seems to perform better for line completion. Other models are trained for back and forth chatting, so tend not to want to complete your sentences (which would be annoying in a chat interface!).</p>
+<p>So download that model, and then you’re going to need another extension to help with the autocomplete. If you’re using Visual Studio Code, you can install the <a href="https://marketplace.visualstudio.com/items?itemName=Continue.continue">Continue extension</a> and then just follow <a href="https://docs.continue.dev/customize/model-providers/ollama">their instructions</a> for connecting Continue to Ollama. Note that Continue has been acquired by the company Cursor and the actual extension may not be around for much longer. We can also use <a href="https://kilo.ai/docs/automate/extending/local-models">Kilo Code</a> as an alternative extension that also supports local models.</p>
+<p><a href="https://docs.continue.dev/customize/models">Check their list of recommended models.</a></p>
+<p>Other applications you might want to try out are the chat agents option in Continue. This will make changes to your scripts. The base model we used above won’t work for this task, you will want a different model that is optimized for chat and agentic workflows. Usually these models are significantly larger.</p>
+</section>
+<section id="agentic-programming" class="level2">
+<h2 class="anchored" data-anchor-id="agentic-programming">Agentic programming</h2>
+<p>Agents write code, run code, look at the results, update the code and keep going until they decide to finish the task.</p>
+<p>It is possible to do agentic coding with local LLMs, but you will need a really good consumer grade computer that can handle much bigger models than used for autocomplete or chatting.</p>
+<p>See this <a href="https://simonpcouch.com/blog/2026-04-16-local-agents-2/">post</a> by Simon Couch on driving coding agents on a laptop using local models such as variants of Qwen 3.5 and Gemma 4.</p>
+<p>Qwen 3.8 (27B) is also <a href="https://simonwillison.net/2026/Aug/16/qwen-38-27b/">getting great reviews for agentic coding</a>. That blogger has found it works ok with both a 128GB M5 Max MacBook Pro and an NVIDIA DGX Spark (about $16,000 and $9000 AUD respectively at post publication).</p>
+<p>The good news is that clever people are finding new ways to compress and use these LLMs such that they run faster on smaller computers.</p>
+<p>Note there are some cybersecurity issues with agents because they run code on your computer. You want to be careful that you know what you’re doing before you start using agents, and get permission from your work if you’re using them on your work computer.</p>
+</section>
+<section id="processing-files-and-literature-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="processing-files-and-literature-in-r">Processing files and literature in R</h2>
+<p>Another application of local LLMs is processing text through the LLM. If you’re doing this in R, it’s relatively simple to set up, just use the ellmer package to chat with the model. ellmer will link to Ollama via its API (application programming interface), and then you can send text to that API to have ellmer process it through the LLM.</p>
+<p>You don’t have to use R. There is software written in many languages for accessing Ollama programmatically, including python, javascript and bash.</p>
+<p>We’ve written previously about using <a href="https://www.seascapemodels.org/posts/2025-03-15-LMs-in-R-with-ellmer/index.html">ellmer to batch process text files</a>, such as if you want to automate the extraction of meta-data from papers for a literature review. The main difference is you would use <code>chat_ollama</code>to send text to the model.</p>
+<p>One thing to keep in mind when using Ollama for scientific workflows, is that the default commands provided above will download the 4 bit <a href="https://huggingface.co/docs/optimum/concept_guides/quantization">quantized</a> versions of the LLMs. Quantization roughly means rounding some of the numbers in the massive matrices of weights that make up an LLM’s neural networks. This saves memory, but reduces precision.</p>
+<p>In our experience, for text-processing tasks the difference in different quantizations is negligible, but needs reporting when writing up results.</p>
+<p>We hope this quick guide helps those who are curious about local models. We are interested to hear from readers about your experiences with local LLMs and what applications you are using them for.</p>
+<hr>
+<p>*Note that Ollama as a wrapper for llama.cpp is considered <a href="https://sleepingrobots.com/dreams/stop-using-ollama/">problematic</a> by some. In R we can use other bindings to the llama.cpp library for local inference of large language models (LLMs), such as the<a href="https://github.com/Zabis13/llamaR">llamaR</a> package by Yuri Baramykov.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>genAI</category>
+  <category>research</category>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-08-22-running-local-LLMs/</guid>
+  <pubDate>Fri, 21 Aug 2026 14:00:00 GMT</pubDate>
+</item>
 <item>
   <title>When AI coding assistants waste rather than save time</title>
   <link>https://www.seascapemodels.org/posts/2026-08-14-when-ai-wastes-time/</link>
@@ -1307,92 +1408,6 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-04-23-clear-plots-ggplot-for-mobile/</guid>
   <pubDate>Sat, 25 Apr 2026 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Quick and easy AI generated games for teaching</title>
-  <link>https://www.seascapemodels.org/posts/2026-04-22-quick-and-easy-AI-generated-games-for-teaching/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>One of the benefits of generative AI is quick prototyping of web apps. I’ve used this advantage to bring simple games into my lectures. This helps make slide heavy lectures more engaging and gives the students an alternative pathway for learning.</p>
-<p>The games are nothing sophisticated. The graphics are simple and there are at most 1-2 levels. The advantage is that they are cheap and easy to make. So you can bash one together and try it out in a lecture without a big time investment and with minimal technical know-how.</p>
-<p>The simplest games are about an equivalent investment of time as making the powerpoint slides I would have used before.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.seascapemodels.org/posts/2026-04-22-quick-and-easy-AI-generated-games-for-teaching/seabird-game.png" class="img-fluid figure-img"></p>
-<figcaption>The seabird game</figcaption>
-</figure>
-</div>
-<p>I’ll show a few examples (a more comprehensive list is below). Then I want to discuss how to build these games. Its pretty simple, there’s just a few steps to follow.</p>
-<p>I teach in marine science and statistics, so they are all pretty marine biology and stats focused. But hope you get some ideas to make your own for whatever discipline you teach in.</p>
-<p><a href="https://www.seascapemodels.org/connections-game/"><strong>Word match game</strong></a> inspired by the New York Times connections puzzle. I made my own version that lets me customize what words you have to match. This one is great for a quick recap quiz 10 or 20 minutes into a lecture. The students find it more fun (and challenging) than regular multi-choice quizzes.</p>
-<p><a href="https://www.seascapemodels.org/seabird-block-game/"><strong>Seabird block game</strong></a>. This ones takes a bit more explaining. But the basic idea is that the player is a seabird and they have to navigate a wind field to catch fish and feed their chick. Meanwhile they are competing for fish with a fishing boat.</p>
-<p><a href="https://www.seascapemodels.org/impact-eval-app/"><strong>Impact evaluation and monitoring design</strong></a>. This one is more technical. It is about choosing sites on a map to do ecological monitoring. The lesson is in choosing a representative set of sites that gives you a statistically accurate answer.</p>
-<p>Then I’ve also started on a more ambitious project, which I call <strong><a href="https://www.seascapemodels.org/FANGS/">FANGS</a></strong>. This one attempts to recreate a complex statistical software in the web browser. This means students can try out this stats method for a quick intro without having to go through software installation, which can I find can waste an hour or more of class time.</p>
-<p>FANGS is still a work in progress and has taken 30+ prompts (the others were more like 1-2 prompts). But the prototype works well so I’m going to keep refining it as I have time.</p>
-<section id="learning-goal" class="level2">
-<h2 class="anchored" data-anchor-id="learning-goal">Learning goal</h2>
-<p>There’s a few key elements to setting up these games.</p>
-<p>First you need a learning goal. The game should be integrated into your teaching. So think about what lesson you want your students to learn from playing it.</p>
-<p>For the connections game its just about recapping on key technical words. For the seabird game we follow up with a discussion about seabird conservation, drawing on the conflicts that emerge in the game. I designed the game with those conflicts so as to create these discussion opportunities.</p>
-<p>For the statistical games there are precise mathematical concepts I am trying to teach the students.</p>
-<p>Adding pop-ups with questions is one way to do this. Or you can just discuss in class.</p>
-<p>The impact evaluation and monitoring design game deals with more complex statistical concepts. That one isn’t self contained in the webpage, I walk through it in class before setting the students loose on the game.</p>
-</section>
-<section id="game-building-and-hosting" class="level2">
-<h2 class="anchored" data-anchor-id="game-building-and-hosting">Game building and hosting</h2>
-<p>Here’s the process I follow. I first write detailed instructions for what I want. Being detailed and specific is key, the prompt can run into 100s or 1000s of words. If the game doesn’t work out its often best to refine your prompt then start again.</p>
-<p>I’m using Claude Code and/or Github Copilot in VSCode.</p>
-<p><a href="https://github.com/cbrown5/connections-game/blob/main/game-idea.md">Here’s the prompt I used for the word match game</a> and <a href="https://github.com/cbrown5/seabird-block-game/blob/main/game-idea.md">here’s the one for the seabird game</a>. Some testing and follow-up prompting was required to get rid of bugs and make them work like I wanted.</p>
-<p>The other key is to have the AI agent create the game as a standalone webpage. Then you don’t need a server to run the game, the user just goes to the webpage and it runs in their browser. For this reason you need to keep the games pretty small and the graphics simple, otherwise it may run very slowly.</p>
-<p>Play the game locally to check it works and the logic is robust (usually you can just open the file in a web browser). If there are bugs, or worse logical errors you can guarantee the students will find them. Also you don’t want the students to learn the wrong lessons.</p>
-<p>Once I’m happy with the game I sync the code repository to Github. Github is a cloud service for storing code. There’s plenty of tutorials online if you don’t know how to use it (or AI can help you). Its pretty straightforward.</p>
-<p>Once its on github you need to setup <a href="https://docs.github.com/en/pages">Github Pages</a> for your repository. This means people can navigate to a URL and the code will run in their browser (rather than them just seeing the raw code). For instance, the code for the seabird game lives here: https://github.com/cbrown5/seabird-block-game/</p>
-<p>But I’ve activated ‘pages’ on that repository, so if you go here your browser will load the code so you can play: cbrown5.github.io/seabird-block-game</p>
-</section>
-<section id="future-improvements" class="level2">
-<h2 class="anchored" data-anchor-id="future-improvements">Future improvements</h2>
-<p>I’d love to have more time to invest in this system, so I can create compelling games quickly and focus on learning elements rather than getting the technical aspects right. A few things we need to make are:</p>
-<p><strong>Standard prompts/specification sheets for game code</strong></p>
-<p>Including elements like what javascript packages to use (there are specialized gaming ones like Phaser3), how to render graphs, and a template for quick quiz pop-ups.</p>
-<p><strong>System for creating graphics</strong> Currently the games use emoji’s or the AI draws the graphics as an SVG (ie it writes code to create coordinates that draw lines), which is an ineffective way to generate images with AI <a href="https://simonwillison.net/2026/Apr/8/muse-spark/">see these pelicans on bicycles</a>. These methods are quick, but also not as compelling as I would like.</p>
-<p>A more effective system would use an image generation model (like Nano Banana) to make sprite sheets. This should be possible using <a href="https://minimaxir.com/2025/12/nano-banana-pro/">Max Woolf’s system for creating images in a grid</a>. But my attempts have required a lot of manual handling, as the images are never quite perfectly on a grid. I’m sure someone will sort this out for us soon and put it into a nice ‘skill’.</p>
-<p><strong>Multiplayer games and class feedback</strong></p>
-<p>A downside to a fully browser based experience is that there is no data exchange with a server. So that precludes the possibility of multiplayer games, or getting a summary of student answers/outcomes. Firebase may be one way to cheaply create a multiplayer game or get summary stats on student engagement (like how many won/lost).</p>
-<p><strong>Accessible learning</strong></p>
-<p>My prompts aren’t optimised for accessibility, e.g.&nbsp;font sizes and colours. This would be an easy win.</p>
-<p><strong>Games in assessment</strong></p>
-<p>My big picture dream is to have some of the smaller assessment items replaced with games. So rather than the weekly quiz, the students have to solve a puzzle or win a game. I have this idea of an RPG game where the player wanders around our marine science laboratories. In each lab they collect some data. The final ‘boss battle’ for the assessment is putting that data together into a coherent analysis to answer a topical research question. Why can’t assessment be fun too?</p>
-<p>Anyway, I recommend starting small with low ambitions and building up from there. Let me know how you go in your classes if you try this.</p>
-</section>
-<section id="list-of-games-to-date" class="level2">
-<h2 class="anchored" data-anchor-id="list-of-games-to-date">List of games to date</h2>
-<p><a href="https://www.seascapemodels.org/connections-game/">Word match game</a>. Code and instructions are here if you want to make your own version: https://github.com/cbrown5/connections-game</p>
-<p>Or upload your own <a href="https://www.seascapemodels.org/connections-game/word-match-upload.html">word match data file</a></p>
-<p><a href="https://www.seascapemodels.org/seabird-block-game/">Seabird block game</a>. Catch fish to hatch your egg and successfully raise your chick.</p>
-<p><a href="https://www.seascapemodels.org/seabird-block-game/ocean-game">Larval fish avoiding jellyfish and trying not to starve</a></p>
-<p>And there’s even more games, these ones I did ‘live’ for a presentation where the <a href="https://www.seascapemodels.org/posts/2025-09-17-ai-generated-scicomm-games/index.html">audience developed a game for science communication and played it all within an hour</a>.</p>
-<section id="statistical-games" class="level3">
-<h3 class="anchored" data-anchor-id="statistical-games">Statistical games</h3>
-<p><a href="https://www.seascapemodels.org/impact-eval-app/">Impact evaluation and monitoring design</a></p>
-<p>Game code for my stats class: https://github.com/cbrown5/KSM721-games</p>
-<p>Including <a href="https://www.seascapemodels.org/KSM721-games/likelihood-distribution-game/">likelihoods</a> and <a href="https://www.seascapemodels.org/KSM721-games/regression-likelihood-game/index.html">regression</a>.</p>
-<p><a href="https://www.seascapemodels.org/mermaid-to-stan/">App to turn a diagram into statistical code</a>.</p>
-<p><a href="https://www.seascapemodels.org/FANGS/">My most ambitious AI generated project FANGS, a Bayesian computation engine that runs in a web browser</a>. Warning its a work in progress!</p>
-<p>Finally, I’ve made a few just for fun too. <a href="https://www.seascapemodels.org/checklist-game/">These checklist games</a> are meant to help my kids get ready in the morning.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>research</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2026-04-22-quick-and-easy-AI-generated-games-for-teaching/</guid>
-  <pubDate>Tue, 21 Apr 2026 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

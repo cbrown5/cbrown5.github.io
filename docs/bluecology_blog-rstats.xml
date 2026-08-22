@@ -10,7 +10,108 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog-rstats.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Thu, 06 Aug 2026 14:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 21 Aug 2026 14:00:00 GMT</lastBuildDate>
+<item>
+  <title>Running local large language models not as difficult as you might think</title>
+  <link>https://www.seascapemodels.org/posts/2026-08-22-running-local-LLMs/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This post was <a href="https://vitaexmachina.substack.com/p/running-local-large-language-models">originally published on our collaborative substack site</a>. Visit the site to follow us and read more similar posts.</p>
+<p><em>Jointly authored by Chris Brown, Scott Spillias, Carla Sbrocchi and Luis D. Verde Arregoitia.</em></p>
+<p>Chris had putting off trying local models as the setup seemed too complex for him, but Scott convinced him to try it out. Chris did and says it was easier than he had thought. This tutorial walks through the setup.</p>
+<section id="what-youll-need" class="level2">
+<h2 class="anchored" data-anchor-id="what-youll-need">What you’ll need</h2>
+<ul>
+<li><p>A desktop or laptop computer, more on hardware below.</p></li>
+<li><p><strong>Download the <a href="https://ollama.com/">Ollama</a></strong> software</p></li>
+<li><p><strong>A large language model</strong>, it’s simple to use Ollama to download one.</p></li>
+<li><p><strong>Ideally, another piece of software that interacts with Ollama</strong> — this can either be, say, <a href="https://ellmer.tidyverse.org/">ellmer</a>, the R package, which can make calls to Ollama, or it can be an extension like <a href="https://www.continue.dev/">Continue</a>, which lets you do agentic coding and autocomplete.</p></li>
+</ul>
+</section>
+<section id="ollama" class="level2">
+<h2 class="anchored" data-anchor-id="ollama">Ollama</h2>
+<p>The main software you need to get is Ollama. Go to <a href="https://ollama.com/">ollama.com</a> and download and install Ollama (you may need to seek IT approval if you are doing this on a work computer). Then you have several choices for <a href="https://ollama.com/library">models</a> to download directly from Ollama These are open source models, and we recommend researching their webpage for which model would be best for the particular application you want to use Ollama for. More on this below.</p>
+<p>The way Ollama works is it sets up a localhost server. This is like a web server, where you would access a service from the internet, except the server runs locally on your computer. It just sits there waiting until you make a request of the LLM. Then what it’s going to do is load a large language model into memory and pass that request to a locally run large language model.</p>
+</section>
+<section id="the-commands-you-need" class="level2">
+<h2 class="anchored" data-anchor-id="the-commands-you-need">The commands you need</h2>
+<p>Ollama comes with a clickable interface, but we find it more convenient to use the terminal. Here are some of the key commands.</p>
+<pre><code>ollama serve                  # start the server (the desktop app does this for you)
+ollama pull qwen2.5-coder     # download a model
+ollama run qwen2.5-coder      # chat with a model (downloads it first if you don't have it)
+ollama list                   # see which models you've already downloaded
+ollama ps                     # see which models are currently loaded in memory
+ollama stop qwen2.5-coder     # unload a model from memory now
+ollama rm qwen2.5-coder       # delete a downloaded model from disk</code></pre>
+<p>Full list: <a href="https://docs.ollama.com/cli">CLI reference</a>.</p>
+<p>Before starting on these, let’s look at model choice.</p>
+</section>
+<section id="performance-and-hardware" class="level2">
+<h2 class="anchored" data-anchor-id="performance-and-hardware">Performance and hardware</h2>
+<p>Now its important to understand the difference between hard-disk memory, RAM, GPUs and CPUs.</p>
+<p>Hard-disk memory is where data is stored long term. You need enough of this just to download the model file. This is unlikely to be a constraint for downloading a model, unless your computers memory is really chockers.</p>
+<p>Common LLM choices range from about 8GB up to terabytes. You will need at least 10GB of free hard-disk memory to download a basic coding assistant model.</p>
+<p>RAM is the accessible memory where Ollama (and other programs) hold data so its ready for quick access. The local LLM needs to fit in your RAM for Ollama to do inference with it. If the LLM is using most of your RAM it may still work, but not you will find other software on your computer slows down or breaks while the model is in use, because it can’t use that RAM.</p>
+<p>For a basic 7 billion parameter model (‘7B’) you will need 8GB RAM minimum. But practically you will want 16GB+ for responses to be fast enough and to allow you to use other software simultaneously.</p>
+<p>Ollama only holds an LLM in RAM while it’s in use. By default Ollama unloads it after five minutes of inactivity, or use the <code>stop</code> command to get it out of RAM sooner.</p>
+<p>GPUs and CPUs are what do the inference. They take your prompt and process it to produce text/images/audio. Hopefully you have a computer with a decent GPU, this is much faster. Read more on <a href="https://docs.ollama.com/gpu">Hardware support</a> if you are not sure.</p>
+<p>GPU setups differ with different brands of computers. For instance, a mid-range Macbook will be sufficient to run basic models. For windows machines, you will want to have a performance NVidia GPU. Developers are aggressively compressing and quantizing local models to help us run decent local models on memory’-constrained machines, and hopefully good coding assistants will soon perform similarly to cloud-hosted frontier models on the consumer grade laptops most of us use.</p>
+</section>
+<section id="choosing-a-model" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-a-model">Choosing a model</h2>
+<p>Some of these models are very large (use a lot of memory), and there’s a fair bit of choice that needs to go into selecting the right model. Memory size roughly correlates with the number of parameters an LLM has (e.g.&nbsp;7B, 14B). LLMs with more parameters are in general smarter, but you’re going to need more RAM and a more powerful GPU to use them.</p>
+<p>When he tried Ollama, Chris was surprised that there are lots of quite good, relatively small models these days that will run on most modern laptops.</p>
+<p>Useful references for picking one:</p>
+<ul>
+<li><p><a href="https://ollama.com/search">Browse models</a> — filter by chat, coding, vision, embeddings and reasoning</p></li>
+<li><p><a href="https://docs.ollama.com/context-length">Context length</a> — how much text the model can take in at once</p></li>
+<li><p><a href="https://docs.ollama.com/quickstart">Ollama quickstart</a></p></li>
+</ul>
+<p>Now let’s look at a couple of applications of Ollama.</p>
+</section>
+<section id="autocomplete-and-agentic-coding" class="level2">
+<h2 class="anchored" data-anchor-id="autocomplete-and-agentic-coding">Autocomplete and agentic coding</h2>
+<p>Chris started with the <a href="https://ollama.com/library/qwen2.5-coder">Qwen 2.5 Coder base</a>, because he wanted to try using Ollama for autocomplete suggestions while coding.</p>
+<p>To get the model he just ran <code>ollama pull qwen2.5-coder:7b-base</code>. Then it downloaded from the internet. This took a while as the file is several gigabytes.</p>
+<p>He used the ‘base’ version as it seems to perform better for line completion. Other models are trained for back and forth chatting, so tend not to want to complete your sentences (which would be annoying in a chat interface!).</p>
+<p>So download that model, and then you’re going to need another extension to help with the autocomplete. If you’re using Visual Studio Code, you can install the <a href="https://marketplace.visualstudio.com/items?itemName=Continue.continue">Continue extension</a> and then just follow <a href="https://docs.continue.dev/customize/model-providers/ollama">their instructions</a> for connecting Continue to Ollama. Note that Continue has been acquired by the company Cursor and the actual extension may not be around for much longer. We can also use <a href="https://kilo.ai/docs/automate/extending/local-models">Kilo Code</a> as an alternative extension that also supports local models.</p>
+<p><a href="https://docs.continue.dev/customize/models">Check their list of recommended models.</a></p>
+<p>Other applications you might want to try out are the chat agents option in Continue. This will make changes to your scripts. The base model we used above won’t work for this task, you will want a different model that is optimized for chat and agentic workflows. Usually these models are significantly larger.</p>
+</section>
+<section id="agentic-programming" class="level2">
+<h2 class="anchored" data-anchor-id="agentic-programming">Agentic programming</h2>
+<p>Agents write code, run code, look at the results, update the code and keep going until they decide to finish the task.</p>
+<p>It is possible to do agentic coding with local LLMs, but you will need a really good consumer grade computer that can handle much bigger models than used for autocomplete or chatting.</p>
+<p>See this <a href="https://simonpcouch.com/blog/2026-04-16-local-agents-2/">post</a> by Simon Couch on driving coding agents on a laptop using local models such as variants of Qwen 3.5 and Gemma 4.</p>
+<p>Qwen 3.8 (27B) is also <a href="https://simonwillison.net/2026/Aug/16/qwen-38-27b/">getting great reviews for agentic coding</a>. That blogger has found it works ok with both a 128GB M5 Max MacBook Pro and an NVIDIA DGX Spark (about $16,000 and $9000 AUD respectively at post publication).</p>
+<p>The good news is that clever people are finding new ways to compress and use these LLMs such that they run faster on smaller computers.</p>
+<p>Note there are some cybersecurity issues with agents because they run code on your computer. You want to be careful that you know what you’re doing before you start using agents, and get permission from your work if you’re using them on your work computer.</p>
+</section>
+<section id="processing-files-and-literature-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="processing-files-and-literature-in-r">Processing files and literature in R</h2>
+<p>Another application of local LLMs is processing text through the LLM. If you’re doing this in R, it’s relatively simple to set up, just use the ellmer package to chat with the model. ellmer will link to Ollama via its API (application programming interface), and then you can send text to that API to have ellmer process it through the LLM.</p>
+<p>You don’t have to use R. There is software written in many languages for accessing Ollama programmatically, including python, javascript and bash.</p>
+<p>We’ve written previously about using <a href="https://www.seascapemodels.org/posts/2025-03-15-LMs-in-R-with-ellmer/index.html">ellmer to batch process text files</a>, such as if you want to automate the extraction of meta-data from papers for a literature review. The main difference is you would use <code>chat_ollama</code>to send text to the model.</p>
+<p>One thing to keep in mind when using Ollama for scientific workflows, is that the default commands provided above will download the 4 bit <a href="https://huggingface.co/docs/optimum/concept_guides/quantization">quantized</a> versions of the LLMs. Quantization roughly means rounding some of the numbers in the massive matrices of weights that make up an LLM’s neural networks. This saves memory, but reduces precision.</p>
+<p>In our experience, for text-processing tasks the difference in different quantizations is negligible, but needs reporting when writing up results.</p>
+<p>We hope this quick guide helps those who are curious about local models. We are interested to hear from readers about your experiences with local LLMs and what applications you are using them for.</p>
+<hr>
+<p>*Note that Ollama as a wrapper for llama.cpp is considered <a href="https://sleepingrobots.com/dreams/stop-using-ollama/">problematic</a> by some. In R we can use other bindings to the llama.cpp library for local inference of large language models (LLMs), such as the<a href="https://github.com/Zabis13/llamaR">llamaR</a> package by Yuri Baramykov.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>genAI</category>
+  <category>research</category>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-08-22-running-local-LLMs/</guid>
+  <pubDate>Fri, 21 Aug 2026 14:00:00 GMT</pubDate>
+</item>
 <item>
   <title>When AI coding assistants waste rather than save time</title>
   <link>https://www.seascapemodels.org/posts/2026-08-14-when-ai-wastes-time/</link>
@@ -1976,38 +2077,6 @@ font-style: inherit;">tool_reject</span>()</span>
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-11-10-make-an-ai-agent-in-r/</guid>
   <pubDate>Sun, 09 Nov 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Environmental impacts of large language models</title>
-  <link>https://www.seascapemodels.org/posts/2025-10-22-environmental-impacts-LLMs/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Just want to quickly highlight a few investigative blogs on the environmental impacts of LLMs.</p>
-<p>There are two main issues: water use (for cooling servers) and carbon emissions generated by creating the hardware, training the models and then using the models to get responses (‘inference’).</p>
-<p>This blog does a deep dive on the <a href="https://andymasley.substack.com/p/the-ai-water-issue-is-fake">water issues</a>. The key finding is that the water issues seem to be overstated (he says ‘fake’ but I don’t agree with that word choice, water issues are real, just overstated).</p>
-<p>Then academic Hannah Ritchies and author of ‘Sustainability by Numbers’ page sums up the <a href="https://www.sustainabilitybynumbers.com/p/carbon-footprint-chatgpt">carbon cost of chatGPT</a>. She draws heavily on <a href="https://andymasley.substack.com/p/a-few-meta-points-on-my-posts-on">Andy Masley</a> detailed work.</p>
-<p>In particular, blog author (<a href="https://www.andymasley.com/">Andy Masley</a>) argues that the public has limited attention span for environmental issues and AI isn’t the biggest priority. He sums it up nicely:</p>
-<p>“AI water use is mostly fake, personal prompt costs are mostly fake, but AI as a whole is going to put a huge strain on our electrical grid going forward that’s going to matter a lot for the green energy transition, local electricity prices, and air pollution”</p>
-<p>By fake, he means your personal usage is trivially small. He highlights golf courses and streaming videos as much larger uses of water and emissions respectively.</p>
-<p>What also matters is the counterfactual - ie what would you be doing if you weren’t using chatGPT? If you would be online shopping, using a microwave or streaming videos instead, then your personal emissions are probably slightly lower if you switch your time to chatGPT.</p>
-<p>If you are concerned about the impacts of your AI use you can easily do a personal offset by commiting to some simple behaviour changes. <a href="https://www.it.ox.ac.uk/article/reducing-energy-consumption-pcs">e.g.&nbsp;turn you computer off at night and turn it off at the power plug</a>.</p>
-<section id="what-about-coders" class="level2">
-<h2 class="anchored" data-anchor-id="what-about-coders">What about coders?</h2>
-<p>One unaddressed question in these posts is the personal impacts of genAI power users (like me). By that I mean people using it for coding. The blogs above deal with people who are doing the occaisonal short chatGPT prompt. Coders might be leaning on AI hundreds of times a day for prompts that range from short to very long (and more energy intensive).</p>
-<p>That’s something I’d like to do the numbers for later on.</p>
-
-
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-10-22-environmental-impacts-LLMs/</guid>
-  <pubDate>Tue, 21 Oct 2025 13:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
