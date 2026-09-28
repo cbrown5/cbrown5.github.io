@@ -17,6 +17,10 @@ In the terminal use `quarto render` to re-render the entire site, which updates 
 Or just run the bash script:
 `scripts/new-post.sh "My Post Title"`
 
+To publish run: 
+
+`scripts/publish.sh 'commit msg'`
+
 
 TODO
 
