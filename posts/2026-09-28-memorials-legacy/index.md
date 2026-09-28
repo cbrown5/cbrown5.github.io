@@ -6,7 +6,7 @@ published: true
 date: '09/28/2026'
 ---
 
-I attended the memorial of a prominent environmental scientist last night. I was there to support my wife, he was her colleague and mentor. He was taken from us too young, with so much left to give his family, science and the world. 
+I attended the memorial of a prominent environmental scientist last night. I was there to support my wife, she was his colleague and mentor. He was taken from us too young, with so much left to give his family, science and the world. 
 
 Its not my place to offer reflections on a man I didn't know, but I did want to write down some reflections that were inspired by the memorial. 
 
