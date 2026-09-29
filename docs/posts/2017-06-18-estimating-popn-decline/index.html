@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2017-06-18">
+
+<title>Quantifying the magnitude of a population decline with Bayesian time-series modelling – Seascapemodels</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Seascapemodels</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../bluecology_blog.html"> 
+<span class="menu-text"><i class="fa-regular fa-newspaper" aria-label="newspaper"></i> Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../people.html"> 
+<span class="menu-text"><i class="fa-regular fa-user" aria-label="user"></i> People</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../code.html"> 
+<span class="menu-text"><i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> R tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.com.au/citations?hl=en&amp;user=1qG6yFMAAAAJ&amp;view_op=list_works&amp;sortby=pubdate"> 
+<span class="menu-text"><i class="fa-brands fa-google-scholar" aria-label="google-scholar"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://discover.utas.edu.au/C.J.Brown"> 
+<span class="menu-text"><i class="fa-solid fa-building-columns" aria-label="building-columns"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cbrown5"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/bluecology.bsky.social"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/christopher-brown-32466785/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Quantifying the magnitude of a population decline with Bayesian time-series modelling</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">rstats</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 18, 2017</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>Population abundances tend to vary year to year. This variation can make it make it hard detect a change and hard to quantify exactly what that change is.</p>
+<p>Bayesian time-series analysis can help us quantify a decline and put uncertainty bounds on it too. Here I will use the <a href="http://www.r-inla.org/">R-INLA package</a> to fit a time-series model to a population decline.</p>
+<p><img src="estimating-popn-decline/noisy-abundance-trend-1.png" class="img-fluid"></p>
+<p>For instance, take the pictured time-series. Quantifying change as the difference between the first and last time-points is obviously misleading. Doing so would imply that abundance has declined by 77% from the historical value.</p>
+<p>Another approach would be to compare the average of the first and last decades. Doing so would yield a 72% decline.</p>
+<p>A better way might be to model the population trend over time and then estimate our change from the model. An advantage of a model is we can be more specific (and transparent) about assumptions. Using Bayesian time-series analysis we can also pick a model that is appropriate for the distribution of the data. e.g.&nbsp;here I will use <a href="https://en.wikipedia.org/wiki/Negative_binomial_distribution">negative binomial</a> errors, because the abundances are counts.</p>
+<section id="simulating-a-time-series" class="level3">
+<h3 class="anchored" data-anchor-id="simulating-a-time-series">Simulating a time-series</h3>
+<p>Let’s simulate a simple time-series of counts that declines at a constant (exponential) rate:</p>
+<pre><code>set.seed(1969)
+n  &lt;-  50
+rho  &lt;-  0.8
+prec  &lt;-  10
+init &lt;- 7
+acoef &lt;- c(rep(-0.01, n/2), rep(-0.03, n/2))
+eta &lt;- init + (acoef*(1:n))
+y &lt;- rnbinom(n, mu  =  exp(eta), size  =  5)
+data  &lt;-  list(y =y, z = 1:n)</code></pre>
+<p>The results are pictured above. In short we calculate <code>eta</code> which is the linear predictor. Its exponent determines the mean of the negative binomial process, hence the exponential (not linear) decline. The <code>size = 5</code> means that the count data will be moderately over-dispersed - that is quite noisy (the variance will be &gt; than the mean).</p>
+<p>Notice that I put a bit of a ‘kink’ in eta by having the rate of decline (<code>acoef</code>), increase halfway through the time-series like this:</p>
+<p><img src="estimating-popn-decline/expected-abundance-1.png" class="img-fluid"></p>
+<p>We can calculate the magnitude of change like this: <code>1 - (y[n]/y[1])</code> = 0.77 which can be interpreted as what fraction of the intial years biomass has been lost?</p>
+<p>What we want to do is put a smoother over time, so our estimate accounts for short-term variation. We also want to get credibility intervals (95% probability intervals) on the estimate of decline.</p>
+</section>
+<section id="fitting-a-time-series-model-with-inla" class="level3">
+<h3 class="anchored" data-anchor-id="fitting-a-time-series-model-with-inla">Fitting a time-series model with INLA</h3>
+<p>R-INLA is a pretty handy package. It is a very <a href="http://www.seascapemodels.org/rstats/2017/04/14/glmm-comparison.html">fast</a> way to fit generalized linear models and can also handle a huge range of different types of <a href="http://www.r-inla.org/models/latent-models">random effects</a>. Here we will use an auto-regressive lag one process. That is saying that abundance at time t depends on abundance at time t-1 with some constant correlation coefficient.</p>
+<p>We could also include other covariates in the model, for instance, abundance of a predator that might eat our organism of interest. However, we won’t go into that here.</p>
+<p>First up, we specify the formula in INLA’s notation:</p>
+<pre><code>library(INLA)
+f1 &lt;- y ~ 1 + f(z, model = "ar1")</code></pre>
+<p>Which just says model <code>y</code> as a function of an intercept term (constant mean) + an autoregressive process that depends on <code>z</code> (just an index for the year). The <code>f()</code> is INLA’s standard notation for modelling its different random effects models (AKA latent models), here we chose the <code>ar1</code> option.</p>
+<p>Now the trick is to get INLA to compute the % difference between the <strong>expectation</strong> for the first and last time points as it goes. That way we not only get an estimate of the change but also we will get the full posterior distribution, so we can get our CIs. Note I put emphasis on <strong>expectation</strong>, because we won’t simply be calculating the difference between the first and last points (we did that above), but will in fact be calculating the difference between the model’s estimated mean values for the first and last points.</p>
+<p>To do that we use INLA’s <a href="http://www.r-inla.org/faq#TOC-I-have-some-linear-combinations-of-the-nodes-in-the-latent-field-that-I-want-to-compute-the-posterior-marginal-of-is-that-possible-">linear combination</a> feature.</p>
+<p>This feature let’s us compute a linear combination of the estimated covariates. Here we will ask for the difference between the first and last values of <code>z</code> (the time-series). <code>inla</code> will multiply the <code>z</code> values by the numbers we give below (here <code>-1</code> and <code>1</code>), then sum them together.</p>
+<pre><code>lc1 &lt;- inla.make.lincomb(z = c(-1, rep(NA, n-2), 1))
+names(lc1) = "lc1"</code></pre>
+<p>The row of <code>NA</code> in the middle just says to ignore the middle points. Note that we have also ignored the intercept. More on this in a moment.</p>
+<p>Now we can fit the model, using negative binomial errors and specifying our linear combination:</p>
+<pre><code>m1 &lt;- inla(f1,family = "nbinomial", data  =  data,
+    lincomb = lc1,
+    control.inla = list(lincomb.derived.only = TRUE),
+    control.predictor = list(compute = TRUE, link = 1)
+)</code></pre>
+<p>And the results summary can be obtained (not shown here):</p>
+<pre><code>summary(m1)</code></pre>
+<p>Note the large estimate for <code>rho</code>, which is the auto-correlation parameter. That happens because we have such a strong decline.</p>
+<p>We could have also fit just a linear trend to our data, however, because the rate varies over time (and we wouldn’t know that beforehand if we had real data, not data we made up), it is nice to use <code>ar1</code> which has a kind of smoothing effect.</p>
+<p>Also worth noting that modelling an trending (non-stationary) time-series with an <code>ar1</code> is not technically correct if we want to estimate rho or forecast. However, here we use <code>ar1</code> because it acts like a smoother in a GAM [e.g.&nbsp;<a href="https://www.r-bloggers.com/functional-anova-using-inla/">see here</a>.</p>
+</section>
+<section id="examining-the-models-predictions" class="level3">
+<h3 class="anchored" data-anchor-id="examining-the-models-predictions">Examining the model’s predictions</h3>
+<p>It is pretty straightforward to plot INLA’s predictions for the time-series. They are all stored in the <code>m1</code> object:</p>
+<pre><code>plot(data$z, data$y, col = 'grey', type = 'l', lwd = 2, xlab = "years", ylab = "Abundance")
+lines(data$z, m1$summary.fitted.values$mean, col = "tomato", lwd = 2)
+lines(data$z, m1$summary.fitted.values[,3], col = "tomato", lwd = 1, lty = 2)
+lines(data$z, m1$summary.fitted.values[,5], col = "tomato", lwd = 1, lty = 2)
+legend('topright', legend = c("observed", "expected", "95% CIs"), lty = c(1,1,2),
+       col = c("grey", "tomato", "tomato"))</code></pre>
+<p><img src="estimating-popn-decline/fitted-abundance-1.png" class="img-fluid"></p>
+<p>Now we can extract the change in population size from our linear combination:</p>
+<pre><code>m1$summary.lincomb.derived$mean
+
+## [1] -1.081196</code></pre>
+<p>However, this is not quite the number we want. It is the change in <code>eta</code> or the linear predictor. Negative binomial models have a log-link, so that is the change in log-space. We want the real change. If we calculate:</p>
+<pre><code>100 * (1 - exp(m1$summary.lincomb.derived$mean))
+
+## [1] 66.08103</code></pre>
+<p>we get the change as a % from the historical mean The reason being is that the linear combination is <code>log(eta[n]) - log(eta[1])</code>. Taking the exponent gets the change and one minus that is the % loss.</p>
+<p>It is easy now to get the CIs on the linear combination:</p>
+<pre><code>m1$summary.lincomb.derived
+
+##     ID      mean       sd 0.025quant 0.5quant 0.975quant      mode kld
+## lc1  1 -1.081196 0.309715  -1.695217 -1.08053 -0.4716486 -1.079157   0</code></pre>
+<p>We could also look at the marginal and plot the posterior distribution of the % loss:</p>
+<pre><code>losses &lt;- 100 * (1 - exp(m1$marginals.lincomb.derived[[1]][,1]))
+dens &lt;- m1$marginals.lincomb.derived[[1]][,2]
+plot(losses, dens, type = 'l', xlim = c(0, 100),
+     xlab = "% loss", ylab = "density", las = 1,
+      main = "Posterior density for % loss")
+polygon(x = c(losses, rev(losses)),
+        y = c(dens, rep(0, length(dens))), col = "turquoise3")</code></pre>
+<p><img src="estimating-popn-decline/abundance-posterior-1.png" class="img-fluid"></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.seascapemodels\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

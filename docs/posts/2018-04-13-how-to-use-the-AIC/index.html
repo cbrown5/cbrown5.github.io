@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2018-04-13">
+
+<title>How do I interpret the AIC – Seascapemodels</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Seascapemodels</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../bluecology_blog.html"> 
+<span class="menu-text"><i class="fa-regular fa-newspaper" aria-label="newspaper"></i> Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../people.html"> 
+<span class="menu-text"><i class="fa-regular fa-user" aria-label="user"></i> People</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../code.html"> 
+<span class="menu-text"><i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> R tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.com.au/citations?hl=en&amp;user=1qG6yFMAAAAJ&amp;view_op=list_works&amp;sortby=pubdate"> 
+<span class="menu-text"><i class="fa-brands fa-google-scholar" aria-label="google-scholar"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://discover.utas.edu.au/C.J.Brown"> 
+<span class="menu-text"><i class="fa-solid fa-building-columns" aria-label="building-columns"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cbrown5"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/bluecology.bsky.social"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/christopher-brown-32466785/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">How do I interpret the AIC</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">rstats</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 13, 2018</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="how-do-i-interpret-the-aic" class="level1">
+<h1>How do I interpret the AIC?</h1>
+<p>My student asked today how to interpret the AIC (Akaike’s Information Criteria) statistic for model selection. We ended up bashing out some R code to demonstrate how to calculate the AIC for a simple GLM (general linear model). I always think if you can understand the derivation of a statistic, it is much easier to remember how to use it.</p>
+<p>Now if you google derivation of the AIC, you are likely to run into a lot of math. <strong>But the principles are really not that complex.</strong> So here we will fit some simple GLMs, then derive a means to choose the ‘best’ one.</p>
+<p>Skip to the end if you just want to go over the basic principles.</p>
+<p>Before we can understand the AIC though, we need to understand the statistical methodology of likelihoods.</p>
+<section id="explaining-likelihoods" class="level2">
+<h2 class="anchored" data-anchor-id="explaining-likelihoods">Explaining likelihoods</h2>
+<p>Say you have some data that are normally distributed with a mean of <code>5</code> and an sd of <code>3</code>:</p>
+<pre><code>set.seed(126)
+n &lt;- 50 #sample size
+a &lt;- 5
+sdy &lt;- 3
+y &lt;- rnorm(n, mean = a, sd = sdy)
+hist(y)</code></pre>
+<p><img src="how-to-use-the-AIC_files/figure-markdown_strict/unnamed-chunk-1-1.png" class="img-fluid"></p>
+<p>Now we want to estimate some parameters for the population that <code>y</code> was sampled from, like its mean and standard devaiation (which we know here to be 5 and 3, but in the real world you won’t know that).</p>
+<p>We are going to use frequentist statistics to estimate those parameters. Philosophically this means we believe that there is ‘one true value’ for each parameter, and the data we observed are generated by this true value.</p>
+<pre><code>m1 &lt;- glm(y ~ 1, family = "gaussian")
+sm1 &lt;- summary(m1)</code></pre>
+<p>The estimate of the mean is stored here <code>coef(m1)</code> =4.38, the estimated variance here <code>sm1$dispersion</code>= 5.91, or the SD <code>sqrt(sm1$dispersion)</code> =2.43. Just to be totally clear, we also specified that we believe the data follow a normal (AKA “Gaussian”) distribution.</p>
+<p>We just fit a GLM asking R to estimate an intercept parameter (<code>~1</code>), which is simply the mean of <code>y</code>. We also get out an estimate of the SD (= <span class="math inline">\(\\sqrt variance\)</span>) You might think its overkill to use a GLM to estimate the mean and SD, when we could just calculate them directly.</p>
+<p>Well notice now that R also estimated some other quantities, like the residual deviance and the AIC statistic.</p>
+<pre><code>summary(m1)
+
+##
+## Call:
+## glm(formula = y ~ 1, family = "gaussian")
+##
+## Deviance Residuals:
+##     Min       1Q   Median       3Q      Max
+## -5.7557  -0.9795   0.2853   1.7288   3.9583
+##
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)   4.3837     0.3438   12.75   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##
+## (Dispersion parameter for gaussian family taken to be 5.910122)
+##
+##     Null deviance: 289.6  on 49  degrees of freedom
+## Residual deviance: 289.6  on 49  degrees of freedom
+## AIC: 233.72
+##
+## Number of Fisher Scoring iterations: 2</code></pre>
+<p>You might also be aware that the deviance is a measure of model fit, much like the sums-of-squares. Note also that the value of the AIC is suspiciously close to the deviance. Despite its odd name, the concepts underlying the deviance are quite simple.</p>
+<p>As I said above, we are observing data that are generated from a population with one true mean and one true SD. Given we know have estimates of these quantities that define a probability distribution, we could also estimate the likelihood of measuring a new value of <code>y</code> that say = 7.</p>
+<p>To do this, we simply plug the estimated values into the equation for the normal distribution and ask for the relative likelihood of <code>7</code>. We do this with the R function <code>dnorm</code></p>
+<pre><code>sdest &lt;- sqrt(sm1$dispersion)
+dnorm(7, mean = coef(m1), sd = sdest)
+
+## [1] 0.09196167</code></pre>
+<p>Formally, this is the relative likelihood of the value 7 given the values of the mean and the SD that we estimated (=4.8 and 2.39 respectively if you are using the same random seed as me).</p>
+<p>You might ask why the likelihood is greater than 1, surely, as it comes from a probability distribution, it should be &lt;1. Well, the normal distribution is continuous, which means it describes an infinte set of possible <code>y</code> values, so the probability of any given value will be zero. The relative likelihood on the other hand can be used to <a href="https://en.wikipedia.org/wiki/Probability_density_function">calculate the probability of a range of values</a>.</p>
+<p>So you might realise that calculating the likelihood of all the data would be a sensible way to measure how well our ‘model’ (just a mean and SD here) fits the data.</p>
+<p>Here’s what the likelihood looks like:</p>
+<pre><code>plot(y, dnorm(y, mean = coef(m1), sd = sdest), ylab = "Likelihood")</code></pre>
+<p><img src="how-to-use-the-AIC_files/figure-markdown_strict/unnamed-chunk-5-1.png" class="img-fluid"></p>
+<p>It’s just a normal distribution.</p>
+<p>To do this, think about how you would calculate the probability of multiple (independent) events. Say the chance I ride my bike to work on any given day is 3/5 and the chance it rains is 161/365 (like Vancouver!), then the chance I will ride in the rain[1] is 3/5 * 161/365 = about 1/4, so I best wear a coat if riding in Vancouver.</p>
+<p>We can do the same for likelihoods, simply multiply the likelihood of each individual <code>y</code> value and we have the total likelihood. This will be a very small number, because we multiply a lot of small numbers by each other. So one trick we use is to sum the log of the likelihoods instead of multiplying them:</p>
+<pre><code>y_lik &lt;- dnorm(y, mean = coef(m1), sd = sdest, log = TRUE)
+sum(y_lik)
+
+## [1] -114.8636</code></pre>
+<p>The larger (the less negative) the likelihood of our data given the model’s estimates, the ‘better’ the model fits the data. The deviance is calculated from the likelihood and for the deviance smaller values indicate a closer fit of the model to the data.</p>
+<p>The parameter values that give us the smallest value of the -log-likelihood are termed the maximum likelihood estimates.</p>
+</section>
+<section id="comparing-alternate-hypotheses-with-likelihoods" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-alternate-hypotheses-with-likelihoods">Comparing alternate hypotheses with likelihoods</h2>
+<p>Now say we have measurements and two covariates, <code>x1</code> and <code>x2</code>, either of which we think might affect y:</p>
+<pre><code>a &lt;- 5
+b &lt;- 3
+n &lt;- 100
+x1 &lt;- rnorm(n)
+x2 &lt;- rnorm(n)
+sdy &lt;- 1
+y &lt;- a + b*x1 + rnorm(n, sd = sdy)
+par(mfrow = c(1,2))
+plot(x1, y)
+plot(x2, y)</code></pre>
+<p><img src="how-to-use-the-AIC_files/figure-markdown_strict/unnamed-chunk-7-1.png" class="img-fluid"></p>
+<p>So x1 is a cause of y, but x2 does not affect y. How would we choose which hypothesis is most likely? Well one way would be to compare models with different combinations of covariates:</p>
+<pre><code>m1 &lt;- glm(y ~ x1)
+m2 &lt;- glm(y ~ x2)
+m3 &lt;- glm(y ~ x1 + x2)</code></pre>
+<p>Now we are fitting a line to y, so our estimate of the mean is now the line of best fit, it varies with the value of x1. To visualise this:</p>
+<pre><code>plot(x1, y)
+lines(x1, predict(m1))</code></pre>
+<p><img src="how-to-use-the-AIC_files/figure-markdown_strict/unnamed-chunk-9-1.png" class="img-fluid"></p>
+<p>The <code>predict(m1)</code> gives the line of best fit, ie the mean value of y given each x1 value. We then use predict to get the likelihoods for each model:</p>
+<pre><code>sm1 &lt;- summary(m1)
+sum(dnorm(y, mean = predict(m1), sd = sqrt(sm1$dispersion), log = TRUE))
+
+## [1] -125.6214
+
+sm2 &lt;- summary(m2)
+sum(dnorm(y, mean = predict(m2), sd = sqrt(sm2$dispersion), log = TRUE))
+
+## [1] -247.8059
+
+sm3 &lt;- summary(m3)
+sum(dnorm(y, mean = predict(m3), sd = sqrt(sm3$dispersion), log = TRUE))
+
+## [1] -125.4843</code></pre>
+<p>The likelihood of <code>m1</code> is larger than <code>m2</code>, which makes sense because <code>m2</code> has the ‘fake’ covariate in it. The likelihood for <code>m3</code> (which has both x1 and x2 in it) is fractionally larger than the likelihood <code>m1</code>, so should we judge that model as giving nearly as good a representation of the data?</p>
+<p>Because the likelihood is only a tiny bit larger, the addition of <code>x2</code> has only explained a tiny amount of the variance in the data. But where do you draw the line between including and excluding x2? You run into a similar problem if you use R^2 for model selection.</p>
+<p>So what if we penalize the likelihood by the number of paramaters we have to estimate to fit the model? Then if we include more covariates (and we estimate more slope parameters) only those that account for a lot of the variation will overcome the penalty.</p>
+<p>What we want a statistic that helps us select the most parsimonious model.</p>
+</section>
+<section id="the-aic-as-a-measure-of-parsimony" class="level2">
+<h2 class="anchored" data-anchor-id="the-aic-as-a-measure-of-parsimony">The AIC as a measure of parsimony</h2>
+<p>One way we could penalize the likelihood by the number of parameters is to add an amount to it that is proportional to the number of parameters. First, let’s multiply the log-likelihood by -2, so that it is positive and smaller values indicate a closer fit.</p>
+<pre><code>LLm1 &lt;- sum(dnorm(y, mean = predict(m1), sd = sqrt(sm1$dispersion), log = TRUE))
+-2*LLm1
+
+## [1] 251.2428</code></pre>
+<p>Why its -2 not -1, I can’t quite remember, but I think just <a href="https://en.wikipedia.org/wiki/Akaike_information_criterion#CITEREFAkaike1985">historical reasons</a>.</p>
+<p>Then add 2*k, where k is the number of estimated parameters.</p>
+<pre><code>-2*LLm1 + 2*3
+
+## [1] 257.2428</code></pre>
+<p>For <code>m1</code> there are three parameters, one intercept, one slope and one standard deviation. Now, let’s calculate the AIC for all three models:</p>
+<pre><code>-2*LLm1 + 2*3
+
+## [1] 257.2428
+
+LLm2 &lt;- sum(dnorm(y, mean = predict(m2), sd = sqrt(sm2$dispersion), log = TRUE))
+-2*LLm2 + 2*3
+
+## [1] 501.6118
+
+LLm3 &lt;- sum(dnorm(y, mean = predict(m3), sd = sqrt(sm3$dispersion), log = TRUE))
+-2*LLm3 + 2*4
+
+## [1] 258.9686</code></pre>
+<p>We see that model 1 has the lowest AIC and therefore has the most parsimonious fit. Model 1 now outperforms model 3 which had a slightly higher likelihood, but because of the extra covariate has a higher penalty too.</p>
+<p>You don’t need to do these calculations yourself everytime you want an AIC. The function <code>AIC(m3)</code> will just give it to you.</p>
+</section>
+<section id="aic-basic-principles" class="level2">
+<h2 class="anchored" data-anchor-id="aic-basic-principles">AIC basic principles</h2>
+<p>So to summarize, the basic principles that guide the use of the AIC are:</p>
+<ol type="1">
+<li><p>Lower indicates a more parsimonious model, relative to a model fit with a higher AIC.</p></li>
+<li><p>It is a <em>relative</em> measure of model parsimony, so it only has meaning if we compare the AIC for alternate hypotheses (= different models of the data).</p></li>
+<li><p>We can compare non-nested models. For instance, we could compare a linear to a non-linear model.</p></li>
+<li><p>The comparisons are only valid for models that are fit to the same response data (ie values of y).</p></li>
+<li><p>Model selection conducted with the AIC will choose the same model as leave-one-out cross validation (where we leave out one data point and fit the model, then evaluate its fit to that point) for large sample sizes.</p></li>
+<li><p>You shouldn’t compare <em>too</em> many models with the AIC. You will run into the same problems with multiple model comparison as you would with p-values, in that you might by chance find a model with the lowest AIC, that isn’t truly the most appropriate model.</p></li>
+<li><p>When using the AIC you might end up with multiple models that perform similarly to each other. So you have similar evidence weights for different alternate hypotheses. In the example above m3 is actually about as good as m1.</p></li>
+<li><p>You should correct for small sample sizes if you use the AIC with small sample sizes, by using the AICc statistic.</p></li>
+<li><p>You can access the AIC in R with the <code>AIC()</code> function.</p></li>
+</ol>
+<p>Message me on <a href="https://twitter.com/bluecology">Twitter</a> if you have comments on this post.</p>
+<p>[1] Assuming it rains all day, which is reasonable for Vancouver.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.seascapemodels\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

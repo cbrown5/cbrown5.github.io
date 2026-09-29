@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2017-10-06">
+
+<title>Managing for uncertain interactions among multiple stressors of marine populations – Seascapemodels</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Seascapemodels</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../bluecology_blog.html"> 
+<span class="menu-text"><i class="fa-regular fa-newspaper" aria-label="newspaper"></i> Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../people.html"> 
+<span class="menu-text"><i class="fa-regular fa-user" aria-label="user"></i> People</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../code.html"> 
+<span class="menu-text"><i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> R tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.com.au/citations?hl=en&amp;user=1qG6yFMAAAAJ&amp;view_op=list_works&amp;sortby=pubdate"> 
+<span class="menu-text"><i class="fa-brands fa-google-scholar" aria-label="google-scholar"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://discover.utas.edu.au/C.J.Brown"> 
+<span class="menu-text"><i class="fa-solid fa-building-columns" aria-label="building-columns"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cbrown5"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/bluecology.bsky.social"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/christopher-brown-32466785/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Managing for uncertain interactions among multiple stressors of marine populations</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">research</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 6, 2017</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>This blog supplements my talk for <a href="http://www.masts.ac.uk/annual-science-meeting/">Marine Alliance for Science and Technology Scotland workshop on Cumulative Stressors</a>. Some of it is published by myself and others and some of it I intend to publish. <a href="http://www.seascapemodels.org/people/Chris-Brown.html">Get in touch</a> if you are interested in knowing more.</p>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>The biodiversity of most marine regions is affected my multiple human-caused stressors. These stressors can interact in unpredictable ways that can expedite the rate of taxonomic and functional extinction, or reduce the effectiveness of conservation actions. I will provide an overview for how can stressors interact to affect marine populations, and what decision makers can do to respond to multiple stressors that interact. Science needs to progress beyond simple ‘additive’ models and consider the processes that underlie interactions among stressors, so we can make more accurate predictions about how stressors interact. Decisions makers are faced with considerable uncertainty about the outcomes of conservation actions when there are multiple stressors. Decision science can help identify priority actions for conservation when faced with uncertainty.</p>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Conservation management aims to avoid species extinction, whether that is taxonomic extinction or functional extinction. But, we never really know why species go extinct. There are typically too many circumstantial stressors of an organism to be able to partition out which one caused the extinction. Here I define stressors as human caused changes to the environment that have a detrimental effect on a marine population or ecosystem. Examples include mortality from fisheries by-catch and sub-lethal stressors like toxins that affect reproductive health. For instance, one of the most famous examples of extinction was the extinction of the Caribbean Monk Seal. The monk seal’s extinction was ostensibly caused by hunting, but overfishing of their food resources may also have contributed (McClenachan and Cooper 2008). Dugong, an important herbivore of seagrass meadows may also be functionally extinct along many areas of Queensland’s coast, having decline 97% since the 1970s (Hughes et al.&nbsp;2005). Their decline has been caused by a combination of habitat loss from poor water quality, hunting, boat strikes and entanglement in fishing gear. Determining the cause of these declines is important for identifying what actions managers can take to avert those declines.</p>
+<p>Most marine ecosystems are affected by multiple stressors (Halpern et al.&nbsp;2015), making it hard to attribute a population’s decline to any single stressor. Stressors can also interact in unexpected ways, meaning that population declines can occur faster or slower than we might have expected based on their effects in isolation (Côté et al.&nbsp;2016). Thus, extinction is often driven by the inextricable combination of multiple stressors. The inseparable effects of multiple stressors poses several challenges to the science of extinction and to the management of nature, both of which tend to be reductionist.</p>
+<p>First, there is the <strong>estimation challenge</strong>: in the wild systems that we study it is arguably more common to observe multiple confounding stressors acting at once, rather than their effects in isolation. Therefore, it can be difficult to measure the impact of individual stressors and determine what benefits (or not) acting on one or the other might bring for averting extinction.</p>
+<p>Second, there is the <strong>uncertainty challenge</strong>: stressor interactions mean that actions on single stressors may have unexpected outcomes, and actions to address one stressor may sometimes even worsen the population’s decline. How stressors interact to affect a population will often remain unknown. In fact, stressors are now so globally extensive that the number of potential interactions we could study will in most region far exceed the capacity of science to measure those interactions. Thus, when determining the benefits of conservation actions, managers need to act in the face of considerable uncertainty about those benefits.</p>
+<p>Finally, there is the <strong>prioritization challenge</strong>: management agencies have constraints on what they can do, often for economic (e.g.&nbsp;budget) or social (e.g.&nbsp;conflicting human uses of the marine environment) reasons. When choosing what actions to take to lessen stressors, management must decide how to prioritise to find those actions that give the best outcomes for the population given the constraints they face.</p>
+<p>Here I will ask what managers and science can do to avert extinctions in the face of multiple stressors that have uncertain interactions. The focus will be on managing multiple different types stressors, not cumulative impacts. Cumulative impacts science is an all encompassing term that includes the impacts of repeat events of the same stressor (e.g.&nbsp;multiple marinas) and also the impacts of multiple different stressors on populations. When assessing the impact of multiple stressors we often need to consider how they will interact.</p>
+<p>First, I will provide a conceptual overview for how multiple stressors can interact to affect marine populations (the field is in disarray with only broad agreement on how to even classify different types of interactions). Second, I will examine the prevalence of different types of interactions and ask whether we can ever make educated guesses about how stressors interact (perhaps soon, but the science is not established yet). Third, in situations when interactions are unknown I will ask what is the safest for managers to assume and I will describe the paradox of managing interacting stressors. Finally, I draw on the conservation planning literature to provide a revised road map for managing multiple (and potentially interacting) impacts.</p>
+</section>
+<section id="conceptual-overview-of-interactions-among-multiple-stressors" class="level2">
+<h2 class="anchored" data-anchor-id="conceptual-overview-of-interactions-among-multiple-stressors">Conceptual overview of interactions among multiple stressors</h2>
+<p>At a conceptual level, interactions among multiple stressors occur when stressors interact via some physical or biological process. For instance, interactions can be purely driven by physical process, such as warming polar oceans also causing freshening due to sea ice melt (Boyd and Brown 2015). Examples of biological processes underlying interactions include the increased susceptibility of corals to bleaching in clearer water (due to light stress). Ecological interactions can also cause stressor interactions, due to feed-backs within food-webs. For instance, ocean acidification and fishing may interact to affect some benthic molluscs by slowing their growth, but fishing will reduce predation pressure.</p>
+<p>When we quantify interactions we need a null model with which to compare our observations (from the field or experiments) with our expectation. In the past these null models have been based on the ANOVA methodology. Therefore, if we want to know how two stressors interact, we measure the response variable (e.g.&nbsp;growth of seagrass) in a crossed trial. The interaction is then measured as the difference between the sum of effects from the single stressor trials and the outcome of the crossed trial. If the outcome of the crossed trial is greater than the sum then the interaction is said to by synergistic, if it is less than the sum then the interaction is said to be antagonistic.</p>
+<p>Interactions matter if you are managing just a single stressor. From a management perspective a synergy will mean declines happen faster than you expected in the combination of two stressors, but that acting on one stressor brings a serendipitous benefit in terms of reducing that stressor and its interaction with another stressor (Brown et al.&nbsp;2013).</p>
+<p>For instance, we could speculate that poor water quality and boat traffic would have a synergistic impact on dugong population trends. Poor water quality reduces the growth of seagrass the food of dugongs. Boats can collide with dugongs causing injury and death. Dugongs will travel to find high quality food patches (e.g.&nbsp;Sheppard et al.&nbsp;2010). This may increase the risk of boat strikes. So we could infer that by improving water quality so that seagrass grows more densely we may also serendipitously reduce the risk of boat strikes. Therefore, the benefit of actions on water quality has an additional benefit in terms of reducing boat mortalities.</p>
+<p>An antagonism means that acting on one stressor may be ineffective, because the other stressor still dominates. In some cases you may also have mitigative interactions, whereby acting on one stressor actually makes the impacts of the other stressor worse.</p>
+<p>Antagonisms can occur when you have dominance effects. For instance, say that toxins and disease are most likely to kill old or weak seals. Then if we have a disease outbreak in an area that has a high toxin load, we might see little additional seal deaths – the toxins already killed all the susceptible seals!</p>
+<p>Antagonisms can also be mitigative, meaning that one stressor weakens or even reverses the effect of another (such effects have also termed mitigating synergies). Such mitigative effects may often occur in food-webs. e.g.&nbsp;if two stressors have a synergistic effect on a species predator, then their combination may have an mitigative effect on the prey species.</p>
+<p>So determining and classifying the type of interactions occurring between multiple stressors is important for management.</p>
+<p>Can we predict how two stressors will interact?</p>
+<p>It will often be important to predict how stressors interact without having to collect new data to determine those interactions (Côté et al.&nbsp;2016). For instance, we might be limited in our funding or time we have to gather new information that allows us to make the most effective decision. Therefore, it would be helpful if we could predict a-priori how strongly two stressors may interact.</p>
+<p>In the past the scientific literature has been most concerned with identifying synergies. It is easy to see why, they potentially mean biodiversity will under go much greater declines than we expect based on reductionist science that studies a single stressor in isolation. So, is there any reason to expect that synergies will be particularly prevalent?</p>
+<p>Numerous meta-analyses of experimental studies have shown that synergies are no more prevalent than antagonisms or just additive interactions. In fact, you tend to just get a 1/3 each way (Côté et al.&nbsp;2016). That interactions are apparently random means it will be hard to predict a-priori what the outcome will be.</p>
+<p>However, if you look across multiple meta-analyses (a meta-analysis of the meta-analyses!) and ask when and where interactions occur you do observe some generalisations (Côté et al.&nbsp;2016). Antagonisms are most likely to occur at the community/ecosystem level, for instance in the response of diversity of community biomass to multiple stressors. This may be because ecosystems have many self regulating feed-back loops that mitigate the effects of stressors.</p>
+<p>Antagonisms are rare at the physiological level (e.g.&nbsp;for responses like respiration and photosynthesis). At this level additive and synergistic interactions are more likely. At the individual organism or population levels (e.g.&nbsp;growth, abundance, behaviour) you tend to see a mix of interaction types.</p>
+<p>Further work is needed to explore why these generalities occur. One reason may be that different disciplines actually apply different definitions to determine what is synergistic vs.&nbsp;antagonistic. See Piggott et al.&nbsp;2015 for a detailed discussion of different approaches to classifying interactions.</p>
+<p>This confusion in the scientific literature about what constitutes a synergistic or antagonistic interaction is a challenge for making management decisions. What we are really interested in for managers is: what is the benefit of acting on one stressor for the population?</p>
+<p>I think we need to move beyond the simple definition of interactions based on comparison to an additive model and think more about how process models can inform on types of interactions. While we often know very little about how two stressors interact, we may in fact know a lot about the processes by which a population responds to a stressor.</p>
+<p>We can build experiments in process models of multiple stressors to predict what the outcome of managing a single stressor will be.</p>
+<p>For instance, Viv Tulloch, my PhD student modelled Baleen whale recovery from harvesting in the Southern Ocean (Tulloch et al.&nbsp;2017). Through her co-supervisor Eva Plaganyi, she was able to obtain data on historic catches on whales from the International Whaling Commission. She also obtained corrections for the ‘missing Soviet catches’ between 1947 and 1973.</p>
+<p>She developed a whale population model that accurately reflected past trends in whale population size. The model was also coupled to climate and low-trophic level models that predict trends in Antarctic Krill biomass, a key prey source for Baleen whales.</p>
+<p>Recovery for Blue and Fin whales are considerably slower post-harvesting when compared the coupled climate model to a model with constant climate, indicating an important interaction between the cessation of harvesting pressure and climate.</p>
+<p>In future work she intends to explore how a fishery for krill may affect these recovery trajectories, and thus can provide advice on how krill catches should be regulated to enable whale recovery.</p>
+<p>Process models of interactions also end up making a better ‘null’ model than the old ANOVA model. If our observations of decline end up being greater (synergistic) or less than (antagonistic) what our process model predicted, then we know we are missing something that requires further study. Ultimately this is what a good null model should do, test our predictions and help us identify areas where the theory needs more work.</p>
+<p>See the report by the Committee on the Assessment of the Cumulative Effects of Anthropogenic Stressors on Marine Mammals (2017) for an excellent example of how we can predict the interaction of two stressors that are of a similar type (e.g.&nbsp;both toxins).</p>
+<p>The idea of using process models to predict interactions is a subject of ongoing work for me.</p>
+<p>For instance, see the below figure, where I predict the impacts of trawling and turbidity on seagrass area using a simple process model (left) and the standard additive impacts model used in many maps (right, e.g.&nbsp;Halpern et al.&nbsp;2013).</p>
+<p><img src="seagrass-stress-model.jpg" class="img-fluid"></p>
+<p>The cumulative impacts model suggests that reducing trawling will have the same benefit for seagrass, regardless of the turbidity. Whereas, the process model ways reducing trawling will have the greatest benefit when turbidity is moderate. This occurs because trawling removes seagrass, whereas turbidity slows seagrass growth. Therefore, seagrass area will be less able to regrow into the empty patches created by trawling when turbidity is higher.</p>
+</section>
+<section id="applying-science-to-the-management-of-multiple-stressors" class="level2">
+<h2 class="anchored" data-anchor-id="applying-science-to-the-management-of-multiple-stressors">Applying science to the management of multiple stressors</h2>
+<p>Given our limited ability to predict how multiple stressors will interact, what actions should managers take in the face of uncertainty? One thing a manager could do is make a pragmatic assumption of a certain type of interaction and use that to inform safe, or risk-averse, decisions.</p>
+<p>Paradoxically, a manager who is concerned with conserving a species should assume stressor interactions are synergistic if there are estimating the magnitude of population decline, but antagonistic if they are deciding what to do about the decline. I call this the “paradox of multiple stressor interactions”.</p>
+<p>Why does this paradox occur?</p>
+<p>Well if you are trying to predict the magnitude of a decline from information about the impacts of single stressors the most risk-averse assumption is that in combination those stressors will have a greater than additive effect.</p>
+<p>However, if have observed a population decline in the presence of multiple confounded stressors, assuming their interaction is antagonistic compels you to act on both at the same time. If you were to assume their interaction was synergistic, acting on one stressor may have little benefit for the population if the interaction was in fact antagonistic (Brown et al.&nbsp;2013).</p>
+<p>When one stressor is ‘unstoppable’, such as a stressor related to climate change that a local manager cannot act on, then you need to try act on the other stressor in refuges from the unstoppable one. For instance, restoring water quality on coral reefs in areas that are natural refuges from bleaching and cyclones (Brown et al.&nbsp;2014).</p>
+<p>So in practice, what do managers tend to assume currently? My PhD student Laura Griffiths, is currently looking for an answer for this question, and she is reviewing scores of management plans for coastal ecosystems to see how management of multiple stressors is approached in practice. We would be glad to take feed-back and suggestions on this lit review if you have comments.</p>
+<p>My suspicion is that management plans may often assume ‘additive’ (ie no) interaction among stressors. I base this assumption on the fact that ‘threat mapping’ has now become quite prevalent as tool to inform management. Threat maps typically assume stressors don’t interact, a design decision that was intended to be ‘conservative’. In fact we now know that additive interactions are very optimistic if you are seeking the quantify the benefits of acting on a stressor.</p>
+</section>
+<section id="road-map-for-prioritizing-conservation-actions-when-managing-multiple-stressors" class="level2">
+<h2 class="anchored" data-anchor-id="road-map-for-prioritizing-conservation-actions-when-managing-multiple-stressors">Road map for prioritizing conservation actions when managing multiple stressors</h2>
+<p>To conclude, I wanted to provide a brief road map for prioritizing actions to avert population decline in the face of multiple stressors. This road map is largely based on conservation decision science and particularly the application of cost-effectiveness to prioritizing decisions (see (Game et al.&nbsp;2013, Brown et al.&nbsp;2015, Giakoumi et al.&nbsp;2015)), but with a few twists to account for interactions.</p>
+<p>We will step through the road-map using a simplified example of Moreton Bay’s dugongs. I have skipped some of the details of conservation decision making, but you can read more in the papers I have mentioned. For simplicity we will consider just two stressors, though the same concepts apply if we have more stresors.</p>
+<section id="step-1-determine-the-objective-and-constraints-on-conservation-actions" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-determine-the-objective-and-constraints-on-conservation-actions">Step 1: Determine the objective and constraints on conservation actions</h3>
+<p>Prioritization needs to begin with the objective you are seeking to maximise or minimise. At this point you should also identify constraints. In a conservation context the objective will often be to avoid or reduce the rate of population decline and common constraints are budgetary or social (e.g.&nbsp;closing fishing grounds) constraints. For the dugongs, our objective is to avert population decline in Moreton Bay. An important constraint is the budget we have to spend on management measures.</p>
+<p>It is important that the objective is precise, because the spatial and temporal extent of our objective will affect which actions can most effectively achieve that objective (Game et al.&nbsp;2013, see also steps below). For instance, we may take a very different set of actions if our objective is to conserve some dugongs anywhere in Moreton Bay, versus having a high density of dugongs in a particular place.</p>
+</section>
+<section id="step-2-determine-actions-that-will-be-prioritized" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-determine-actions-that-will-be-prioritized">Step 2: Determine actions that will be prioritized</h3>
+<p>Scientists often talk about prioritizing places, threats or species. But places, species and threats do not consume the resources conservation is constrained by, the actions to protect them do. This has resulted in many misleading conservation plans that prioritize places without saying what you will do there. For the dugongs, the actions are closing areas to boat traffic to protect them from collisions or catchment management measures that will improve water quality in the bay and enhance growth of their key food – seagrass. If there are important unknowns we could also specify actions that are to learn about a threat. For instance, shark fishing may have caused population declines in sharks an important predator of dugongs (e.g.&nbsp;Wirsing et al.&nbsp;2007)</p>
+</section>
+<section id="step-3-determine-the-cost-of-available-actions" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-determine-the-cost-of-available-actions">Step 3: Determine the cost of available actions</h3>
+<p>For the actions to protect dugongs, the associated costs are the costs of planting trees (to reduce erosion and improve water quality) and the cost of enforcing areas closed to boating. A more complex and thorough consideration of costs might also consider social and political costs of these actions.</p>
+</section>
+<section id="step-4-determine-the-benefits-of-competing-actions" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-determine-the-benefits-of-competing-actions">Step 4: Determine the benefits of competing actions</h3>
+<p>We want to know what benefit each action brings to our objective. For the dugongs this is simply the improvement in the population growth rate if we implement either or both actions. At this point it is important to consider the potential for interactions among the stressors that may influence the effectiveness of the actions. Ideally we will have a long time-series of dugong population trends in areas with crossed combinations of the different stressors. However, such an abundance of data is unlikely. A more pragmatic approach is therefore to model, either conceptually or quantitatively, the processes by which the stressors affect the population.</p>
+<p>For instance, earlier I speculated that boat strikes and poor water quality will have synergistic impact on dugong population trends (because hungry dugongs are more likely to encounter boats). We could use a simple GIS model to estimate the likely magnitude of this interaction. For instance, we could quantify whether we thought dugong travel distances under low food conditions, as estimated by animal tracking studies would likely bring dugongs into contact with a greater number of boats. We could then use a demographic model to estimate the impacts of boat strikes on overall population growth.</p>
+</section>
+<section id="step-5-prioritize-actions-based-on-their-cost-effectiveness" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-prioritize-actions-based-on-their-cost-effectiveness">Step 5: Prioritize actions based on their cost effectiveness</h3>
+<p>Now we understand the costs, benefits and interactions between different actions we should use a quantitative prioritize to choose the set of actions that maximises dugong population growth. One simple method is to calculate the cost-benefit ratio and use this to choose actions until we have expended all of the budget (e.g.&nbsp;Giakoumi et al.&nbsp;2015).</p>
+<p>If we have modelled the interactions correctly, then their importance will be apparent at this stage, without us having to explicitly consider it. For instance, it may be that the serendipitous benefit of conserving seagrass for reducing boat strikes is so great that this is all we need to do to save the dugongs. On the other hand, it may be that the number of boat strikes each year is so great that it outweighs any seagrass food effects, and thus it is essential that we act on boat strikes to achieve any benefits for dugongs.</p>
+</section>
+<section id="step-6-sensitivity-of-the-action-plan-to-interactions" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-sensitivity-of-the-action-plan-to-interactions">Step 6: Sensitivity of the action plan to interactions</h3>
+<p>A final step is to consider the sensitivity of the action plan to uncertainties in this process. Uncertainty could creep in anywhere, but in the context of multiple stressors, this means repeating the prioritization assuming different types of interactions. The optimal set of actions will then be chosen based on the decision makers preference for risk.</p>
+<p>A risk-averse manager will use the sensitivity analysis to identify actions that are always effective regardless of how the stressors interact. For instance, we may want to focus actions that halt boat traffic in regions that have the best existing water quality (this is in fact the management arrangement we have in Moreton Bay), a strategy that will successfully save some dugongs regardless of whether boating and seagrass interact synergistically or antagonistically.</p>
+<p>A risk-seeking manager may want to do the converse – identify which set of actions has the greatest maximal benefit. “Go hard or go home” would be the motto for such a manager. Their objective is to have a pristine dugong population or none at all. Such a manager will throw all their resources at the set of actions that have the greatest potential benefit, but which may also have the greatest risk of failure.</p>
+</section>
+</section>
+<section id="concluding-statements" class="level2">
+<h2 class="anchored" data-anchor-id="concluding-statements">Concluding statements</h2>
+<p>I have argued that contemporary conservation management must consider the potential for interactions among multiple stressors. Interactions that cause more rapid declines than we might expect paradoxically offer the greatest potential for managers to avert extinctions. We need more science to try to identify generalities in how stressors interact, because we can never hope to study all potential interactions. An important way forward is to incorporate our understanding of stress processes into models that can predict the impact of multiple stressors on populations. Doing so will provide more accurate predictions to managers, and also more useful null models for testing scientific theories. Decision makers faced with managing multiple stressors should consider all potential interactions and make decision that take account of the potential risk of misestimating the benefits of conservation actions.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>If you can’t access one of the pubs cited here, please email me and I will try to get one to you.</p>
+<p><a href="http://journal.frontiersin.org/article/10.3389/fmars.2015.00009">Boyd, P. W. and C. J. Brown. 2015. Modes of interactions between environmental drivers and marine biota. Frontiers in Marine Science 2:9.</a></p>
+<p><a href="http://www.pnas.org/content/112/32/E4342.short">Brown, C. J., M. Bode, O. Venter, M. D. Barnes, J. McGowan, C. A. Runge, J. E. Watson, and H. P. Possingham. 2015. Effective conservation requires clear objectives and prioritizing actions, not places or species. Proceedings of the National Academy of Sciences 112:E4342-E4342.</a></p>
+<p><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0065765">Brown, C. J., M. I. Saunders, H. P. Possingham, and A. J. Richardson. 2013. Managing for interactions between local and global stressors of ecosystems. Plos One 8:e65765.</a></p>
+<p><a href="http://onlinelibrary.wiley.com/doi/10.1111/ddi.12159/full">Brown, C. J., M. I. Saunders, H. P. Possingham, and A. J. Richardson. 2014. Interactions between global and local stressors of ecosystems determine management effectiveness in cumulative impact mapping. Diversity and Distributions 20:538-546.</a></p>
+<p><a href="http://rspb.royalsocietypublishing.org/content/283/1824/20152592.abstract">Côté, I. M., E. S. Darling, and C. J. Brown. 2016. Interactions among ecosystem stressors and their importance in conservation. Proceedings of the Royal Society Series B, Biological Scinces 283:20152592.</a></p>
+<p><a href="https://www.nap.edu/read/23479/chapter/1">Approaches to Understanding the Cumulative Effects of Stressors on Marine Mammals. 2017. Committee on the Assessment of the Cumulative Effects of Anthropogenic Stressors on Marine Mammals. National Academies Press, DC</a></p>
+<p><a href="http://onlinelibrary.wiley.com/doi/10.1111/cobi.12051/full">Game, E. T., P. Kareiva, and H. P. Possingham. 2013. Six common mistakes in conservation priority setting. Conservation Biology 27:480-485.</a></p>
+<p><a href="http://www.sciencedirect.com/science/article/pii/S0308597X15002055">Giakoumi, S., C. J. Brown, S. Katsanevakis, M. I. Saunders, and H. P. Possingham. 2015. Using threat maps for cost-effective prioritization of actions to conserve coastal habitats. Marine Policy 61:95-102.</a></p>
+<p><a href="https://www.nature.com/articles/ncomms8615?TB_iframe=true&amp;width=921.6&amp;height=921.6">Halpern, B. S., M. Frazier, J. Potapenko, K. S. Casey, K. Koenig, C. Longo, J. S. Lowndes, R. C. Rockwood, E. R. Selig, and K. A. Selkoe. 2015. Spatial and temporal changes in cumulative human impacts on the world’s ocean. Nature Communications 6.</a></p>
+<p><a href="https://ac.els-cdn.com/S0169534705000844/1-s2.0-S0169534705000844-main.pdf?_tid=cb8424da-a266-11e7-9336-00000aab0f01&amp;acdnat=1506394984_097a6a76a373a64bba3297f00eddfc74">Hughes, T. P., D. R. Bellwood, C. Folke, R. S. Steneck, and J. Wilson. 2005. New paradigms for supporting the resilience of marine ecosystems. Trends in ecology &amp; evolution 20:380-386.</a></p>
+<p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2602701/pdf/rspb20071757.pdf">McClenachan, L. and A. B. Cooper. 2008. Extinction rate, historical population structure and ecological role of the Caribbean monk seal. Proceedings of the Royal Society of London B: Biological Sciences 275:1351-1358.</a></p>
+<p><a href="https://www.google.co.uk/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=5&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwjx-66Vh9nWAhXMKVAKHXLlCtwQFghMMAQ&amp;url=http%3A%2F%2Fwww.wileyopenaccess.com%2Fview%2FNzY5NTkyMS9KQS8xMDg0OTQxL251bGw%3D%2FjournalArticleReferences.html&amp;usg=AOvVaw0hug2rz6qUL_PyuKe9yBBX">Piggott, Townsend, Matthaei. 2015. Reconceptualizing synergism and antagonism among multiple stressors. Ecology and Evolution. 5: 1538-1547.</a></p>
+<p><a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1748-7692.2010.00374.x/full">Sheppard JK, Marsh H, Jones RE, Lawler IR. Dugong habitat use in relation to seagrass nutrients, tides, and diel cycles. Marine mammal science. 2010 Oct 1;26(4):855-79.</a></p>
+<p><a href="http://onlinelibrary.wiley.com/doi/10.1111/faf.12241/full">Tulloch, V. J., É. E. Plagányi, R. Matear, C. J. Brown, and A. J. Richardson. 2017. Ecosystem modelling to quantify the impact of historical whaling on Southern Hemisphere baleen whales. Fish and Fisheries.</a></p>
+<p><a href="http://link.springer.com/10.1007%2Fs00442-007-0802-3?LI=true&amp;from=SL">Wirsing AJ, Heithaus MR, Dill LM. Fear factor: do dugongs (Dugong dugon) trade food for safety from tiger sharks (Galeocerdo cuvier)?. Oecologia. 2007 Oct 1;153(4):1031-40.</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.seascapemodels\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

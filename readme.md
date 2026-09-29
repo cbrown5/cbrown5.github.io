@@ -21,6 +21,12 @@ To publish run:
 
 `scripts/publish.sh 'commit msg'`
 
+This only re-renders the posts you changed, so it takes seconds. After a
+site-wide change (`_quarto.yml`, `styles.css`, the navbar) add `-f` to re-render
+everything so the listing pages and links update:
+
+`scripts/publish.sh -f 'new theme'`
+
 
 TODO
 

@@ -4,29 +4,37 @@
 # GitHub Pages serves the docs/ directory on the main branch, so both the
 # source (posts/) and the rendered output (docs/) have to be committed.
 #
+# By default only the posts you changed are re-rendered, which takes seconds
+# instead of the several minutes a full-site render needs. Use -f when you
+# change something site-wide (_quarto.yml, styles.css, the navbar) so the
+# listing pages and links on every page get rebuilt.
+#
 # Usage:
-#   ./publish.sh                    # commit message defaults to "new post"
-#   ./publish.sh "fix typo"         # custom commit message
-#   ./publish.sh -n "new post"      # dry run: render and show what would commit
-#   ./publish.sh -s "fix typo"      # skip render, just commit and push
+#   scripts/publish.sh                    # render changed posts, msg "new post"
+#   scripts/publish.sh "fix typo"         # custom commit message
+#   scripts/publish.sh -f "new theme"     # full site render
+#   scripts/publish.sh -n "new post"      # dry run: render and show what would commit
+#   scripts/publish.sh -s "fix typo"      # skip render, just commit and push
 
 set -euo pipefail
 
 dry_run=false
 skip_render=false
+full_render=false
 
-while getopts ":ns" opt; do
+while getopts ":nsf" opt; do
   case "$opt" in
     n) dry_run=true ;;
     s) skip_render=true ;;
-    *) echo "Usage: $0 [-n] [-s] [\"commit message\"]" >&2; exit 1 ;;
+    f) full_render=true ;;
+    *) echo "Usage: $0 [-n] [-s] [-f] [\"commit message\"]" >&2; exit 1 ;;
   esac
 done
 shift $((OPTIND - 1))
 
 message="${1:-new post}"
 
-repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
 
 branch=$(git rev-parse --abbrev-ref HEAD)
@@ -37,8 +45,47 @@ if [[ "$branch" != "main" ]]; then
 fi
 
 if ! $skip_render; then
-  echo "==> Rendering site with quarto"
-  quarto render
+  if $full_render; then
+    echo "==> Rendering whole site with quarto"
+    quarto render
+  else
+    # Render only the source files that git sees as changed. Listing pages and
+    # the search index still come from the last full render, so run -f after
+    # site-wide edits.
+    # bash 3.2 (macOS default) has no mapfile, so read the list the portable way.
+    changed=()
+    while IFS= read -r file; do
+      [[ -n "$file" ]] && changed+=("$file")
+    done < <(
+      {
+        git diff --name-only -- '*.qmd' '*.md' '*.ipynb'
+        git diff --cached --name-only -- '*.qmd' '*.md' '*.ipynb'
+        git ls-files --others --exclude-standard -- '*.qmd' '*.md' '*.ipynb'
+      } | grep -v '^readme\.md$' | sort -u
+    )
+
+    # Renders write into docs/, so a missing or empty docs/ means there is no
+    # previous build to add to -- fall back to a full render rather than
+    # committing a site with 99% of its pages missing.
+    if [[ ! -d docs || -z "$(ls -A docs 2>/dev/null)" ]]; then
+      echo "==> docs/ is empty, doing a full render to rebuild the site"
+      quarto render
+    elif [[ ${#changed[@]:-0} -eq 0 ]]; then
+      echo "==> No changed .qmd/.md files to render"
+    else
+      echo "==> Rendering ${#changed[@]} changed file(s):"
+      printf '    %s\n' "${changed[@]}"
+      quarto render "${changed[@]}"
+    fi
+  fi
+fi
+
+# Guard against publishing a gutted site: docs/ holding almost nothing while
+# git has hundreds of deletions staged means the render did not happen.
+if [[ ! -d docs || -z "$(ls -A docs 2>/dev/null)" ]]; then
+  echo "Error: docs/ is empty -- refusing to publish." >&2
+  echo "Run 'quarto render' first, or use -f." >&2
+  exit 1
 fi
 
 # Only stage publishing-related paths. Other edits in the working tree
@@ -46,6 +93,15 @@ fi
 # a post commit by accident.
 echo "==> Staging posts/ and docs/"
 git add -A posts docs images data
+
+deleted=$(git diff --cached --diff-filter=D --name-only -- docs | wc -l | tr -d ' ')
+if [[ "$deleted" -gt 50 ]]; then
+  echo "Error: this commit would delete $deleted files from docs/." >&2
+  echo "That usually means the render did not produce the full site." >&2
+  echo "Check 'git diff --cached --stat -- docs', then run with -f to rebuild." >&2
+  git reset --quiet HEAD -- posts docs images data
+  exit 1
+fi
 
 if git diff --cached --quiet; then
   echo "Nothing to publish -- posts/ and docs/ are unchanged."

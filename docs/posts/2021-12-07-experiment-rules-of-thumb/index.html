@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2021-12-07">
+
+<title>Tips for the design of ecological experiments – Seascapemodels</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Seascapemodels</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../bluecology_blog.html"> 
+<span class="menu-text"><i class="fa-regular fa-newspaper" aria-label="newspaper"></i> Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../people.html"> 
+<span class="menu-text"><i class="fa-regular fa-user" aria-label="user"></i> People</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../code.html"> 
+<span class="menu-text"><i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> R tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.com.au/citations?hl=en&amp;user=1qG6yFMAAAAJ&amp;view_op=list_works&amp;sortby=pubdate"> 
+<span class="menu-text"><i class="fa-brands fa-google-scholar" aria-label="google-scholar"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://discover.utas.edu.au/C.J.Brown"> 
+<span class="menu-text"><i class="fa-solid fa-building-columns" aria-label="building-columns"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cbrown5"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/bluecology.bsky.social"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/christopher-brown-32466785/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Tips for the design of ecological experiments</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">rstats</div>
+                <div class="quarto-category">research-skills</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 7, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="tips-for-the-design-of-ecological-experiments" class="level1">
+<h1>Tips for the design of ecological experiments</h1>
+<p>Are you planning an experiment in the lab or field, or an observational study? Its a good idea to talk to a statistician before you start.</p>
+<p>Students often ask me for help with statistics <em>after</em> they’ve collected their data. However, it’s common they need help with statistics because of issues with the experimental (or observational) design.</p>
+<p>A stats model can never completely fix design flaws. So below are some tips, based on my experiences helping students analyze their datasets.</p>
+<p>Experimental design is complex because ultimately you are balancing logistical practicalities (like cost of sampling) with with is theoretically optimal. This blog is a starting point, but I recommend reading deeper into the references below.</p>
+<p>For a more complete discussion of experimental design I recommend <a href="https://www.cambridge.org/highereducation/books/experimental-design-and-data-analysis-for-biologists/BAF276114278FF40A7ED1B0FE77D691A#overview">Quinn and Keough’s classic book: Experimental Design and Data Analysis for Biologists</a>.</p>
+<p>See also <a href="https://doi.org/10.1016/j.tree.2021.08.008">this recent review</a> of four important logical principles that need to be met in design to infer causality.</p>
+<p>This is a working document for my students, so please write me (<a href="mailto:chris.brown@griffith.edu.au" class="email">chris.brown@griffith.edu.au</a>) if you have suggestions for improvements on the below.</p>
+<section id="some-definitions" class="level2">
+<h2 class="anchored" data-anchor-id="some-definitions">Some definitions</h2>
+<p>Just quickly, below I’ll refer to:</p>
+<p>‘Experiments’ as manipulative experiments in the lab or field. Field studies in particular may also have some elements of ‘Observational’ studies, so there is a grey-area with:</p>
+<p>‘Observational studies’ as field studies that sample across gradients of natural variation to try and identify effects on a response variable (AKA mensurative experiments).</p>
+<p>‘Environmental gradients’ as gradients in a covariate of interest, e.g.&nbsp;rainfall or fishing pressure. These can occur naturally in the field, or be the result of manipulation in an experiment.</p>
+<p>‘Samples’ are the units of observation.</p>
+<p>‘Response’ is the variable(s) of interest that you hypothesize are affected by the treatments and/or covariates.</p>
+<p>‘Covariates’, ‘predictors’ or ‘explanatory’ variables are the hypothesized drivers of changes in the response. Usually we’d use predictor or explanatory variable in the case of a manipulative experiment, whereas any term is fine in the case of an observational study.</p>
+<p>‘Confounded’ means that you cannot distinguish the effects of two predictors. In a field observational study we could say that two covariates are ‘collinear’.</p>
+<p>All of the experimental design concepts below also apply to analysis of field surveys or pre-existing datasets (e.g.&nbsp;citizen science data or meta-analyses). In these cases you are limited in the pre-existing ‘treatments’ available to you, so you will need to constrain your interpretation based on experimental design principles.</p>
+</section>
+<section id="tips" class="level2">
+<h2 class="anchored" data-anchor-id="tips">Tips</h2>
+<section id="plan-for-failure" class="level3">
+<h3 class="anchored" data-anchor-id="plan-for-failure">Plan for failure</h3>
+<p>Undoubtedly things will fail. Plants die when they’re not meant to, you can’t visit a site because of a suspicious landholder, your volunteer stuffs up a bunch of measurements, someone turns the power off in the lab… There’s a long list of reasons that your design won’t turn out like you planned.</p>
+<p>So make sure your design is robust to the loss of some of your samples.</p>
+</section>
+<section id="stratify-your-sampling-across-treatments-of-interest" class="level3">
+<h3 class="anchored" data-anchor-id="stratify-your-sampling-across-treatments-of-interest">Stratify your sampling across treatments of interest</h3>
+<p>Ideally you’ll have relatively equal sampling intensities across different treatment levels, or along an environmental gradient of interest (but see below).</p>
+<p>In the old days having equal sample sizes for each treatment level, a ‘balanced design’ was critical for straightforward stats (e.g.&nbsp;with Type I ANOVA). This rule isn’t so strict with modern GLMs and extensions.</p>
+<p>However, it is still important to have sufficient sampling across a gradient or levels of a treatment. You need this to be able to estimate the treatment’s effect relative to background variation.</p>
+<p>Its usually straightforward in laboratory experiments to have equal sample sizes of each treatment level. In observational studies, balancing sampling can be more challenging.</p>
+<p>A common issue is insufficient sampling at all combinations of environmental gradients. As an example, I’ve often worked on analyses of how pollution and fishing pressure affect coastal fish abundance. Unfortunately, these gradients are highly confounded: polluted sites are nearer the coast and tend also to have higher fishing pressure. This means it is impossible to separate the effects of pollution and fishing pressure on fish abundance.</p>
+<p>An improved observational design would include sites with low pollution and high fishing pressure and vice-versa (if they exist). This would enable us to statistically separate the effects of pollution and fishing, as well as estimate their interaction.</p>
+</section>
+<section id="dealing-with-background-variation-randomize-or-control" class="level3">
+<h3 class="anchored" data-anchor-id="dealing-with-background-variation-randomize-or-control">Dealing with background variation: randomize or control?</h3>
+<p>“Stratify experiments with respect to your knowledge and randomise with respect to your ignorance” - Professor Alan T. James, via Bill Venables.</p>
+<p>You have two broad options for dealing with background variation. You can try and control them, so they are constant across all samples. For instance, in an experiment you may keep temperature constant, so you can examine the effects of nutrients on algal growth.</p>
+<p>Controlled designs have greater power to detect changes of interest. However, they are less general (the results of the algae experiment above only applies at one temperature) and more susceptible to overestimating the effect of a covariate.</p>
+<p>An alternative option is to randomize your sampling with respect to background sources of variation. Such a design will have reduced power compared to a controlled design, but the effect sizes you estimate will be more general and realistic (typically they are smaller).</p>
+<p>If you go with randomisation you may want to try increase replication, to address power issues.</p>
+</section>
+<section id="randomize-your-sampling" class="level3">
+<h3 class="anchored" data-anchor-id="randomize-your-sampling">Randomize your sampling</h3>
+<p>Random sampling is the basic assumption underlying most stats tests.</p>
+<p>Watch out for sample selection methods that masquerade as random sampling. Ad-hoc sampling, like throwing a quadrat around the intertidal zone, can result in biased inferences.</p>
+<p>For instance, in a mangrove forest you’d have to be careful to sample both sparse and dense patches of forest. Identifying sample locations beforehand with randomly picked GPS points is one way to address this.</p>
+<p>Another example is citizen science data, which tends to be heavily biased by accessibility of sites.</p>
+<p>Stats can help overcome non-random sampling - you can control statistically for non-random designs if you have some idea of the drivers of sampling (like distance to cities for citsci). But you’ll need to know the drivers well enough to model them.</p>
+</section>
+<section id="watch-for-hidden-psuedoreplication" class="level3">
+<h3 class="anchored" data-anchor-id="watch-for-hidden-psuedoreplication">Watch for hidden psuedoreplication</h3>
+<p>Psuedo-replication means your samples aren’t truly independent. The classic example is a design of fish in tanks. If you have 10 tanks and 5 fish in each tank, your replicates are tanks, fish in tanks are psuedo-reps (because they share the same water).</p>
+<p>This issue can be hidden. For instance, climate change tank experiments often have a single water circulation system per treatment level (e.g.&nbsp;<a href="https://academic.oup.com/icesjms/article/73/3/572/2458712?login=true">controlling OA</a> or temperature). This means all the replicate tanks on the same system aren’t truly independent samples. Solutions are to have one circulation system per treatment (but expensive!) or run the experiment multiple times to get temporally independent samples.</p>
+<p>If you have psuedo-replication its not the end of the world. Mixed effects models (e.g.&nbsp;with <code>lme4</code>) are how you model that.</p>
+</section>
+<section id="blocking-designs" class="level3">
+<h3 class="anchored" data-anchor-id="blocking-designs">Blocking designs</h3>
+<p>Once you’ve identified psuedo-replication you may want to use a blocking design to deal with the issue.</p>
+<p>For example, say you are applying different nutrient and temperature treatments to see how it affects algae growth. You can only grow 10 samples of algae per week and your target is 50 samples. So you will run the experiment over 5 weeks, doing 10 samples per week.</p>
+<p>Ideally, you will want to run every nutrient and temperature treatment every week, so you can separate the effect of ‘week’ from your treatment effects.</p>
+<p>But say you only have one incubation chamber for maintaining a constant temperature. So each week can only be one temperature. Then you’ll want to either: run the same temperature over multiple weeks or, run a gradient of temperatures (see below). Within each week you will still run every nutrient level. You will also want to randomize the order that the temperature treatments are applied.</p>
+<p>This will ensure you can estimate the temperature effect and how it applies across different nutrient levels. Multiple samples across weeks will let you remove (statistically) that nuisance variable.</p>
+</section>
+<section id="more-covariates-or-more-replicates" class="level3">
+<h3 class="anchored" data-anchor-id="more-covariates-or-more-replicates">More covariates or more replicates?</h3>
+<p><strong>Easy answer: maximize replication over measuring ‘everything’ at each sample.</strong></p>
+<p>Initial plans I see from students, especially for field designs, often involve measuring a lot of variables at very few sites. But, such designs end up with have low power and a lot of confounded variables, because you end up with more covariates to test than samples to test them.</p>
+<p>You have a better chance of getting a useful and interesting result if you focus on just a few major patterns. Then you can sample more sites and get replication numbers up.</p>
+<p>As an example, imagine you can sample 3 sites per day to do rapid assessments of insect taxa diversity and forest structure, or take 2 days to make a detailed assessment of a single site, including document all plant and insect species. The rapid assessment could get you to 42 sites over 3 weeks, versus only 7 sites for the detailed assessment. 42 sites is getting up towards a sample size that is useful for regression modelling (e.g.&nbsp;with <code>glm</code>), whereas 7 is far from enough.</p>
+<p>Of course the replication level you need depends on how variable the system is, but in my (marine fish biased) experience of analyzing ecological field experiments, ~50 independent sites is usually a minimum.</p>
+<p>I’ll add that if you can easily sample more covariates, go for it. You may want to condition on them to statistically control for them when you do the analysis.</p>
+</section>
+<section id="conceptual-model" class="level3">
+<h3 class="anchored" data-anchor-id="conceptual-model">Conceptual model</h3>
+<p>Developing a conceptual model of your system, through talking with experts and reading the literature, can help you identify key predictors and refine your research question. This means you can better target your sampling design.</p>
+</section>
+<section id="more-sites-or-more-replication-at-fewer-sites" class="level3">
+<h3 class="anchored" data-anchor-id="more-sites-or-more-replication-at-fewer-sites">More sites or more replication at fewer sites?</h3>
+<p>Closely related to the above idea, I often see students intensely replicating their designs at very few sites (e.g.&nbsp;doing many days of sampling at a single site, or numerous transects per site). But these are psuedoreps. Your study will be more general if you can cover more sites with less replication at each site.</p>
+<p>Aiming for greater replication can also help you obtain a deeper understanding of your study topic. You’ll see more different circumstances which may help you formulate better hypotheses.</p>
+</section>
+<section id="replicated-or-gradient-design" class="level3">
+<h3 class="anchored" data-anchor-id="replicated-or-gradient-design">Replicated or Gradient design?</h3>
+<p><strong>Easy answer: gradient designs are better for prediction, and designing for prediction is the future of ecology.</strong></p>
+<p>But, replicated designs have more power to detect monotonically increasing responses to the predictor.</p>
+<p>Say we are doing an experiment measuring how fast algae grow in flasks under different nutrient levels. We can fit 30 flasks in the lab. Here’s three ways to assign them to nutrient levels: Gradient (every flask gets a different nutrient level), replicated (just two nutrient levels), or hybrid of gradient and replicated.</p>
+<p><img src="2021-12-07-experiment-rules-of-thumb/unnamed-chunk-1-1.png" class="img-fluid"> What should you do?</p>
+<p>The replicated design is more typical of ecological experiments. This design gives you the greatest power to detect an effect of nutrients on algae growth (meaning best chance to find p&lt;0.05 if there is an effect).</p>
+<p>Replicated designs may also be preferred for practical reasons, for instance, it may be expensive or time consuming to have multiple levels of the treatment (e.g.&nbsp;requiring multiple different incubators in a warming experiment).</p>
+<p>BUT, there’s a catch. What if your ecological response shows a humped or saturating relationship with the predictor variable? Then your replicated design implies a straight-line relationship between the two levels, e.g.&nbsp;here are results of a gradient vs replicated design for a curved relationship:</p>
+<p><img src="2021-12-07-experiment-rules-of-thumb/unnamed-chunk-2-1.png" class="img-fluid"></p>
+<p>So your ability to predict the ecological response is very poor with the replicated design.</p>
+<p><a href="https://onlinelibrary.wiley.com/doi/full/10.1111/ele.13134?casa_token=3RljBqHtxjoAAAAA%3A1cOl5AH_6eJ5FjId-b7KuQx9c4wjXZYcDSqd6Pf22w5ydHHYF6Jxq6nw1XmkwmddadcrgdE3SNqe">This studies provides a series of analyses with simulated and real data to compare our ability to predict with different designs</a>.</p>
+<p>The above graph assumes you at equal intervals along the gradient. If you know there are regions of rapid change in your response, you could intensify your sampling around those regions.</p>
+<p>Hybrid designs are a compromise on prediction and power and may work well in many cases.</p>
+<p><a href="https://onlinelibrary.wiley.com/doi/full/10.1111/oik.03726?casa_token=MniBN5c-xCgAAAAA%3AkR3tErN9v1ZUqvAdCCWWfWz7E9se0Y5xyzy1PJQOKS73Kv3IpCvDQPQWUzIMN4o1S-elUV0VOVR8">Ecology desperately needs to become more ‘predictive’ for a whole heap of reasons</a>, including being able to inform ecosystem management, <a href="https://royalsocietypublishing.org/doi/full/10.1098/rspb.2020.0421">predict effects of multiple stressors</a>, and for testing fundamental theories. So I encourage you to consider a gradient or hybrid design.</p>
+<p>When designing a gradient, look out for high leverage points, e.g.&nbsp;one temperature extreme 5 degrees greater than any of your other treatments/surveys (with no replication) will have a high influence on your fitted model.</p>
+</section>
+<section id="realistic-treatment-ranges-but-consider-extreme-scenarios-too" class="level3">
+<h3 class="anchored" data-anchor-id="realistic-treatment-ranges-but-consider-extreme-scenarios-too">Realistic treatment ranges, but consider extreme scenarios too</h3>
+<p>The classic example is early ocean acidification experiments that acidified water in experimental treatments to what would be equivalent to atmospheric concentrations of CO2 of 1000ppm (we’re currently at about 420ppm and projected to reach ~500-600ppm by 2050).</p>
+<p>So treatments should be environmentally relevant. BUT, the increasing prevalence of extreme weather events means that you may want to consider some extreme scenarios, e.g.&nbsp;for heatwaves. In some fields <a href="https://doi.org/10.1038/s41558-019-0609-3">not enough experiments consider the impacts of extreme events</a>. For instance, a gradient design could consider both contemporary as well as projected mid-range and extremes values of the predictor.</p>
+</section>
+<section id="ask-dumb-questions" class="level3">
+<h3 class="anchored" data-anchor-id="ask-dumb-questions">Ask dumb questions</h3>
+<p>I often hear from students questions like ‘this might be a dumb question but, why do we always do 3 transects per site?’.</p>
+<p>Dumb questions are great because they reveal tacit knowledge of experts and hidden assumptions. And sometimes they reveal important assumptions that could overturn or invalidate a study’s findings. Like the emperors new clothes.</p>
+<p>So don’t be afraid to ask ‘dumb’ questions about experimental design.</p>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Designing experiments takes careful thought and planning. The skill of design is finding where statistical and logical requirements meet practical realities.</p>
+<p>The above are some of my tips, but there are of course always exceptions, the best you can do is read the literature, consult people with experience in your field and ask lots of questions.</p>
+<p>If you have advice to add, or don’t agree with any of the above, feel free to let me know: <a href="mailto:chris.brown@griffith.edu.au" class="email">chris.brown@griffith.edu.au</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.seascapemodels\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

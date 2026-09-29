@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2016-10-06">
+
+<title>An Introduction to Spatial Analysis in R – Seascapemodels</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Seascapemodels</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../bluecology_blog.html"> 
+<span class="menu-text"><i class="fa-regular fa-newspaper" aria-label="newspaper"></i> Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../people.html"> 
+<span class="menu-text"><i class="fa-regular fa-user" aria-label="user"></i> People</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../code.html"> 
+<span class="menu-text"><i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> R tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.com.au/citations?hl=en&amp;user=1qG6yFMAAAAJ&amp;view_op=list_works&amp;sortby=pubdate"> 
+<span class="menu-text"><i class="fa-brands fa-google-scholar" aria-label="google-scholar"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://discover.utas.edu.au/C.J.Brown"> 
+<span class="menu-text"><i class="fa-solid fa-building-columns" aria-label="building-columns"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cbrown5"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/bluecology.bsky.social"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/christopher-brown-32466785/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">An Introduction to Spatial Analysis in R</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">rstats</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 6, 2016</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<h2 class="anchored">
+An Introduction to Spatial Analysis in R
+</h2>
+<a href="../../data/R_Spatial_Course_Datasets.zip"> Download a pdf of this course with data</a>
+<section id="introduction" class="level1">
+<pre><code>&lt;br&gt;</code></pre>
+<section id="why-you-should-learn-r" class="level2">
+<h2 class="anchored" data-anchor-id="why-you-should-learn-r">
+Why you should learn R
+</h2>
+<p>
+It takes a lot of effort to learn to program and to use R. So why bother? Here are some very good reasons<br>1. R is free<br>2. R programs are repeatable. You can share them with others, or look up your old programs when a reviewer asks you months later to repeat that figure, but just include the outliers this time.<br>3. R is relatively fast at performing analyses (compared to many GIS programs)<br>4. You can combine state of the art statistics with great visualisations, including maps. Many leader’s in their fields develop packages for R, so if you can use R, you can get access to these pacakges.<br>5. You can iterate repetitive tasks. This saves you time and means you can do things like model the distributions of 100s of species instead of just one, or make predictions at a global scale, instead of only local scales. <br> 6. I think it’s a lot of fun.
+</p>
+</section>
+<section id="who-i-am" class="level2">
+<h2 class="anchored" data-anchor-id="who-i-am">
+Who I am
+</h2>
+<p>
+I come from a background of field ecology and ecological modelling. I realised that being able to perform your own quantitative analyses is incredibly useful (and helps with getting jobs). Hence, over the past few years I have been teaching myself how to use R. I use spatial analyses in R for a wide-variety of purposes, including producing publication quality maps and for analysing the extent of climate change impacts on ocean ecosystems.
+</p>
+<p>
+I designed this course not to comprehensively cover all the spatial tools in R (there are far too many to cover in one course), but rather to teach you skills for getting started. You can build on the basics we teach you today to perform a wide variety of spatial analyses. Every new project comes with its own problems and questions and I have found having some knowledge of spatial tools in R allows me to develop new tools and analyses as they are needed.
+</p>
+</section>
+<img src="../../images/river_dist_plot.jpg" alt="moreton bay" class="image_float">
+<section id="workshop-aims" class="level2">
+<h2 class="anchored" data-anchor-id="workshop-aims">
+Workshop aims
+</h2>
+<ol style="list-style-type: decimal">
+<li>
+Get an overview of spatial data manipulation in R
+</li>
+<li>
+Learn how to get help with R
+</li>
+<li>
+Learn some basic spatial analysis in R
+</li>
+<li>
+How to navigate R objects, particularly spatial objects
+</li>
+<li>
+Learn how to combine different types of spatial object
+</li>
+<li>
+Learn about map projections and how to change them
+</li>
+<li>
+Make a nice map
+</li>
+<li>
+Plan a complex workflow
+</li>
+<li>
+Spatial modelling (<em>Advanced users</em>)
+</li>
+</ol>
+<p>
+The course has been designed to be accessible for people with a range of R abilities. At the very least you should have some limited experience in R, like reading in datasets and calculating summary statistics. I hope regular R users will also find something useful here. I have also included tasks for “<em>Advanced users</em>”. If you are going well with the basic tasks, feel free to tackle these. If you are struggling with the basic tasks, then I recommend skipping the tasks labelled “Advanced users” today, you can always come back to them later.
+</p>
+</section>
+<section id="writing-the-code" class="level2">
+<h2 class="anchored" data-anchor-id="writing-the-code">
+Writing the code
+</h2>
+<p>
+I provide most of the code for completing the tasks in the workshop below. However, this code may not work if you paste directly from the manual (because docs can contain hidden formatting). I encourage you to type the code out from the notes. This will also help you learn and understand the tasks. Even better, try changing the code to change analyses or figures.
+</p>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">
+Acknowledgements
+</h2>
+<p>
+Thanks to Ross Dwyer for inspiring the original idea for the course. Also thanks to Ben Gilby and Chris Roelfsema for helping me out with some data-sets.
+</p>
+<section id="use-and-feedback" class="level3">
+<h3 class="anchored" data-anchor-id="use-and-feedback">
+Use and feedback
+</h3>
+<p>
+The course is designed to be freely shared with anyone. Please point people to my webpage if they want to download a copy. I can be reached on email at <a href="mailto:chris.brown@griffith.edu.au">chris.brown@griffith.edu.au</a> if you have comments. Feedback is appreciated. I would not recommend using any of these data-sets for real analyses, as they have been modified from the originals. If you want to get your hands on the original datasets, please see the references below.
+</p>
+</section>
+<p>
+<a href="../../data/R_Spatial_Course_Datasets.zip">Download a pdf of the course notes and the datasets</a>
+</p>
+</section>
+</section>
+<section id="the-course-and-the-data-sets" class="level1">
+<h1>
+The course and the data-sets
+</h1>
+<p>
+Today you will be provided with a series of datasets from Moreton Bay. Our ultimate aim is to identify the drivers of distribution for some new marine species. To get there, we have to manipulate spatial data-sets for marine habitats and environmental variables so we can match them to our species data.<br>Last weekend I randomly deployed 70 underwater video cameras across the Bay, to see what fish swam past. Strangely, for such a well studied bay, I was able to identify two new species, which have since been named <em>Siganid gilbii</em>, a herbivorous fish and <em>Sphyrna stevensii</em> a top-level predator. For each camera site, I was able to identify the presence or absence of these two species.<br>I want to test some hypotheses about the drivers of these species’ distributions. Then I want to predict their probability of occurence across the bay, for future monitoring and conservation. <em>S. gilbii</em> is an herbivore, so I think it should be related to the presence of seagrass beds. I am also concerned about the impacts of fishing and water quality on this species. For fishing we can look at video sites that are inside or outside marine reserves. As a proxy for water quality, we can use distance from the two major rivers (Brisbane and Logan) that run into the bay.<br>The data-sets are all in different projections and have different extents. An annoyingly common problem (especially when they come from different people) that we will learn how to deal with today.<br>The seagrass data is derived from Roelfsema et al.&nbsp;(2009)<sup>1</sup>, and I have made the distance to rivers data-sets. Today we will focus on the <em>S. gilbii</em> data, but feel free to try and analyse the <em>S. stevensii</em> data if things are going well for you. <em>S. stevensii</em> is a predator, so we think it may follow its prey <em>S. gilbii</em> but it may also be affected by water quality and fishing.<br>1. <em>Roelfsema, C.M., S.R. Phinn, N. Udy and P. Maxwell (2009). An Integrated Field and Remote Sensing Approach for Mapping Seagrass Cover, Moreton Bay, Australia. Journal of Spatial Science. 56, 1 June 2009</em>
+</p>
+<p>
+Alright, let’s get started with R.
+</p>
+</section>
+<section id="getting-started" class="level1">
+<h1>
+Getting started
+</h1>
+<section id="obtaining-r" class="level2">
+<h2 class="anchored" data-anchor-id="obtaining-r">
+Obtaining R
+</h2>
+<p>
+R can be downloaded from <a href="http://cran.r-project.org/">http://cran.r-project.org/</a><br>Using a script editor, such as “RStudio”, can also be helpful. RStudio can be downloaded from <a href="http://www.rstudio.com/">http://www.rstudio.com/</a>. If I am starting to confuse you with terms like ‘script’ please send the glossary in the appendix.
+</p>
+</section>
+<section id="starting-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="starting-rstudio">
+Starting RStudio
+</h2>
+<p>
+Click the RStudio icon to open R Studio. The interface is divided into several panels (clockwise from top left):<br>1. The source code (supporting tabs)<br>2. The currently active objects/history<br>3. A file browser/plot window/package install window/R help window (tabbed)<br>4. The R console<br>The source code editor (top left) is where you type, edit and save your R code. The editor supports text highlighting, autocompletes common functions and parentheses, and allows the user to select R code and run it in the R console (bottom right) with a keyboard shortcut (Ctrl R on windows, command-enter on macs) From now on, I will be providing you with code that you can type in yourself. Code will appear in this font: <code>plot(x,y)</code>
+</p>
+</section>
+<section id="installing-packages" class="level2">
+<h2 class="anchored" data-anchor-id="installing-packages">
+Installing packages
+</h2>
+<p>
+R offers a variety of functions for importing, editing, manipulating, analysing and exporting spatial data. Most of these functions rely on add-on packages that can be loaded to an R session using the <code>library(packagename)</code> command. If you close R and restart you will have to load the packages again.<br>If your required package is not already installed on your computer, it can be simply installed by implementing the following command (you must be connected to the internet):
+</p>
+<pre><code>install.packages("sp")</code></pre>
+<p>
+Multiple packages can be loaded at the same time by listing the required spatial packages in a vector. Here we will install all the packages you will require for today’s course:
+</p>
+<pre><code>install.packages(c("sp","rgeos","rgdal","maptools","raster"))</code></pre>
+<p>
+Also a couple of optional packages:
+</p>
+<pre><code>install.packages(c("RColorBrewer","wesanderson","dplyr"))</code></pre>
+<p>
+Select the local CRAN mirror (e.g.&nbsp;Canberra).<br>If you are using a mac, rgdal and rgeos cannot be installed in this way. See my webpage for more help (<a href="https://sites.google.com/site/seascapemodelling/installing-rgdal-on-osx">https://sites.google.com/site/seascapemodelling/installing-rgdal-on-osx</a>)
+</p>
+</section>
+<section id="starting-a-new-script" class="level2">
+<h2 class="anchored" data-anchor-id="starting-a-new-script">
+Starting a new script
+</h2>
+<p>
+Let’s open a new script and save it to your harddrive.<br>When writing R scripts, use numerous <code># comments</code> throughout your R scripts, you will thank yourself when you go back to the analysis later! Similarly at the start of your code, put some meta-information, such as:
+</p>
+<pre><code># who wrote the code?
+# what does the code do?
+# when did you write the code? etc. </code></pre>
+<p>
+The more projects you work on and analyses you do, the more important it is to have this meta-information at the beginning of your code.
+</p>
+</section>
+<section id="spatial-packages" class="level2">
+<h2 class="anchored" data-anchor-id="spatial-packages">
+Spatial packages
+</h2>
+<p>
+We usually start a script by loading the neccessary packages with the <code>library()</code> function:
+</p>
+<pre><code>library(sp)
+library(rgdal)
+library(rgeos)
+library(maptools)</code></pre>
+<p>
+These add-on packages contain everything we need for the first half of today. sp defines spatial objects and has a few functions for spatial data. rgdal is R’s interpretation of the Geospatial Data Abstraction Library. It contains definitions and translations for projections for rasters and vectors (data types we will come to later), and is something like the babel fish for projections. rgeos is an open source geometry engine, and is used for manipulation of vector data. For instance, if we want know the land area of an island with lakes on it, rgeos will do the job. maptools has additional useful spatial tools. Take a moment and reflect how awesome it is that large teams of people have made all these packages open-source and that others have written packages to use them in R.
+</p>
+<p>
+Moving on. You will need to set your working directory to the folder where the datafiles for this course are: <code>setwd(‘mypath/Datasets’)</code> You can get the path by using your folder browser and right clicking and selecting properties, then just copy the path. Note on windows paths will be copied with <code>&lt;/code&gt; rather than <code>/</code> so make sure you turn them around in your script.
+</code></p><code>
+</code></section><code>
+</code></section><code>
+<section id="spatial-points" class="level1">
+<h1>
+Spatial points
+</h1>
+<section id="read-in-points" class="level2">
+<h2 class="anchored" data-anchor-id="read-in-points">
+Read in points
+</h2>
+<p>
+Our first data-set is a typical dataframe, a format you should have worked with in your past R experience (if you haven’t I recommend doing a begginer course and getting some more experience before you take this course). The only difference with this dataframe is that samples also have coordinates. Let’s read it in:
+</p>
+<pre><code>dat &lt;- read.csv('Video monitoring sites.csv', header=T)
+class(dat)
+head(dat)
+str(dat)</code></pre>
+<p>
+These commands tell us ‘dat’ is of Class data frame (see glossary in appendix), we can look at the top six rows and see that each row is a single site. <code>str(dat)</code> let’s us look at how our objects are structured.
+</p>
+<hr>
+</section>
+<section id="a-primer-on-list-objects" class="level2">
+<h2 class="anchored" data-anchor-id="a-primer-on-list-objects">
+A primer on list objects
+</h2>
+<p>
+We will break to discuss list objects in R
+</p>
+<hr>
+</section>
+<section id="exploring-the-dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-the-dataframe">
+Exploring the dataframe
+</h2>
+<p>
+There are a few ways to extract specific variables or sites from the data frame. The <code><span class="math inline">\(&lt;/code&gt; is used to indicate specific variables. Try typing &lt;code&gt;dat\)</span>s.gilbii</code>. You can also call variables by their column numbers <code>dat[,3]</code> gets the third column. <code>dat[5,]</code> will give you all variables for the 5th site. We might also want to find out the number of sites, and having a <code>nsites</code> variable will be useful later on.
+</p>
+<pre><code>nsites &lt;- nrow(dat)
+nsites</code></pre>
+<p>
+We might want to explore some summaries of the data too. For instance make a table of occurences of our two species
+</p>
+<pre><code>table(dat$s.gilbii, dat$s.stevenii)</code></pre>
+<p>
+We could do a simple plot of the sites by: <code>plot(dat<span class="math inline">\(x, dat\)</span>y)</code>. Another useful skill is subsetting dataframes, for instance, so we can just plot sites where <em>S. gilbii</em> occurs. We can do this using the <code>which()</code> function.
+</p>
+<pre><code>isgilbi &lt;- which(dat$s.gilbii==1)
+isgilbi</code></pre>
+<p>
+<code>which()</code> finds rows where s.gilbii equals 1 (note the double =, which means ‘does it equal 1’, rather than ‘make it equal 1’), which is where the species was recorded on the cameras. We could use our new variable of row numbers to plot the points where <em>S. gilbii</em> is present in red.
+</p>
+<pre><code>plot(dat$x, dat$y)
+points(dat$x[isgilbi], dat$y[isgilbi], col ='red')</code></pre>
+<p>
+If you are struggling to make sense of the <code>which()</code> command, don’t worry. Indexing is a basic programming skill, but it can take some time to get your head around. If you are looking for a book to help you can’t go past <em>The Art of R Programming</em> by <em>Norman Matloff</em>. It’s a great read and I read it cover to cover in almost a single sitting. Once you master simple programming tricks like indexing a whole new world of data manipulation and analysis (not just spatial!) will open up to you.
+</p>
+</section>
+<section id="turning-points-into-a-spatial-object" class="level2">
+<h2 class="anchored" data-anchor-id="turning-points-into-a-spatial-object">
+Turning points into a spatial object
+</h2>
+<p>
+So far we have been treating the dataframe as a normal, non-spatial dataframe. We want to convert to a Spatial Points Data Frame (that’s a new Class). This will enable R to uniquely recognise the coordinates for what they are and let us match up this dataset with others we will use later.<br>To create a Spatial Points Data Frame, tell R which columns of dat are coordinates
+</p>
+<pre><code>coordinates(dat) &lt;- ~x +y
+class(dat)
+str(dat)
+dat
+coordinates(dat)
+dat@data</code></pre>
+<p>
+Note the class and structure has changed now. The coordinates are now stored separately. Site coordinates are matched to the original data, which can now be found in the ‘data’ slot. More on slots later.
+</p>
+</section>
+<section id="plotting-with-different-colours-for-animals" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-with-different-colours-for-animals">
+Plotting with different colours for animals
+</h2>
+<p>
+Creating a Spatial Points Data Frame opens up new possiblities for visualising the data. One useful feature of R is that many functions will have different ‘methods’ which mean you can use the same function on different types of data. Try the below plotting functions one at a time and see what happens.
+</p>
+<pre><code>plot(dat)
+lines(coordinates(dat))
+spplot(dat)</code></pre>
+<p>
+<code>spplot()</code> comes with the sp package and is a useful tool for quickly viewing data.
+</p>
+</section>
+<section id="finding-help" class="level2">
+<h2 class="anchored" data-anchor-id="finding-help">
+Finding help
+</h2>
+<p>
+Knowing how to find help for yourself is a critical part of using R. Anytime I code something, I spend a lot of time in the R helpfiles that can be accessed: <code>?spplot</code>. I encourage you to make heavy use of <code>?</code>, anytime we introduce a new function. You can also look at the cran webpage for help, or search sites like Stack Overflow to see if someone else has had a similar problem. Another useful resource are vignettes, which are distributed with some packages try typing <code>browseVignettes()</code>.
+</p>
+</section>
+<section id="coordinate-reference-systems---assigning-a-crs" class="level2">
+<h2 class="anchored" data-anchor-id="coordinate-reference-systems---assigning-a-crs">
+Coordinate reference systems - assigning a CRS
+</h2>
+<p>
+Back to our spatial data. At this point, we haven’t defined a projection for our dataframe. To see this type <code>proj4string(dat)</code>. This data is unprojected longitude latitude coordinates, we can tell R this by assigning to the <code>proj4string</code>.
+</p>
+<pre><code>proj4string(dat) &lt;- "+proj=longlat +ellps=GRS80 +no_defs"</code></pre>
+<p>
+You can search for CRSs on spatialreference.org.
+</p>
+<hr>
+</section>
+<section id="a-primer-on-map-projections-and-coordinate-reference-systems" class="level2">
+<h2 class="anchored" data-anchor-id="a-primer-on-map-projections-and-coordinate-reference-systems">
+A primer on map projections and coordinate reference systems
+</h2>
+<p>
+We will break to discuss map projections.
+</p>
+<hr>
+</section>
+<section id="transform-to-local-projection" class="level2">
+<h2 class="anchored" data-anchor-id="transform-to-local-projection">
+Transform to local projection
+</h2>
+<p>
+Ok, so for Moreton bay our UTM zone is 56, so let’s define a <code>proj4string</code> for that zone.
+</p>
+<pre><code>myproj &lt;- "+proj=utm +zone=56 +south +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"</code></pre>
+<p>
+Be warned. The naive user might think we can update the projection of our data just by re-assigning the projection string. For instance: <code>proj4string(dat) &lt;- myproj</code>. Notice the warning that throws. Also, look at the coordinates by typing <code>coordinates(dat)</code>, they have not changed. Please return your dataframe to the correct projection by typing
+</p>
+<pre><code>proj4string(dat) &lt;- "+proj=longlat +ellps=GRS80 +no_defs"</code></pre>
+<p>
+and we will do a proper transform of the coordinates.<br>The proper way uses the power rgdal to convert unprojected coordinates to our local UTM:
+</p>
+<pre><code>datutm &lt;- spTransform(dat, CRS(myproj))
+coordinates(datutm)</code></pre>
+<p>
+Notice the coordinates have changed. The units are now metres, rather than decimal degrees.
+</p>
+</section>
+<section id="calculate-distances-between-sites" class="level2">
+<h2 class="anchored" data-anchor-id="calculate-distances-between-sites">
+Calculate distances between sites
+</h2>
+<p>
+So we have tranformed our points to a local UTM, which is a distance preserving projection. Now is a good time to try an rgeos for calculating distances:
+</p>
+<pre><code>distmatrix &lt;- gDistance(datutm, byid=TRUE)
+distmatrix</code></pre>
+<p>
+<code>gDistance</code> calculates the distance (as the crow flies) between every point, if we specify <code>byid=TRUE</code>. We now have a matrix of distances between all sites, like those tables you see in driving maps.<br>See the reference manual at: <a href="http://cran.r-project.org/web/packages/rgeos">http://cran.r-project.org/web/packages/rgeos</a> for other useful geometry functions
+</p>
+</section>
+<section id="subsetting-data-frame" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-data-frame">
+Subsetting data frame
+</h2>
+<p>
+We might also want to know distances just between sites where <em>S. gilbii</em> was seen. To do this we can subset the Spatial Points Data Frame, just like we would subset a normal dataframe
+</p>
+<pre><code>dat.gilbii &lt;- subset(datutm, datutm@data$s.gilbii==1)
+class(dat.gilbii)</code></pre>
+<p>
+The <code>subset()</code> function creates a new dataframe from an existing one (datutm), subject to a rule. Our rule in this case is any observation where <em>S. gilbii</em> occurs. Now try calculating the distance matrix on this data frame.
+</p>
+</section>
+</section>
+<section id="spatial-polygons" class="level1">
+<h1>
+Spatial polygons
+</h1>
+<p>
+So far all our data have been points. Now it is time to introduce spatial vector data. Vectors data are series of coordinates, ordered in a certain way, so that they either form a line or a polygon. A common type of vector data are the shape files produced by ARC GIS.
+</p>
+<section id="importing-gis-shapefiles" class="level2">
+<h2 class="anchored" data-anchor-id="importing-gis-shapefiles">
+Importing GIS shapefiles
+</h2>
+<p>
+We will now look at the shape files for Moreton Bay’s marine protected areas (MPAs or ‘Green zones’). First, set your working directory to the ‘MoretonBayGreenZones’ folder inside of the datasets folder I gave you.
+</p>
+<p>
+rgdal has a function for interpreting shapefiles:
+</p>
+<pre><code>greenzones &lt;- readOGR('.', 'MB_Green_Zones_2009_100805_region')
+class(greenzones)</code></pre>
+<p>
+See that it has read in a Spatial Polygons Data Frame. Try these functions for exploring the data
+</p>
+<pre><code>plot(greenzones)
+spplot(greenzones)
+greenzones
+str(greenzones)
+nMPAs &lt;- length(greenzones)
+nMPAs
+greenzones@data
+greenzones@data$ID
+greenzones@bbox
+slot(greenzones, 'bbox')
+slot(greenzones, 'proj4string')</code></pre>
+<p>
+Spatial data have a different sort of list structure to normal dataframes. Intead of the <code><span class="math inline">\(&lt;/code&gt; for accessing variables, we have slots, accessed using &lt;code&gt;@&lt;/code&gt; or the &lt;code&gt;slot()&lt;/code&gt; function. The dataframe embedded in the ‘data' slot still has the usual structure, and you access variables in the normal way with &lt;code&gt;\)</span></code>.<br>Note in general it is fine to access data using the slots, but you should not modify data directly in the slots because other attributes for that spatial object won’t be updated. To modify spatial data, it is best to use specific functions for that purpose.
+</p>
+<hr>
+</section>
+<section id="a-primer-on-nesting-in-spatial-objects" class="level2">
+<h2 class="anchored" data-anchor-id="a-primer-on-nesting-in-spatial-objects">
+A primer on nesting in spatial objects
+</h2>
+<p>
+We will break to discuss lines, polygons and how these data are stored
+</p>
+<hr>
+<p>
+Lets change our polygon dataframe to make ID more informative
+</p>
+<pre><code>greenzones@data$ID &lt;- 1:nMPAs
+spplot(greenzones, zcol ='ID', col.regions = rainbow(nMPAs))</code></pre>
+<p>
+The call to the <code>rainbow()</code> function just makes 33 different colours along the rainbow, so we can colour code our 33 MPAs.
+</p>
+</section>
+<section id="nested-structure-of-spatial-polygons-and-lines" class="level2">
+<h2 class="anchored" data-anchor-id="nested-structure-of-spatial-polygons-and-lines">
+Nested structure of spatial polygons (and lines)
+</h2>
+<p>
+Spatial polygon dataframes can contain numerous polygons and polygons within polygons. As I explained in the primer, nesting is a useful way to store this data. The following code might look complex, but it is really just a long string of nested commands. To get an overview of the nesting try
+</p>
+<pre><code>str(greenzones)</code></pre>
+<p>
+We can access the polygons for MPA 29 (the pink one) by typing
+</p>
+<pre><code>greenzones@polygons[[29]]@Polygons</code></pre>
+<p>
+Try also
+</p>
+<pre><code>str(greenzones@polygons[[29]]@Polygons)</code></pre>
+<p>
+MPA 29 is a bit unusual, in that it has two polygons. Why is this? Notice that there is a ‘hole’ slot within each polygon
+</p>
+<pre><code>greenzones@polygons[[29]]@Polygons[[1]]@hole
+greenzones@polygons[[29]]@Polygons[[2]]@hole</code></pre>
+<p>
+Polygon 1 has hole=F ALSE, polygon 2 has hole = TRUE. Have a look at the last map and see if you can figure out what the hole represents.
+</p>
+<p>
+Yes indeed, it is an island. If we had a lake on the island with another island in that lake, we would have another polygon within the hole, with a hole in that! To get an idea of how polygon data are stored, you can extract the coordinates and just plot them (note, for <code>type=‘l’</code> that is a letter ‘l’ for laugh, not the number ‘1’ or letter ‘i’)
+</p>
+<pre><code>plot(greenzones@polygons[[29]]@Polygons[[1]]@coords, type='l', col='blue') #The MPA
+lines(greenzones@polygons[[29]]@Polygons[[2]]@coords, col='red') #The island in the MPA</code></pre>
+<p>
+You should see a blue box (the MPA) with a red island in it.
+</p>
+<p>
+You might also notice there is an area slot for each polygon
+</p>
+<pre><code>greenzones@polygons[[23]]@area</code></pre>
+<p>
+Convenient, but unfortunately it does not subtract the holes.
+</p>
+</section>
+<section id="calculate-areas-of-greenzones" class="level2">
+<h2 class="anchored" data-anchor-id="calculate-areas-of-greenzones">
+Calculate areas of greenzones
+</h2>
+<p>
+The rgeos package can account for holes in polygons. To use rgeos to calculate a polgyon’s area:
+</p>
+<pre><code>gz.areas &lt;- gArea(greenzones, byid=TRUE)</code></pre>
+<p>
+Let’s attach this more accurate area measurement to our spatial polgyons data frame, so we can plot it in spplot. By the way, if you wanted a really accurate area measurement, you should transform to an equal area projection, particularly if you are calculating areas over a much larger region.
+</p>
+<pre><code>greenzones@data$areas &lt;- gz.areas
+spplot(greenzones)
+</code></pre>
+<p>
+So now we get two plots, one colour coded by ID, the other by MPA area. Try changing the colours using rainbow (hint look at <code>?spplot</code> to find what argument to change). We could also use subset on our spatial polygons to get the biggest MPAs and plot them.
+</p>
+<pre><code>greensub &lt;- subset(greenzones, greenzones@data$areas &gt; 2e+07)
+spplot(greensub) #our new spatial polygons</code></pre>
+<p>
+You might also want to do an ordered plot of the distribution of MPA areas
+</p>
+<pre><code>gzsort &lt;- sort(gz.areas, decreasing=T)
+barplot(gzsort, ylab='Area m^2',xlab='ID')</code></pre>
+<p>
+It seems there are many small reserves and just a few big ones.
+</p>
+<hr>
+<section id="advanced-users-loops" class="level3">
+<h3 class="anchored" data-anchor-id="advanced-users-loops">
+Advanced users: loops
+</h3>
+<p>
+If you ever need to do a repetitive task on some data, loops are your friend. Writing loops is a very basic programming skill, but they can take some time to figure out initially. In this advanced task, we will use a loop to compare the rgeos area estimates with the areas in the ‘area’ slot. We can easily access the rgeos areas from the dataframe we made. However, the areas slot is hidden away deep in the polygon’s nested structure. We will use a loop to get the value for each polygon.<br>First step, we have to make an empty variable to hold results. We can use <code>rep()</code> to do just replicate some NAs 33 times (33 is the number of MPAs).
+</p>
+<pre><code>polyareas &lt;- rep(NA, nMPAs)</code></pre>
+<p>
+Then follows our loop.
+</p>
+<pre><code>for (i in 1:nMPAs){
+  polyareas[i] &lt;- greenzones@polygons[[i]]@area
+}</code></pre>
+<p>
+This is a <code>for</code> loop. There are other types of loops too, but we will just look at <code>for</code> loops today. ‘For’ loops make a counting variable, in this case I called it <code>i</code> and they iterate the counter over multiple values, in this case from 1 to nMPAs. Try typing <code>1:nMPAs</code>. These are the values <code>i</code> will take in each turn of the loop.<br>The section in <code>{}</code> is where the looping actually happens. So for the first iteration <code>i=1</code>. We access polygon number 1 at its area slot. Then we assign it to <code>polyareas[1]</code>. The loop then steps to <code>i=2</code> and repeats. And so on until <code>i=33</code>. Now look at <code>polyareas</code>. Before it was NAs, now it has the area numbers for each polygon, conveniently ordered in the same order as the polygons are stored. Our loop was pretty simple, but you can make them as complex as you like, including putting loops inside loops. We can compare the two area calculations to see where the areas slot is off and by how much it is off:
+</p>
+<pre><code>area.diff &lt;- round(polyareas - gz.areas)
+area.diff</code></pre>
+<p>
+Can you think of a way to plot the MPAs again, but this time with a different colour to warn us which ones have incorrect areas?
+</p>
+<hr>
+</section>
+</section>
+<section id="overlay-and-extract-polygon-data-green-zone-status-at-points" class="level2">
+<h2 class="anchored" data-anchor-id="overlay-and-extract-polygon-data-green-zone-status-at-points">
+Overlay and extract polygon data (Green zone status) at points
+</h2>
+<p>
+So far we have just manipulated spatial objects on their own. To reach our goal of analysing <em>S. gilbii’s</em> distribution, we need to combine spatial objects.<br>Let’s find out whether each of our video sites is inside or outside greenzones. We can do this using <code>over()</code>.
+</p>
+<pre><code>MPAover &lt;- over(datutm, greenzones)
+MPAover</code></pre>
+<p>
+<code>over()</code> returns a dataframe telling us the attributes of greenzones at each video site. When sites are outside MPAs, there is no polygon data, so we just get an <code>NA</code> (representing no data). We can use the NAs to define a new variable of whether sites are inside or outside MPAs.
+</p>
+<pre><code>MPA &lt;- rep('Open', nsites)
+iMPA &lt;- which(MPAover[,1]&gt;0)
+MPA[iMPA] &lt;- 'MPA'</code></pre>
+<p>
+First we create a variable of 70 ‘Open’. Then we find sites that don’t have MPAs and assign them ‘MPA’. Then we should add our MPA variable to our points dataframe
+</p>
+<pre><code>datutm$MPA &lt;- factor(MPA)</code></pre>
+</section>
+<section id="saving-what-we-have-done-so-far" class="level2">
+<h2 class="anchored" data-anchor-id="saving-what-we-have-done-so-far">
+Saving what we have done so far
+</h2>
+<p>
+Almost time for a break, so let’s save what we have done so far. Set your working directory to a location where you want to save the new data to.
+</p>
+<p>
+We can write the points dataframe using <code>write.csv(datutm, ‘mydata.csv’, row.names=F)</code>. However, this won’t export the projection info. To export all the extra spatial info, use <code>writePointsShape(datutm, ‘Video points.shp’)</code>. Then if we reload this points.shp file, the proj4string will be included.<br>We can also export the greenzones shapefile
+</p>
+<pre><code>writeOGR(greenzones, dsn ='green zones',layer='greenzone', driver ='ESRI Shapefile')</code></pre>
+<p>
+For fun, let’s also export the sites as a .kml file. You can view .kml files in Google Earth. Note that the projection must be in lon-lat coordinates for kmls.
+</p>
+<pre><code>kmlPoints(dat, 'Site points.kml', name ='video sites',icon="http://maps.google.com/mapfiles/kml/shapes/fishing.png")
+
+longlatproj &lt;- proj 4string(dat)
+greenzoneslonglat &lt;- spTransform(greenzones, CRS(longlatproj))
+
+kmlPolygons(greenzoneslonglat, 'greenzones.kml', lwd=5)</code></pre>
+<p>
+A link if you want to look at different icons: <a href="http://kml4earth.appspot.com/icons.html">http://kml4earth.appspot.com/icons.html</a>. You can also export polygons, or even import google maps into R using the dismo package.
+</p>
+</section>
+</section>
+<section id="rasters" class="level1">
+<h1>
+RASTERS
+</h1>
+<p>
+Ecologists and geographers often record data in a grid format. The natural way to structure these data-sets are as rasters. Rasters are data-sets divided into a grid, with many ‘cells’. They store one or more data values in each cell. The package ‘raster’ in R has many functions for working with rasters. You can imagine a raster as a large 2- dimensional matrix of values, where each row/column combination represents positioning of the value in space. A raster object in R also contains additional information about the coordinate reference system, the extent, the size of each cell and many other attributes. This information is essential for knowing the place of a cell on the globe and for relating different rasters or rasters to other types of spatial objects.
+</p>
+<p>
+Working with rasters in the ‘raster’ package is a simple and intuitive way to do spatial analysis in R. It is also very easy to visualise rasters. In this session we will introduce some raster package basics, including reading, writing, creating and manipulating rasters. Once you understand the basics of working with rasters it is relatively easy to apply this package to a wide variety of data-sets and analysis problems.
+</p>
+<p>
+Let’s begin the programming. First up, we need to load the raster package into R:
+</p>
+<pre><code>library(raster)</code></pre>
+<p>
+We can get help on using raster package in a couple of ways. One:
+</p>
+<pre><code>?raster</code></pre>
+<p>
+This brings up a help page. Click on the hyper-link that says ‘raster-package’ therein follows a list of all the functions in raster package. If you want to do something, you can often find a pre-built function here. If you get stuck in today’s course, or run out of things to do, we encourage you to take a look at this help file. Also useful is to type:
+</p>
+<pre><code>vignette('Raster')</code></pre>
+<p>
+This will bring up a pdf with an introduction on how to use the raster package.
+</p>
+<section id="read-in-raster-grids-seagrasses-and-distance-from-rivers" class="level2">
+<h2 class="anchored" data-anchor-id="read-in-raster-grids-seagrasses-and-distance-from-rivers">
+Read in raster grids (seagrasses and distance from rivers)
+</h2>
+<p>
+Let’s read in some raster grids. First reset your working directory to the datasets folder I gave you.
+</p>
+<p>
+Raster grids are easy to read in now
+</p>
+<pre><code>r.sgutm &lt;- raster('raster seagrass.grd')
+r.riverdists &lt;- raster('Raster river distances.grd')</code></pre>
+<p>
+We have two rasters. One is seagrass presence/absence in UTM coordinates, the other is the shortest distance to two major rivers in Moreton Bay.
+</p>
+</section>
+<section id="plotting-rasters" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-rasters">
+Plotting rasters
+</h2>
+<p>
+Remember I said many functions have multiple methods, so they work on all kinds of data. Try <code>plot()</code> to view the data
+</p>
+<pre><code>plot(r.sgutm)
+plot(r.riverdists)</code></pre>
+<p>
+Very nice you might say, but what if you are red-green colour blind and can’t see this pretty rainbow scale properly. Two of my favourite packages for different colour schemes are
+</p>
+<pre><code>library(RColorBrewer)
+library(wesanderson)</code></pre>
+<p>
+To get help on brewer palettes <code>?brewer.pal</code> and click the weblink. There is even a check box for red-green colour blind safe. We can then save a colour palette as a variable for later use
+</p>
+<pre><code>mycols &lt;- brewer.pal(8, 'OrRd')</code></pre>
+<p>
+I will let you explore the wesanderson package for yourself. Try looking it up on the cran webpage. Personally, I am a fan of ‘A Life Aquatic’, so I will go for the ‘Zissou’ palette for the rest of today.
+</p>
+<pre><code>display.wes.palette(5, 'Zissou')
+?wes.palette</code></pre>
+<pre><code>pal &lt;- wes.palette(name = "Zissou", type = "continuous")
+mycols &lt;- rev(pal(120))[30:120]
+zissou.cap &lt;- wes.palette(5, name = 'Zissou')[5]</code></pre>
+<p>
+Now lets look at river distances again with our new colours.
+</p>
+<pre><code>plot(r.riverdists, col =mycols)</code></pre>
+</section>
+<section id="interacting-with-plots" class="level2">
+<h2 class="anchored" data-anchor-id="interacting-with-plots">
+Interacting with plots
+</h2>
+<p>
+raster package is getting better all the time. One of the newer additions is many functions that allow you to interact with plots. For instance, try these (one at a time). You will need to click on the map to implement each function. Hit escape to exit the interactive mode.
+</p>
+<pre><code>plot(r.riverdists, col =mycols)
+zoom(r.riverdists)
+plot(r.riverdists, col =mycols)
+click(r.riverdists,n=3)
+plot(r.riverdists, col =mycols)
+newpoly &lt;- drawPoly() #hit escape to finish your polygon
+plot(newpoly)</code></pre>
+<p>
+Another useful function for interacting with any type of plot is <code>locator(n)</code>, it returns the <code>n</code> coordinates for where you haved clicked on a plot.
+</p>
+</section>
+<section id="look-at-characteristics-of-the-rasters" class="level2">
+<h2 class="anchored" data-anchor-id="look-at-characteristics-of-the-rasters">
+Look at characteristics of the rasters
+</h2>
+<p>
+It is good to explore you data, to understand rasters better. Try these
+</p>
+<pre><code>r.riverdists
+projection(r.riverdists)
+projection(r.sgutm)
+res(r.riverdists) #resolution in x and y
+nrow(r.riverdists) #number of rows
+hist(r.riverdists[]) #histogram of distances</code></pre>
+</section>
+<section id="project-distances-to-local-projections" class="level2">
+<h2 class="anchored" data-anchor-id="project-distances-to-local-projections">
+Project distances to local projections
+</h2>
+<p>
+You might have noticed that the river distances are not in our local UTM coordinates. We can reproject rasters, using <code>projectRaster</code> and specify the projection to be the same as the seagrass raster.
+</p>
+<pre><code>r.riverutm &lt;- projectRaster(r.riverdists,r.sgutm)</code></pre>
+<p>
+Let’s open two figure windows and compare our projections
+</p>
+<pre><code>par(mfrow =c(1,2)) #set the number of figure subwindows, 1 row, 2 columns.
+plot(r.riverdists, col =mycols)
+plot(r.riverutm, col =mycols)</code></pre>
+<p>
+Notice that the UTM raster has also been cropped and resampled to the same extent and resolution as the seagrass raster. You can do cropping, aggregation and resampling yourself if you like.<br>We can draw a new extent on our new raster and crop to it
+</p>
+<pre><code>plot(r.riverutm, col =mycols)
+drawExtent()</code></pre>
+<p>
+Below I have pasted in some coordinates (around the Brisbane river) I drew myself to the <code>extent()</code> function. The <code>extent()</code> function creates a new extent object that is basically just a box with a proj4string.
+</p>
+<pre><code>newext &lt;- extent(510877.8, 524824.3, 6962493, 6979397)
+r.bris &lt;- crop(r.riverutm, newext)
+plot(r.bris, col =mycols)</code></pre>
+<p>
+You might also want to aggregate cells in a raster. For instance, very large rasters with very fine resolution can be very slow to handle and use a lot of memory. Just use the <code>aggregate()</code> function to make them smaller. The <code>fact=8</code> argument aggregates 8 cells in each direction.
+</p>
+<pre><code>ncell(r.riverutm)
+r.riveragg &lt;- aggregate(r.riverutm, fact=8)
+ncell(r.riveragg)
+par(mfrow =c(1,2))
+plot(r.riverutm, col =mycols)
+plot(r.riveragg, col =mycols)</code></pre>
+<p>
+Notice that if we increase the fact, the plot gets very blocky. We are trading off memory size for lower resolution. A similar function, that we won’t cover today is <code>resample()</code>. Resampling changes the origin and resolution of a raster. In general you have to be a bit careful with all of these functions (reprojecting, aggregating, resampling), because they can sometimes distort the data in ways you don’t intend, for instance the smaller islands dissappear when we aggregate.
+</p>
+</section>
+<section id="rasterizing" class="level2">
+<h2 class="anchored" data-anchor-id="rasterizing">
+Rasterizing
+</h2>
+<p>
+Rasterizing is turning spatial shapes (e.g.&nbsp;polygons) into rasters, it has nothing to do with Bob Marley. Let’s rasterize our greenzones data onto the seagrass raster, so we can compare it to river distances.
+</p>
+<pre><code>?rasterize
+r.greenzone &lt;- rasterize(greenzones, r.sgutm, field='ID')</code></pre>
+<p>
+This copies the seagrass raster, clears its values and pastes in the values from the ‘ID’ column of the spatial polygons data frame. Recall that ‘ID’ was just a unique number for each MPA.
+</p>
+<pre><code>plot(r.greenzone)</code></pre>
+<p>
+Now we have two rasters with exactly the same coordinates, resolution, cells etc… We can combine them in many different ways. For instance, we can get mean distances to rivers for each MPA.
+</p>
+<pre><code>zonal(r.riverutm, r.greenzone, fun='mean')</code></pre>
+<p>
+This returns an array with zone numbers (the MPAs) and the mean distance of that MPA to rivers. You could also rasterize the greenzones by the areas field.
+</p>
+<pre><code>r.greenzone &lt;- rasterize(greenzones, r.sgutm,field ='areas')
+plot(r.greenzone)</code></pre>
+<p>
+Shows us a plot of MPAs, where colours represent their areas (minus the holes).
+</p>
+</section>
+<section id="write-raster" class="level2">
+<h2 class="anchored" data-anchor-id="write-raster">
+Write raster
+</h2>
+<p>
+Let’s save where we are up to. Set your working directory to an appropriate folder then try
+</p>
+<pre><code>writeRaster(r.riverutm, 'River distances in utm.grd')</code></pre>
+<p>
+Saves our raster (as a .grd. file). This can be reused later in R or imported into ARC GIS for instance, though I hope by now you are considering deleting all GIS programs from your computer and using only R from now on. Again, we can also write rasters for Google Earth. But remember it must be a raster with long-lat coordinates.
+</p>
+<pre><code>KML(r.riverdists, file='RiverDists.kml')</code></pre>
+</section>
+<section id="extracting-data" class="level2">
+<h2 class="anchored" data-anchor-id="extracting-data">
+Extracting data
+</h2>
+<p>
+To truly master spatial data manipulation in R, we need to know how to combine rasters and vectors. Luckily, this is pretty easy. For instance, let’s find out whether seagrass is present or not at our video sites
+</p>
+<pre><code>?extract
+sgpres &lt;- extract(r.sgutm, datutm)
+datutm$SG &lt;- sgpres</code></pre>
+<p>
+<code>extract()</code> takes a raster (here our seagrass layer) and gets the values at a locations of spatial points (here our video sites). Again, the projections must be identical. Then we attached the results to our points dataframe. Now we are making some progress on matching our environmental variables with our video sites.<br>We can do the same for river distances
+</p>
+<pre><code>sitedist &lt;- extract(r.riverutm, datutm)
+datutm$rdist &lt;- sitedist
+datutm@data</code></pre>
+<p>
+Great! Now our points dataframe has presences of two species, presence of seagrass, MPAs and the distance to the nearest river, our proxy for water quality.
+</p>
+<p>
+We can do some preliminary analyses to investigate how our species responsd to these variables. Let’s do boxplots of river distances against our two species. You can try some other boxplots for yourself too
+</p>
+<pre><code>boxplot(datutm$rdist~ datutm$s.gilbii)
+boxplot(datutm$rdist~ datutm$s.stevenii)</code></pre>
+<p>
+We can also calculate the proportion of sites where <em>S. gilbii</em> occurs on seagrass.
+</p>
+<pre><code>tapply(datutm$SG, datutm$s.gilbii,mean)</code></pre>
+<p>
+<code>tapply()</code> takes a vector (SG), and applies a function (mean) by groups (<em>S. gilbii</em> presence/absence).
+</p>
+<hr>
+</section>
+<section id="a-primer-on-workflows" class="level2">
+<h2 class="anchored" data-anchor-id="a-primer-on-workflows">
+A primer on workflows
+</h2>
+<p>
+So far we have mainly been following my script without any view as to where we are going. With your own data, you will need to take more time to plan the workflow. Otherwise you can waste a lot of time and end up running down dead-ends, like eventually finding you have cropped a raster down too far. As an example of a simple workflow, let’s revist the tasks we just did, but with the specific aim of extracting river distances and seagrass presence at video sites in mind.<br>So we have our sites data and we know it is in UTM coordinates: <code>proj4String(datutm)</code>. We want to match our other layers to this layer. We might start a new script, and add comments as placeholders for tasks later, like this:
+</p>
+<pre><code># Script to extract seagrass and river distances for video sites
+# CJ Brown 27 Nov 2014
+### Outline
+#Load packages
+#Load points data
+# Load rivers and seagrass
+# Check projections for rivers and seagrass
+# Reproject rivers and seagrass if neccessary
+# Extract points
+# Add points to sites dataframe
+# Save new sites dataframe for analysis later</code></pre>
+<p>
+Then we would start filling this in. For instance, assume you have read the data in already and are looking at rivers:
+</p>
+<pre><code>#...
+#Check projection
+proj4string(r.riverdists)
+#It's not the correct UTM, reproject it
+r.riverutm &lt;- projectRaster(r.riverdists,r.sgutm)
+#Plot to check it looks right
+plot(r.riverutm, col =mycols)
+#Extract points
+sitedist &lt;- extract(r.riverutm, datutm)
+# And so on...</code></pre>
+<p>
+Planning like this can really help you save a lot of time by keeping you on track.
+</p>
+<p>
+For <em>Advanced users</em> the dplyr package offers a cool function called pipes, which can make workflows easier to follow. Pipes look like this <code>%&gt;%</code> and basically take the output of one function and port it into the first argument of the next function. As an example, lets reproject rivers then extract site values in one line.
+</p>
+<pre><code>library(dplyr)
+sitedist &lt;- r.riverdists %&gt;% projectRaster(r.sgutm) %&gt;% extract(datutm)</code></pre>
+<p>
+You could read this code as: ’take <code>r.riverdists</code>, project it using the CRS of <code>r.sgutm</code> then extract the values at the coordinates of <code>datutm</code>.
+</p>
+<hr>
+<hr>
+</section>
+</section>
+<section id="advanced-users---fitting-a-spatial-model" class="level1">
+<h1>
+Advanced users - fitting a spatial model
+</h1>
+<p>
+A really powerful feature of R is that we combine its statistical packages with its pacakges for spatial data manipulation and plotting.<br>We now have our dataframe of species occurences and environmental variables. It is straightforwards to use that in a Generalized Linear Model to predict the probability of species occurences across the entire bay. We will do the analysis for <em>S. gilbii</em> here, I leave <em>S. stevensii</em> for later.
+</p>
+<section id="fitting-a-model" class="level3">
+<h3 class="anchored" data-anchor-id="fitting-a-model">
+Fitting a model
+</h3>
+<p>
+First build a GLM using our data and include all the variables hypothesised to affect <em>S. gilbii</em>. We will use a binomial distribution for the errors, because we are dealing with presence/absences data.
+</p>
+<pre><code>mod1 &lt;- glm(s.gilbii ~ SG + rdist + MPA, data = datutm@data, family = binomial)
+summary(mod1)</code></pre>
+<p>
+I won’t cover model building here, but in brief, the <code>glm()</code> function fits the GLM for us. It is saying predict ‘s.gilbii’ using the variables ‘SG’, ‘rdist’ and ‘MPA’ from the <a href="mailto:datutm@data">datutm@data</a> dataframe. It looks like MPAs are not having a significant effect, but seagrass and distance to river are. Let’s remove MPAs
+</p>
+<pre><code>mod2 &lt;- glm(s.gilbii ~ SG + rdist, data = datutm@data, family = binomial)
+summary(mod2)</code></pre>
+<p>
+Model 2 looks pretty good.
+</p>
+</section>
+<section id="plot-predictions-against-factors" class="level3">
+<h3 class="anchored" data-anchor-id="plot-predictions-against-factors">
+Plot predictions against factors
+</h3>
+<p>
+<code>summary()</code> gives us a table of coefficients, but it might be nicer to visualise the effects of seagrass and river distances on <em>S. gilbii</em>. Also, we fit a binomial model, so the coeffcients are on the logit scale. For interetating the output, we would prefer to visualise results as probabilities of occurrence. To do this, we first create a false dataframe that creates the values of predictor variables (SG and rdist) we would like to see probabilities for. We then use the <code>predict()</code> function to predict to those values. We can then make a plot of predictions.
+</p>
+<section id="step-1-predictor-data-frame" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-predictor-data-frame">
+Step 1: Predictor data frame
+</h4>
+<pre><code>npreds &lt;- 20 #number of predictions we want
+distmax &lt;- max(datutm@data$rdist) #maximum distance
+pred.dists &lt;- seq(0, distmax, length.out=npreds) #ordered sequences of distances
+pred.dists
+predSG &lt;- c(0,1) #values of SG we want to predict to
+dat.pred &lt;- expand.grid( rdist =pred.dists,SG = predSG)
+dat.pred</code></pre>
+<p>
+<code>expand.grid()</code> just makes a dataframe, but copies the ‘pred.dists’, twice, once for SG=0 and again for SG=1.
+</p>
+</section>
+<section id="step-2-predict-probabilities-for-our-new-dataframe" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-predict-probabilities-for-our-new-dataframe">
+Step 2: Predict probabilities for our new dataframe
+</h4>
+<pre><code>dat.pred$fit &lt;- predict(mod2, newdata = dat.pred, type='response')</code></pre>
+<p>
+We just added a column of predictions for ‘mod2’ to our dataframe, ‘dat.pred’. I specified ‘type=response’ so we get probabilities, rather than values on a logit scale.
+</p>
+</section>
+<section id="step-3-plot-predictions" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-plot-predictions">
+Step 3: Plot predictions
+</h4>
+<p>
+First identify the rows of dat.pred that are for seagrass and for without seagrass, so we can plot them separately
+</p>
+<pre><code>irow.none &lt;- which(dat.pred$SG==0)
+irow.pres &lt;- which(dat.pred$SG==1)</code></pre>
+<p>
+Now we plot the no seagrass predictions first. We also set a few parameters for the plot, like axes labels and y limits.
+</p>
+<pre><code>plot(dat.pred$rdist[irow.none], dat.pred$fit[irow.none], type ='l', xlab ='Distance from river (km)',ylab ='Probability of presence', ylim =c(0,1))</code></pre>
+<p>
+Now add the line for predictions with seagrass and add points for the original observations.
+</p>
+<pre><code>lines(dat.pred$rdist[irow.pres], dat.pred$fit[irow.pres], lty=2)
+points(datutm$rdist, datutm$s.gilbii)</code></pre>
+<p>
+Finally, we might want to add a legend, so we now which line is which
+</p>
+<pre><code>legend('bottomright',legend=c('No seagrass','With seagrass'), lty=c(1,2), bg='white')</code></pre>
+<p>
+Be careful with <code>legend()</code>, because it doesn’t ‘look’ at the plot like some programs to determine what to plot. In this case we tell it to add a legend in the bottom right, with two labels for seagrass using solid and dashed lines types (<code>lty=c(1,2)</code>), with a white background. If we accidentally swapped the line types (i.e.&nbsp;<code>lty=c(2,1)</code>), then the legend would be incorrect.
+</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="plot-a-map-for-our-data" class="level1">
+<h1>
+Plot a map for our data
+</h1>
+<p>
+R can be used to make publication quality maps. It does however take some playing around and you might be surprised in the end how long your script for making a plot becomes. I always am. The neat thing about using R to make your maps is that once you have your script, you can easily apply it to new datalayers or modify it. Having an R script for your figures in papers is particularly useful when you (or reviewers or coauthors!) decide you need to redo some analysis, which then requires replotting all the graphs. A good figure script will do all the re-plotting automatically.<br>So lets make a plot of our study region and some of the key observation data layers.
+</p>
+<section id="plotting-the-rasters" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-the-rasters">
+Plotting the rasters
+</h3>
+<p>
+We will build the plot up bit by bit, using the river distances as the first layer
+</p>
+<pre><code>plot(r.riverutm, col = mycols)</code></pre>
+<p>
+Drag up the plot window so that you can really see your plot. The coordinates are a bit meaningless so lets get rid of them by telling <code>plot()</code> not to plot axes, using the argument <code>xaxt=‘n’</code>.
+</p>
+<pre><code>plot(r.riverutm, col = mycols, xaxt='n', yaxt='n')</code></pre>
+<p>
+Now we can try to plot seagrass over the top
+</p>
+<pre><code>plot(r.sgutm, add=T)</code></pre>
+<p>
+The <code>add=T</code> argument ensures we add this plot to the existing one. It doesn’t look very good with seagrass though, because the seagrass layer covers the rivers layer. A solution would be to convert the seagrass raster to polygon, and just plot the outline of seagrass patches. We have converted polygons to rasters, by not rasters to polygons yet.
+</p>
+<pre><code>poly.sgutm &lt;- rasterToPolygons(r.sgutm, fun=function(x){x==1}, dissolve=TRUE)</code></pre>
+<p>
+There are a few unusual arguments here. The <code>fun=function(x){x==1}</code> command ensures we only draw polygons where there is seagrass (try rasterToPolygons without that and see how it looks). The <code>dissolve=TRUE</code> command dissolves neighbouring patches of seagrass into one polygon. If we didn’t dissolve (i.e.&nbsp;<code>dissolve=FALSE</code>), we would get a heap of little square polygons, representing the outline of each raster cell with seagrass in it. Try it yourself. Now let’s see how our seagrass polygons look
+</p>
+<pre><code>plot(r.riverutm, col = mycols, xaxt='n', yaxt='n')
+plot(poly.sgutm, add=TRUE)</code></pre>
+<p>
+You might have noticed that the box around the figure is bigger than the raster itself, leaving an inelegent white space at the edges of the plot. We will fix this later.
+</p>
+</section>
+<section id="plotting-shapefiles" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-shapefiles">
+Plotting shapefiles
+</h3>
+<p>
+It would also be nice to define an outline of the coasts. In the datasets folder I gave you is a folder ‘Moreton coasts’ with a shapefile for the coast. Change your working directory to this folder and load the shapefile using <code>readOGR()</code> as before.
+</p>
+<pre><code>coastutm &lt;- readOGR('.', 'coastutm')
+plot(coastutm ,add=T, border='grey30')</code></pre>
+<p>
+We added coasts to the raster, using a light grey (‘grey30’ means 30% of black) border. We can also add the greenzones
+</p>
+<pre><code>plot(greenzones, add=T, border='grey30')</code></pre>
+<p>
+Then points for sites
+</p>
+<pre><code>points(datutm)</code></pre>
+<p>
+It would be nice to see where we found <em>S. gilbii</em>. So lets replot our subset of points for where <em>S. gilbi</em> occurs. I made the colour ‘zissou.cap’ earlier, but use a colour of your choice
+</p>
+<pre><code>points(dat.gilbii, pch=16, col=zissou.cap)</code></pre>
+</section>
+<section id="add-a-legend" class="level3">
+<h3 class="anchored" data-anchor-id="add-a-legend">
+Add a legend
+</h3>
+<p>
+We can add a legend for the points. This time we will put it outside of the figure box though, so we will specify its position using coordinates. We can find the placement using <code>locator(1)</code> and then clicking where we want the legend, to get the coordinates. Once you have your coordinates, use them in <code>legend()</code> like this
+</p>
+<pre><code>legend(x = 556366, y= 7016676, legend=c('Absent','Present'), pch=1)</code></pre>
+<p>
+But notice that we can’t see the legend (if you picked a location outside of the box). Plots in R are clipped to the plotting region (the box around the raster). The <code>par()</code> function allows us to control many graphics parameters. Try <code>?par</code> to see a list. One of them is called <code>xpd</code>, and we can alter it to change the plotting region. Setting <code>par(xpd=NA)</code> lets us plot outside the normal figure region
+</p>
+<pre><code>legend(x = 552366, y= 7016676, legend=c('Absent','Present'), pch=c(1,16), col=c('black',zissou.cap))
+text(565002.1, 7019015, 'S. gilbii', font=3)</code></pre>
+<p>
+The <code>text()</code> function adds some text (a title) to our plot too. The first two numbers are coordinates, and ‘font=3’ makes italics. Make sure you reset xpd now, otherwise additional plots will go all the way to the edges of the window
+</p>
+<pre><code>par(xpd=F)</code></pre>
+</section>
+<section id="add-an-arrow" class="level3">
+<h3 class="anchored" data-anchor-id="add-an-arrow">
+Add an Arrow
+</h3>
+<p>
+Because this is a map, it would also be great to have an arrow showing north and a scale bar for context, so lets put some on.<br>Use <code>locator(3)</code> to find coordinates for the two ends of your arrow and the location for an ‘N’. Then we can make the arrow with an N like this
+</p>
+<pre><code>arrows(x0=513150, y0=6934468, x1=513150, y1=6949293, len=0.3)
+text(513150, 6953621, 'N', cex=1.5)</code></pre>
+<p>
+x0, y0 etc… are the x and y coordinates for each end of the arrow. The <code>len=0.3</code> sets the length of the arrow heads. ‘cex’ is a pretty common graphical parameter, it is a scaling factor, in this case for the size of the N. Note our North arrow is approximate and will only be correct in the very centre of UTM zone 56. If we wanted the arrow to be correct everywhere, we would have to use an angle preserving projection, like lon-lat.
+</p>
+</section>
+<section id="add-a-scale-bar" class="level3">
+<h3 class="anchored" data-anchor-id="add-a-scale-bar">
+Add a scale bar
+</h3>
+<p>
+We can make a scale bar in a similar way to the arrow. Use <code>locator(1)</code> to find a place to start the line. Then decide on the length of your bar. I am going to go for 10kms, so I define a variable
+</p>
+<pre><code>scale.len &lt;- 10000</code></pre>
+<p>
+Remember that our coordinates are in meters? Now all we have to do is add <code>scale.len</code> to the x coordinate we just found, to make a bar exactly 10km long. Here are the coordinates I used
+</p>
+<pre><code>x &lt;- c(518282, 518282+scale.len)
+y &lt;- c(6931187, 6931187)</code></pre>
+<p>
+Then we can plot them using lines, and add text to say how long it is
+</p>
+<pre><code>lines(x, y, lwd=4)
+text(524025, 6929337, '10 km', cex=1)</code></pre>
+<p>
+This time in <code>lines()</code> I have set the parameter <code>lwd</code> which is the line width.
+</p>
+</section>
+<section id="putting-it-all-together" class="level3">
+<h3 class="anchored" data-anchor-id="putting-it-all-together">
+Putting it all together
+</h3>
+<p>
+We have our figure, so let’s put it all together and save it as a pdf, to submit with a paper. You could just save it now using the menu in RStudio, but remember I said we would fix that ugly white space around the edges?
+</p>
+<p>
+The best way to do it is to create a pdf and write the figure to that. We can set the width and height of the pdf. If we get the ratio just right, the box will fit nicely with the raster and there will be no white space (it does take some trial and error). To create a pdf, we use the <code>pdf()</code> function to create a pdf device. We can give the pdf a file name and set the width and height (in inches). Then we run our plotting code again, it will all be plotted to the pdf, so you won’t see anything. Then to finish the pdf, we close it using <code>dev.off()</code> (meaning turn the figure device off). If you look in your working directory, you should see a pdf of the figure there. Here is the code we have put together for the figure
+</p>
+<pre><code>scale.len &lt;- 10000
+#Open the pdf device
+pdf(file = 'SgilbiiMap.pdf', width=4, height=5.8)
+# Plot rasters
+plot(r.riverutm, col = mycols, xaxt='n', yaxt='n')
+plot(poly.sgutm, add=TRUE)
+# plot shapes
+plot(coastutm ,add=T, border='grey30')
+points(datutm)
+points(dat.gilbii, pch=16, col=zissou.cap)
+#Add the legend
+par(xpd=NA)
+legend(x = 552366, y= 7016676, legend=c('Absent','Present'), pch=c(1,16), col=c('black',zissou.cap))
+text(565002.1, 7019015, 'S. gilbii', font=3)
+par(xpd=F)
+#Add the scale and north arrow
+arrows(x0=513150, y0=6934468, x1=513150, y1=6949293, len=0.3)
+text(513150, 6953621, 'N', cex=1.5)
+x &lt;- c(518282, 518282+scale.len)
+y &lt;- c(6931187, 6931187)
+lines(x, y, lwd=4)
+text(524025, 6929337, '10 km', cex=1)
+#Finish the figure
+dev.off()</code></pre>
+<hr>
+</section>
+<section id="advanced-users---plotting-our-model-predictions" class="level2">
+<h2 class="anchored" data-anchor-id="advanced-users---plotting-our-model-predictions">
+Advanced users - plotting our model predictions
+</h2>
+<p>
+We can use the same ideas from mapping above, combined with the predictions for the probability of <em>S. gilbii</em> occurrences, to make a plot of were we expect to find <em>S. gilbii</em>.
+</p>
+<section id="predict-in-space" class="level3">
+<h3 class="anchored" data-anchor-id="predict-in-space">
+Predict in space
+</h3>
+<p>
+We use predict again, but this time instead of predicting with a sequence of river distance values for seagrass, we predict with the rasters for river distance and seagrass presence.<br>To make our predictor variables, we just extract every value of the relevant raster layers
+</p>
+<pre><code>r.sgutm[]
+predsg &lt;- r.sgutm[]
+predrdist &lt;- r.riverutm[]</code></pre>
+<p>
+the <code>[]</code> gives us every value in the raster, starting at the top left and reading along rows. The two predictors will be extracted in the same order, so we can be confident they align properly, provided the resolution, extents are identical (which they are).<br>Now put the predictors into a dataframe and predict to that dataframe using model 2.
+</p>
+<pre><code>pred.df &lt;- data.frame(SG = predsg, rdist= predrdist)
+pred.df$fit &lt;- predict(mod2, newdata = pred.df, type='response')</code></pre>
+<p>
+We just added a column of model fits to the dataframe. The model fits are the predicted probability of occurrence for <em>S. gilbii</em>. We can return those model fits to a raster for plotting, first create an empty raster that is the same as the original predictors (seagrass and river distances)
+</p>
+<pre><code>r.probs &lt;- raster(r.sgutm)</code></pre>
+<p>
+Then just assign the fitted values to that raster
+</p>
+<pre><code>r.probs[] &lt;- pred.df$fit</code></pre>
+<p>
+You will notice we used the <code>[]</code> again, but this time on the left hand side of the assign symbol (‘&lt;-’). This changes the values in that raster
+</p>
+</section>
+<section id="plot-predictions" class="level3">
+<h3 class="anchored" data-anchor-id="plot-predictions">
+Plot predictions
+</h3>
+<p>
+Plotting the predictions basically follows the same procedure as the last plot we made. The main change is that I decided to use a different colour palette. Here is my code for you to follow or customise to make the plot the way you want it.
+</p>
+<pre><code>probcols &lt;- brewer.pal(9,'PuBu') #new colour palette
+plot(r.probs, col = probcols, xaxt='n', yaxt='n') #plots predicted probabilities
+plot(coastutm ,add=T, border='grey30')
+#Add seagrass, as polygons
+plot(poly.sgutm, add=T, border='DarkGreen', lwd=0.3)
+plot(greenzones, add=T, border='grey30')
+#Add an arrow
+arrows(513150, 6934468, 513150, 6949293, len=0.3)
+text(513150, 6953621, 'N', cex=1.5)
+#Scale bar
+scale.len &lt;- 10000 #10 km
+lines(c(518282, 518282+scale.len), c(6931187, 6931187), cex=3)
+text(524025, 6929337, '10 km', cex=1)</code></pre>
+<p>
+We can see now that our species is unlikely to be near rivers, unless there is some seagrass there.
+</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>
+Conclusion
+</h1>
+<p>
+I hope you enjoyed the course and are convinced enough about R to keep using it for spatial applications in the future. The learning curve can be steep, but persistence will pay off. The best way to learn R is to go cold turkey on other programs. It will take you longer at first, but eventually you will get the hang of it.<br>Remember there is lots of help out there too, in terms of books, webpages, colleagues and mailing lists (although use these as a last resort). If you have a problem, some-else has also usually had it and there will be an answer out there. Often just doing a web search will turn up the answers you need. Finally, R is getting better all the time. I find that pacakges are improving so fast that problems I used to have just go away with the next update.<br>Finally, don’t forget to fill out my survey (if I gave you one) or email me with feedback, so I can improve the course for next time.<br>Happy R using,<br>Chris
+</p>
+<hr>
+<hr>
+</section>
+<section id="appendix" class="level1">
+<h1>
+Appendix
+</h1>
+<section id="glossary" class="level2">
+<h2 class="anchored" data-anchor-id="glossary">
+Glossary
+</h2>
+<p>
+There are a few important programming terms to know. Here is a quick glossary, please refer back to it if you see a term you don’t understand. I will explain more of these terms during the course.<br>* Assign<br>The assign symbol <code>&lt;-</code> (AKA <code>=</code>) assigns a variable, like a number to a name like <code>x</code>. For instance to save the number one with the name x: <code>x&lt;-1</code>, which you can read as ‘assign x the number 1’.<br>* Class<br>A class defines a structure for an object. That way, when I give some data and say it is of ‘raster’ class, you will know how it is structured and where to find different variables For instance, the extent.<br>* Console<br>The window where R code is executed.<br>* Function<br>A function takes some objects and changes them, returning a new object. For instance if we had a variable <code>x</code> of 20 numbers, we could calculate its mean using the <code>mean()</code> function like this <code>mean(x)</code>. Some functions also have additional arguments. For instance, if we wanted to calculated the mean of ‘x’ removing missing values (coded as ‘NA’) we could write: <code>mean(x, na.rm=T)</code>. Multiple arguments are separated by commas with a function’s brackets.<br>* List<br>Lists are nested objects of more objects.<br>* Object<br>Anything you store in R’s memory is an object. For instance, a string like this <code>spatial</code> a number like this <code>42</code> or even a new function. We will be working a lot with spatial objects today. See the entry for ‘lists’.<br>* Method<br>A single function can have multiple methods, if it works with different classes of objects. For instance <code>plot(x)</code> works with many types of data including arrays of numbers, rasters, polygons and even model objects. See the entries for functions, objects and classes.<br>* Packages<br>Packages are collections of functions that someone has written for distribution to others. The folder a package of functions is kept in is called its ‘library’, hence we load packages to an R session using the <code>library()</code> function.<br>* Script<br>A window with a text editor where we write code so we can save it for later. The code in your script won’t be exectued until you send it to the console (e.g.&nbsp;by clicking on a line and pressing Ctrl-R). The script should be written in the order you want the code to be executed. We’re not writing <em>Pulp Fiction</em> so keep your code in chronological order.<br>* Variable<br>I use this term loosely here, in general a variable is just a number or sequence of numbers you have saved in R’s memory.<br>* Working directory<br>The directory where R will look for any files you try to load. You can find out what it is by typing <code>getwd()</code> in the console. You can change it by typing <code>setwd(’/Users/cbrown/Databases)</code>, where the path is the path I use for databases. You need to change it to your own.
+</p>
+</section>
+</section>
+</code></main></div><code>
+
+
+
+
+
+
+ <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.seascapemodels\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+ <!-- /content -->
+
+
+
+
+</code></body></html>

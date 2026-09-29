@@ -1,0 +1,2082 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Seascapemodels</title>
+<link>https://www.seascapemodels.org/bluecology_blog.html#category=rstats</link>
+<atom:link href="https://www.seascapemodels.org/bluecology_blog-rstats.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.8.25</generator>
+<lastBuildDate>Fri, 21 Aug 2026 14:00:00 GMT</lastBuildDate>
+<item>
+  <title>Running local large language models not as difficult as you might think</title>
+  <link>https://www.seascapemodels.org/posts/2026-08-22-running-local-LLMs/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This post was <a href="https://vitaexmachina.substack.com/p/running-local-large-language-models">originally published on our collaborative substack site</a>. Visit the site to follow us and read more similar posts.</p>
+<p><em>Jointly authored by Chris Brown, Scott Spillias, Carla Sbrocchi and Luis D. Verde Arregoitia.</em></p>
+<p>Chris had putting off trying local models as the setup seemed too complex for him, but Scott convinced him to try it out. Chris did and says it was easier than he had thought. This tutorial walks through the setup.</p>
+<section id="what-youll-need" class="level2">
+<h2 class="anchored" data-anchor-id="what-youll-need">What you’ll need</h2>
+<ul>
+<li><p>A desktop or laptop computer, more on hardware below.</p></li>
+<li><p><strong>Download the <a href="https://ollama.com/">Ollama</a></strong> software</p></li>
+<li><p><strong>A large language model</strong>, it’s simple to use Ollama to download one.</p></li>
+<li><p><strong>Ideally, another piece of software that interacts with Ollama</strong> — this can either be, say, <a href="https://ellmer.tidyverse.org/">ellmer</a>, the R package, which can make calls to Ollama, or it can be an extension like <a href="https://www.continue.dev/">Continue</a>, which lets you do agentic coding and autocomplete.</p></li>
+</ul>
+</section>
+<section id="ollama" class="level2">
+<h2 class="anchored" data-anchor-id="ollama">Ollama</h2>
+<p>The main software you need to get is Ollama. Go to <a href="https://ollama.com/">ollama.com</a> and download and install Ollama (you may need to seek IT approval if you are doing this on a work computer). Then you have several choices for <a href="https://ollama.com/library">models</a> to download directly from Ollama These are open source models, and we recommend researching their webpage for which model would be best for the particular application you want to use Ollama for. More on this below.</p>
+<p>The way Ollama works is it sets up a localhost server. This is like a web server, where you would access a service from the internet, except the server runs locally on your computer. It just sits there waiting until you make a request of the LLM. Then what it’s going to do is load a large language model into memory and pass that request to a locally run large language model.</p>
+</section>
+<section id="the-commands-you-need" class="level2">
+<h2 class="anchored" data-anchor-id="the-commands-you-need">The commands you need</h2>
+<p>Ollama comes with a clickable interface, but we find it more convenient to use the terminal. Here are some of the key commands.</p>
+<pre><code>ollama serve                  # start the server (the desktop app does this for you)
+ollama pull qwen2.5-coder     # download a model
+ollama run qwen2.5-coder      # chat with a model (downloads it first if you don't have it)
+ollama list                   # see which models you've already downloaded
+ollama ps                     # see which models are currently loaded in memory
+ollama stop qwen2.5-coder     # unload a model from memory now
+ollama rm qwen2.5-coder       # delete a downloaded model from disk</code></pre>
+<p>Full list: <a href="https://docs.ollama.com/cli">CLI reference</a>.</p>
+<p>Before starting on these, let’s look at model choice.</p>
+</section>
+<section id="performance-and-hardware" class="level2">
+<h2 class="anchored" data-anchor-id="performance-and-hardware">Performance and hardware</h2>
+<p>Now its important to understand the difference between hard-disk memory, RAM, GPUs and CPUs.</p>
+<p>Hard-disk memory is where data is stored long term. You need enough of this just to download the model file. This is unlikely to be a constraint for downloading a model, unless your computers memory is really chockers.</p>
+<p>Common LLM choices range from about 8GB up to terabytes. You will need at least 10GB of free hard-disk memory to download a basic coding assistant model.</p>
+<p>RAM is the accessible memory where Ollama (and other programs) hold data so its ready for quick access. The local LLM needs to fit in your RAM for Ollama to do inference with it. If the LLM is using most of your RAM it may still work, but not you will find other software on your computer slows down or breaks while the model is in use, because it can’t use that RAM.</p>
+<p>For a basic 7 billion parameter model (‘7B’) you will need 8GB RAM minimum. But practically you will want 16GB+ for responses to be fast enough and to allow you to use other software simultaneously.</p>
+<p>Ollama only holds an LLM in RAM while it’s in use. By default Ollama unloads it after five minutes of inactivity, or use the <code>stop</code> command to get it out of RAM sooner.</p>
+<p>GPUs and CPUs are what do the inference. They take your prompt and process it to produce text/images/audio. Hopefully you have a computer with a decent GPU, this is much faster. Read more on <a href="https://docs.ollama.com/gpu">Hardware support</a> if you are not sure.</p>
+<p>GPU setups differ with different brands of computers. For instance, a mid-range Macbook will be sufficient to run basic models. For windows machines, you will want to have a performance NVidia GPU. Developers are aggressively compressing and quantizing local models to help us run decent local models on memory’-constrained machines, and hopefully good coding assistants will soon perform similarly to cloud-hosted frontier models on the consumer grade laptops most of us use.</p>
+</section>
+<section id="choosing-a-model" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-a-model">Choosing a model</h2>
+<p>Some of these models are very large (use a lot of memory), and there’s a fair bit of choice that needs to go into selecting the right model. Memory size roughly correlates with the number of parameters an LLM has (e.g.&nbsp;7B, 14B). LLMs with more parameters are in general smarter, but you’re going to need more RAM and a more powerful GPU to use them.</p>
+<p>When he tried Ollama, Chris was surprised that there are lots of quite good, relatively small models these days that will run on most modern laptops.</p>
+<p>Useful references for picking one:</p>
+<ul>
+<li><p><a href="https://ollama.com/search">Browse models</a> — filter by chat, coding, vision, embeddings and reasoning</p></li>
+<li><p><a href="https://docs.ollama.com/context-length">Context length</a> — how much text the model can take in at once</p></li>
+<li><p><a href="https://docs.ollama.com/quickstart">Ollama quickstart</a></p></li>
+</ul>
+<p>Now let’s look at a couple of applications of Ollama.</p>
+</section>
+<section id="autocomplete-and-agentic-coding" class="level2">
+<h2 class="anchored" data-anchor-id="autocomplete-and-agentic-coding">Autocomplete and agentic coding</h2>
+<p>Chris started with the <a href="https://ollama.com/library/qwen2.5-coder">Qwen 2.5 Coder base</a>, because he wanted to try using Ollama for autocomplete suggestions while coding.</p>
+<p>To get the model he just ran <code>ollama pull qwen2.5-coder:7b-base</code>. Then it downloaded from the internet. This took a while as the file is several gigabytes.</p>
+<p>He used the ‘base’ version as it seems to perform better for line completion. Other models are trained for back and forth chatting, so tend not to want to complete your sentences (which would be annoying in a chat interface!).</p>
+<p>So download that model, and then you’re going to need another extension to help with the autocomplete. If you’re using Visual Studio Code, you can install the <a href="https://marketplace.visualstudio.com/items?itemName=Continue.continue">Continue extension</a> and then just follow <a href="https://docs.continue.dev/customize/model-providers/ollama">their instructions</a> for connecting Continue to Ollama. Note that Continue has been acquired by the company Cursor and the actual extension may not be around for much longer. We can also use <a href="https://kilo.ai/docs/automate/extending/local-models">Kilo Code</a> as an alternative extension that also supports local models.</p>
+<p><a href="https://docs.continue.dev/customize/models">Check their list of recommended models.</a></p>
+<p>Other applications you might want to try out are the chat agents option in Continue. This will make changes to your scripts. The base model we used above won’t work for this task, you will want a different model that is optimized for chat and agentic workflows. Usually these models are significantly larger.</p>
+</section>
+<section id="agentic-programming" class="level2">
+<h2 class="anchored" data-anchor-id="agentic-programming">Agentic programming</h2>
+<p>Agents write code, run code, look at the results, update the code and keep going until they decide to finish the task.</p>
+<p>It is possible to do agentic coding with local LLMs, but you will need a really good consumer grade computer that can handle much bigger models than used for autocomplete or chatting.</p>
+<p>See this <a href="https://simonpcouch.com/blog/2026-04-16-local-agents-2/">post</a> by Simon Couch on driving coding agents on a laptop using local models such as variants of Qwen 3.5 and Gemma 4.</p>
+<p>Qwen 3.8 (27B) is also <a href="https://simonwillison.net/2026/Aug/16/qwen-38-27b/">getting great reviews for agentic coding</a>. That blogger has found it works ok with both a 128GB M5 Max MacBook Pro and an NVIDIA DGX Spark (about $16,000 and $9000 AUD respectively at post publication).</p>
+<p>The good news is that clever people are finding new ways to compress and use these LLMs such that they run faster on smaller computers.</p>
+<p>Note there are some cybersecurity issues with agents because they run code on your computer. You want to be careful that you know what you’re doing before you start using agents, and get permission from your work if you’re using them on your work computer.</p>
+</section>
+<section id="processing-files-and-literature-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="processing-files-and-literature-in-r">Processing files and literature in R</h2>
+<p>Another application of local LLMs is processing text through the LLM. If you’re doing this in R, it’s relatively simple to set up, just use the ellmer package to chat with the model. ellmer will link to Ollama via its API (application programming interface), and then you can send text to that API to have ellmer process it through the LLM.</p>
+<p>You don’t have to use R. There is software written in many languages for accessing Ollama programmatically, including python, javascript and bash.</p>
+<p>We’ve written previously about using <a href="https://www.seascapemodels.org/posts/2025-03-15-LMs-in-R-with-ellmer/index.html">ellmer to batch process text files</a>, such as if you want to automate the extraction of meta-data from papers for a literature review. The main difference is you would use <code>chat_ollama</code>to send text to the model.</p>
+<p>One thing to keep in mind when using Ollama for scientific workflows, is that the default commands provided above will download the 4 bit <a href="https://huggingface.co/docs/optimum/concept_guides/quantization">quantized</a> versions of the LLMs. Quantization roughly means rounding some of the numbers in the massive matrices of weights that make up an LLM’s neural networks. This saves memory, but reduces precision.</p>
+<p>In our experience, for text-processing tasks the difference in different quantizations is negligible, but needs reporting when writing up results.</p>
+<p>We hope this quick guide helps those who are curious about local models. We are interested to hear from readers about your experiences with local LLMs and what applications you are using them for.</p>
+<hr>
+<p>*Note that Ollama as a wrapper for llama.cpp is considered <a href="https://sleepingrobots.com/dreams/stop-using-ollama/">problematic</a> by some. In R we can use other bindings to the llama.cpp library for local inference of large language models (LLMs), such as the<a href="https://github.com/Zabis13/llamaR">llamaR</a> package by Yuri Baramykov.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>genAI</category>
+  <category>research</category>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-08-22-running-local-LLMs/</guid>
+  <pubDate>Fri, 21 Aug 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>When AI coding assistants waste rather than save time</title>
+  <link>https://www.seascapemodels.org/posts/2026-08-14-when-ai-wastes-time/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><em>The time savings are often offset by dead end pursuits</em></p>
+<p>There’s a lot of skill in using AI coding assistance in ways that are effective and actually save your time. I find in many cases, if you jump onto these tools too soon in a project, you end up wasting time that you should have been spending on clear thinking and planning.</p>
+<p>In one example of this pattern recently, my student and I were looking to use a new type of model. So, we were reading a wonderful paper about <a href="https://www.nature.com/articles/s41559-024-02425-5">state changes in a marine ecosystem</a>, which had applied hidden markov models to detect state changes. And my student had started to try to apply that package to his data set.</p>
+<p>He used an AI coding assistant to help him scaffold the code, which was fairly complex, requiring detailed parameter specifications. And then he came to show me the results. It was clear to me that the model wasn’t fitting very well, and was likely over-specified. So more parameters than could be supported by the data.</p>
+<p>We then considered alternative R packages for this problem. There’s many other packages for doing hidden markov models in R that turn out to be better suited tothe data structures that we have.</p>
+<p>So we could have saved some time if we’d done one of two things. Firstly, if we’d started by asking an AI assistant, describing our data structure, and asked: “search for us, the most appropriate types of hidden markov model packages in R for modelling state changes in this data structure”. That would have given us a head start to then research different packages and try to understand which is most appropriate.</p>
+<p>Or if we could have just done our own research on different package options at the outset. Then once we’d settled on a package that was most appropriate to our data structure, we could ask an AI assistant to scaffold the code for that particular package.</p>
+<p>So, there’s a lot of skill in using R for statistics, and having a powerful coding assistant doesn’t take away the need for understanding how coding works. In particular, I don’t advise jumping straight into asking AI, <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210x.70267">clear planning of software and stats options is needed first</a>.</p>
+<p><em>If you’d like email updates on AI posts, follow us on substack</em></p>
+<div class="substack-post-embed">
+<p lang="en">
+When AI coding assistance waste rather than save time by Chris Brown
+</p>
+<p>
+The time savings are often offset by dead end pursuits
+</p>
+<a data-post-link="" href="https://vitaexmachina.substack.com/p/when-ai-coding-assistance-waste-rather">Read on Substack</a>
+</div>
+<script async="" src="https://substack.com/embedjs/embed.js" charset="utf-8"></script>
+
+
+
+ ]]></description>
+  <category>genAI</category>
+  <category>research</category>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-08-14-when-ai-wastes-time/</guid>
+  <pubDate>Thu, 06 Aug 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>The GIS Research Assistant Job Has Transformed</title>
+  <link>https://www.seascapemodels.org/posts/2026-08-07-gis-has-changed-forever/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I realized this week that I won’t be hiring a GIS focused research assistant the same way as I used to.</p>
+<p>Claude Code is just too good at GIS in R now. I guess this happened around the release of Opus 4.7. I just hadn’t really pushed the coding agent until now.</p>
+<p>This week I downloaded a global dataset of a coastal habitat of several gigabytes, expecting to spend my free time this week poking around getting a feel for how to do my intended analysis.</p>
+<p>30 minutes later the analysis was done.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-08-07-gis-has-changed-forever/global_wetland_map_combined.png" class="img-fluid figure-img"></p>
+<figcaption>Draft map where Claude intersected multiple coastal wetland distributions, complete with cool looking hex shaped spatial units</figcaption>
+</figure>
+</div>
+<p>Claude solved what used to be significant and time consuming GIS issues with no help from me. All I gave it was the end goal and reference to a previous workflow for a similar project.</p>
+<p>It smoothly addressed complex challenges like geometry self intersections and spatial intersections of raster to vector data. It even ran small-scale tests to identify processing bottlenecks and find the fastest solution for intersecting two large layers.</p>
+<section id="headstarts" class="level2">
+<h2 class="anchored" data-anchor-id="headstarts">Headstarts</h2>
+<p>Now to be fair I should also acknowledge a couple of headstarts Claude had on this project.</p>
+<p>The first was my previous workflow for a similar problem (building a predictive model from spatial data). That gave it a rough set of steps to follow. But, my previous workflow was built entirely on vector (polygon) data, whereas the new analysis required working with rasters. So it successfully solved raster to vector issues with no help from me.</p>
+<p>I suspect a second big change in the R GIS ecosystem in last 5-10 years has enabled this coding agent success. Credit is due to the developers of core R spatial packages, especially <code>sf</code>, <code>tmap</code> and <code>terra</code>.</p>
+<p>These have significantly streamlined spatial processing and mapping in R, making it easier to deal with complex area and distance calculations on the earth’s curved surface and the ubiquitous self-intersection errors that used to cause major traffic jams in GIS work.</p>
+<p>Back around 2020 we were compiling global data on coastal wetlands and aligning that for an <a href="https://www.sciencedirect.com/science/article/pii/S1470160X21008062">analysis of coastal wetland health</a>. It took a GIS research assistant and part of the time of a supervising post-doc months just to do the spatial processing.</p>
+</section>
+<section id="do-i-still-need-a-human-gis-assistant-for-spatial-analyses" class="level2">
+<h2 class="anchored" data-anchor-id="do-i-still-need-a-human-gis-assistant-for-spatial-analyses">Do I still need a (human) GIS assistant for spatial analyses?</h2>
+<p>One of my research students has taught me that perhaps the answer is yes, but the requirements of the role are different.</p>
+<p>You see, my student enthusiastically launched his spatial analysis project with a heap of vibe coding in R. I quickly realized he understood very little of what his coding agent had done, and there was no way we could be sure the results were accurate.</p>
+<p>Even in my 30 minute success story told above there were AI mistakes I had to check and fix. A big one was a silly duplicate correction for fraction -&gt; percentage that Claude made. So it had overestimated everything by a factor of 100.</p>
+<p>My student turned his story around as well. His enthusiasm for the result and for learning, meant he started again. This time, working (slightly) more slowly. He did the reading, learnt the GIS theory and then used the AI agent to redevelop his analysis step-by-step. That way his understanding could keep pace with the code.</p>
+<p>Now in a few short months he’s a competent GIS user and map maker. Credit to his attention to detail too, he won’t trust any exciting result without first running thorough checks.</p>
+<p>So what I would want now in an RA is someone who is enthusiastic to learn and who excels at rapid self-paced learning.</p>
+<p>In the past meetings with the assistant would often be about how to solve the next processing challenge. Meetings with my GIS, R and AI enabled student are very different. They come with 5+ graphs and maps every week and we discuss patterns. He’ll show me a beautifully prepared graph and ask me ‘what do you notice here…’ waiting to see if I spot the anomalies he’s noticed. Then we discuss.</p>
+<p>Attention to detail is more important than ever. We can’t rely on failures in the code or workflow as a red flag for errors anymore. The agents are too good at ‘making it work’. We need analysts who don’t cross the finish line of declaring success when they get the first good result, but who are happy to go back and thoroughly explore every alternative interpretation.</p>
+<p>So yes, I’ll still hire a GIS research assistant. But the position description has changed. Less “must know <code>sf</code> and <code>terra</code>”, more “must be sceptical of a beautiful map.” The coding is the easy part now. The judgement was always the hard part - it’s just that the coding used to take so much time that good judgement was required less often.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>research-skills</category>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-08-07-gis-has-changed-forever/</guid>
+  <pubDate>Thu, 06 Aug 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>How Do I Build a Model? A Starting Guide for New Modellers</title>
+  <link>https://www.seascapemodels.org/posts/2026-08-03-how-do-i-build-a-model/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I’ve put together a short guide: <em>How Do I Build a Model? A starting guide for new modellers</em>. It’s free, online, and written for the graduate student who has a research question and is wondering where to even begin their modelling.</p>
+<p>You can read it online at <a href="https://www.seascapemodels.org/building-ecological-models/">How Do I Build a Model?</a>, or <a href="https://github.com/cbrown5/building-ecological-models/blob/main/docs/How-Do-I-Build-a-Model-.pdf">download a pdf</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-08-03-how-do-i-build-a-model/flowchart-loop.png" class="img-fluid figure-img"></p>
+<figcaption>First sketch, one of the steps on the way to building a working model</figcaption>
+</figure>
+</div>
+<p>I’ve never had a singular focus on a type of ecological modelling. I’m not the Bayesian guy, or the foodweb model guy, or the machine learning guy, though I’ve dabbled in all three. That haphazard career has given me a broad view across a lot of different modelling traditions, and I keep noticing the same meta-principles showing up regardless of the discipline. This guide is my attempt to write those down.</p>
+<p>It’s not a textbook on any particular method. Once you know what type of model you’re building, go read a book by a discipline expert (I’ve listed some favourites in the final chapter). This guide is for getting started and principles that apply to any type of modelling.</p>
+<section id="whats-in-it" class="level2">
+<h2 class="anchored" data-anchor-id="whats-in-it">What’s in it</h2>
+<ol type="1">
+<li><strong>Start with the question.</strong> How you actually grow into a research question, through reading, writing, and talking it through with people whose work you admire (and some whose work you don’t).</li>
+<li><strong>From a question to a type of model.</strong> Once you know your question, how to read papers differently, paying attention to the <em>how</em> and the <em>why</em>.</li>
+<li><strong>Terminology: variables, parameters, and the rest.</strong> A clean-up of vocabulary that gets used loosely and causes confusion.</li>
+<li><strong>Know why you’re building a model.</strong> Causal inference, prediction, or something else. Knowing your purpose is what narrows down the type of model you need.</li>
+<li><strong>Sketching your model.</strong> Why you should start at a whiteboard with boxes and arrows before you touch an equation, and how to read those arrows as equations later.</li>
+<li><strong>The different types of uncertainty.</strong> Why “how uncertain am I?” is really several different questions, and why that distinction matters for what you do next.</li>
+<li><strong>Writing your model’s equations.</strong> Turning the diagram into notation, with a nod to Edwards &amp; Auger-Méthé’s guidance for ecologists, which I’d recommend reading in full regardless.</li>
+<li><strong>Understand your constraints.</strong> Computational, data, and time constraints, and how they shape what model you can realistically build.</li>
+<li><strong>The modelling workflow.</strong> Feedback loops of writing code, debugging, running, plotting, interpreting.</li>
+<li><strong>Tools and software.</strong> The endless R-versus-Python debate, and why your own familiarity with a tool is a constraint.</li>
+<li><strong>Tips for finding novel insights.</strong> Some of my favourite tricks, including hunting for analogues in other fields and pushing them to their extreme.</li>
+</ol>
+<p>There’s also a short further-reading list at the end, covering the books I’d point you to once you’ve picked your modelling approach.</p>
+</section>
+<section id="how-it-came-together" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-came-together">How it came together</h2>
+<p>I dictated the original version on a long drive, Claude Code cleaned up the transcript into a first written draft and set up the Quarto book site, and I edited it from there.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2026-08-03-how-do-i-build-a-model/</guid>
+  <pubDate>Sun, 02 Aug 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Using ghost text and next edit suggestions to learn agentic coding</title>
+  <link>https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I’m a big fan of Github Copilots ghost text and next edit suggestions. As a data analyst they give you much more control over the pace and direction of analysis code than a full AI agent. They also let you practice the core skill an agent needs from you: writing a clear specification.</p>
+<p>I’ll walk through it in R, but the same ideas apply in any language. I’m assuming you’re on VScode with the Copilot extension installed. This should work with the free or paid plans (though I haven’t checked free myself).</p>
+<section id="start-with-ghost-text" class="level2">
+<h2 class="anchored" data-anchor-id="start-with-ghost-text">Start with ghost text</h2>
+<p>Ghost text is the greyed-out completion that appears as you type. Say you have a long-format dataset with timeseries for three species:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb1-3">dat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(</span>
+<span id="cb1-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">time =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rep</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>),</span>
+<span id="cb1-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">species =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rep</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"A"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"B"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"C"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">each =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>),</span>
+<span id="cb1-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">value =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnorm</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mean =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnorm</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mean =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnorm</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mean =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>))</span>
+<span id="cb1-7">)</span></code></pre></div></div>
+<p>You want to filter to one species, fit a linear model to its timeseries, pull out the slope, and make a labelled plot. Start typing the code for a single species and ghost text fills in the rest of the line. Here I’ve typed <code>m1 &lt;- lm(value ~</code> and Copilot offers the completion in transparent text (note change in image after the <code>~</code>):</p>
+<p><img src="https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/1_ghost-text-example.png" class="img-fluid"></p>
+<p>Press tab to accept. Working one line at a time, you end up with the code for species A:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">datA <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> dat <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(species <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"A"</span>)</span>
+<span id="cb2-2">m1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lm</span>(value <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> time, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> datA)</span>
+<span id="cb2-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coef</span>(m1)[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"time"</span>]</span>
+<span id="cb2-4"></span>
+<span id="cb2-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(datA, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> time, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> value)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_smooth</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lm"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">se =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-8">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb2-9">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Species A Time Series"</span>,</span>
+<span id="cb2-10">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Time"</span>,</span>
+<span id="cb2-11">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Value"</span></span>
+<span id="cb2-12">    )</span></code></pre></div></div>
+<p>Notice we’re not trying to be general yet. We’re developing our ideas for a single case, species A. We know we’ll want to generalise later, but we’re not worrying about it now. This is the same discipline that makes agents work well: get one concrete case right first, then automate it.</p>
+</section>
+<section id="turn-on-next-edit-suggestions" class="level2">
+<h2 class="anchored" data-anchor-id="turn-on-next-edit-suggestions">Turn on next edit suggestions</h2>
+<p>Next edit suggestions go a step further than ghost text. Instead of completing the line you’re on, Copilot predicts the <em>next change you’ll want to make elsewhere</em> and points you to it.</p>
+<p>Click the octocat icon in the bottom right of the VScode window and turn on <strong>Next Edit Suggestions</strong>. I recommend leaving this off most of the time — it’s distracting when it suggests edits you don’t want — and switching it on for jobs like this one.</p>
+<p>Now click above the species A code and start typing the name of a function to wrap it in. As soon as I write the <code>fit_fun &lt;- function(species_name)</code> header, Copilot spots that the hardcoded <code>"A"</code> needs to change, and flags it with an arrow in the gutter:</p>
+<p><img src="https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/2_next-edit-suggestion-part1.png" class="img-fluid"></p>
+<p>Press tab and it walks you through the edits needed to generalise. It replaces <code>species == "A"</code> with <code>species == species_name</code>, and further down it rewrites the plot title from the literal <code>"Species A Time Series"</code> to a <code>paste()</code> call that builds the title from <code>species_name</code>:</p>
+<p><img src="https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/3_next-edit-suggestion-part2.png" class="img-fluid"></p>
+<p>Tab through each suggestion and you land on a working, generalised function:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">fit_fun <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(species_name) {</span>
+<span id="cb3-2">    datA <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> dat <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(species <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> species_name)</span>
+<span id="cb3-3">    m1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lm</span>(value <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> time, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> datA)</span>
+<span id="cb3-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coef</span>(m1)[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"time"</span>]</span>
+<span id="cb3-5"></span>
+<span id="cb3-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(datA, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> time, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> value)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-7">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-8">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_smooth</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lm"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">se =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-9">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb3-10">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Species"</span>, species_name, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Time Series"</span>),</span>
+<span id="cb3-11">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Time"</span>,</span>
+<span id="cb3-12">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Value"</span></span>
+<span id="cb3-13">        )</span>
+<span id="cb3-14">}</span>
+<span id="cb3-15"></span>
+<span id="cb3-16"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fit_fun</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"A"</span>)</span></code></pre></div></div>
+<p>The single-species code was the specification and then Copilot did the mechanical work of generalising it. This is a good scaffold for thinking about agentic programming, where you write a clear spec and the agent does the automation.</p>
+<p>The big difference from a true agent is that ghost text and next edit don’t run your R code and iterate to fix errors. They just predict edits. But that makes them a safe place to build the skills.</p>
+</section>
+<section id="drive-it-with-comments" class="level2">
+<h2 class="anchored" data-anchor-id="drive-it-with-comments">Drive it with comments</h2>
+<p>You can run the same next-edit approach with text only. Write out a recipe for what you want as comments, then start typing under the first step. Ghost text and next edit take over and help you write the rest.</p>
+<p>Here’s a simple recipe:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Simulate a new dataset of abundance at x-y coordinates</span></span>
+<span id="cb4-2"></span>
+<span id="cb4-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># plot a 2D map</span></span>
+<span id="cb4-4"></span>
+<span id="cb4-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># fit a model with interaction between x and y</span></span></code></pre></div></div>
+<p>With just the comments in place and the cursor after the simulation, Copilot reads the recipe ahead of it:</p>
+<p><img src="https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/4.png" class="img-fluid"></p>
+<p>Then suggests a next edit suggestion after the following comment:</p>
+<p><img src="https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/5.png" class="img-fluid"></p>
+<p>Keep going and it writes the model for the final step, picking up the interaction from the comment <code># fit a model with interaction between x and y</code>:</p>
+<p><img src="https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/6.png" class="img-fluid"></p>
+<p>The finished block writes itself from the recipe:</p>
+<p>A few tips. I set Copilot’s eagerness to <strong>High</strong> so suggestions come up quickly. Sometimes you need to type the first few characters of a line to kickstart the ghost text.</p>
+<p>The clearer and more specific your comments, the closer the suggestions will be to what you actually wanted.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>genAI</category>
+  <category>rstats</category>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/</guid>
+  <pubDate>Mon, 27 Jul 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Winter R workshops at University of Queensland, Brisbane</title>
+  <link>https://www.seascapemodels.org/posts/2026-06-25-R-workshops-in-brisbane/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>My colleagues run some highly regarded R workshops for well over a decade in Brisbane (Australia) every year.</p>
+<p><a href="https://mathmarecol.github.io/RWorkshop/winter.html">Details here and info below</a></p>
+<p>Are you ready to take your R skills to the next level and conquer the challenges of messy data? Transform raw data into actionable insights with the Centre for Biodiversity and Conservation Science (CBCS) 2026 Winter R Workshops @ UQ.</p>
+<p>These intensive, hands-on workshops are designed for individuals with a foundational understanding of R who are eager to master the essential skills for effective data wrangling, code organisation, advanced visualisation, spatial analysis, and building interactive Shiny apps. Join us to elevate your R proficiency and become a data manipulation and presentation expert!</p>
+<p>Each day is self-contained so you can attend the workshops you want to.</p>
+<p>Day 1 (Monday 6th July) Data Wrangling 1 Day 2 (Tuesday 7th July) Data Wrangling 2 Day 3 (Wednesday 8th July) Visual Storytelling Day 4 (Thursday 9th July) Mapping our World Day 5 (Friday 10th July) Building Interactive Web Apps with Shiny</p>
+<p>Registration for the 2026 Winter R Workshops @ UQ in July is OPEN.</p>
+<p>We are passionate users of R and want to share our experience. Our workshops are accessible, interactive, informative and fun. They are run in-person only (no online option) to provide a tailored student experience and we provide all the code and learning materials. For more information on the topics covered and to view testimonials, see our website https://mathmarecol.github.io/RWorkshop/winter.html and the attached flyer.</p>
+<p>These workshops are brought to you by the Centre for Biodiversity and Conservation Science (CBCS). For any questions about registration, email cbcs-workshops@uq.edu.au.</p>
+<p>We look forward to seeing you there. The R Workshops @ UQ team (Anthony, Dave, Jason, Claire and Tin)</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-06-25-R-workshops-in-brisbane/</guid>
+  <pubDate>Wed, 24 Jun 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Data for fitting models versus data for predicting from models</title>
+  <link>https://www.seascapemodels.org/posts/2026-06-25-prediction-vs-fitting/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Answering a question that came up from a student recently.</p>
+<p>Say you have 20 surveys of reef fish biomass at different locations. Then you also have gridded data with environmental covariates. The gridded data is for all reefs everywhere.</p>
+<p>The goal is to predict fish biomass at all reefs everywhere. <a href="https://www.seascapemodels.org/posts/2020-02-19-spatial-gam-predictions/index.html">Here’s an older post that walks through the steps in R with older packages</a> (you will want to update <code>raster</code> to <code>terra</code>, everything else should work).</p>
+<p>The statistically correct workflow would look like this:</p>
+<p><strong>1. Extract environmental covariates at your 20 reef sites</strong></p>
+<p>For example, you might have sites as x-y coordinates and the gridded data as <code>terra</code> rasters. You can use the <code>extract</code> function to get the values of the environmental data at your reef sites. Let’s call this new dataframe you will make <code>fish_data</code>.</p>
+<p><strong>2. Fit a model</strong></p>
+<p>Fit a model predicting fish biomass at the 20 sites from the environmental covariates. for example:</p>
+<pre><code>model1 &lt;- gam(biomass ~ SST + depth, data = `fish_data`)</code></pre>
+<p>Your sample size for this model will be 20, ie the number of reef sites where you measured fish.</p>
+<p>Do all the usual steps to verify your model, model selection etc…</p>
+<p><strong>3. Turn the grids into a dataframe of environmental covariates</strong></p>
+<p>There’s lots of ways to do this data wrangling step. I like to use the function to get coordinates of centre points of the grids (<code>xyFromCell</code>), then convert that to a spatial points, then use <code>extract</code>, the convert back to a plain dataframe (keeping the X-Y as columns).</p>
+<p>Now we have a new dataframe of environmental covariates at every grid cell location. Let’s call it <code>pred_data</code> for ‘prediction data’. It will have as many rows as there are grids in your raster, probably 1000s.</p>
+<p>You might like to do a filtering step to remove grids that aren’t on reefs (or your target habitat, no point predicting reef fish biomass for places that are sand or land).</p>
+<p><strong>4. Predict with your model</strong></p>
+<p>Now use your model to predict to all the grid locations, e.g.&nbsp;</p>
+<pre><code>pred_data$mean &lt;- predict(model1, newdata = pred_data)</code></pre>
+<p>Then you can convert <code>pred_data</code> back into a spatial object for mapping the predictions.</p>
+<section id="common-mistakes" class="level2">
+<h2 class="anchored" data-anchor-id="common-mistakes">Common mistakes</h2>
+<p>So students sometimes get the sequence of steps wrong. For example, you could turn the grids into a dataframe, interpolate fish biomass to unmeasured grids BEFORE you fit your model. That would be statistically inappropriate as you are inflating the sample size by replicating survey data across unmeasured grids.</p>
+<p>Another common mistake is using locally measured covariates but then predicting to gridded covariates that were measured differently. We should use the gridded covariates, rather than locally measured covariates for our fitting and prediction.</p>
+<p>For instance, you may have temperature gridded measured by a satellite as well as temperature measured locally during the surveys. You want to use gridded covariates for our goal of predicting, because that is the temperature data you have everywhere.</p>
+<p>So now you are ready to go forth and make some cool map predictions. <a href="https://www.nature.com/articles/s41559-022-01778-z">Don’t forget to map the uncertainty too (e.g.&nbsp;standard errors)</a>.</p>
+<p>Last word, <a href="https://r-tmap.github.io/tmap/"><code>tmap</code></a> is still my fave tool for mapping in R and it keeps getting better.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-06-25-prediction-vs-fitting/</guid>
+  <pubDate>Wed, 24 Jun 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Design your plots (ggplot) for mobile</title>
+  <link>https://www.seascapemodels.org/posts/2026-04-23-clear-plots-ggplot-for-mobile/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>The default for styling plots should be for easy viewing on mobile devices.</p>
+<p>Most digital interactions are via mobile these days. Even if you plan on viewing your plots on a desktop, a mobile friendly layout will make them more readable.</p>
+<p>I recommend defaulting to a mobile friendly view from day 1 of data exploration. This means using larger font, line and label sizes than standard plotting package defaults. I’ll show how below.</p>
+<p>You can then alter the styling as your finalize the plots of publication, where desktop viewing might be more common (I saw ‘might be’ because I frequently papers on my phone these days).</p>
+<p>Styling plots for visual clarity is key from the start, because clarity of presentation influences how you interpret the research. So it has a tangible impact on the way your research will develop and how you engage with your collaborators.</p>
+<p>I often communicate with collaborators and students via instant messages (e.g.&nbsp;Teams), which allows for quick feedback cycles. The default ggplot settings can be hard to view however.</p>
+<p>There are many good books on making graphs, e.g.&nbsp;check out the Functional Art by Alberto Cairo.</p>
+<p>Below I just want to show a few tips for improving ggplot2 settings to get better visuals for mobile.</p>
+<p>We’ll use one of my <a href="https://github.com/cbrown5/example-ecological-data">example datasets</a> from an <a href="https://doi.org/10.1098/rspb.2022.0348">algal growth experiment</a>.</p>
+<p>You can load it directly from the url.</p>
+<p>The biggest tip is to change the base size in your base theme. If you do this with <code>theme_set</code> it then applies to all plots in this R session.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Read raw data</span></span>
+<span id="cb2-2">dat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read.csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://raw.githubusercontent.com/cbrown5/example-ecological-data/main/data/algal-stressors/diuron_data.csv"</span>)</span>
+<span id="cb2-3"></span>
+<span id="cb2-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_set</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_bw</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">base_size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">28</span>))</span>
+<span id="cb2-5"></span>
+<span id="cb2-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(dat) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb2-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> hours, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> celld) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb2-8">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-9">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hours"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cell density"</span>)</span></code></pre></div></div>
+<pre><code>Warning: Removed 75 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+<p><img src="https://www.seascapemodels.org/posts/2026-04-23-clear-plots-ggplot-for-mobile/index.markdown_strict_files/figure-markdown_strict/unnamed-chunk-1-1.png" class="img-fluid"></p>
+<p>Second tip is to keep facts to 3 or so panels.</p>
+<p>Before:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(dat) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb4-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> hours, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> celld) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb4-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb4-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_grid</span>(Diuron_num<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>Light_num) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hours"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cell density"</span>)</span></code></pre></div></div>
+<p><img src="https://www.seascapemodels.org/posts/2026-04-23-clear-plots-ggplot-for-mobile/index.markdown_strict_files/figure-markdown_strict/unnamed-chunk-2-1.png" class="img-fluid"></p>
+<p>Better:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">dat <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb5-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(Diuron_num <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb5-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> hours, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> celld) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb5-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb5-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_wrap</span>(.<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>Light_num) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb5-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hours"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cell density"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Diuron = 1"</span>)</span></code></pre></div></div>
+<p><img src="https://www.seascapemodels.org/posts/2026-04-23-clear-plots-ggplot-for-mobile/index.markdown_strict_files/figure-markdown_strict/unnamed-chunk-3-1.png" class="img-fluid"></p>
+<p>Best: for mobile ,use a vertical arrangement</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">dat <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb6-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(Diuron_num <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb6-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> hours, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> celld) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb6-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb6-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_grid</span>(Light_num<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>.) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb6-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hours"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cell density"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Diuron = 1"</span>)</span></code></pre></div></div>
+<p><img src="https://www.seascapemodels.org/posts/2026-04-23-clear-plots-ggplot-for-mobile/index.markdown_strict_files/figure-markdown_strict/unnamed-chunk-4-1.png" class="img-fluid"></p>
+<p>In general, don’t put too much information on a single plot. If you are using colours avoid lengthy legends (&lt;7 items is ideal, &lt;3 is excellent).</p>
+<p>If its getting too complex, think about what you are trying to communicate, then split your plot into several plots, one for each point.</p>
+<p>Finally, you might as well set-up to save publication quality pngs from the get go:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">g1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> dat <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb7-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(Diuron_num <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb7-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> hours, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> celld) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb7-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb7-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_grid</span>(Light_num<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>.) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb7-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hours"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cell density"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Diuron = 1"</span>)</span>
+<span id="cb7-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggsave</span>(g1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">filename =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"figure1.png"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">height =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">12</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dpi =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">600</span>)</span></code></pre></div></div>
+<p>Play around with width and height to get the viewing ratio and size good for clear visualisation. A high dpi is needed for publication quality images.</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-04-23-clear-plots-ggplot-for-mobile/</guid>
+  <pubDate>Sat, 25 Apr 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Do AI coding agents save scientists time?</title>
+  <link>https://www.seascapemodels.org/posts/2026-04-14-does-agentic-AI-save-time/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I’m often asked if using AI coding agents saves time. Yes they write code very quickly and can <a href="https://onlinelibrary.wiley.com/doi/10.1111/faf.70079">complete entire ecological data analyses</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-04-14-does-agentic-AI-save-time/coding-time.png" class="img-fluid figure-img"></p>
+<figcaption>Do agents really help when the deadlines are approaching?</figcaption>
+</figure>
+</div>
+<p>Do agents really help when the deadlines are approaching?</p>
+<p>But the code also requires careful checking for logical errors. Our recent analysis shows this. The best LLMs can complete entire analyses and all the code works well. But there was a decent chance of subtle logical errors. These logical errors would require pretty deep human understanding of the code to correct.</p>
+<p>There’s another issue and that is using code you don’t understand. I often find the agents produce so much code, but I’m not comfortable using it until I understand the logic line-by-line.</p>
+<p>In those cases I find its faster to use an autocomplete AI assistant so I’m going line-by-line, rather than an agentic loop that completes the entire piece of work.</p>
+<p>I think the jury is still out on this question of whether there is a net time benefit to using agents. The only way to really answer is a randomised control trial where you time how long it takes scientists to fully complete a task.</p>
+<p>The only study I’m aware of is quite limited and looked at software developers. They found the <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">developers often projected they would be faster with the AI tools, but were actually slower at tasks by the end of the project.</a></p>
+<p>Its true that using AI is fun because it makes so much progress, but that fun feeling might be a trap for us.</p>
+<p>Its likely that the answer is context dependent.</p>
+<p>I suspect for scientists most of the coding we do (like writing models that represent ecosystems) actually requires the human to understand what it does. In these cases agents don’t make sense, because you need to go back and review the code carefully to understand it anyway.</p>
+<p>On the other hand, if you are making software tools that are easy to verify then agents are great. For instance, I often use them to write code for non-standard figures. I don’t need to know the code in that case because I can check the output is correct visually.</p>
+<p>Likewise interactive shiny apps are another example of time saving. The agent can take some (good) code you already have and turn it into an app. Its easy to test and check because you just use the app.</p>
+<p>People often point to advances in LLMs and say that soon they will be good enough to do all the coding for us. I’m not so sure that applies to science. <a href="https://onlinelibrary.wiley.com/doi/10.1111/faf.70079">In fact, we found the later version of Claude Sonnet performed about the same as an earlier version on scientific logic, it just made different types of errors.</a></p>
+<p>I think the advances need to come in the ways we interact and use the LLMs.</p>
+<p>The ultimately goal should be efficient but also high quality work. That’s something I want to look at in my next agentic AI study.</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <category>research</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2026-04-14-does-agentic-AI-save-time/</guid>
+  <pubDate>Mon, 13 Apr 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>AI agents can create convincing ecological models, but you still need to know what you’re doing</title>
+  <link>https://www.seascapemodels.org/posts/2026-03-28-agentic-AI-ecological-modelling/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Agentic AI tools like Claude Code can write and run code, fix its own errors, and produce a formatted report with figures. I wanted to know whether that translates into reliable ecological modelling, so we ran a test: three fisheries tasks, four AI models, ten independent runs each, scored against a rubric. The results are published in <a href="https://doi.org/10.1111/faf.70079">Fish and Fisheries</a>.</p>
+<p>We found agents can be genuinely useful, but only if you know how to use them well and only if you know enough about the analysis to catch what they miss.</p>
+<section id="how-we-did-our-tests" class="level2">
+<h2 class="anchored" data-anchor-id="how-we-did-our-tests">How we did our tests</h2>
+<p>We used <a href="https://roo.cline.bot/">Roo Code</a>, an agentic AI that runs inside VS Code. Unlike a chatbot, it can write code, execute it, read error messages, and iterate autonomously. There are many popular software’s for agentic AI, Claude Code is the most popular right now. We chose Roo Code because it is open source and fully customisable.</p>
+<p>We gave it detailed specification sheets and asked it to complete three tasks. One was a common ecological modelling task: fitting a generalized linear model (GLM) of fish abundance and coral habitat. The other two were tasks specialised to fisheries modelling: fitting a von Bertalanffy growth curve and running a yield per recruit analysis. We chose these because they are common in ecological sciences, but specalised enough that LLMs probably haven’t seen many examples in their training data.</p>
+<p>We ran each task 10 times. LLM responses have some randomness, and this multiplies when doing long-running tasks. So consistency is as important to measure as their best performance. We scored every output against a rubric covering accuracy, code quality, and report quality.</p>
+<p>We used four versions of LLMs. Two proprietary models: Claude Sonnet 4.0, Sonnet 4.5 (which came out during review so we added later). One open weight model: Kimi K2 and its ‘exacto’ variant.</p>
+<p>During review, Kimi K2 ‘exacto’ became available on the <a href="https://openrouter.ai/">OpenRouter</a> platform, so we added that. The exacto routes requests to providers with the best performance. Some providers run it cheaply. Long story-short, exacto performed much better than just requesting any provider’s version of K2, this highlights the importance of running open weight models on quality hardware.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-03-28-agentic-AI-ecological-modelling/AI-agent-workflows.png" class="img-fluid figure-img"></p>
+<figcaption>Agentic workflows vs AI assisted coding</figcaption>
+</figure>
+</div>
+</section>
+<section id="how-to-use-agentic-ai-for-ecological-modelling" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-agentic-ai-for-ecological-modelling">How to use agentic AI for ecological modelling</h2>
+<p>We learned several key lessons about how to get the best out of agentic AI for ecological modelling.</p>
+<p><strong>Write a detailed specification sheet.</strong> Our sheets ran to multiple pages covering analysis aims, data structure, recommended R functions and packages, expected outputs, and file naming conventions. This takes time, but writing a specification forces you to think carefully about what you actually want. <a href="https://github.com/cbrown5/agentic-ai-fisheries/blob/main/Scripts/glm-test-case/glm-readme.md">Here’s an example</a>.</p>
+<p><strong>Specify the algorithms explicitly.</strong> Agents default to the most common method in their training data, which may not be appropriate for your question. If you want bootstrapped confidence intervals via the <code>boot</code> package, say so.</p>
+<p>Even then, they may not comply: both Claude models in our study repeatedly applied natural mortality to the first age class in the yield per recruit model despite explicit instructions not to. That’s a subtle error that affected catch estimates—the numbers that would inform fishery management. These quirks of agent behaviour highlight why expert supervision is essential.</p>
+<p><strong>Run replicates and compare outputs.</strong> Accuracy scores varied substantially between runs. sometimes the agent nailed every parameter; sometimes it got some parts correct but made systematic errors in other parts of the analysis. Running multiple agents and comparing outputs is one way to identify the best solutions.</p>
+<p><strong>Check the things the agent doesn’t know to check.</strong> None of our agents checked for collinearity between predictors in the GLM, even though it’s standard practice. We deliberately left it out of the specification to see if they’d do that. The GLMs ran fine, the results looked coherent, but there was in fact strong colinearity between the predictors. The lesson here is that the agents are good at coding, but their conceptual implementation may be misleading, incomplete or logically flawed.</p>
+</section>
+<section id="the-biggest-problem-with-agentic-ai-is-that-it-can-produce-professionally-formatted-output-that-contains-logical-errors" class="level2">
+<h2 class="anchored" data-anchor-id="the-biggest-problem-with-agentic-ai-is-that-it-can-produce-professionally-formatted-output-that-contains-logical-errors">The biggest problem with agentic AI is that it can produce professionally formatted output that contains logical errors</h2>
+<p>The error type that concerns me most is professionally formatted output containing logical errors.</p>
+<p>In our results we saw growth curves that plotted beautifully but used the wrong confidence interval method, or a yield analysis that applies mortality in the wrong sequence. A coding syntax error is immediately obvious. A methodological shortcut embedded in otherwise clean output may be invisible unless you already know what the answer should look like.</p>
+<p>There is a genuine risk that inexperienced researchers will use these tools to produce analyses they cannot evaluate. Experienced researchers may also get overconfident and not check results thoroughly enough. These flaws can then leak through to the applications, as we’ve seen where human errors in <a href="https://pnas.org/doi/10.1073/pnas.2426166122">ecological modelling impacts decisions on invasive species</a>.</p>
+<p>For scientists with strong quantitative foundations, agents offer a real efficiency gain. The specification sheets and rubrics from our study are in the supplemental materials if you want to adapt them. All our code is available on github if you want to run your own tests (<a href="https://github.com/cbrown5/agentic-ai-fisheries/tree/main/Scripts">Check this folder, each modelling ‘test-case’ has the specification sheet and other files</a>)</p>
+<p>The paper is open access: <a href="https://doi.org/10.1111/faf.70079">Brown et al.&nbsp;2026, Fish and Fisheries</a>.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>research</category>
+  <category>genAI</category>
+  <category>fisheries</category>
+  <guid>https://www.seascapemodels.org/posts/2026-03-28-agentic-AI-ecological-modelling/</guid>
+  <pubDate>Thu, 02 Apr 2026 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Prompting large language models for quality ecological statistics</title>
+  <link>https://www.seascapemodels.org/posts/2026-03-17-prompting-llms-stats-paper-published/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Like it or not, everyone is using large language models to help do their statistics.</p>
+<p>There’s a lot of claims made about whether LLMs can or can’t do useful ecological statistics. In our new paper <a href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210x.70267?af=R">“Prompting large language models for quality ecological statistics”</a> (in Methods in Ecology and Evolution) we wanted to test those claims quantitatively.</p>
+<p>We provide guidelines for how to use LLMs to produce scientifically valid statistical analyses. The short version: LLMs can help you do better statistics, but only if you ask well. And “asking well” is a learnable skill.</p>
+<p>The paper is co-authored with agentic AI expert Scott Spillias and grew out of our experiences teaching LLMs for statistical analysis.</p>
+<section id="why-we-wrote-it" class="level2">
+<h2 class="anchored" data-anchor-id="why-we-wrote-it">Why we wrote it</h2>
+<p>I’ve been teaching researchers how to use LLMs for coding and statistics for a few years now. Two things kept coming up. First, most people underestimate how much the prompt matters — they treat LLMs like a search engine and get search-engine quality advice. Second, some people trust LLM-generated code and statistics uncritically, which is risky.</p>
+<p>Late 2024 studies found LLMs recommended the correct statistical test less than 40% of the time with generic prompts. But accuracy improves substantially with more specific prompts, which is a key skill we focus on in the article.</p>
+</section>
+<section id="what-we-found" class="level2">
+<h2 class="anchored" data-anchor-id="what-we-found">What we found</h2>
+<p>We ran repeatable evaluations in R, replicating each prompt 10 times across multiple LLMs. A few results stood out.</p>
+<p><strong>Specificity matters enormously for test selection.</strong> We compared four prompts for choosing a statistical test for an ecological dataset, ranging from “How do I test the relationship between two continuous variables?” to a detailed prompt specifying variable types, sample size, and study design. The generic prompt never suggested count models (the appropriate family for fish abundance data). The detailed prompt guaranteed them, regardless of which LLM we used.</p>
+<p><strong>Detailed prompts make agent-generated code more consistent.</strong> We asked the Github Copilot agent to write an entire analysis workflow from two different prompts — one brief, one detailed. We then ran multivariate ordination on the resulting code to measure how similar the 10 replicates were to each other. The detailed prompt produced much tighter clusters — the agent kept using the same functions, variable names, and structure. Inconsistent code is harder to review, which matters if you’re trying to catch statistical errors.</p>
+<p><strong>Being specific overcomes weaker models.</strong> When we tasked LLMs with writing R code to calculate a distance matrix, the detailed prompt got the right answer 90–100% of the time across all models. The brief prompt mostly failed — except for GPT-5 Codex, which guessed correctly 9/10 times. Good prompts effectively compensated for using a smaller, cheaper model.</p>
+</section>
+<section id="the-workflow-we-recommend" class="level2">
+<h2 class="anchored" data-anchor-id="the-workflow-we-recommend">The workflow we recommend</h2>
+<p>We suggest breaking LLM-assisted analysis into three stages, and writing separate prompts for each. This helps you control the workflow and avoid LLM mistakes.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-03-17-prompting-llms-stats-paper-published/figure1-v2-highres.jpg" class="img-fluid figure-img"></p>
+<figcaption>Recommended workflow for using LLMs to complement traditional approaches to statistical analysis</figcaption>
+</figure>
+</div>
+<ol type="1">
+<li><p><strong>Choose the statistical approach</strong> — describe your variables, sample size, and study design in detail. Attach the data or a summary. Point the LLM to reference material you trust.</p></li>
+<li><p><strong>Plan the implementation</strong> — before writing any code, get the LLM to help you structure the project directory and scripts. We use a <code>readme.md</code> that includes research context, analysis steps, package preferences, and directory layout. This file then gets attached to every subsequent prompt, giving the LLM a consistent memory across sessions.</p></li>
+<li><p><strong>Write the code</strong> — with a detailed readme and explicit instructions, agents can complete analyses with minimal supervision. Without that structure, even strong models produce code that’s hard to review and inconsistent across runs.</p></li>
+</ol>
+</section>
+<section id="general-prompting-tips" class="level2">
+<h2 class="anchored" data-anchor-id="general-prompting-tips">General prompting tips</h2>
+<p>These apply regardless of which stage of analysis you’re at:</p>
+<ul>
+<li><strong>Declare a role upfront</strong> — start with “You are an expert in ecological statistics and R.” This orients the LLM and nudges it toward discipline-appropriate methods.</li>
+<li><strong>Avoid multi-turn conversation where possible</strong> — each turn adds context that can’t be removed. If the conversation goes wrong, start fresh with a better prompt rather than trying to correct course.</li>
+<li><strong>Use prompt bootstrapping</strong> — ask the LLM what information it would need to answer your question better, then start a new session with that improved prompt.</li>
+<li><strong>Attach your own references</strong> — rather than letting the LLM search the web, point it to tutorials and vignettes you’ve already vetted. You control the quality of the context.</li>
+<li><strong>Break problems into steps</strong> — don’t ask for everything at once. Separate choosing a method, planning the code structure, and writing the code into distinct prompts.</li>
+</ul>
+</section>
+<section id="the-important-role-for-the-scientist" class="level2">
+<h2 class="anchored" data-anchor-id="the-important-role-for-the-scientist">The important role for the scientist</h2>
+<p>Statistical expertise is still required. You need to know enough to evaluate whether the LLM’s suggestions are appropriate, check that code is scientifically valid (not just syntactically correct), and understand what the results mean. Novices who lack that background are more likely to write poor prompts and less likely to catch bad advice.</p>
+<p>We think LLM literacy should be part of statistical training programs, alongside the fundamentals. In our own training we start novices off on R fundamentals and stats first, with no AI other than bug fixes or asking for explanation of unknown code. Once they grasp core concepts we then move onto more advanced forms of AI integration. This needs to introduced done stepwise.</p>
+<p>We’re also only beginning to understand LLM biases for ecological data. Spatial dependencies, nested designs, and zero-inflated count data are common in ecology but probably underrepresented in LLM training data. There’s a lot of evaluation work still to do.</p>
+<p>The paper and all the code for the evaluations is at <a href="https://doi.org/10.5281/zenodo.18463012">Zenodo</a>. If you want the full workflow in practice, there’s also a <a href="https://www.seascapemodels.org/R-llm-workshop/">one-day course</a> and an <a href="https://www.seascapemodels.org/AI-assistants-for-scientific-coding/">online book</a>.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2026-03-17-prompting-llms-stats-paper-published/</guid>
+  <pubDate>Mon, 16 Mar 2026 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Do we really need to teach students to code?</title>
+  <link>https://www.seascapemodels.org/posts/2026-03-02-teaching-students-to-code/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Since chatGPT, stats academics have been saying that we need to teach coding, but I no longer think we do</p>
+<p>I’m just about to publish a paper on using large language models to write code for ecological modelling. In the paper we argue for retaining the teaching of coding in undergraduate programs. Teaching coding is teaching undergraduates to reason quantitatively.</p>
+<p>But I wonder what opportunities we are missing with this strong view that coding is central to statistical training?</p>
+<p>Coding is certainly not the only way to teach reasoning. People were reasoning effectively well before computer coding was invented.</p>
+<p>As an example of alternative possibilities, I vibe coded a webpage that takes mermaid syntax (a flow chart syntax) and turns it into a Bayesian model (specifically written in the Stan language). <a href="https://www.seascapemodels.org/mermaid-to-stan/">Try a prototype of ‘mermaid to stan’ here</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-03-02-teaching-students-to-code/mermaid-to-stan.png" class="img-fluid figure-img"></p>
+<figcaption>Screenshot of the app prototype, vibe coded in 15 minutes</figcaption>
+</figure>
+</div>
+<p>Directed Acyclical Graphs (ie flow charts) are a great way to reason when you are building Bayesian models. Arguably much easier to see problems than with code in fact.</p>
+<p>So make your DAG, you get code that you can copy and paste into R. In principle if you understand the DAG you don’t need to read the R code. (though I should say this is a protoype, so you should read the R code in this case).</p>
+<p>Many students struggle to learn coding and may never need to use it beyond their degree. Of course some will use it extensively.</p>
+<p>We may be better off streaming then so that:</p>
+<ol type="1">
+<li><p>Every gets trained in logical reasoning and stats theory (essential in sciences and I think general life)</p></li>
+<li><p>Students that want to can learn the code</p></li>
+</ol>
+<section id="what-about-code-qaqc" class="level2">
+<h2 class="anchored" data-anchor-id="what-about-code-qaqc">What about code QA/QC?</h2>
+<p>Detractors will argue you ‘need to understand the code to be able to check it’.</p>
+<p>That’s true of genAI written code (though maybe not for much longer).</p>
+<p>But if we can create tools like my prototype that have all the necessary quality checks built it. That’s not a new innovation, its just that generative AI makes this super easy.</p>
+<p>I can now built an app for my students in about 15 minutes. With that capability I could potentially bypass the code altogether.</p>
+<p>What’s important with AI generated applications is extensive tests. So building tests into the development process is key</p>
+<p>Likewise for students using these tools, they need tests to self-check what they are doing. This could include graphs or simulated data so students can check the model works as intended.</p>
+</section>
+<section id="interactive-tools-for-students" class="level2">
+<h2 class="anchored" data-anchor-id="interactive-tools-for-students">Interactive tools for students</h2>
+<p>Coding can be such a huge barrier to teaching new students stats and quantitative methods. They get stuck on details and frustrated by tiny bugs they haven’t learned to spot.</p>
+<p>I’d rather teach them statistics and reasoning first, coding second, if they think they’ll go into a quant heavy career.</p>
+<p>GenAI opens new possibilities for creating apps where we can reason about an analysis in alternative ways to coding, but still translate that reasoning into code that works.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2026-03-02-teaching-students-to-code/</guid>
+  <pubDate>Sun, 01 Mar 2026 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Declaring generative AI use in research and university studies</title>
+  <link>https://www.seascapemodels.org/posts/2026-03-02-genAI-use-in-uni-assignments/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I often find requests to ‘declare use of generative AI’ frustratingly vague. There’s so many different potential uses. And use can be reported at so many different levels of granularity.</p>
+<p>Then there’s many grey areas. My university’s policy is that students cannot submit generative AI work as their own, for assignments or theses. How does that apply to coding? What does it mean if the student thoughtfully writes a detailed prompt and then uses a coding agent to produce code for a statistical analysis?</p>
+<p>Some peer-reviewed journals have asked for reporting of every line of code that is generated by AI. This would be incredibly complex to account for if you are using a coding agent or assistant. For much of my code I write the first few letters, then the AI takes over for the rest of the line.</p>
+<p>To help move things along, here’s an initial list of potential uses, ordered by level of appropriateness for undergraduate studies (and thanks to my colleagues for helping develop this). My colleagues and I are developing a pro-forma for student assignments so they can tick off their uses and explain further if necessary. This covers writing, research and coding.</p>
+<p>Comment if you have other uses I’ve missed!</p>
+<p>I think I’m going to start using the same proforma for paper submissions, as it clears up uses a lot.</p>
+<p>I’ve divided it into: (1) ‘allowed uses no further explanation needed’ the student just checks a box, no further explanation necessary for these. (2) ‘allowed uses, need more explanation’ the student needs to write some explanation of what they did. (3) Uses not allowed.</p>
+<p>The division into these three categories depends on the class and the learning goals, so they are just a rough guide.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-03-02-genAI-use-in-uni-assignments/genai-checklist.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Image: Students need clarity on whats ok and whats not with genAI</figcaption>
+</figure>
+</div>
+<section id="research-and-writing" class="level2">
+<h2 class="anchored" data-anchor-id="research-and-writing">Research and writing</h2>
+<section id="allowed-uses-no-further-explanation-needed" class="level3">
+<h3 class="anchored" data-anchor-id="allowed-uses-no-further-explanation-needed">Allowed uses, no further explanation needed</h3>
+<ul>
+<li><p>Asked for advice on how to improve my writing</p></li>
+<li><p>Brainstorming</p></li>
+<li><p>Creating practice exams</p></li>
+<li><p>Creating summaries of text for me to read</p></li>
+<li><p>Translating materials to another language for me to read</p></li>
+<li><p>Used AI powered search engines, but then read source material myself</p></li>
+</ul>
+</section>
+<section id="allowed-uses-need-more-explanation" class="level3">
+<h3 class="anchored" data-anchor-id="allowed-uses-need-more-explanation">Allowed uses, need more explanation</h3>
+<ul>
+<li><p>Used grammar editors or AI powered autocomplete to help me write</p></li>
+<li><p>Used to suggest a structure for my assignment</p></li>
+<li><p>Used to re-write parts of my assignment</p></li>
+<li><p>Used to find references and attribute them in text</p></li>
+<li><p>Created summaries of main sources that I then referred to write my assignment</p></li>
+<li><p>Attached reference documents to my prompts to help with writing</p></li>
+<li><p>Used to generate graphics and visualizations</p></li>
+<li><p>Used AI powered search engines, but then read source material myself</p></li>
+</ul>
+</section>
+<section id="uses-not-allowed" class="level3">
+<h3 class="anchored" data-anchor-id="uses-not-allowed">Uses not allowed</h3>
+<ul>
+<li><p>Used for writing parts of the assignment</p></li>
+<li><p>Used to write code that generates data</p></li>
+<li><p>Used to generate figures, including data figures</p></li>
+<li><p>AI tools were the only tools used to identify references</p></li>
+<li><p>Asked AI to complete the assessment task based on materials provided by the lecturer</p></li>
+<li><p>Used AI to paraphrase other text for use in my assignment</p></li>
+</ul>
+</section>
+</section>
+<section id="coding" class="level2">
+<h2 class="anchored" data-anchor-id="coding">Coding</h2>
+<section id="allowed-uses-no-further-explanation-needed-1" class="level3">
+<h3 class="anchored" data-anchor-id="allowed-uses-no-further-explanation-needed-1">Allowed uses, no further explanation needed</h3>
+<ul>
+<li><p>Asked for tips on fixing bugs</p></li>
+<li><p>Used deep research to help me find online tutorials</p></li>
+<li><p>Created tutorials for coding</p></li>
+<li><p>Used to explain code</p></li>
+</ul>
+</section>
+<section id="allowed-uses-need-more-explanation-1" class="level3">
+<h3 class="anchored" data-anchor-id="allowed-uses-need-more-explanation-1">Allowed uses, need more explanation</h3>
+<ul>
+<li><p>Used an AI autocomplete feature</p></li>
+<li><p>Used to write code based on my own carefully worded instructions</p></li>
+<li><p>Used prompts that included reference documents to write code</p></li>
+<li><p>Used to help improve prompts before using those prompts to write code</p></li>
+<li><p>Used to make an infographic about a methodology or protocol</p></li>
+</ul>
+</section>
+<section id="uses-not-allowed-1" class="level3">
+<h3 class="anchored" data-anchor-id="uses-not-allowed-1">Uses not allowed</h3>
+<ul>
+<li>Used to complete the assignment based on attaching materials provided by the lecturer</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2026-03-02-genAI-use-in-uni-assignments/</guid>
+  <pubDate>Sun, 01 Mar 2026 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Keeping files organised for publication</title>
+  <link>https://www.seascapemodels.org/posts/2026-02-19-keeping-organised-for-publication/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Getting files ready for publication can be frustrating when you can’t find the right file, or you realize your figures look like 2000s jpeg.</p>
+<p>Here’s a list of things I wished I’d done (or my students had done) properly earlier in the paper prep process. Save this list somewhere to refer back to it, it will save you time and frustration.</p>
+<ul>
+<li><p>Keep folders organized. Save figures for the pub to a single folder. Likewise have a folder for tables. Towards submission label these files as per the paper e.g.&nbsp;fig1_concepts.png ….</p></li>
+<li><p>You R scripts should save plots directly to that folder like ggsave(“plots/fig1-lineplot.png…)</p></li>
+<li><p>Make a final results script that reads in the final outputs and calculates any stats/metrics you quote in the results in the order they are written in the results. This helps with updating this section if you have to re-run or change something during review and for cross checking with the MS.</p></li>
+<li><p>If assembling figures in powerpoint, save original powerpoint in this folder also</p></li>
+<li><p>Always save figures in high res .png format, ready for publication. e.g.&nbsp;ggsave(“plots/bias_sensitivity_analysis.png”, final_plot, width = 12, height = 6, dpi = 300)</p></li>
+<li><p>Have separate R scripts that make pub ready figures (e.g.&nbsp;load final model fits and make figures). This way you can quickly go back into and edit them. Obviously make the scripts easy to find with clear names and project folder structure.</p></li>
+<li><p>Even better save both .png and .pdf versions. Never use .jpg (.jpg is for photos)</p></li>
+<li><p>When revising your ms to respond to reviews turn on track changes the entire time. You should resubmit the track changed version as one of the files.</p></li>
+<li><p>Double check how coauthors spell their names/institutions against their previous papers, before you submit</p></li>
+</ul>
+
+
+
+ ]]></description>
+  <category>research</category>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-02-19-keeping-organised-for-publication/</guid>
+  <pubDate>Wed, 18 Feb 2026 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>LLMs can’t be trusted to do scientific coding accurately, but humans make mistakes too</title>
+  <link>https://www.seascapemodels.org/posts/2026-01-14-LLMs-cant-be-trusted-but-neither-can-humans/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I often hear the comment that LLMs/generative AI (large language models) can’t be trusted for research tasks.</p>
+<p><img src="https://www.seascapemodels.org/posts/2026-01-14-LLMs-cant-be-trusted-but-neither-can-humans/aislop.jpeg" class="img-fluid"> <strong>Image</strong> Google’s Nano Banana tasked with “Generate an image of a male African researcher holding a balloon that is pulling them up above a tidal wave of AI generated slop that is full of errors. The balloon has a research paper inside of it. Generate the image in the style of a Simpsons cartoon.”</p>
+<p>But this is the wrong way to think about LLMs. <strong>Humans also can’t be trusted</strong> to do scientific research accurately. They make mistakes. That’s why we have systems for review.</p>
+<p>The more important question is: Are LLMs more accurate than humans at completing a given task?</p>
+<p>I actually think LLMs might lead to better scientific coding and statistical analysis.</p>
+<p>A common example of what LLMs get criticised for is writing code or performing statistical analyses. The LLM might hallucinate non-truths, or at least mislead you into thinking the analysis you have done is scientifically accurate.</p>
+<p>The implication is that we should not be using them for particular tasks, like designing statistical models.</p>
+<p>Its right to be skeptical of AI produced output. However, we also need to be skeptical of human produced output. Humans make mistakes as well.</p>
+<p>As scientists peer-review is baked into our culture. But code review is much rarer. We also don’t have many systematic reviews of scientific coding that have quantified the rate of mistakes.</p>
+<p>I suspect that mistakes in scientific coding are more common than we’d like to believe.</p>
+<p>In one (rare) example, <a href="https://www.sciencedirect.com/science/article/pii/S0304380019301085">researchers reviewed population modelling analyses and found mathematical errors were common</a>. One type of error occured in 62% of studies!</p>
+<p>Now I haven’t set an LLM agent the task of doing the equivalent population models to see what its error rate is. However, my tests (which are under review) of agents at quite complicated stats and ecological modelling are showing 80-90% performance at accurately completing the tasks.</p>
+<p>So the LLM agents are potentially doing better than the humans and making fewer mistakes.</p>
+<p>Why I think LLMs might lead to better research is that they give us more time for code review.</p>
+<p>As an ecological modeller I invest a ton of time into writing code, then checking that code works the way I want (and in a mathematically accurate way).</p>
+<p>LLMs are now doing more of the code writing for me. Used effectively, this gives me more time to review the code for accuracy, as well as checking the code is an accurate representation of the scientific theory.</p>
+<p>A human with an LLM partner could choose to: (1) produce crap work faster than pre-LLM, OR (2) produce higher quality work in a similar amount of time to what it took them pre-LLM.</p>
+<p>I’m arguing that we should be aiming to produce the higher quality work. We can do this if we use LLMs to speed up code, then use the extra time for more quality assurance.</p>
+<p>More generally, don’t get fooled by the argument that “genAI makes mistakes, so it can’t be trusted”.</p>
+<p>Its the wrong way to think about the problem, and I think will lead us to being blind-sided by the oncoming flood of research slop created with genAI.</p>
+<p>A better way to think about it is: “genAI and humans both make mistakes, how can we design workflows so that their strengths complement each other and we produce higher quality work”.</p>
+<p>This will give us outcomes that are of higher quality than the pre-LLM world, and hopefully will rise above the huge quantity of AI generated slop that is currently happening.</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2026-01-14-LLMs-cant-be-trusted-but-neither-can-humans/</guid>
+  <pubDate>Tue, 13 Jan 2026 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Should we still teach R coding in this age of genAI?</title>
+  <link>https://www.seascapemodels.org/posts/2025-12-10-should-we-teach-coding/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I often get asked if we should still be teaching coding skills to students and researchers now that we have generative AI tools that can write code for us.</p>
+<p>The general consensus is yes, we should still teach coding. For an ecology specific <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.14325">argument see here</a>.</p>
+<p>Teaching coding is teaching people how to think logically and structure problems. These skills are essential not only in coding, but also for good science and problem solving in general.</p>
+<p>So you need to learn to code to learn to think logically and structure problems.</p>
+<p>A more practical standpoint is that LLMs are good at generating code that they have seen a lot of examples of in their data. But they are not so good at creative work on novel topics or niche areas.</p>
+<p>For example, AI coding assistants struggle to make a simple <code>tmap</code> (the R mapping package) work well. <code>tmap</code> was updated recently, meaning the examples in the LLM’s training are out of date.</p>
+<p>The coding assistants also seem to default to code patterns they are most familiar with, like <code>ggplot2</code> syntax. Not all of this works with <code>tmap</code>.</p>
+<p>In general, I find they perform much better at statistical modelling in R than they do with complex geospatial analyses.</p>
+<p>This practical issue may increasingly become less relevant as LLMs get better and we create better resources to inform their actions (like a tmap specific guide for LLMs to read before advising you, or web searches of the tmap page).</p>
+<p>But it is still likely that frontier modelling will require deep human engagement with code. So learning to code is important for researchers.</p>
+<p>I’ll leave the final say to Andrej Karpathy, former head of AI at Tesla and founding member of OpenAI’s research group.</p>
+<p>In a <a href="https://www.dwarkesh.com/p/andrej-karpathy">recent podcast interview</a> he talks about a repo he made to help teach people how to work with LLMs. His advice to learners is literally to re-write his repo by hand, not even to cut and paste.</p>
+<p>He goes on to explain that AI agents are good for very standard code or code that is common on the internet. But they perform poorly for creating new code, or code that contradicts common patterns.</p>
+<p>For any research code he most commonly uses the code auto-complete features that AI assistants have, rather than AI agents.</p>
+<p>He suggests that to really learn something you should code it yourself, using examples only as references.</p>
+<p>Karpathy came up with the term ‘vibe-coding’ which means creating code by prompting, without reviewing the code. Usually an AI agent is used. So its saying a lot if he thinks that learning means doing it the old fashioned way of writing code yourself.</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-12-10-should-we-teach-coding/</guid>
+  <pubDate>Tue, 09 Dec 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>How AI coding assistants can bias your coding and analysis</title>
+  <link>https://www.seascapemodels.org/posts/2025-12-09-biasing-when-using-AI-coding-assistants/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I’m a frequent user of AI coding assistants to speed up my coding. I’m mostly using Github Copilot and the Roo Code agentic extension for VSCode, with various large language models (LLMs).</p>
+<p>We hear a lot about biases and LLMs, which got me wondering, what biases might the use of coding assistants induce in my coding and data analysis?</p>
+<p>Biases are a concern in other areas of applications of LLMs to the workplace. For instance, LLMs are known to be sexist, biased towards recommending science articles from certain parts of the world and even biased towards <a href="https://futurism.com/grok-looks-up-what-elon-musk-thinks">Elon Musk’s opinions</a>.</p>
+<p>I had thought that using LLMs mainly to assist with R code would mean that I’m reasonably immune to issues with biases in LLMs.</p>
+<p>But after a recent experience in Python I realized there are subtle types of biases in LLMs that could have a big impact on the quality of an analysis.</p>
+<p>I had considered that LLMs might recommend certain types of statistical tests more frequently than others, perhaps biasing me to the dominant statistical methodologies (like they seem to more commonly recommend frequentist over Bayesian generalized linear models).</p>
+<p>But I wasn’t concerned about that. I have a pretty broad view of stats in my field, and I usually don’t use LLMs for recommending new methods. I look to the scientific literature for that advice.</p>
+<p>LLMs might have their own particular ways of implementing code, but the end result of a given statistical test, is the same, it doesn’t matter much how you get there.</p>
+<p>Using Python changed my view on this. I’m a lifelong R coder, not a Python coder. However, I wanted to learn some deep learning analyses, for which I needed Python. So I set about using my coding assistant to write me a tutorial on learn deep learning in Python.</p>
+<p>The way LLM coding assistants can bias your code is that most are set-up to be sycophantic. So they amplify your own biases by affirming that whatever you have is good.</p>
+<p>This became apparent when me, the R coder, was bringing my R informed ideas for writing code to Python. The LLM led me down paths for implementing code that make sense in R land, but which are not best practice for implementation in Python.</p>
+<p>I realized this once I started referring to real Python tutorials.</p>
+<p>More generally, LLMs tend to be affirmative of your requests. For a data analysis workflow this means they will tend to amplify whatever biases you start out with.</p>
+<p>Errors that cause code to fail are ok, because they are easy to detect. What is more concerning is if the LLM amplify subtle mistakes in choice of statistics.</p>
+<p>I have a <a href="https://ecoevorxiv.org/repository/view/9493/">pre-print on using LLMs and AI coding assistants for ecological data analysis</a>. One of our recommendations is to split your workflow into parts.</p>
+<p>In particular, it helps to choose the analysis before you plan how the code will be written (and what software or packages you will use). If you conflate these two different decisions you are more likely to make mistakes that are amplified. Best to choose your analysis using AI but also by reading the literature. Then get the AI to help you implement that.</p>
+<p>The other problem is that you finish your analysis and the LLM has led you to think it is excellent. You submit that analysis for peer-review and the reviewers think differently.</p>
+<p>So its a good idea to check your work against the discipline norms, and ideally get expert colleagues to take a look too. Take everything an LLM says with a grain of salt, especially if it agrees with you.</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-12-09-biasing-when-using-AI-coding-assistants/</guid>
+  <pubDate>Mon, 08 Dec 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Reasoning and infographics with Nano Banana</title>
+  <link>https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>The new Google Gemini Pro 3 (AKA Nano Banana) has some <a href="https://minimaxir.com/2025/11/nano-banana-prompts/">pretty impressive image generation capabilities</a>. It is very accurate to what you ask in the prompt, it can ‘ground’ image generation with web searches and it accurately renders text (most of the time). This increases its usefulness for scientific visualisation purposes over previous models.</p>
+<p>Read more about <a href="https://ai.google.dev/gemini-api/docs/gemini-3?thinking=high">how to use it here</a>.</p>
+<p>I wanted to try it out for scientific applications.</p>
+<section id="science-cartoon-with-web-search-grounding" class="level2">
+<h2 class="anchored" data-anchor-id="science-cartoon-with-web-search-grounding">Science cartoon with web search grounding</h2>
+<p>I ran this prompt for <a href="https://onlinelibrary.wiley.com/doi/10.1002/aqc.70242">a very recent study</a> that was only just published, so well beyond the cut-off data for inclusion in the model’s training data:</p>
+<pre><code>Make a comic strip explaining key findings of the study: 'Predicting the impact of giant kelp restoration on food webs and fisheries production'. Use a cartoon style similar to spongebob squarepants, but dont use any spongebob characters that violate copyright. Instead make the characters a fish, a rock lobster and an abalone.</code></pre>
+<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/study-cartoon2.jpeg" style="max-height: 600px; width: auto;"></p>
+<p>This study was published after the model’s cutoff data for inclusion of training data, so it is a useful test of the search grounding capabilities. It gets the details right, though urchin barrens aren’t the main cause of the giant kelp decline and kelp normally grows on rocks, not sand.</p>
+<p>My original attempt didn’t include the statement about copyright and it made an image that included Spongebob and his friends - some work for Google to do here if they are going to avoid copyright violations.</p>
+<pre><code>Make a comic strip explaining key findings of the study: 'Predicting the impact of giant kelp restoration on food webs and fisheries production'. Use a cartoon style similar to spongebob squarepants.</code></pre>
+</section>
+<section id="infographics-with-grounding" class="level2">
+<h2 class="anchored" data-anchor-id="infographics-with-grounding">Infographics with grounding</h2>
+<p>I ran this prompt that asks for an infographic for <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.70105">my recent study</a>.</p>
+<pre><code>Make an infographic explaining the new research study 'Assessing predictive accuracy of species abundance models in dynamic systems' published in Methods in Ecology and Evolution </code></pre>
+<p>Here’s the result</p>
+<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/study-infographic.jpeg" style="max-height: 600px; width: auto;"></p>
+<p>Which is 100% accurate. The only thing I’d change would be to add the study’s DOI to the infographic.</p>
+</section>
+<section id="r-code" class="level2">
+<h2 class="anchored" data-anchor-id="r-code">R code</h2>
+<p>Here’s an example of visual reasoning. Here we ask the model to generate an image of R code with resulting plot:</p>
+<pre><code>Generate an image of R code and a graph in an IDE. The code will show how to fit a linear regression to data. The graph will show temperature on the x-axis and # people of the y-axis. Title the graph Swimming in Tasmania</code></pre>
+<p>The results show the model is capable of correctly interpreting the R code it wrote:</p>
+<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/rcode.jpg" style="max-height: 600px; width: auto;"></p>
+<p>This is not a screen shot of an IDE (note the errors in the names of panels) but an image generated to represent a screenshot.</p>
+</section>
+<section id="visual-reasoning" class="level2">
+<h2 class="anchored" data-anchor-id="visual-reasoning">Visual reasoning</h2>
+<p>To further test the visual reasoning I set a more complex task of plotting some data that I specified, showing a GAM fit to that data and plotting the residuals.</p>
+<pre><code>Generate a two panel plot created with the R program. Here is the data to use for the plots: `x &lt;- 1:10; y &lt;- c(5, 10, 11, 9, 15, 12, 13, 6, 3, 2)`. The first panel will show an x-y plot of the data, as well as a the fitted curve from a gam spline with 3 dimension basis function. The second panel will show the residuals of the model with a horizontal line at y=0. Show the plots as a single image with two panels side by side.</code></pre>
+<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/rcode-gam.jpeg" style="max-height: 500px; width: auto;"></p>
+<p>This one got the data points approximately correct (blue points), but was off with the GAM fit and residuals. For example, according to its fitted curve (red) the first, second and third residuals (green points) should be at zero. Likewise the two final points should be at zero. For comparison, here’s the answer if I generate that with actual R code:</p>
+<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/gam_plot.jpg" style="max-height: 400px; width: auto;"></p>
+<p>You can see the AI generated residual plot was well off the mark, both in terms of the residuals</p>
+</section>
+<section id="code-for-api-access" class="level2">
+<h2 class="anchored" data-anchor-id="code-for-api-access">Code for API access</h2>
+<p>At the moment the easiest way to use this model is via the Gemini chat platform, or via direct API calls.</p>
+<p>Here’s an example of the Python code to use the Gemini API.</p>
+<pre><code>from google import genai
+from google.genai import types
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+api_key = os.getenv("GEMINI_API_KEY")
+
+# The client gets the API key from the environment variable `GEMINI_API_KEY`.
+client = genai.Client(api_key=api_key)
+
+prompt = "Generate a two panel plot created with the R program. Here is the data to use for the plots: `x &lt;- 1:10; y &lt;- c(5, 10, 11, 9, 15, 12, 13, 6, 3, 2)`. The first panel will show an x-y plot of the data, as well as a the fitted curve from a gam spline with 3 dimension basis function. The second panel will show the residuals of the model with a horizontal line at y=0. Show the plots as a single image with two panels side by side. "
+aspect_ratio = "3:4" # "1:1","2:3","3:2","3:4","4:3","4:5","5:4","9:16","16:9","21:9"
+
+response = client.models.generate_content(
+    model="gemini-3-pro-image-preview",
+    contents=prompt,
+    config=types.GenerateContentConfig(
+        response_modalities=['Text', 'Image'],
+        image_config=types.ImageConfig(
+            aspect_ratio=aspect_ratio,
+        )#,
+        #tools=[{"google_search": {}}]
+    )
+)
+
+for part in response.parts:
+    if part.text is not None:
+        print(part.text)
+    elif image:= part.as_image():
+        image.save("temp/rcode.png")</code></pre>
+<p>I’ve commented out the web search grounding. Uncomment that if you want to ground your search.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/</guid>
+  <pubDate>Sat, 22 Nov 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Upcoming R workshops in Brisbane February 2026</title>
+  <link>https://www.seascapemodels.org/posts/2025-11-14-upcoming-R-workshop-brisbane/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>R workshops in Brisbane Australia, February 2026.</p>
+<p>For many years I had the pleasure of teaching with Ant Richardson and the team for these R workshops. I’m not there anymore, but recommend attending these if you can make the dates:</p>
+<p><img src="https://www.seascapemodels.org/posts/2025-11-14-upcoming-R-workshop-brisbane/r-workshop-uq.jpg" class="img-fluid"></p>
+<p>Transform your research questions into robust statistical insights with our 2026 Summer R Workshops in an immersive exploration of R programming and statistical modelling. These workshops in February 2026 are designed for beginners and researchers who want to build a solid foundation in R programming and progress through to advanced statistical techniques. Whether you’re completely new to R or looking to strengthen your statistical modelling skills, join us to develop the analytical expertise essential for modern research!</p>
+<p>Registration is now open. For more information, see our website https://mathmarecol.github.io/RWorkshop/summer.html and the attached flyer. For any questions, email cbcs-workshops@uq.edu.au.</p>
+<p>Testimonials: “I truly enjoyed the whole workshop. Great teachers, really nice real data examples and good notes and background” “I am feeling a lot better about using stats now than I was previously” “I think it should be a compulsory course for all PhDs”</p>
+
+
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2025-11-14-upcoming-R-workshop-brisbane/</guid>
+  <pubDate>Thu, 13 Nov 2025 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Its easy to make your own AI agent in R</title>
+  <link>https://www.seascapemodels.org/posts/2025-11-10-make-an-ai-agent-in-r/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>There’s a lot of hype about AI agents, but buried under the hype there is a really simple architecture. I got inspired by <a href="https://fly.io/blog/everyone-write-an-agent/">this post that points out how easy it is to make an AI agent</a>.</p>
+<p>In this post I’ll show how to make an agent in R with the <a href="https://ellmer.tidyverse.org/"><code>ellmer</code> package</a>.</p>
+<p>A large language model agent is a <a href="https://simonwillison.net/2025/Sep/18/agents/">large language models that can run tools in a loop</a>.</p>
+<p>Tools give the agent powers to take actions like read data, create files, access the internet. Anything software task you can think of really.</p>
+<p>Here’s the cool thing, the ‘run tools in a loop’ architecture is simple. Building an AI (the LLM) is really complex and super expensive (like cost of $100 millions). But you can easily get access to 100s of these LLMs cheaply via API calls. Then its easy to plug them into DIY agents.</p>
+<p>The simplicity means you can create just about anything you can dream up.</p>
+<p>Let’s make an agent that reads R help files. A chat agent could give better advice if it read the up-to-date R help files first.</p>
+<section id="chatting-with-llms-from-rs" class="level2">
+<h2 class="anchored" data-anchor-id="chatting-with-llms-from-rs">Chatting with LLMs from Rs</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ellmer)</span></code></pre></div></div>
+<p>Set up an <a href="https://www.seascapemodels.org/AI-assistants-for-scientific-coding/03-set-up.html#sec-apikeys">API key with the provider</a> you choose and you can easily talk to a large language model with ellmer:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">chat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat_anthropic</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">model =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"claude-haiku-4-5"</span>)</span>
+<span id="cb2-2">chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"How do I do a regression in R?"</span>)</span></code></pre></div></div>
+<p>We can then string together a chat:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">chat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat_anthropic</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">model =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"claude-haiku-4-5"</span>)</span>
+<span id="cb3-2">turn1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"How do I do a regression in R?"</span>)</span>
+<span id="cb3-3">turn2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Show how to verify the model."</span>)</span></code></pre></div></div>
+<p>The way a multi-turn conversation works is that on the second turn the entire conversation thread (system message, user message, assistant message, new user message) is sent back to the LLM at each turn.</p>
+<p>Repeated calls to <code>chat</code> just manage that for us.</p>
+<p>The LLM talking to itself isn’t very useful, we can use tools to inject new information into the conversation.</p>
+</section>
+<section id="create-a-tool-to-read-a-help-file" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-tool-to-read-a-help-file">Create a tool to read a help file</h2>
+<p>The tool has two parts: (1) An R script that does something; (2) a specification that tells the LLM how to use the tool.</p>
+<section id="r-function" class="level3">
+<h3 class="anchored" data-anchor-id="r-function">R function</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">read_help_as_text <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(topic, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pkg =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>) {</span>
+<span id="cb4-2">    h <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> utils<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">help</span>(topic, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">package =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">eval</span>(pkg))</span>
+<span id="cb4-3">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(h) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stop</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Help topic not found"</span>)</span>
+<span id="cb4-4">    rd <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> utils<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">.getHelpFile</span>(h)             </span>
+<span id="cb4-5">    txt <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">capture.output</span>(tools<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Rd2txt</span>(rd)), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">collapse =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb4-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(txt)</span>
+<span id="cb4-7">}</span></code></pre></div></div>
+<p>This R function takes a topic and optionally a package name. It then returns the relevant help file as a string</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">help_txt <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_help_as_text</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lm"</span>)</span>
+<span id="cb5-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">substr</span>(help_txt, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span>), <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>) </span></code></pre></div></div>
+</section>
+<section id="tool-definition" class="level3">
+<h3 class="anchored" data-anchor-id="tool-definition">Tool definition</h3>
+<p>The tool definition tells the LLM how to use the read_help_as_text tool.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">read_help_as_text <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tool</span>(</span>
+<span id="cb6-2">  read_help_as_text,</span>
+<span id="cb6-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.description =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Returns an R help file as a string"</span>,</span>
+<span id="cb6-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">topic =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">type_string</span>(</span>
+<span id="cb6-5">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"R function or topic"</span>,</span>
+<span id="cb6-6">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">required =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb6-7">    ),</span>
+<span id="cb6-8">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pkg =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">type_string</span>(</span>
+<span id="cb6-9">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"R package to get help file from"</span>,</span>
+<span id="cb6-10">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">required =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span></span>
+<span id="cb6-11">    )</span>
+<span id="cb6-12">)</span></code></pre></div></div>
+</section>
+<section id="using-the-tool" class="level3">
+<h3 class="anchored" data-anchor-id="using-the-tool">Using the tool</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">chat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat_anthropic</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">model =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"claude-haiku-4-5"</span>)</span>
+<span id="cb7-2">chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">register_tool</span>(read_help_as_text)</span>
+<span id="cb7-3"></span>
+<span id="cb7-4">chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Quote the definition of residuals from the lm() function, don't provide any other explanation or code"</span>)</span></code></pre></div></div>
+<pre><code>"residuals: the residuals, that is response minus fitted values."</code></pre>
+<p>That’s a pointless use case, but it demonstrates the tool is working. You can check the chat log to see when the tool was called:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">chat</span></code></pre></div></div>
+<pre><code>&lt;Chat Anthropic/claude-haiku-4-5 turns=4 tokens=4529/77&gt;
+── user [626] ──────────────────────────────────────────────────────────────────
+Quote the definition of residuals from the lm() function, don't provide any other explanation or code
+── assistant [59] ──────────────────────────────────────────────────────────────
+[tool request (toolu_)]: read_help_as_text(topic = "lm")
+── user [3218] ─────────────────────────────────────────────────────────────────
+[tool result  (toolu_)]:
+...
+     
+── assistant [18] ──────────────────────────────────────────────────────────────
+"residuals: the residuals, that is response minus fitted values."</code></pre>
+</section>
+</section>
+<section id="getting-advice-on-recent-packages" class="level2">
+<h2 class="anchored" data-anchor-id="getting-advice-on-recent-packages">Getting advice on recent packages</h2>
+<p>LLMs often get tripped up if you ask them for code for niche or very recent packages. The <a href="https://zobaer09.github.io/FakeDataR/"><code>FakeDataR</code> package</a> is a recently released package that helps you make synthetic data to use with LLMs (if you are concerned about privacy of your real data).</p>
+<p>If you ask an LLM to use this package, it will tend to hallucinate a response, that won’t work. With our tool however, it can create accurate code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">chat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat_anthropic</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">model =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"claude-haiku-4-5"</span>)</span>
+<span id="cb11-2">chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">register_tool</span>(read_help_as_text)</span>
+<span id="cb11-3"></span>
+<span id="cb11-4">chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"How to use the generate_fake_data function from the R package FakeDataR to make a synthetic copy of mtcars"</span>)</span></code></pre></div></div>
+<pre><code>I'll help you find information about the `generate_fake_data` function from the
+FakeDataR package.
+
+◯ [tool call] read_help_as_text(pkg = "FakeDataR", topic =
+"generate_fake_data")
+...
+
+Great! Now I can show you how to use `generate_fake_data` to create a synthetic
+copy of the `mtcars` dataset. Here's how to do it:
+
+## Basic Usage
+
+```r
+# Install FakeDataR if you haven't already
+# install.packages("FakeDataR")
+
+library(FakeDataR)
+
+# Generate synthetic data from mtcars
+synthetic_mtcars &lt;- generate_fake_data(
+  data = mtcars,
+  n = 32  # Create same number of rows as original mtcars
+)
+
+# View the result
+head(synthetic_mtcars)
+```
+
+## More Detailed Examples
+...
+The resulting synthetic dataset preserves the structure and statistical 
+properties of the original while being completely artificial!</code></pre>
+</section>
+<section id="creating-an-agentic-loop" class="level2">
+<h2 class="anchored" data-anchor-id="creating-an-agentic-loop">Creating an agentic loop</h2>
+<p>Let’s add one more tool to show how they can be chained together to build the beginnings of an agentic loop.</p>
+<p>This tool will grab the R code from the markdown code blocks in the LLMs response, then write it to a file.</p>
+<p>First the function definition:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">write_r_code <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(rcode){</span>
+<span id="cb13-2">    code_blocks <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> stringr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_extract_all</span>(rcode, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"```r</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">s*([</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">s</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">S]*?)```"</span>)[[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]]</span>
+<span id="cb13-3">    code <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(stringr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_replace_all</span>(code_blocks, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"```r</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">s*|```"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">collapse =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb13-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">writeLines</span>(code, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">con =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"temp_code.R"</span>)</span>
+<span id="cb13-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"R code written to temp_code.R"</span>)</span>
+<span id="cb13-6">}</span></code></pre></div></div>
+<p>Now the tool definition:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">write_r_code <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tool</span>(</span>
+<span id="cb14-2">  write_r_code,</span>
+<span id="cb14-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.description =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Writes R code contained in markdown code blocks to a file."</span>,</span>
+<span id="cb14-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">rcode =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">type_string</span>(</span>
+<span id="cb14-5">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Character string containing R code in markdown code blocks"</span>,</span>
+<span id="cb14-6">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">required =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb14-7">    )</span>
+<span id="cb14-8">)</span></code></pre></div></div>
+<p>Now we just register both tools and start our chat.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">chat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat_anthropic</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">model =</span>  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"claude-haiku-4-5"</span>)</span>
+<span id="cb15-2">chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">register_tool</span>(read_help_as_text)</span>
+<span id="cb15-3">chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">register_tool</span>(write_r_code)</span>
+<span id="cb15-4"></span>
+<span id="cb15-5">chat_out <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> chat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">chat</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Use generate_fake_data function from the R package FakeDataR to make a single synthetic version of mtcars. "</span>)</span></code></pre></div></div>
+<p><code>ellmer</code> will pass the results of the tool call back to the LLM, which can decide to call more tools if needed. Inspecting the chat log shows the sequence of tool calls, with no user intervention required.</p>
+</section>
+<section id="tuning-agents" class="level2">
+<h2 class="anchored" data-anchor-id="tuning-agents">Tuning agents</h2>
+<p>The write R code tool worked, some of the time… Other times it wrote a blank file. There’s a lot of niggly details to making agents work reliably, including choosing a powerful enough LLM, writing a system prompt that guides tool use, and writing powerful but secure tools.</p>
+<p>If I was going to take this example further I could add a function to run the Rscript that was created, that might require some extra security considerations (see below for one example).</p>
+<p>Going further I would also work on system prompt that provided guidance to the LLM on its role and how to approach problems. There’s many open source system prompts out there that I could draw on to create this.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Its an exciting time to be working on AI agents. The field is so new you can easily make new discoveries and be ahead of even world leading AI labs.</p>
+<p>An example. Scott Spillias, a postdoc at CSIRO, developed an agent framework that uses an evolutionary algorithm to write math to <a href="https://www.biorxiv.org/content/10.1101/2025.07.14.664628v1.abstract">create ecosystem models</a>. He showed the agent could create models that are great at predicting out-of-sample data, and that have biologically meaningful parameters.</p>
+<p>A month or so after he published his pre-print, the Google DeepMind team published a similar idea of using LLM evolutionary algorithms to generate scientific models.</p>
+<p>I look forwards to seeing what the R community creates with agents.</p>
+</section>
+<section id="example-of-using-tool_reject-for-user-permission" class="level2">
+<h2 class="anchored" data-anchor-id="example-of-using-tool_reject-for-user-permission">Example of using tool_reject for user permission</h2>
+<p>Check out <code>?tool_reject</code> for a way to require user permission before tools are used. Here’s how to implement that in our <code>write_r_code</code> function.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">write_r_code <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(rcode){</span>
+<span id="cb16-2">  allow_read <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> utils<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">askYesNo</span>(</span>
+<span id="cb16-3">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Would you like to allow access to write files?"</span></span>
+<span id="cb16-4">  )</span>
+<span id="cb16-5">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">isTRUE</span>(allow_read)) {</span>
+<span id="cb16-6">    code_blocks <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> stringr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_extract_all</span>(rcode, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"```r</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">s*([</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">s</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">S]*?)```"</span>)[[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]]</span>
+<span id="cb16-7">    code <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(stringr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_replace_all</span>(code_blocks, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"```r</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">s*|```"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">collapse =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb16-8">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">writeLines</span>(code, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">con =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"temp_code.R"</span>)</span>
+<span id="cb16-9">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"R code written to temp_code.R"</span>)</span>
+<span id="cb16-10">  } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span> {</span>
+<span id="cb16-11">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tool_reject</span>()</span>
+<span id="cb16-12">  } </span>
+<span id="cb16-13">}</span></code></pre></div></div>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <category>genAI</category>
+  <guid>https://www.seascapemodels.org/posts/2025-11-10-make-an-ai-agent-in-r/</guid>
+  <pubDate>Sun, 09 Nov 2025 13:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

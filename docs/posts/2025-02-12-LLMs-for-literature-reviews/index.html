@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2025-02-12">
+
+<title>How to use large language models to assist in systematic literature reviews – Seascapemodels</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Seascapemodels</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../bluecology_blog.html"> 
+<span class="menu-text"><i class="fa-regular fa-newspaper" aria-label="newspaper"></i> Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../people.html"> 
+<span class="menu-text"><i class="fa-regular fa-user" aria-label="user"></i> People</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../code.html"> 
+<span class="menu-text"><i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> R tutorials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.google.com.au/citations?hl=en&amp;user=1qG6yFMAAAAJ&amp;view_op=list_works&amp;sortby=pubdate"> 
+<span class="menu-text"><i class="fa-brands fa-google-scholar" aria-label="google-scholar"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://discover.utas.edu.au/C.J.Brown"> 
+<span class="menu-text"><i class="fa-solid fa-building-columns" aria-label="building-columns"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cbrown5"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/bluecology.bsky.social"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/christopher-brown-32466785/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">How to use large language models to assist in systematic literature reviews</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">rstats</div>
+                <div class="quarto-category">genAI</div>
+                <div class="quarto-category">research-skills</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 12, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>In the near future, we will all be doing systematic lit reviews by getting LLMs to gather data from papers. Below is an example of how to extract text data from a study. Once you can interact with LLM from R, you can then batch process many documents to turn text into structured data.</p>
+<p>TLDR; Developing a data extraction workflow is hard work. The development of prompts, data extraction and data cleaning is time consuming and requires thought. So it will still take work to do a systematic review. I’d also recommend you manually check results so that you still learn something yourself and to correct errors.</p>
+<p>I’ll also mention that papers are coming out now testing this idea, e.g.&nbsp;this one shows the <a href="https://www.nature.com/articles/s44185-024-00043-9">AI’s results can be accurate, but only for some types of requests</a>. The supplemental code for that paper also has helpful guidance.</p>
+<p>We’ll need a few R skills to extract data from papers for lit reviews:</p>
+<ol type="1">
+<li>How to interact with LLMs through APIs from R</li>
+<li>How to handle pdf docments and extract text from them</li>
+<li>How to clean up semi-structured text data and turn it into structured data.</li>
+<li>How to batch process.</li>
+</ol>
+<p>I’ll mainly focus on step 1 here. Step 2 is possible, by can be finniky and depend on how the pdf is formated. Step 3 is pretty straightforward with a package like <code>stringr</code>. Step 4 is just looping with whatever framework you prefer for that (e.g.&nbsp;for loops or purrr).</p>
+<p>This blog deals with only one type of application of LLMs to lit reviews, that is maybe the most straightforward and cheapest. There are other ways to use them to write syntheses or discover research trends, such as finetuning models on a large corpus of papers.</p>
+<section id="setting-up-your-api-access" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-your-api-access">Setting up your API access</h3>
+<p>API = application programming interface. This is a way to interact with a service (the LLM provider) via R.</p>
+<p>First you will need to go to your LLM provider of choice (here I’m using anthropic) and get an API key. This will require you to register and then buy some credits. You will per charged per token (fragment of a word) that you use.</p>
+<p>I’ve started out with 25USD which seems to be sufficient for testing. I’ve got no idea yet how much it will cost to do a full systematic lit review with 100s of papers.</p>
+<p>Now get your API key. Keep this secret its like a password. Also you can only view it once, so you’ll need to save it, e.g.&nbsp;in a password manager.</p>
+</section>
+<section id="using-the-api-key-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="using-the-api-key-in-r">Using the API key in R</h3>
+<p>I’m using the <code>dotenv</code> package to help manage API. First, make sure <code>.env</code> is in your <code>.gitignore</code> file. This way you can’t inadvertently share your key with the world.</p>
+<p>Now create a file in a text editor (e.g.&nbsp;Rstudio or VSCode) called <code>.env</code>. Put this is your project folder.</p>
+<p>The file will look like this:</p>
+<pre><code>ANTHROPIC_KEY="your_api_key_here"</code></pre>
+<p>Be sure to hit enter after the last line.</p>
+<p>Now you can use the <code>dotenv</code> package to load the key into your R session. <a href="https://www.r-bloggers.com/2018/08/structuring-r-projects/">This blog has good advice on managing secrets</a></p>
+<pre><code>dotenv::load_dot_env('.env')</code></pre>
+<p>Check it worked to load the key:</p>
+<pre><code>Sys.getenv("ANTHROPIC_KEY")</code></pre>
+<p>This should print your key.</p>
+</section>
+<section id="interacting-with-the-api-from-r" class="level2">
+<h2 class="anchored" data-anchor-id="interacting-with-the-api-from-r">Interacting with the API from R</h2>
+<p>Now you are ready to use the API. There are quite a few packages that can help you do this. I’m going to use the new <code>tidychatmodels</code> package, because I like its syntax (its like tidymodels).</p>
+<p><a href="https://albert-rapp.de/posts/20_tidychatmodels/20_tidychatmodels">Install instructions are here</a> (its not on cran as of writing) and <a href="https://albert-rapp.de/posts/21_pdf_extraction/21_pdf_extraction">here is a nice example of how to use LLMs with pdfs</a>, which helped me greatly with writing this blog.</p>
+<pre><code>library(tidyverse)
+library(tidychatmodels)</code></pre>
+<p>Now start building the instructions to send to the API. tidychatmodels does this step by step with pipes. So we are going to build up a sequence of commands. In the final step we’ll send it to the API.</p>
+<pre><code>newchat &lt;- create_chat("anthropic", 
+    api_key = Sys.getenv("ANTHROPIC_KEY"),
+    api_version = '2023-06-01')</code></pre>
+<p>Here I’m using ‘anthropic’, but there are others e.g.&nbsp;openai and mistral.</p>
+<p>Now add a model. I got the model name on the <a href="https://docs.anthropic.com/en/docs/about-claude/models">APIs webpage</a></p>
+<p>Model choice is dictated by speed, cost and the type of task you want to do. Do some research to optimise this.</p>
+<p>I’m also setting the temperature to control the level of creativitiy in the output, lower values = less creative. max_tokens controls the length of the output.</p>
+<pre><code>newchat &lt;- add_model(newchat, "claude-3-5-haiku-20241022") |&gt;
+      add_params('temperature' = 0.2, max_tokens = 800) </code></pre>
+</section>
+<section id="prompting-through-the-api" class="level2">
+<h2 class="anchored" data-anchor-id="prompting-through-the-api">Prompting through the API</h2>
+<p>Let’s do a test run. I’ll create some text</p>
+<pre><code>newchat &lt;- newchat |&gt;
+  add_message(
+    role = 'user',
+    message = 'You are a funky dude who loves writing online R lessons.
+    Write a paragraph about loading dataframes in R. '
+  ) </code></pre>
+<p>Now we’re ready to hit the dance floor. This is the bit where we actually ask the LLM to do something. It is also the bit that costs money….</p>
+<pre><code>newchat &lt;- newchat |&gt;
+    perform_chat()
+responses &lt;- newchat |&gt; extract_chat()</code></pre>
+<p>So the first time I ran this I got a ‘400’ error. Turns out the ‘max_tokens’ parameter was essential to set. This parameter controls the length of output. Longer outputs cost more (you’re charged per token).</p>
+<p>Error in <code>httr2::req_perform()</code>: ! HTTP 400 Bad Request. Backtrace: 1. tidychatmodels::perform_chat(newchat) 5. httr2::req_perform(prepared_engine)</p>
+</section>
+<section id="roles" class="level2">
+<h2 class="anchored" data-anchor-id="roles">Roles</h2>
+<p>Most LLMs have different roles, often a ‘user’ and a ‘system’ role. These give you more precise control over the LLM’s output. There is great advice from vendors on how to use these roles, e.g.&nbsp; with (anthropic)[<a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/system-prompts#legal-contract-analysis-with-role-prompting" class="uri">https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/system-prompts#legal-contract-analysis-with-role-prompting</a>]</p>
+<p>Setting a system role controls how the LLM behaves. People use these to make the AI act like a certain character, such as a research assistant. Let’s see it in action.</p>
+<p>Prompting is like programming, but less precise (annoyingly for me, who likes programming and things to be exact!). Good prompts will tend to get you better results. But of course, as with all deep learning, outcomes have an element of randomness, so can be inconsistent.</p>
+<pre><code>base_settings &lt;- create_chat("anthropic", 
+    api_key = Sys.getenv("ANTHROPIC_KEY"),
+    api_version = '2023-06-01') |&gt; 
+    add_model("claude-3-5-haiku-20241022") |&gt;
+    add_params('temperature' = 0.8, max_tokens = 100) 
+
+newchat &lt;- base_settings |&gt;
+  add_message(
+    role = 'system',
+    message = 'You are a funky dude who loves writing online R lessons.'
+  ) |&gt; 
+  add_message(
+    #defaults to 'user' role
+    message = 'Write a paragraph about loading dataframes in R. ') |&gt;
+    perform_chat() 
+
+extract_chat(newchat)</code></pre>
+<p>Ok, so the system role didn’t work very well in this case. To get the ‘funky dude’ output you need to put that into the user role.</p>
+<p>Now let’s look at doing this for a real paper.</p>
+</section>
+<section id="extracting-text-from-a-pdf" class="level2">
+<h2 class="anchored" data-anchor-id="extracting-text-from-a-pdf">Extracting text from a pdf</h2>
+<p>I’m going to use my <a href="https://doi.org/10.1111/conl.13056">recent paper on turtle mortality as an example, becuase I know it well</a> and the file size isn’t too large.</p>
+<p>Now we can use the pdftools package to read in the text from file. You could also try reading this directly from the web as HTML, which might allow you to identify particular sections, or data in tables, more effectively (by using html tags).</p>
+<p>Just note that making repeat requests for html pages might get you temporarily blocked from the publisher’s server.</p>
+<pre><code>library(pdftools)
+text &lt;- pdf_text("data/Brown_etal2024 national scale turtle mortality.pdf")</code></pre>
+<p>Now doing the above failed to work, I got that darn 400 error again when I sent it to the API. The issue seemed to be in the formatting of the text. So I can get on with the next step, I’ve just cut and paste the text into a text file. Clearly the cleaning up of pdfs/html for use will be a big part of this process. (like all modelling, data cleaning usually takes up most of the time).</p>
+<pre><code>methods_text &lt;- readLines("data/example-text.txt") |&gt;
+    paste(collapse = " ")</code></pre>
+</section>
+<section id="sending-text-to-the-llm" class="level2">
+<h2 class="anchored" data-anchor-id="sending-text-to-the-llm">Sending text to the LLM</h2>
+<p>Now we have our text we can send it to the LLM.</p>
+<pre><code>newchat &lt;- base_settings |&gt;
+    add_params('temperature' = 0.2, max_tokens = 600) |&gt; 
+    add_message(
+    role = 'system',
+    message = "You are a research assistant who has been asked to summarise the methods section of a paper on turtle mortality.
+    You will extract key statistics on:
+    Sample size: &lt;&lt; Insert sample size here&gt;&gt;
+    Year of the study: &lt;&lt; Insert year here&gt;&gt;
+    DONT EXTRACT ANY MORE INFORMATION BEYOND THIS POINT.
+    "
+  ) |&gt; 
+     add_message(
+         message = methods_text
+    ) |&gt;
+  perform_chat()
+
+extract_chat(newchat)</code></pre>
+<p>The prompt is key here. In the system role we’ve told it to extract the data in a structured way. I also included ‘DONT EXTRACT ANY MORE INFORMATION BEYOND THIS POINT.’ to prevent it from continuing to talk. Using caps emphasises the point to the AI.</p>
+<p>Here’s the output:</p>
+<blockquote class="blockquote">
+<p>Based on the methods section, here are the key statistics: Sample size: 357 sets (electronic monitoring) for large-scale longline fishery (LLF) Year of the study: 2018</p>
+</blockquote>
+<p>Here’s the output without the final part in caps:</p>
+<blockquote class="blockquote">
+<p>Assistant: Based on the methods section, here are the key statistics: Sample size: - For Small-Scale Fisheries (SSF): Monitored catches from 10 communities across 8 of 9 provinces - For Large-Longline Fisheries (LLF): 357 sets reviewed, spanning from 2018-01-24 to 2019-08-17 - Total catch events for LLF: 25,403 catch events - Electronic monitoring deployed on 7 vessels Year of the study: 2018 (primary year of data collection) Additional notable details: - Used non-parametric bootstrapping for scaling up and estimating confidence intervals - Monitoring methods involved trained community members and electronic monitoring systems - Video review of LLF data took 0.5 to 2 days per set - Used three different methods to scale up turtle catch for LLF to account for variability</p>
+</blockquote>
+<p>This is all very accurate, but includes too much ‘additional details’. However, it does get more of the methods details with regards to the various sample sizes for different parts of the study.</p>
+<p>Let’s get the output text:</p>
+<pre><code>chatout &lt;- extract_chat(newchat)
+output &lt;- chatout[chatout$role == 'assistant', 'message']</code></pre>
+<p>For repeatability just for the blog I’m hard coding that</p>
+<pre><code>output &lt;- data.frame(message = "Based on the methods section, here are the key statistics:\n\nSample size: 357 sets (electronic monitoring) for large-scale longline fishery (LLF)\nYear of the study: 2018")</code></pre>
+</section>
+<section id="turn-text-into-structured-data" class="level2">
+<h2 class="anchored" data-anchor-id="turn-text-into-structured-data">Turn text into structured data</h2>
+<p>Our data is semi structured by the way we did the prompt. Now we want to put the sample size and year into data fields.</p>
+<p>I’m using <code>separate_wider_delim</code> to first seperate out the first paragraph that had two breaks ’’, then again to split the sample size and year into columns (they were seperated by ’’).</p>
+<p>Finally, str_remove_all gets rid of the ‘Sample size:’ and ‘Year of the study:’ text.</p>
+<pre><code>library(stringr)
+
+cleaned_output &lt;- output |&gt; 
+  separate_wider_delim(
+    cols = message, 
+    delim = '\n\n',
+    names = c('response', 'stats')
+  ) |&gt; 
+separate_wider_delim(
+    cols = stats, 
+    delim = '\n',
+    names = c('sample_size', 'year')
+) |&gt; 
+  mutate(
+    across(
+      sample_size:year,
+      \(x) str_remove_all(
+        x, 
+        'Sample size: |Year of the study: '
+      )
+    ))</code></pre>
+<p>So now we can easily get our variables (sort of)</p>
+<pre><code>cleaned_output$sample_size
+cleaned_output$year</code></pre>
+</section>
+<section id="reflections-on-challenges-and-next-steps-for-automating-data-extraction" class="level2">
+<h2 class="anchored" data-anchor-id="reflections-on-challenges-and-next-steps-for-automating-data-extraction">Reflections on challenges and next steps for automating data extraction</h2>
+<section id="cost-uncertainty" class="level3">
+<h3 class="anchored" data-anchor-id="cost-uncertainty">Cost uncertainty</h3>
+<p>This should be cheap. It cost &lt;1c to make this post with all the testing. So in theory you could do 100s of methods sections for &lt;100USD. However, if you are testing back and forwards a lot or using full papers the cost could add up. It will be hard to estimate this until people get more experience.</p>
+</section>
+<section id="obtaining-the-papers-and-dealing-with-unstructued-text-in-pdfs-or-html" class="level3">
+<h3 class="anchored" data-anchor-id="obtaining-the-papers-and-dealing-with-unstructued-text-in-pdfs-or-html">Obtaining the papers and dealing with unstructued text in PDFs or HTML</h3>
+<p>A big challenge will be getting the text into a format that the LLM can use. Then there are issues like obtaining the text. Downloading pdfs is time consuming and data intensive. Trying to read text data from webpages can also be hard, due to paywalls and rate limits (you might get blocked for making reqeat requests).</p>
+<p>For instance, <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/brv.12344?casa_token=LVnFzoFBBU8AAAAA%3AcsyopYDWDBRZN7y2JL7eHYxzqayxu2GvKB-7gdEYkdeZSi5p5o1oXTwj49FqwBJz-IpPS6wxJ_SX0h2f">in a past study we did where we did simple ‘bag of words analysis’</a> we either downloaded the pdfs manually, or set timers to delay web hits and avoid getting blocked.</p>
+<p>HTML format would be ideal, because the tags mean the sections of the paper, and the figures already semi-structured.</p>
+</section>
+<section id="prompting" class="level3">
+<h3 class="anchored" data-anchor-id="prompting">Prompting</h3>
+<p>Need to experiment with this to get it right. It might also be good to repeat prompt the same text to triangulate accurate results.</p>
+</section>
+<section id="llm-text-output-cleaning" class="level3">
+<h3 class="anchored" data-anchor-id="llm-text-output-cleaning">LLM text output cleaning</h3>
+<p>In my simple example this was easy. However, with a large number of prompts and papers the LLM responses might have more variability that needs to be dealt with, e.g.&nbsp;will it always use one line break between my data questions? You can help control this issue by asking it to structure output in xml or JSON format, which is easier to then parse into data sheets.</p>
+</section>
+<section id="the-data-still-isnt-data-and-requires-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="the-data-still-isnt-data-and-requires-interpretation">The data still isn’t data and requires interpretation</h3>
+<p>You can see from my simple examples above that the output can’t be plotted direclty. In fact, it requires more interpretation. The sample size was given as ‘357 sets (electronic monitoring) for large-scale longline fishery (LLF)’. So is it 357? Are there other sample sizes that might be relevant?</p>
+</section>
+<section id="validation" class="level3">
+<h3 class="anchored" data-anchor-id="validation">Validation</h3>
+<p>You’ll definitely want to manually check the output and report accuracy statistics in your study. So maybe your review has 1000 papers, you’ll want to manually check 100 of them to see how accurate the LLM was.</p>
+</section>
+<section id="youll-still-need-to-read-a-lot-of-papers-to-write-a-good-lit-review" class="level3">
+<h3 class="anchored" data-anchor-id="youll-still-need-to-read-a-lot-of-papers-to-write-a-good-lit-review">You’ll still need to read a lot of papers to write a good lit review</h3>
+<p>A lit review is more than the systematic data. I still believe you need to read a lot of papers in order to understand the literature and make a useful synthesis. If you just use AI you’re vulnerable to the <a href="https://www.nature.com/articles/s41586-024-07146-0">‘illusion of understanding’</a>.</p>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>This tool will be best for well defined tasks and consistently written papers. For instance, an ideal use case would be reviewing 500 ocean acidification papers that all used similar experimental designs and terminology. You’ll then be able to get consistent answers to prompts about sample size etc…</p>
+<p>Another good use case would be to extract model types from species distribution model papers.</p>
+<p>Harder tasks will be where the papers are from diverse disciplines, or use inconsistent terminology, or methods. My study was a good example of that, there were about 5 different sample sizes reported. So in this example we’d need first to think clearly about what sample size you wanted to extract before writing the prompt.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.seascapemodels\.org");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
