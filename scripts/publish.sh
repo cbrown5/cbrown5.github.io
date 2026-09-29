@@ -88,18 +88,35 @@ if [[ ! -d docs || -z "$(ls -A docs 2>/dev/null)" ]]; then
   exit 1
 fi
 
+# The custom domain lives in docs/CNAME. "quarto render" cleans docs/, so if
+# CNAME is not being copied in (see resources: in _quarto.yml) it silently
+# disappears and www.seascapemodels.org starts returning 404 while
+# cbrown5.github.io keeps working. Restore it rather than publishing a site
+# that is about to go down.
+if [[ -f CNAME && ! -f docs/CNAME ]]; then
+  echo "==> docs/CNAME missing after render -- restoring from ./CNAME"
+  cp CNAME docs/CNAME
+fi
+
+if [[ ! -s docs/CNAME ]]; then
+  echo "Error: docs/CNAME is missing or empty -- refusing to publish." >&2
+  echo "Publishing without it takes www.seascapemodels.org offline (404)." >&2
+  echo "Expected contents: www.seascapemodels.org" >&2
+  exit 1
+fi
+
 # Only stage publishing-related paths. Other edits in the working tree
 # (scripts, config, drafts) are left alone so they don't get swept into
 # a post commit by accident.
 echo "==> Staging posts/ and docs/"
-git add -A posts docs images data
+git add -A posts docs images data CNAME
 
 deleted=$(git diff --cached --diff-filter=D --name-only -- docs | wc -l | tr -d ' ')
 if [[ "$deleted" -gt 50 ]]; then
   echo "Error: this commit would delete $deleted files from docs/." >&2
   echo "That usually means the render did not produce the full site." >&2
   echo "Check 'git diff --cached --stat -- docs', then run with -f to rebuild." >&2
-  git reset --quiet HEAD -- posts docs images data
+  git reset --quiet HEAD -- posts docs images data CNAME
   exit 1
 fi
 
@@ -115,7 +132,7 @@ echo
 
 if $dry_run; then
   echo "Dry run: unstaging and stopping before commit."
-  git reset --quiet HEAD -- posts docs images data
+  git reset --quiet HEAD -- posts docs images data CNAME
   exit 0
 fi
 

@@ -1,6 +1,11 @@
 project:
   type: website
   output-dir: docs
+  # Copied into docs/ on every render. Without this, "quarto render" cleans
+  # the output dir and deletes docs/CNAME, which drops the custom domain and
+  # makes www.seascapemodels.org return 404 (happened 2025-11-08, 2026-09-28).
+  resources:
+    - CNAME
 
 website:
   title: "Seascapemodels"
