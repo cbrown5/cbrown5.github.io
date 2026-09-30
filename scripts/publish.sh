@@ -53,15 +53,29 @@ if ! $skip_render; then
     # the search index still come from the last full render, so run -f after
     # site-wide edits.
     # bash 3.2 (macOS default) has no mapfile, so read the list the portable way.
+    #
+    # A source file needs rendering when it is newer than the .html it produces
+    # in docs/. Checking mtimes rather than "git diff" matters: by the time you
+    # run this you have usually already committed the post, so the diff against
+    # HEAD is empty and nothing would be rendered at all.
     changed=()
     while IFS= read -r file; do
-      [[ -n "$file" ]] && changed+=("$file")
+      [[ -n "$file" ]] || continue
+
+      # posts/x/index.qmd -> docs/posts/x/index.html, about.qmd -> docs/about.html
+      out="docs/${file%.*}.html"
+
+      if [[ ! -f "$out" || "$file" -nt "$out" ]]; then
+        changed+=("$file")
+      fi
     done < <(
-      {
-        git diff --name-only -- '*.qmd' '*.md' '*.ipynb'
-        git diff --cached --name-only -- '*.qmd' '*.md' '*.ipynb'
-        git ls-files --others --exclude-standard -- '*.qmd' '*.md' '*.ipynb'
-      } | grep -v '^readme\.md$' | sort -u
+      # README.md files are vendored docs (leaflet, game assets) or this repo's
+      # own readme -- quarto never renders them, so they would be "changed" on
+      # every single run. drafts/ is gitignored but listed by --others.
+      git ls-files --cached --others --exclude-standard -- '*.qmd' '*.md' '*.ipynb' \
+        | grep -viE '(^|/)readme\.md$' \
+        | grep -v '^drafts/' \
+        | sort -u
     )
 
     # Renders write into docs/, so a missing or empty docs/ means there is no

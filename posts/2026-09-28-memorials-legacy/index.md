@@ -36,7 +36,7 @@ For me, that quote shows how another cliche on choices falls short  '*do that th
 
 The quote is a reminder that when we make a choice, we should give it all we've got. Every decision is a tradeoff against something else we would otherwise be doing. 
 
-I looked up the Nick Cave song and quotation for this post, and it turns out I misheard 'at'. I was standing at the back of a pack room and there were tears. So I can be excused. But, the meaning is even deeper than I appreciated at the time: 
+I looked up the Nick Cave song and quotation for this post, and it turns out I misheard 'at'. I was standing at the back of a packed room and there were tears. So I can be excused. But, the meaning is even deeper than I appreciated at the time: 
 
 > When you’re standing on the crossroads\
 > That you cannot comprehend\
