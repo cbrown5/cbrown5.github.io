@@ -8,7 +8,7 @@ date: '09/28/2026'
 
 I attended the memorial of a prominent environmental scientist last night. I was there to support my wife, she was his colleague and mentor. He was taken from us too young, with so much left to give his family, science and the world. 
 
-Its not my place to offer reflections on a man I didn't know, but I did want to write down some reflections that were inspired by the memorial. 
+Its not my place to tell the story of a man I didn't know, but I did want to write down some reflections on what I heard at the memorial. 
 
 The event was a memorial and celebration of life. They chose as the dress code silly t-shirts, apparently he liked them. The only time I ever met him personally was at a workshop, and he was wearing such a shirt. 
 
@@ -18,7 +18,7 @@ Here was someone who lived life to the fullest, whether it was family, work or p
 
 A long battle with cancer probably offers one many chances to reflect on that cliche. 
 
-He was a deep thinker and I think he would have thought about these big choices we have to make in life. 
+I heard how he was a deep thinker and I imagine he would have thought about these big choices we have to make in life. 
 
 And I don't think he would have found regret in that cliche. He was still planning his next move in science, right until the end. Not exclusively, he had many plans with his family too. But science was part of life too. 
 
