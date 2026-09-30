@@ -8,7 +8,7 @@ date: '09/28/2026'
 
 I attended the memorial of a prominent environmental scientist last night. I was there to support my wife, she was his colleague and mentor. He was taken from us too young, with so much left to give his family, science and the world. 
 
-Its not my place to tell the story of a man I didn't know, but I did want to write down some reflections on what I heard at the memorial. 
+I didn't know him well, but what I heard deeply affected me. So I wanted to write down some reflections inspired by the memorial. 
 
 The event was a memorial and celebration of life. They chose as the dress code silly t-shirts, apparently he liked them. The only time I ever met him personally was at a workshop, and he was wearing such a shirt. 
 
