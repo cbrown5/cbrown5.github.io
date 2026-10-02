@@ -21,8 +21,9 @@ To publish run:
 
 `scripts/publish.sh 'commit msg'`
 
-This only re-renders the posts you changed, so it takes seconds. After a
-site-wide change (`_quarto.yml`, `styles.css`, the navbar) add `-f` to re-render
+Will run quarto to re-renders the posts that were changed. Then commits to git and pushes to github. 
+
+Add `-f` to re-render
 everything so the listing pages and links update:
 
 `scripts/publish.sh -f 'new theme'`
@@ -40,7 +41,7 @@ Improve readership:
 
 Add Plausible or GoatCounter (privacy-friendly, no cookie banner needed, trivial to add via a <script> include in _quarto.yml's include-in-header) to both the main site and both book repos. Skip Google Analytics — it's heavier than needed here and the privacy-friendly options are a one-line embed.
 
-3. Make the RSS feed visible and promote it directly
+1. Make the RSS feed visible and promote it directly
 The feed already exists but isn't advertised. Add a visible RSS icon/link on the blog listing page (bluecology_blog.qmd) so returning readers can subscribe instead of relying on remembering to check back.
 
 Where blog posts already relate to book content (e.g. the 2025-10-05-AI-assistants-for-scientific-coding post that appears to be the seed of the AI assistants book), add an explicit link from the post to the book and vice versa. This costs a couple of minutes but turns blog traffic into book traffic and gives blog readers a next-step "read more."
