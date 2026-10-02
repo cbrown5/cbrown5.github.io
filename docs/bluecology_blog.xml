@@ -10,7 +10,40 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Sun, 27 Sep 2026 14:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 01 Oct 2026 14:00:00 GMT</lastBuildDate>
+<item>
+  <title>Major update to VS Code R extension</title>
+  <link>https://www.seascapemodels.org/posts/2026-10-02-major-update-to-vs-code-r-extension/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I was doing some analysis work with R today (don’t get to do that very often anymore) and R wasn’t playing with VS Code nicely.</p>
+<p>Turns out there has recently been a major update to the VS Code R editor extension.</p>
+<p>So if you are having issues, check out the <a href="https://github.com/REditorSupport/vscode-R">Extensions page for setup instructions</a>.</p>
+<section id="key-changes" class="level2">
+<h2 class="anchored" data-anchor-id="key-changes">Key changes:</h2>
+<ul>
+<li><p>New <code>jgd</code> package to improve the plotting experience. This replaces the <code>httpgd</code> package that was previously used to improve the plotting experience.</p></li>
+<li><p>The <code>r.term.path</code> setting is now called <code>r.consolePath</code> (that’s the setting where you point VS Code to the R program)</p></li>
+<li><p>Option to install <code>afr</code> to use as the console for R (instead of the base console or Radian).</p></li>
+<li><p>It was easy to fix once I realized what was wrong. See the extension page for instructions.</p></li>
+</ul>
+<p>I’m not yet sure if its better yet, <code>afr</code> does seem a bit smoother and faster than <code>radian</code> was.</p>
+<p>I have also been trying out Positron lately, Posit’s VS Code clone. In general that seems much easier for R based work than VS Code always has been. It plays nicely with R out of the box. Unlike VS Code, which requires lots of additional settings and extension installs.</p>
+<p>I switched from RStudio to VS Code as my primary IDE a few years ago. I also teach my AI data analysis workshops in VS Code. Though there is a fair bit of time spent in each workshop just helping people connect VS Code to R. At the time Posit just weren’t keeping up with the AI coding tools at that time. But they seem to be catching up again with Positron.</p>
+<p>I’ve switched my teaching to recommend Positron. So if this extension update is giving you headaches, give Positron a go.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-10-02-major-update-to-vs-code-r-extension/</guid>
+  <pubDate>Thu, 01 Oct 2026 14:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Memorials and legacy</title>
   <link>https://www.seascapemodels.org/posts/2026-09-28-memorials-legacy/</link>
@@ -1148,37 +1181,6 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
  ]]></description>
   <category>genAI; research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-05-09-judicious-AI-use/</guid>
-  <pubDate>Thu, 07 May 2026 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>AI business growth prioritized over clean air</title>
-  <link>https://www.seascapemodels.org/posts/2026-05-08-AI-growth-over-clean-air/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>The energy demands from current AI data centres are relatively minor on a global scale, but energy production for AI can have significant local impacts.</p>
-<p>xAI’s Colossus Data Center in Memphis has one of the worst <a href="https://www.politico.com/news/2025/05/06/elon-musk-xai-memphis-gas-turbines-air-pollution-permits-00317582">environmental records</a>. It operates on gas turbines, reportedly without the protections against air pollution, causing high emissions of gases that are harmful to human health.</p>
-<p>So its perhaps surprising that Anthropic has signed up to use this particular data centre. Multiple AI commentators have questioned the necessity of this move (<a href="https://simonwillison.net/2026/May/7/xai-anthropic/">here</a> and <a href="https://x.com/andymasley/status/2052070252930826384">here</a>).</p>
-<p>Anthropic creates and serves some of the highest performing AI models and also markets itself as the (more?) ethical choice for language language models.</p>
-<p>Growing use of Anthropic’s leading AI platform Claude saw the company reduce usage limits last week. Their current data centres couldn’t cope with the demand for services. (Full disclosure, Claude is one of my favourite tools).</p>
-<p>The new deal with xAI for access to the Colossus Data Center has allowed them to again increase usage limits for their subscribers.</p>
-<p>Colossus itself seems to have been developed without normal environmental regulations. It doesn’t have to be this way, <a href="https://vitaexmachina.substack.com/p/should-researchers-feel-guilty-about">other countries are taking a more cautious approach to data centres and regulating their environmental impacts</a>.</p>
-<p>It is important to get good environmental standards in at the ground level, so we don’t end up with expanding issues in coming years as <a href="https://hannahritchie.substack.com/p/ai-electricity-2025">AI electricity and resource demand grows</a>.</p>
-<p>You can see Anthropic’s business reasoning. Their business is rapidly growing and they need new data centres to match supply with demand.</p>
-<p>But the move goes against the ethos of Anthropic who announce on their webpage “AI <a href="https://www.anthropic.com/research">research</a> and <a href="https://claude.com/product/overview">products</a> that put safety at the frontier”. Their pages also talk about benefits to humanity and so on.</p>
-<p>To date they have shown themselves to be leaders in pushing for better cybersecurity outcomes from AI tools. For instance, releasing new models to cybersecurity researchers before making them available to everyone. And they have pushed back against applications of their products to the military.</p>
-<p>These new actions show that Anthropic’s definition of safety does not extend to the environmental and human health implications of their products.</p>
-<p>It is increasingly difficult to make informed choices as a consumer in the tech space. As consumers, we need to watch how AI companies act, rather than read who they say they are.</p>
-<p>Actions speak louder than words.</p>
-
-
-
- ]]></description>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2026-05-08-AI-growth-over-clean-air/</guid>
   <pubDate>Thu, 07 May 2026 14:00:00 GMT</pubDate>
 </item>
 </channel>
