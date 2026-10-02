@@ -58,6 +58,22 @@ if ! $skip_render; then
     # in docs/. Checking mtimes rather than "git diff" matters: by the time you
     # run this you have usually already committed the post, so the diff against
     # HEAD is empty and nothing would be rendered at all.
+    #
+    # Built with a plain pipe into a temp file rather than "done < <(...)":
+    # process substitution is a bashism that disappears when bash runs in
+    # POSIX mode, and then the whole script dies with "bad substitution".
+    #
+    # README.md files are vendored docs (leaflet, game assets) or this repo's
+    # own readme -- quarto never renders them, so they would be "changed" on
+    # every single run. drafts/ is gitignored but listed by --others.
+    srclist="$(mktemp "${TMPDIR:-/tmp}/publish-src.XXXXXX")"
+    trap 'rm -f "$srclist"' EXIT
+
+    git ls-files --cached --others --exclude-standard -- '*.qmd' '*.md' '*.ipynb' \
+      | grep -viE '(^|/)readme\.md$' \
+      | grep -v '^drafts/' \
+      | sort -u > "$srclist" || true
+
     changed=()
     while IFS= read -r file; do
       [[ -n "$file" ]] || continue
@@ -68,15 +84,10 @@ if ! $skip_render; then
       if [[ ! -f "$out" || "$file" -nt "$out" ]]; then
         changed+=("$file")
       fi
-    done < <(
-      # README.md files are vendored docs (leaflet, game assets) or this repo's
-      # own readme -- quarto never renders them, so they would be "changed" on
-      # every single run. drafts/ is gitignored but listed by --others.
-      git ls-files --cached --others --exclude-standard -- '*.qmd' '*.md' '*.ipynb' \
-        | grep -viE '(^|/)readme\.md$' \
-        | grep -v '^drafts/' \
-        | sort -u
-    )
+    done < "$srclist"
+
+    rm -f "$srclist"
+    trap - EXIT
 
     # Renders write into docs/, so a missing or empty docs/ means there is no
     # previous build to add to -- fall back to a full render rather than
