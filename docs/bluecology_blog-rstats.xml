@@ -10,7 +10,69 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog-rstats.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Thu, 01 Oct 2026 14:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 08 Oct 2026 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>Validating data analyses written by coding agents</title>
+  <link>https://www.seascapemodels.org/posts/2026-10-09-validating-analyses-by-coding-agents/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Claude Code (and many other agents) has been getting so good at ecological analysis that I find I’m increasingly tempted not to directly review the code it writes. In fact, it finds more mistakes in my code than I find in its code these days.</p>
+<p>So I need a way to check the validity of the code it writes. Here’s the strategy for this I’ve been developing. Its a work in progress.</p>
+<section id="specification" class="level3">
+<h3 class="anchored" data-anchor-id="specification">Specification</h3>
+<p>Start with a clear written specification for the data analysis or modelling. This should include equations for the modelling. This ensures I understand what I want the analysis to do (even if its not what I get initially).</p>
+<p>Claude is very helpful at this stage to review it for logical errors.</p>
+</section>
+<section id="adversarial-code-review" class="level3">
+<h3 class="anchored" data-anchor-id="adversarial-code-review">Adversarial code review</h3>
+<p>This is a no brainer. Use the agent, or ideally another provider’s agent, to review the code for errors.</p>
+</section>
+<section id="data-processing-checks" class="level3">
+<h3 class="anchored" data-anchor-id="data-processing-checks">Data processing checks</h3>
+<p>Instruct Claude to check all data processing steps and fail loudly if inconsistencies are found. That’s probably sufficient these days, but if you want to be thorough you can think about what you need at each stage and tell it to check for that.</p>
+<p>For example, make sure the final dataframe used in the model has N rows, or that the number of unique survey IDs == the number of rows in the dataframe.</p>
+<p>There are various R packages to support this like <code>pointblank</code> and <code>validate</code>.</p>
+</section>
+<section id="testing-against-simulated-data-with-known-truth" class="level3">
+<h3 class="anchored" data-anchor-id="testing-against-simulated-data-with-known-truth">Testing against simulated data with known truth</h3>
+<p>Often in ecology we are fitting generative models, that is, you can simulate data right out of the model you are fitting. So invert your specification of the model to be a specification that simulates data with a known model. Then run the simulated data through your workflow to see if it recovers the known parameters.</p>
+<p>If you are doing probabilistic inference you can also check other common verification statistics like coverage (the 95% CIs should cover the point estimate in 95% of randomized datasets).</p>
+<p>Create the data simulation in a separate Claude and R environment, to ensure independence. Make sure the AI memory storage options are turned off, or set to incognito mode, to ensure no leakage of information through memory files too.</p>
+<p>There are also many data simulation functions as R packages or within R packages. For instance, many advanced modelling packages also provide a simulation function. You can use these to further reduce the chances of errors in your simulation step</p>
+</section>
+<section id="other-simulation-tests" class="level3">
+<h3 class="anchored" data-anchor-id="other-simulation-tests">Other simulation tests</h3>
+<p>You can also do checks where you muddle the real data directly and run it through your workflow. For instance, you should get the same result if you reshuffle rows of your data-frame randomly.</p>
+<p>If you reshuffle values in the covariate columns independently of the response, then the effects of covariate should be 0 on average. If your workflow is about model selection, then enforcing shared rank ordering of a covariate and the response you should (almost certainly) find that covariate pops up in every model selected by the AIC.</p>
+</section>
+<section id="test-multiple-methods" class="level3">
+<h3 class="anchored" data-anchor-id="test-multiple-methods">Test multiple methods</h3>
+<p>In the simplest case, the same model fitted with different implementations should return the same results. For example compare results from <code>lmer</code> <code>lme</code> and <code>glmmTMB</code>. You can get claude to fire up sub-agents to write a script for each one independently.</p>
+<p>In more complex cases it can still be useful to do fit different models and compare results, even in the models have slightly different meanings. This may reveal errors, but it may also reveal places where your model assumptions are not robust. For instance, do different model selection methods result in the same model?</p>
+</section>
+<section id="whats-next" class="level3">
+<h3 class="anchored" data-anchor-id="whats-next">What’s next?</h3>
+<p>Part of the problem is that once you start using an agent it will write very complex R code. Claude Code has this obsession with making absolutely generalizable scripts. For instance, it commonly writes functions just to identify the root file path for a key data file.</p>
+<p>The other part of its complexity is adding numerous print statements to the R scripts, so it can see intermediate results in the terminal output. I normally do these interactively so they stay out of my scripts.</p>
+<p>All this extra code means it becomes even more tedious to review its work. Its like a double edged sword, the agent is powerful, but it makes more review work.</p>
+<p>So its clear to me that we soon won’t bother reading the code they write. That means we need to adapt how we approach coding and data analysis, and especially ensure we have checks in place that we understand the code we are producing and understand its correct.</p>
+<p>This list is my start at that.</p>
+<p>Send a comment if you have other suggestions for ways to test code written by agents.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>genAI</category>
+  <category>modelling</category>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-10-09-validating-analyses-by-coding-agents/</guid>
+  <pubDate>Thu, 08 Oct 2026 13:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Major update to VS Code R extension</title>
   <link>https://www.seascapemodels.org/posts/2026-10-02-major-update-to-vs-code-r-extension/</link>
@@ -1531,29 +1593,6 @@ for part in response.parts:
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/</guid>
   <pubDate>Sat, 22 Nov 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Upcoming R workshops in Brisbane February 2026</title>
-  <link>https://www.seascapemodels.org/posts/2025-11-14-upcoming-R-workshop-brisbane/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>R workshops in Brisbane Australia, February 2026.</p>
-<p>For many years I had the pleasure of teaching with Ant Richardson and the team for these R workshops. I’m not there anymore, but recommend attending these if you can make the dates:</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-14-upcoming-R-workshop-brisbane/r-workshop-uq.jpg" class="img-fluid"></p>
-<p>Transform your research questions into robust statistical insights with our 2026 Summer R Workshops in an immersive exploration of R programming and statistical modelling. These workshops in February 2026 are designed for beginners and researchers who want to build a solid foundation in R programming and progress through to advanced statistical techniques. Whether you’re completely new to R or looking to strengthen your statistical modelling skills, join us to develop the analytical expertise essential for modern research!</p>
-<p>Registration is now open. For more information, see our website https://mathmarecol.github.io/RWorkshop/summer.html and the attached flyer. For any questions, email cbcs-workshops@uq.edu.au.</p>
-<p>Testimonials: “I truly enjoyed the whole workshop. Great teachers, really nice real data examples and good notes and background” “I am feeling a lot better about using stats now than I was previously” “I think it should be a compulsory course for all PhDs”</p>
-
-
-
- ]]></description>
-  <category>rstats</category>
-  <guid>https://www.seascapemodels.org/posts/2025-11-14-upcoming-R-workshop-brisbane/</guid>
-  <pubDate>Thu, 13 Nov 2025 13:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

@@ -10,7 +10,69 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Thu, 01 Oct 2026 14:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 08 Oct 2026 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>Validating data analyses written by coding agents</title>
+  <link>https://www.seascapemodels.org/posts/2026-10-09-validating-analyses-by-coding-agents/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Claude Code (and many other agents) has been getting so good at ecological analysis that I find I’m increasingly tempted not to directly review the code it writes. In fact, it finds more mistakes in my code than I find in its code these days.</p>
+<p>So I need a way to check the validity of the code it writes. Here’s the strategy for this I’ve been developing. Its a work in progress.</p>
+<section id="specification" class="level3">
+<h3 class="anchored" data-anchor-id="specification">Specification</h3>
+<p>Start with a clear written specification for the data analysis or modelling. This should include equations for the modelling. This ensures I understand what I want the analysis to do (even if its not what I get initially).</p>
+<p>Claude is very helpful at this stage to review it for logical errors.</p>
+</section>
+<section id="adversarial-code-review" class="level3">
+<h3 class="anchored" data-anchor-id="adversarial-code-review">Adversarial code review</h3>
+<p>This is a no brainer. Use the agent, or ideally another provider’s agent, to review the code for errors.</p>
+</section>
+<section id="data-processing-checks" class="level3">
+<h3 class="anchored" data-anchor-id="data-processing-checks">Data processing checks</h3>
+<p>Instruct Claude to check all data processing steps and fail loudly if inconsistencies are found. That’s probably sufficient these days, but if you want to be thorough you can think about what you need at each stage and tell it to check for that.</p>
+<p>For example, make sure the final dataframe used in the model has N rows, or that the number of unique survey IDs == the number of rows in the dataframe.</p>
+<p>There are various R packages to support this like <code>pointblank</code> and <code>validate</code>.</p>
+</section>
+<section id="testing-against-simulated-data-with-known-truth" class="level3">
+<h3 class="anchored" data-anchor-id="testing-against-simulated-data-with-known-truth">Testing against simulated data with known truth</h3>
+<p>Often in ecology we are fitting generative models, that is, you can simulate data right out of the model you are fitting. So invert your specification of the model to be a specification that simulates data with a known model. Then run the simulated data through your workflow to see if it recovers the known parameters.</p>
+<p>If you are doing probabilistic inference you can also check other common verification statistics like coverage (the 95% CIs should cover the point estimate in 95% of randomized datasets).</p>
+<p>Create the data simulation in a separate Claude and R environment, to ensure independence. Make sure the AI memory storage options are turned off, or set to incognito mode, to ensure no leakage of information through memory files too.</p>
+<p>There are also many data simulation functions as R packages or within R packages. For instance, many advanced modelling packages also provide a simulation function. You can use these to further reduce the chances of errors in your simulation step</p>
+</section>
+<section id="other-simulation-tests" class="level3">
+<h3 class="anchored" data-anchor-id="other-simulation-tests">Other simulation tests</h3>
+<p>You can also do checks where you muddle the real data directly and run it through your workflow. For instance, you should get the same result if you reshuffle rows of your data-frame randomly.</p>
+<p>If you reshuffle values in the covariate columns independently of the response, then the effects of covariate should be 0 on average. If your workflow is about model selection, then enforcing shared rank ordering of a covariate and the response you should (almost certainly) find that covariate pops up in every model selected by the AIC.</p>
+</section>
+<section id="test-multiple-methods" class="level3">
+<h3 class="anchored" data-anchor-id="test-multiple-methods">Test multiple methods</h3>
+<p>In the simplest case, the same model fitted with different implementations should return the same results. For example compare results from <code>lmer</code> <code>lme</code> and <code>glmmTMB</code>. You can get claude to fire up sub-agents to write a script for each one independently.</p>
+<p>In more complex cases it can still be useful to do fit different models and compare results, even in the models have slightly different meanings. This may reveal errors, but it may also reveal places where your model assumptions are not robust. For instance, do different model selection methods result in the same model?</p>
+</section>
+<section id="whats-next" class="level3">
+<h3 class="anchored" data-anchor-id="whats-next">What’s next?</h3>
+<p>Part of the problem is that once you start using an agent it will write very complex R code. Claude Code has this obsession with making absolutely generalizable scripts. For instance, it commonly writes functions just to identify the root file path for a key data file.</p>
+<p>The other part of its complexity is adding numerous print statements to the R scripts, so it can see intermediate results in the terminal output. I normally do these interactively so they stay out of my scripts.</p>
+<p>All this extra code means it becomes even more tedious to review its work. Its like a double edged sword, the agent is powerful, but it makes more review work.</p>
+<p>So its clear to me that we soon won’t bother reading the code they write. That means we need to adapt how we approach coding and data analysis, and especially ensure we have checks in place that we understand the code we are producing and understand its correct.</p>
+<p>This list is my start at that.</p>
+<p>Send a comment if you have other suggestions for ways to test code written by agents.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>genAI</category>
+  <category>modelling</category>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-10-09-validating-analyses-by-coding-agents/</guid>
+  <pubDate>Thu, 08 Oct 2026 13:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Major update to VS Code R extension</title>
   <link>https://www.seascapemodels.org/posts/2026-10-02-major-update-to-vs-code-r-extension/</link>
@@ -1141,47 +1203,6 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
   <category>genAI; research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-05-14-AI-enabled-focus-groups/</guid>
   <pubDate>Wed, 13 May 2026 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Mitigating the risks of AI coding tools with judicious use for research tasks</title>
-  <link>https://www.seascapemodels.org/posts/2026-05-09-judicious-AI-use/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>I was recently invited to talk to an environmental science coding club (<a href="https://www.seascapemodels.org/posts/2026-05-07-genAI-for-coding-FAQ-slides/#/title-slide">slides here</a>).</p>
-<p>My mind is constantly buzzing with ideas on generative AI and different ways for how this new technology fits into the research process. So I often struggle to find the focus needed for a sub hour presentation. Needless to say, it wasn’t my best presentation. But like many presentations, I had a clearer picture of what I wanted to say after I presented it.</p>
-<p>What I realized is that being judicious with AI coding tools like Claude Code or Github Copilot mitigates many of the risks that concern researchers:</p>
-<p>* Will it save me time or will I waste time later fixing up slop?</p>
-<p>* How much electricity does it use and what are the carbon emissions?</p>
-<p>* Is it safe to use on my computer in a cybersecurity sense?</p>
-<p>* Will foreign companies steal my personal data and use it against me?</p>
-<p>By judicious I mean using AI tools in a targeted way for specific tasks where you know it works well. I also mean carefully preparing the context and prompts for the AI.</p>
-<p>Lots of the problems arise with careless use of AI tools.</p>
-<p>There’s a fair bit of “let’s just throw AI at this problem and see what it does” in the workforce at the moment. I think this happens either out of awe for its abilities, naivety or just frustration with lack of progress on something.</p>
-<p>Throwing an immense AI machine like Claude Opus at a poorly defined problem is not judicious use.</p>
-<p>The now famous <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">Metr</a> study found software developers thought they would spend less time but actually spent more time on a task using AI.</p>
-<p>Researchers aren’t software developers and we have different workflows. AI coding agents seem to be delivering some truly useful software improvements now. But my guess is that this time wasting problem is actually worse for researchers than for software developers.</p>
-<p>Researchers care more about the ‘how its done’ than software developers do, software developers put more emphasis on a good end product. Software developers also have the advantage of a clear goal that is easy to verify for accuracy (e.g.&nbsp;an app that works). Its harder to verify that a research output is accurate, because novel research by definition has never been done before. In fact, it takes some fields decades to verify new results.</p>
-<p>I think the AI time wasting happens (and I’ve see it happen in my own work) because we have lazy primate brains and its tempting to just see what AI can do. But then you end up burning time correcting mistakes, correcting slop or fixing things to your own style (anyone else tired of Claude’s ubiquitous contrastive logic popping up on social media, blogs and papers everywhere?).</p>
-<p>The trick is to experiment just enough to know at what points in a research workflow AI can truly be useful. Then put hard mental work in up front to plan your prompts and context. This gives the coding agent (or whatever AI tool) the best chance of creating a useful answer that meets your standards and style of writing/coding/visualization.</p>
-<p>Scott and I tested the benefits of more detailed and specific prompts in our test of <a href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210x.70267">how coding agents do ecological analyses</a>. They make more statistically defensible recommendations, write more accurate code and write code in a more consistent style if you use carefully prepared prompts, detailed plans and give more relevant context.</p>
-<p>That’s one reason we recommended breaking research workflows into steps for AI tools. For data analysis, plan the methods first, then plan how the code will be structured, finally get the AI to write the code. That gives you more control and more understanding, which is what you need if you are putting your reputation on the study at the end of the day.</p>
-<p>An unexpected result was that a clear workflow with carefully prepared prompts meant that cheaper LLMs could perform as well as the best LLMs (at the time).</p>
-<p>Which brings me back to the list at the start.</p>
-<p>Cheaper LLMs have fewer parameters and use less energy. So a judicious approach uses less electricity. In fact, long running AI agents use <a href="https://hannahritchie.substack.com/p/ai-electricity-2025">many times more electricity than the equivalent task done in several smalls steps with human intervention</a>. So fewer more careful prompts that are part of your plan will save energy.</p>
-<p>A judicious approach is more surgical about where on your computer you use AI and what context you provide. Access to fewer files creates fewer security risks (but be warned, AI agents like Claude Code can use the terminal and can do just about anything on your computer, like steal data or delete all your files. They just rarely do these bad things).</p>
-<p>Getting good results out of smaller cheaper LLMs pushes you into the realm of open-weight models being useful. These are models that are free to download and run locally, avoiding issues with data and prompts leaving your computer.</p>
-<p>Generative AI isn’t the tool for every job you need to do on the computer. Take a bit of time now to figure out what works and what is actually wasting your time. It will save you time later.</p>
-
-
-
- ]]></description>
-  <category>genAI; research-skills</category>
-  <guid>https://www.seascapemodels.org/posts/2026-05-09-judicious-AI-use/</guid>
-  <pubDate>Thu, 07 May 2026 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

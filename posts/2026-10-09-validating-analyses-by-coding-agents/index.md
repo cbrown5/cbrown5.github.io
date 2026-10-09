@@ -1,6 +1,6 @@
 ---
 date: '10/09/2026'
-title: 2026-10-09-validating-analyses-by-coding-agents
+title: Validating data analyses written by coding agents 
 categories: [genAI, modelling, rstats]
 published: true
 ---
