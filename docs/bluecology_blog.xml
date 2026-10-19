@@ -10,7 +10,38 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Thu, 08 Oct 2026 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 19 Oct 2026 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>Diplomatic Ways to Critique AI Slop</title>
+  <link>https://www.seascapemodels.org/posts/2026-10-20-diplomatic-critique-of-ai-slop/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>What do you say when a collaborator sends you AI slop to edit?</p>
+<p>You can’t accuse them of AI slop, because you never really know.</p>
+<p>But the thing is, we know that readers are suspicious of slop and <a href="https://vitaexmachina.substack.com/p/most-of-us-are-writing-with-ai-but">will stop reading if they suspect that, whether its warranted or not</a>.</p>
+<p>So here’s a live list of coded ways I have of telling people to reduce the AI slop in their writing. Or maybe its human slop, either way it needs to go back to the author for more editorial work.</p>
+<p><strong>On lists</strong>: What is the argument you are trying to make here? Can you rephrase to make that point.</p>
+<p><strong>On contrastive language</strong> (‘not x, but y’): Tell us directly what you did do, not what you didn’t do.</p>
+<p><strong>On adjectives and adverbs</strong>: Avoid adjectives and adverbs in scientific writing.</p>
+<p><strong>On restatement</strong>: This conclusion restates the intro. Describe how your paper has advanced research in this topic.</p>
+<p><strong>On overuse of ‘critical’ and similar adjectives</strong>: Say how its important rather than relying on adjective to do the work.</p>
+<p><strong>On meaningless content</strong>: Is this sentence specific to your study, or could it be used in a study on another topic? If so, go back to the topic sentence of this paragraph and refine what you want to say.</p>
+<p><strong>On 5000 word drafts of discussions</strong> (I’m seeing this a lot!): This is long, let’s go back to the outline. Send me the topic sentences for each paragraph so we can work on relevance and flow, then you can move content over that’s relevant and cut unnecessary content.</p>
+<p><strong>Over-use of em-dashes</strong>… Now these are controversial. You could say to switch out for some colons instead, but I think the issue is often deeper. Probably the final point above ‘go back to the topic sentence of this paragraph and refine what you want to say’ will be helpful as well. I’ll think about it next time I see one in the wild.</p>
+<p>And if your paper mentions <a href="https://openai.com/index/where-the-goblins-came-from/">goblins</a> then I’m not reading it at all (unless its about <a href="https://en.wikipedia.org/wiki/Goblin_shark">goblin sharks</a>!).</p>
+
+
+
+ ]]></description>
+  <category>genAI</category>
+  <category>research-skills</category>
+  <guid>https://www.seascapemodels.org/posts/2026-10-20-diplomatic-critique-of-ai-slop/</guid>
+  <pubDate>Mon, 19 Oct 2026 13:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Validating data analyses written by coding agents</title>
   <link>https://www.seascapemodels.org/posts/2026-10-09-validating-analyses-by-coding-agents/</link>
@@ -1164,45 +1195,6 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-05-28-connecting-discussion-introduction/</guid>
   <pubDate>Wed, 27 May 2026 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>AI enabled focus groups</title>
-  <link>https://www.seascapemodels.org/posts/2026-05-14-AI-enabled-focus-groups/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>I had my first encounter with an ‘AI-enabled focus group’ this week.</p>
-<p>Focus groups are traditionally used to get the opinions of a cross-section of society on a new product, policy or advertising campaign. ‘AI-enabled’ focus groups are simulations of human participants in a focus groups.</p>
-<p>The ‘AI-enabled’ is a bit misleading, they are 100% AI participants.</p>
-<p>The selling point is they are much cheaper, faster and than human focus groups, and you can easily go back and ask them more questions. The downsides are obvious: do they really represent what a focus group would tell you?</p>
-<p>The marketing of the tools is also excellent. The results are presented as if they are from real focus groups, with sample sizes for different groups of people. Ours had ‘n=5’ for each group.</p>
-<p>I was curious as to the results, but also skeptical that AI could make a fair representation of our user group. We know generative AI has many biases in the text it writes, and in my experience no amount of declaring personas or writing explicit system prompts guarantees overcoming those biases.</p>
-<p>For example, most large language models perform better at coding and reasoning tasks with one off instructions rather than engaging in conversation.</p>
-<p>As I understand it, you set up the ‘focus group’ (I’m refusing to call it a real focus group) with relevant context such as notes from meetings or comments from existing users.</p>
-<p>Other than the potential for biases, there is the well known behaviour of needing to please the user (large language models tend to be sycophantic by design).</p>
-<p>The ‘focus group’ basically just regurgitated what was in our meeting notes. It told us exactly what we wanted to hear. And those suggestions don’t check out with my lived experience talking to end-users. What we are doing currently (and what AI told us to keep doing) is not working and what we need is a new perspective on the issue.</p>
-<p>The AI focus group was just trying to please us.</p>
-<p>The recent drug overdose <a href="https://arstechnica.com/tech-policy/2026/05/will-i-be-ok-teen-died-after-chatgpt-pushed-deadly-mix-of-drugs-lawsuit-says/">lawsuit against OpenAI</a> is a particularly horrifying example of sycophantic behaviour.</p>
-<p>The chat logs have been made public as part of that case and include conflicting advice to seek medical help, but also advice like “here’s how to optimize your trip for comfort, introspection and enjoyment.” (and doesn’t the “here’s how to optimize…” sound just like chatGPT speak!)</p>
-<p>Now my use case isn’t life or death. I would just classify it as another example of one colleague’s enthusiasm for AI slop wasting another colleague’s time.</p>
-<p>I’m confident these AI ‘focus groups’ will become more prevalent, given their convenience. But I worry that they won’t ever encourage us to ask hard questions about what we are doing.</p>
-<p>You can imagine the disastrous results they could lead to in public policy, for instance. The AI-enabled focus groups are an echo chamber for making hard decisions.</p>
-<p>AI tools can be helpful brainstorming partners. But I wouldn’t reach for those as my first choice. There are many people in our group with extensive experience of the issue we are addressing. A good starting point would be to just ask those people.</p>
-<p>Its not clear to me that you would then need an AI ‘focus group’. Why not just write down your ideas, what you think, then get any old reasoning AI to work through possible perspectives of different personas. That would give you a nice list of potential perspectives to explore with real thinking in your human brain.</p>
-<p>But I wouldn’t treat AI output like its human data and assign it sample sizes as if its representative of a human population. Sample size is also not much of a limitation with AI. Asking an AI something 50 times versus 5 would cost at most $1-$2 extra.</p>
-<p>The other issue with these ‘focus groups’ is that they are almost impossible to validate, without engaging a real human focus group. If you do that, then why bother with the AI?</p>
-<p>I suspect I’m stuck with my colleague’s enthusiasm for the AI ‘focus groups’. I’ll tell them the results are no good. They will say but look it says ‘X’, and ‘X’ makes sense. Neither of us can ever prove who is right without a real human study.</p>
-<p>For me, the ‘focus-groups’ are another example of people misunderstanding the strengths and limitations of generative AI. Its one reason we started our blog <a href="https://vitaexmachina.substack.com/">vita ex machina</a>, to better educate colleagues and peers when these tools will help and when they hold us back.</p>
-
-
-
- ]]></description>
-  <category>genAI; research-skills</category>
-  <guid>https://www.seascapemodels.org/posts/2026-05-14-AI-enabled-focus-groups/</guid>
-  <pubDate>Wed, 13 May 2026 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
