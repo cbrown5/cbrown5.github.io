@@ -10,7 +10,52 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Mon, 19 Oct 2026 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 25 Oct 2026 16:00:00 GMT</lastBuildDate>
+<item>
+  <title>Make Your Own LLM Agent in R</title>
+  <link>https://www.seascapemodels.org/posts/2026-10-26-make-your-own-agent-in-r/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>It’s really easy to make your own agent. You should do it once, just to understand how this technology works.</p>
+<p>LLM agents are becoming pervasive, with Meta’s Muse perhaps the first consumer grade agent. They are only going to get more common. If you know a bit of R you can program your own, and it makes the whole thing feel a lot less like magic.</p>
+<p>I’ve updated my live book with <a href="https://www.seascapemodels.org/AI-assistants-for-scientific-coding/section-7-api-access/05-make-an-agent.html">a new section on making your own agent with R</a>.</p>
+<p>The tutorial runs you through using the <code>ellmer</code> package to connect to an LLM. Then you create tools. These are functions that let the agent take actions, like writing and running R code. You tell the agent how to use the functions, then write a parser that checks the LLM response for tool use and executes the tools if it finds any. Then you put all that in a <code>while</code> loop so the agent re-consumes the output of the code it wrote.</p>
+<p>That’s it.</p>
+<p>This all runs more smoothly if you ‘register’ tools formally, because the agent is less likely to make syntax mistakes when using them. <code>ellmer</code> supports this.</p>
+<section id="turbochook" class="level2">
+<h2 class="anchored" data-anchor-id="turbochook">turbochook</h2>
+<p>To illustrate the registered tools approach I made an R based agent (with Claude Code) in a package called <code>turbochook</code>. <a href="https://github.com/cbrown5/turbochook">You can install it from github</a>.</p>
+<p>There are many <a href="https://luisdva.github.io/llmsr-book/r-pkgs.html#language-model-agents-and-ai-assistants">R based agents out there already</a>. I wanted my own that was simple enough for experimentation and learning.</p>
+<p>There are three main functions:</p>
+<ul>
+<li><code>handfish()</code> is for beginners and the security conscious. It is simpler and requires manual approval at every step.</li>
+<li><code>turbochook()</code> runs an agentic loop autonomously. It won’t ask for permission, it just acts.</li>
+<li><code>ralph()</code> runs a ralph loop (basically a self completing todo list).</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-10-26-make-your-own-agent-in-r/turbchook-in-action.png" class="img-fluid figure-img"></p>
+<figcaption>turbochook in action in my R console</figcaption>
+</figure>
+</div>
+<p><em>turbochook in action in my R console</em></p>
+<p>This is very much alpha stage software. Like all agents, there is no cybersecurity guarantee with these tools, so use them with caution. It’s best to run them in a sandbox or isolated container.</p>
+<p>What I wanted was a simple and transparent agent. They all print progress as they go, including tool use and tokens used, so you can see exactly what the agent is doing. Everything is written in R, so R users will find it easier to interpret than commercial agents like Claude Code, which often write in unix or python.</p>
+<p>If you give it a go, send me feedback here or via the github repo.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>genAI</category>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-10-26-make-your-own-agent-in-r/</guid>
+  <pubDate>Sun, 25 Oct 2026 16:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Diplomatic Ways to Critique AI Slop</title>
   <link>https://www.seascapemodels.org/posts/2026-10-20-diplomatic-critique-of-ai-slop/</link>
@@ -40,7 +85,7 @@
   <category>genAI</category>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-10-20-diplomatic-critique-of-ai-slop/</guid>
-  <pubDate>Mon, 19 Oct 2026 13:00:00 GMT</pubDate>
+  <pubDate>Mon, 19 Oct 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Validating data analyses written by coding agents</title>
@@ -102,7 +147,7 @@
   <category>modelling</category>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-10-09-validating-analyses-by-coding-agents/</guid>
-  <pubDate>Thu, 08 Oct 2026 13:00:00 GMT</pubDate>
+  <pubDate>Thu, 08 Oct 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Major update to VS Code R extension</title>
@@ -135,7 +180,7 @@
  ]]></description>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-10-02-major-update-to-vs-code-r-extension/</guid>
-  <pubDate>Thu, 01 Oct 2026 14:00:00 GMT</pubDate>
+  <pubDate>Thu, 01 Oct 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Memorials and legacy</title>
@@ -179,7 +224,7 @@ Just remember that death is not the end</p>
  ]]></description>
   <category>research</category>
   <guid>https://www.seascapemodels.org/posts/2026-09-28-memorials-legacy/</guid>
-  <pubDate>Sun, 27 Sep 2026 14:00:00 GMT</pubDate>
+  <pubDate>Sun, 27 Sep 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Measuring the common denominator in ecology</title>
@@ -250,7 +295,7 @@ Just remember that death is not the end</p>
  ]]></description>
   <category>research-skills; research</category>
   <guid>https://www.seascapemodels.org/posts/2026-08-31-measuring-the-common-denominator-in-ecology/</guid>
-  <pubDate>Sun, 30 Aug 2026 14:00:00 GMT</pubDate>
+  <pubDate>Sun, 30 Aug 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Running local large language models not as difficult as you might think</title>
@@ -351,7 +396,7 @@ ollama rm qwen2.5-coder       # delete a downloaded model from disk</code></pre>
   <category>research</category>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-08-22-running-local-LLMs/</guid>
-  <pubDate>Fri, 21 Aug 2026 14:00:00 GMT</pubDate>
+  <pubDate>Fri, 21 Aug 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>When AI coding assistants waste rather than save time</title>
@@ -389,7 +434,7 @@ The time savings are often offset by dead end pursuits
   <category>research</category>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-08-14-when-ai-wastes-time/</guid>
-  <pubDate>Thu, 06 Aug 2026 14:00:00 GMT</pubDate>
+  <pubDate>Thu, 06 Aug 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>The GIS Research Assistant Job Has Transformed</title>
@@ -439,7 +484,7 @@ The time savings are often offset by dead end pursuits
   <category>research-skills</category>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-08-07-gis-has-changed-forever/</guid>
-  <pubDate>Thu, 06 Aug 2026 14:00:00 GMT</pubDate>
+  <pubDate>Thu, 06 Aug 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How Is AI Being Used In Ocean Conservation? A New Survey</title>
@@ -491,7 +536,7 @@ The time savings are often offset by dead end pursuits
   <category>genAI</category>
   <category>research</category>
   <guid>https://www.seascapemodels.org/posts/2026-08-07-octo-ai-ocean-conservation-survey/</guid>
-  <pubDate>Thu, 06 Aug 2026 14:00:00 GMT</pubDate>
+  <pubDate>Thu, 06 Aug 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How Do I Build a Model? A Starting Guide for New Modellers</title>
@@ -540,7 +585,7 @@ The time savings are often offset by dead end pursuits
   <category>rstats</category>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-08-03-how-do-i-build-a-model/</guid>
-  <pubDate>Sun, 02 Aug 2026 14:00:00 GMT</pubDate>
+  <pubDate>Sun, 02 Aug 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>What agentic misalignment could mean for science</title>
@@ -573,7 +618,7 @@ The time savings are often offset by dead end pursuits
   <category>genAI</category>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-07-28-agentic-misalignment-and-science/</guid>
-  <pubDate>Mon, 27 Jul 2026 14:00:00 GMT</pubDate>
+  <pubDate>Mon, 27 Jul 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Using ghost text and next edit suggestions to learn agentic coding</title>
@@ -873,7 +918,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
   <category>rstats</category>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/</guid>
-  <pubDate>Mon, 27 Jul 2026 14:00:00 GMT</pubDate>
+  <pubDate>Mon, 27 Jul 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Winter R workshops at University of Queensland, Brisbane</title>
@@ -900,7 +945,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
  ]]></description>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-06-25-R-workshops-in-brisbane/</guid>
-  <pubDate>Wed, 24 Jun 2026 14:00:00 GMT</pubDate>
+  <pubDate>Wed, 24 Jun 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>You have my trust, but need to work hard to regain it</title>
@@ -929,7 +974,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
  ]]></description>
   <category>research-skills; genAI</category>
   <guid>https://www.seascapemodels.org/posts/2026-06-25-you-have-my-trust/</guid>
-  <pubDate>Wed, 24 Jun 2026 14:00:00 GMT</pubDate>
+  <pubDate>Wed, 24 Jun 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Data for fitting models versus data for predicting from models</title>
@@ -973,7 +1018,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
  ]]></description>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-06-25-prediction-vs-fitting/</guid>
-  <pubDate>Wed, 24 Jun 2026 14:00:00 GMT</pubDate>
+  <pubDate>Wed, 24 Jun 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Making new norms for AI in the workplace</title>
@@ -1000,7 +1045,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
  ]]></description>
   <category>research-skills; genAI</category>
   <guid>https://www.seascapemodels.org/posts/2026-06-25-AI-workplace-norms/</guid>
-  <pubDate>Wed, 24 Jun 2026 14:00:00 GMT</pubDate>
+  <pubDate>Wed, 24 Jun 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Popular books that will help you learn about statistics</title>
@@ -1077,7 +1122,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
  ]]></description>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-06-12-favourite-stats-books/</guid>
-  <pubDate>Thu, 11 Jun 2026 14:00:00 GMT</pubDate>
+  <pubDate>Thu, 11 Jun 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Improved cybersecurity for AI agents</title>
@@ -1107,7 +1152,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
  ]]></description>
   <category>genAI; research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-06-09-improving-AI-agent-security/</guid>
-  <pubDate>Mon, 08 Jun 2026 14:00:00 GMT</pubDate>
+  <pubDate>Mon, 08 Jun 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Tips for using coding agents in ecological modelling workflows</title>
@@ -1160,41 +1205,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
  ]]></description>
   <category>genAI; research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-05-29-genAI-eco-modelling-workflows/</guid>
-  <pubDate>Fri, 05 Jun 2026 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Linking the introduction and discussion sections of a paper</title>
-  <link>https://www.seascapemodels.org/posts/2026-05-28-connecting-discussion-introduction/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>One trick to use to help write your discussion is to mirror (like a reflection) most of the structure you use in the introduction.</p>
-<p>This was the topic of our lab discussion today. Here’s one example, given as a re-write in blog format of lab member <a href="https://www.sciencedirect.com/science/article/pii/S0165783626001256">Richard Takyi’s recent paper on climate change and its impact on fisheries</a></p>
-<section id="introduction---common-structure" class="level2">
-<h2 class="anchored" data-anchor-id="introduction---common-structure">Introduction - common structure</h2>
-<p>Context for the study - Fisheries are impacted by climate change</p>
-<p>Problem that you will address on the study - If its not accounted for climate change can bias the assessments we use to inform management decisions, misleading management and contributing to unsustainable decisions.</p>
-<p>What has been said about this problem before (1-2 paragraphs) - Data intensive assessments can be biased in counter-intuitive ways - Assessment methods that use fish length are popular for small scale and data poor fisheries, but we don’t know how climate change will impact their reliability.</p>
-<p>What you will do and aims - Study how climate warming impacts on fish growth could bias length based assessments of fish stocks.</p>
-</section>
-<section id="discussion---as-a-mirror-of-the-introduction" class="level2">
-<h2 class="anchored" data-anchor-id="discussion---as-a-mirror-of-the-introduction">Discussion - as a mirror of the introduction</h2>
-<p>What we found for the aims - Warming tended to make assessments less conservative (the assessment said there was more bigger fish than there was) - Accounting for the effects of warming on growth is neccessary to prevent assessments from making biased findings about the health of fish stocks</p>
-<p>How our findings advance earlier studies on this problem - Show how models of fish growth under temperature can be used in data poor assessments - Show that data poor assessment methods can be biased by climate warming</p>
-<p>How our findings advance the problem - We show how warming can be accounted for in data poor assessments</p>
-<p>Caveats/future research needs - Future research could consider other types of climate impacts, like changes in population recruitment or foodwebs</p>
-<p>Link back to broad context of the study - Management needs assessment methods that are robust to climate change - We show how to account for warming in a data poor assessment method - The method could be used to improve the management of fish stocks in climate hotspots</p>
-
-
-</section>
-
- ]]></description>
-  <category>research-skills</category>
-  <guid>https://www.seascapemodels.org/posts/2026-05-28-connecting-discussion-introduction/</guid>
-  <pubDate>Wed, 27 May 2026 14:00:00 GMT</pubDate>
+  <pubDate>Fri, 05 Jun 2026 16:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

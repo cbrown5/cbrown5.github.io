@@ -10,7 +10,52 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog-rstats.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Thu, 08 Oct 2026 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 25 Oct 2026 16:00:00 GMT</lastBuildDate>
+<item>
+  <title>Make Your Own LLM Agent in R</title>
+  <link>https://www.seascapemodels.org/posts/2026-10-26-make-your-own-agent-in-r/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>It’s really easy to make your own agent. You should do it once, just to understand how this technology works.</p>
+<p>LLM agents are becoming pervasive, with Meta’s Muse perhaps the first consumer grade agent. They are only going to get more common. If you know a bit of R you can program your own, and it makes the whole thing feel a lot less like magic.</p>
+<p>I’ve updated my live book with <a href="https://www.seascapemodels.org/AI-assistants-for-scientific-coding/section-7-api-access/05-make-an-agent.html">a new section on making your own agent with R</a>.</p>
+<p>The tutorial runs you through using the <code>ellmer</code> package to connect to an LLM. Then you create tools. These are functions that let the agent take actions, like writing and running R code. You tell the agent how to use the functions, then write a parser that checks the LLM response for tool use and executes the tools if it finds any. Then you put all that in a <code>while</code> loop so the agent re-consumes the output of the code it wrote.</p>
+<p>That’s it.</p>
+<p>This all runs more smoothly if you ‘register’ tools formally, because the agent is less likely to make syntax mistakes when using them. <code>ellmer</code> supports this.</p>
+<section id="turbochook" class="level2">
+<h2 class="anchored" data-anchor-id="turbochook">turbochook</h2>
+<p>To illustrate the registered tools approach I made an R based agent (with Claude Code) in a package called <code>turbochook</code>. <a href="https://github.com/cbrown5/turbochook">You can install it from github</a>.</p>
+<p>There are many <a href="https://luisdva.github.io/llmsr-book/r-pkgs.html#language-model-agents-and-ai-assistants">R based agents out there already</a>. I wanted my own that was simple enough for experimentation and learning.</p>
+<p>There are three main functions:</p>
+<ul>
+<li><code>handfish()</code> is for beginners and the security conscious. It is simpler and requires manual approval at every step.</li>
+<li><code>turbochook()</code> runs an agentic loop autonomously. It won’t ask for permission, it just acts.</li>
+<li><code>ralph()</code> runs a ralph loop (basically a self completing todo list).</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-10-26-make-your-own-agent-in-r/turbchook-in-action.png" class="img-fluid figure-img"></p>
+<figcaption>turbochook in action in my R console</figcaption>
+</figure>
+</div>
+<p><em>turbochook in action in my R console</em></p>
+<p>This is very much alpha stage software. Like all agents, there is no cybersecurity guarantee with these tools, so use them with caution. It’s best to run them in a sandbox or isolated container.</p>
+<p>What I wanted was a simple and transparent agent. They all print progress as they go, including tool use and tokens used, so you can see exactly what the agent is doing. Everything is written in R, so R users will find it easier to interpret than commercial agents like Claude Code, which often write in unix or python.</p>
+<p>If you give it a go, send me feedback here or via the github repo.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>genAI</category>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-10-26-make-your-own-agent-in-r/</guid>
+  <pubDate>Sun, 25 Oct 2026 16:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Validating data analyses written by coding agents</title>
   <link>https://www.seascapemodels.org/posts/2026-10-09-validating-analyses-by-coding-agents/</link>
@@ -71,7 +116,7 @@
   <category>modelling</category>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-10-09-validating-analyses-by-coding-agents/</guid>
-  <pubDate>Thu, 08 Oct 2026 13:00:00 GMT</pubDate>
+  <pubDate>Thu, 08 Oct 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Major update to VS Code R extension</title>
@@ -104,7 +149,7 @@
  ]]></description>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-10-02-major-update-to-vs-code-r-extension/</guid>
-  <pubDate>Thu, 01 Oct 2026 14:00:00 GMT</pubDate>
+  <pubDate>Thu, 01 Oct 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Running local large language models not as difficult as you might think</title>
@@ -205,7 +250,7 @@ ollama rm qwen2.5-coder       # delete a downloaded model from disk</code></pre>
   <category>research</category>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-08-22-running-local-LLMs/</guid>
-  <pubDate>Fri, 21 Aug 2026 14:00:00 GMT</pubDate>
+  <pubDate>Fri, 21 Aug 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>When AI coding assistants waste rather than save time</title>
@@ -243,7 +288,7 @@ The time savings are often offset by dead end pursuits
   <category>research</category>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-08-14-when-ai-wastes-time/</guid>
-  <pubDate>Thu, 06 Aug 2026 14:00:00 GMT</pubDate>
+  <pubDate>Thu, 06 Aug 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>The GIS Research Assistant Job Has Transformed</title>
@@ -293,7 +338,7 @@ The time savings are often offset by dead end pursuits
   <category>research-skills</category>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-08-07-gis-has-changed-forever/</guid>
-  <pubDate>Thu, 06 Aug 2026 14:00:00 GMT</pubDate>
+  <pubDate>Thu, 06 Aug 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How Do I Build a Model? A Starting Guide for New Modellers</title>
@@ -342,7 +387,7 @@ The time savings are often offset by dead end pursuits
   <category>rstats</category>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-08-03-how-do-i-build-a-model/</guid>
-  <pubDate>Sun, 02 Aug 2026 14:00:00 GMT</pubDate>
+  <pubDate>Sun, 02 Aug 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Using ghost text and next edit suggestions to learn agentic coding</title>
@@ -642,7 +687,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
   <category>rstats</category>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/</guid>
-  <pubDate>Mon, 27 Jul 2026 14:00:00 GMT</pubDate>
+  <pubDate>Mon, 27 Jul 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Winter R workshops at University of Queensland, Brisbane</title>
@@ -669,7 +714,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
  ]]></description>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-06-25-R-workshops-in-brisbane/</guid>
-  <pubDate>Wed, 24 Jun 2026 14:00:00 GMT</pubDate>
+  <pubDate>Wed, 24 Jun 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Data for fitting models versus data for predicting from models</title>
@@ -713,7 +758,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
  ]]></description>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-06-25-prediction-vs-fitting/</guid>
-  <pubDate>Wed, 24 Jun 2026 14:00:00 GMT</pubDate>
+  <pubDate>Wed, 24 Jun 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Design your plots (ggplot) for mobile</title>
@@ -1046,7 +1091,7 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
  ]]></description>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-04-23-clear-plots-ggplot-for-mobile/</guid>
-  <pubDate>Sat, 25 Apr 2026 14:00:00 GMT</pubDate>
+  <pubDate>Sat, 25 Apr 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Do AI coding agents save scientists time?</title>
@@ -1086,7 +1131,7 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>research</category>
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2026-04-14-does-agentic-AI-save-time/</guid>
-  <pubDate>Mon, 13 Apr 2026 14:00:00 GMT</pubDate>
+  <pubDate>Mon, 13 Apr 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>AI agents can create convincing ecological models, but you still need to know what you’re doing</title>
@@ -1139,7 +1184,7 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>genAI</category>
   <category>fisheries</category>
   <guid>https://www.seascapemodels.org/posts/2026-03-28-agentic-AI-ecological-modelling/</guid>
-  <pubDate>Thu, 02 Apr 2026 13:00:00 GMT</pubDate>
+  <pubDate>Thu, 02 Apr 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Prompting large language models for quality ecological statistics</title>
@@ -1207,7 +1252,7 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>genAI</category>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-03-17-prompting-llms-stats-paper-published/</guid>
-  <pubDate>Mon, 16 Mar 2026 13:00:00 GMT</pubDate>
+  <pubDate>Mon, 16 Mar 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Do we really need to teach students to code?</title>
@@ -1260,7 +1305,7 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>genAI</category>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-03-02-teaching-students-to-code/</guid>
-  <pubDate>Sun, 01 Mar 2026 13:00:00 GMT</pubDate>
+  <pubDate>Sun, 01 Mar 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Declaring generative AI use in research and university studies</title>
@@ -1359,7 +1404,7 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>genAI</category>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-03-02-genAI-use-in-uni-assignments/</guid>
-  <pubDate>Sun, 01 Mar 2026 13:00:00 GMT</pubDate>
+  <pubDate>Sun, 01 Mar 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Keeping files organised for publication</title>
@@ -1390,7 +1435,7 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>research</category>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-02-19-keeping-organised-for-publication/</guid>
-  <pubDate>Wed, 18 Feb 2026 13:00:00 GMT</pubDate>
+  <pubDate>Wed, 18 Feb 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>LLMs can’t be trusted to do scientific coding accurately, but humans make mistakes too</title>
@@ -1430,7 +1475,7 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>rstats</category>
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2026-01-14-LLMs-cant-be-trusted-but-neither-can-humans/</guid>
-  <pubDate>Tue, 13 Jan 2026 13:00:00 GMT</pubDate>
+  <pubDate>Tue, 13 Jan 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Should we still teach R coding in this age of genAI?</title>
@@ -1464,7 +1509,7 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>rstats</category>
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-12-10-should-we-teach-coding/</guid>
-  <pubDate>Tue, 09 Dec 2025 13:00:00 GMT</pubDate>
+  <pubDate>Tue, 09 Dec 2025 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How AI coding assistants can bias your coding and analysis</title>
@@ -1500,99 +1545,7 @@ font-style: inherit;">600</span>)</span></code></pre></div></div>
   <category>rstats</category>
   <category>genAI</category>
   <guid>https://www.seascapemodels.org/posts/2025-12-09-biasing-when-using-AI-coding-assistants/</guid>
-  <pubDate>Mon, 08 Dec 2025 13:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Reasoning and infographics with Nano Banana</title>
-  <link>https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>The new Google Gemini Pro 3 (AKA Nano Banana) has some <a href="https://minimaxir.com/2025/11/nano-banana-prompts/">pretty impressive image generation capabilities</a>. It is very accurate to what you ask in the prompt, it can ‘ground’ image generation with web searches and it accurately renders text (most of the time). This increases its usefulness for scientific visualisation purposes over previous models.</p>
-<p>Read more about <a href="https://ai.google.dev/gemini-api/docs/gemini-3?thinking=high">how to use it here</a>.</p>
-<p>I wanted to try it out for scientific applications.</p>
-<section id="science-cartoon-with-web-search-grounding" class="level2">
-<h2 class="anchored" data-anchor-id="science-cartoon-with-web-search-grounding">Science cartoon with web search grounding</h2>
-<p>I ran this prompt for <a href="https://onlinelibrary.wiley.com/doi/10.1002/aqc.70242">a very recent study</a> that was only just published, so well beyond the cut-off data for inclusion in the model’s training data:</p>
-<pre><code>Make a comic strip explaining key findings of the study: 'Predicting the impact of giant kelp restoration on food webs and fisheries production'. Use a cartoon style similar to spongebob squarepants, but dont use any spongebob characters that violate copyright. Instead make the characters a fish, a rock lobster and an abalone.</code></pre>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/study-cartoon2.jpeg" style="max-height: 600px; width: auto;"></p>
-<p>This study was published after the model’s cutoff data for inclusion of training data, so it is a useful test of the search grounding capabilities. It gets the details right, though urchin barrens aren’t the main cause of the giant kelp decline and kelp normally grows on rocks, not sand.</p>
-<p>My original attempt didn’t include the statement about copyright and it made an image that included Spongebob and his friends - some work for Google to do here if they are going to avoid copyright violations.</p>
-<pre><code>Make a comic strip explaining key findings of the study: 'Predicting the impact of giant kelp restoration on food webs and fisheries production'. Use a cartoon style similar to spongebob squarepants.</code></pre>
-</section>
-<section id="infographics-with-grounding" class="level2">
-<h2 class="anchored" data-anchor-id="infographics-with-grounding">Infographics with grounding</h2>
-<p>I ran this prompt that asks for an infographic for <a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.70105">my recent study</a>.</p>
-<pre><code>Make an infographic explaining the new research study 'Assessing predictive accuracy of species abundance models in dynamic systems' published in Methods in Ecology and Evolution </code></pre>
-<p>Here’s the result</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/study-infographic.jpeg" style="max-height: 600px; width: auto;"></p>
-<p>Which is 100% accurate. The only thing I’d change would be to add the study’s DOI to the infographic.</p>
-</section>
-<section id="r-code" class="level2">
-<h2 class="anchored" data-anchor-id="r-code">R code</h2>
-<p>Here’s an example of visual reasoning. Here we ask the model to generate an image of R code with resulting plot:</p>
-<pre><code>Generate an image of R code and a graph in an IDE. The code will show how to fit a linear regression to data. The graph will show temperature on the x-axis and # people of the y-axis. Title the graph Swimming in Tasmania</code></pre>
-<p>The results show the model is capable of correctly interpreting the R code it wrote:</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/rcode.jpg" style="max-height: 600px; width: auto;"></p>
-<p>This is not a screen shot of an IDE (note the errors in the names of panels) but an image generated to represent a screenshot.</p>
-</section>
-<section id="visual-reasoning" class="level2">
-<h2 class="anchored" data-anchor-id="visual-reasoning">Visual reasoning</h2>
-<p>To further test the visual reasoning I set a more complex task of plotting some data that I specified, showing a GAM fit to that data and plotting the residuals.</p>
-<pre><code>Generate a two panel plot created with the R program. Here is the data to use for the plots: `x &lt;- 1:10; y &lt;- c(5, 10, 11, 9, 15, 12, 13, 6, 3, 2)`. The first panel will show an x-y plot of the data, as well as a the fitted curve from a gam spline with 3 dimension basis function. The second panel will show the residuals of the model with a horizontal line at y=0. Show the plots as a single image with two panels side by side.</code></pre>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/rcode-gam.jpeg" style="max-height: 500px; width: auto;"></p>
-<p>This one got the data points approximately correct (blue points), but was off with the GAM fit and residuals. For example, according to its fitted curve (red) the first, second and third residuals (green points) should be at zero. Likewise the two final points should be at zero. For comparison, here’s the answer if I generate that with actual R code:</p>
-<p><img src="https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/gam_plot.jpg" style="max-height: 400px; width: auto;"></p>
-<p>You can see the AI generated residual plot was well off the mark, both in terms of the residuals</p>
-</section>
-<section id="code-for-api-access" class="level2">
-<h2 class="anchored" data-anchor-id="code-for-api-access">Code for API access</h2>
-<p>At the moment the easiest way to use this model is via the Gemini chat platform, or via direct API calls.</p>
-<p>Here’s an example of the Python code to use the Gemini API.</p>
-<pre><code>from google import genai
-from google.genai import types
-import os
-from dotenv import load_dotenv
-load_dotenv()
-
-api_key = os.getenv("GEMINI_API_KEY")
-
-# The client gets the API key from the environment variable `GEMINI_API_KEY`.
-client = genai.Client(api_key=api_key)
-
-prompt = "Generate a two panel plot created with the R program. Here is the data to use for the plots: `x &lt;- 1:10; y &lt;- c(5, 10, 11, 9, 15, 12, 13, 6, 3, 2)`. The first panel will show an x-y plot of the data, as well as a the fitted curve from a gam spline with 3 dimension basis function. The second panel will show the residuals of the model with a horizontal line at y=0. Show the plots as a single image with two panels side by side. "
-aspect_ratio = "3:4" # "1:1","2:3","3:2","3:4","4:3","4:5","5:4","9:16","16:9","21:9"
-
-response = client.models.generate_content(
-    model="gemini-3-pro-image-preview",
-    contents=prompt,
-    config=types.GenerateContentConfig(
-        response_modalities=['Text', 'Image'],
-        image_config=types.ImageConfig(
-            aspect_ratio=aspect_ratio,
-        )#,
-        #tools=[{"google_search": {}}]
-    )
-)
-
-for part in response.parts:
-    if part.text is not None:
-        print(part.text)
-    elif image:= part.as_image():
-        image.save("temp/rcode.png")</code></pre>
-<p>I’ve commented out the web search grounding. Uncomment that if you want to ground your search.</p>
-
-
-</section>
-
- ]]></description>
-  <category>rstats</category>
-  <category>genAI</category>
-  <guid>https://www.seascapemodels.org/posts/2025-11-23-exploring-gemini-3-image-generation/</guid>
-  <pubDate>Sat, 22 Nov 2025 13:00:00 GMT</pubDate>
+  <pubDate>Mon, 08 Dec 2025 16:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
