@@ -10,7 +10,43 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Sun, 25 Oct 2026 16:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 01 Nov 2026 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>Register for the Summer R Workshops in Brisbane, at UQ: Introduction to R and Statistical Modelling</title>
+  <link>https://www.seascapemodels.org/posts/2026-11-02-summer-R-workshops-brisbane/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Learn the R skills needed to analyse data confidently, build powerful statistical models, create publication-quality figures, and answer complex research questions with the Centre for Biodiversity and Conservation Science (CBCS) 2027 Summer R Workshops @ UQ.</p>
+<p>These hands-on workshops are designed for both beginners and researchers looking to strengthen their analytical skills. You’ll learn how to wrangle data efficiently, develop reproducible workflows, apply appropriate statistical methods, and avoid common analytical pitfalls. By the end of the workshop, you’ll have practical skills that can be immediately applied to your own research projects. Although most of our example datasets are ecological in nature, the approaches and skills are equally applicable in many other research contexts.</p>
+<section id="why-learn-to-code-in-the-age-of-ai" class="level2">
+<h2 class="anchored" data-anchor-id="why-learn-to-code-in-the-age-of-ai">Why learn to code in the age of AI?</h2>
+<p>AI can generate code in seconds, but it cannot tell you whether the analysis is appropriate, the assumptions are valid, or the conclusions are scientifically defensible. Learning the fundamentals of R gives you the skills to critically evaluate code and identify errors, ensuring you remain the expert in the AI loop.</p>
+<p>Each day is self-contained so you can attend the workshops you want to.</p>
+<ul>
+<li><strong>Day 1 (Monday 8th February)</strong> Introduction to R and data wrangling in the tidyverse</li>
+<li><strong>Day 2 (Tuesday 9th February)</strong> Introduction to visualisation and linear modelling</li>
+<li><strong>Day 3 (Wednesday 10th February)</strong> Generalised linear modelling</li>
+<li><strong>Day 4 (Thursday 11th February)</strong> Mixed modelling</li>
+<li><strong>Day 5 (Friday 12th February)</strong> Spatial modelling with temporal and spatial autocorrelation</li>
+</ul>
+<p>Registration for the 2027 Summer R Workshops @ UQ in February is OPEN.</p>
+<p>We are passionate users of R and want to share our experience. Our workshops are accessible, interactive, informative and fun. They are run in-person only (no online option) to provide a tailored student experience and we provide all the code and learning materials. For more information on the topics covered and to view testimonials, see our website <a href="https://mathmarecol.github.io/RWorkshop/summer.html">https://mathmarecol.github.io/RWorkshop/summer.html</a> and the attached flyer.</p>
+<p>These workshops are brought to you by the Centre for Biodiversity and Conservation Science (CBCS). For any questions about registration, email <a href="mailto:cbcs-workshops@uq.edu.au">cbcs-workshops@uq.edu.au</a>.</p>
+<p>We look forward to seeing you there.</p>
+<p>The R Workshops @ UQ team (Anthony, Dave, Jason, and Tin)</p>
+
+
+</section>
+
+ ]]></description>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-11-02-summer-R-workshops-brisbane/</guid>
+  <pubDate>Sun, 01 Nov 2026 13:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Make Your Own LLM Agent in R</title>
   <link>https://www.seascapemodels.org/posts/2026-10-26-make-your-own-agent-in-r/</link>
@@ -54,7 +90,7 @@
   <category>genAI</category>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-10-26-make-your-own-agent-in-r/</guid>
-  <pubDate>Sun, 25 Oct 2026 16:00:00 GMT</pubDate>
+  <pubDate>Sun, 25 Oct 2026 13:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Diplomatic Ways to Critique AI Slop</title>
@@ -85,7 +121,7 @@
   <category>genAI</category>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-10-20-diplomatic-critique-of-ai-slop/</guid>
-  <pubDate>Mon, 19 Oct 2026 16:00:00 GMT</pubDate>
+  <pubDate>Mon, 19 Oct 2026 13:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Validating data analyses written by coding agents</title>
@@ -147,7 +183,7 @@
   <category>modelling</category>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-10-09-validating-analyses-by-coding-agents/</guid>
-  <pubDate>Thu, 08 Oct 2026 16:00:00 GMT</pubDate>
+  <pubDate>Thu, 08 Oct 2026 13:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Major update to VS Code R extension</title>
@@ -180,7 +216,7 @@
  ]]></description>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-10-02-major-update-to-vs-code-r-extension/</guid>
-  <pubDate>Thu, 01 Oct 2026 16:00:00 GMT</pubDate>
+  <pubDate>Thu, 01 Oct 2026 14:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Memorials and legacy</title>
@@ -224,7 +260,7 @@ Just remember that death is not the end</p>
  ]]></description>
   <category>research</category>
   <guid>https://www.seascapemodels.org/posts/2026-09-28-memorials-legacy/</guid>
-  <pubDate>Sun, 27 Sep 2026 16:00:00 GMT</pubDate>
+  <pubDate>Sun, 27 Sep 2026 14:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Measuring the common denominator in ecology</title>
@@ -295,7 +331,7 @@ Just remember that death is not the end</p>
  ]]></description>
   <category>research-skills; research</category>
   <guid>https://www.seascapemodels.org/posts/2026-08-31-measuring-the-common-denominator-in-ecology/</guid>
-  <pubDate>Sun, 30 Aug 2026 16:00:00 GMT</pubDate>
+  <pubDate>Sun, 30 Aug 2026 14:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Running local large language models not as difficult as you might think</title>
@@ -396,7 +432,7 @@ ollama rm qwen2.5-coder       # delete a downloaded model from disk</code></pre>
   <category>research</category>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-08-22-running-local-LLMs/</guid>
-  <pubDate>Fri, 21 Aug 2026 16:00:00 GMT</pubDate>
+  <pubDate>Fri, 21 Aug 2026 14:00:00 GMT</pubDate>
 </item>
 <item>
   <title>When AI coding assistants waste rather than save time</title>
@@ -434,7 +470,7 @@ The time savings are often offset by dead end pursuits
   <category>research</category>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-08-14-when-ai-wastes-time/</guid>
-  <pubDate>Thu, 06 Aug 2026 16:00:00 GMT</pubDate>
+  <pubDate>Thu, 06 Aug 2026 14:00:00 GMT</pubDate>
 </item>
 <item>
   <title>The GIS Research Assistant Job Has Transformed</title>
@@ -484,7 +520,7 @@ The time savings are often offset by dead end pursuits
   <category>research-skills</category>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-08-07-gis-has-changed-forever/</guid>
-  <pubDate>Thu, 06 Aug 2026 16:00:00 GMT</pubDate>
+  <pubDate>Thu, 06 Aug 2026 14:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How Is AI Being Used In Ocean Conservation? A New Survey</title>
@@ -536,7 +572,7 @@ The time savings are often offset by dead end pursuits
   <category>genAI</category>
   <category>research</category>
   <guid>https://www.seascapemodels.org/posts/2026-08-07-octo-ai-ocean-conservation-survey/</guid>
-  <pubDate>Thu, 06 Aug 2026 16:00:00 GMT</pubDate>
+  <pubDate>Thu, 06 Aug 2026 14:00:00 GMT</pubDate>
 </item>
 <item>
   <title>How Do I Build a Model? A Starting Guide for New Modellers</title>
@@ -585,7 +621,7 @@ The time savings are often offset by dead end pursuits
   <category>rstats</category>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-08-03-how-do-i-build-a-model/</guid>
-  <pubDate>Sun, 02 Aug 2026 16:00:00 GMT</pubDate>
+  <pubDate>Sun, 02 Aug 2026 14:00:00 GMT</pubDate>
 </item>
 <item>
   <title>What agentic misalignment could mean for science</title>
@@ -618,7 +654,7 @@ The time savings are often offset by dead end pursuits
   <category>genAI</category>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-07-28-agentic-misalignment-and-science/</guid>
-  <pubDate>Mon, 27 Jul 2026 16:00:00 GMT</pubDate>
+  <pubDate>Mon, 27 Jul 2026 14:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Using ghost text and next edit suggestions to learn agentic coding</title>
@@ -918,7 +954,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
   <category>rstats</category>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-07-28-next-edit-suggestions/</guid>
-  <pubDate>Mon, 27 Jul 2026 16:00:00 GMT</pubDate>
+  <pubDate>Mon, 27 Jul 2026 14:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Winter R workshops at University of Queensland, Brisbane</title>
@@ -945,7 +981,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
  ]]></description>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-06-25-R-workshops-in-brisbane/</guid>
-  <pubDate>Wed, 24 Jun 2026 16:00:00 GMT</pubDate>
+  <pubDate>Wed, 24 Jun 2026 14:00:00 GMT</pubDate>
 </item>
 <item>
   <title>You have my trust, but need to work hard to regain it</title>
@@ -974,7 +1010,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
  ]]></description>
   <category>research-skills; genAI</category>
   <guid>https://www.seascapemodels.org/posts/2026-06-25-you-have-my-trust/</guid>
-  <pubDate>Wed, 24 Jun 2026 16:00:00 GMT</pubDate>
+  <pubDate>Wed, 24 Jun 2026 14:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Data for fitting models versus data for predicting from models</title>
@@ -1018,7 +1054,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
  ]]></description>
   <category>rstats</category>
   <guid>https://www.seascapemodels.org/posts/2026-06-25-prediction-vs-fitting/</guid>
-  <pubDate>Wed, 24 Jun 2026 16:00:00 GMT</pubDate>
+  <pubDate>Wed, 24 Jun 2026 14:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Making new norms for AI in the workplace</title>
@@ -1045,7 +1081,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
  ]]></description>
   <category>research-skills; genAI</category>
   <guid>https://www.seascapemodels.org/posts/2026-06-25-AI-workplace-norms/</guid>
-  <pubDate>Wed, 24 Jun 2026 16:00:00 GMT</pubDate>
+  <pubDate>Wed, 24 Jun 2026 14:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Popular books that will help you learn about statistics</title>
@@ -1122,7 +1158,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
  ]]></description>
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-06-12-favourite-stats-books/</guid>
-  <pubDate>Thu, 11 Jun 2026 16:00:00 GMT</pubDate>
+  <pubDate>Thu, 11 Jun 2026 14:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Improved cybersecurity for AI agents</title>
@@ -1152,60 +1188,7 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
  ]]></description>
   <category>genAI; research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-06-09-improving-AI-agent-security/</guid>
-  <pubDate>Mon, 08 Jun 2026 16:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Tips for using coding agents in ecological modelling workflows</title>
-  <link>https://www.seascapemodels.org/posts/2026-05-29-genAI-eco-modelling-workflows/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>With AI agents getting increasingly powerful, the temptation for modelling is to launch in with a simple prompt to see if it can just create the code and analysis for you. But in practice, it is hard to get the agent to do what you want and produce an analysis that is <a href="https://www.seascapemodels.org/posts/2026-03-28-agentic-AI-ecological-modelling/">to peer-review standard.</a></p>
-<p>We’ve researched how AI coding assistants can be best used in data analysis workflows (<a href="https://vitaexmachina.substack.com/p/mitigating-the-risks-of-ai-coding">thoughts here</a>, <a href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210x.70267?af=R">paper here</a>).</p>
-<p>The lesson from that research is to first prioritise your planning and thought. At this point an agent, if you want to use one, is best used in ‘ask’ or ‘planning’ mode, to help explore analysis options. Once you have a clear idea of what you are doing, you then create clear guidelines. The agent then gets involved to help create code to your specifications. The more routine the tasks and the better described they are, the more useful the agent’s code will be.</p>
-<p>I’m finding a similar workflow works well for ecological modelling more generally.</p>
-<section id="plan-your-model" class="level2">
-<h2 class="anchored" data-anchor-id="plan-your-model">1. Plan your model</h2>
-<p>Pen and paper work to plan the model’s structure, write the core equations. You might go back and forwards with code to test out components of the model.</p>
-<p>If you use an AI at this point, it will be conversational problem solving. Like, “suggest five alternative ways to represent cohort dynamics in an ecological model”.</p>
-<p>You will need to check the literature frequently and the peer-reviewed literature should be your main reference point, not AI.</p>
-</section>
-<section id="plan-your-model-1" class="level2">
-<h2 class="anchored" data-anchor-id="plan-your-model-1">2. Plan your model</h2>
-<p>Once I’m clear on the model, I like to code up for a single case-study and parameter set. This helps me iron out issues and identify inconsistencies in the original plan.</p>
-<p>I prefer an AI line completion tool for this step. That way I maintain control of the code and logic, the AI is just helping save keystrokes.</p>
-<p>There are several options, I still use Github Copilot (which still has a free tier), there is also <a href="https://devin.ai/desktop">Windsurf</a> (formerly Codeium, from Devin.ai, which has unlimited free autocompletes), Google’s <a href="https://codeassist.google/products/business#available-in-your-terminal-favorite-ides-and-platforms">codeassist</a> and several self-hosted tools I haven’t tried.</p>
-<p>If you’re using R, then the <a href="https://github.com/simonpcouch/gander/">Gander</a> package could also be used. This package lets you bring up a dialogue box where you can type what code you want. It works well going line-by-line.</p>
-<p>I don’t use any special AI tools to explore the model at this point. Once the model runs I’m just trying different parameter sets to see that results make sense and to fix bugs.</p>
-</section>
-<section id="spin-up-sensitivity-analyses" class="level2">
-<h2 class="anchored" data-anchor-id="spin-up-sensitivity-analyses">3. Spin up sensitivity analyses</h2>
-<p>AI agents are effective at taking scientifically robust code, then writing all the routine structure around that to automate sensitivity analyses.</p>
-<p>This last step is where I find it is effective to let an AI agent loose on your code.</p>
-<p>I’d take my test case code then ask an agent (like Claude Code) to refactor it into functions and set-up scripts to run sensitivity analyses against parameters a, b, c etc….</p>
-<p>You should also ask for it to generate tests. The obvious one is to test the refactored code against your original case-study. Other tests depend on your model, but there are often outcomes where the exact answer is known, get the AI to write tests to check its working.</p>
-<p>For example, in a population model, when fishing mortality is high, abundance should trend to zero. When fishing mortality is zero abundance should be equal the population’s carrying capacity.</p>
-</section>
-<section id="scientific-research-requires-a-high-ratio-of-input-to-output-tokens" class="level2">
-<h2 class="anchored" data-anchor-id="scientific-research-requires-a-high-ratio-of-input-to-output-tokens">Scientific research requires a high ratio of input to output tokens</h2>
-<p>AI agents can do so much, you can get addicted to the apparent productivity of having them spin up entire project’s worth of code with one short prompt.</p>
-<p>This is fun for inconsequential projects, like the <a href="https://www.seascapemodels.org/posts/2026-04-22-quick-and-easy-AI-generated-games-for-teaching/">single-use games I make as teaching aids.</a></p>
-<p>The problem for scientists is ensuring the scientific validity of the code. Our tests on AI written models show that <a href="https://onlinelibrary.wiley.com/doi/10.1111/faf.70079">small errors creep in and are hard to detect</a>.</p>
-<p>To have confidence that your code is scientifically valid your need to understand it. To understand agent written code you need to spend a long time exploring it.</p>
-<p>I’m finding its faster to just write the code for myself in the first place, rather than to try an understand AI written code bases.</p>
-<p>Another way to think about this issue is as the ratio of input:output tokens across the project’s lifespan. A low ratio (low input, high output) will tend to result in misalignment between what you want (and what is scientifically valid) and what the agent does.</p>
-<p>I’d recommend a high ratio of input to output for scientific research, like 3:1. You are still getting some efficiency benefits from the AI, but extra the work you put into writing the original code and writing specifications for the AI will result in higher quality code.</p>
-
-
-</section>
-
- ]]></description>
-  <category>genAI; research-skills</category>
-  <guid>https://www.seascapemodels.org/posts/2026-05-29-genAI-eco-modelling-workflows/</guid>
-  <pubDate>Fri, 05 Jun 2026 16:00:00 GMT</pubDate>
+  <pubDate>Mon, 08 Jun 2026 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
