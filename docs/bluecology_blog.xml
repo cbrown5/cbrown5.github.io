@@ -10,7 +10,53 @@
 <atom:link href="https://www.seascapemodels.org/bluecology_blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Sun, 01 Nov 2026 13:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 05 Nov 2026 13:00:00 GMT</lastBuildDate>
+<item>
+  <title>Environmental modelling in your web browser</title>
+  <link>https://www.seascapemodels.org/posts/2026-11-06-environmental-modelling-in-your-web-browser/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I recall when the R shiny framework first came out. It suddenly got relatively easy for us ecological modellers and environmental statisticians to turn our R code into web apps. This improved accessibility of complex analyses to more general audiences.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.seascapemodels.org/posts/2026-11-06-environmental-modelling-in-your-web-browser/FANGS.png" class="img-fluid figure-img"></p>
+<figcaption>FANGS, my browser based Bayesian modelling software</figcaption>
+</figure>
+</div>
+<p>You started seeing ‘web apps’ popping up as outcomes of all sorts of projects. (Here’s one great example, <a href="https://shiny.csiro.au/BioOceanObserver/">Biological Ocean Observer</a> let’s you analyse timeseries of plankton data from Australia).</p>
+<p>The barrier to doing these apps before was that most of the modelling community didn’t know how to code in the languages of the web. An R based framework for web apps made that possible.</p>
+<p>But there was still a downside. With R shiny you still need to host the R code on a server somewhere. This requires either a free, but limited account, or paying for compute.</p>
+<p>The ideal situation is to have your app written in Java Script and html. These languages run web pages. The key difference from R Shiny is the computations run in the web browser, on the viewer’s computer. This means you can host a web page cheaply or for free (e.g.&nbsp;as a github page). No server for computing R required.</p>
+<p>Back in 2018, we paid a JS programmer to turn my R code into a web app for one of our projects (<a href="https://mangrove-carbon.wetlands.app/">on projecting carbon emissions from mangrove deforestation</a>). This app become very useful for people assessing potential outcomes of carbon projects.</p>
+<p>Well AI coding agents have removed that barrier coding in JS.</p>
+<p>I don’t think the huge potential of this change is widely appreciated in the environmental data analysis and modelling community yet. So I wanted to call it out here.</p>
+<p>The tech community itself is only just starting to appreciate the impacts of this change. <a href="https://ftrain.com/aboard-the-web-is-more-than-enough">Here’s a nice explanation</a> of how this new power of running apps in the browser is transformative for the tech industry. (Check out <a href="https://tinylittleoffice.com/">tinylittleoffice</a>, a browser based office suite that saves the document as a URL you can copy and paste, or <a href="https://simonw.github.io/battledrones/">Battle Drones</a> a multiplayer web game that connects two devices through sound and microphones!).</p>
+<p>This change is also going to be transformative for modelling and communication of science.</p>
+<p>I got inspired by examples like those in the post above, and set-off on my own AI coding experiment. The result is <a href="https://www.seascapemodels.org/FANGS/">FANGS</a>, a browser based Bayesian computation engine.</p>
+<p>Brief background on my motivation here. I’m a huge fan of Bayesian statistics. More people should be using it. But a barrier to sharing that enthusiasm is the complexity of installing many Bayesian R packages on other people’s computers.</p>
+<p>So I built (vibe coded) FANGS as an educational tool. It means my students can write and run simple Bayesian models, directly in their browsers. This means that in a 3 hour lesson I can: cover an intro to Bayesian concepts, have students write models in R like syntax, run the models and interpret the results.</p>
+<p>The idea is that is enough to get them motivated to then install the proper R software. The use of model syntax that emulates the serious Bayesian R packages is also a stepping stone to the more powerful R software.</p>
+<p>I’ll write up the development pipeline in a later post. But I just want to say it blew me away how well this experiment with vibe coding worked. FANGS gets you the right answers and runs faster on small teaching scale problems than the equivalent R packages.</p>
+<p>I think this new power will revolutionize scientific communication and education, through improving accessibility of many types of data and science.</p>
+<p>What does this new wave of scientific app development what do you need?</p>
+<p>On a personal level, curiosity about what is possible in web browsers. Once you know something is possible its easy to get an AI agent to make it. Once I learned about saving data in URLs from the tinylittleoffice example, it was easy to ask Claude to implement that feature in FANGS (see the <code>copy share link</code> button).</p>
+<p>On a community level, translating more of the most common R packages to Java Script libraries will help. I actually haven’t fully explored what is available in JS yet. But for example, efficient JS packages for mapping exist, extending those for complex GIS operations will extend the potential of our apps.</p>
+<p>Standards for validation. When you vibe code a package, you need to know it is accurate. I’ll come to how to do this when I write up the FANGS development process.</p>
+<p>Finally, a bottleneck with apps has always been user experience (UX). For any scientific application a key question for me has always been: how do we make sure users don’t misinterpret the information this app provides? I’m not sure AI can solve that problem yet. It requires thoughtful design and lots of testing.</p>
+<p>Let me know cool ideas you have or have seen, I’m keen to see more examples.</p>
+
+
+
+ ]]></description>
+  <category>genAI</category>
+  <category>rstats</category>
+  <guid>https://www.seascapemodels.org/posts/2026-11-06-environmental-modelling-in-your-web-browser/</guid>
+  <pubDate>Thu, 05 Nov 2026 13:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Register for the Summer R Workshops in Brisbane, at UQ: Introduction to R and Statistical Modelling</title>
   <link>https://www.seascapemodels.org/posts/2026-11-02-summer-R-workshops-brisbane/</link>
@@ -1159,36 +1205,6 @@ font-style: inherit;"># fit a model with interaction between x and y</span></spa
   <category>research-skills</category>
   <guid>https://www.seascapemodels.org/posts/2026-06-12-favourite-stats-books/</guid>
   <pubDate>Thu, 11 Jun 2026 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Improved cybersecurity for AI agents</title>
-  <link>https://www.seascapemodels.org/posts/2026-06-09-improving-AI-agent-security/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Agents are most useful if you can set and forget, so they automatically approve their own requests. Automatic approval is variously called ‘dangerously skip permissions’ or YOLO mode (you only live once) for good reason. Allowing an AI agent to automatically run commands on your computer comes with many risks.</p>
-<p>So its great to see some of the major AI Agent providers finally providing sandboxes for their agents.</p>
-<p>Sandboxes are programming environments that are isolated from the rest of the computer. They provide a higher level of security against malicious or misaligned actions taken by AI agents.</p>
-<p>For instance, Claude Code has been known to <a href="https://www.reddit.com/r/ClaudeAI/comments/1pgxckk/claude_cli_deleted_my_entire_home_directory_wiped/">accidentally wipe all the files on a user’s computer</a>. If your agent is accessing content from the web, it could also be vulnerable to a prompt injection attack, where an attacker provides it with instructions to send private data.</p>
-<p>Sandboxes can limit the blast radius, by putting strict limits on what files/directories the agent can access, what actions it can take and what webpages it can access.</p>
-<p>Unfortunately these sandboxes are in early stages of development.</p>
-<p>I spent some time trying the new <a href="https://github.com/anthropic-experimental/sandbox-runtime">Anthropic Sandbox Runtime</a>, but…. totally failed to get it working. It seems it is still very beta stage and there are many issues open currently on its github page describing the problems I was having.</p>
-<p>Anthropic and Github Copilot also have bash sandboxes (e.g.&nbsp;<a href="https://code.claude.com/docs/en/sandboxing">Anthropic’s docs</a>). Both worked fine for me.</p>
-<p>However, the documentation is difficult to interpret (if you aren’t a software developer), and I spent a lot of time trying to ge</p>
-<p>The bash sandboxes allow you to put restraints on what bash commands are run. For instance, you can limit the ability of the agent to read files outside of a project’s directory.</p>
-<p>This system has its limitations though. For instance, an agent could still access private files through Python code.</p>
-<p>I also looked into the Github Copilot sandbox, which was only released this month (June 2026). It is not very well documented but seems to also be a bash sandbox.</p>
-<p>Sandboxes are a welcome development, but there is still some work to go on making these user friendly, accessible and secure to a range of different issues.</p>
-
-
-
- ]]></description>
-  <category>genAI; research-skills</category>
-  <guid>https://www.seascapemodels.org/posts/2026-06-09-improving-AI-agent-security/</guid>
-  <pubDate>Mon, 08 Jun 2026 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
